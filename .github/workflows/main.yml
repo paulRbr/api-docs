@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 #   pull_request:
 #     branches: [ master ]
 
@@ -22,6 +22,6 @@ jobs:
       - name: Deploy API documentation
         uses: bump-sh/github-action@0.1
         with:
-          id: 2cbc8b10-f3ac-4302-98b7-509b8ae66537 
+          id: 2cbc8b10-f3ac-4302-98b7-509b8ae66537
           token: e4b6902f6f4d737cdf2840c2b5aa83af
-          file: openAPI.json
+          file: openapi.json
