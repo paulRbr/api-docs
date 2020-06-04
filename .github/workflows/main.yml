@@ -20,4 +20,4 @@ jobs:
               with:
                   id: 2cbc8b10-f3ac-4302-98b7-509b8ae66537
                   token: e4b6902f6f4d737cdf2840c2b5aa83af
-                  file: ./openapi.json
+                  file: canopyAPI/openapi.json
