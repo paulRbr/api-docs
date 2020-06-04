@@ -288,8 +288,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/AccountUpdate",
-					"required": true
+					"$ref": "#/components/requestBodies/AccountUpdate"
 				},
 				"responses": {
 					"204": {
@@ -615,8 +614,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/DisputeUpdate",
-					"required": true
+					"$ref": "#/components/requestBodies/DisputeUpdate"
 				},
 				"responses": {
 					"204": {
@@ -1499,8 +1497,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/ChargeCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/ChargeCreate"
 				},
 				"responses": {
 					"204": {
@@ -1589,8 +1586,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/PaymentCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/PaymentCreate"
 				},
 				"responses": {
 					"204": {
@@ -1673,8 +1669,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/FeeCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/FeeCreate"
 				},
 				"responses": {
 					"204": {
@@ -1757,8 +1752,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/CashAdvanceCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/CashAdvanceCreate"
 				},
 				"responses": {
 					"204": {
@@ -1841,8 +1835,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/AccountBalanceTransferCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/AccountBalanceTransferCreate"
 				},
 				"responses": {
 					"204": {
@@ -1925,8 +1918,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/CreditAdjustmentCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/CreditAdjustmentCreate"
 				},
 				"responses": {
 					"204": {
@@ -2009,8 +2001,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/DebitAdjustmentCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/DebitAdjustmentCreate"
 				},
 				"responses": {
 					"204": {
@@ -2055,8 +2046,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/ChargebackCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/ChargebackCreate"
 				},
 				"responses": {
 					"204": {
@@ -2101,8 +2091,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/RefundLineItemCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/RefundLineItemCreate"
 				},
 				"responses": {
 					"204": {
@@ -2147,8 +2136,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/PaymentReversalCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/PaymentReversalCreate"
 				},
 				"responses": {
 					"204": {
@@ -2205,8 +2193,7 @@
 				"summary": "Create a new Product",
 				"operationId": "createProduct",
 				"requestBody": {
-					"$ref": "#/components/requestBodies/ProductCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/ProductCreate"
 				},
 				"responses": {
 					"204": {
@@ -2395,8 +2382,7 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/PlanCreate",
-					"required": true
+					"$ref": "#/components/requestBodies/PlanCreate"
 				},
 				"responses": {
 					"204": {
@@ -2753,7 +2739,7 @@
 				}
 			},
 			"Account": {
-				"required": ["account_id", "account_status_id", "effective_at", "product_id"],
+				"required": ["account_id", "effective_at", "product_id"],
 				"additionalProperties": false,
 				"type": "object",
 				"properties": {
@@ -2854,7 +2840,7 @@
 				}
 			},
 			"LineItem": {
-				"required": ["account_id", "effective_at", "line_item_id", "line_item_status_id", "product_id", "type"],
+				"required": ["account_id", "effective_at", "line_item_id", "product_id", "type"],
 				"type": "object",
 				"additionalProperties": false,
 				"properties": {
@@ -3049,7 +3035,7 @@
 				}
 			},
 			"Product": {
-				"required": ["effective_at", "policies", "product_id"],
+				"required": ["policies", "product_id"],
 				"type": "object",
 				"additionalProperties": false,
 				"properties": {
@@ -3121,7 +3107,7 @@
 				}
 			},
 			"Plan": {
-				"required": ["effective_at", "plan_id", "policies", "product_id"],
+				"required": ["plan_id", "policies", "product_id"],
 				"type": "object",
 				"additionalProperties": false,
 				"properties": {
@@ -4148,6 +4134,7 @@
 		"requestBodies": {
 			"AccountUpdate": {
 				"description": "Input object for the account that is to be updated",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4163,6 +4150,7 @@
 			},
 			"DisputeUpdate": {
 				"description": "Request object to update a dispute to a new status",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4173,8 +4161,7 @@
 								"status": {
 									"type": "string",
 									"description": "The New Status of the Dispute",
-									"enum": ["cx_won", "cx_lost", "refunded"],
-									"maxItems": 1
+									"enum": ["cx_won", "cx_lost", "refunded"]
 								},
 								"effective_at": {
 									"type": "string",
@@ -4188,6 +4175,7 @@
 			},
 			"ChargeCreate": {
 				"description": "Body of request to create charge",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4217,6 +4205,7 @@
 			},
 			"PaymentCreate": {
 				"description": "Body of request to create payment",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4246,6 +4235,7 @@
 			},
 			"FeeCreate": {
 				"description": "Body of request to create fee",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4275,6 +4265,7 @@
 			},
 			"CashAdvanceCreate": {
 				"description": "Body of request to create cash advance",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4304,6 +4295,7 @@
 			},
 			"AccountBalanceTransferCreate": {
 				"description": "Body of request to create account balance transfer",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4333,6 +4325,7 @@
 			},
 			"CreditAdjustmentCreate": {
 				"description": "Body of request to create credit adjustment",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4388,6 +4381,7 @@
 			},
 			"DebitAdjustmentCreate": {
 				"description": "Body of request to create debit adjustment",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4443,6 +4437,7 @@
 			},
 			"ChargebackCreate": {
 				"description": "Body of request to create chargeback",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4475,6 +4470,7 @@
 			},
 			"RefundLineItemCreate": {
 				"description": "Body of request to create refund of a line item",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4507,6 +4503,7 @@
 			},
 			"PaymentReversalCreate": {
 				"description": "Body of request to reverse a payment",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4539,6 +4536,7 @@
 			},
 			"ProductCreate": {
 				"description": "Body of request to create a product",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4576,6 +4574,7 @@
 			},
 			"PlanCreate": {
 				"description": "Body of request to create a plan",
+				"required": true,
 				"content": {
 					"application/json": {
 						"schema": {
