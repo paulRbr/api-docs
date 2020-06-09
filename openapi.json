@@ -122,8 +122,6 @@
 						"in": "query",
 						"description": "The Date-Time you would like the system to return the data as of. IE tell me what the account was on '2020-10-20 00:00:00 EST'. If empty it defaults to current time.",
 						"required": false,
-						"style": "form",
-						"explode": true,
 						"schema": {
 							"type": "string",
 							"format": "date-time"
