@@ -2665,7 +2665,7 @@
 				}
 			},
 			"Account": {
-				"required": ["account_id", "effective_at", "product_id"],
+				"required": ["account_id", "account_status", "effective_at", "product_id"],
 				"additionalProperties": false,
 				"type": "object",
 				"properties": {
@@ -2718,7 +2718,17 @@
 						"type": "array",
 						"description": "An Array of External Account IDs",
 						"items": {
-							"$ref": "#/components/schemas/Account_external_account_ids"
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string",
+									"description": "Name of the External Party"
+								},
+								"id": {
+									"type": "string",
+									"description": "External Account ID"
+								}
+							}
 						}
 					},
 					"credit_limit_cents": {
@@ -2766,7 +2776,7 @@
 				}
 			},
 			"LineItem": {
-				"required": ["account_id", "effective_at", "line_item_id", "product_id", "type"],
+				"required": ["account_id", "effective_at", "line_item_status", "line_item_id", "product_id", "type"],
 				"type": "object",
 				"additionalProperties": false,
 				"properties": {
@@ -2797,10 +2807,13 @@
 							"unsuccessful"
 						]
 					},
-					"dispute": {
-						"type": "string",
-						"description": "ID of a dispute (if any) relating to this line item",
-						"format": "uuid"
+					"disputes": {
+						"type": "array",
+						"description": "Array of ID's of disputes (if any) relating to this line item",
+						"items": {
+							"type": "string",
+							"format": "uuid"
+						}
 					},
 					"type": {
 						"type": "string",
@@ -2825,7 +2838,7 @@
 					"current_policy_set": {
 						"$ref": "#/components/schemas/LineItem_current_policy_set"
 					},
-					"merchant-data": {
+					"merchant_data": {
 						"$ref": "#/components/schemas/LineItem_merchantdata"
 					},
 					"subtype": {
@@ -2884,7 +2897,7 @@
 						"format": "uuid"
 					},
 					"external_ids": {
-						"$ref": "#/components/schemas/CreditAdjustmentsExternalIDs"
+						"$ref": "#/components/schemas/ExternalIDs"
 					}
 				},
 				"description": "An individual charge, payment, fee, or otherwise financial event that is used to calculate balances."
@@ -3413,7 +3426,7 @@
 					}
 				}
 			},
-			"CreditAdjustmentsExternalIDs": {
+			"ExternalIDs": {
 				"type": "object",
 				"properties": {
 					"id": {
@@ -3468,19 +3481,6 @@
 					}
 				},
 				"description": "The current Plan, Promo, or Product for this Account."
-			},
-			"Account_external_account_ids": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string",
-						"description": "Name of the External Party"
-					},
-					"id": {
-						"type": "string",
-						"description": "External Account ID"
-					}
-				}
 			},
 			"LineItem_current_policy_set": {
 				"type": "object",
@@ -4298,7 +4298,7 @@
 									"description": "The Subtype of Credit Adjustment"
 								},
 								"external_ids": {
-									"$ref": "#/components/schemas/CreditAdjustmentsExternalIDs"
+									"$ref": "#/components/schemas/ExternalIDs"
 								}
 							}
 						}
@@ -4354,7 +4354,7 @@
 									"description": "The Subtype of Debit Adjustment"
 								},
 								"external_ids": {
-									"$ref": "#/components/schemas/CreditAdjustmentsExternalIDs"
+									"$ref": "#/components/schemas/ExternalIDs"
 								}
 							}
 						}
@@ -4387,7 +4387,7 @@
 									"format": "uuid"
 								},
 								"external_ids": {
-									"$ref": "#/components/schemas/CreditAdjustmentsExternalIDs"
+									"$ref": "#/components/schemas/ExternalIDs"
 								}
 							}
 						}
@@ -4420,7 +4420,7 @@
 									"format": "uuid"
 								},
 								"external_ids": {
-									"$ref": "#/components/schemas/CreditAdjustmentsExternalIDs"
+									"$ref": "#/components/schemas/ExternalIDs"
 								}
 							}
 						}
@@ -4453,7 +4453,7 @@
 									"format": "uuid"
 								},
 								"external_ids": {
-									"$ref": "#/components/schemas/CreditAdjustmentsExternalIDs"
+									"$ref": "#/components/schemas/ExternalIDs"
 								}
 							}
 						}
