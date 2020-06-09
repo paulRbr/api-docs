@@ -113,7 +113,7 @@
 	"paths": {
 		"/accounts": {
 			"get": {
-				"tags": ["accounts"],
+				"tags": ["accounts", "servicing"],
 				"summary": "Get all available Accounts",
 				"operationId": "getAccounts",
 				"parameters": [
@@ -122,6 +122,8 @@
 						"in": "query",
 						"description": "The Date-Time you would like the system to return the data as of. IE tell me what the account was on '2020-10-20 00:00:00 EST'. If empty it defaults to current time.",
 						"required": false,
+						"style": "form",
+						"explode": true,
 						"schema": {
 							"type": "string",
 							"format": "date-time"
@@ -154,7 +156,7 @@
 				"description": "Lorem ipsum"
 			},
 			"post": {
-				"tags": ["accounts"],
+				"tags": ["accounts", "programmatic"],
 				"summary": "Create a new customer account",
 				"operationId": "createAccount",
 				"requestBody": {
@@ -193,7 +195,7 @@
 		},
 		"/accounts/{account_id}": {
 			"get": {
-				"tags": ["accounts"],
+				"tags": ["accounts", "servicing"],
 				"summary": "Get a specific Account",
 				"operationId": "getAccount",
 				"parameters": [
@@ -240,7 +242,7 @@
 				"description": "Lorem ipsum"
 			},
 			"delete": {
-				"tags": ["accounts"],
+				"tags": ["accounts", "servicing", "programmatic"],
 				"summary": "Delete a specific Account",
 				"operationId": "deleteAccount",
 				"parameters": [
@@ -268,7 +270,7 @@
 				"description": "Lorem ipsum"
 			},
 			"patch": {
-				"tags": ["accounts"],
+				"tags": ["accounts", "servicing", "programmatic"],
 				"summary": "Update a specific Account",
 				"operationId": "putUpdateAccount",
 				"parameters": [
@@ -567,7 +569,7 @@
 			},
 			"delete": {
 				"tags": ["disputes"],
-				"summary": "Delete a specifc a Dispute for a specific Account's Line Item",
+				"summary": "Delete a specifc Dispute for a specific Account's Line Item",
 				"operationId": "deleteDispute",
 				"parameters": [
 					{
@@ -978,7 +980,7 @@
 					{
 						"name": "effective_as_of_date",
 						"in": "query",
-						"description": "The Date-Time you would like the system to return the data as of. IE tell me what the history of this account was on '2020-10-20 00:00:00 EST'. If empty it defaults to current time. (statements are imutable)",
+						"description": "The Date-Time you would like the system to return the data as of. IE tell me what the history of this account was on '2020-10-20 00:00:00 EST'. If empty it defaults to current time. (statements are immutable)",
 						"required": false,
 						"style": "form",
 						"explode": true,
@@ -1018,7 +1020,7 @@
 					{
 						"name": "effective_as_of_date",
 						"in": "query",
-						"description": "The Date-Time you would like the system to return the data as of. IE tell me what the statement data was on '2020-10-20 00:00:00 EST'. If empty it defaults to current time. (statements are imutable)",
+						"description": "The Date-Time you would like the system to return the data as of. IE tell me what the statement data was on '2020-10-20 00:00:00 EST'. If empty it defaults to current time. (statements are immutable)",
 						"required": false,
 						"style": "form",
 						"explode": true,
@@ -1090,74 +1092,6 @@
 								}
 							}
 						}
-					},
-					"404": {
-						"description": "Line Item not found"
-					}
-				},
-				"description": "Lorem ipsum"
-			},
-			"delete": {
-				"tags": ["line_items"],
-				"summary": "Delete a specific Line Item's details",
-				"operationId": "deleteLineItem",
-				"parameters": [
-					{
-						"name": "line_item_id",
-						"in": "path",
-						"description": "Line Item ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					}
-				],
-				"responses": {
-					"204": {
-						"description": "Line Item Deleted",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "array",
-									"items": {
-										"type": "string",
-										"description": "line item status id",
-										"format": "uuid"
-									}
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "Line Item not found"
-					}
-				},
-				"description": "Lorem ipsum"
-			},
-			"patch": {
-				"tags": ["line_items"],
-				"summary": "Update a specific Line Item's details",
-				"operationId": "updateLineItem",
-				"parameters": [
-					{
-						"name": "line_item_id",
-						"in": "path",
-						"description": "Line Item ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					}
-				],
-				"responses": {
-					"204": {
-						"description": "Line Item Updated"
 					},
 					"404": {
 						"description": "Line Item not found"
@@ -1425,7 +1359,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/charges": {
+		"/accounts/{account_id}/line_items/charges": {
 			"get": {
 				"tags": ["line_items", "charges", "accounts"],
 				"summary": "Get a specific Account's charges",
@@ -1514,7 +1448,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/payments": {
+		"/accounts/{account_id}/line_items/payments": {
 			"get": {
 				"tags": ["line_items", "payments", "accounts"],
 				"summary": "Get a specific Account's payments",
@@ -1597,7 +1531,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/fees": {
+		"/accounts/{account_id}/line_items/fees": {
 			"get": {
 				"tags": ["line_items", "fees", "accounts"],
 				"summary": "Get a specific Account's Fees",
@@ -1680,7 +1614,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/cash_advances": {
+		"/accounts/{account_id}/line_items/cash_advances": {
 			"get": {
 				"tags": ["line_items", "cash_advances", "accounts"],
 				"summary": "Get a specific Account's Cash Advances",
@@ -1763,7 +1697,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/balance_transfers": {
+		"/accounts/{account_id}/line_items/balance_transfers": {
 			"get": {
 				"tags": ["line_items", "balance_transfers", "accounts"],
 				"summary": "Get a specific Account's Balance Transfer",
@@ -1846,7 +1780,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/credit_adjustments": {
+		"/accounts/{account_id}/line_items/credit_adjustments": {
 			"get": {
 				"tags": ["line_items", "credit_adjustments", "accounts"],
 				"summary": "Get a specific Account's Credit Adjustment",
@@ -1929,7 +1863,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/debit_adjustments": {
+		"/accounts/{account_id}/line_items/debit_adjustments": {
 			"get": {
 				"tags": ["line_items", "debit_adjustments", "accounts"],
 				"summary": "Get a specific Account's Debit Adjustment",
@@ -2012,7 +1946,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/{line_item_id}/chargebacks": {
+		"/accounts/{account_id}/line_items/{line_item_id}/chargebacks": {
 			"post": {
 				"tags": ["line_items", "chargebacks", "accounts"],
 				"summary": "Create a Chargeback for a specific Account's Line Item",
@@ -2057,7 +1991,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/{line_item_id}/refund": {
+		"/accounts/{account_id}/line_items/{line_item_id}/refund": {
 			"post": {
 				"tags": ["line_items", "refunds", "accounts"],
 				"summary": "Create a Refund for a specific Account's Line Item",
@@ -2102,7 +2036,7 @@
 				"description": "Lorem ipsum"
 			}
 		},
-		"/account/{account_id}/line_items/{line_item_id}/payment_reversals": {
+		"/accounts/{account_id}/line_items/{line_item_id}/payment_reversals": {
 			"post": {
 				"tags": ["line_items", "payment_reversals", "accounts"],
 				"summary": "Create a Payment Reversal for a specific Account's Line Item",
@@ -2356,7 +2290,7 @@
 						}
 					},
 					"404": {
-						"description": "No Products found"
+						"description": "No plans found"
 					}
 				},
 				"description": "Lorem ipsum"
@@ -2436,7 +2370,7 @@
 						}
 					},
 					"404": {
-						"description": "No Products found"
+						"description": "No plans found"
 					}
 				},
 				"description": "Lorem ipsum"
@@ -2464,7 +2398,7 @@
 						"description": "Plan Deleted"
 					},
 					"404": {
-						"description": "No Products found"
+						"description": "No plans found"
 					}
 				},
 				"description": "Lorem ipsum"
@@ -2530,9 +2464,6 @@
 								}
 							}
 						}
-					},
-					"404": {
-						"description": "No Products found"
 					}
 				},
 				"description": "Lorem ipsum"
@@ -2544,9 +2475,6 @@
 				"responses": {
 					"204": {
 						"description": "User Created"
-					},
-					"404": {
-						"description": "No Products found"
 					}
 				},
 				"description": "Lorem ipsum"
