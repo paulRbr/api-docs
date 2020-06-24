@@ -127,7 +127,7 @@
 						"schema": {
 							"type": "string",
 							"format": "date-time"
-						}
+                        }
 					}
 				],
 				"responses": {
@@ -2972,7 +2972,57 @@
 						}
 					}
 				}
-			},
+            },
+            "Product_MVP": {
+                "required": ["policies", "product_id"],
+				"type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "product_id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"name": {
+						"type": "string",
+						"description": "Name of Product. IE Express Card."
+					},
+					"description": {
+						"type": "string",
+						"description": "Description of the Product."
+					},
+					"created_at": {
+						"type": "string",
+						"description": "The date-time that this Product was created on the server.",
+						"format": "date-time"
+					},
+					"type": {
+						"type": "string",
+						"description": "The Type of Product",
+						"enum": ["credit"]
+                    },
+                    "policies": {
+						"type": "object",
+						"description": "An Object of policies that drive Product behaviour.",
+                        "properties": {
+                            "base_policy_config": {
+                                "$ref": "#/components/schemas/BasePolicyConfig_MVP"
+                            }
+                        }
+                    },
+                    "default_attributes": {
+
+                    },
+                    "current_accounts": {
+						"type": "array",
+						"description": "Array of Accounts that are currently using this Promo",
+						"items": {
+							"type": "string",
+							"description": "Account ID",
+							"format": "uuid"
+						}
+					}
+                }
+            },
 			"Product": {
 				"required": ["policies", "product_id"],
 				"type": "object",
@@ -3305,6 +3355,22 @@
 						"format": "uuid"
 					}
 				}
+            },
+            "BasePolicyConfig_MVP": {
+				"type": "object",
+				"additionalProperties": false,
+				"properties": {
+					"min_pay": {
+						"$ref": "#/components/schemas/BasePolicyConfig_min_pay"
+					},
+					"new_account_grace_period": {
+						"$ref": "#/components/schemas/BasePolicyConfig_new_account_grace_period"
+					},
+					"billing_cycle": {
+						"$ref": "#/components/schemas/BasePolicyConfig_billing_cycle"
+					}
+				},
+				"description": "A base group of policies that define a Product/Plan/Promo"
 			},
 			"BasePolicyConfig": {
 				"type": "object",
@@ -3719,36 +3785,12 @@
 			"BasePolicyConfig_min_pay": {
 				"type": "object",
 				"properties": {
-					"enabled": {
-						"type": "boolean"
-					},
 					"percentage": {
 						"type": "number",
-						"description": "the base base percentage calculated for min pay"
-					},
-					"value": {
-						"type": "string",
-						"description": "the value that is used for the base percentage of the min pay",
-						"enum": [
-							"statement ending amount",
-							"statement sum of new charges plus statement previous ending amount"
-						]
-					},
-					"additionals": {
-						"type": "array",
-						"description": "an array of things to add to the min pay after the percentage is calculated",
-						"items": {
-							"type": "string",
-							"enum": [
-								"statement new fees",
-								"statement new interest",
-								"statement oustanding fees",
-								"statement outstanding interest"
-							]
-						}
+						"description": "the percentage of total balance calculated for min pay"
 					}
 				},
-				"description": "the min pay config"
+				"description": "the configured minimum payment required for a given pay period"
 			},
 			"BasePolicyConfig_new_charge_grace_period": {
 				"type": "object",
