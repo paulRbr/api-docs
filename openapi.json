@@ -3363,9 +3363,6 @@
 					"min_pay": {
 						"$ref": "#/components/schemas/BasePolicyConfig_min_pay"
 					},
-					"new_account_grace_period": {
-						"$ref": "#/components/schemas/BasePolicyConfig_new_account_grace_period"
-					},
 					"billing_cycle": {
 						"$ref": "#/components/schemas/BasePolicyConfig_billing_cycle"
 					}
@@ -3813,9 +3810,6 @@
 			"BasePolicyConfig_new_account_grace_period": {
 				"type": "object",
 				"properties": {
-					"enabled": {
-						"type": "boolean"
-					},
 					"period": {
 						"type": "string",
 						"description": "the amount of time you want to not charge interest from an accounts effective creation date. IE '90 days' (note this is separate from 0% apr promos)",
@@ -3827,43 +3821,29 @@
 			"BasePolicyConfig_billing_cycle": {
 				"type": "object",
 				"properties": {
-					"enabled": {
-						"type": "boolean",
-						"description": "Disabling the billing cycle means no statements, due dates, etc will be genereated"
-					},
 					"period": {
 						"type": "string",
 						"description": "the length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
 						"format": "interval"
 					},
-					"statement_cut_delay_interval": {
-						"type": "string",
-						"description": "the length of time you would like to wait before canopy creates statement data based on the cycle. IE '3 days'",
-						"format": "interval"
-					},
-					"origination_date": {
-						"type": "string",
-						"description": "the origination date of this account",
-						"format": "date-time"
-					},
-					"next_start_date": {
-						"type": "string",
-						"description": "date of the start of the next billing cycle",
-						"format": "date-time"
-					},
 					"billing_due_date_interval": {
 						"type": "string",
 						"description": "the amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
 						"format": "interval"
-					},
-					"billing_grace_period": {
-						"type": "string",
-						"description": "the amount of time that you would like to wait after the due date before assigning a fee or potentially exiting the grace period. IE '3 days'",
-						"format": "interval"
 					}
 				},
 				"description": "The Billing Cycle Object"
-			},
+            },
+            "AccountPolicyConfig_billing_cycle": {
+                "type": "object",
+                "properties": {
+                    "next_start_date": {
+                        "type": "string",
+                        "description": "date of the start of the next billing cycle",
+                        "format": "date-time"
+                    }
+                }
+            },
 			"FeePolicyConfig_repeating_fees": {
 				"type": "object",
 				"properties": {
