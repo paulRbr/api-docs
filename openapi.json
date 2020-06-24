@@ -3010,7 +3010,17 @@
                         }
                     },
                     "default_attributes": {
-
+                        "type": "object",
+                        "properties": {
+                            "rate": {
+                                "type": "number",
+                                "description": "The default rate for this interest policy. Typically a rate is selected at the time of assigning an account to a plan or creating a line item."
+                            },
+                            "credit_limit": {
+                                "type": "number",
+                                "description": "The maximum principal credit available for a customer account"
+                            }
+                        }
                     },
                     "current_accounts": {
 						"type": "array",
@@ -3165,6 +3175,34 @@
 						}
 					}
 				}
+            },
+            "InterestPolicy_MVP": {
+				"type": "object",
+				"additionalProperties": false,
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": ["compound"]
+					},
+					"method": {
+						"type": "string",
+						"description": "the actual base formula used to calculate and assign interest",
+						"enum": [
+							"average daily balance"
+						]
+					},
+					"day_calc_type": {
+						"type": "string",
+						"description": "Affects the base calculation by determining how many days there are in a given year.",
+						"enum": ["365"]
+					},
+					"interest_calc_time": {
+						"type": "string",
+						"description": "The interest for this policy calculates based on this time + the interval time",
+						"format": "date-time"
+					}
+				},
+				"description": "the Interest Object"
 			},
 			"InterestPolicy": {
 				"type": "object",
@@ -3365,10 +3403,18 @@
 					},
 					"billing_cycle": {
 						"$ref": "#/components/schemas/BasePolicyConfig_billing_cycle"
-					}
+                    },
+                    "interest_policies": {
+                        "$ref": "#/components/schemas/InterestPolicy_MVP"
+                    },
+                    "close_of_business_and_timezone": {
+                        "type": "string",
+                        "description":"Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                        "format": "date-time"
+                    }
 				},
 				"description": "A base group of policies that define a Product/Plan/Promo"
-			},
+            },
 			"BasePolicyConfig": {
 				"type": "object",
 				"additionalProperties": false,
@@ -3833,7 +3879,7 @@
 					}
 				},
 				"description": "The Billing Cycle Object"
-            },
+            },  
             "AccountPolicyConfig_billing_cycle": {
                 "type": "object",
                 "properties": {
