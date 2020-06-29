@@ -126,7 +126,8 @@
 						"explode": true,
 						"schema": {
 							"type": "string",
-							"format": "date-time"
+                            "format": "date-time",
+                            "example": "2018-03-20T09:12:28Z"
                         }
 					}
 				],
@@ -139,7 +140,8 @@
 									"type": "array",
 									"items": {
 										"$ref": "#/components/schemas/Account"
-									}
+                                    },
+                                    "example": ["00112233-4455-6677-8899-aabbccddeeff", "00223344-5566-7788-9910-gghhiijjkkll"]
 								}
 							}
 						}
@@ -165,7 +167,7 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/Account"
-							}
+                            }
 						}
 					},
 					"required": true
@@ -2671,25 +2673,30 @@
 				"properties": {
 					"account_id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "5fb3a288-5f6c-440f-b079-b06c828b7768"
 					},
 					"account_status": {
 						"type": "string",
-						"description": "the Status of the Account. eg 'suspended' or 'closed'"
+                        "description": "the Status of the Account. eg 'suspended' or 'closed'",
+                        "example": "suspended"
 					},
 					"account_status_subtype": {
 						"type": "string",
-						"description": "the subtype of the Status of the Account. eg 'delinquent' or 'bankruptcy'"
-					},
+						"description": "the subtype of the Status of the Account. eg 'delinquent' or 'bankruptcy'",
+                        "example": "delinquent"
+                    },
 					"effective_at": {
 						"type": "string",
 						"description": "the date-time that this account became/becomes active",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2018-03-20T09:12:28Z"
 					},
 					"created_at": {
 						"type": "string",
 						"description": "the date-time which the account was created in the API",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2017-06-20T09:12:14Z"
 					},
 					"available_policy_sets": {
 						"type": "array",
@@ -2707,12 +2714,14 @@
 					"product_id": {
 						"type": "string",
 						"description": "the Product ID of the account",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "d119341c-47fd-4a55-bce7-28406dacfa20"
 					},
 					"plan_id": {
 						"type": "string",
 						"description": "the Plan ID of the account",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "2a25b793-eedc-45c0-9218-2af7651f6434"
 					},
 					"external_account_ids": {
 						"type": "array",
@@ -2722,26 +2731,31 @@
 							"properties": {
 								"name": {
 									"type": "string",
-									"description": "Name of the External Party"
+                                    "description": "Name of the External Party",
+                                    "example": "Globex Corporation"
 								},
 								"id": {
 									"type": "string",
-									"description": "External Account ID"
+                                    "description": "External Account ID",
+                                    "example": "22445702-a389-431f-927d-07b8d0750787"
 								}
 							}
-						}
+                        }
 					},
 					"credit_limit_cents": {
 						"type": "integer",
-						"description": "Total Amount (in cents) that this account can borrow."
+                        "description": "Total Amount (in cents) that this account can borrow.",
+                        "example": "400000"
 					},
 					"account_apr_lower_bound": {
 						"type": "number",
-						"description": "The Lower bound of the APR this account was approved for"
+                        "description": "The Lower bound of the APR this account was approved for",
+                        "example": "2"
 					},
 					"account_apr_upper_bound": {
 						"type": "number",
-						"description": "The Upper bound of the APR this account was approved for"
+                        "description": "The Upper bound of the APR this account was approved for",
+                        "example": "4"
 					},
 					"eligble_promos": {
 						"type": "array",
@@ -2749,13 +2763,15 @@
 						"items": {
 							"type": "string",
 							"description": "ID of the eligible Promo",
-							"format": "uuid"
+                            "format": "uuid",
+                            "example": "fde62bca-9952-4f0a-af9b-751c5e185288"
 						}
 					},
 					"assigned_promo": {
 						"type": "string",
 						"description": "the ID of the currently Assigned Promo",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "72c85290-9b67-4c52-8715-98039d3f03b7"
 					},
 					"agreements": {
 						"type": "array",
@@ -2782,16 +2798,19 @@
 				"properties": {
 					"account_id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
 					},
 					"line_item_id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "ce9ed376-f151-435f-a59c-9e3cc183bbea"
 					},
 					"line_item_status": {
 						"type": "string",
 						"description": "the corresponding Status for a line item",
-						"enum": ["valid", "invalid", "pending"]
+                        "enum": ["valid", "invalid", "pending"],
+                        "example": "valid"
 					},
 					"line_item_status_details": {
 						"type": "string",
@@ -2805,14 +2824,16 @@
 							"successful",
 							"pending",
 							"unsuccessful"
-						]
+                        ],
+                        "example": "posted"
 					},
 					"disputes": {
 						"type": "array",
 						"description": "Array of ID's of disputes (if any) relating to this line item",
 						"items": {
 							"type": "string",
-							"format": "uuid"
+                            "format": "uuid",
+                            "example": "f459529a-415f-4bbf-8589-3f4d0d6dea70"
 						}
 					},
 					"type": {
@@ -2829,41 +2850,48 @@
 							"payment_reversal",
 							"fee",
 							"debit_adjustment"
-						]
+                        ],
+                        "example": "charge"
 					},
 					"amount_cents": {
 						"type": "integer",
-						"description": "The originating amount of money (in cents) relating to this line item."
+                        "description": "The originating amount of money (in cents) relating to this line item.",
+                        "example": "2000"
 					},
 					"current_policy_set": {
 						"$ref": "#/components/schemas/LineItem_current_policy_set"
 					},
 					"merchant_data": {
-						"$ref": "#/components/schemas/LineItem_merchantdata"
+						"$ref": "#/components/schemas/LineItem_merchant_data"
 					},
 					"subtype": {
 						"type": "string",
-						"description": "A more detailed description of the Line Item Type. For Example 'Charge-Promotion'."
+                        "description": "A more detailed description of the Line Item Type. For Example 'Charge-Promotion'.",
+                        "example": "Charge-Promotion"
 					},
 					"effective_at": {
 						"type": "string",
 						"description": "The Date-Time that this account became/becomes active",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2018-07-20T09:12:30Z"
 					},
 					"created_at": {
 						"type": "string",
 						"description": "The Date-Time which the account was created in the API",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2018-06-20T09:12:30Z"
 					},
 					"plan_id": {
 						"type": "string",
 						"description": "the Plan ID if the account is enrolled in a plan",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
 					},
 					"product_id": {
 						"type": "string",
 						"description": "the Product ID of the account",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
 					},
 					"associated_line_items": {
 						"type": "array",
@@ -2871,16 +2899,19 @@
 						"items": {
 							"type": "string",
 							"format": "uuid"
-						}
+                        },
+                        "example": ["4fe14cdd-c26f-4ee5-a454-2d322338f45f", "6c15a334-62df-4a92-8949-b4e3aea1af54", "06c36cab-5e62-424a-a3ac-4fc4e2f240cb"]
 					},
 					"description": {
 						"type": "string",
-						"description": "A description of this particular line item if any. More common for adjustments."
+                        "description": "A description of this particular line item if any. More common for adjustments.",
+                        "example": "Refund for invalid purchase"
 					},
 					"user_id": {
 						"type": "string",
 						"description": "the User ID that created this Line Item",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "7852dbaa-d4ce-4c1d-b34b-24695fba2523"
 					},
 					"eligble_promos": {
 						"type": "array",
@@ -2888,13 +2919,15 @@
 						"items": {
 							"type": "string",
 							"description": "ID of the eligible Promo",
-							"format": "uuid"
+                            "format": "uuid",
+                            "example": "b6170a6e-96aa-4c9d-a714-96deca8a3c79"
 						}
 					},
 					"assigned_promo": {
 						"type": "string",
 						"description": "the ID of the currently Assigned Promo",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "082692d0-76cf-4de2-ac9a-cfc00e0df563"
 					},
 					"external_ids": {
 						"$ref": "#/components/schemas/ExternalIDs"
@@ -2909,11 +2942,13 @@
 				"properties": {
 					"statement_id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "86c31f97-24f8-4559-a968-59dd101795fb"
 					},
 					"name": {
 						"type": "string",
-						"description": "informal name of the Statement. IE '2020-02'"
+                        "description": "informal name of the Statement. IE '2020-02'",
+                        "example": "2020-02"
 					},
 					"general_summary": {
 						"$ref": "#/components/schemas/Statement_general_summary"
@@ -3198,7 +3233,7 @@
 					},
 					"interest_calc_time": {
 						"type": "string",
-						"description": "The interest for this policy calculates based on this time + the interval time",
+						"description": "The interest for this policy calculated based on this time + the interval time",
 						"format": "date-time"
 					}
 				},
@@ -3540,11 +3575,13 @@
 				"properties": {
 					"id": {
 						"type": "string",
-						"description": "External data key (IE `Vendor Name`),"
+                        "description": "External data key (IE `Vendor Name`),",
+                        "example": "Vendor Name"
 					},
 					"value": {
 						"type": "string",
-						"description": "External data value (IE `World Bank`)."
+                        "description": "External data value (IE `World Bank`).",
+                        "example": "World Bank"
 					}
 				},
 				"description": "A lookup table of exertnal data values and IDs."
@@ -3554,11 +3591,13 @@
 				"properties": {
 					"policy_set_tye": {
 						"type": "string",
-						"enum": ["product", "plan", "promo"]
+                        "enum": ["product", "plan", "promo"],
+                        "example": "product"
 					},
 					"id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "b6b024b0-d5d8-4e9d-851c-08a4ebc355ec"
 					}
 				},
 				"description": "The ID to the specific grouping of policies (aka an ID to the plan, product, or opt in promos)."
@@ -3568,11 +3607,13 @@
 				"properties": {
 					"policy_set_tye": {
 						"type": "string",
-						"enum": ["product", "plan"]
+                        "enum": ["product", "plan"],
+                        "example": "product"
 					},
 					"id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "b6b024b0-d5d8-4e9d-851c-08a4ebc355ec"
 					}
 				},
 				"description": "The default Plan or Product for this Account. NOTE: because promos are time based, the default must be either a Product or Plan."
@@ -3582,11 +3623,13 @@
 				"properties": {
 					"policy_set_tye": {
 						"type": "string",
-						"enum": ["product", "plan", "promo"]
+                        "enum": ["product", "plan", "promo"],
+                        "example": "product"
 					},
 					"id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "b6b024b0-d5d8-4e9d-851c-08a4ebc355ec"
 					}
 				},
 				"description": "The current Plan, Promo, or Product for this Account."
@@ -3596,35 +3639,41 @@
 				"properties": {
 					"policy_set_type": {
 						"type": "string",
-						"enum": ["product", "plan", "promo"]
+                        "enum": ["product", "plan", "promo"],
+                        "example": "product"
 					},
 					"id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "b6b024b0-d5d8-4e9d-851c-08a4ebc355ec"
 					}
 				},
 				"description": "The current Plan, Promo, or Product for this Line Item (it is generally in sync with the account, except for purposefully grandfathered Line Items from previous account policy changes)."
 			},
-			"LineItem_merchantdata": {
+			"LineItem_merchant_data": {
 				"type": "object",
 				"properties": {
 					"name": {
 						"type": "string",
-						"description": "merchant name"
+                        "description": "merchant name",
+                        "example": "acme corporation"
 					},
 					"mcc": {
 						"type": "string",
-						"description": "mcc code of the merchant"
+                        "description": "mcc code of the merchant",
+                        "example": "9999"
 					},
 					"address": {
 						"type": "string",
 						"description": "address of the merchant",
-						"format": "address"
+                        "format": "address",
+                        "example": "25 Main Street"
 					},
 					"phone": {
 						"type": "string",
 						"description": "phone number of merchant",
-						"format": "phonenumber"
+                        "format": "phonenumber",
+                        "example": "1234567890"
 					},
 					"etc": {
 						"type": "object"
@@ -3636,51 +3685,62 @@
 				"type": "object",
 				"properties": {
 					"product_name": {
-						"type": "string"
+                        "type": "string",
+                        "example": "Blue Cash Express"
 					},
 					"statement_id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "b6b024b0-d5d8-4e9d-851c-08a4ebc355ec"
 					},
 					"statement_date": {
 						"type": "string",
 						"description": "Date the statement cuts on",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2018-03-20T09:12:28Z"
 					},
 					"account_id": {
 						"type": "string",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "c4d124b0-d5d8-4e9d-851c-08a4ebc355ec"
 					},
 					"statement_name": {
 						"type": "string",
-						"description": "informal name of the Statement. IE '2020-02'"
+                        "description": "informal name of the Statement. IE '2020-02'",
+                        "example": "2020-02"
 					},
 					"external_account_id": {
 						"type": "string",
-						"description": "A reference to the Account ID of an external platform"
+                        "description": "A reference to the Account ID of an external platform",
+                        "example": "d6c031b0-d5d8-4e9d-851c-08a4ebc355ec"
 					},
 					"statement_start_date": {
 						"type": "string",
 						"description": "Inclusive Start Date of a Statement",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2019-04-19T09:11:07Z"
 					},
 					"statement_end_date": {
 						"type": "string",
 						"description": "Exclusive End Date of a Statement",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2021-04-19T09:11:07Z"
 					},
 					"days_in_statement": {
 						"type": "integer",
-						"description": "Number of Days in a Statment"
+                        "description": "Number of Days in a Statment",
+                        "example": "28"
 					},
 					"payment_due_date": {
 						"type": "string",
 						"description": "The Date-Time the minimum payment is due by.",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2018-04-20T09:12:28Z"
 					},
 					"total_min_pay_due_cents": {
 						"type": "integer",
-						"description": "The total amount owed (represented in cents) by the Account as caclulated by the min due balance."
+                        "description": "The total amount owed (represented in cents) by the Account as caclulated by the min due balance.",
+                        "example": "30.523"
 					}
 				},
 				"description": "The base fields that describe this statment."
@@ -3690,43 +3750,53 @@
 				"properties": {
 					"previous_balance_cents": {
 						"type": "integer",
-						"description": "The previous Statement's ending balance in cents."
+                        "description": "The previous Statement's ending balance in cents.",
+                        "example": "600000"
 					},
 					"new_balance_cents": {
 						"type": "integer",
-						"description": "The current Statement's ending balance in cents."
+                        "description": "The current Statement's ending balance in cents.",
+                        "example": "590000"
 					},
 					"payments_and_credits_cents": {
 						"type": "integer",
-						"description": "The total sum of Payments and Credits for this statement in cents."
+                        "description": "The total sum of Payments and Credits for this statement in cents.",
+                        "example": "10000"
 					},
 					"interest_accrued_cents": {
 						"type": "integer",
-						"description": "The total sum of Interest Accrued (in cents) for this statement."
+                        "description": "The total sum of Interest Accrued (in cents) for this statement.",
+                        "example": "2000"
 					},
 					"balance_transfers_cents": {
 						"type": "integer",
-						"description": "The total sum of Balance Transfers (in cents) for this statement."
+                        "description": "The total sum of Balance Transfers (in cents) for this statement.",
+                        "example": "100000"
 					},
 					"cash_advances_cents": {
 						"type": "integer",
-						"description": "The total sum of Cash Advances (in cents) for this statement in cents."
+                        "description": "The total sum of Cash Advances (in cents) for this statement in cents.",
+                        "example": "4000"
 					},
 					"charges_cents": {
 						"type": "integer",
-						"description": "The total sum of Charges (in cents) made for this statement in cents."
+                        "description": "The total sum of Charges (in cents) made for this statement in cents.",
+                        "example": "200000"
 					},
 					"fees_cents": {
 						"type": "integer",
-						"description": "The total sum of Fees (in cents) incurred for this statement in cents."
+                        "description": "The total sum of Fees (in cents) incurred for this statement in cents.",
+                        "example": "140000"
 					},
 					"available_credit_cents": {
 						"type": "integer",
-						"description": "The amount of money (in cents) that was available to be spent at the time of the statement cut."
+                        "description": "The amount of money (in cents) that was available to be spent at the time of the statement cut.",
+                        "example": "6000000"
 					},
 					"credit_limit_cents": {
 						"type": "integer",
-						"description": "The total oustanding amout of money (in cents) that the account could borrow."
+                        "description": "The total oustanding amout of money (in cents) that the account could borrow.",
+                        "example": "700000"
 					}
 				},
 				"description": "Summary of account activity."
@@ -3736,15 +3806,18 @@
 				"properties": {
 					"total_payments_cents": {
 						"type": "integer",
-						"description": "The total amount (in cents) of Payments made during the statement period."
+                        "description": "The total amount (in cents) of Payments made during the statement period.",
+                        "example": "200000"
 					},
 					"total_credits_cents": {
 						"type": "integer",
-						"description": "The total amount (in cents) of Credits made during the statement period."
+                        "description": "The total amount (in cents) of Credits made during the statement period.",
+                        "example": "10000"
 					},
 					"sum_cents": {
 						"type": "integer",
-						"description": "the sum of all payments and credits (in cents) for the given statement period."
+                        "description": "the sum of all payments and credits (in cents) for the given statement period.",
+                        "example": "210000"
 					}
 				}
 			},
@@ -3753,32 +3826,38 @@
 				"properties": {
 					"transaction_type": {
 						"type": "string",
-						"description": "The balance type, such as cash advance, regular, or promotional."
+                        "description": "The balance type, such as cash advance, regular, or promotional.",
+                        "example": "cash advance"
 					},
-					"transaciton_type_description": {
+					"transaction_type_description": {
 						"type": "string",
-						"description": "An expanded description of the Transaction Type"
+                        "description": "An expanded description of the Transaction Type"
 					},
 					"apr": {
 						"type": "number",
-						"description": "The (decimal based) Annual Percentage Rate of the Interest. IE .08 or .001"
+                        "description": "The (decimal based) Annual Percentage Rate of the Interest. IE .08 or .001",
+                        "example": ".0275"
 					},
 					"balance_subject_to_interest_cents": {
 						"type": "integer",
-						"description": "The total amount borrowed (in cents) that is subject to this interest calculation."
+                        "description": "The total amount borrowed (in cents) that is subject to this interest calculation.",
+                        "example": "200000"
 					},
 					"interest_charge_cents": {
 						"type": "integer",
-						"description": "The total amount (in cents) of Interest Charged for this interest calculation."
+                        "description": "The total amount (in cents) of Interest Charged for this interest calculation.",
+                        "example": "10000"
 					},
 					"min_pay_due_cents": {
 						"type": "integer",
-						"description": "The total amount (in cents) contributed to the Statment min pay due from this interest calculation."
+                        "description": "The total amount (in cents) contributed to the Statment min pay due from this interest calculation.",
+                        "example": "50000"
 					},
 					"expiration_date": {
 						"type": "string",
 						"description": "The Date-Time when this interest calculation ends (if applicable).",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2019-08-20T09:04:15Z"
 					}
 				},
 				"description": "Interest Charge Calculation"
@@ -3788,7 +3867,8 @@
 				"properties": {
 					"time": {
 						"type": "string",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2019-07-20T09:10:20Z"
 					},
 					"edit": {
 						"type": "object",
@@ -3802,7 +3882,8 @@
 				"properties": {
 					"time": {
 						"type": "string",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2019-06-20T09:05:10Z"
 					},
 					"edit": {
 						"type": "object",
@@ -3816,7 +3897,8 @@
 				"properties": {
 					"time": {
 						"type": "string",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2019-06-20T09:01:10Z"
 					},
 					"edit": {
 						"type": "object",
@@ -3830,7 +3912,8 @@
 				"properties": {
 					"percentage": {
 						"type": "number",
-						"description": "the percentage of total balance calculated for min pay"
+                        "description": "the percentage of total balance calculated for min pay",
+                        "example": "20"
 					}
 				},
 				"description": "the configured minimum payment required for a given pay period"
@@ -3839,16 +3922,19 @@
 				"type": "object",
 				"properties": {
 					"enabled": {
-						"type": "boolean"
+                        "type": "boolean",
+                        "example": "true"
 					},
 					"period": {
 						"type": "string",
 						"description": "the amount of time you want to not charge interest for a new charge. IE '5 days'",
-						"format": "interval"
+                        "format": "interval",
+                        "example": "5 days"
 					},
 					"separate_from_account_grace_period": {
 						"type": "boolean",
-						"description": "do you want to offer this grace period regardless of the account level graace period?"
+                        "description": "do you want to offer this grace period regardless of the account level graace period?",
+                        "example": "false"
 					}
 				},
 				"description": "a grace period offered for each individual new charge"
@@ -3859,7 +3945,8 @@
 					"period": {
 						"type": "string",
 						"description": "the amount of time you want to not charge interest from an accounts effective creation date. IE '90 days' (note this is separate from 0% apr promos)",
-						"format": "interval"
+                        "format": "interval",
+                        "example": "90 say"
 					}
 				},
 				"description": "A grace period offered for a new account for all charges"
@@ -3870,12 +3957,14 @@
 					"period": {
 						"type": "string",
 						"description": "the length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-						"format": "interval"
+                        "format": "interval",
+                        "example": "1 month"
 					},
 					"billing_due_date_interval": {
 						"type": "string",
 						"description": "the amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
-						"format": "interval"
+                        "format": "interval",
+                        "example": "25 days"
 					}
 				},
 				"description": "The Billing Cycle Object"
@@ -3886,7 +3975,8 @@
                     "next_start_date": {
                         "type": "string",
                         "description": "date of the start of the next billing cycle",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "example": "2018-03-20T09:12:28Z"
                     }
                 }
             },
@@ -3894,21 +3984,25 @@
 				"type": "object",
 				"properties": {
 					"enabled": {
-						"type": "boolean"
+                        "type": "boolean",
+                        "example": "true"
 					},
 					"recurrence": {
 						"type": "string",
 						"description": "the repeating Interval. IE '1 year' or '3 months'",
-						"format": "interval"
+                        "format": "interval",
+                        "example": "3 months"
 					},
 					"starting_offset": {
 						"type": "string",
 						"description": "the Interval to use to offset the start of this fee from the effective account creation. IE '90 days'",
-						"format": "interval"
+                        "format": "interval",
+                        "example": "90 days"
 					},
 					"amount_cents": {
 						"type": "integer",
-						"description": "the monetary amount of the fee in cents."
+                        "description": "the monetary amount of the fee in cents.",
+                        "example": "4000"
 					}
 				},
 				"description": "An repeating fee for an account. IE commonly quarterly or yearly. Time is calculated from the account effective creation. IE you can have 2 yearly fees."
@@ -3917,11 +4011,13 @@
 				"type": "object",
 				"properties": {
 					"enabled": {
-						"type": "boolean"
+                        "type": "boolean",
+                        "example": "true"
 					},
 					"amount_cents": {
 						"type": "integer",
-						"description": "the monetary amount of the fee in cents."
+                        "description": "the monetary amount of the fee in cents.",
+                        "example": "6000"
 					}
 				},
 				"description": "Late fee assessed when account is placed in a delinquent status"
@@ -4082,12 +4178,14 @@
 				"properties": {
 					"time": {
 						"type": "string",
-						"format": "date-time"
+                        "format": "date-time",
+                        "example": "2018-02-20T09:10:08Z"
 					},
 					"id": {
 						"type": "string",
 						"description": "the ID of the Policy Status",
-						"format": "uuid"
+                        "format": "uuid",
+                        "example": "1348ec03-4612-4a49-97cd-aaeec79452dc"
 					},
 					"status": {
 						"type": "string"
@@ -4106,11 +4204,13 @@
 							"id": {
 								"type": "string",
 								"description": "The UUID of the event",
-								"format": "uuid"
+                                "format": "uuid",
+                                "example": "a0c1941e-33ef-4a98-a21a-8be285491c1f"
 							},
 							"timestamp": {
 								"type": "string",
-								"format": "date-time"
+                                "format": "date-time",
+                                "example": "2020-04-20T09:12:28Z"
 							}
 						}
 					}
@@ -4155,12 +4255,14 @@
 								"status": {
 									"type": "string",
 									"description": "The New Status of the Dispute",
-									"enum": ["cx_won", "cx_lost", "refunded"]
+                                    "enum": ["cx_won", "cx_lost", "refunded"],
+                                    "example": "cx_won"
 								},
 								"effective_at": {
 									"type": "string",
 									"description": "The date this status change is effective (if empty, defaults to current). Note this is only used for the bookkeeping of disputes, it is not used in the actual workflow of the dispute resolution (we use the line item's effective dates for that).",
-									"format": "date-time"
+                                    "format": "date-time",
+                                    "example": "2019-10-20T09:08:04Z"
 								}
 							}
 						}
@@ -4178,19 +4280,22 @@
 							"properties": {
 								"amount_cents": {
 									"type": "integer",
-									"description": "The Integer Amount of the Charge in Cents"
+                                    "description": "The Integer Amount of the Charge in Cents",
+                                    "example": "200"
 								},
 								"effective_at": {
 									"type": "string",
 									"description": "The Date-Time that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
-									"format": "date-time"
+                                    "format": "date-time",
+                                    "example": "2020-07-20T09:11:28Z"
 								},
 								"merchant_data": {
 									"type": "object"
 								},
 								"user_id": {
 									"type": "string",
-									"format": "uuid"
+                                    "format": "uuid",
+                                    "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
 								}
 							}
 						}
@@ -4208,19 +4313,22 @@
 							"properties": {
 								"amount_cents": {
 									"type": "integer",
-									"description": "The Integer Amount of the Payment in Cents"
+                                    "description": "The Integer Amount of the Payment in Cents",
+                                    "example": "88d6f7a3-1fa5-4cda-9c81-3b0b7561c834"
 								},
 								"effective_at": {
 									"type": "string",
 									"description": "The Date-Time that the payment should be recorded to the account. Although the payment is being added to Canopy today, it can actually be effective as of 10 days ago.",
-									"format": "date-time"
+                                    "format": "date-time",
+                                    "example": "2020-09-20T09:11:08Z"
 								},
 								"merchant_data": {
 									"type": "object"
 								},
 								"user_id": {
 									"type": "string",
-									"format": "uuid"
+                                    "format": "uuid",
+                                    "example": "0be0737e-42d7-43dd-ae8b-7b6d9e6ab85d"
 								}
 							}
 						}
@@ -4238,19 +4346,22 @@
 							"properties": {
 								"amount_cents": {
 									"type": "integer",
-									"description": "The Integer Amount of the Fee in Cents"
+                                    "description": "The Integer Amount of the Fee in Cents",
+                                    "example": "220"
 								},
 								"effective_at": {
 									"type": "string",
 									"description": "The Date-Time that the Fee should be recorded to the account. Although the Fee is being added to Canopy today, it can actually be effective as of 10 days ago.",
-									"format": "date-time"
+                                    "format": "date-time",
+                                    "example": "2020-03-20T09:12:28Z"
 								},
 								"merchant_data": {
 									"type": "object"
 								},
 								"user_id": {
 									"type": "string",
-									"format": "uuid"
+                                    "format": "uuid",
+                                    "example": "ccd039ce-4bfb-4e2b-aca4-b6d2f898dd4d"
 								}
 							}
 						}
@@ -4268,19 +4379,22 @@
 							"properties": {
 								"amount_cents": {
 									"type": "integer",
-									"description": "The Integer Amount of the Cash Advance in Cents"
+                                    "description": "The Integer Amount of the Cash Advance in Cents",
+                                    "example": "2500"
 								},
 								"effective_at": {
 									"type": "string",
 									"description": "The Date-Time that the Cash Advance should be recorded to the account. Although the Cash Advance is being added to Canopy today, it can actually be effective as of 10 days ago.",
-									"format": "date-time"
+                                    "format": "date-time",
+                                    "example": "2020-05-20T09:10:28Z"
 								},
 								"merchant_data": {
 									"type": "object"
 								},
 								"user_id": {
 									"type": "string",
-									"format": "uuid"
+                                    "format": "uuid",
+                                    "example": "0b5468bf-f9f1-422b-a6bf-2a591bffbd09"
 								}
 							}
 						}
@@ -4298,19 +4412,22 @@
 							"properties": {
 								"amount_cents": {
 									"type": "integer",
-									"description": "The Integer Amount of the Balance Transfer in Cents"
+                                    "description": "The Integer Amount of the Balance Transfer in Cents",
+                                    "example": "2000"
 								},
 								"effective_at": {
 									"type": "string",
 									"description": "The Date-Time that the Balance Transfer should be recorded to the account. Although the Balance Transfer is being added to Canopy today, it can actually be effective as of 10 days ago.",
-									"format": "date-time"
+                                    "format": "date-time",
+                                    "example": "2019-03-20T09:12:28Z"
 								},
 								"merchant_data": {
 									"type": "object"
 								},
 								"user_id": {
 									"type": "string",
-									"format": "uuid"
+                                    "format": "uuid",
+                                    "example": "c1fd3550-9828-4d5d-9e8d-bae2bdef22c6"
 								}
 							}
 						}
@@ -4328,19 +4445,22 @@
 							"properties": {
 								"amount_cents": {
 									"type": "integer",
-									"description": "The Integer Amount of the Credit Adjustment in Cents"
+                                    "description": "The Integer Amount of the Credit Adjustment in Cents",
+                                    "example": "1500"
 								},
 								"effective_at": {
 									"type": "string",
 									"description": "the Date-Time that the Credit Adjustment should be recorded to the account. Although the Credit Adjustment is being added to Canopy today, it can actually be effective as of 10 days ago.",
-									"format": "date-time"
+                                    "format": "date-time",
+                                    "example": "2020-06-20T09:06:28Z"
 								},
 								"merchant_data": {
 									"type": "object"
 								},
 								"user_id": {
 									"type": "string",
-									"format": "uuid"
+                                    "format": "uuid",
+                                    "example": "4ac7b74e-9249-4959-9bf0-01d42f86d463"
 								},
 								"associated_line_items": {
 									"type": "array",
@@ -4348,7 +4468,8 @@
 									"items": {
 										"type": "string",
 										"description": "line item ID",
-										"format": "uuid"
+                                        "format": "uuid",
+                                        "example": "c90bea8e-e401-40b0-8f21-c4e6957ac915"
 									}
 								},
 								"type": {
