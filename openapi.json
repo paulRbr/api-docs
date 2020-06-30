@@ -1,8 +1,8 @@
 {
 	"openapi": "3.0.0",
 	"info": {
-		"title": "Canopy Servicing",
-		"description": "Canopy Core API",
+		"title": "Canopy Servicing Core API",
+		"description": "Canopy Core API - testing the use of [CommonMark markdown](https://google.com) in the `description` field",
 		"termsOfService": "https://api.canopyservicing.com/terms/",
 		"contact": {
 			"email": "will@canopyservicing.com"
@@ -199,7 +199,8 @@
 			"get": {
 				"tags": ["accounts", "servicing"],
 				"summary": "Get a specific Account",
-				"operationId": "getAccount",
+                "operationId": "getAccount",
+                "description": "*testing* the **use** of [CommonMark Markdown](https://www.google.com) in the `description` field.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -240,8 +241,7 @@
 					"404": {
 						"description": "Account not found"
 					}
-				},
-				"description": "Lorem ipsum"
+				}
 			},
 			"delete": {
 				"tags": ["accounts", "servicing", "programmatic"],
