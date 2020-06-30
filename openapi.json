@@ -2131,7 +2131,7 @@
 				},
 				"responses": {
 					"204": {
-						"description": "Product Created"
+                        "description": "Product Created"
 					},
 					"422": {
 						"description": "Invalid input"
@@ -4713,7 +4713,12 @@
 									"description": "The Date-Time this Product is no longer available for use",
                                     "format": "date-time",
                                     "example": "2020-03-20T09:12:28Z"
-								},
+                                },
+                                "default_apr": {
+                                    "type": "number",
+                                    "description": "If applicable, the default (decimal based) Annual Percentage Rate of the Interest of the Product. If not provided, APR must be provided at the time of account creation for each user of the product. IE .08 or .001",
+                                    "example": ".0275"
+                                },
 								"description": {
 									"type": "string",
                                     "description": "Description of the Product.",
