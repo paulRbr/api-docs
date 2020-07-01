@@ -2,7 +2,7 @@
 	"openapi": "3.0.0",
 	"info": {
 		"title": "Canopy Servicing Core API",
-		"description": "Canopy Core API - testing the use of [CommonMark markdown](https://google.com) in the `description` field",
+		"description": "Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information.",
 		"termsOfService": "https://api.canopyservicing.com/terms/",
 		"contact": {
 			"email": "will@canopyservicing.com"
