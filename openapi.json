@@ -348,21 +348,14 @@
             "post": {
 				"tags": ["accounts", "programmatic"],
                 "summary": "Create a new customer account",
-                "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account, sourced from your payment processor.",
+                "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account.",
 				"operationId": "createAccount",
                 "requestBody": {
 					"$ref": "#/components/requestBodies/CreateAccount"
 				},
 				"responses": {
 					"201": {
-						"description": "New Account Created",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/responses/CreateAccount"
-								}
-							}
-						}
+						"$ref": "#/components/responses/CreateAccount"
 					},
 					"405": {
 						"description": "Invalid input"
@@ -1320,7 +1313,7 @@
                 }
             },
             "CreateAccount": {
-                "description": "Successful creation of account",
+                "description": "New Account Created",
                 "content": {
                     "application/json": {
                         "schema": {
