@@ -11,15 +11,7 @@
     },
     "servers": [
 		{
-			"url": "https://virtserver.swaggerhub.com/CanopyServicing/CanopyAPI/1.0.0",
-			"description": "SwaggerHub API Auto Mocking"
-		},
-		{
-			"url": "https://api.canopyservicing.com",
-			"description": "Production"
-		},
-		{
-			"url": "https://6mgngrzp51.execute-api.us-east-1.amazonaws.com/dev",
+			"url": "https://sandbox.canopyservicing.com",
 			"description": "Sandbox"
 		}
     ],
@@ -702,6 +694,13 @@
 		}
     },
     "components": {
+        "securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "x-api-key",
+				"in": "header"
+			}
+		},
         "schemas": {
             "Account": {
 				"additionalProperties": false,
