@@ -204,7 +204,7 @@
 						"explode": true,
 						"schema": {
 							"type": "string",
-                            "format": "uuid"
+							"format": "uuid"
                         }
 					}
 				],
@@ -239,7 +239,7 @@
 				"tags": ["accounts", "summary"],
                 "summary": "Get summary details for a specific product.",
                 "description": "For analytic purposes, retrieve commonly needed summary statistics computed for a specific product.",
-				"operationId": "getProductSummary",
+				"operationId": "getAccountStatements",
 				"parameters": [
 					{
 						"name": "product_id",
@@ -350,8 +350,16 @@
                 "summary": "Create a new customer account",
                 "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account, sourced from your payment processor.",
 				"operationId": "createAccount",
-                "requestBody": {
-					"$ref": "#/components/requestBodies/CreateAccount"
+				"requestBody": {
+					"description": "Account",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/requestBodies/CreateAccount"
+                            }
+						}
+					},
+					"required": true
 				},
 				"responses": {
 					"201": {
@@ -367,7 +375,12 @@
 					"405": {
 						"description": "Invalid input"
 					}
-				}
+				},
+				"security": [
+					{
+						"api_key": []
+					}
+				]
             }
         },
         "/accounts/{account_id}": {
@@ -411,22 +424,7 @@
 				"tags": ["accounts", "programmatic"],
                 "summary": "Create a new customer account",
                 "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account, sourced from your payment processor.",
-                "operationId": "updateAccount",
-                "parameters": [
-                    {
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-                            "format": "uuid",
-                            "example": "a361c813-92e5-4765-82ea-9df368a81a89"
-						}
-					}
-                ],
+				"operationId": "createAccount",
 				"requestBody": {
 					"description": "Account",
 					"content": {
@@ -465,7 +463,12 @@
 					"405": {
 						"description": "Invalid input"
 					}
-				}
+				},
+				"security": [
+					{
+						"api_key": []
+					}
+				]
             },
             "delete": {
 				"tags": ["accounts", "servicing"],
@@ -698,7 +701,7 @@
 				"tags": ["accounts", "summary"],
                 "summary": "Get a specific Account's Summary details.",
                 "description": "",
-				"operationId": "getAccountSummary",
+				"operationId": "getAccountStatements",
 				"parameters": [
 					{
 						"name": "account_id",
