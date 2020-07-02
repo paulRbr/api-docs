@@ -15,11 +15,9 @@
 			"description": "Sandbox"
 		}
     ],
-    "security": [
-		{
-			"api_key": []
-		}
-    ],
+    "security": [{
+        "api_key": []
+    }],
     "tags": [
         {
 			"name": "products",
@@ -37,6 +35,9 @@
     "paths": {
         "/products": {
             "post": {
+                "security": [{
+                    "api_key": []
+                }],
                 "tags": ["products"],
 				"summary": "Create a new product",
                 "operationId": "createProduct",
@@ -54,6 +55,9 @@
 				}
             },
             "get": {
+                "security": [{
+                    "api_key": []
+                }],
 				"tags": ["products"],
                 "summary": "Get all available products",
                 "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
@@ -270,6 +274,9 @@
 		},
         "/accounts": {
 			"get": {
+                "security": [{
+                    "api_key": []
+                }],
 				"tags": ["accounts"],
                 "summary": "Get all available Accounts",
                 "description": "Get details for all accounts linked to any of your products. Results are sorted by the date the account was created.",
@@ -331,6 +338,9 @@
 				}
             },
             "post": {
+                "security": [{
+                    "api_key": []
+                }],
 				"tags": ["accounts", "programmatic"],
                 "summary": "Create a new customer account",
                 "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account.",
