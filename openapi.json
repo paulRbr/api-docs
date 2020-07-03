@@ -844,7 +844,7 @@
         "/accounts/{account_id}/statement": {
 			"get": {
 				"tags": ["accounts", "summary"],
-                "summary": "Get a specific account's summary details.",
+                "summary": "Get a statement for a given date for a specific account.",
                 "description": "",
 				"operationId": "getAccountSummary",
 				"parameters": [
