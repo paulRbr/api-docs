@@ -41,7 +41,7 @@
                 "tags": ["products"],
 				"summary": "Create a new product",
                 "operationId": "createProduct",
-                "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product.",
+                "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/CreateProduct"
 				},
@@ -1355,7 +1355,7 @@
 					"application/json": {
 						"schema": {
 							"type": "object",
-							"required": ["name", "type"],
+							"required": ["name"],
 							"additionalProperties": false,
 							"properties": {
 								"name": {
@@ -1365,8 +1365,8 @@
 								},
 								"type": {
 									"type": "string",
-									"description": "The Type of Product",
-                                    "enum": ["line of credit", "credit", "installment"],
+									"description": "The Type of Product. If not included, defaults to `credit`",
+                                    "enum": ["credit"],
                                     "example": "credit"
 								},
                                 "default_rate": {
@@ -1383,6 +1383,12 @@
 									"type": "string",
                                     "description": "Description of the Product.",
                                     "example": "Consumer credit card"
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
+                                    "enum": ["draft, live"],
+                                    "example": "draft"
                                 },
                                 "policies": {
                                     "type": "object",
