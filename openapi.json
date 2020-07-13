@@ -1109,6 +1109,11 @@
                         "enum": ["credit"],
                         "example": "credit"
                     },
+                    "status": {
+                        "type": "string",
+                        "description": "The Status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
+                        "example": "live"
+                    },
                     "policies": {
 						"type": "object",
 						"description": "An object of policies that drive product behaviour.",
@@ -1691,6 +1696,16 @@
                                     "description": "The total balance (in cents) associated with the account.",
                                     "example": "400000"
                                 },
+                                "credit_limit_cents": {
+                                    "type": "integer",
+                                    "description": "Total Amount (in cents) that this account can borrow.",
+                                    "example": "400000"
+                                },
+                                "rate": {
+                                    "type": "number",
+                                    "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
+                                    "example": "6.2"
+                                },
                                 "account_id": {
                                     "type": "string",
                                     "format": "uuid",
@@ -1777,10 +1792,20 @@
                             "type": "object",
                             "description": "Summary of product information",
                             "properties": {
-                                "total_account_count": {
-                                    "type": "number",
-                                    "description": "Total number of accounts under the product.",
-                                    "example": "10005"
+                                "accounts_overview": {
+                                    "type": "object",
+                                    "properties": {
+                                        "total_account_count": {
+                                            "type": "number",
+                                            "description": "Total number of accounts under the product.",
+                                            "example": "10005"
+                                        },
+                                        "delinquent_account_count": {
+                                            "type": "number",
+                                            "description": "Total number of delinquent accounts under the product",
+                                            "example": "200"
+                                        }
+                                    }
                                 },
                                 "total_credit_issued": {
                                     "type": "number",
