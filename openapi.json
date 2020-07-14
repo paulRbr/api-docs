@@ -1201,7 +1201,7 @@
                         "example": "2017-06-20T09:12:14Z"
                     }
                 }
-            }
+            },
             "Base_Policy_Config_MVP": {
 				"type": "object",
 				"additionalProperties": false,
