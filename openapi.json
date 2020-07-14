@@ -61,7 +61,7 @@
 				"tags": ["products"],
                 "summary": "Get all available products",
                 "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
-				"operationId": "getProducts",
+                "operationId": "getProducts",
 				"parameters": [
 					{
 						"name": "effective_as_of_date",
@@ -84,8 +84,7 @@
 								"schema": {
 									"type": "array",
 									"items": {
-                                        "$ref": "#/components/schemas/Product_MVP",
-                                        "$ref": "#/components/responses/ProductSummary"
+                                        "$ref": "#/components/schemas/Product_MVP"
 									}
 								}
 							}
