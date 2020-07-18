@@ -623,11 +623,23 @@
                                             },
                                             "originating_amount_cents": {
                                                 "type": "number",
-                                                "description": "The originating amount of money (in cents) relating to this line item."
+                                                "description": "The originating amount of money (in cents) relating to this line item.",
+                                                "example": "2385"
                                             },
                                             "balance_amount_cents": {
                                                 "type": "number",
-                                                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute."
+                                                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                                                "example": "2401"
+                                            },
+                                            "total_interest_accrued_cents": {
+                                                "type": "number",
+                                                "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+                                                "example": "16"
+                                            },
+                                            "total_paid_down_cents": {
+                                                "type": "number",
+                                                "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
+                                                "example": "1125"
                                             },
                                             "merchant_data": {
                                                 "type": "object",
@@ -1352,6 +1364,16 @@
                     "balance_amount_cents": {
                         "type": "number",
                         "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute."
+                    },
+                    "total_interest_accrued_cents": {
+                        "type": "number",
+                        "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+                        "example": "16"
+                    },
+                    "total_paid_down_cents": {
+                        "type": "number",
+                        "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
+                        "example": "1125"
                     },
                     "rate": {
                         "type": "number",
