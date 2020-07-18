@@ -775,7 +775,9 @@
 					}
                 ],
                 "responses": {
-                    "$ref": "#/components/responses/LineItem"
+                    "204": {
+                        "$ref": "#/components/responses/LineItem"
+                    }
                 }
             }
         },
