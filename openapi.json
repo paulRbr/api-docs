@@ -728,6 +728,57 @@
 				}
 			}
         },
+        "/accounts/{account_id}/line_items/{line_item_id}": {
+            "get": {
+                "tags": ["line_items", "accounts"],
+                "summary": "Get information on a specific line item for a specific account",
+                "description": "",
+                "operationId": "getAccountLineItem",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"description": "Account ID",
+						"required": true,
+						"style": "simple",
+						"explode": false,
+						"schema": {
+							"type": "string",
+                            "format": "uuid",
+                            "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+						}
+                    },
+                    {
+                        "name": "line_item_id",
+                        "in": "path",
+                        "description": "Line Item ID",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
+                        }
+                    },
+                    {
+						"name": "effective_as_of_date",
+						"in": "query",
+						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"schema": {
+							"type": "string",
+							"format": "date-time"
+						}
+					}
+                ],
+                "responses": {
+                    "$ref": "#/components/responses/LineItem"
+                }
+            }
+        },
         "/accounts/{account_id}/line_items/charges": {
 			"post": {
 				"tags": ["line_items", "charges", "accounts"],
@@ -1908,8 +1959,80 @@
                         }
                     }
                 }
+            },
+            "LineItem": {
+                "description": "Detailed info about a specific line item",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "description": "Summary of account information",
+                            "properties": {
+                                "originating_amount_cents": {
+                                    "type": "number",
+                                    "description": "The originating amount of money (in cents) relating to this line item.",
+                                    "example": "2385"
+                                },
+                                "balance_amount_cents": {
+                                    "type": "number",
+                                    "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                                    "example": "2401"
+                                },
+                                "total_interest_accrued_cents": {
+                                    "type": "number",
+                                    "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+                                    "example": "16"
+                                },
+                                "total_paid_down_cents": {
+                                    "type": "number",
+                                    "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
+                                    "example": "1125"
+                                },
+                                "effective_as_of_date": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+                                    "example": "2018-07-20T09:10:14Z"
+                                },
+                                "line_item_details": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "line_item_detail_id": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "example": "2e9ad65e-3bf0-4be2-8117-a8c992f08774"
+                                            },
+                                            "date": {
+                                                "type": "string",
+                                                "description": "The date the detail was applied to the line item",
+                                                "format": "date-time"
+                                            },
+                                            "type": {
+                                                "type": "string",
+                                                "description": "The type of detail being applied to the line item",
+                                                "enum": ["payment_split, interest"],
+                                                "example": "payment_split"
+                                            },
+                                            "amount_cents": {
+                                                "type": "number",
+                                                "description": "The value, in cents, of this line item detail",
+                                                "example": "0054"
+                                            },
+                                            "balance_cents": {
+                                                "type": "number",
+                                                "description": "The balance of the line item, in cents, after this detail is applied",
+                                                "example": "20988"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            
         }
     }
 }
