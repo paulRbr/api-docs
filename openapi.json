@@ -1020,7 +1020,8 @@
                                                     "statement_id": {
                                                         "type": "string",
                                                         "format": "uuid",
-                                                        "description": "A Canopy-generated ID for the statement"
+                                                        "description": "A Canopy-generated ID for the statement",
+                                                        "example": "3627809b-ff07-4e41-b127-44260efb3b80"
                                                     },
                                                     "available_credit_balance": {
                                                         "type": "number",
