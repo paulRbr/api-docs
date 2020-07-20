@@ -1188,133 +1188,22 @@
                 }
 			},
             "Product_MVP": {
-                "$ref": "./Product_MVP.json"
+                "$ref": "./schemas/Product_MVP.json"
             },
             "Product_Summary": {
-                "type": "object",
-                "description": "Summary of product information",
-                "properties": {
-                    "accounts_overview": {
-                        "type": "object",
-                        "properties": {
-                            "total_account_count": {
-                                "type": "number",
-                                "description": "Total number of accounts under the product.",
-                                "example": "10005"
-                            },
-                            "delinquent_account_count": {
-                                "type": "number",
-                                "description": "Total number of delinquent accounts under the product",
-                                "example": "200"
-                            }
-                        }
-                    },
-                    "total_credit_issued": {
-                        "type": "number",
-                        "description": "Total amount (in cents) of credit issued to accounts under the product.",
-                        "example": "25500000"
-                    },
-                    "utilization": {
-                        "type": "number",
-                        "description": "The percent utilization rate of the product. (i.e. 30 means 30% utilization).",
-                        "example": "30"
-                    },
-                    "product_id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "The Canopy-generated ID for the product.",
-                        "example": "ca3cf4e9-5048-4461-a763-8f67b46dfd4d"
-                    },
-                    "effective_as_of_date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                        "example": "2017-06-20T09:12:14Z"
-                    }
-                }
+                "$ref": "./schemas/Product_Summary.json"
             },
             "Base_Policy_Config_MVP": {
-				"type": "object",
-				"additionalProperties": false,
-				"properties": {
-					"min_pay": {
-						"$ref": "#/components/schemas/Base_Policy_Config_Min_Pay"
-					},
-					"billing_cycle": {
-						"$ref": "#/components/schemas/Base_Policy_Config_Billing_Cycle"
-                    },
-                    "interest_policies": {
-                        "$ref": "#/components/schemas/Interest_Policy_MVP"
-                    },
-                    "close_of_business_and_timezone": {
-                        "type": "string",
-                        "description":"Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
-                        "format": "date-time",
-                        "example": "2020-03-20T09:12:28Z"
-                    }
-				},
-				"description": "A base group of policies that define a Product/Plan/Promo"
+                "$ref": "./schemas/Base_Policy_Config_MVP.json"
             },
             "Base_Policy_Config_Min_Pay": {
-				"type": "object",
-				"properties": {
-					"percentage": {
-						"type": "number",
-                        "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
-                        "example": "20"
-					}
-				},
-				"description": "The configured minimum payment required for a given pay period."
+				"$ref": "./schemas/Base_Policy_Config_Min_Pay.json"
             },
             "Base_Policy_Config_Billing_Cycle": {
-				"type": "object",
-				"properties": {
-					"period": {
-						"type": "string",
-						"description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                        "format": "interval",
-                        "example": "1 month"
-					},
-					"billing_due_date_interval": {
-						"type": "string",
-						"description": "The amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
-                        "format": "interval",
-                        "example": "25 days"
-					}
-				},
-				"description": "The Billing Cycle Object"
+				"$ref": "./schemas/Base_Policy_Config_Billing_Cycle.json"
             },
             "Interest_Policy_MVP": {
-				"type": "object",
-				"additionalProperties": false,
-				"properties": {
-					"type": {
-						"type": "string",
-                        "enum": ["compound"],
-                        "example": "compound"
-					},
-					"method": {
-						"type": "string",
-						"description": "the actual base formula used to calculate and assign interest",
-						"enum": [
-							"average daily balance"
-                        ],
-                        "example": "average daily balance"
-					},
-					"day_calc_type": {
-						"type": "string",
-						"description": "Affects the base calculation by determining how many days there are in a given year.",
-                        "enum": ["365"],
-                        "example": "365"
-					},
-					"interest_calc_time": {
-						"type": "string",
-						"description": "The interest for this policy calculated based on this time + the interval time",
-                        "format": "date-time",
-                        "example": "2020-09-20T09:02:28Z"
-					}
-				},
-				"description": "the Interest Object"
+				"$ref": "./schemas/Interest_Policy_MVP.json"
             },
 			"Line_Item_MVP": {
 				"required": ["account_id", "effective_at", "line_item_status", "line_item_id", "product_id", "type", "amount_cents", "created_at", "reference_id"],
