@@ -1,32 +1,30 @@
 {
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "type": {
-      "type": "string",
-      "enum": ["compound"],
-      "example": "compound"
-    },
-    "method": {
-      "type": "string",
-      "description": "the actual base formula used to calculate and assign interest",
-      "enum": [
-        "average daily balance"
-        ],
-      "example": "average daily balance"
-    },
-    "day_calc_type": {
-      "type": "string",
-      "description": "Affects the base calculation by determining how many days there are in a given year.",
-      "enum": ["365"],
-      "example": "365"
-    },
-    "interest_calc_time": {
-      "type": "string",
-      "description": "The interest for this policy calculated based on this time + the interval time",
-      "format": "date-time",
-      "example": "2020-09-20T09:02:28Z"
-    }
-  },
-  "description": "the Interest Object"
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["compound"],
+			"example": "compound"
+		},
+		"method": {
+			"type": "string",
+			"description": "The actual base formula used to calculate and assign interest.",
+			"enum": ["average daily balance"],
+			"example": "average daily balance"
+		},
+		"day_calc_type": {
+			"type": "string",
+			"description": "Affects the base calculation by determining how many days there are in a given year.",
+			"enum": ["365"],
+			"example": "365"
+		},
+		"interest_calc_time": {
+			"type": "string",
+			"description": "Interest for this policy is calculated at this time every X interval.",
+			"format": "date-time",
+			"example": "05:00:00"
+		}
+	},
+	"description": "The Interest Policy Object"
 }
