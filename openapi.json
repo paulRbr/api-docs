@@ -1119,7 +1119,7 @@
                 "$ref": "./schemas/Account.json"
 			},
             "Product_MVP": {
-                "$ref": "./schemas/Product_MVP.json"
+                "$ref": "../schemas/Product_MVP.json"
             },
             "Product_Summary": {
                 "$ref": "./schemas/Product_Summary.json"
