@@ -961,7 +961,7 @@
         "/accounts/{account_id}/statements_list": {
             "get": {
                 "tags": ["accounts", "summary"],
-                "summary": "Get a list of all statements for a specific account",
+                "summary": "Get a list of all current and prior statements for a specific account",
                 "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
                 "operationId": "getAccountStatementsList",
                 "parameters": [
