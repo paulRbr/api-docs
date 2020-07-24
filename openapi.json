@@ -419,7 +419,19 @@
                             "format": "uuid",
                             "example": "a361c813-92e5-4765-82ea-9df368a81a89"
 						}
-					}
+                    },
+                    {
+						"name": "effective_as_of_date",
+						"in": "query",
+						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"schema": {
+							"type": "string",
+							"format": "date-time"
+						}
+                    }
 				],
 				"responses": {
 					"200": {
@@ -916,48 +928,6 @@
 				}
 			}
 		},
-        "/accounts/{account_id}/summaries": {
-			"get": {
-				"tags": ["accounts", "summary"],
-                "summary": "Get a specific account's summary details.",
-                "description": "",
-				"operationId": "getAccountSummary",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					},
-					{
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/AccountSummary"
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-        },
         "/accounts/{account_id}/statements_list": {
             "get": {
                 "tags": ["accounts", "summary"],
@@ -1184,6 +1154,17 @@
                         "type": "number",
                         "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
                         "example": "6.2"
+                    },
+                    "available_credit_balance": {
+                        "type": "number",
+                        "description": "The total available credit balance (in cents) for the account.",
+                        "example": "600000"
+                    },
+                    "effective_as_of_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+                        "example": "2018-07-20T09:10:14Z"
                     }
                 }
             },
@@ -1820,51 +1801,6 @@
                     "application/json": {
                         "schema": {
                             "$ref": "#/components/schemas/Account"
-                        }
-                    }
-                }
-            },
-            "AccountSummary": {
-                "description": "",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "description": "Summary of account information",
-                            "properties": {
-                                "available_credit_balance": {
-                                    "type": "number",
-                                    "description": "The total available credit balance (in cents) for the account.",
-                                    "example": "600000"
-                                },
-                                "total_balance": {
-                                    "type": "number",
-                                    "description": "The total balance (in cents) associated with the account.",
-                                    "example": "400000"
-                                },
-                                "credit_limit_cents": {
-                                    "type": "integer",
-                                    "description": "Total Amount (in cents) that this account can borrow.",
-                                    "example": "400000"
-                                },
-                                "rate": {
-                                    "type": "number",
-                                    "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
-                                    "example": "6.2"
-                                },
-                                "account_id": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "description": "The Canopy-generated ID for the account",
-                                    "example": "111eff36-cbec-4119-b188-b76200e804d8"
-                                },
-                                "effective_as_of_date": {
-                                    "type": "string",
-                                    "format": "date-time",
-                                    "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                                    "example": "2018-07-20T09:10:14Z"
-                                }
-                            }
                         }
                     }
                 }
