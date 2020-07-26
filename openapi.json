@@ -1119,7 +1119,7 @@
                     },
                     "product": {
                         "description": "The product associated with the account",
-                        "$ref": "#/schemas/Product_MVP"
+                        "$ref": "#/components/schemas/Product_MVP"
                     },
                     "external_account_ids": {
                         "type": "array",
@@ -1212,12 +1212,12 @@
                         "description": "An object of policies that drive product behavior.",
                         "properties": {
                             "base_policy_config": {
-                                "$ref": "#/schemas/Base_Policy_Config_MVP"
+                                "$ref": "#/components/schemas/Base_Policy_Config_MVP"
                             }
                         }
                     },
                     "product_summary": {
-                        "$ref": "#/schemas/Product_Summary"
+                        "$ref": "#/components/schemas/Product_Summary"
                     },
                     "default_attributes": {
                         "type": "object",
