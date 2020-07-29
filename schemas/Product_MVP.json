@@ -6,7 +6,7 @@
 		"product_id": {
 			"type": "string",
 			"format": "uuid",
-			"description": "The Canopy-generated ID for the product.",
+			"description": "The Canopy-generated unique ID for the product.",
 			"example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
 		},
 		"name": {

@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
 	"info": {
 		"title": "Canopy Servicing Core API",
-		"description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n **Authentication** \n To request an API key, [contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request).",
+		"description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `users` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
 		"termsOfService": "https://api.canopyservicing.com/terms/",
 		"contact": {
 			"email": "will@canopyservicing.com"
@@ -24,6 +24,10 @@
             "description": "Create and launch credit products within the Canopy system."
         },
         {
+            "name": "authentication",
+            "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
+        },
+        {
             "name": "users",
             "description": "Onboard users into your system, so they can begin using your credit products"
         },
@@ -33,6 +37,34 @@
         }
     ],
     "paths": {
+        "/users": {
+            "post": {
+                "tags": ["authentication"],
+                "summary": "Authenticate to the Canopy Sandbox",
+                "operationId": "createSandboxUser",
+                "description": "When you create a new user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
+                "responses": {
+                    "200": {
+                        "description": "Route for authenticating to the Canopy Sandbox",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user_id": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "description": "Unique `x-api-userid` ID to be used in headers for subsequent calls to the Canopy Sandbox API.",
+                                            "example": "be4e95b9-46ed-418a-ad7b-56c8065622cf"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/products": {
             "post": {
                 "security": [{
@@ -1235,7 +1267,6 @@
                         }
                     }
                 }
-                
             },
             "Product_Summary": {
                 "type": "object",
