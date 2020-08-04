@@ -6,7 +6,7 @@
 		"product_id": {
 			"type": "string",
 			"format": "uuid",
-			"description": "The Canopy-generated unique ID for the product.",
+			"description": "The Canopy-generated ID for the product.",
 			"example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
 		},
 		"name": {
@@ -42,12 +42,12 @@
 			"description": "An object of policies that drive product behavior.",
 			"properties": {
 				"base_policy_config": {
-					"$ref": "./Base_Policy_Config_MVP.json"
+					"$ref": "#/components/schemas/Base_Policy_Config_MVP"
 				}
 			}
 		},
 		"product_summary": {
-			"$ref": "./Product_Summary.json"
+			"$ref": "#/components/schemas/Product_Summary"
 		},
 		"default_attributes": {
 			"type": "object",

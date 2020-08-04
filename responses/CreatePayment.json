@@ -1,0 +1,18 @@
+{
+  "description": "Charge Created",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "line_item_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID in Canopy's system for this line item.",
+            "example": "464920a3-d531-422d-adfb-ce61e52255bf"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "description": "Create a new account",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": ["product_id"],
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "description": "the Product ID of the account",
+            "format": "uuid",
+            "example": "d119341c-47fd-4a55-bce7-28406dacfa20"
+          },
+          "external_ids": {
+            "type": "array",
+            "description": "An array of static references to ID fields in a third party system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the External Party",
+                  "example": "Globex Corporation"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          },
+          "credit_limit_cents": {
+            "type": "integer",
+            "description": "Total Amount (in cents) that this account can borrow.",
+            "example": "400000"
+          },
+          "rate": {
+            "type": "number",
+            "description": "The percentage interest applied to the account (i.e. 6.2%)",
+            "example": "6.2"
+          }
+        }
+      }
+    }
+  }
+}

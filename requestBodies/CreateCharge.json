@@ -1,0 +1,75 @@
+{
+  "description": "Body of request to create charge",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount_cents", "effective_at", "merchant_data"],
+        "properties": {
+          "amount_cents": {
+            "type": "integer",
+            "description": "The Integer Amount of the Charge in Cents",
+            "example": "200"
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
+            "format": "date-time",
+            "example": "2020-07-20T09:11:28Z"
+          },
+          "rate": {
+            "type": "number",
+            "description": "The percentage rate to be applied to this charge (i.e. 15.5 means 15.5%). If not included, defaults to the rate for the acount.",
+            "example": "15.5%"
+          },
+          "merchant_data": {
+            "type": "object",
+            "description": "",
+            "required": ["mcc_code"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "mcc_code": {
+                "type": "number"
+              },
+              "phone_number": {
+                "type": "string",
+                "format": "phonenumber"
+              }
+            }
+          },
+          "reference_id": {
+            "type": "string",
+            "description": "A unique ID generated in your system to associate with the Charge.",
+            "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+          },
+          "external_ids": {
+            "type": "array",
+            "description": "An array of static references to ID fields in a third party system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the External Party",
+                  "example": "Globex Card Processing"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

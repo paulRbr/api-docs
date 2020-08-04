@@ -23,10 +23,7 @@
     "type": {
       "type": "string",
       "description": "The Line Item Type. Either `charge` or `payment`.",
-      "enum": [
-        "charge",
-        "payment"
-      ],
+      "enum": [ "charge", "payment" ],
       "example": "charge"
     },
     "originating_amount_cents": {
@@ -95,14 +92,14 @@
       "example": "Refund for invalid purchase"
     },
     "reference_id": {
-        "type": "string",
-        "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
-        "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+      "type": "string",
+      "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
+      "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
     },
     "dispute_id": {
-        "type": "string",
-        "format": "uuid",
-        "description": "The ID for a dispute if present for this line item."
+      "type": "string",
+      "format": "uuid",
+      "description": "The ID for a dispute if present for this line item."
     },
     "external_ids": {
       "type": "array",
@@ -111,14 +108,14 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "description": "Name of the External Party",
-            "example": "Globex Card Processing"
+          "type": "string",
+          "description": "Name of the External Party",
+          "example": "Globex Card Processing"
           },
           "id": {
-            "type": "string",
-            "description": "External Account ID",
-            "example": "22445702-a389-431f-927d-07b8d0750787"
+          "type": "string",
+          "description": "External Account ID",
+          "example": "22445702-a389-431f-927d-07b8d0750787"
           }
         }
       }

@@ -1,0 +1,56 @@
+{
+  "description": "",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The Name of the Product",
+            "example": "Blue Cash Express"
+          },
+          "type": {
+            "type": "string",
+            "description": "The Type of Product. If not included, defaults to `credit`",
+            "enum": ["credit"],
+            "example": "credit"
+          },
+          "default_rate": {
+            "type": "number",
+            "description": "The percentage default rate for accounts created under this interest policy (i.e. 5.2 indicates a 5.2% interest rate). You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+            "example": "5.2"
+          },
+          "default_credit_limit_cents": {
+            "type": "integer",
+            "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+            "example": "700000"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the Product.",
+            "example": "Consumer credit card"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
+            "enum": ["draft, live"],
+            "example": "draft"
+          },
+          "policies": {
+            "type": "object",
+            "description": "An Object of policies that drive Product behaviour.",
+            "properties": {
+              "base_policy_config": {
+                "$ref": "#/components/schemas/Base_Policy_Config_MVP"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

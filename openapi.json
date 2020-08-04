@@ -1,1991 +1,2051 @@
 {
-    "openapi": "3.0.0",
-	"info": {
-		"title": "Canopy Servicing Core API",
-		"description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `users` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
-		"termsOfService": "https://api.canopyservicing.com/terms/",
-		"contact": {
-			"email": "will@canopyservicing.com"
-		},
-		"version": "1.3"
-    },
-    "servers": [
-		{
-			"url": "https://sandbox.canopyservicing.com",
-			"description": "Sandbox"
-		}
-    ],
-    "security": [{
-        "api_key": []
-    }],
-    "tags": [
-        {
-			"name": "products",
-            "description": "Create and launch credit products within the Canopy system."
-        },
-        {
-            "name": "authentication",
-            "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
-        },
-        {
-            "name": "users",
-            "description": "Onboard users into your system, so they can begin using your credit products"
-        },
-        {
-            "name": "accounts",
-            "description": "Manage the way your users use credit products you've launched in Canopy"
-        }
-    ],
-    "paths": {
-        "/users": {
-            "post": {
-                "tags": ["authentication"],
-                "summary": "Authenticate to the Canopy Sandbox",
-                "operationId": "createSandboxUser",
-                "description": "When you create a new user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
-                "responses": {
-                    "200": {
-                        "description": "Route for authenticating to the Canopy Sandbox",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user_id": {
-                                            "type": "string",
-                                            "format": "uuid",
-                                            "description": "Unique `x-api-userid` ID to be used in headers for subsequent calls to the Canopy Sandbox API.",
-                                            "example": "be4e95b9-46ed-418a-ad7b-56c8065622cf"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/products": {
-            "post": {
-                "security": [{
-                    "api_key": []
-                }],
-                "tags": ["products"],
-				"summary": "Create a new product",
-                "operationId": "createProduct",
-                "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
-				"requestBody": {
-					"$ref": "#/components/requestBodies/CreateProduct"
-				},
-				"responses": {
-					"204": {
-                        "$ref": "#/components/responses/CreateProduct"
-					},
-					"422": {
-						"description": "Invalid input"
-					}
-				}
-            },
-            "get": {
-                "security": [{
-                    "api_key": []
-                }],
-				"tags": ["products"],
-                "summary": "Get all available products",
-                "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
-                "operationId": "getProducts",
-				"parameters": [
-					{
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Array of Products",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "array",
-									"items": {
-                                        "$ref": "#/components/schemas/Product_MVP"
-									}
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "No Products"
-					}
-				}
-			}
-        },
-        "/products/{product_id}": {
-            "get": {
-                "tags": ["products"],
-                "summary": "Get info on a particular product",
-                "operationId": "getProduct",
-                "description": "Using the `product_id` which was generated when the product was launched, retrieve information pertaining to a specific product.",
-                "parameters": [
-                    {
-						"name": "product_id",
-						"in": "path",
-						"description": "Product ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					},
-					{
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the Products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-                ],
-                "responses": {
-					"200": {
-						"description": "Product",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Product_MVP"
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "No Products found"
-					}
-				}
-            },
-            "put": {
-                "tags": ["products"],
-                "summary": "Update an existing product",
-                "description": "Add additional configurations to a product. Products must be in the `draft` state to be updated.",
-                "parameters": [
-                    {
-						"name": "product_id",
-						"in": "path",
-						"description": "Product ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					},
-					{
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-                ],
-                "requestBody": {
-                    "$ref": "#/components/requestBodies/CreateProduct"
-                },
-                "responses": {
-                    "204": {
-                        "$ref": "#/components/responses/CreateProduct"
-					},
-					"422": {
-						"description": "Invalid input"
-					}
-                }
-            },
-            "delete": {
-                "tags": ["products"],
-                "summary": "Delete an existing product",
-                "description": "Delete an existing product. Product `status` must be `draft` to be deleted.",
-				"parameters": [
-					{
-						"name": "product_id",
-                        "in": "query",
-                        "description": "The Canopy-generated ID for your product.",
-						"required": true,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-                            "format": "uuid"
-                        }
-					}
-				],
-                "responses": {
-                    "204": {
-                        "description": "Product deleted",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "name": {
-                                            "type": "string",
-                                            "description": "The name of the product"
-                                        },
-                                        "product_id": {
-                                            "type": "string",
-                                            "format": "uuid",
-                                            "description": "The ID of the deleted product.",
-                                            "example": "44c7298f-b515-4dc3-84b2-21186e1b1d3b"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/products/{product_id}/accounts": {
-            "get": {
-                "tags": ["products", "accounts"],
-                "summary": "Get all accounts created under a specific product",
-                "description": "Returns all accounts created under a specific product. Results are paginated.",
-                "operationId": "getProductAccounts",
-				"parameters": [
-					{
-						"name": "offset",
-						"in": "query",
-						"description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "number",
-                            "example": "110"
-                        }
-                    },
-                    {
-                        "name": "limit",
-						"in": "query",
-						"description": "The maximum number of accounts to be returned. Defaults to 100.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "number",
-                            "example": "50"
-                        }
-                    }
-				],
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/ProductAccounts"
-                    },
-                    "404": {
-						"description": "Account not found"
-					}
-                }
-            }
-        },
-        "/products/{product_id}/summaries": {
-			"get": {
-				"tags": ["accounts", "summary"],
-                "summary": "Get summary details for a specific product.",
-                "description": "For analytic purposes, retrieve commonly needed summary statistics computed for a specific product.",
-				"operationId": "getProductSummary",
-				"parameters": [
-					{
-						"name": "product_id",
-						"in": "path",
-						"description": "Product ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					},
-					{
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product summary information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/ProductSummary"
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-		},
-        "/accounts": {
-			"get": {
-                "security": [{
-                    "api_key": []
-                }],
-				"tags": ["accounts"],
-                "summary": "Get all available Accounts",
-                "description": "Get details for all accounts linked to any of your products. Results are sorted by the date the account was created.",
-                "operationId": "getAccounts",
-				"parameters": [
-					{
-						"name": "offset",
-						"in": "query",
-						"description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "number",
-                            "example": "110"
-                        }
-                    },
-                    {
-                        "name": "limit",
-						"in": "query",
-						"description": "The maximum number of accounts to be returned. Defaults to 100.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "number",
-                            "example": "50"
-                        }
-                    }
-				],
-				"responses": {
-					"200": {
-						"description": "Array of Accounts",
-						"content": {
-							"application/json": {
-								"schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "accounts": {
-                                            "type": "array",
-                                            "description": "An array of information for all accounts within the requested range.",
-                                            "items": {
-                                                "$ref": "#/components/schemas/Account"
-                                            }
-                                        },
-                                        "total_account_count": {
-                                            "type": "number",
-                                            "description": "Total number of accounts"
-                                        }
-                                    }
-
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "No accounts found"
-					}
-				}
-            },
-            "post": {
-                "security": [{
-                    "api_key": []
-                }],
-				"tags": ["accounts", "programmatic"],
-                "summary": "Create a new customer account",
-                "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account.",
-				"operationId": "createAccount",
-                "requestBody": {
-					"$ref": "#/components/requestBodies/CreateAccount"
-				},
-				"responses": {
-					"201": {
-						"$ref": "#/components/responses/CreateAccount"
-					},
-					"405": {
-						"description": "Invalid input"
-					}
-				}
-            }
-        },
-        "/accounts/{account_id}": {
-            "get": {
-				"tags": ["accounts", "servicing"],
-                "summary": "Get a specific Account",
-                "description": "",
-				"operationId": "getAccount",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-                            "format": "uuid",
-                            "example": "a361c813-92e5-4765-82ea-9df368a81a89"
-						}
-                    },
-                    {
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-                    }
-				],
-				"responses": {
-					"200": {
-                        "$ref": "#/components/responses/Account"
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-            },
-            "put": {
-				"tags": ["accounts", "programmatic"],
-                "summary": "Update a customer account",
-                "description": "Update `rate` and/or `credit_limit_cents` for an individual account.",
-                "operationId": "updateAccount",
-                "parameters": [
-                    {
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-                            "format": "uuid",
-                            "example": "a361c813-92e5-4765-82ea-9df368a81a89"
-						}
-					}
-                ],
-				"requestBody": {
-					"description": "Account",
-					"content": {
-						"application/json": {
-							"schema": {
-                                "type": "object",
-                                "description": "Update attributes for an account at any time after account creation.",
-                                "properties": {
-                                    "rate": {
-                                        "type": "number",
-                                        "description": "The percentage default rate for accounts created under this interest policy (i.e. 5.2 indicates a 5.2% interest rate). You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
-                                        "example": "5.2"
-                                    },
-                                    "credit_limit_cents": {
-                                        "type": "integer",
-                                        "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
-                                        "example": "700000"
-                                    }
-                                }
-                            }
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"201": {
-						"description": "New Account Created",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/responses/UpdateAccount"
-								}
-							}
-						}
-					},
-					"405": {
-						"description": "Invalid input"
-					}
-				}
-            },
-            "delete": {
-				"tags": ["accounts", "servicing"],
-                "summary": "Delete a specific Account",
-                "description": "Deleting an account also deletes all of its associated line items.",
-				"operationId": "deleteAccount",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					}
-				],
-				"responses": {
-					"204": {
-						"description": "Account Deleted"
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-        },
-        "/accounts/{account_id}/line_items": {
-			"get": {
-				"tags": ["accounts", "line_items"],
-                "summary": "Get line items for a specific account.",
-                "description": "Line Items for an Account consist of `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
-				"operationId": "getAccountLineItems",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-                    }, 
-					{
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the line items were on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-                    },
-                    {
-						"name": "line_item_type",
-						"in": "query",
-						"description": "The type of line items you would like to view. Options are `charges` and `payments`. If not provided, no filters will be applied.",
-						"required": false,
-						"schema": {
-							"type": "string",
-							"example": "charges"
-						}
-					},
-                    {
-						"name": "offset",
-						"in": "query",
-						"description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "number",
-                            "example": "110"
-                        }
-                    },
-                    {
-                        "name": "limit",
-						"in": "query",
-						"description": "The maximum number of line items to be returned. Defaults to 100.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "number",
-                            "example": "50"
-                        }
-                    }
-				],
-				"responses": {
-					"200": {
-						"description": "Array of Line Items and their corresponding balances at their effective dates and times.",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "array",
-									"items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "account_id": {
-                                                "type": "string",
-                                                "format": "uuid",
-                                                "description": "The account associated with the line item",
-                                                "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
-                                            },
-                                            "line_item_id": {
-                                                "type": "string",
-                                                "format": "uuid",
-                                                "example": "ce9ed376-f151-435f-a59c-9e3cc183bbea"
-                                            },
-                                            "line_item_status": {
-                                                "type": "string",
-                                                "description": "the corresponding Status for a line item",
-                                                "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
-                                                "example": "posted"
-                                            },
-                                            "type": {
-                                                "type": "string",
-                                                "description": "The Line Item Type. Either `charge` or `payment`.",
-                                                "enum": [
-                                                    "charge",
-                                                    "payment"
-                                                ],
-                                                "example": "charge"
-                                            },
-                                            "originating_amount_cents": {
-                                                "type": "number",
-                                                "description": "The originating amount of money (in cents) relating to this line item.",
-                                                "example": "2385"
-                                            },
-                                            "balance_amount_cents": {
-                                                "type": "number",
-                                                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                                                "example": "2401"
-                                            },
-                                            "total_interest_accrued_cents": {
-                                                "type": "number",
-                                                "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-                                                "example": "16"
-                                            },
-                                            "total_paid_down_cents": {
-                                                "type": "number",
-                                                "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
-                                                "example": "1125"
-                                            },
-                                            "merchant_data": {
-                                                "type": "object",
-                                                "description": "",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "id": {
-                                                        "type": "string"
-                                                    },
-                                                    "mcc_code": {
-                                                        "type": "number"
-                                                    },
-                                                    "phone_number": {
-                                                        "type": "string",
-                                                        "format": "phonenumber"
-                                                    }
-                                                }
-                                            },
-                                            "effective_at": {
-                                                "type": "string",
-                                                "description": "The `Date-Time` that this account became/becomes active",
-                                                "format": "date-time",
-                                                "example": "2018-07-20T09:12:30Z"
-                                            },
-                                            "created_at": {
-                                                "type": "string",
-                                                "description": "The `Date-Time` which the account was created in the API",
-                                                "format": "date-time",
-                                                "example": "2018-06-20T09:12:30Z"
-                                            },
-                                            "product_id": {
-                                                "type": "string",
-                                                "description": "the Product ID of the account",
-                                                "format": "uuid",
-                                                "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
-                                            },
-                                            "description": {
-                                                "type": "string",
-                                                "description": "A description of this particular line item if any. More common for adjustments.",
-                                                "example": "Refund for invalid purchase"
-                                            },
-                                            "reference_id": {
-                                                "type": "string",
-                                                "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
-                                                "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
-                                            },
-                                            "dispute_id": {
-                                                "type": "string",
-                                                "format": "uuid",
-                                                "description": "The ID for a dispute if present for this line item."
-                                            },
-                                            "external_ids": {
-                                                "type": "array",
-                                                "description": "An array of static references to ID fields in a third party system.",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string",
-                                                            "description": "Name of the External Party",
-                                                            "example": "Globex Card Processing"
-                                                        },
-                                                        "id": {
-                                                            "type": "string",
-                                                            "description": "External Account ID",
-                                                            "example": "22445702-a389-431f-927d-07b8d0750787"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "line_item_count": {
-                                                "type": "string",
-                                                "description": "Total number of line items for the account."
-                                            }
-                                        }
-									}
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-        },
-        "/accounts/{account_id}/line_items/{line_item_id}": {
-            "get": {
-                "tags": ["line_items", "accounts"],
-                "summary": "Get information on a specific line item for a specific account",
-                "description": "",
-                "operationId": "getAccountLineItem",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-                            "format": "uuid",
-                            "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
-						}
-                    },
-                    {
-                        "name": "line_item_id",
-                        "in": "path",
-                        "description": "Line Item ID",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid",
-                            "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
-                        }
-                    },
-                    {
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-                ],
-                "responses": {
-                    "204": {
-                        "$ref": "#/components/responses/LineItem"
-                    }
-                }
-            }
-        },
-        "/accounts/{account_id}/line_items/charges": {
-			"post": {
-				"tags": ["line_items", "charges", "accounts"],
-                "summary": "Create a charge for a specific account",
-                "description": "",
-				"operationId": "createAccountCharge",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					}
-				],
-				"requestBody": {
-					"$ref": "#/components/requestBodies/CreateCharge"
-				},
-				"responses": {
-					"204": {
-                        "$ref": "#/components/responses/CreateCharge"
-					},
-					"401": {
-						"description": "You are not authenticated"
-					},
-					"403": {
-						"description": "You are not authorized"
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-        },
-        "/accounts/{account_id}/line_items/payments": {
-			"post": {
-				"tags": ["line_items", "payments", "accounts"],
-                "summary": "Create a payment for a specific account",
-                "description": "",
-				"operationId": "createAccountPayment",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					}
-				],
-				"requestBody": {
-					"$ref": "#/components/requestBodies/CreatePayment"
-				},
-				"responses": {
-					"204": {
-                        "$ref": "#/components/responses/CreatePayment"
-                    },
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-        },
-        "/accounts/{account_id}/line_items/{line_item_id}/disputes": {
-			"post": {
-				"tags": ["accounts", "line_items", "disputes"],
-				"summary": "Create a dispute for a specific account's line item",
-                "description": "",
-                "operationId": "createDispute",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					},
-					{
-						"name": "line_item_id",
-						"in": "path",
-						"description": "Line Item ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					}
-                ],
-				"responses": {
-					"204": {
-                        "description": "Response upon successful creation of a dispute",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "account_id": {
-                                            "type": "string",
-                                            "format": "uuid"
-                                        },
-                                        "line_item_id": {
-                                            "type": "string",
-                                            "format": "uuid"
-                                        },
-                                        "dispute_id": {
-                                            "type": "string",
-                                            "format": "uuid"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-		},
-        "/accounts/{account_id}/statements_list": {
-            "get": {
-                "tags": ["accounts", "summary"],
-                "summary": "Get a list of all current and prior statements for a specific account",
-                "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
-                "operationId": "getAccountStatementsList",
-                "parameters": [
-                    {
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-                    },
-                    {
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "description": "Statements for the account.",
-                                    "properties": {
-                                        "account_id": {
-                                            "type": "string",
-                                            "format": "uuid",
-                                            "description": "The Canopy-generated ID for the account",
-                                            "example": "111eff36-cbec-4119-b188-b76200e804d8"
-                                        },
-                                        "effective_as_of_date": {
-                                            "type": "string",
-                                            "format": "date-time",
-                                            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                                            "example": "2018-07-20T09:10:14Z"
-                                        },
-                                        "statements_list": {
-                                            "type": "array",
-                                            "description": "An array of statements included in the billing cycle.",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "statement_id": {
-                                                        "type": "string",
-                                                        "format": "uuid",
-                                                        "description": "A Canopy-generated ID for the statement",
-                                                        "example": "3627809b-ff07-4e41-b127-44260efb3b80"
-                                                    },
-                                                    "available_credit_balance": {
-                                                        "type": "number",
-                                                        "description": "The total available credit balance (in cents) for the account.",
-                                                        "example": "600000"
-                                                    },
-                                                    "total_balance": {
-                                                        "type": "number",
-                                                        "description": "The total balance (in cents) associated with the account.",
-                                                        "example": "400000"
-                                                    },
-                                                    "min_pay_due_date": {
-                                                        "type": "string",
-                                                        "format": "date-time",
-                                                        "description": "The `Date-Time` at which the minimum payment is due."
-                                                    },
-                                                    "min_pay_amount_cents": {
-                                                        "type": "number",
-                                                        "description": "The minimum amount (in cents) due for this statement."
-                                                    },
-                                                    "billing_cycle_start_date": {
-                                                        "type": "string",
-                                                        "format": "date-time",
-                                                        "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
-                                                    },
-                                                    "billing_cycle_end_date": {
-                                                        "type": "string",
-                                                        "format": "date-time",
-                                                        "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/accounts/{account_id}/statements": {
-			"get": {
-				"tags": ["accounts", "summary"],
-                "summary": "Get a statement for a given date for a specific account.",
-                "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
-				"operationId": "getAccountStatement",
-				"parameters": [
-					{
-						"name": "account_id",
-						"in": "path",
-						"description": "Account ID",
-						"required": true,
-						"style": "simple",
-						"explode": false,
-						"schema": {
-							"type": "string",
-							"format": "uuid"
-						}
-					},
-					{
-						"name": "effective_as_of_date",
-						"in": "query",
-						"description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/AccountStatement"
-					},
-					"404": {
-						"description": "Account not found"
-					}
-				}
-			}
-		}
-    },
-    "components": {
-        "securitySchemes": {
-			"api_key": {
-				"type": "apiKey",
-				"name": "x-api-key",
-				"in": "header"
-			}
-		},
-        "schemas": {
-            "Account": {
-                "additionalProperties": false,
+  "openapi": "3.0.0",
+  "info": {
+  "title": "Canopy Servicing Core API",
+  "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `users` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
+  "termsOfService": "https://api.canopyservicing.com/terms/",
+  "contact": {
+    "email": "will@canopyservicing.com"
+  },
+  "version": "1.3"
+  },
+  "servers": [
+  {
+    "url": "https://sandbox.canopyservicing.com",
+    "description": "Sandbox"
+  }
+  ],
+  "security": [{
+  "api_key": []
+  }],
+  "tags": [
+  {
+    "name": "products",
+    "description": "Create and launch credit products within the Canopy system."
+  },
+  {
+    "name": "authentication",
+    "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
+  },
+  {
+    "name": "users",
+    "description": "Onboard users into your system, so they can begin using your credit products"
+  },
+  {
+    "name": "accounts",
+    "description": "Manage the way your users use credit products you've launched in Canopy"
+  }
+  ],
+  "paths": {
+  "/users": {
+    "post": {
+      "tags": ["authentication"],
+      "summary": "Authenticate to the Canopy Sandbox",
+      "operationId": "createSandboxUser",
+      "description": "When you create a new user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
+      "responses": {
+        "200": {
+          "description": "Route for authenticating to the Canopy Sandbox",
+          "content": {
+            "application/json": {
+              "schema": {
                 "type": "object",
                 "properties": {
-                    "account_id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "This is generated by Canopy. A unique ID for the account.",
-                        "example": "5fb3a288-5f6c-440f-b079-b06c828b7768"
-                    },
-                    "account_status": {
-                        "type": "string",
-                        "description": "The Status of the Account. Active upon account creation.",
-                        "example": "suspended"
-                    },
-                    "account_status_subtype": {
-                        "type": "string",
-                        "description": "The subtype of the Status of the Account. Null upon account creation.",
-                        "example": "suspended-bankruptcy"
-                    },
-                    "effective_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` that this account became/becomes active.",
-                        "format": "date-time",
-                        "example": "2018-03-20T09:12:28Z"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` which the account was created in the API.",
-                        "format": "date-time",
-                        "example": "2017-06-20T09:12:14Z"
-                    },
-                    "product": {
-                        "description": "The product associated with the account",
-                        "$ref": "#/components/schemas/Product_MVP"
-                    },
-                    "external_account_ids": {
-                        "type": "array",
-                        "description": "An Array of External Account IDs. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
-                        "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "description": "Name of the External Party",
-                                "example": "Umbrella Corporation"
-                            },
-                            "id": {
-                                "type": "string",
-                                "description": "External Account ID",
-                                "example": "22445702-a389-431f-927d-07b8d0750787"
-                            }
-                        }
-                        }
-                    },
-                    "total_balance": {
-                        "type": "number",
-                        "description": "The total balance (in cents) associated with the account.",
-                        "example": "300000"
-                    },
-                    "credit_limit_cents": {
-                        "type": "integer",
-                        "description": "Total Amount (in cents) that this account can borrow.",
-                        "example": "400000"
-                    },
-                    "rate": {
-                        "type": "number",
-                        "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
-                        "example": "6.2"
-                    },
-                    "available_credit_balance": {
-                        "type": "number",
-                        "description": "The total available credit balance (in cents) for the account.",
-                        "example": "100000"
-                    }
-                }
-            },
-            "Product_MVP": {
-                "required": ["policies", "product_id"],
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "product_id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "The Canopy-generated ID for the product.",
-                        "example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "Name of Product, i.e. Express Card.",
-                        "example": "Blue Cash Express"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "Description of the Product.",
-                        "example": "Student credit card."
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` that this product was created on the server.",
-                        "format": "date-time",
-                        "example": "2019-03-20T09:12:28Z"
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "The Type of Product",
-                        "enum": ["CREDIT"],
-                        "example": "CREDIT"
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "The status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
-                        "enum": ["VALID"],
-                        "example": "VALID"
-                    },
-                    "policies": {
-                        "type": "object",
-                        "description": "An object of policies that drive product behavior.",
-                        "properties": {
-                            "base_policy_config": {
-                                "$ref": "#/components/schemas/Base_Policy_Config_MVP"
-                            }
-                        }
-                    },
-                    "product_summary": {
-                        "$ref": "#/components/schemas/Product_Summary"
-                    },
-                    "default_attributes": {
-                        "type": "object",
-                        "properties": {
-                            "rate": {
-                                "type": "number",
-                                "description": "The percent default rate for this interest policy (i.e. 3.2 means a 3.2% rate). This default rate can be overridden on a per-account basis if a `rate` is selected at the time of assigning an account to a product. Rates for an account can also be updated post-account creation.",
-                                "example": 3.2
-                            },
-                            "credit_limit_cents": {
-                                "type": "integer",
-                                "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
-                                "example": 600000
-                            }
-                        }
-                    }
-                }
-            },
-            "Product_Summary": {
-                "type": "object",
-                "description": "Summary of product information.",
-                "properties": {
-                    "accounts_overview": {
-                        "type": "object",
-                        "properties": {
-                            "account_count_total": {
-                                "type": "integer",
-                                "description": "Total number of accounts under the product.",
-                                "example": 10005
-                            },
-                            "account_count_delinquent": {
-                                "type": "integer",
-                                "description": "Total number of delinquent accounts under the product.",
-                                "example": 200
-                            }
-                        }
-                    },
-                    "total_credit_issued_cents": {
-                        "type": "integer",
-                        "description": "Total amount (in cents) of credit issued to accounts under the product.",
-                        "example": 25500000
-                    },
-                    "utilization_rate": {
-                        "type": "number",
-                        "description": "The percent utilization rate of the product.",
-                        "example": 30.34
-                    },
-                    "product_id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "The Canopy-generated ID for the product.",
-                        "example": "ca3cf4e9-5048-4461-a763-8f67b46dfd4d"
-                    },
-                    "effective_as_of_date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "The `Date-Time` you would like the system to return the data as of. IE \"tell me what the product information was as if I had asked on `2020-01-20 00:00:00 EST`\". If empty defaults to current time.",
-                        "example": "2017-06-20T09:12:14Z"
-                    }
-                }
-            },
-            "Base_Policy_Config_MVP": {
-                "type": "object",
-                "properties": {
-                  "percentage": {
-                    "type": "number",
-                    "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
-                    "example": "20"
+                  "user_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique `x-api-userid` ID to be used in headers for subsequent calls to the Canopy Sandbox API.",
+                    "example": "be4e95b9-46ed-418a-ad7b-56c8065622cf"
                   }
-                },
-                "description": "The configured minimum payment required for a given pay period."
-              },
-            "Base_Policy_Config_Min_Pay": {
-                "type": "object",
-                "properties": {
-                    "percentage": {
-                        "type": "number",
-                        "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
-                        "example": "20"
-                    }
-                },
-                "description": "The configured minimum payment required for a given pay period."
-            },
-            "Base_Policy_Config_Billing_Cycle": {
-                "type": "object",
-                "properties": {
-                    "period": {
-                        "type": "string",
-                        "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                        "format": "interval",
-                        "example": "1 month"
-                    },
-                    "billing_due_date_interval": {
-                        "type": "string",
-                        "description": "The amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
-                        "format": "interval",
-                        "example": "25 days"
-                    }
-                },
-                "description": "The Billing Cycle Object"
-            },
-            "Interest_Policy_MVP": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "enum": ["compound"],
-                        "example": "compound"
-                    },
-                    "method": {
-                        "type": "string",
-                        "description": "The actual base formula used to calculate and assign interest.",
-                        "enum": ["average daily balance"],
-                        "example": "average daily balance"
-                    },
-                    "day_calc_type": {
-                        "type": "string",
-                        "description": "Affects the base calculation by determining how many days there are in a given year.",
-                        "enum": ["365"],
-                        "example": "365"
-                    },
-                    "interest_calc_time": {
-                        "type": "string",
-                        "description": "Interest for this policy is calculated at this time every X interval.",
-                        "format": "date-time",
-                        "example": "05:00:00"
-                    }
-                },
-                "description": "The Interest Policy Object"
-            },
-			"Line_Item_MVP": {
-                "required": ["account_id", "effective_at", "line_item_status", "line_item_id", "product_id", "type", "amount_cents", "created_at", "reference_id"],
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "account_id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "The account associated with the line item",
-                        "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
-                    },
-                    "line_item_id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "example": "ce9ed376-f151-435f-a59c-9e3cc183bbea"
-                    },
-                    "line_item_status": {
-                        "type": "string",
-                        "description": "the corresponding Status for a line item",
-                        "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
-                        "example": "posted"
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "The Line Item Type. Either `charge` or `payment`.",
-                        "enum": [
-                        "charge",
-                        "payment"
-                        ],
-                        "example": "charge"
-                    },
-                    "originating_amount_cents": {
-                        "type": "number",
-                        "description": "The originating amount of money (in cents) relating to this line item."
-                    },
-                    "balance_amount_cents": {
-                        "type": "number",
-                        "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute."
-                    },
-                    "total_interest_accrued_cents": {
-                        "type": "number",
-                        "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-                        "example": "16"
-                    },
-                    "total_paid_down_cents": {
-                        "type": "number",
-                        "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
-                        "example": "1125"
-                    },
-                    "rate": {
-                        "type": "number",
-                        "description": "The percentage rate applied to this line item (i.e. 15.5 means 15.5%). If it was not set at the time of charge creation, its default value is the default rate of the account.",
-                        "example": "15.5%"
-                    },
-                    "merchant_data": {
-                        "type": "object",
-                        "description": "",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "id": {
-                                "type": "string"
-                            },
-                            "mcc_code": {
-                                "type": "number"
-                            },
-                            "phone_number": {
-                                "type": "string",
-                                "format": "phonenumber"
-                            }
-                        }
-                    },
-                    "effective_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` that this line item became/becomes active",
-                        "format": "date-time",
-                        "example": "2018-07-20T09:12:30Z"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` which the line item was created in the API",
-                        "format": "date-time",
-                        "example": "2018-06-20T09:12:30Z"
-                    },
-                    "product_id": {
-                        "type": "string",
-                        "description": "the Product ID of the account",
-                        "format": "uuid",
-                        "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "A description of this particular line item if any. More common for adjustments.",
-                        "example": "Refund for invalid purchase"
-                    },
-                    "reference_id": {
-                        "type": "string",
-                        "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
-                        "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
-                    },
-                    "dispute_id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "The ID for a dispute if present for this line item."
-                    },
-                    "external_ids": {
-                        "type": "array",
-                        "description": "An array of static references to ID fields in a third party system.",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                "type": "string",
-                                "description": "Name of the External Party",
-                                "example": "Globex Card Processing"
-                                },
-                                "id": {
-                                "type": "string",
-                                "description": "External Account ID",
-                                "example": "22445702-a389-431f-927d-07b8d0750787"
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "An individual charge, payment, fee, or otherwise financial event that is used to calculate balances."
+                }
+              }
             }
-        },
-        "requestBodies": {
-            "CreateProduct": {
-				"description": "",
-				"required": true,
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": ["name"],
-							"additionalProperties": false,
-							"properties": {
-								"name": {
-									"type": "string",
-                                    "description": "The Name of the Product",
-                                    "example": "Blue Cash Express"
-								},
-								"type": {
-									"type": "string",
-									"description": "The Type of Product. If not included, defaults to `credit`",
-                                    "enum": ["credit"],
-                                    "example": "credit"
-								},
-                                "default_rate": {
-                                    "type": "number",
-                                    "description": "The percentage default rate for accounts created under this interest policy (i.e. 5.2 indicates a 5.2% interest rate). You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
-                                    "example": "5.2"
-                                },
-                                "default_credit_limit_cents": {
-                                    "type": "integer",
-                                    "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
-                                    "example": "700000"
-                                },
-								"description": {
-									"type": "string",
-                                    "description": "Description of the Product.",
-                                    "example": "Consumer credit card"
-                                },
-                                "status": {
-                                    "type": "string",
-                                    "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
-                                    "enum": ["draft, live"],
-                                    "example": "draft"
-                                },
-                                "policies": {
-                                    "type": "object",
-                                    "description": "An Object of policies that drive Product behaviour.",
-                                    "properties": {
-                                        "base_policy_config": {
-                                            "$ref": "#/components/schemas/Base_Policy_Config_MVP"
-                                        }
-                                    }
-                                }
-							}
-						}
-					}
-                }
-            },
-            "CreateAccount": {
-                "description": "Create a new account",
-                "required": true,
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "required": ["product_id"],
-                            "properties": {
-                                "product_id": {
-                                    "type": "string",
-                                    "description": "the Product ID of the account",
-                                    "format": "uuid",
-                                    "example": "d119341c-47fd-4a55-bce7-28406dacfa20"
-                                },
-                                "external_ids": {
-                                    "type": "array",
-                                    "description": "An array of static references to ID fields in a third party system.",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "description": "Name of the External Party",
-                                                "example": "Globex Corporation"
-                                            },
-                                            "id": {
-                                                "type": "string",
-                                                "description": "External Account ID",
-                                                "example": "22445702-a389-431f-927d-07b8d0750787"
-                                            }
-                                        }
-                                    }
-                                },
-                                "credit_limit_cents": {
-                                    "type": "integer",
-                                    "description": "Total Amount (in cents) that this account can borrow.",
-                                    "example": "400000"
-                                },
-                                "rate": {
-                                    "type": "number",
-                                    "description": "The percentage interest applied to the account (i.e. 6.2%)",
-                                    "example": "6.2"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "CreateCharge": {
-				"description": "Body of request to create charge",
-				"required": true,
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-                            "additionalProperties": false,
-                            "required": ["amount_cents", "effective_at", "merchant_data"],
-							"properties": {
-								"amount_cents": {
-									"type": "integer",
-                                    "description": "The Integer Amount of the Charge in Cents",
-                                    "example": "200"
-								},
-								"effective_at": {
-									"type": "string",
-									"description": "The `Date-Time` that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
-                                    "format": "date-time",
-                                    "example": "2020-07-20T09:11:28Z"
-                                },
-                                "rate": {
-                                    "type": "number",
-                                    "description": "The percentage rate to be applied to this charge (i.e. 15.5 means 15.5%). If not included, defaults to the rate for the acount.",
-                                    "example": "15.5%"
-                                },
-								"merchant_data": {
-                                    "type": "object",
-                                    "description": "",
-                                    "required": ["mcc_code"],
-                                    "properties": {
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "id": {
-                                            "type": "string"
-                                        },
-                                        "mcc_code": {
-                                            "type": "number"
-                                        },
-                                        "phone_number": {
-                                            "type": "string",
-                                            "format": "phonenumber"
-                                        }
-                                    }
-								},
-								"reference_id": {
-                                    "type": "string",
-                                    "description": "A unique ID generated in your system to associate with the Charge.",
-                                    "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
-                                },
-                                "external_ids": {
-                                    "type": "array",
-                                    "description": "An array of static references to ID fields in a third party system.",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "description": "Name of the External Party",
-                                                "example": "Globex Card Processing"
-                                            },
-                                            "id": {
-                                                "type": "string",
-                                                "description": "External Account ID",
-                                                "example": "22445702-a389-431f-927d-07b8d0750787"
-                                            }
-                                        }
-                                    }
-                                }
-							}
-						}
-					}
-				}
-            },
-            "CreatePayment": {
-				"description": "Body of request to create payment.",
-				"required": true,
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"additionalProperties": false,
-							"properties": {
-								"amount_cents": {
-									"type": "integer",
-                                    "description": "The Integer Amount of the Payment in Cents",
-                                    "example": "200"
-								},
-								"effective_at": {
-									"type": "string",
-									"description": "The `Date-Time` that the payment should be recorded to the account. Although the payment is being added to Canopy today, it can actually be effective as of 10 days ago.",
-                                    "format": "date-time",
-                                    "example": "2020-07-20T09:11:28Z"
-								},
-								"reference_id": {
-                                    "type": "string",
-                                    "description": "A unique ID generated in your system to associate with the Payment.",
-                                    "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
-                                },
-                                "external_ids": {
-                                    "type": "array",
-                                    "description": "An array of static references to ID fields in a third party system.",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "description": "Name of the External Party",
-                                                "example": "Globex Card Processing"
-                                            },
-                                            "id": {
-                                                "type": "string",
-                                                "description": "External Account ID",
-                                                "example": "22445702-a389-431f-927d-07b8d0750787"
-                                            }
-                                        }
-                                    }
-                                }
-							}
-						}
-					}
-				}
-            }
-        },
-        "responses": {
-            "CreateProduct": {
-                "description": "Product Created",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "description": "The name of the product",
-                                    "example": "Blue Cash Express"
-                                },
-                                "product_id": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "description": "An ID for your newly created product, generated by Canopy.",
-                                    "example": "44c7298f-b515-4dc3-84b2-21186e1b1d3b"
-                                },
-                                "status": {
-                                    "type": "string",
-                                    "description": "The Status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
-                                    "example": "live"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "CreateAccount": {
-                "description": "New Account Created",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Account"
-                        }
-                    }
-                }
-            },
-            "UpdateAccount": {
-                "description": "Account Updated",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Account"
-                        }
-                    }
-                }
-            },
-            "CreateCharge": {
-                "description": "Charge Created",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "line_item_id": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "description": "The ID in Canopy's system for this line item.",
-                                    "example": "e58b78c3-0df8-4895-b10c-0fa88b266119"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "CreatePayment": {
-                "description": "Charge Created",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "line_item_id": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "description": "The ID in Canopy's system for this line item.",
-                                    "example": "464920a3-d531-422d-adfb-ce61e52255bf"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "Account": {
-                "description": "Successful query of information for a specific account",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Account"
-                        }
-                    }
-                }
-            },
-            "AccountStatement": {
-                "description": "",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Product_Summary"
-                        }
-                    }
-                }
-            },
-            "ProductAccounts": {
-                "description": "",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "description": "",
-                            "properties": {
-                                "current_accounts": {
-                                    "type": "array",
-                                    "description": "Array of Accounts that are currently using this Product",
-                                    "items": {
-                                        "type": "string",
-                                        "description": "Account ID",
-                                        "format": "uuid",
-                                        "example": "5e860ad7-5fff-4130-844c-ec9ead83a025"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "ProductSummary": {
-                "description": "Response for a request for summary data for a specific product.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "description": "Summary of product information",
-                            "properties": {
-                                "accounts_overview": {
-                                    "type": "object",
-                                    "properties": {
-                                        "account_count_total": {
-                                            "type": "integer",
-                                            "description": "Total number of accounts under the product.",
-                                            "example": 10005
-                                        },
-                                        "account_count_delinquent": {
-                                            "type": "integer",
-                                            "description": "Total number of delinquent accounts under the product.",
-                                            "example": 200
-                                        }
-                                    }
-                                },
-                                "total_credit_issued_cents": {
-                                    "type": "integer",
-                                    "description": "Total amount (in cents) of credit issued to accounts under the product.",
-                                    "example": 25500000
-                                },
-                                "utilization_rate": {
-                                    "type": "number",
-                                    "description": "The percent utilization rate of the product.",
-                                    "example": 30.34
-                                },
-                                "product_id": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "description": "The Canopy-generated ID for the product.",
-                                    "example": "ca3cf4e9-5048-4461-a763-8f67b46dfd4d"
-                                },
-                                "effective_as_of_date": {
-                                    "type": "string",
-                                    "format": "date-time",
-                                    "description": "The `Date-Time` you would like the system to return the data as of. IE \"tell me what the product information was as if I had asked on `2020-01-20 00:00:00 EST`\". If empty defaults to current time.",
-                                    "example": "2017-06-20T09:12:14Z"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "LineItem": {
-                "description": "Detailed info about a specific line item",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "description": "Summary of account information",
-                            "properties": {
-                                "originating_amount_cents": {
-                                    "type": "number",
-                                    "description": "The originating amount of money (in cents) relating to this line item.",
-                                    "example": "2385"
-                                },
-                                "balance_amount_cents": {
-                                    "type": "number",
-                                    "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                                    "example": "2401"
-                                },
-                                "total_interest_accrued_cents": {
-                                    "type": "number",
-                                    "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-                                    "example": "16"
-                                },
-                                "total_paid_down_cents": {
-                                    "type": "number",
-                                    "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
-                                    "example": "1125"
-                                },
-                                "effective_as_of_date": {
-                                    "type": "string",
-                                    "format": "date-time",
-                                    "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                                    "example": "2018-07-20T09:10:14Z"
-                                },
-                                "line_item_details": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "line_item_detail_id": {
-                                                "type": "string",
-                                                "format": "uuid",
-                                                "example": "2e9ad65e-3bf0-4be2-8117-a8c992f08774"
-                                            },
-                                            "date": {
-                                                "type": "string",
-                                                "description": "The date the detail was applied to the line item",
-                                                "format": "date-time"
-                                            },
-                                            "type": {
-                                                "type": "string",
-                                                "description": "The type of detail being applied to the line item",
-                                                "enum": ["payment_split, interest"],
-                                                "example": "payment_split"
-                                            },
-                                            "amount_cents": {
-                                                "type": "number",
-                                                "description": "The value, in cents, of this line item detail",
-                                                "example": "0054"
-                                            },
-                                            "balance_cents": {
-                                                "type": "number",
-                                                "description": "The balance of the line item, in cents, after this detail is applied",
-                                                "example": "20988"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  },
+  "/products": {
+    "post": {
+      "security": [{
+        "api_key": []
+      }],
+      "tags": ["products"],
+      "summary": "Create a new product",
+      "operationId": "createProduct",
+      "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
+      "requestBody": {
+        "$ref": "#/components/requestBodies/CreateProduct"
+      },
+      "responses": {
+        "204": {
+          "$ref": "#/components/responses/CreateProduct"
+        },
+        "422": {
+          "description": "Invalid input"
+        }
+      }
+    },
+    "get": {
+      "security": [{
+        "api_key": []
+      }],
+      "tags": ["products"],
+      "summary": "Get all available products",
+      "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
+      "operationId": "getProducts",
+      "parameters": [
+        {
+          "name": "effective_as_of_date",
+          "in": "query",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Array of Products",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Product_MVP"
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "No Products"
+        }
+      }
+    }
+  },
+  "/products/{product_id}": {
+    "get": {
+      "tags": ["products"],
+      "summary": "Get info on a particular product",
+      "operationId": "getProduct",
+      "description": "Using the `product_id` which was generated when the product was launched, retrieve information pertaining to a specific product.",
+      "parameters": [
+        {
+          "name": "product_id",
+          "in": "path",
+          "description": "Product ID",
+          "required": true,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        {
+          "name": "effective_as_of_date",
+          "in": "query",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the Products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product_MVP"
+              } 
+            }
+          }
+        },
+        "404": {
+          "description": "No Products found"
+        }
+      }
+    },
+    "put": {
+      "tags": ["products"],
+      "summary": "Update an existing product",
+      "description": "Add additional configurations to a product. Products must be in the `draft` state to be updated.",
+      "parameters": [
+        {
+          "name": "product_id",
+          "in": "path",
+          "description": "Product ID",
+          "required": true,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        {
+          "name": "effective_as_of_date",
+          "in": "query",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      ],
+      "requestBody": {
+        "$ref": "#/components/requestBodies/CreateProduct"
+      },
+      "responses": {
+        "204": {
+          "$ref": "#/components/responses/CreateProduct"
+        },
+        "422": {
+          "description": "Invalid input"
+        }
+      }
+    },
+    "delete": {
+      "tags": ["products"],
+      "summary": "Delete an existing product",
+      "description": "Delete an existing product. Product `status` must be `draft` to be deleted.",
+      "parameters": [
+        {
+          "name": "product_id",
+          "in": "query",
+          "description": "The Canopy-generated ID for your product.",
+          "required": true,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Product deleted",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the product"
+                  },
+                  "product_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The ID of the deleted product.",
+                    "example": "44c7298f-b515-4dc3-84b2-21186e1b1d3b"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/products/{product_id}/accounts": {
+    "get": {
+      "tags": ["products", "accounts"],
+      "summary": "Get all accounts created under a specific product",
+      "description": "Returns all accounts created under a specific product. Results are paginated.",
+      "operationId": "getProductAccounts",
+      "parameters": [
+        {
+          "name": "offset",
+          "in": "query",
+          "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "number",
+            "example": "110"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "description": "The maximum number of accounts to be returned. Defaults to 100.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "number",
+            "example": "50"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/ProductAccounts"
+        },
+        "404": {
+          "description": "Account not found"
+        }
+      }
+    }
+  },
+  "/products/{product_id}/summaries": {
+    "get": {
+      "tags": ["accounts", "summary"],
+      "summary": "Get summary details for a specific product.",
+      "description": "For analytic purposes, retrieve commonly needed summary statistics computed for a specific product.",
+      "operationId": "getProductSummary",
+      "parameters": [
+        {
+          "name": "product_id",
+          "in": "path",
+          "description": "Product ID",
+          "required": true,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        {
+          "name": "effective_as_of_date",
+          "in": "query",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product summary information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/ProductSummary"
+        },
+        "404": {
+          "description": "Account not found"
+        }
+      }
+    }
+  },
+  "/accounts": {
+    "get": {
+      "security": [{
+        "api_key": []
+      }],
+      "tags": ["accounts"],
+      "summary": "Get all available Accounts",
+      "description": "Get details for all accounts linked to any of your products. Results are sorted by the date the account was created.",
+      "operationId": "getAccounts",
+      "parameters": [
+        {
+          "name": "offset",
+          "in": "query",
+          "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "number",
+            "example": "110"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "description": "The maximum number of accounts to be returned. Defaults to 100.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "number",
+            "example": "50"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Array of Accounts",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "accounts": {
+                    "type": "array",
+                    "description": "An array of information for all accounts within the requested range.",
+                    "items": {
+                      "$ref": "#/components/schemas/Account"
+                    }
+                  },
+                  "total_account_count": {
+                    "type": "number",
+                    "description": "Total number of accounts"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "No accounts found"
+        }
+      } 
+    },
+    "post": {
+      "security": [{
+        "api_key": []
+      }],
+      "tags": ["accounts", "programmatic"],
+      "summary": "Create a new customer account",
+      "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account.",
+      "operationId": "createAccount",
+      "requestBody": {
+        "$ref": "#/components/requestBodies/CreateAccount"
+      },
+      "responses": {
+        "201": {
+          "$ref": "#/components/responses/CreateAccount"
+        },
+        "405": {
+          "description": "Invalid input"
+        }
+      }
+    }
+  },
+  "/accounts/{account_id}": {
+    "get": {
+      "tags": ["accounts", "servicing"],
+      "summary": "Get a specific Account",
+      "description": "",
+      "operationId": "getAccount",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "description": "Account ID",
+          "required": true,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+          }
+        },
+        {
+          "name": "effective_as_of_date",
+          "in": "query",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/Account"
+        },
+        "404": {
+          "description": "Account not found"
+        }
+      }
+    },
+    "put": {
+      "tags": ["accounts", "programmatic"],
+      "summary": "Update a customer account",
+      "description": "Update `rate` and/or `credit_limit_cents` for an individual account.",
+      "operationId": "updateAccount",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "description": "Account ID",
+          "required": true,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+          }
+        }
+      ],
+      "requestBody": {
+        "description": "Account",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "description": "Update attributes for an account at any time after account creation.",
+              "properties": {
+                "rate": {
+                  "type": "number",
+                  "description": "The percentage default rate for accounts created under this interest policy (i.e. 5.2 indicates a 5.2% interest rate). You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+                  "example": "5.2"
+                },
+                "credit_limit_cents": {
+                  "type": "integer",
+                  "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+                  "example": "700000"
+                }
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "201": {
+          "description": "New Account Created",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/responses/UpdateAccount"
+              }
+            }
+          }
+        },
+        "405": {
+          "description": "Invalid input"
+        }
+      }
+    },
+    "delete": {
+      "tags": ["accounts", "servicing"],
+      "summary": "Delete a specific Account",
+      "description": "Deleting an account also deletes all of its associated line items.",
+      "operationId": "deleteAccount",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "description": "Account ID",
+          "required": true,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Account Deleted"
+        },
+        "404": {
+          "description": "Account not found"
+        }
+      }
+    }
+  },
+  "/accounts/{account_id}/line_items": {
+    "get": {
+      "tags": ["accounts", "line_items"],
+      "summary": "Get line items for a specific account.",
+      "description": "Line Items for an Account consist of `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
+      "operationId": "getAccountLineItems",
+      "parameters": [
+        {
+        "name": "account_id",
+        "in": "path",
+        "description": "Account ID",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+        }, 
+        {
+        "name": "effective_as_of_date",
+        "in": "query",
+        "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the line items were on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+        },
+        {
+        "name": "line_item_type",
+        "in": "query",
+        "description": "The type of line items you would like to view. Options are `charges` and `payments`. If not provided, no filters will be applied.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "charges"
+        }
+        },
+        {
+        "name": "offset",
+        "in": "query",
+        "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "number",
+          "example": "110"
+        }
+        },
+        {
+        "name": "limit",
+        "in": "query",
+        "description": "The maximum number of line items to be returned. Defaults to 100.",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "number",
+          "example": "50"
+        }
+        }
+      ],
+      "responses": {
+        "200": {
+        "description": "Array of Line Items and their corresponding balances at their effective dates and times.",
+        "content": {
+          "application/json": {
+          "schema": {
+            "type": "array",
+            "items": {
+            "type": "object",
+            "properties": {
+              "account_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The account associated with the line item",
+              "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
+              },
+              "line_item_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "ce9ed376-f151-435f-a59c-9e3cc183bbea"
+              },
+              "line_item_status": {
+              "type": "string",
+              "description": "the corresponding Status for a line item",
+              "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
+              "example": "posted"
+              },
+              "type": {
+              "type": "string",
+              "description": "The Line Item Type. Either `charge` or `payment`.",
+              "enum": [
+                "charge",
+                "payment"
+              ],
+              "example": "charge"
+              },
+              "originating_amount_cents": {
+              "type": "number",
+              "description": "The originating amount of money (in cents) relating to this line item.",
+              "example": "2385"
+              },
+              "balance_amount_cents": {
+              "type": "number",
+              "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+              "example": "2401"
+              },
+              "total_interest_accrued_cents": {
+              "type": "number",
+              "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+              "example": "16"
+              },
+              "total_paid_down_cents": {
+              "type": "number",
+              "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
+              "example": "1125"
+              },
+              "merchant_data": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "name": {
+                "type": "string"
+                },
+                "id": {
+                "type": "string"
+                },
+                "mcc_code": {
+                "type": "number"
+                },
+                "phone_number": {
+                "type": "string",
+                "format": "phonenumber"
+                }
+              }
+              },
+              "effective_at": {
+              "type": "string",
+              "description": "The `Date-Time` that this account became/becomes active",
+              "format": "date-time",
+              "example": "2018-07-20T09:12:30Z"
+              },
+              "created_at": {
+              "type": "string",
+              "description": "The `Date-Time` which the account was created in the API",
+              "format": "date-time",
+              "example": "2018-06-20T09:12:30Z"
+              },
+              "product_id": {
+              "type": "string",
+              "description": "the Product ID of the account",
+              "format": "uuid",
+              "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+              },
+              "description": {
+              "type": "string",
+              "description": "A description of this particular line item if any. More common for adjustments.",
+              "example": "Refund for invalid purchase"
+              },
+              "reference_id": {
+              "type": "string",
+              "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
+              "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+              },
+              "dispute_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The ID for a dispute if present for this line item."
+              },
+              "external_ids": {
+              "type": "array",
+              "description": "An array of static references to ID fields in a third party system.",
+              "items": {
+                "type": "object",
+                "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the External Party",
+                  "example": "Globex Card Processing"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+                }
+              }
+              },
+              "line_item_count": {
+              "type": "string",
+              "description": "Total number of line items for the account."
+              }
+            }
+            }
+          }
+          }
+        }
+        },
+        "404": {
+        "description": "Account not found"
+        }
+      }
+    }
+  },
+  "/accounts/{account_id}/line_items/{line_item_id}": {
+    "get": {
+    "tags": ["line_items", "accounts"],
+    "summary": "Get information on a specific line item for a specific account",
+    "description": "",
+    "operationId": "getAccountLineItem",
+    "parameters": [
+      {
+      "name": "account_id",
+      "in": "path",
+      "description": "Account ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid",
+        "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+      }
+      },
+      {
+      "name": "line_item_id",
+      "in": "path",
+      "description": "Line Item ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid",
+        "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
+      }
+      },
+      {
+      "name": "effective_as_of_date",
+      "in": "query",
+      "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+      "required": false,
+      "style": "form",
+      "explode": true,
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+      }
+    ],
+    "responses": {
+      "204": {
+      "$ref": "#/components/responses/LineItem"
+      }
+    }
+    }
+  },
+  "/accounts/{account_id}/line_items/charges": {
+    "post": {
+    "tags": ["line_items", "charges", "accounts"],
+    "summary": "Create a charge for a specific account",
+    "description": "",
+    "operationId": "createAccountCharge",
+    "parameters": [
+      {
+      "name": "account_id",
+      "in": "path",
+      "description": "Account ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid"
+      }
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/CreateCharge"
+    },
+    "responses": {
+      "204": {
+      "$ref": "#/components/responses/CreateCharge"
+      },
+      "401": {
+      "description": "You are not authenticated"
+      },
+      "403": {
+      "description": "You are not authorized"
+      },
+      "404": {
+      "description": "Account not found"
+      }
+    }
+    }
+  },
+  "/accounts/{account_id}/line_items/payments": {
+    "post": {
+    "tags": ["line_items", "payments", "accounts"],
+    "summary": "Create a payment for a specific account",
+    "description": "",
+    "operationId": "createAccountPayment",
+    "parameters": [
+      {
+      "name": "account_id",
+      "in": "path",
+      "description": "Account ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid"
+      }
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/CreatePayment"
+    },
+    "responses": {
+      "204": {
+      "$ref": "#/components/responses/CreatePayment"
+      },
+      "404": {
+      "description": "Account not found"
+      }
+    }
+    }
+  },
+  "/accounts/{account_id}/line_items/{line_item_id}/disputes": {
+    "post": {
+    "tags": ["accounts", "line_items", "disputes"],
+    "summary": "Create a dispute for a specific account's line item",
+    "description": "",
+    "operationId": "createDispute",
+    "parameters": [
+      {
+      "name": "account_id",
+      "in": "path",
+      "description": "Account ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid"
+      }
+      },
+      {
+      "name": "line_item_id",
+      "in": "path",
+      "description": "Line Item ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid"
+      }
+      }
+    ],
+    "responses": {
+      "204": {
+      "description": "Response upon successful creation of a dispute",
+      "content": {
+        "application/json": {
+        "schema": {
+          "type": "object",
+          "properties": {
+          "account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "line_item_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "dispute_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+          }
+        }
+        }
+      }
+      },
+      "404": {
+      "description": "Account not found"
+      }
+    }
+    }
+  },
+  "/accounts/{account_id}/statements_list": {
+    "get": {
+    "tags": ["accounts", "summary"],
+    "summary": "Get a list of all current and prior statements for a specific account",
+    "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
+    "operationId": "getAccountStatementsList",
+    "parameters": [
+      {
+      "name": "account_id",
+      "in": "path",
+      "description": "Account ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid"
+      }
+      },
+      {
+      "name": "effective_as_of_date",
+      "in": "query",
+      "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+      "required": false,
+      "style": "form",
+      "explode": true,
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+      }
+    ],
+    "responses": {
+      "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+        "schema": {
+          "type": "object",
+          "description": "Statements for the account.",
+          "properties": {
+          "account_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The Canopy-generated ID for the account",
+            "example": "111eff36-cbec-4119-b188-b76200e804d8"
+          },
+          "effective_as_of_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "example": "2018-07-20T09:10:14Z"
+          },
+          "statements_list": {
+            "type": "array",
+            "description": "An array of statements included in the billing cycle.",
+            "items": {
+            "type": "object",
+            "properties": {
+              "statement_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "A Canopy-generated ID for the statement",
+              "example": "3627809b-ff07-4e41-b127-44260efb3b80"
+              },
+              "available_credit_balance": {
+              "type": "number",
+              "description": "The total available credit balance (in cents) for the account.",
+              "example": "600000"
+              },
+              "total_balance": {
+              "type": "number",
+              "description": "The total balance (in cents) associated with the account.",
+              "example": "400000"
+              },
+              "min_pay_due_date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The `Date-Time` at which the minimum payment is due."
+              },
+              "min_pay_amount_cents": {
+              "type": "number",
+              "description": "The minimum amount (in cents) due for this statement."
+              },
+              "billing_cycle_start_date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+              },
+              "billing_cycle_end_date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+              }
+            }
+            }
+          }
+          }
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "/accounts/{account_id}/statements": {
+    "get": {
+    "tags": ["accounts", "summary"],
+    "summary": "Get a statement for a given date for a specific account.",
+    "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
+    "operationId": "getAccountStatement",
+    "parameters": [
+      {
+      "name": "account_id",
+      "in": "path",
+      "description": "Account ID",
+      "required": true,
+      "style": "simple",
+      "explode": false,
+      "schema": {
+        "type": "string",
+        "format": "uuid"
+      }
+      },
+      {
+      "name": "effective_as_of_date",
+      "in": "query",
+      "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+      "required": false,
+      "style": "form",
+      "explode": true,
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+      }
+    ],
+    "responses": {
+      "200": {
+      "$ref": "#/components/responses/AccountStatement"
+      },
+      "404": {
+      "description": "Account not found"
+      }
+    }
+    }
+  }
+  },
+  "components": {
+  "securitySchemes": {
+    "api_key": {
+    "type": "apiKey",
+    "name": "x-api-key",
+    "in": "header"
+    }
+  },
+  "schemas": {
+    "Account": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "account_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "This is generated by Canopy. A unique ID for the account.",
+          "example": "5fb3a288-5f6c-440f-b079-b06c828b7768"
+        },
+        "account_status": {
+          "type": "string",
+          "description": "The Status of the Account. Active upon account creation.",
+          "example": "suspended"
+        },
+        "account_status_subtype": {
+          "type": "string",
+          "description": "The subtype of the Status of the Account. Null upon account creation.",
+          "example": "suspended-bankruptcy"
+        },
+        "effective_at": {
+          "type": "string",
+          "description": "The `Date-Time` that this account became/becomes active.",
+          "format": "date-time",
+          "example": "2018-03-20T09:12:28Z"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The `Date-Time` which the account was created in the API.",
+          "format": "date-time",
+          "example": "2017-06-20T09:12:14Z"
+        },
+        "product": {
+          "description": "The product associated with the account",
+          "$ref": "#/components/schemas/Product_MVP"
+        },
+        "external_account_ids": {
+          "type": "array",
+          "description": "An Array of External Account IDs. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+              "type": "string",
+              "description": "Name of the External Party",
+              "example": "Umbrella Corporation"
+              },
+              "id": {
+              "type": "string",
+              "description": "External Account ID",
+              "example": "22445702-a389-431f-927d-07b8d0750787"
+              }
+            }
+          }
+        },
+        "total_balance": {
+          "type": "number",
+          "description": "The total balance (in cents) associated with the account.",
+          "example": "300000"
+        },
+        "credit_limit_cents": {
+          "type": "integer",
+          "description": "Total Amount (in cents) that this account can borrow.",
+          "example": "400000"
+        },
+        "rate": {
+          "type": "number",
+          "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
+          "example": "6.2"
+        },
+        "available_credit_balance": {
+          "type": "number",
+          "description": "The total available credit balance (in cents) for the account.",
+          "example": "100000"
+        }
+      }
+    },
+    "Account_Statement": {
+      "type": "object",
+      "description": "Statement for an account for a given billing cycle",
+      "properties": {
+        "available_credit_balance": {
+          "type": "number",
+          "description": "The total available credit balance (in cents) for the account.",
+          "example": "600000"
+        },
+        "total_balance": {
+          "type": "number",
+          "description": "The total balance (in cents) associated with the account.",
+          "example": "400000"
+        },
+        "account_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The Canopy-generated ID for the account",
+          "example": "111eff36-cbec-4119-b188-b76200e804d8"
+        },
+        "effective_as_of_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+          "example": "2018-07-20T09:10:14Z"
+        },
+        "min_pay_due_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The `Date-Time` at which the minimum payment is due."
+        },
+        "min_pay_amount_cents": {
+          "type": "number",
+          "description": "The minimum amount (in cents) due for this statement."
+        },
+        "billing_cycle_start_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+        },
+        "billing_cycle_end_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+        },
+        "line_items": {
+          "type": "array",
+          "description": "An array of line items included in the billing cycle.",
+          "items": {
+          "$ref": "#/components/schemas/Line_Item_MVP"
+          }
+        }
+      }
+    },
+    "Product_MVP": {
+      "required": ["policies", "product_id"],
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The Canopy-generated ID for the product.",
+          "example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of Product, i.e. Express Card.",
+          "example": "Blue Cash Express"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the Product.",
+          "example": "Student credit card."
+        },
+        "created_at": {
+        "type": "string",
+        "description": "The `Date-Time` that this product was created on the server.",
+        "format": "date-time",
+        "example": "2019-03-20T09:12:28Z"
+        },
+        "type": {
+        "type": "string",
+        "description": "The Type of Product",
+        "enum": ["CREDIT"],
+        "example": "CREDIT"
+        },
+        "status": {
+        "type": "string",
+        "description": "The status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
+        "enum": ["VALID"],
+        "example": "VALID"
+        },
+        "policies": {
+        "type": "object",
+        "description": "An object of policies that drive product behavior.",
+        "properties": {
+          "base_policy_config": {
+          "$ref": "#/components/schemas/Base_Policy_Config_MVP"
+          }
+        }
+        },
+        "product_summary": {
+        "$ref": "#/components/schemas/Product_Summary"
+        },
+        "default_attributes": {
+        "type": "object",
+        "properties": {
+          "rate": {
+          "type": "number",
+          "description": "The percent default rate for this interest policy (i.e. 3.2 means a 3.2% rate). This default rate can be overridden on a per-account basis if a `rate` is selected at the time of assigning an account to a product. Rates for an account can also be updated post-account creation.",
+          "example": 3.2
+          },
+          "credit_limit_cents": {
+          "type": "integer",
+          "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
+          "example": 600000
+          }
+        }
+        }
+      }
+    },
+    "Product_Summary": {
+    "type": "object",
+    "description": "Summary of product information.",
+    "properties": {
+      "accounts_overview": {
+      "type": "object",
+      "properties": {
+        "account_count_total": {
+        "type": "integer",
+        "description": "Total number of accounts under the product.",
+        "example": 10005
+        },
+        "account_count_delinquent": {
+        "type": "integer",
+        "description": "Total number of delinquent accounts under the product.",
+        "example": 200
+        }
+      }
+      },
+      "total_credit_issued_cents": {
+      "type": "integer",
+      "description": "Total amount (in cents) of credit issued to accounts under the product.",
+      "example": 25500000
+      },
+      "utilization_rate": {
+      "type": "number",
+      "description": "The percent utilization rate of the product.",
+      "example": 30.34
+      },
+      "product_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The Canopy-generated ID for the product.",
+      "example": "ca3cf4e9-5048-4461-a763-8f67b46dfd4d"
+      },
+      "effective_as_of_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The `Date-Time` you would like the system to return the data as of. IE \"tell me what the product information was as if I had asked on `2020-01-20 00:00:00 EST`\". If empty defaults to current time.",
+      "example": "2017-06-20T09:12:14Z"
+      }
+    }
+    },
+    "Base_Policy_Config_MVP": {
+    "additionalProperties": false,
+    "properties": {
+      "min_pay": {
+      "$ref": "#/components/schemas/Base_Policy_Config_Min_Pay"
+      },
+      "billing_cycle": {
+      "$ref": "#/components/schemas/Base_Policy_Config_Billing_Cycle"
+      },
+      "interest_policies": {
+      "$ref": "#/components/schemas/Interest_Policy_MVP"
+      },
+      "close_of_business_and_timezone": {
+      "type": "string",
+      "description":"Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+      "format": "date-time",
+      "example": "2020-03-20T09:12:28Z"
+      }
+    },
+    "description": "A base group of policies that define a Product"
+   },
+    "Base_Policy_Config_Min_Pay": {
+    "type": "object",
+    "properties": {
+      "percentage": {
+      "type": "number",
+      "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
+      "example": "20"
+      }
+    },
+    "description": "The configured minimum payment required for a given pay period."
+    },
+    "Base_Policy_Config_Billing_Cycle": {
+    "type": "object",
+    "properties": {
+      "period": {
+      "type": "string",
+      "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
+      "format": "interval",
+      "example": "1 month"
+      },
+      "billing_due_date_interval": {
+      "type": "string",
+      "description": "The amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
+      "format": "interval",
+      "example": "25 days"
+      }
+    },
+    "description": "The Billing Cycle Object"
+    },
+    "Interest_Policy_MVP": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "type": {
+      "type": "string",
+      "enum": ["compound"],
+      "example": "compound"
+      },
+      "method": {
+      "type": "string",
+      "description": "The actual base formula used to calculate and assign interest.",
+      "enum": ["average daily balance"],
+      "example": "average daily balance"
+      },
+      "day_calc_type": {
+      "type": "string",
+      "description": "Affects the base calculation by determining how many days there are in a given year.",
+      "enum": ["365"],
+      "example": "365"
+      },
+      "interest_calc_time": {
+      "type": "string",
+      "description": "Interest for this policy is calculated at this time every X interval.",
+      "format": "date-time",
+      "example": "05:00:00"
+      }
+    },
+    "description": "The Interest Policy Object"
+    },
+    "Line_Item_MVP": {
+    "required": ["account_id", "effective_at", "line_item_status", "line_item_id", "product_id", "type", "amount_cents", "created_at", "reference_id"],
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "account_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The account associated with the line item",
+      "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
+      },
+      "line_item_id": {
+      "type": "string",
+      "format": "uuid",
+      "example": "ce9ed376-f151-435f-a59c-9e3cc183bbea"
+      },
+      "line_item_status": {
+      "type": "string",
+      "description": "the corresponding Status for a line item",
+      "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
+      "example": "posted"
+      },
+      "type": {
+      "type": "string",
+      "description": "The Line Item Type. Either `charge` or `payment`.",
+      "enum": [ "charge", "payment" ],
+      "example": "charge"
+      },
+      "originating_amount_cents": {
+      "type": "number",
+      "description": "The originating amount of money (in cents) relating to this line item."
+      },
+      "balance_amount_cents": {
+      "type": "number",
+      "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute."
+      },
+      "total_interest_accrued_cents": {
+      "type": "number",
+      "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+      "example": "16"
+      },
+      "total_paid_down_cents": {
+      "type": "number",
+      "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
+      "example": "1125"
+      },
+      "rate": {
+      "type": "number",
+      "description": "The percentage rate applied to this line item (i.e. 15.5 means 15.5%). If it was not set at the time of charge creation, its default value is the default rate of the account.",
+      "example": "15.5%"
+      },
+      "merchant_data": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "name": {
+        "type": "string"
+        },
+        "id": {
+        "type": "string"
+        },
+        "mcc_code": {
+        "type": "number"
+        },
+        "phone_number": {
+        "type": "string",
+        "format": "phonenumber"
+        }
+      }
+      },
+      "effective_at": {
+      "type": "string",
+      "description": "The `Date-Time` that this line item became/becomes active",
+      "format": "date-time",
+      "example": "2018-07-20T09:12:30Z"
+      },
+      "created_at": {
+      "type": "string",
+      "description": "The `Date-Time` which the line item was created in the API",
+      "format": "date-time",
+      "example": "2018-06-20T09:12:30Z"
+      },
+      "product_id": {
+      "type": "string",
+      "description": "the Product ID of the account",
+      "format": "uuid",
+      "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+      },
+      "description": {
+      "type": "string",
+      "description": "A description of this particular line item if any. More common for adjustments.",
+      "example": "Refund for invalid purchase"
+      },
+      "reference_id": {
+      "type": "string",
+      "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
+      "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+      },
+      "dispute_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The ID for a dispute if present for this line item."
+      },
+      "external_ids": {
+      "type": "array",
+      "description": "An array of static references to ID fields in a third party system.",
+      "items": {
+        "type": "object",
+        "properties": {
+        "name": {
+        "type": "string",
+        "description": "Name of the External Party",
+        "example": "Globex Card Processing"
+        },
+        "id": {
+        "type": "string",
+        "description": "External Account ID",
+        "example": "22445702-a389-431f-927d-07b8d0750787"
+        }
+        }
+      }
+      }
+    },
+    "description": "An individual charge, payment, fee, or otherwise financial event that is used to calculate balances."
+    }
+  },
+  "requestBodies": {
+    "CreateProduct": {
+    "description": "",
+    "required": true,
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+        "name": {
+          "type": "string",
+          "description": "The Name of the Product",
+          "example": "Blue Cash Express"
+        },
+        "type": {
+          "type": "string",
+          "description": "The Type of Product. If not included, defaults to `credit`",
+          "enum": ["credit"],
+          "example": "credit"
+        },
+        "default_rate": {
+          "type": "number",
+          "description": "The percentage default rate for accounts created under this interest policy (i.e. 5.2 indicates a 5.2% interest rate). You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+          "example": "5.2"
+        },
+        "default_credit_limit_cents": {
+          "type": "integer",
+          "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+          "example": "700000"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the Product.",
+          "example": "Consumer credit card"
+        },
+        "status": {
+          "type": "string",
+          "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
+          "enum": ["draft, live"],
+          "example": "draft"
+        },
+        "policies": {
+          "type": "object",
+          "description": "An Object of policies that drive Product behaviour.",
+          "properties": {
+          "base_policy_config": {
+            "$ref": "#/components/schemas/Base_Policy_Config_MVP"
+          }
+          }
+        }
+        }
+      }
+      }
+    }
+    },
+    "CreateAccount": {
+    "description": "Create a new account",
+    "required": true,
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "required": ["product_id"],
+        "properties": {
+        "product_id": {
+          "type": "string",
+          "description": "the Product ID of the account",
+          "format": "uuid",
+          "example": "d119341c-47fd-4a55-bce7-28406dacfa20"
+        },
+        "external_ids": {
+          "type": "array",
+          "description": "An array of static references to ID fields in a third party system.",
+          "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+            "type": "string",
+            "description": "Name of the External Party",
+            "example": "Globex Corporation"
+            },
+            "id": {
+            "type": "string",
+            "description": "External Account ID",
+            "example": "22445702-a389-431f-927d-07b8d0750787"
+            }
+          }
+          }
+        },
+        "credit_limit_cents": {
+          "type": "integer",
+          "description": "Total Amount (in cents) that this account can borrow.",
+          "example": "400000"
+        },
+        "rate": {
+          "type": "number",
+          "description": "The percentage interest applied to the account (i.e. 6.2%)",
+          "example": "6.2"
+        }
+        }
+      }
+      }
+    }
+    },
+    "CreateCharge": {
+    "description": "Body of request to create charge",
+    "required": true,
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount_cents", "effective_at", "merchant_data"],
+        "properties": {
+        "amount_cents": {
+          "type": "integer",
+          "description": "The Integer Amount of the Charge in Cents",
+          "example": "200"
+        },
+        "effective_at": {
+          "type": "string",
+          "description": "The `Date-Time` that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
+          "format": "date-time",
+          "example": "2020-07-20T09:11:28Z"
+        },
+        "rate": {
+          "type": "number",
+          "description": "The percentage rate to be applied to this charge (i.e. 15.5 means 15.5%). If not included, defaults to the rate for the acount.",
+          "example": "15.5%"
+        },
+        "merchant_data": {
+          "type": "object",
+          "description": "",
+          "required": ["mcc_code"],
+          "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "mcc_code": {
+            "type": "number"
+          },
+          "phone_number": {
+            "type": "string",
+            "format": "phonenumber"
+          }
+          }
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "A unique ID generated in your system to associate with the Charge.",
+          "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+        },
+        "external_ids": {
+          "type": "array",
+          "description": "An array of static references to ID fields in a third party system.",
+          "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+            "type": "string",
+            "description": "Name of the External Party",
+            "example": "Globex Card Processing"
+            },
+            "id": {
+            "type": "string",
+            "description": "External Account ID",
+            "example": "22445702-a389-431f-927d-07b8d0750787"
+            }
+          }
+          }
+        }
+        }
+      }
+      }
+    }
+    },
+    "CreatePayment": {
+    "description": "Body of request to create payment.",
+    "required": true,
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+        "amount_cents": {
+          "type": "integer",
+          "description": "The Integer Amount of the Payment in Cents",
+          "example": "200"
+        },
+        "effective_at": {
+          "type": "string",
+          "description": "The `Date-Time` that the payment should be recorded to the account. Although the payment is being added to Canopy today, it can actually be effective as of 10 days ago.",
+          "format": "date-time",
+          "example": "2020-07-20T09:11:28Z"
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "A unique ID generated in your system to associate with the Payment.",
+          "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+        },
+        "external_ids": {
+          "type": "array",
+          "description": "An array of static references to ID fields in a third party system.",
+          "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+            "type": "string",
+            "description": "Name of the External Party",
+            "example": "Globex Card Processing"
+            },
+            "id": {
+            "type": "string",
+            "description": "External Account ID",
+            "example": "22445702-a389-431f-927d-07b8d0750787"
+            }
+          }
+          }
+        }
+        }
+      }
+      }
+    }
+    }
+  },
+  "responses": {
+    "CreateProduct": {
+    "description": "Product Created",
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the product",
+          "example": "Blue Cash Express"
+        },
+        "product_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "An ID for your newly created product, generated by Canopy.",
+          "example": "44c7298f-b515-4dc3-84b2-21186e1b1d3b"
+        },
+        "status": {
+          "type": "string",
+          "description": "The Status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
+          "example": "live"
+        }
+        }
+      }
+      }
+    }
+    },
+    "CreateAccount": {
+    "description": "New Account Created",
+    "content": {
+      "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/Account"
+      }
+      }
+    }
+    },
+    "UpdateAccount": {
+    "description": "Account Updated",
+    "content": {
+      "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/Account"
+      }
+      }
+    }
+    },
+    "CreateCharge": {
+    "description": "Charge Created",
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+        "line_item_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The ID in Canopy's system for this line item.",
+          "example": "e58b78c3-0df8-4895-b10c-0fa88b266119"
+        }
+        }
+      }
+      }
+    }
+    },
+    "CreatePayment": {
+    "description": "Charge Created",
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+        "line_item_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The ID in Canopy's system for this line item.",
+          "example": "464920a3-d531-422d-adfb-ce61e52255bf"
+        }
+        }
+      }
+      }
+    }
+    },
+    "Account": {
+    "description": "Successful query of information for a specific account",
+    "content": {
+      "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/Account"
+      }
+      }
+    }
+    },
+    "AccountStatement": {
+    "description": "",
+    "content": {
+      "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/Account_Statement"
+      }
+      }
+    }
+    },
+    "ProductAccounts": {
+    "description": "",
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "description": "",
+        "properties": {
+        "current_accounts": {
+          "type": "array",
+          "description": "Array of Accounts that are currently using this Product",
+          "items": {
+          "type": "string",
+          "description": "Account ID",
+          "format": "uuid",
+          "example": "5e860ad7-5fff-4130-844c-ec9ead83a025"
+          }
+        }
+        }
+      }
+      }
+    }
+    },
+    "ProductSummary": {
+    "description": "Response for a request for summary data for a specific product.",
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "description": "Summary of product information",
+        "properties": {
+        "accounts_overview": {
+          "type": "object",
+          "properties": {
+          "account_count_total": {
+            "type": "integer",
+            "description": "Total number of accounts under the product.",
+            "example": 10005
+          },
+          "account_count_delinquent": {
+            "type": "integer",
+            "description": "Total number of delinquent accounts under the product.",
+            "example": 200
+          }
+          }
+        },
+        "total_credit_issued_cents": {
+          "type": "integer",
+          "description": "Total amount (in cents) of credit issued to accounts under the product.",
+          "example": 25500000
+        },
+        "utilization_rate": {
+          "type": "number",
+          "description": "The percent utilization rate of the product.",
+          "example": 30.34
+        },
+        "product_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The Canopy-generated ID for the product.",
+          "example": "ca3cf4e9-5048-4461-a763-8f67b46dfd4d"
+        },
+        "effective_as_of_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE \"tell me what the product information was as if I had asked on `2020-01-20 00:00:00 EST`\". If empty defaults to current time.",
+          "example": "2017-06-20T09:12:14Z"
+        }
+        }
+      }
+      }
+    }
+    },
+    "LineItem": {
+    "description": "Detailed info about a specific line item",
+    "content": {
+      "application/json": {
+      "schema": {
+        "type": "object",
+        "description": "Summary of account information",
+        "properties": {
+        "originating_amount_cents": {
+          "type": "number",
+          "description": "The originating amount of money (in cents) relating to this line item.",
+          "example": "2385"
+        },
+        "balance_amount_cents": {
+          "type": "number",
+          "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+          "example": "2401"
+        },
+        "total_interest_accrued_cents": {
+          "type": "number",
+          "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+          "example": "16"
+        },
+        "total_paid_down_cents": {
+          "type": "number",
+          "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
+          "example": "1125"
+        },
+        "effective_as_of_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+          "example": "2018-07-20T09:10:14Z"
+        },
+        "line_item_details": {
+          "type": "array",
+          "items": {
+          "type": "object",
+          "properties": {
+            "line_item_detail_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "2e9ad65e-3bf0-4be2-8117-a8c992f08774"
+            },
+            "date": {
+            "type": "string",
+            "description": "The date the detail was applied to the line item",
+            "format": "date-time"
+            },
+            "type": {
+            "type": "string",
+            "description": "The type of detail being applied to the line item",
+            "enum": ["payment_split, interest"],
+            "example": "payment_split"
+            },
+            "amount_cents": {
+            "type": "number",
+            "description": "The value, in cents, of this line item detail",
+            "example": "0054"
+            },
+            "balance_cents": {
+            "type": "number",
+            "description": "The balance of the line item, in cents, after this detail is applied",
+            "example": "20988"
+            }
+          }
+          }
+        }
+        }
+      }
+      }
+    }
+    }
+  }
+  }
 }

@@ -1,0 +1,10 @@
+{
+  "description": "Account Updated",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/Account"
+      }
+    }
+  }
+}
