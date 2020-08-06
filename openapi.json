@@ -7,7 +7,7 @@
     "contact": {
       "email": "will@canopyservicing.com"
     },
-      "version": "1.3"
+    "version": "1.3"
   },
   "servers": [
     {
@@ -15,9 +15,11 @@
       "description": "Sandbox"
     }
   ],
-  "security": [{
-    "api_key": []
-  }],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
   "tags": [
     {
       "name": "products",
@@ -39,7 +41,9 @@
   "paths": {
     "/users": {
       "post": {
-        "tags": ["authentication"],
+        "tags": [
+          "authentication"
+        ],
         "summary": "Authenticate to the Canopy Sandbox",
         "operationId": "createSandboxUser",
         "description": "When you create a new user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
@@ -67,10 +71,14 @@
     },
     "/products": {
       "post": {
-        "security": [{
-          "api_key": []
-        }],
-        "tags": ["products"],
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "products"
+        ],
         "summary": "Create a new product",
         "operationId": "createProduct",
         "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
@@ -87,10 +95,14 @@
         }
       },
       "get": {
-        "security": [{
-          "api_key": []
-        }],
-        "tags": ["products"],
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "products"
+        ],
         "summary": "Get all available products",
         "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
         "operationId": "getProducts",
@@ -130,7 +142,9 @@
     },
     "/products/{product_id}": {
       "get": {
-        "tags": ["products"],
+        "tags": [
+          "products"
+        ],
         "summary": "Get info on a particular product",
         "operationId": "getProduct",
         "description": "Using the `product_id` which was generated when the product was launched, retrieve information pertaining to a specific product.",
@@ -167,7 +181,7 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product_MVP"
-                } 
+                }
               }
             }
           },
@@ -177,7 +191,9 @@
         }
       },
       "put": {
-        "tags": ["products"],
+        "tags": [
+          "products"
+        ],
         "summary": "Update an existing product",
         "description": "Add additional configurations to a product. Products must be in the `draft` state to be updated.",
         "parameters": [
@@ -219,7 +235,9 @@
         }
       },
       "delete": {
-        "tags": ["products"],
+        "tags": [
+          "products"
+        ],
         "summary": "Delete an existing product",
         "description": "Delete an existing product. Product `status` must be `draft` to be deleted.",
         "parameters": [
@@ -264,7 +282,10 @@
     },
     "/products/{product_id}/accounts": {
       "get": {
-        "tags": ["products", "accounts"],
+        "tags": [
+          "products",
+          "accounts"
+        ],
         "summary": "Get all accounts created under a specific product",
         "description": "Returns all accounts created under a specific product. Results are paginated.",
         "operationId": "getProductAccounts",
@@ -306,7 +327,10 @@
     },
     "/products/{product_id}/summaries": {
       "get": {
-        "tags": ["accounts", "summary"],
+        "tags": [
+          "accounts",
+          "summary"
+        ],
         "summary": "Get summary details for a specific product.",
         "description": "For analytic purposes, retrieve commonly needed summary statistics computed for a specific product.",
         "operationId": "getProductSummary",
@@ -348,10 +372,14 @@
     },
     "/accounts": {
       "get": {
-        "security": [{
-          "api_key": []
-        }],
-        "tags": ["accounts"],
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "accounts"
+        ],
         "summary": "Get all available Accounts",
         "description": "Get details for all accounts linked to any of your products. Results are sorted by the date the account was created.",
         "operationId": "getAccounts",
@@ -408,13 +436,18 @@
           "404": {
             "description": "No accounts found"
           }
-        } 
+        }
       },
       "post": {
-        "security": [{
-          "api_key": []
-        }],
-        "tags": ["accounts", "programmatic"],
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "accounts",
+          "programmatic"
+        ],
         "summary": "Create a new customer account",
         "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account.",
         "operationId": "createAccount",
@@ -433,7 +466,10 @@
     },
     "/accounts/{account_id}": {
       "get": {
-        "tags": ["accounts", "servicing"],
+        "tags": [
+          "accounts",
+          "servicing"
+        ],
         "summary": "Get a specific Account",
         "description": "",
         "operationId": "getAccount",
@@ -474,7 +510,10 @@
         }
       },
       "put": {
-        "tags": ["accounts", "programmatic"],
+        "tags": [
+          "accounts",
+          "programmatic"
+        ],
         "summary": "Update a customer account",
         "description": "Update `rate` and/or `credit_limit_cents` for an individual account.",
         "operationId": "updateAccount",
@@ -534,7 +573,10 @@
         }
       },
       "delete": {
-        "tags": ["accounts", "servicing"],
+        "tags": [
+          "accounts",
+          "servicing"
+        ],
         "summary": "Delete a specific Account",
         "description": "Deleting an account also deletes all of its associated line items.",
         "operationId": "deleteAccount",
@@ -564,7 +606,10 @@
     },
     "/accounts/{account_id}/line_items": {
       "get": {
-        "tags": ["accounts", "line_items"],
+        "tags": [
+          "accounts",
+          "line_items"
+        ],
         "summary": "Get line items for a specific account.",
         "description": "Line Items for an Account consist of `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
         "operationId": "getAccountLineItems",
@@ -580,7 +625,7 @@
               "type": "string",
               "format": "uuid"
             }
-          }, 
+          },
           {
             "name": "effective_as_of_date",
             "in": "query",
@@ -652,7 +697,17 @@
                       "line_item_status": {
                         "type": "string",
                         "description": "the corresponding Status for a line item",
-                        "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
+                        "enum": [
+                          "posted",
+                          "valid",
+                          "invalid",
+                          "declined",
+                          "authorized",
+                          "void",
+                          "pending",
+                          "successful",
+                          "unsuccessful"
+                        ],
                         "example": "posted"
                       },
                       "type": {
@@ -773,7 +828,10 @@
     },
     "/accounts/{account_id}/line_items/{line_item_id}": {
       "get": {
-        "tags": ["line_items", "accounts"],
+        "tags": [
+          "line_items",
+          "accounts"
+        ],
         "summary": "Get information on a specific line item for a specific account",
         "description": "",
         "operationId": "getAccountLineItem",
@@ -826,7 +884,11 @@
     },
     "/accounts/{account_id}/line_items/charges": {
       "post": {
-        "tags": ["line_items", "charges", "accounts"],
+        "tags": [
+          "line_items",
+          "charges",
+          "accounts"
+        ],
         "summary": "Create a charge for a specific account",
         "description": "",
         "operationId": "createAccountCharge",
@@ -865,7 +927,11 @@
     },
     "/accounts/{account_id}/line_items/payments": {
       "post": {
-        "tags": ["line_items", "payments", "accounts"],
+        "tags": [
+          "line_items",
+          "payments",
+          "accounts"
+        ],
         "summary": "Create a payment for a specific account",
         "description": "",
         "operationId": "createAccountPayment",
@@ -898,7 +964,11 @@
     },
     "/accounts/{account_id}/line_items/{line_item_id}/disputes": {
       "post": {
-        "tags": ["accounts", "line_items", "disputes"],
+        "tags": [
+          "accounts",
+          "line_items",
+          "disputes"
+        ],
         "summary": "Create a dispute for a specific account's line item",
         "description": "",
         "operationId": "createDispute",
@@ -936,18 +1006,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                  "account_id": {
-                    "type": "string",
-                    "format": "uuid"
-                  },
-                  "line_item_id": {
-                    "type": "string",
-                    "format": "uuid"
-                  },
-                  "dispute_id": {
-                    "type": "string",
-                    "format": "uuid"
-                  }
+                    "account_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "line_item_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "dispute_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
                   }
                 }
               }
@@ -961,7 +1031,10 @@
     },
     "/accounts/{account_id}/statements_list": {
       "get": {
-        "tags": ["accounts", "summary"],
+        "tags": [
+          "accounts",
+          "summary"
+        ],
         "summary": "Get a list of all current and prior statements for a specific account",
         "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
         "operationId": "getAccountStatementsList",
@@ -1066,7 +1139,10 @@
     },
     "/accounts/{account_id}/statements": {
       "get": {
-        "tags": ["accounts", "summary"],
+        "tags": [
+          "accounts",
+          "summary"
+        ],
         "summary": "Get a statement for a given date for a specific account.",
         "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
         "operationId": "getAccountStatement",
@@ -1248,7 +1324,10 @@
         }
       },
       "Product_MVP": {
-        "required": ["policies", "product_id"],
+        "required": [
+          "policies",
+          "product_id"
+        ],
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -1277,13 +1356,17 @@
           "type": {
             "type": "string",
             "description": "The Type of Product",
-            "enum": ["CREDIT"],
+            "enum": [
+              "CREDIT"
+            ],
             "example": "CREDIT"
           },
           "status": {
             "type": "string",
             "description": "The status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
-            "enum": ["VALID"],
+            "enum": [
+              "VALID"
+            ],
             "example": "VALID"
           },
           "policies": {
@@ -1372,7 +1455,7 @@
           },
           "close_of_business_and_timezone": {
             "type": "string",
-            "description":"Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+            "description": "Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
             "format": "date-time",
             "example": "2020-03-20T09:12:28Z"
           }
@@ -1414,19 +1497,25 @@
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["compound"],
+            "enum": [
+              "compound"
+            ],
             "example": "compound"
           },
           "method": {
             "type": "string",
             "description": "The actual base formula used to calculate and assign interest.",
-            "enum": ["average daily balance"],
+            "enum": [
+              "average daily balance"
+            ],
             "example": "average daily balance"
           },
           "day_calc_type": {
             "type": "string",
             "description": "Affects the base calculation by determining how many days there are in a given year.",
-            "enum": ["365"],
+            "enum": [
+              "365"
+            ],
             "example": "365"
           },
           "interest_calc_time": {
@@ -1439,7 +1528,17 @@
         "description": "The Interest Policy Object"
       },
       "Line_Item_MVP": {
-        "required": ["account_id", "effective_at", "line_item_status", "line_item_id", "product_id", "type", "amount_cents", "created_at", "reference_id"],
+        "required": [
+          "account_id",
+          "effective_at",
+          "line_item_status",
+          "line_item_id",
+          "product_id",
+          "type",
+          "amount_cents",
+          "created_at",
+          "reference_id"
+        ],
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -1457,13 +1556,26 @@
           "line_item_status": {
             "type": "string",
             "description": "the corresponding Status for a line item",
-            "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
+            "enum": [
+              "posted",
+              "valid",
+              "invalid",
+              "declined",
+              "authorized",
+              "void",
+              "pending",
+              "successful",
+              "unsuccessful"
+            ],
             "example": "posted"
           },
           "type": {
             "type": "string",
             "description": "The Line Item Type. Either `charge` or `payment`.",
-            "enum": [ "charge", "payment" ],
+            "enum": [
+              "charge",
+              "payment"
+            ],
             "example": "charge"
           },
           "originating_amount_cents": {
@@ -1572,7 +1684,9 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["name"],
+              "required": [
+                "name"
+              ],
               "additionalProperties": false,
               "properties": {
                 "name": {
@@ -1583,7 +1697,9 @@
                 "type": {
                   "type": "string",
                   "description": "The Type of Product. If not included, defaults to `credit`",
-                  "enum": ["credit"],
+                  "enum": [
+                    "credit"
+                  ],
                   "example": "credit"
                 },
                 "default_rate": {
@@ -1604,7 +1720,9 @@
                 "status": {
                   "type": "string",
                   "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
-                  "enum": ["draft, live"],
+                  "enum": [
+                    "draft, live"
+                  ],
                   "example": "draft"
                 },
                 "policies": {
@@ -1628,7 +1746,9 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["product_id"],
+              "required": [
+                "product_id"
+              ],
               "properties": {
                 "product_id": {
                   "type": "string",
@@ -1678,7 +1798,11 @@
             "schema": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["amount_cents", "effective_at", "merchant_data"],
+              "required": [
+                "amount_cents",
+                "effective_at",
+                "merchant_data"
+              ],
               "properties": {
                 "amount_cents": {
                   "type": "integer",
@@ -1699,7 +1823,9 @@
                 "merchant_data": {
                   "type": "object",
                   "description": "",
-                  "required": ["mcc_code"],
+                  "required": [
+                    "mcc_code"
+                  ],
                   "properties": {
                     "name": {
                       "type": "string"
@@ -1883,7 +2009,7 @@
       "Account": {
         "description": "Successful query of information for a specific account",
         "content": {
-            "application/json": {
+          "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Account"
             }
@@ -1909,9 +2035,9 @@
               "description": "",
               "properties": {
                 "current_accounts": {
-                    "type": "array",
-                    "description": "Array of Accounts that are currently using this Product",
-                    "items": {
+                  "type": "array",
+                  "description": "Array of Accounts that are currently using this Product",
+                  "items": {
                     "type": "string",
                     "description": "Account ID",
                     "format": "uuid",
@@ -2025,7 +2151,9 @@
                       "type": {
                         "type": "string",
                         "description": "The type of detail being applied to the line item",
-                        "enum": ["payment_split, interest"],
+                        "enum": [
+                          "payment_split, interest"
+                        ],
                         "example": "payment_split"
                       },
                       "amount_cents": {
