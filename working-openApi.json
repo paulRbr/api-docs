@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Canopy Servicing Core API",
-    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `users` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
+    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `Auth Sandbox` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
     "termsOfService": "https://api.canopyservicing.com/terms/",
     "contact": {
       "email": "will@canopyservicing.com"
@@ -102,10 +102,25 @@
         "tags": [
           "users"
         ],
-        "summary": "Create a new user",
+        "summary": "Update an existing user",
         "operationId": "createUser",
         "description": "Users can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
-        "requestBody": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "The ID of the user to be updated.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+							"format": "uuid",
+              "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
+            }
+          }
+				],
+				"requestBody": {
           "$ref": "#/components/requestBodies/CreateUser"
         },
         "responses": {
@@ -1990,7 +2005,77 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/User"
+              "type": "object",
+							"properties": {
+								"name_prefix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Dr."
+								},
+								"first_name": {
+									"type": "string",
+									"description": "User's first name",
+									"example": "Miriam"
+								},
+								"middle_name": {
+									"type": "string",
+									"description": "User's middle name",
+									"example": "Louise"
+								},
+								"last_name": {
+									"type": "string",
+									"description": "User's last name",
+									"example": "Trevino"
+								},
+								"name_suffix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Jr"
+								},
+								"phone_number": {
+									"type": "string",
+									"format": "phonenumber",
+									"description": "Phone number of the user",
+									"example": "555-555-5555"
+								},
+								"address_line_one": {
+									"type": "string",
+									"description": "Address line one",
+									"example": "12 Strawberry Road"
+								},
+								"address_line_two": {
+									"type": "string",
+									"description": "Address line two",
+									"example": "Suite 101"
+								},
+								"address_city": {
+									"type": "string",
+									"description": "Address city",
+									"example": "Atlanta"
+								},
+								"address_state": {
+									"type": "string",
+									"description": "Address state",
+									"example": "GA"
+								},
+								"address_zip": {
+									"type": "string",
+									"description": "Address zip code",
+									"example": "99999-1000"
+								},
+								"ssn": {
+									"type": "string",
+									"description": "Social security number of the user",
+									"example": "888-88-8888"
+								},
+								"accounts": {
+									"type": "array",
+									"description": "An array of accounts to which this User is assigned",
+									"items": {
+										"$ref": "#/components/schemas/Account"
+									}
+								}
+							}
             }
           }
         }
