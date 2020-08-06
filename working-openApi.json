@@ -90,6 +90,68 @@
             "$ref": "#/components/responses/CreateUser"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get all users",
+        "description": "Returns all of your users. Results are paginated.",
+        "operationId": "getUsers",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accounts": {
+                      "type": "array",
+                      "description": "An array of information for all users within the requested range.",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    },
+                    "total_user_count": {
+                      "type": "number",
+                      "description": "Total number of accounts"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unable to get users"
+          }
+        }
       }
     },
     "/users/{user_id}": {
