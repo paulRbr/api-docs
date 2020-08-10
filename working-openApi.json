@@ -122,11 +122,35 @@
               "type": "number",
               "example": "50"
             }
+          },
+					{
+						"name": "search_query",
+						"in": "query",
+						"description": "A search query to be applied to results before the users list is returned. Search by name, phone number, or SSN last-four digits.",
+						"required": false,
+						"style": "form",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					},
+					{
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the users were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Array of Accounts",
+            "description": "Array of Users",
             "content": {
               "application/json": {
                 "schema": {
@@ -180,6 +204,18 @@
 							"format": "uuid",
               "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
             }
+          },
+					{
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE update a user as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
           }
 				],
 				"requestBody": {
@@ -190,7 +226,44 @@
             "$ref": "#/components/responses/CreateUser"
           }
         }
-      }
+      },
+			"get": {
+				"tags": [
+          "users"
+        ],
+        "summary": "Get a specific user",
+        "description": "Returns summary information for a specific user.",
+        "operationId": "getUser",
+        "parameters": [
+					{
+						"name": "user_id",
+						"in": "path",
+						"description": "The ID of the user to return.",
+						"required": true,
+						"style": "form",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unable to get user"
+          }
+        }
+			}
     },
     "/products": {
       "post": {
