@@ -1849,21 +1849,21 @@
 					}
 				]
 			},
-      "Admin_User": {
+      "API_User": {
         "type": "object",
         "properties": {
           "role": {
             "type": "string",
-            "description": "The role of this Admin User.",
+            "description": "The role of this API User.",
             "enum": [
               "superuser"
             ],
             "example": "superuser"
           },
-          "admin_user_id": {
+          "api_user_id": {
             "type": "string",
             "format": "uuid",
-            "description": "A Canopy-generated unique ID for the Admin User",
+            "description": "A Canopy-generated unique ID for the API User",
             "example": "b10fccd1-6c6f-4678-9240-6094296c0a91"
           },
           "name_prefix": {
@@ -1894,11 +1894,11 @@
           "email": {
             "type": "string",
             "format": "email",
-            "description": "The email address of this Admin User"
+            "description": "The email address of this API User"
           },
           "password_hash": {
             "type": "string",
-            "description": "The password hash for this Admin User",
+            "description": "The password hash for this API User",
             "example": "64A6DDFFF2BA644F1F0F972EC3CB39C9EA7C6C1C16DAE02B83F14B070B27DF23"
           }
         }
@@ -1919,8 +1919,8 @@
             "example": "5fb3a288-5f6c-440f-b079-b06c828b7768"
           },
           "owner": {
-            "description": "The Admin User currently assigned to the Ticket",
-            "$ref": "#/components/schemas/Admin_User"
+            "description": "The API User currently assigned to the Ticket",
+            "$ref": "#/components/schemas/API_User"
           },
           "notes": {
             "type": "array",
@@ -1972,8 +1972,8 @@
             "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
           },
           "author": {
-            "description": "The Admin User who authored the note",
-            "$ref": "#/components/schemas/Admin_User"
+            "description": "The API User who authored the note",
+            "$ref": "#/components/schemas/API_User"
           },
 					"purpose": {
 						"description": "The purpose for which the note was assigned.",
