@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Canopy Servicing Core API",
-    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `Auth Sandbox` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
+    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `Auth Sandbox` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
     "termsOfService": "https://api.canopyservicing.com/terms/",
     "contact": {
       "email": "will@canopyservicing.com"
@@ -30,12 +30,12 @@
       "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
     },
     {
-      "name": "users",
-      "description": "Onboard users into your system, so they can begin using your credit products"
+      "name": "customers",
+      "description": "Onboard customers into your system, so they can begin using your credit products"
     },
     {
       "name": "accounts",
-      "description": "Manage the way your users use credit products you've launched in Canopy"
+      "description": "Manage the way your customers use credit products you've launched in Canopy"
     }
   ],
   "paths": {
@@ -46,7 +46,7 @@
         ],
         "summary": "Authenticate to the Canopy Sandbox",
         "operationId": "createSandboxUser",
-        "description": "When you create a new user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
+        "description": "When you create a new root user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
         "responses": {
           "200": {
             "description": "Route for authenticating to the Canopy Sandbox",
@@ -69,35 +69,14 @@
         }
       }
     },
-    "/users": {
-      "post": {
-        "security": [
-          {
-            "api_key": []
-          }
-        ],
-        "tags": [
-          "users"
-        ],
-        "summary": "Create a new user",
-        "operationId": "createUser",
-        "description": "Users can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreateUser"
-        },
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/CreateUser"
-          }
-        }
-      },
+		"/customer_accounts": {
       "get": {
         "tags": [
-          "users"
+          "customers, accounts"
         ],
-        "summary": "Get all users",
-        "description": "Returns all of your users. Results are paginated.",
-        "operationId": "getUsers",
+        "summary": "Get all accounts for all customers",
+        "description": "Returns all accounts from the perspective of each customer. For instance, if one account has two customers, these are reflected as two separate items in the response array. Similarly, if one customer has multiple accounts, each account is reflected as a separate item in the response array.",
+        "operationId": "getCustomersAccounts",
         "parameters": [
           {
             "name": "offset",
@@ -126,7 +105,7 @@
 					{
 						"name": "search_query",
 						"in": "query",
-						"description": "A search query to be applied to results before the users list is returned. Search by name, phone number, or SSN last-four digits.",
+						"description": "A search query to be applied to results before the customer accounts list is returned. Search by name, phone number, account ID, or SSN last-four digits.",
 						"required": false,
 						"style": "form",
 						"example": true,
@@ -138,7 +117,7 @@
 					{
             "name": "effective_as_of_date",
             "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the users were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -150,7 +129,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Array of Users",
+            "description": "Array of Customers and their corresponding Accounts",
             "content": {
               "application/json": {
                 "schema": {
@@ -158,12 +137,121 @@
                   "properties": {
                     "accounts": {
                       "type": "array",
-                      "description": "An array of information for all users within the requested range.",
-                      "items": {
-                        "$ref": "#/components/schemas/User"
+                      "description": "An array of information for all customer-account correspondences within the requested range.",
+											"items": {
+												"$ref": "#/components/schemas/CustomerAccount"
                       }
                     },
-                    "total_user_count": {
+                    "total_customer_account_count": {
+                      "type": "number",
+                      "description": "Total number of unique customer-account correspondences"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unable to get customers"
+          }
+        }
+      }
+		},
+    "/customers": {
+      "post": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "customers"
+        ],
+        "summary": "Create a new customer",
+        "operationId": "CreateCustomer",
+        "description": "Customer can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateCustomer"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateCustomer"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "customers"
+        ],
+        "summary": "Get all customers",
+        "description": "Returns all of your customers. Results are paginated.",
+        "operationId": "getCustomers",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
+          },
+					{
+						"name": "search_query",
+						"in": "query",
+						"description": "A search query to be applied to results before the customers list is returned. Search by name, phone number, or SSN last-four digits.",
+						"required": false,
+						"style": "form",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					},
+					{
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accounts": {
+                      "type": "array",
+                      "description": "An array of information for all customers within the requested range.",
+                      "items": {
+                        "$ref": "#/components/schemas/Customer"
+                      }
+                    },
+                    "total_customer_count": {
                       "type": "number",
                       "description": "Total number of accounts"
                     }
@@ -173,12 +261,12 @@
             }
           },
           "404": {
-            "description": "Unable to get users"
+            "description": "Unable to get customers"
           }
         }
       }
     },
-    "/users/{user_id}": {
+    "/customers/{customer_id}": {
       "put": {
         "security": [
           {
@@ -186,16 +274,16 @@
           }
         ],
         "tags": [
-          "users"
+          "customers"
         ],
-        "summary": "Update an existing user",
-        "operationId": "createUser",
-        "description": "Users can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
+        "summary": "Update an existing customer",
+        "operationId": "CreateCustomer",
+        "description": "Customers can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
         "parameters": [
           {
-            "name": "user_id",
+            "name": "customer_id",
             "in": "query",
-            "description": "The ID of the user to be updated.",
+            "description": "The ID of the customer to be updated.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -208,7 +296,7 @@
 					{
             "name": "effective_as_of_date",
             "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE update a user as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE update a customer as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -219,26 +307,26 @@
           }
 				],
 				"requestBody": {
-          "$ref": "#/components/requestBodies/CreateUser"
+          "$ref": "#/components/requestBodies/CreateCustomer"
         },
         "responses": {
           "204": {
-            "$ref": "#/components/responses/CreateUser"
+            "$ref": "#/components/responses/CreateCustomer"
           }
         }
       },
 			"get": {
 				"tags": [
-          "users"
+          "customers"
         ],
-        "summary": "Get a specific user",
-        "description": "Returns summary information for a specific user.",
-        "operationId": "getUser",
+        "summary": "Get a specific customer",
+        "description": "Returns summary information for a specific customer.",
+        "operationId": "getCustomer",
         "parameters": [
 					{
-						"name": "user_id",
+						"name": "customer_id",
 						"in": "path",
-						"description": "The ID of the user to return.",
+						"description": "The ID of the customer to return.",
 						"required": true,
 						"style": "form",
 						"example": true,
@@ -250,17 +338,17 @@
         ],
         "responses": {
           "200": {
-            "description": "User",
+            "description": "Customer",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Customer"
                 }
               }
             }
           },
           "404": {
-            "description": "Unable to get user"
+            "description": "Unable to get customer"
           }
         }
 			}
@@ -277,7 +365,7 @@
         ],
         "summary": "Create a new product",
         "operationId": "createProduct",
-        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
+        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your customers. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
         "requestBody": {
           "$ref": "#/components/requestBodies/CreateProduct"
         },
@@ -645,7 +733,7 @@
           "programmatic"
         ],
         "summary": "Create a new customer account",
-        "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account.",
+        "description": "An account should be created for each end customer of each of your products. Once created, you will be able to add `line_items` to the account.",
         "operationId": "createAccount",
         "requestBody": {
           "$ref": "#/components/requestBodies/CreateAccount"
@@ -1499,13 +1587,6 @@
               }
             }
           },
-          "users": {
-            "type": "array",
-            "description": "An array of users who have been assigned to the account",
-            "items": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
           "total_balance": {
             "type": "number",
             "description": "The total balance (in cents) associated with the account.",
@@ -1528,6 +1609,23 @@
           }
         }
       },
+			"ComplexAccount": {
+				"allOf": [
+					{"$ref": "#/components/schemas/Account"},
+					{
+						"type": "object",
+						"properties": {
+							"customers": {
+								"type": "array",
+								"description": "An array of customers who have been assigned to the account",
+								"items": {
+									"$ref": "#/components/schemas/ComplexCustomer"
+								}
+							}
+						}
+					}
+				]
+			},
       "Product_MVP": {
         "required": [
           "policies",
@@ -1646,44 +1744,44 @@
           }
         }
       },
-      "User": {
+      "Customer": {
         "type": "object",
         "properties": {
-          "user_id": {
+          "customer_id": {
             "type": "string",
             "format": "uuid",
-            "description": "A Canopy-generated unique ID for the user",
+            "description": "A Canopy-generated unique ID for the customer",
             "example": "78e1bae0-b7dd-4626-bcda-9d7e7b81be30"
           },
           "name_prefix": {
             "type": "string",
-            "description": "Prefix to the user's name",
+            "description": "Prefix to the customer's name",
             "example": "Dr."
           },
           "first_name": {
             "type": "string",
-            "description": "User's first name",
+            "description": "Customer's first name",
             "example": "Miriam"
           },
           "middle_name": {
             "type": "string",
-            "description": "User's middle name",
+            "description": "Customer's middle name",
             "example": "Louise"
           },
           "last_name": {
             "type": "string",
-            "description": "User's last name",
+            "description": "Customer's last name",
             "example": "Trevino"
           },
           "name_suffix": {
             "type": "string",
-            "description": "Prefix to the user's name",
+            "description": "Prefix to the customer's name",
             "example": "Jr"
           },
           "phone_number": {
             "type": "string",
             "format": "phonenumber",
-            "description": "Phone number of the user",
+            "description": "Phone number of the customer",
             "example": "555-555-5555"
           },
           "address_line_one": {
@@ -1713,18 +1811,44 @@
           },
           "ssn": {
             "type": "string",
-            "description": "Social security number of the user",
+            "description": "Social security number of the customer",
             "example": "888-88-8888"
-          },
-          "accounts": {
-            "type": "array",
-            "description": "An array of accounts to which this User is assigned",
-            "items": {
-              "$ref": "#/components/schemas/Account"
-            }
           }
         }
       },
+			"ComplexCustomer": {
+				"allOf": [
+					{"$ref": "#/components/schemas/Account"},
+					{
+						"type": "object",
+						"properties": {
+							"accounts": {
+								"type": "array",
+								"description": "An array of Accounts to which this Customer is assigned",
+								"items": {
+									"$ref": "#/components/schemas/ComplexAccount"
+								}
+							}
+						}
+					}
+				]
+			},
+			"CustomerAccount": {
+				"allOf": [
+					{"$ref": "#/components/schemas/Account"},
+					{"$ref": "#/components/schemas/Customer"},
+					{
+						"type": "object",
+						"properties": {
+							"account_role": {
+								"type": "string",
+								"enum": ["primary"],
+								"example": "primary"
+							}
+						}
+					}
+				]
+			},
       "Admin_User": {
         "type": "object",
         "properties": {
@@ -1838,13 +1962,30 @@
           "ticket_id": {
             "type": "string",
             "format": "uuid",
-            "description": "The ID of the ticket to which the Note is assigned",
+            "description": "The ID (if any) of the ticket to which the Note is assigned",
+            "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
+          },
+					"account_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the account to which the Note is assigned",
             "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
           },
           "author": {
             "description": "The Admin User who authored the note",
             "$ref": "#/components/schemas/Admin_User"
-          }
+          },
+					"purpose": {
+						"description": "The purpose for which the note was assigned.",
+						"type": "string",
+						"enum": ["user_update", "new_user", "account_status_change", "credit_adjustment", "debit_adjustment", "general_note"],
+						"example": "debit_adjustment"
+					},
+					"amount": {
+						"description": "The amount (in cents) (if any) associated with the note. For example, when a note pertains to a credit adjustment. I.e. 450 = $4.50",
+						"type": "string",
+						"example": "450"
+					}
         }
       },
       "Base_Policy_Config_MVP": {
@@ -2135,8 +2276,8 @@
           }
         }
       },
-      "CreateUser": {
-        "description": "Create a new user",
+      "CreateCustomer": {
+        "description": "Create a new customer",
         "content": {
           "application/json": {
             "schema": {
@@ -2144,33 +2285,33 @@
 							"properties": {
 								"name_prefix": {
 									"type": "string",
-									"description": "Prefix to the user's name",
+									"description": "Prefix to the customer's name",
 									"example": "Dr."
 								},
 								"first_name": {
 									"type": "string",
-									"description": "User's first name",
+									"description": "Customer's first name",
 									"example": "Miriam"
 								},
 								"middle_name": {
 									"type": "string",
-									"description": "User's middle name",
+									"description": "Customer's middle name",
 									"example": "Louise"
 								},
 								"last_name": {
 									"type": "string",
-									"description": "User's last name",
+									"description": "Customer's last name",
 									"example": "Trevino"
 								},
 								"name_suffix": {
 									"type": "string",
-									"description": "Prefix to the user's name",
+									"description": "Prefix to the customer's name",
 									"example": "Jr"
 								},
 								"phone_number": {
 									"type": "string",
 									"format": "phonenumber",
-									"description": "Phone number of the user",
+									"description": "Phone number of the customer",
 									"example": "555-555-5555"
 								},
 								"address_line_one": {
@@ -2200,12 +2341,12 @@
 								},
 								"ssn": {
 									"type": "string",
-									"description": "Social security number of the user",
+									"description": "Social security number of the customer",
 									"example": "888-88-8888"
 								},
 								"accounts": {
 									"type": "array",
-									"description": "An array of accounts to which this User is assigned",
+									"description": "An array of accounts to which this Customer is assigned",
 									"items": {
 										"$ref": "#/components/schemas/Account"
 									}
@@ -2522,12 +2663,12 @@
           }
         }
       },
-      "CreateUser": {
-        "description": "New User Created",
+      "CreateCustomer": {
+        "description": "New Customer Created",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/User"
+              "$ref": "#/components/schemas/Customer"
             }
           }
         }
