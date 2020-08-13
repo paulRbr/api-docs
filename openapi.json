@@ -16,7 +16,7 @@
 		},
 		{
 			"title": "Authentication",
-			"content": "**Sandbox** \n \n To Authenticate to our Sandbox environment, no prior contact with our team is required (though we'd certainly love to connect!). Simply make an unauthenticated `POST` request to `https://sandbox.canopyservicing.com/auth_sandbox`. The response body returns a unique `api_user_id`. \n \n For any subsequent calls to our API, include a header `x-api-key` whose value is this unique `api_user_id` as part of your request. This lets us know that you are submitting a valid Sandbox request and grants you access to our entire Sandbox API. \n \n **Production** \n \n To request production credentials, [contact our team](mailto:anurag@canopyservicing.com)."
+			"content": "**Sandbox** \n \n To Authenticate to our Sandbox environment, no prior contact with our team is required (though we'd certainly love to connect!). Simply make an unauthenticated `POST` request to `https://sandbox.canopyservicing.com/users`. The response body returns a unique `api_user_id`. \n \n For any subsequent calls to our API, include a header `x-api-key` whose value is this unique `api_user_id` as part of your request. This lets us know that you are submitting a valid Sandbox request and grants you access to our entire Sandbox API. \n \n **Production** \n \n To request production credentials, [contact our team](mailto:anurag@canopyservicing.com)."
 		}
 	],
   "servers": [

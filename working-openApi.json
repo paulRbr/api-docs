@@ -2,13 +2,23 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Canopy Servicing Core API",
-    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `Auth Sandbox` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
+    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://admin.canopyservicing.com), and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.",
     "termsOfService": "https://api.canopyservicing.com/terms/",
     "contact": {
       "email": "will@canopyservicing.com"
     },
     "version": "1.3"
-  },
+	},
+	"x-topics": [
+		{
+			"title": "Getting Started",
+			"content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
+		},
+		{
+			"title": "Authentication",
+			"content": "**Sandbox** \n \n To Authenticate to our Sandbox environment, no prior contact with our team is required (though we'd certainly love to connect!). Simply make an unauthenticated `POST` request to `https://sandbox.canopyservicing.com/auth_sandbox`. The response body returns a unique `api_user_id`. \n \n For any subsequent calls to our API, include a header `x-api-key` whose value is this unique `api_user_id` as part of your request. This lets us know that you are submitting a valid Sandbox request and grants you access to our entire Sandbox API. \n \n **Production** \n \n To request production credentials, [contact our team](mailto:anurag@canopyservicing.com)."
+		}
+	],
   "servers": [
     {
       "url": "https://sandbox.canopyservicing.com",
@@ -24,7 +34,11 @@
     {
       "name": "products",
       "description": "Create and launch credit products within the Canopy system."
-    },
+		},
+		{
+			"name": "users",
+			"description": "Create persistent API users to support servicing workflows through Canopy"
+		},
     {
       "name": "authentication",
       "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
@@ -46,16 +60,16 @@
         ],
         "summary": "Authenticate to the Canopy Sandbox",
         "operationId": "createSandboxUser",
-        "description": "When you create a new root user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
+        "description": "When you create a new `root-level` user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
         "responses": {
           "200": {
-            "description": "Route for authenticating to the Canopy Sandbox",
+            "description": "Successful authentication to the Canopy Sandbox.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "user_id": {
+                    "api_user_id": {
                       "type": "string",
                       "format": "uuid",
                       "description": "Unique `x-api-userid` ID to be used in headers for subsequent calls to the Canopy Sandbox API.",
@@ -68,7 +82,23 @@
           }
         }
       }
-    },
+		},
+		"/api_users": {
+			"post": {
+				"summary": "Create a new API user",
+				"tags": ["users, authentication"],
+				"operationId": "createApiUser",
+				"description": "Create a new API User that exists under the umbrella of a root-level user.",
+				"requestBody": {
+
+				},
+				"responses": {
+					"200": {
+						"description": "Successful "
+					}
+				}
+			}
+		},
 		"/customer_accounts": {
       "get": {
         "tags": [
@@ -328,7 +358,7 @@
 						"in": "path",
 						"description": "The ID of the customer to return.",
 						"required": true,
-						"style": "form",
+						"style": "simple",
 						"example": true,
 						"schema": {
 							"type": "string",
@@ -338,14 +368,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Customer",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Customer"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Customer"
           },
           "404": {
             "description": "Unable to get customer"
@@ -732,7 +755,7 @@
           "accounts",
           "programmatic"
         ],
-        "summary": "Create a new customer account",
+        "summary": "Create a new account",
         "description": "An account should be created for each end customer of each of your products. Once created, you will be able to add `line_items` to the account.",
         "operationId": "createAccount",
         "requestBody": {
@@ -1840,7 +1863,7 @@
 					{
 						"type": "object",
 						"properties": {
-							"account_role": {
+							"customer_account_role": {
 								"type": "string",
 								"enum": ["primary"],
 								"example": "primary"
@@ -1989,16 +2012,27 @@
         }
       },
       "Base_Policy_Config_MVP": {
-        "type": "object",
-        "properties": {
-          "percentage": {
-            "type": "number",
-            "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
-            "example": "20"
-          }
-        },
-        "description": "The configured minimum payment required for a given pay period."
-      },
+				"type": "object",
+				"additionalProperties": false,
+				"properties": {
+					"min_pay": {
+						"$ref": "#/components/schemas/Base_Policy_Config_Min_Pay"
+					},
+					"billing_cycle": {
+						"$ref": "#/components/schemas/Base_Policy_Config_Billing_Cycle"
+					},
+					"interest_policies": {
+						"$ref": "./schemas/Interest_Policy_MVP.json"
+					},
+					"close_of_business_and_timezone": {
+						"type": "string",
+						"description":"Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+						"format": "date-time",
+						"example": "2020-03-20T09:12:28Z"
+					}
+				},
+				"description": "A base group of policies that define a Product"
+			},
       "Base_Policy_Config_Min_Pay": {
         "type": "object",
         "properties": {
@@ -2346,9 +2380,22 @@
 								},
 								"accounts": {
 									"type": "array",
-									"description": "An array of accounts to which this Customer is assigned",
+									"description": "An array of existing accounts to which this Customer is assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts. \n \n *Note* - if you would like to simultaneously create a customer and assign them to an `account` in Canopy, use the [Create a new account](/#operation-post-accounts) route.",
 									"items": {
-										"$ref": "#/components/schemas/Account"
+										"type": "object",
+										"properties": {
+											"account_id": {
+												"type": "string",
+												"format": "uuid",
+												"description": "This is generated by Canopy. A unique ID for the account.",
+												"example": "5fb3a288-5f6c-440f-b079-b06c828b7768"
+											},
+											"customer_account_role": {
+												"type": "string",
+												"enum": ["primary"],
+												"example": "primary"
+											}
+										}
 									}
 								}
 							}
@@ -2362,47 +2409,158 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "required": [
-                "product_id"
-              ],
-              "properties": {
-                "product_id": {
-                  "type": "string",
-                  "description": "the Product ID of the account",
-                  "format": "uuid",
-                  "example": "d119341c-47fd-4a55-bce7-28406dacfa20"
-                },
-                "external_ids": {
-                  "type": "array",
-                  "description": "An array of static references to ID fields in a third party system.",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "description": "Name of the External Party",
-                        "example": "Globex Corporation"
-                      },
-                      "id": {
-                        "type": "string",
-                        "description": "External Account ID",
-                        "example": "22445702-a389-431f-927d-07b8d0750787"
-                      }
-                    }
-                  }
-                },
-                "credit_limit_cents": {
-                  "type": "integer",
-                  "description": "Total Amount (in cents) that this account can borrow.",
-                  "example": "400000"
-                },
-                "rate": {
-                  "type": "number",
-                  "description": "The percentage interest applied to the account (i.e. 6.2%)",
-                  "example": "6.2"
-                }
-              }
+							"allOf": [
+								{
+									"type": "object",
+									"required": [
+										"product_id"
+									],
+									"properties": {
+										"product_id": {
+											"type": "string",
+											"description": "the Product ID of the account",
+											"format": "uuid",
+											"example": "d119341c-47fd-4a55-bce7-28406dacfa20"
+										},
+										"external_ids": {
+											"type": "array",
+											"description": "An array of static references to ID fields in a third party system.",
+											"items": {
+												"type": "object",
+												"properties": {
+													"name": {
+														"type": "string",
+														"description": "Name of the External Party",
+														"example": "Globex Corporation"
+													},
+													"id": {
+														"type": "string",
+														"description": "External Account ID",
+														"example": "22445702-a389-431f-927d-07b8d0750787"
+													}
+												}
+											}
+										},
+										"credit_limit_cents": {
+											"type": "integer",
+											"description": "Total Amount (in cents) that this account can borrow.",
+											"example": "400000"
+										},
+										"rate": {
+											"type": "number",
+											"description": "The percentage interest applied to the account (i.e. 6.2%)",
+											"example": "6.2"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"existing_customers": {
+											"type": "array",
+											"description": "Array of existing customer IDs to be added to the account",
+											"items": {
+												"type": "object",
+												"properties": {
+													"customer_id": {
+														"type": "string",
+														"format": "uuid",
+														"description": "Canopy-generated unique ID for this customer",
+														"example": "d581a0aa-5e11-473c-9569-64bc3a494287"
+													},
+													"customer_account_role": {
+														"type": "string",
+														"enum": ["primary"],
+														"description": "The role of the customer for the account being created",
+														"example": "primary"
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"new_customers": {
+											"type": "array",
+											"description": "Array of new customers to be added to the account",
+											"items": {
+												"type": "object",
+												"properties": {
+													"name_prefix": {
+														"type": "string",
+														"description": "Prefix to the customer's name",
+														"example": "Dr."
+													},
+													"first_name": {
+														"type": "string",
+														"description": "Customer's first name",
+														"example": "Miriam"
+													},
+													"middle_name": {
+														"type": "string",
+														"description": "Customer's middle name",
+														"example": "Louise"
+													},
+													"last_name": {
+														"type": "string",
+														"description": "Customer's last name",
+														"example": "Trevino"
+													},
+													"name_suffix": {
+														"type": "string",
+														"description": "Prefix to the customer's name",
+														"example": "Jr"
+													},
+													"phone_number": {
+														"type": "string",
+														"format": "phonenumber",
+														"description": "Phone number of the customer",
+														"example": "555-555-5555"
+													},
+													"address_line_one": {
+														"type": "string",
+														"description": "Address line one",
+														"example": "12 Strawberry Road"
+													},
+													"address_line_two": {
+														"type": "string",
+														"description": "Address line two",
+														"example": "Suite 101"
+													},
+													"address_city": {
+														"type": "string",
+														"description": "Address city",
+														"example": "Atlanta"
+													},
+													"address_state": {
+														"type": "string",
+														"description": "Address state",
+														"example": "GA"
+													},
+													"address_zip": {
+														"type": "string",
+														"description": "Address zip code",
+														"example": "99999-1000"
+													},
+													"ssn": {
+														"type": "string",
+														"description": "Social security number of the customer",
+														"example": "888-88-8888"
+													},
+													"customer_account_role": {
+														"type": "string",
+														"enum": ["primary"],
+														"description": "The role of the customer for the account being created",
+														"example": "primary"
+													}
+												}
+											}
+										}
+									}
+								}
+							]
             }
           }
         }
@@ -2770,7 +2928,17 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Account"
+              "$ref": "#/components/schemas/ComplexAccount"
+            }
+          }
+        }
+			},
+			"Customer": {
+        "description": "Successful query of information for a specific customer",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ComplexCustomer"
             }
           }
         }
