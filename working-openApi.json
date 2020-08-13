@@ -821,8 +821,8 @@
           "accounts",
           "programmatic"
         ],
-        "summary": "Update a customer account",
-        "description": "Update `rate` and/or `credit_limit_cents` for an individual account.",
+        "summary": "Update an account",
+        "description": "Update `rate`, `credit_limit_cents`, or `status` for an individual account, or update the customers assigned to the account.",
         "operationId": "updateAccount",
         "parameters": [
           {
@@ -866,7 +866,49 @@
                     "type": "string",
                     "description": "The subtype of the Status of the Account. Null upon account creation.",
                     "example": "suspended-bankruptcy"
-                  }
+									},
+									"existing_customers_to_add": {
+										"type": "array",
+										"description": "Array of existing customer IDs to be added to the account.",
+										"items": {
+											"type": "object",
+											"properties": {
+												"customer_id": {
+													"type": "string",
+													"format": "uuid",
+													"description": "Canopy-generated unique ID for this customer",
+													"example": "d581a0aa-5e11-473c-9569-64bc3a494287"
+												},
+												"customer_account_role": {
+													"type": "string",
+													"enum": ["primary"],
+													"description": "The role of the customer for the account being created",
+													"example": "primary"
+												}
+											}
+										}
+									},
+									"existing_customers_to_remove": {
+										"type": "array",
+										"description": "Array of existing customer IDs to be added to the account. At least one customer must remain on the account at the end of the operation.",
+										"items": {
+											"type": "object",
+											"properties": {
+												"customer_id": {
+													"type": "string",
+													"format": "uuid",
+													"description": "Canopy-generated unique ID for this customer",
+													"example": "d581a0aa-5e11-473c-9569-64bc3a494287"
+												},
+												"customer_account_role": {
+													"type": "string",
+													"enum": ["primary"],
+													"description": "The role of the customer for the account being created",
+													"example": "primary"
+												}
+											}
+										}
+									}
                 }
               }
             }
@@ -2458,7 +2500,7 @@
 									"properties": {
 										"existing_customers": {
 											"type": "array",
-											"description": "Array of existing customer IDs to be added to the account",
+											"description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
 											"items": {
 												"type": "object",
 												"properties": {
@@ -2484,7 +2526,7 @@
 									"properties": {
 										"new_customers": {
 											"type": "array",
-											"description": "Array of new customers to be added to the account",
+											"description": "Array of new customers to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
 											"items": {
 												"type": "object",
 												"properties": {
