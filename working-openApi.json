@@ -83,9 +83,10 @@
         }
       }
 		},
-		"/api_user_invitations": {
+		"/api_users/invitations": {
 			"post": {
 				"summary": "Invite a new API user",
+				"operationId": "inviteApiUser",
 				"description": "Invite a new user to the API",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/CreateApiUserInvitation"
@@ -110,6 +111,53 @@
 					"200": {
 						"description": "Successfully created a new API user",
 						"$ref": "#/components/responses/ApiUser"
+					}
+				}
+			},
+			"get": {
+				"summary": "Get all API users under the root user",
+				"tags": ["users", "authentication"],
+				"operationId": "getApiUsers",
+				"description": "Get a list of your API users",
+				"parameters": [
+					{
+						"name": "search_query",
+						"in": "query",
+						"description": "A search query to be applied to results before the api user list is returned. Search by name or email.",
+						"required": false,
+						"style": "form",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					},
+					{
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+				],
+				"responses": {
+					"200": {
+						"description": "A list of API users.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/API_User"
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -352,7 +400,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "accounts": {
+                    "customers": {
                       "type": "array",
                       "description": "An array of information for all customers within the requested range.",
                       "items": {
@@ -361,7 +409,7 @@
                     },
                     "total_customer_count": {
                       "type": "number",
-                      "description": "Total number of accounts"
+                      "description": "Total number of customers"
                     }
                   }
                 }
@@ -390,32 +438,20 @@
         "parameters": [
           {
             "name": "customer_id",
-            "in": "query",
+            "in": "path",
             "description": "The ID of the customer to be updated.",
-            "required": false,
-            "style": "form",
+            "required": true,
+            "style": "simple",
             "explode": true,
             "schema": {
               "type": "string",
 							"format": "uuid",
               "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
             }
-          },
-					{
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE update a customer as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
           }
 				],
 				"requestBody": {
-          "$ref": "#/components/requestBodies/CreateCustomer"
+          "$ref": "#/components/requestBodies/UpdateCustomer"
         },
         "responses": {
           "204": {
@@ -986,6 +1022,38 @@
 												}
 											}
 										}
+									},
+									"ticket": {
+										"type": "object",
+										"properties": {
+											"workflow": {
+												"type": "string",
+												"enum": ["disputes", "debit adjustments", "credit adjustments", "fraud", "general"],
+												"description": "The operational workflow into which this ticket should be assigned.",
+												"example": "disputes"
+											},
+											"assignee": {
+												"type": "string",
+												"format": "uuid",
+												"description": "The `api_user_id` of the API user to be assigned to this ticket.",
+												"example": "15ebcbfb-7238-4d78-8acf-4e0a39f9a4c9"
+											},
+											"message": {
+												"type": "string",
+												"description": "A message to be included with the ticket.",
+												"example": "Customer card was stolen, and the transaction was not made by the customer."
+											}
+										}
+									},
+									"note": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string",
+												"description": "The contents of the note.",
+												"example": "Customer phone number updated."
+											}
+										}
 									}
                 }
               }
@@ -1040,7 +1108,296 @@
           }
         }
       }
-    },
+		},
+		"/accounts/{account_id}/notes": {
+			"post": {
+				"tags": [
+          "accounts",
+					"notes",
+					"tickets"
+        ],
+        "summary": "Create a note for a specific account.",
+        "description": "A note to be added to the account.",
+				"operationId": "createAccountNote",
+				"parameters": [
+					{
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+				],
+				"requestBody": {
+					"description": "Add a Note to an account",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"ticket_id": {
+										"type": "string",
+										"format": "uuid",
+										"description": "If this note is attached to a ticket, the ID of the ticket.",
+										"example": "8dd5ecf5-c2cd-49e5-8d79-57c0052e1a66."
+									},
+									"message": {
+										"type": "string",
+										"description": "The contents of the note.",
+										"example": "Attempted to call back customer, but no response."
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/CreateNote"
+					}
+				}
+			}
+		},
+		"/accounts/{account_id}/tickets": {
+			"post": {
+				"tags": [
+          "accounts",
+          "tickets"
+        ],
+        "summary": "Create a ticket for a specific account.",
+        "description": "A ticket that can be tracked across a workflow for a specific account.",
+				"operationId": "createAccountTicket",
+				"parameters": [
+					{
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+					},
+					{
+            "name": "workflow",
+            "in": "query",
+            "description": "Workflow for which you would like filtered results. If not included, defaults to all tickets for all workflows.",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+					},
+					{
+            "name": "assignee",
+            "in": "query",
+            "description": "API User ID for whom you would like filtered results. If not included, defaults to all tickets for all users.",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "schema": {
+							"type": "string",
+							"format": "uuid"
+            }
+          }
+				],
+				"requestBody": {
+					"description": "Add a Ticket to an account",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"workflow": {
+										"type": "string",
+										"enum": ["disputes", "debit adjustments", "credit adjustments", "fraud", "general"],
+										"description": "The operational workflow into which this ticket should be assigned.",
+										"example": "disputes"
+									},
+									"assignee": {
+										"type": "string",
+										"format": "uuid",
+										"description": "The `api_user_id` of the API user to be assigned to this ticket.",
+										"example": "15ebcbfb-7238-4d78-8acf-4e0a39f9a4c9"
+									},
+									"message": {
+										"type": "string",
+										"description": "A message to be included with the ticket.",
+										"example": "Customer card was stolen, and the transaction was not made by the customer."
+									},
+									"meta": {
+										"type": "string",
+										"description": "An additional piece of meta data to include for the ticket. For instance, an amount, or the details of a specific status change.",
+										"example": "$2.45"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/CreateTicket"
+					}
+				}
+			}
+		},
+		"/accounts/{account_id}/tickets/{ticket_id}": {
+			"get": {
+        "tags": [
+          "accounts",
+          "tickets"
+        ],
+        "summary": "Get a specific Ticket for a specific Account",
+        "description": "",
+        "operationId": "getTicket",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+            }
+					},
+					{
+            "name": "ticket_id",
+            "in": "path",
+            "description": "Ticket ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Ticket"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+			},
+			"put": {
+				"tags": [
+					"accounts",
+					"tickets"
+				],
+				"summary": "Update a ticket for a specific account",
+				"description": "Update information about a specific ticket - for instance, if its status changes.",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"owner": {
+										"type": "string",
+										"format": "uuid",
+										"description": "The API User to assign to the Ticket",
+										"example": "0cbf144c-8fb0-4027-97b5-58f8b88e102b"
+									},
+									"workflow": {
+										"type": "string",
+										"enum": ["disputes", "debit adjustments", "credit adjustments", "fraud", "general"],
+										"description": "The review workflow to which this ticket belongs",
+										"example": "credit adjustments"
+									},
+									"status": {
+										"type": "string",
+										"enum": [
+											"not-reviewed",
+											"under-review",
+											"review-complete"
+										],
+										"description": "The new status of the Ticket"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/Ticket"
+					}
+				}
+			}
+		},
+		"/accounts/{account_id}/history": {
+			"get": {
+				"tags": [
+					"accounts",
+					"notes",
+					"tickets"
+				],
+				"summary": "Get history of notes and tickets for a specific account",
+				"description": "Get a history of actions taken by your team of API users for a specific account. Results are returned in reverse-chronological order.",
+				"operationId": "getAccountHistory",
+				"parameters": [
+					{
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the line items were on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/AccountHistory"
+					}
+				}
+			
+			}
+		},
     "/accounts/{account_id}/line_items": {
       "get": {
         "tags": [
@@ -2038,7 +2395,7 @@
 						"type": "string",
 						"format": "email",
 						"description": "The email address of this API User",
-						"example": "marissa@globex.com"
+						"example": "miriam@globex.com"
 					},
           "password_hash": {
             "type": "string",
@@ -2073,14 +2430,10 @@
               "$ref": "#/components/schemas/Note"
             }
           },
-          "pipeline": {
+          "workflow": {
             "type": "string",
-            "enum": [
-              "escalations",
-              "disputes",
-              "adjustments"
-            ],
-            "description": "The review pipeline to which this ticket belongs",
+						"enum": ["disputes", "debit adjustments", "credit adjustments", "fraud", "general"],
+            "description": "The review workflow to which this ticket belongs",
             "example": "disputes"
           },
           "status": {
@@ -2518,6 +2871,163 @@
 											}
 										}
 									}
+								},
+								"ticket": {
+									"type": "object",
+									"properties": {
+										"workflow": {
+											"type": "string",
+											"enum": ["disputes", "debit adjustments", "credit adjustments", "fraud", "general"],
+											"description": "The operational workflow into which this ticket should be assigned.",
+											"example": "disputes"
+										},
+										"assignee": {
+											"type": "string",
+											"format": "uuid",
+											"description": "The `api_user_id` of the API user to be assigned to this ticket.",
+											"example": "15ebcbfb-7238-4d78-8acf-4e0a39f9a4c9"
+										},
+										"message": {
+											"type": "string",
+											"description": "A message to be included with the ticket.",
+											"example": "Customer card was stolen, and the transaction was not made by the customer."
+										}
+									}
+								},
+								"note": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "The contents of the note.",
+											"example": "Customer phone number updated."
+										}
+									}
+								}
+							}
+            }
+          }
+        }
+			},
+			"UpdateCustomer": {
+        "description": "Update an existing customer",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+							"properties": {
+								"name_prefix": {
+									"type": "string",
+									"description": "Prefix to the customer's name",
+									"example": "Dr."
+								},
+								"first_name": {
+									"type": "string",
+									"description": "Customer's first name",
+									"example": "Miriam"
+								},
+								"middle_name": {
+									"type": "string",
+									"description": "Customer's middle name",
+									"example": "Louise"
+								},
+								"last_name": {
+									"type": "string",
+									"description": "Customer's last name",
+									"example": "Trevino"
+								},
+								"name_suffix": {
+									"type": "string",
+									"description": "Prefix to the customer's name",
+									"example": "Jr"
+								},
+								"phone_number": {
+									"type": "string",
+									"format": "phonenumber",
+									"description": "Phone number of the customer",
+									"example": "555-555-5555"
+								},
+								"address_line_one": {
+									"type": "string",
+									"description": "Address line one",
+									"example": "12 Strawberry Road"
+								},
+								"address_line_two": {
+									"type": "string",
+									"description": "Address line two",
+									"example": "Suite 101"
+								},
+								"address_city": {
+									"type": "string",
+									"description": "Address city",
+									"example": "Atlanta"
+								},
+								"address_state": {
+									"type": "string",
+									"description": "Address state",
+									"example": "GA"
+								},
+								"address_zip": {
+									"type": "string",
+									"description": "Address zip code",
+									"example": "99999-1000"
+								},
+								"ssn": {
+									"type": "string",
+									"description": "Social security number of the customer",
+									"example": "888-88-8888"
+								},
+								"new_accounts": {
+									"type": "array",
+									"description": "An array of existing accounts to which this Customer will be newly assigned.",
+									"items": {
+										"type": "object",
+										"properties": {
+											"account_id": {
+												"type": "string",
+												"format": "uuid",
+												"description": "This is generated by Canopy. A unique ID for the account.",
+												"example": "5fb3a288-5f6c-440f-b079-b06c828b7768"
+											},
+											"customer_account_role": {
+												"type": "string",
+												"enum": ["primary"],
+												"example": "primary"
+											}
+										}
+									}
+								},
+								"ticket": {
+									"type": "object",
+									"properties": {
+										"workflow": {
+											"type": "string",
+											"enum": ["disputes", "debit adjustments", "credit adjustments", "fraud", "general"],
+											"description": "The operational workflow into which this ticket should be assigned.",
+											"example": "disputes"
+										},
+										"assignee": {
+											"type": "string",
+											"format": "uuid",
+											"description": "The `api_user_id` of the API user to be assigned to this ticket.",
+											"example": "15ebcbfb-7238-4d78-8acf-4e0a39f9a4c9"
+										},
+										"message": {
+											"type": "string",
+											"description": "A message to be included with the ticket.",
+											"example": "Customer card was stolen, and the transaction was not made by the customer."
+										}
+									}
+								},
+								"note": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "The contents of the note.",
+											"example": "Customer phone number updated."
+										}
+									}
 								}
 							}
             }
@@ -2708,7 +3218,7 @@
 									"format": "email",
 									"description": "The email address of this API User",
 									"example": "marissa@globex.com"
-								},
+								}
 							}
 						}
 					}
@@ -3087,6 +3597,7 @@
         }
 			},
 			"ApiUser": {
+				"description": "API User under umbrella of root user",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3101,6 +3612,26 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/ComplexAccount"
+            }
+          }
+        }
+			},
+			"CreateNote": {
+        "description": "New Note Created",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Note"
+            }
+          }
+        }
+			},
+			"CreateTicket": {
+        "description": "New Ticket Created",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Ticket"
             }
           }
         }
@@ -3229,6 +3760,47 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/ComplexAccount"
+            }
+          }
+        }
+			},
+			"Ticket": {
+        "description": "Successful query of information for a specific ticket",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Ticket"
+            }
+          }
+        }
+			},
+			"AccountHistory": {
+        "description": "Successful query of history for a specific account",
+        "content": {
+          "application/json": {
+            "schema": {
+							"type": "object",
+							"properties": {
+								"activity": {
+									"type": "array",
+									"description": "A history of all notes and tickets on an account.",
+									"items": {
+										"oneOf": [
+											{
+												"$ref": "#/components/schemas/Note"
+											},
+											{
+												"$ref": "#/components/schemas/Ticket"
+											}
+										]
+									}
+								},
+								"created_date": {
+									"type": "string",
+									"format": "date-time",
+									"description": "The date and time the account was created."
+								}
+							}
             }
           }
         }
