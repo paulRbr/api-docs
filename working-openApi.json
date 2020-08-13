@@ -83,18 +83,96 @@
         }
       }
 		},
+		"/api_user_invitations": {
+			"post": {
+				"summary": "Invite a new API user",
+				"description": "Invite a new user to the API",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/CreateApiUserInvitation"
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/CreateApiUserInvitation"
+					}
+				}
+			}
+		},
 		"/api_users": {
 			"post": {
 				"summary": "Create a new API user",
 				"tags": ["users, authentication"],
 				"operationId": "createApiUser",
-				"description": "Create a new API User that exists under the umbrella of a root-level user.",
+				"description": "Create a new API User that exists under the umbrella of a root-level user. An API user must first be [invited](https://docs.canopyservicing.com/#endpoint-api-user-invitations) before they can be created in the system.",
 				"requestBody": {
-
+					"$ref": "#/components/requestBodies/CreateApiUser"
 				},
 				"responses": {
 					"200": {
-						"description": "Successful "
+						"description": "Successfully created a new API user",
+						"$ref": "#/components/responses/ApiUser"
+					}
+				}
+			}
+		},
+		"/api_users/{email}": {
+			"put": {
+				"summary": "Update an existing API user",
+				"description": "Update content for an existing API user",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/UpdateApiUser"
+				},
+				"responses": {
+					"200": {
+						"description": "Successfully updated API user",
+						"$ref": "#/components/responses/ApiUser"
+					}
+				}
+			}
+		},
+		"/api_users/sign_in": {
+			"post": {
+				"summary": "Log in as an API User",
+				"description": "Sign in as an API user, under your root user's umbrella.",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string",
+										"format": "email",
+										"description": "The email address of this API User",
+										"example": "marissa@globex.com"
+									},
+									"password": {
+										"type": "string",
+										"description": "The password for this API User's account",
+										"example": "secret_password123!!"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Successfully logged in",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"token": {
+											"type": "string",
+											"format": "uuid",
+											"description": "A unique token that is valid for the session and should be included in all authenticated API requests under the header `x-api-user`.",
+											"example": "12f2aa7c-204a-46bc-b1c8-370b131cd135"
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -1956,11 +2034,12 @@
             "description": "Prefix to the user's name",
             "example": "Jr"
           },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "description": "The email address of this API User"
-          },
+					"email": {
+						"type": "string",
+						"format": "email",
+						"description": "The email address of this API User",
+						"example": "marissa@globex.com"
+					},
           "password_hash": {
             "type": "string",
             "description": "The password hash for this API User",
@@ -2606,7 +2685,141 @@
             }
           }
         }
-      },
+			},
+			"CreateApiUserInvitation": {
+				"description": "Body of request to invite new API user. Checks permissions of invite-creator.",
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"required": ["email", "role"],
+							"properties": {
+								"role": {
+									"type": "string",
+									"description": "The role of this API User.",
+									"enum": [
+										"superuser"
+									],
+									"example": "superuser"
+								},
+								"email": {
+									"type": "string",
+									"format": "email",
+									"description": "The email address of this API User",
+									"example": "marissa@globex.com"
+								},
+							}
+						}
+					}
+				}
+			},
+			"CreateApiUser": {
+				"description": "Body of request to create new API user.",
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"required": ["first_name", "last_name", "email", "invitation_code"],
+							"properties": {
+								"invitation_code": {
+									"type": "string",
+									"format": "uuid",
+									"description": "A secret, unique invite code to be used to set up the API User's account. Valid for 24 hours after an invite is created.",
+									"example":"5c92f11e-d137-4cd5-aac1-012919419cdf"
+								},
+								"name_prefix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Dr."
+								},
+								"first_name": {
+									"type": "string",
+									"description": "User's first name",
+									"example": "Miriam"
+								},
+								"middle_name": {
+									"type": "string",
+									"description": "User's middle name",
+									"example": "Louise"
+								},
+								"last_name": {
+									"type": "string",
+									"description": "User's last name",
+									"example": "Trevino"
+								},
+								"name_suffix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Jr"
+								},
+								"email": {
+									"type": "string",
+									"format": "email",
+									"description": "The email address of this API User",
+									"example": "marissa@globex.com"
+								},
+								"password": {
+									"type": "string",
+									"description": "The password for this API User's account",
+									"example": "secret_password123!!"
+								}
+							}
+						}
+					}
+				}
+			},
+			"UpdateApiUser": {
+				"description": "Body of request to update API user. Checks permissions of caller.",
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"required": ["email", "password"],
+							"properties": {
+								"name_prefix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Dr."
+								},
+								"first_name": {
+									"type": "string",
+									"description": "User's first name",
+									"example": "Miriam"
+								},
+								"middle_name": {
+									"type": "string",
+									"description": "User's middle name",
+									"example": "Louise"
+								},
+								"last_name": {
+									"type": "string",
+									"description": "User's last name",
+									"example": "Trevino"
+								},
+								"name_suffix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Jr"
+								},
+								"email": {
+									"type": "string",
+									"format": "email",
+									"description": "The email address of this API User",
+									"example": "marissa@globex.com"
+								},
+								"password": {
+									"type": "string",
+									"description": "The password for this API User's account",
+									"example": "secret_password123!!"
+								}
+							}
+						}
+					}
+				}
+			},
       "CreateCharge": {
         "description": "Body of request to create charge",
         "required": true,
@@ -2868,17 +3081,26 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Customer"
+              "$ref": "#/components/schemas/ComplexCustomer"
             }
           }
         }
-      },
+			},
+			"ApiUser": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"$ref": "#/components/schemas/API_User"
+						}
+					}
+				}
+			},
       "CreateAccount": {
         "description": "New Account Created",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Account"
+              "$ref": "#/components/schemas/ComplexAccount"
             }
           }
         }
@@ -2892,7 +3114,43 @@
             }
           }
         }
-      },
+			},
+			"CreateApiUserInvitation": {
+				"description": "Successfully invited a new user",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"email": {
+									"type": "string",
+									"format": "email",
+									"description": "The email address of this API User",
+									"example": "marissa@globex.com"
+								},
+								"invitation_code": {
+									"type": "string",
+									"format": "uuid",
+									"description": "A secret, unique invite code to be used to set up the API User's account. Valid for 24 hours after an invite is created.",
+									"example":"5c92f11e-d137-4cd5-aac1-012919419cdf"
+								},
+								"created_at": {
+									"type": "string",
+									"description": "The `Date-Time` which the invitation was created in the API",
+									"format": "date-time",
+									"example": "2018-06-20T09:12:30Z"
+								},
+								"expires_at": {
+									"type": "string",
+									"description": "The `Date-Time` which the invitation expires",
+									"format": "date-time",
+									"example": "2018-06-21T09:12:30Z"
+								}
+							}
+						}
+					}
+				}
+			},
       "CreateCharge": {
         "description": "Charge Created",
         "content": {
