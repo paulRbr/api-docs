@@ -2,13 +2,23 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Canopy Servicing Core API",
-    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each user of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your users, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://canopyservicing.com), and then you can immediately begin adding users and relying on Canopy for accurate servicing information. \n  \n **Getting Started** \n *Get started in three easy steps.* \n \n 1) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request API Keys \n \n 2) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 3) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of our sample workflows, or construct your own using this API documentation. \n \n *Authentication* \n See the `users` route to authenticate to our sandbox environment. To request production credentials, [contact our team](mailto:anurag@canopyservicing.com).",
+    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://admin.canopyservicing.com), and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.",
     "termsOfService": "https://api.canopyservicing.com/terms/",
     "contact": {
       "email": "will@canopyservicing.com"
     },
     "version": "1.3"
-  },
+	},
+	"x-topics": [
+		{
+			"title": "Getting Started",
+			"content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
+		},
+		{
+			"title": "Authentication",
+			"content": "**Sandbox** \n \n To Authenticate to our Sandbox environment, no prior contact with our team is required (though we'd certainly love to connect!). Simply make an unauthenticated `POST` request to `https://sandbox.canopyservicing.com/auth_sandbox`. The response body returns a unique `api_user_id`. \n \n For any subsequent calls to our API, include a header `x-api-key` whose value is this unique `api_user_id` as part of your request. This lets us know that you are submitting a valid Sandbox request and grants you access to our entire Sandbox API. \n \n **Production** \n \n To request production credentials, [contact our team](mailto:anurag@canopyservicing.com)."
+		}
+	],
   "servers": [
     {
       "url": "https://sandbox.canopyservicing.com",
