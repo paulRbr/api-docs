@@ -489,7 +489,118 @@
           }
         }
 			}
-    },
+		},
+		"/notifications": {
+			"get": {
+        "tags": [
+					"notifications",
+					"users"
+        ],
+        "summary": "Get all notifications for a specific API User",
+        "description": "Returns all notifications for the authenticated caller.",
+        "operationId": "getNotifications",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated notification requests sorted by reverse notification created date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
+          },
+					{
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Notifications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "customers": {
+                      "type": "array",
+                      "description": "An array of notifications within the requested range.",
+                      "items": {
+                        "$ref": "#/components/schemas/Notification"
+                      }
+                    },
+                    "total_customer_count": {
+                      "type": "number",
+                      "description": "Total number of notifications for the api_user"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unable to get notifications"
+          }
+        }
+      }
+		},
+		"/notifications/{notification_id}": {
+      "put": {
+        "tags": [
+          "notifications"
+        ],
+        "summary": "Update an existing notification",
+        "description": "Change the status of a notification between `read` and `unread`.",
+        "parameters": [
+          {
+            "name": "notification_id",
+            "in": "path",
+            "description": "Notification ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UpdateNotification"
+        },
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/UpdateNotification"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+		},
     "/products": {
       "post": {
         "security": [
@@ -2403,7 +2514,41 @@
             "example": "64A6DDFFF2BA644F1F0F972EC3CB39C9EA7C6C1C16DAE02B83F14B070B27DF23"
           }
         }
-      },
+			},
+			"Notification": {
+				"type": "object",
+				"properties": {
+					"notification_id": {
+						"type": "string",
+						"format": "uuid",
+						"description": "The canopy-generated ID for the notification",
+						"example": "b9bf081b-3e17-45ba-b3a9-1ea0ba38fa82"
+					},
+					"created_at": {
+            "type": "string",
+            "description": "The `Date-Time` which the notification was created in the API",
+            "format": "date-time",
+            "example": "2018-06-20T09:12:30Z"
+					},
+					"status": {
+						"type": "string",
+						"enum": ["read", "unread"],
+						"description": "The viewership status of the notification",
+						"example": "unread"
+					},
+					"message": {
+						"type": "string",
+						"description": "The message contents of the notification",
+						"example": "Tedford reassigned Disputes ticket #6352533 to you."
+					},
+					"api_user_id": {
+						"type": "string",
+						"format": "uuid",
+						"description": "The canopy-generated ID of the owner of the notification",
+						"example": "3bafc7d2-1867-4c1f-b16c-ea2dd29f588d"
+					}
+				}
+			},
       "Ticket": {
         "type": "object",
         "properties": {
@@ -2908,6 +3053,24 @@
             }
           }
         }
+			},
+			"UpdateNotification": {
+				"description": "Update the status of a notification",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"status": {
+									"type": "string",
+									"enum": ["read", "unread"],
+									"description": "The updated status of the notification",
+									"example": "read"
+								}
+							}
+						}
+					}
+				}
 			},
 			"UpdateCustomer": {
         "description": "Update an existing customer",
@@ -3642,6 +3805,16 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Account"
+            }
+          }
+        }
+			},
+			"UpdateNotification": {
+        "description": "Notification Updated",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Notification"
             }
           }
         }
