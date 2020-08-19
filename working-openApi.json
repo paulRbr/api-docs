@@ -198,6 +198,11 @@
 										"description": "The password for this API User's account",
 										"example": "secret_password123!!"
 									},
+									"mfa_code": {
+										"type": "string",
+										"description": "If configured, the multi-factor authentication code to log the user in.",
+										"example": "555555"
+									},
 									"role": {
 										"type": "string",
 										"description": "The role of this API User.",
