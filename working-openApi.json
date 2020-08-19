@@ -197,6 +197,14 @@
 										"type": "string",
 										"description": "The password for this API User's account",
 										"example": "secret_password123!!"
+									},
+									"role": {
+										"type": "string",
+										"description": "The role of this API User.",
+										"enum": [
+											"superuser", "root"
+										],
+										"example": "superuser"
 									}
 								}
 							}
@@ -2485,14 +2493,14 @@
       "API_User": {
         "type": "object",
         "properties": {
-          "role": {
-            "type": "string",
-            "description": "The role of this API User.",
-            "enum": [
-              "superuser"
-            ],
-            "example": "superuser"
-          },
+					"role": {
+						"type": "string",
+						"description": "The role of this API User.",
+						"enum": [
+							"superuser", "root"
+						],
+						"example": "superuser"
+					},
           "api_user_id": {
             "type": "string",
             "format": "uuid",
@@ -2529,12 +2537,7 @@
 						"format": "email",
 						"description": "The email address of this API User",
 						"example": "miriam@globex.com"
-					},
-          "password_hash": {
-            "type": "string",
-            "description": "The password hash for this API User",
-            "example": "64A6DDFFF2BA644F1F0F972EC3CB39C9EA7C6C1C16DAE02B83F14B070B27DF23"
-          }
+					}
         }
 			},
 			"Notification": {
@@ -3394,7 +3397,7 @@
 									"type": "string",
 									"description": "The role of this API User.",
 									"enum": [
-										"superuser"
+										"superuser", "root"
 									],
 									"example": "superuser"
 								},
