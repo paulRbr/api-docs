@@ -1295,30 +1295,7 @@
               "type": "string",
               "format": "uuid"
             }
-					},
-					{
-            "name": "workflow",
-            "in": "query",
-            "description": "Workflow for which you would like filtered results. If not included, defaults to all tickets for all workflows.",
-            "required": false,
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-					},
-					{
-            "name": "assignee",
-            "in": "query",
-            "description": "API User ID for whom you would like filtered results. If not included, defaults to all tickets for all users.",
-            "required": false,
-            "style": "form",
-            "explode": false,
-            "schema": {
-							"type": "string",
-							"format": "uuid"
-            }
-          }
+					}
 				],
 				"requestBody": {
 					"description": "Add a Ticket to an account",
@@ -1486,6 +1463,29 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+					},
+					{
+            "name": "workflow",
+            "in": "query",
+            "description": "Workflow for which you would like filtered ticket results. If not included, defaults to all tickets for all workflows.",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+					},
+					{
+            "name": "assignee",
+            "in": "query",
+            "description": "API User ID for whom you would like filtered ticket results. If not included, defaults to all tickets for all users.",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "schema": {
+							"type": "string",
+							"format": "uuid"
             }
           },
           {
@@ -1941,9 +1941,9 @@
           "payments",
           "accounts"
         ],
-        "summary": "Create a payment for a specific account",
+        "summary": "Create a credit adjustment for a specific account",
         "description": "",
-        "operationId": "createAccountPayment",
+        "operationId": "createAccountCreditAdjustment",
         "parameters": [
           {
             "name": "account_id",
@@ -1970,6 +1970,28 @@
     },
     "/accounts/{account_id}/line_items/adjustments/debit": {
       "post": {
+				"tags": [
+          "line_items",
+          "payments",
+          "accounts"
+        ],
+        "summary": "Create a debit adjustment for a specific account",
+        "description": "",
+        "operationId": "createAccountDebitAdjustment",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/CreateDebitAdjustment"
         },
@@ -3831,12 +3853,6 @@
 									"format": "email",
 									"description": "The email address of this API User",
 									"example": "marissa@globex.com"
-								},
-								"invitation_code": {
-									"type": "string",
-									"format": "uuid",
-									"description": "A secret, unique invite code to be used to set up the API User's account. Valid for 24 hours after an invite is created.",
-									"example":"5c92f11e-d137-4cd5-aac1-012919419cdf"
 								},
 								"created_at": {
 									"type": "string",
