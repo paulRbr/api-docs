@@ -2506,6 +2506,11 @@
 						],
 						"example": "superuser"
 					},
+					"organization_name": {
+            "type": "string",
+            "description": "A string describing the organization name under whom this user exists",
+            "example": "Acme Corporation"
+					},
           "api_user_id": {
             "type": "string",
             "format": "uuid",
