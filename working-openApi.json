@@ -121,18 +121,6 @@
 				"description": "Get a list of your API users",
 				"parameters": [
 					{
-						"name": "search_query",
-						"in": "query",
-						"description": "A search query to be applied to results before the api user list is returned. Search by name or email.",
-						"required": false,
-						"style": "form",
-						"example": true,
-						"schema": {
-							"type": "string",
-							"example": "Coco Parker"
-						}
-					},
-					{
             "name": "effective_as_of_date",
             "in": "query",
             "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
