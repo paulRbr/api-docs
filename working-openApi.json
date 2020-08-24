@@ -2169,7 +2169,7 @@
         ],
         "summary": "Get a statement for a given date for a specific account.",
         "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
-        "operationId": "getAccountStatement",
+        "operationId": "getAccountStatementByDate",
         "parameters": [
           {
             "name": "account_id",
@@ -2212,8 +2212,8 @@
           "accounts",
           "summary"
         ],
-        "summary": "Get a statement for a given date for a specific account.",
-        "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
+        "summary": "Get a specific statement for a specific account.",
+        "description": "This will return a statement that corresponds with the passed Statement ID. Relevant IDs for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
         "operationId": "getAccountStatement",
         "parameters": [
           {
