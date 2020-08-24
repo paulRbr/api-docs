@@ -16,7 +16,7 @@
 		},
 		{
 			"title": "Authentication",
-			"content": "**Sandbox** \n \n To Authenticate to our Sandbox environment, no prior contact with our team is required (though we'd certainly love to connect!). Simply make an unauthenticated `POST` request to `https://sandbox.canopyservicing.com/auth_sandbox`. The response body returns a unique `api_user_id`. \n \n For any subsequent calls to our API, include a header `x-api-key` whose value is this unique `api_user_id` as part of your request. This lets us know that you are submitting a valid Sandbox request and grants you access to our entire Sandbox API. \n \n **Production** \n \n To request production credentials, [contact our team](mailto:anurag@canopyservicing.com)."
+			"content": "**Sandbox** \n \n To Authenticate to our Sandbox environment, no prior contact with our team is required (though we'd certainly love to connect!). Simply make an unauthenticated `POST` request to `https://sandbox.canopyservicing.com/users`. The response body returns a unique `api_user_id`. \n \n For any subsequent calls to our API, include a header `x-api-key` whose value is this unique `api_user_id` as part of your request. This lets us know that you are submitting a valid Sandbox request and grants you access to our entire Sandbox API. \n \n **Production** \n \n To request production credentials, [contact our team](mailto:anurag@canopyservicing.com)."
 		}
 	],
   "servers": [
@@ -53,7 +53,7 @@
     }
   ],
   "paths": {
-    "/auth_sandbox": {
+    "/users": {
       "post": {
         "tags": [
           "authentication"
@@ -115,7 +115,7 @@
 				}
 			},
 			"get": {
-				"summary": "Get all API users under the root user",
+				"summary": "Get all API users within an organization",
 				"tags": ["users", "authentication"],
 				"operationId": "getApiUsers",
 				"description": "Get a list of your API users",
@@ -135,13 +135,56 @@
 				],
 				"responses": {
 					"200": {
-						"description": "A list of API users.",
+						"description": "A list of API users in the organization.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"type": "array",
 									"items": {
 										"$ref": "#/components/schemas/API_User"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api_users/password": {
+			"post": {
+				"summary": "Set a new password for an API user",
+				"description": "Update the password for an API user",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"old_password": {
+										"type": "string",
+										"example": "old_password123"
+									},
+									"new_password": {
+										"type": "string",
+										"example": "secret_new_password123"
+									}
+								}
+							}
+						}
+					}
+				}, 
+				"responses": {
+					"200": {
+						"description": "Successful update of password",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"example": "Password updated."
+										}
 									}
 								}
 							}
@@ -165,7 +208,22 @@
 				}
 			}
 		},
-		"/api_users/sign_in": {
+		"/api_users/register": {
+			"post": {
+				"summary": "Register an Invited API User",
+				"description": "Finish the registration process for an API user you've invited to join your team.",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/RegisterApiUser"
+				},
+				"responses": {
+					"200": {
+						"description": "Successfully updated API user",
+						"$ref": "#/components/responses/ApiUser"
+					}
+				}
+			}
+		},
+		"/api_users/login": {
 			"post": {
 				"summary": "Log in as an API User",
 				"description": "Sign in as an API user, under your root user's umbrella.",
@@ -190,14 +248,6 @@
 										"type": "string",
 										"description": "If configured, the multi-factor authentication code to log the user in.",
 										"example": "555555"
-									},
-									"role": {
-										"type": "string",
-										"description": "The role of this API User.",
-										"enum": [
-											"superuser", "root"
-										],
-										"example": "superuser"
 									}
 								}
 							}
@@ -2151,11 +2201,56 @@
             "$ref": "#/components/responses/AccountStatement"
           },
           "404": {
-            "description": "Account not found"
+            "description": "Statement not found"
           }
         }
       }
-    }
+		},
+		"/accounts/{account_id}/statements/{statement_id}": {
+      "get": {
+        "tags": [
+          "accounts",
+          "summary"
+        ],
+        "summary": "Get a statement for a given date for a specific account.",
+        "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
+        "operationId": "getAccountStatement",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "statement_id",
+            "in": "path",
+            "description": "The ID of a specific statement you would like returned.",
+            "required": true,
+            "style": "simple",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+				],
+				"responses": {
+          "200": {
+            "$ref": "#/components/responses/AccountStatement"
+          },
+          "404": {
+            "description": "Statement not found"
+          }
+        }
+      }
+		}
   },
   "components": {
     "securitySchemes": {
@@ -3391,13 +3486,14 @@
 							"type": "object",
 							"required": ["email", "role"],
 							"properties": {
-								"role": {
-									"type": "string",
-									"description": "The role of this API User.",
-									"enum": [
-										"superuser", "root"
-									],
-									"example": "superuser"
+								"roles": {
+									"type": "array",
+									"description": "An array of roles to be made accessible for the user. [Contact our team](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
+									"items": {
+										"type": "integer",
+										"example": 5
+									},
+									"example": [1, 2, 5]
 								},
 								"email": {
 									"type": "string",
@@ -3457,6 +3553,62 @@
 									"example": "marissa@globex.com"
 								},
 								"password": {
+									"type": "string",
+									"description": "The password for this API User's account",
+									"example": "secret_password123!!"
+								}
+							}
+						}
+					}
+				}
+			},
+			"RegisterApiUser": {
+				"description": "Body of request to complete registration for an invited API user",
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"required": ["invitation_code", "email", "first_name", "last_name", "new_password"],
+							"properties": {
+								"name_prefix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Dr."
+								},
+								"first_name": {
+									"type": "string",
+									"description": "User's first name",
+									"example": "Miriam"
+								},
+								"middle_name": {
+									"type": "string",
+									"description": "User's middle name",
+									"example": "Louise"
+								},
+								"last_name": {
+									"type": "string",
+									"description": "User's last name",
+									"example": "Trevino"
+								},
+								"name_suffix": {
+									"type": "string",
+									"description": "Prefix to the user's name",
+									"example": "Jr"
+								},
+								"email": {
+									"type": "string",
+									"format": "email",
+									"description": "The email address of this API User",
+									"example": "marissa@globex.com"
+								},
+								"phone_number": {
+									"type": "string",
+									"format": "phonenumber",
+									"description": "The phone number of this API User",
+									"example": "5555555555"
+								},
+								"new_password": {
 									"type": "string",
 									"description": "The password for this API User's account",
 									"example": "secret_password123!!"
