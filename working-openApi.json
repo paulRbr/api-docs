@@ -1361,11 +1361,6 @@
 										"type": "string",
 										"description": "A message to be included with the ticket.",
 										"example": "Customer card was stolen, and the transaction was not made by the customer."
-									},
-									"meta": {
-										"type": "string",
-										"description": "An additional piece of meta data to include for the ticket. For instance, an amount, or the details of a specific status change.",
-										"example": "$2.45"
 									}
 								}
 							}
