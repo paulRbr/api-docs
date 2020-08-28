@@ -3448,6 +3448,11 @@
 											"description": "The percentage interest applied to the account (i.e. 6.2%)",
 											"example": "6.2"
                     },
+                    "loan_amount": {
+                      "type": "number",
+                      "description": "For installment products, the total amount (in cents) of the loan issued to this account",
+                      "example": "6.2"
+                    },
                     "offer": {
                       "type": "string",
                       "format": "uuid",
