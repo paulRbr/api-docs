@@ -2308,13 +2308,18 @@
           },
           "credit_limit_cents": {
             "type": "integer",
-            "description": "Total Amount (in cents) that this account can borrow.",
+            "description": "For credit products, the total Amount (in cents) that this account can borrow. This field is not necessary for installment products.",
             "example": "400000"
           },
           "rate": {
             "type": "number",
             "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
             "example": "6.2"
+          },
+          "offer": {
+            "type": "string",
+            "description": "For installment loans, the offer applied to this account. This field is not necessary for credit products.",
+            "example": "Blue Cash 24 Month Offer"
           },
           "available_credit_balance": {
             "type": "number",
@@ -2464,6 +2469,11 @@
                 "type": "integer",
                 "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
                 "example": 600000
+              },
+              "offer": {
+                "type": "string",
+                "description": "For installment loans, the offer applied to this account. This field is not necessary for credit products.",
+                "example": "Blue Cash 24 Month Offer"
               }
             }
           }
@@ -2805,10 +2815,36 @@
 						"description":"Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
 						"format": "date-time",
 						"example": "2020-03-20T09:12:28Z"
-					}
+          },
+          "installment_offers": {
+            "$ref": "#/components/schemas/Base_Policy_Config_Installment_Offers"
+          }
 				},
 				"description": "A base group of policies that define a Product"
-			},
+      },
+      "Base_Policy_Config_Installment_Offers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "amortization_period_length": {
+              "type": "number",
+              "description": "Length of amortization period over which interest accrues per interest policy. IE '1 month' '3 months' or '7 days'",
+              "example": "24 months"
+            },
+            "offer_name": {
+              "type": "string",
+              "description": "A name to identify this specific offer for the product.",
+              "example": "Blue-Cash 24 Mo."
+            },
+            "offer_disclosure": {
+              "type": "string",
+              "description": "A disclosure to include with the offer for consumer protection.",
+              "example": "60 month loan. 60 amortized payments at an APR of 6.99% based on the balance at approval date."
+            }
+          }
+        }
+      },
       "Base_Policy_Config_Min_Pay": {
         "type": "object",
         "properties": {
@@ -3045,7 +3081,7 @@
                   "type": "string",
                   "description": "The Type of Product. If not included, defaults to `credit`",
                   "enum": [
-                    "credit"
+                    "credit, installment"
                   ],
                   "example": "credit"
                 },
@@ -3058,6 +3094,16 @@
                   "type": "integer",
                   "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
                   "example": "700000"
+                },
+                "default_installment_offer": {
+                  "type": "string",
+                  "description": "For installment loans, the default offer to provide for this product if none is passed at account origination. This field is not necessary for credit products.",
+                  "example": "Blue Cash 24 Month Offer"
+                },
+                "default_loan_amount": {
+                  "type": "string",
+                  "description": "For installment loans, the default loan amount to provide for this product if none is passed at account origination. This field is not necessary for credit products.",
+                  "example": "Blue Cash 24 Month Offer"
                 },
                 "description": {
                   "type": "string",
@@ -3369,7 +3415,7 @@
 									"properties": {
 										"product_id": {
 											"type": "string",
-											"description": "the Product ID of the account",
+											"description": "The Product ID of the account",
 											"format": "uuid",
 											"example": "d119341c-47fd-4a55-bce7-28406dacfa20"
 										},
@@ -3394,14 +3440,20 @@
 										},
 										"credit_limit_cents": {
 											"type": "integer",
-											"description": "Total Amount (in cents) that this account can borrow.",
+											"description": "For accounts created under credit products, total Amount (in cents) that this account can borrow.",
 											"example": "400000"
 										},
 										"rate": {
 											"type": "number",
 											"description": "The percentage interest applied to the account (i.e. 6.2%)",
 											"example": "6.2"
-										}
+                    },
+                    "offer": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "For accounts created under installment products, the ID that corresponds to the offer to be applied to the account.",
+                      "example": "1cf1fc4e-bb76-4e4f-8257-0fbf93fabfcd"
+                    }
 									}
 								},
 								{
@@ -3539,7 +3591,7 @@
 									"format": "email",
 									"description": "The email address of this API User",
 									"example": "marissa@globex.com"
-								}
+                }
 							}
 						}
 					}
@@ -3646,7 +3698,12 @@
 									"format": "phonenumber",
 									"description": "The phone number of this API User",
 									"example": "5555555555"
-								},
+                },
+                "organization_id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "The ID of the organization the user will be joining"
+                },
 								"new_password": {
 									"type": "string",
 									"description": "The password for this API User's account",
