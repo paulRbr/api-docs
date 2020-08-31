@@ -1313,6 +1313,50 @@
 						"$ref": "#/components/responses/CreateNote"
 					}
 				}
+      },
+      "get": {
+        "tags": [
+          "accounts",
+          "notes"
+        ],
+        "summary": "Get All Notes for a specific Account",
+        "description": "",
+        "operationId": "getNotes",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+            }
+					},
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+					"200": {
+						"$ref": "#/components/responses/AccountNoteHistory"
+					},
+          "404": {
+            "description": "Account not found"
+          }
+        }
 			}
 		},
 		"/accounts/{account_id}/tickets": {
@@ -1372,6 +1416,50 @@
 						"$ref": "#/components/responses/CreateTicket"
 					}
 				}
+      },
+			"get": {
+        "tags": [
+          "accounts",
+          "tickets"
+        ],
+        "summary": "Get All Tickets for a specific Account",
+        "description": "",
+        "operationId": "getTickets",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+            }
+					},
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+					"200": {
+						"$ref": "#/components/responses/AccountTicketHistory"
+					},
+          "404": {
+            "description": "Account not found"
+          }
+        }
 			}
 		},
 		"/accounts/{account_id}/tickets/{ticket_id}": {
@@ -2808,7 +2896,7 @@
 						"$ref": "#/components/schemas/Base_Policy_Config_Billing_Cycle"
 					},
 					"interest_policies": {
-						"$ref": "./schemas/Interest_Policy_MVP.json"
+						"$ref": "./schemas/InterestPolicy.json"
 					},
 					"close_of_business_and_timezone": {
 						"type": "string",
@@ -4236,6 +4324,54 @@
 												"$ref": "#/components/schemas/Ticket"
 											}
 										]
+									}
+								},
+								"created_date": {
+									"type": "string",
+									"format": "date-time",
+									"description": "The date and time the account was created."
+								}
+							}
+            }
+          }
+        }
+      },
+      "AccountTicketHistory": {
+        "description": "Successful query of history of tickets for a specific account",
+        "content": {
+          "application/json": {
+            "schema": {
+							"type": "object",
+							"properties": {
+								"activity": {
+									"type": "array",
+									"description": "A history of all tickets on an account.",
+									"items": {
+                    "$ref": "#/components/schemas/Ticket"
+									}
+								},
+								"created_date": {
+									"type": "string",
+									"format": "date-time",
+									"description": "The date and time the account was created."
+								}
+							}
+            }
+          }
+        }
+      },
+      "AccountNoteHistory": {
+        "description": "Successful query of history of notes for a specific account",
+        "content": {
+          "application/json": {
+            "schema": {
+							"type": "object",
+							"properties": {
+								"activity": {
+									"type": "array",
+									"description": "A history of all notes on an account.",
+									"items": {
+                    "$ref": "#/components/schemas/Note"
 									}
 								},
 								"created_date": {
