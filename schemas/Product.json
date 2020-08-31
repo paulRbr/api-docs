@@ -1,5 +1,8 @@
 {
-	"required": ["policies", "product_id"],
+	"required": [
+		"policies",
+		"product_id"
+	],
 	"type": "object",
 	"additionalProperties": false,
 	"properties": {
@@ -28,13 +31,17 @@
 		"type": {
 			"type": "string",
 			"description": "The Type of Product",
-			"enum": ["CREDIT"],
+			"enum": [
+				"CREDIT"
+			],
 			"example": "CREDIT"
 		},
 		"status": {
 			"type": "string",
 			"description": "The status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
-			"enum": ["VALID"],
+			"enum": [
+				"VALID"
+			],
 			"example": "VALID"
 		},
 		"policies": {
@@ -42,12 +49,12 @@
 			"description": "An object of policies that drive product behavior.",
 			"properties": {
 				"base_policy_config": {
-					"$ref": "#/components/schemas/Base_Policy_Config_MVP"
+					"$ref": "./schemas/Base_Policy_Config_MVP.json"
 				}
 			}
 		},
 		"product_summary": {
-			"$ref": "#/components/schemas/Product_Summary"
+			"$ref": "./schemas/Product_Summary.json"
 		},
 		"default_attributes": {
 			"type": "object",

@@ -1,0 +1,10 @@
+{
+  "description": "Response for a request for summary data for a specific product.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/ProductSummary.json"
+      }
+    }
+  }
+}

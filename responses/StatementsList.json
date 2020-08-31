@@ -1,0 +1,10 @@
+{
+  "description": "A list of statements for the account.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/StatementsList.json"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "description": "Charge Created",
+  "description": "Payment Created",
   "content": {
     "application/json": {
       "schema": {

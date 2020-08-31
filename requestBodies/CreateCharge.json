@@ -6,7 +6,11 @@
       "schema": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["amount_cents", "effective_at", "merchant_data"],
+        "required": [
+          "amount_cents",
+          "effective_at",
+          "merchant_data"
+        ],
         "properties": {
           "amount_cents": {
             "type": "integer",
@@ -27,7 +31,9 @@
           "merchant_data": {
             "type": "object",
             "description": "",
-            "required": ["mcc_code"],
+            "required": [
+              "mcc_code"
+            ],
             "properties": {
               "name": {
                 "type": "string"

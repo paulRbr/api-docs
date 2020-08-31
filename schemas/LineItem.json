@@ -1,5 +1,15 @@
 {
-  "required": ["account_id", "effective_at", "line_item_status", "line_item_id", "product_id", "type", "amount_cents", "created_at", "reference_id"],
+  "required": [
+    "account_id",
+    "effective_at",
+    "line_item_status",
+    "line_item_id",
+    "product_id",
+    "type",
+    "amount_cents",
+    "created_at",
+    "reference_id"
+  ],
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -17,13 +27,26 @@
     "line_item_status": {
       "type": "string",
       "description": "the corresponding Status for a line item",
-      "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
+      "enum": [
+        "posted",
+        "valid",
+        "invalid",
+        "declined",
+        "authorized",
+        "void",
+        "pending",
+        "successful",
+        "unsuccessful"
+      ],
       "example": "posted"
     },
     "type": {
       "type": "string",
       "description": "The Line Item Type. Either `charge` or `payment`.",
-      "enum": [ "charge", "payment" ],
+      "enum": [
+        "charge",
+        "payment"
+      ],
       "example": "charge"
     },
     "originating_amount_cents": {
@@ -108,14 +131,14 @@
         "type": "object",
         "properties": {
           "name": {
-          "type": "string",
-          "description": "Name of the External Party",
-          "example": "Globex Card Processing"
+            "type": "string",
+            "description": "Name of the External Party",
+            "example": "Globex Card Processing"
           },
           "id": {
-          "type": "string",
-          "description": "External Account ID",
-          "example": "22445702-a389-431f-927d-07b8d0750787"
+            "type": "string",
+            "description": "External Account ID",
+            "example": "22445702-a389-431f-927d-07b8d0750787"
           }
         }
       }

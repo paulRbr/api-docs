@@ -1,0 +1,10 @@
+{
+  "description": "Detailed info about a specific line item",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/LineItem.json"
+      }
+    }
+  }
+}

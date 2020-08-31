@@ -1,0 +1,10 @@
+{
+  "description": "Product",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./schemas/Product.json"
+      }
+    }
+  }
+}

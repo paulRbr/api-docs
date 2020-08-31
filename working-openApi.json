@@ -3451,7 +3451,7 @@
                     "loan_amount": {
                       "type": "number",
                       "description": "For installment products, the total amount (in cents) of the loan issued to this account",
-                      "example": "6.2"
+                      "example": "500000"
                     },
                     "offer": {
                       "type": "string",

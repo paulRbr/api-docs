@@ -1,0 +1,10 @@
+{
+  "description": "",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/Account_Statement.json"
+      }
+    }
+  }
+}

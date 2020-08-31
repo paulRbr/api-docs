@@ -1,60 +1,53 @@
 {
-  "description": "",
-  "content": {
-    "application/json": {
-      "schema": {
-        "type": "object",
-        "description": "Statement for an account for a given billing cycle",
-        "properties": {
-          "available_credit_balance": {
-            "type": "number",
-            "description": "The total available credit balance (in cents) for the account.",
-            "example": "600000"
-          },
-          "total_balance": {
-            "type": "number",
-            "description": "The total balance (in cents) associated with the account.",
-            "example": "400000"
-          },
-          "account_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "The Canopy-generated ID for the account",
-            "example": "111eff36-cbec-4119-b188-b76200e804d8"
-          },
-          "effective_as_of_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "example": "2018-07-20T09:10:14Z"
-          },
-          "min_pay_due_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The `Date-Time` at which the minimum payment is due."
-          },
-          "min_pay_amount_cents": {
-            "type": "number",
-            "description": "The minimum amount (in cents) due for this statement."
-          },
-          "billing_cycle_start_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
-          },
-          "billing_cycle_end_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
-          },
-          "line_items": {
-            "type": "array",
-            "description": "An array of line items included in the billing cycle.",
-            "items": {
-              "$ref": "#/components/schemas/Line_Item_MVP"
-            }
-          }
-        }
+  "type": "object",
+  "description": "Statement for an account for a given billing cycle",
+  "properties": {
+    "available_credit_balance": {
+      "type": "number",
+      "description": "The total available credit balance (in cents) for the account.",
+      "example": "600000"
+    },
+    "total_balance": {
+      "type": "number",
+      "description": "The total balance (in cents) associated with the account.",
+      "example": "400000"
+    },
+    "account_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The Canopy-generated ID for the account",
+      "example": "111eff36-cbec-4119-b188-b76200e804d8"
+    },
+    "effective_as_of_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+      "example": "2018-07-20T09:10:14Z"
+    },
+    "min_pay_due_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The `Date-Time` at which the minimum payment is due."
+    },
+    "min_pay_amount_cents": {
+      "type": "number",
+      "description": "The minimum amount (in cents) due for this statement."
+    },
+    "billing_cycle_start_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+    },
+    "billing_cycle_end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+    },
+    "line_items": {
+      "type": "array",
+      "description": "An array of line items included in the billing cycle.",
+      "items": {
+        "$ref": "./schemas/Line_Item_MVP.json"
       }
     }
   }
