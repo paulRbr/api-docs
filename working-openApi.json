@@ -474,7 +474,7 @@
       }
     },
     "/customers/{customer_id}": {
-      "put": {
+      "patch": {
         "security": [
           {
             "api_key": []
@@ -484,8 +484,8 @@
           "customers"
         ],
         "summary": "Update an existing customer",
-        "operationId": "CreateCustomer",
-        "description": "Customers can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
+        "operationId": "UpdateCustomer",
+        "description": "Update data for a customer in Canopy.",
         "parameters": [
           {
             "name": "customer_id",
@@ -1092,7 +1092,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "tags": [
           "accounts",
           "programmatic"
