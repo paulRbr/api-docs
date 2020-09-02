@@ -1,0 +1,29 @@
+{
+  "description": "Body of request to invite new API user. Checks permissions of invite-creator.",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": ["email", "role"],
+        "properties": {
+          "roles": {
+            "type": "array",
+            "description": "An array of roles to be made accessible for the user. [Contact our team](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
+            "items": {
+              "type": "integer",
+              "example": 5
+            },
+            "example": [1, 2, 5]
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of this API User",
+            "example": "marissa@globex.com"
+          }
+        }
+      }
+    }
+  }
+}

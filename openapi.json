@@ -12,11 +12,11 @@
 	"x-topics": [
 		{
 			"title": "Getting Started",
-			"content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
+			"content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:support@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
 		},
 		{
 			"title": "Authentication",
-			"content": "**Sandbox** \n \n To Authenticate to our Sandbox environment, no prior contact with our team is required (though we'd certainly love to connect!). Simply make an unauthenticated `POST` request to `https://sandbox.canopyservicing.com/users`. The response body returns a unique `api_user_id`. \n \n For any subsequent calls to our API, include a header `x-api-key` whose value is this unique `api_user_id` as part of your request. This lets us know that you are submitting a valid Sandbox request and grants you access to our entire Sandbox API. \n \n **Production** \n \n To request production credentials, [contact our team](mailto:anurag@canopyservicing.com)."
+			"content": "To create your organization within Canopy, [contact our team](mailto:support@canopyservicing.com?subject=API%20Access%20Request). Once created, review our API Users routes to handle all subsequent authentication-related activities, including inviting your team members to join your organization."
 		}
 	],
   "servers": [
@@ -40,8 +40,8 @@
       "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
     },
     {
-      "name": "users",
-      "description": "Onboard users into your system, so they can begin using your credit products"
+      "name": "customers",
+      "description": "Onboard customers into your system, so they can begin using your credit products"
     },
     {
       "name": "accounts",
@@ -49,17 +49,146 @@
     }
   ],
   "paths": {
-    "/users": {
+    "/api_users": {
       "post": {
         "tags": [
           "authentication"
         ],
-        "summary": "Authenticate to the Canopy Sandbox",
-        "operationId": "createSandboxUser",
-        "description": "When you create a new user via this `POST` request, Canopy will respond with a unique ID for that user. \n Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.",
+        "summary": "Invite a new API user to Canopy",
+        "operationId": "createApiUser",
+        "description": "When you create a new API user via this `POST` request, an email invite will be sent for the new user to join your organization. The email invite includes a link with a unique token that will allow the new user to register to join your team in Canopy.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateApiUser"
+        },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/CreateUser"
+            "$ref": "#/components/responses/CreateApiUser"
+          }
+        }
+      },
+      "get": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Get all API users in your organization",
+        "description": "Returns a list of all API users in your organization.",
+        "operationId": "getApiUsers",
+        "parameters": [
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ApiUsers"
+          },
+          "404": {
+            "description": "No Api Users found"
+          }
+        }
+      }
+    },
+    "/api_users/login": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Log in as an API user",
+        "operationId": "logInApiUser",
+        "description": "When provided appropriate credentials, this route signs in an API user.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/LogInApiUser"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/LogInApiUser"
+          }
+        }
+      }
+    },
+    "/api_users/password": {
+      "put": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Update the password for an API User",
+        "operationId": "updateApiUserPassword",
+        "description": "When provided appropriate credentials, this route changes an API User's password.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UpdateApiUserPassword"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UpdateApiUserPassword"
+          }
+        }
+      }
+    },
+    "/api_users/register": {
+      "put": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Complete registration for an invited API user",
+        "operationId": "registerApiUserPassword",
+        "description": "When provided appropriate credentials, this route updates an API user's information for registration.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/RegisterApiUser"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/RegisterApiUser"
+          }
+        }
+      }
+    },
+    "/api_users/summary": {
+      "get": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Get summary info for an API user",
+        "description": "Get all summarized information pertaining to the API user making the request.",
+        "operationId": "getApiUser",
+        "parameters": [
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the api user's info was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ApiUser"
+          },
+          "404": {
+            "description": "No Products"
           }
         }
       }
@@ -165,76 +294,6 @@
           },
           "404": {
             "description": "No Products found"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "products"
-        ],
-        "summary": "Update an existing product",
-        "description": "Add additional configurations to a product. Products must be in the `draft` state to be updated.",
-        "parameters": [
-          {
-            "name": "product_id",
-            "in": "path",
-            "description": "Product ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreateProduct"
-        },
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/CreateProduct"
-          },
-          "422": {
-            "description": "Invalid input"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "products"
-        ],
-        "summary": "Delete an existing product",
-        "description": "Delete an existing product. Product `status` must be `draft` to be deleted.",
-        "parameters": [
-          {
-            "name": "product_id",
-            "in": "query",
-            "description": "The Canopy-generated ID for your product.",
-            "required": true,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/DeleteProduct"
           }
         }
       }
@@ -442,72 +501,6 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Account"
-          },
-          "404": {
-            "description": "Account not found"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "accounts",
-          "programmatic"
-        ],
-        "summary": "Update a customer account",
-        "description": "Update `rate` and/or `credit_limit_cents` for an individual account.",
-        "operationId": "updateAccount",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/UpdateAccount"
-        },
-        "responses": {
-          "201": {
-            "$ref": "#/components/responses/UpdateAccount"
-          },
-          "405": {
-            "description": "Invalid input"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "accounts",
-          "servicing"
-        ],
-        "summary": "Delete a specific Account",
-        "description": "Deleting an account also deletes all of its associated line items.",
-        "operationId": "deleteAccount",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Account Deleted"
           },
           "404": {
             "description": "Account not found"
@@ -729,160 +722,6 @@
           }
         }
       }
-    },
-    "/accounts/{account_id}/line_items/{line_item_id}/disputes": {
-      "post": {
-        "tags": [
-          "accounts",
-          "line_items",
-          "disputes"
-        ],
-        "summary": "Create a dispute for a specific account's line item",
-        "description": "",
-        "operationId": "createDispute",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "line_item_id",
-            "in": "path",
-            "description": "Line Item ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Response upon successful creation of a dispute",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "account_id": {
-                      "type": "string",
-                      "format": "uuid"
-                    },
-                    "line_item_id": {
-                      "type": "string",
-                      "format": "uuid"
-                    },
-                    "dispute_id": {
-                      "type": "string",
-                      "format": "uuid"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Account not found"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/statements_list": {
-      "get": {
-        "tags": [
-          "accounts",
-          "summary"
-        ],
-        "summary": "Get a list of all current and prior statements for a specific account",
-        "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
-        "operationId": "getAccountStatementsList",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/StatementsList"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/statements": {
-      "get": {
-        "tags": [
-          "accounts",
-          "summary"
-        ],
-        "summary": "Get the current in-progress statement for a specific account.",
-        "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements_list` route.",
-        "operationId": "getAccountStatement",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "./responses/AccountStatement.json"
-          },
-          "404": {
-            "description": "Account not found"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -923,11 +762,23 @@
       }
     },
     "requestBodies": {
+      "LogInApiUser": {
+        "$ref": "./requestBodies/LogInApiUser.json"
+      },
+      "UpdateApiUserPassword": {
+        "$ref": "./requestBodies/UpdateApiUserPassword.json"
+      },
+      "RegisterApiUser": {
+        "$ref": "./requestBodies/RegisterApiUser.json"
+      },
       "CreateProduct": {
         "$ref": "./requestBodies/CreateProduct.json"
       },
       "CreateAccount": {
         "$ref": "./requestBodies/CreateAccount.json"
+      },
+      "CreateApiUser": {
+        "$ref": "./requestBodies/CreateApiUser.json"
       },
       "UpdateAccount": {
         "$ref": "./requestBodies/UpdateAccount.json"
@@ -940,6 +791,21 @@
       }
     },
     "responses": {
+      "ApiUser": {
+        "$ref": "./responses/ApiUser.json"
+      },
+      "ApiUsers": {
+        "$ref": "./responses/ApiUsers.json"
+      },
+      "LogInApiUser": {
+        "$ref": "./responses/LogInApiUser.json"
+      },
+      "UpdateApiUserPassword": {
+        "$ref": "./responses/UpdateApiUserPassword.json"
+      },
+      "RegisterApiUser": {
+        "$ref": "./responses/RegisterApiUser.json"
+      },
       "CreateProduct": {
         "$ref": "./responses/CreateProduct.json"
       },
@@ -988,8 +854,8 @@
       "StatementsList": {
         "$ref": "./responses/StatementsList.json"
       },
-      "CreateUser": {
-        "$ref": "./responses/CreateUser.json"
+      "CreateApiUser": {
+        "$ref": "./responses/CreateApiUser.json"
       }
     }
   }

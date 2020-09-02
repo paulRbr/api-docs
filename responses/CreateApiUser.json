@@ -1,0 +1,30 @@
+{
+  "description": "Successfully invited a new user",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of this API User",
+            "example": "marissa@globex.com"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The `Date-Time` which the invitation was created in the API",
+            "format": "date-time",
+            "example": "2018-06-20T09:12:30Z"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The `Date-Time` which the invitation expires",
+            "format": "date-time",
+            "example": "2018-06-21T09:12:30Z"
+          }
+        }
+      }
+    }
+  }
+}

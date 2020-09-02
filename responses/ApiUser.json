@@ -1,0 +1,10 @@
+{
+  "description": "API User",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./schemas/ApiUser.json"
+      }
+    }
+  }
+}

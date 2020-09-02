@@ -1,0 +1,13 @@
+{
+  "description": "Array of API Users",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "./schemas/ApiUser.json"
+        }
+      }
+    }
+  }
+}
