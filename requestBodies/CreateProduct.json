@@ -51,7 +51,7 @@
             "description": "An Object of policies that drive Product behaviour.",
             "properties": {
               "base_policy_config": {
-                "$ref": "./schemas/BasePolicyConfig.json"
+                "$ref": "./../schemas/BasePolicyConfig.json"
               }
             }
           }

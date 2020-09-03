@@ -32,7 +32,7 @@
       },
       "product": {
         "description": "The product associated with the account",
-        "$ref": "./schemas/Product_MVP.json"
+        "$ref": "./Product.json"
       },
       "external_account_ids": {
         "type": "array",

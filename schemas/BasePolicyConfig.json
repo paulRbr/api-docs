@@ -3,13 +3,13 @@
   "additionalProperties": false,
   "properties": {
     "min_pay": {
-      "$ref": "./schemas/Base_Policy_Config_Min_Pay.json"
+      "$ref": "./BasePolicyConfigMinPay.json"
     },
     "billing_cycle": {
-      "$ref": "./schemas/Base_Policy_Config_Billing_Cycle.json"
+      "$ref": "./BasePolicyConfigBillingCycle.json"
     },
     "interest_policies": {
-      "$ref": "./schemas/Interest_Policy_MVP.json"
+      "$ref": "./InterestPolicy.json"
     },
     "close_of_business_and_timezone": {
       "type": "string",

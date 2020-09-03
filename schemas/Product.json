@@ -49,12 +49,12 @@
 			"description": "An object of policies that drive product behavior.",
 			"properties": {
 				"base_policy_config": {
-					"$ref": "./schemas/Base_Policy_Config_MVP.json"
+					"$ref": "./BasePolicyConfig.json"
 				}
 			}
 		},
 		"product_summary": {
-			"$ref": "./schemas/Product_Summary.json"
+			"$ref": "./ProductSummary.json"
 		},
 		"default_attributes": {
 			"type": "object",

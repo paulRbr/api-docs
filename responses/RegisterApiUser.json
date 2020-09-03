@@ -1,0 +1,10 @@
+{
+  "description": "API user successfully registered",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/ApiUser.json"
+      }
+    }
+  }
+}

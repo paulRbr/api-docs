@@ -6,5 +6,6 @@
 	"scripts": {
 		"install": "sudo  gem install bump-cli",
 		"deploy": "bump deploy --doc 2cbc8b10-f3ac-4302-98b7-509b8ae66537 --token 2a875f01263a1b976bee2d232544150b openapi.json"
-	}
+	},
+	"dependencies": {}
 }

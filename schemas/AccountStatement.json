@@ -47,7 +47,7 @@
       "type": "array",
       "description": "An array of line items included in the billing cycle.",
       "items": {
-        "$ref": "./schemas/Line_Item_MVP.json"
+        "$ref": "./LineItem.json"
       }
     }
   }
