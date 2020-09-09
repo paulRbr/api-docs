@@ -1855,6 +1855,73 @@
         }
       }
     },
+    "/accounts/{account_id}/amortization_schedule": {
+      "get": {
+        "tags": [
+          "line_items",
+          "accounts"
+        ],
+        "summary": "Get the amortization schedule for a lending product",
+        "description": "",
+        "operationId": "getAmortizationSchedule",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of line items to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/AmortizationSchedule"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/line_items/{line_item_id}": {
       "get": {
         "tags": [
@@ -4471,6 +4538,50 @@
                   "format": "date-time",
                   "description": "The `Date-Time` you would like the system to return the data as of. IE \"tell me what the product information was as if I had asked on `2020-01-20 00:00:00 EST`\". If empty defaults to current time.",
                   "example": "2017-06-20T09:12:14Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "AmortizationSchedule": {
+        "description": "Amortization schedule for a loan",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "description": "Amortization schedule",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The date of the scheduled payment",
+                  "example": "2018-07-20T09:10:14Z"
+                },
+                "amount_due_cents": {
+                  "type": "number",
+                  "description": "The amount in cents of the scheduled payment due",
+                  "example": "18325"
+                },
+                "amount_paid_cents": {
+                  "type": "number",
+                  "description": "The amount in cents that was actually paid for the billing cycle",
+                  "example": "18325"
+                },
+                "interest_allocation": {
+                  "type": "number",
+                  "description": "The amount in cents allocated to interest from this payment",
+                  "example": "2415"
+                },
+                "principal_allocation": {
+                  "type": "number",
+                  "description": "The amount in cents allocated to principal from this payment",
+                  "example": "15911"
+                },
+                "end_balance": {
+                  "type": "number",
+                  "description": "The ending balance on the loan after this payment",
+                  "example": "136691"
                 }
               }
             }
