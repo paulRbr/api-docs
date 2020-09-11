@@ -5,6 +5,7 @@
       "schema": {
         "type": "object",
         "properties": {
+          "required": ["accounts", "total_account_count"],
           "accounts": {
             "type": "array",
             "description": "An array of information for all accounts within the requested range.",

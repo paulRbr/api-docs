@@ -1,9 +1,17 @@
 {
 	"type": "object",
 	"description": "Summary of product information.",
+	"required": [
+		"accounts_overview",
+		"total_credit_issued_cents",
+		"utilization_rate",
+		"product_id",
+		"effective_as_of_date"
+	],
 	"properties": {
 		"accounts_overview": {
 			"type": "object",
+			"required": ["account_count_total", "account_count_delinquent"],
 			"properties": {
 				"account_count_total": {
 					"type": "integer",

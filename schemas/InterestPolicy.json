@@ -1,6 +1,12 @@
 {
 	"type": "object",
 	"additionalProperties": false,
+	"required": [
+		"type",
+		"method",
+		"day_calc_type",
+		"interest_calc_time"
+	],
 	"properties": {
 		"type": {
 			"type": "string",

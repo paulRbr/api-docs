@@ -6,7 +6,11 @@
       "schema": {
         "type": "object",
         "required": [
-          "name"
+          "name",
+          "description",
+          "default_rate",
+          "default_credit_limit_cents",
+          "policies"
         ],
         "additionalProperties": false,
         "properties": {
@@ -40,11 +44,11 @@
           },
           "status": {
             "type": "string",
-            "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
+            "description": "The status to publish this product with. Currently, products are always `live` once created.",
             "enum": [
-              "draft, live"
+              "live"
             ],
-            "example": "draft"
+            "example": "live"
           },
           "policies": {
             "type": "object",

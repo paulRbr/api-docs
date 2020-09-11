@@ -1,6 +1,11 @@
 {
   "type": "object",
   "description": "Statements for the account.",
+  "required": [
+    "account_id",
+    "effective_as_of_date",
+    "statements_list"
+  ],
   "properties": {
     "account_id": {
       "type": "string",
@@ -19,6 +24,15 @@
       "description": "An array of statements included in the billing cycle.",
       "items": {
         "type": "object",
+        "required": [
+          "statement_id",
+          "available_credit_balance",
+          "total_balance",
+          "min_pay_due_date",
+          "min_pay_amount_cents",
+          "billing_cycle_start_date",
+          "billing_cycle_end_date"
+        ],
         "properties": {
           "statement_id": {
             "type": "string",
@@ -43,7 +57,8 @@
           },
           "min_pay_amount_cents": {
             "type": "number",
-            "description": "The minimum amount (in cents) due for this statement."
+            "description": "The minimum amount (in cents) due for this statement.",
+            "example": "45535"
           },
           "billing_cycle_start_date": {
             "type": "string",

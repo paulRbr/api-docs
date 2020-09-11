@@ -1,7 +1,15 @@
 {
 	"required": [
 		"policies",
-		"product_id"
+		"product_id",
+		"name",
+		"description",
+		"created_at",
+		"type",
+		"status",
+		"policies",
+		"product_summary",
+		"default_attributes"
 	],
 	"type": "object",
 	"additionalProperties": false,
@@ -38,7 +46,7 @@
 		},
 		"status": {
 			"type": "string",
-			"description": "The status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
+			"description": "The status of a Product (i.e. `live`). Currently, all configured products are in the `live` state.",
 			"enum": [
 				"VALID"
 			],
@@ -58,6 +66,10 @@
 		},
 		"default_attributes": {
 			"type": "object",
+			"required": [
+				"rate",
+				"credit_limit_cents"
+			],
 			"properties": {
 				"rate": {
 					"type": "number",

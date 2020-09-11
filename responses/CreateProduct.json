@@ -4,6 +4,7 @@
     "application/json": {
       "schema": {
         "type": "object",
+        "required": ["name", "product_id", "status"],
         "properties": {
           "name": {
             "type": "string",

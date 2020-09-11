@@ -6,6 +6,25 @@
         "type": "array",
         "items": {
           "type": "object",
+          "required": [
+            "account_id",
+            "line_item_id",
+            "line_item_status",
+            "type",
+            "originating_amount_cents",
+            "balance_amount_cents",
+            "total_interest_accrued_cents",
+            "total_paid_down_cents",
+            "merchant_data",
+            "effective_at",
+            "created_at",
+            "product_id",
+            "description",
+            "reference_id",
+            "dispute_id",
+            "external_ids",
+            "line_item_count"
+          ],
           "properties": {
             "account_id": {
               "type": "string",

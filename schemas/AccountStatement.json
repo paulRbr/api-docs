@@ -1,6 +1,17 @@
 {
   "type": "object",
   "description": "Statement for an account for a given billing cycle",
+  "required": [
+    "available_credit_balance",
+    "total_balance",
+    "account_id",
+    "effective_as_of_date",
+    "min_pay_due_date",
+    "min_pay_amount_cents",
+    "billing_cycle_start_date",
+    "billing_cycle_end_date",
+    "line_items"
+  ],
   "properties": {
     "available_credit_balance": {
       "type": "number",

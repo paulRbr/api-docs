@@ -5,7 +5,7 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": [],
+        "required": ["email_confirm", "new_password", "first_name", "last_name", "phone","token"],
         "properties": {
           "email_confirm": {
             "type": "string",

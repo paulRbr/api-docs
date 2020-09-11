@@ -1,6 +1,18 @@
 {
     "additionalProperties": false,
     "type": "object",
+    "required": [
+      "account_id", 
+      "account_status", 
+      "account_status_subtype", 
+      "effective_at", 
+      "created_at",
+      "product",
+      "total_balance",
+      "credit_limit_cents",
+      "rate",
+      "available_credit_balance"
+    ],
     "properties": {
       "account_id": {
         "type": "string",

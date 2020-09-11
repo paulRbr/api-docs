@@ -1,5 +1,8 @@
 {
   "type": "object",
+  "requierd": [
+    "percentage"
+  ],
   "properties": {
     "percentage": {
       "type": "number",

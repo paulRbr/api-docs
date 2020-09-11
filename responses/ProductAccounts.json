@@ -5,6 +5,7 @@
       "schema": {
         "type": "object",
         "description": "",
+        "required": ["current_accounts"],
         "properties": {
           "current_accounts": {
             "type": "array",

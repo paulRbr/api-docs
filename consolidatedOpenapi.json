@@ -572,6 +572,17 @@ components:
     Account:
       additionalProperties: false
       type: object
+      required:
+        - account_id
+        - account_status
+        - account_status_subtype
+        - effective_at
+        - created_at
+        - product
+        - total_balance
+        - credit_limit_cents
+        - rate
+        - available_credit_balance
       properties:
         account_id:
           type: string
@@ -600,6 +611,14 @@ components:
           required:
             - policies
             - product_id
+            - name
+            - description
+            - created_at
+            - type
+            - status
+            - policies
+            - product_summary
+            - default_attributes
           type: object
           additionalProperties: false
           properties:
@@ -629,9 +648,8 @@ components:
               example: CREDIT
             status:
               type: string
-              description: The status of a Product (i.e. `live` or `draft`). Products with the
-                `draft` status require additional policy configurations to
-                launch.
+              description: The status of a Product (i.e. `live`). Currently, all configured
+                products are in the `live` state.
               enum:
                 - VALID
               example: VALID
@@ -646,6 +664,9 @@ components:
               $ref: "#/components/schemas/Product/properties/product_summary"
             default_attributes:
               type: object
+              required:
+                - rate
+                - credit_limit_cents
               properties:
                 rate:
                   type: number
@@ -698,6 +719,16 @@ components:
     AccountStatement:
       type: object
       description: Statement for an account for a given billing cycle
+      required:
+        - available_credit_balance
+        - total_balance
+        - account_id
+        - effective_as_of_date
+        - min_pay_due_date
+        - min_pay_amount_cents
+        - billing_cycle_start_date
+        - billing_cycle_end_date
+        - line_items
       properties:
         available_credit_balance:
           type: number
@@ -870,6 +901,14 @@ components:
       required:
         - policies
         - product_id
+        - name
+        - description
+        - created_at
+        - type
+        - status
+        - policies
+        - product_summary
+        - default_attributes
       type: object
       additionalProperties: false
       properties:
@@ -899,8 +938,8 @@ components:
           example: CREDIT
         status:
           type: string
-          description: The status of a Product (i.e. `live` or `draft`). Products with the
-            `draft` status require additional policy configurations to launch.
+          description: The status of a Product (i.e. `live`). Currently, all configured
+            products are in the `live` state.
           enum:
             - VALID
           example: VALID
@@ -911,6 +950,11 @@ components:
             base_policy_config:
               type: object
               additionalProperties: false
+              required:
+                - min_pay
+                - billing_cycle
+                - interest_policies
+                - close_of_business_and_timezone
               properties:
                 min_pay:
                   $ref: "#/components/schemas/BasePolicyConfig/properties/min_pay"
@@ -929,9 +973,18 @@ components:
         product_summary:
           type: object
           description: Summary of product information.
+          required:
+            - accounts_overview
+            - total_credit_issued_cents
+            - utilization_rate
+            - product_id
+            - effective_as_of_date
           properties:
             accounts_overview:
               type: object
+              required:
+                - account_count_total
+                - account_count_delinquent
               properties:
                 account_count_total:
                   type: integer
@@ -965,6 +1018,9 @@ components:
               example: 2017-06-20T09:12:14Z
         default_attributes:
           type: object
+          required:
+            - rate
+            - credit_limit_cents
           properties:
             rate:
               type: number
@@ -985,9 +1041,18 @@ components:
     ProductSummary:
       type: object
       description: Summary of product information.
+      required:
+        - accounts_overview
+        - total_credit_issued_cents
+        - utilization_rate
+        - product_id
+        - effective_as_of_date
       properties:
         accounts_overview:
           type: object
+          required:
+            - account_count_total
+            - account_count_delinquent
           properties:
             account_count_total:
               type: integer
@@ -1021,9 +1086,16 @@ components:
     BasePolicyConfig:
       type: object
       additionalProperties: false
+      required:
+        - min_pay
+        - billing_cycle
+        - interest_policies
+        - close_of_business_and_timezone
       properties:
         min_pay:
           type: object
+          requierd:
+            - percentage
           properties:
             percentage:
               type: number
@@ -1033,6 +1105,9 @@ components:
           description: The configured minimum payment required for a given pay period.
         billing_cycle:
           type: object
+          required:
+            - period
+            - billing_due_date_interval
           properties:
             period:
               type: string
@@ -1052,6 +1127,11 @@ components:
         interest_policies:
           type: object
           additionalProperties: false
+          required:
+            - type
+            - method
+            - day_calc_type
+            - interest_calc_time
           properties:
             type:
               type: string
@@ -1088,6 +1168,8 @@ components:
       description: A base group of policies that define a Product
     BasePolicyConfigMinPay:
       type: object
+      requierd:
+        - percentage
       properties:
         percentage:
           type: number
@@ -1097,6 +1179,9 @@ components:
       description: The configured minimum payment required for a given pay period.
     BasePolicyConfigBillingCycle:
       type: object
+      required:
+        - period
+        - billing_due_date_interval
       properties:
         period:
           type: string
@@ -1116,6 +1201,11 @@ components:
     InterestPolicy:
       type: object
       additionalProperties: false
+      required:
+        - type
+        - method
+        - day_calc_type
+        - interest_calc_time
       properties:
         type:
           type: string
@@ -1320,7 +1410,13 @@ components:
         application/json:
           schema:
             type: object
-            required: []
+            required:
+              - email_confirm
+              - new_password
+              - first_name
+              - last_name
+              - phone
+              - token
             properties:
               email_confirm:
                 type: string
@@ -1356,6 +1452,10 @@ components:
             type: object
             required:
               - name
+              - description
+              - default_rate
+              - default_credit_limit_cents
+              - policies
             additionalProperties: false
             properties:
               name:
@@ -1390,15 +1490,11 @@ components:
                 example: Consumer credit card
               status:
                 type: string
-                description: >-
-                  The status to publish this product with. This can only be
-                  `live` if all fields necessary for product creation are
-                  populated. 
-                   If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. 
-                   If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.
+                description: The status to publish this product with. Currently, products are
+                  always `live` once created.
                 enum:
-                  - draft, live
-                example: draft
+                  - live
+                example: live
               policies:
                 type: object
                 description: An Object of policies that drive Product behaviour.
@@ -1455,18 +1551,12 @@ components:
               - email
               - role
             properties:
-              roles:
-                type: array
-                description: An array of roles to be made accessible for the user. [Contact our
+              role:
+                type: number
+                description: A role to be made accessible for the user. [Contact our
                   team](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request)
                   for a full list of options.
-                items:
-                  type: integer
-                  example: 5
-                example:
-                  - 1
-                  - 2
-                  - 5
+                example: 3
               email:
                 type: string
                 format: email
@@ -1480,6 +1570,7 @@ components:
             type: object
             description: Update attributes for an account at any time after account
               creation.
+            required: []
             properties:
               rate:
                 type: number
@@ -1525,7 +1616,7 @@ components:
               rate:
                 type: number
                 description: The percentage rate to be applied to this charge (i.e. 15.5 means
-                  15.5%). If not included, defaults to the rate for the acount.
+                  15.5%). If not included, defaults to the rate for the account.
                 example: 15.5%
               merchant_data:
                 type: object
@@ -1605,6 +1696,11 @@ components:
         application/json:
           schema:
             type: object
+            required:
+              - api_user_id
+              - organization_name
+              - email
+              - role
             properties:
               api_user_id:
                 type: string
@@ -1654,6 +1750,12 @@ components:
         application/json:
           schema:
             type: object
+            required:
+              - api_user_id
+              - organization_name
+              - email
+              - role
+              - token
             properties:
               api_user_id:
                 type: string
@@ -1699,6 +1801,12 @@ components:
         application/json:
           schema:
             type: object
+            required:
+              - api_user_id
+              - organization_name
+              - email
+              - role
+              - token
             properties:
               api_user_id:
                 type: string
@@ -1746,6 +1854,10 @@ components:
         application/json:
           schema:
             type: object
+            required:
+              - name
+              - product_id
+              - status
             properties:
               name:
                 type: string
@@ -1798,6 +1910,17 @@ components:
           schema:
             additionalProperties: false
             type: object
+            required:
+              - account_id
+              - account_status
+              - account_status_subtype
+              - effective_at
+              - created_at
+              - product
+              - total_balance
+              - credit_limit_cents
+              - rate
+              - available_credit_balance
             properties:
               account_id:
                 type: string
@@ -1866,6 +1989,9 @@ components:
           schema:
             type: object
             properties:
+              required:
+                - accounts
+                - total_account_count
               accounts:
                 type: array
                 description: An array of information for all accounts within the requested
@@ -1887,6 +2013,8 @@ components:
         application/json:
           schema:
             type: object
+            required:
+              - line_item_id
             properties:
               line_item_id:
                 type: string
@@ -1899,6 +2027,8 @@ components:
         application/json:
           schema:
             type: object
+            required:
+              - line_item_id
             properties:
               line_item_id:
                 type: string
@@ -1918,6 +2048,16 @@ components:
           schema:
             type: object
             description: Statement for an account for a given billing cycle
+            required:
+              - available_credit_balance
+              - total_balance
+              - account_id
+              - effective_as_of_date
+              - min_pay_due_date
+              - min_pay_amount_cents
+              - billing_cycle_start_date
+              - billing_cycle_end_date
+              - line_items
             properties:
               available_credit_balance:
                 type: number
@@ -1969,6 +2109,8 @@ components:
           schema:
             type: object
             description: ""
+            required:
+              - current_accounts
             properties:
               current_accounts:
                 type: array
@@ -1999,6 +2141,24 @@ components:
             type: array
             items:
               type: object
+              required:
+                - account_id
+                - line_item_id
+                - line_item_status
+                - type
+                - originating_amount_cents
+                - balance_amount_cents
+                - total_interest_accrued_cents
+                - total_paid_down_cents
+                - merchant_data
+                - effective_at
+                - created_at
+                - product_id
+                - description
+                - reference_id
+                - dispute_id
+                - external_ids
+                - line_item_count
               properties:
                 account_id:
                   type: string
@@ -2117,6 +2277,10 @@ components:
           schema:
             type: object
             description: Statements for the account.
+            required:
+              - account_id
+              - effective_as_of_date
+              - statements_list
             properties:
               account_id:
                 type: string
@@ -2136,6 +2300,14 @@ components:
                 description: An array of statements included in the billing cycle.
                 items:
                   type: object
+                  required:
+                    - statement_id
+                    - available_credit_balance
+                    - total_balance
+                    - min_pay_due_date
+                    - min_pay_amount_cents
+                    - billing_cycle_start_date
+                    - billing_cycle_end_date
                   properties:
                     statement_id:
                       type: string
@@ -2157,6 +2329,7 @@ components:
                     min_pay_amount_cents:
                       type: number
                       description: The minimum amount (in cents) due for this statement.
+                      example: "45535"
                     billing_cycle_start_date:
                       type: string
                       format: date-time
@@ -2173,6 +2346,10 @@ components:
         application/json:
           schema:
             type: object
+            required:
+              - email
+              - created_at
+              - expires_at
             properties:
               email:
                 type: string

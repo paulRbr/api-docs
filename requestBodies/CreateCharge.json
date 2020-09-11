@@ -25,7 +25,7 @@
           },
           "rate": {
             "type": "number",
-            "description": "The percentage rate to be applied to this charge (i.e. 15.5 means 15.5%). If not included, defaults to the rate for the acount.",
+            "description": "The percentage rate to be applied to this charge (i.e. 15.5 means 15.5%). If not included, defaults to the rate for the account.",
             "example": "15.5%"
           },
           "merchant_data": {
