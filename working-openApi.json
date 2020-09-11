@@ -2226,6 +2226,30 @@
               "type": "string",
               "format": "date-time"
             }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated statements list requests sorted by reverse statement date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
           }
         ],
         "responses": {
