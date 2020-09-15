@@ -46,6 +46,8 @@ tags:
       credit products
   - name: accounts
     description: Manage the way your users use credit products you've launched in Canopy
+  - name: line items
+    description: Manage individual line items for your users in Canopy.
 paths:
   /api_users:
     post:
@@ -402,8 +404,7 @@ paths:
   "/accounts/{account_id}/line_items":
     get:
       tags:
-        - accounts
-        - line_items
+        - line items
       summary: Get line items for a specific account.
       description: Line Items for an Account consist of `charges` to the account and
         `payments` by the account holder. Results are paginated and sorted by
@@ -466,8 +467,7 @@ paths:
   "/accounts/{account_id}/line_items/{line_item_id}":
     get:
       tags:
-        - line_items
-        - accounts
+        - line items
       summary: Get information on a specific line item for a specific account
       description: ""
       operationId: getAccountLineItem
