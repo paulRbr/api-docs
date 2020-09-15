@@ -3079,6 +3079,12 @@
             "type": "string",
             "description": "Social security number of the customer",
             "example": "888-88-8888"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Customer's date of birth",
+            "example": "2018-06-20T09:12:30Z"
           }
         }
       },
@@ -3718,7 +3724,13 @@
 									"type": "string",
 									"description": "Social security number of the customer",
 									"example": "888-88-8888"
-								},
+                },
+                "date_of_birth": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Customer's date of birth",
+                  "example": "2018-06-20T09:12:30Z"
+                },
 								"accounts": {
 									"type": "array",
 									"description": "An array of existing accounts to which this Customer is assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts. \n \n *Note* - if you would like to simultaneously create a customer and assign them to an `account` in Canopy, use the [Create a new account](/#operation-post-accounts) route.",
@@ -3866,7 +3878,13 @@
 									"type": "string",
 									"description": "Social security number of the customer",
 									"example": "888-88-8888"
-								},
+                },
+                "date_of_birth": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Customer's date of birth",
+                  "example": "2018-06-20T09:12:30Z"
+                },
 								"new_accounts": {
 									"type": "array",
 									"description": "An array of existing accounts to which this Customer will be newly assigned.",
@@ -4080,7 +4098,13 @@
 														"type": "string",
 														"description": "Social security number of the customer",
 														"example": "888-88-8888"
-													},
+                          },
+                          "date_of_birth": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Customer's date of birth",
+                            "example": "2018-06-20T09:12:30Z"
+                          },
 													"customer_account_role": {
 														"type": "string",
 														"enum": ["primary"],
