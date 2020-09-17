@@ -32,12 +32,12 @@
   ],
   "tags": [
     {
-      "name": "products",
-      "description": "Create and launch credit products within the Canopy system."
-    },
-    {
       "name": "authentication",
       "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
+    },
+    {
+      "name": "products",
+      "description": "Create and launch credit products within the Canopy system."
     },
     {
       "name": "customers",
@@ -48,7 +48,7 @@
       "description": "Manage the way your users use credit products you've launched in Canopy"
     },
     {
-      "name": "line items",
+      "name": "line_items",
       "description": "Manage individual line items for your users in Canopy."
     }
   ],
@@ -515,7 +515,7 @@
     "/accounts/{account_id}/line_items": {
       "get": {
         "tags": [
-          "line items"
+          "line_items"
         ],
         "summary": "Get line items for a specific account.",
         "description": "Line Items for an Account consist of `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
@@ -593,7 +593,7 @@
     "/accounts/{account_id}/line_items/{line_item_id}": {
       "get": {
         "tags": [
-          "line items"
+          "line_items"
         ],
         "summary": "Get information on a specific line item for a specific account",
         "description": "",
