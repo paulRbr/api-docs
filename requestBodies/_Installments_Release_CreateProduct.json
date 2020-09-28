@@ -19,7 +19,7 @@
             "type": "string",
             "description": "The Type of Product. If not included, defaults to `credit`",
             "enum": [
-              "credit"
+              "credit, installment"
             ],
             "example": "credit"
           },
@@ -33,10 +33,28 @@
             "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
             "example": "700000"
           },
+          "default_installment_offer": {
+            "type": "string",
+            "description": "For installment loans, the default offer to provide for this product if none is passed at account origination. This field is not necessary for credit products.",
+            "example": "Blue Cash 24 Month Offer"
+          },
+          "default_loan_amount": {
+            "type": "string",
+            "description": "For installment loans, the default loan amount to provide for this product if none is passed at account origination. This field is not necessary for credit products.",
+            "example": "Blue Cash 24 Month Offer"
+          },
           "description": {
             "type": "string",
             "description": "Description of the Product.",
             "example": "Consumer credit card"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
+            "enum": [
+              "draft, live"
+            ],
+            "example": "draft"
           },
           "policies": {
             "type": "object",

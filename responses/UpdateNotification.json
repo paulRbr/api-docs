@@ -1,0 +1,10 @@
+{
+  "description": "Notification Updated",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/Notification.json"
+      }
+    }
+  }
+}

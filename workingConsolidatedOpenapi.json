@@ -41,81 +41,53 @@ servers:
 security:
   - api_key: []
 tags:
-  - name: products
-    description: Create and launch credit products within the Canopy system.
-  - name: users
-    description: Create persistent API users to support servicing workflows through Canopy
   - name: authentication
     description: Authenticate to use the appropriate environment (sandbox or
       production) within Canopy
+  - name: products
+    description: Create and launch credit products within the Canopy system.
   - name: customers
     description: Onboard customers into your system, so they can begin using your
       credit products
   - name: accounts
-    description: Manage the way your customers use credit products you've launched in Canopy
+    description: Manage the way your users use credit products you've launched in Canopy
+  - name: line_items
+    description: Manage individual line items for your customers in Canopy.
+  - name: statements
+    description: Generate per billing cycle statements for your accounts in Canopy.
+  - name: notes
+    description: Help your customer service team track its activity across accounts.
+  - name: notifications
+    description: Help your customer service team keep track of its todos.
 paths:
-  /users:
+  /api_users:
     post:
       tags:
         - authentication
-      summary: Authenticate to the Canopy Sandbox
-      operationId: createSandboxUser
-      description: >-
-        When you create a new `root-level` user via this `POST` request, Canopy
-        will respond with a unique ID for that user. 
-         Include this response as a header for all subsequent requests to the Canopy API under the header: `x-api-userid`.
-      responses:
-        "200":
-          description: Successful authentication to the Canopy Sandbox.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  api_user_id:
-                    type: string
-                    format: uuid
-                    description: Unique `x-api-userid` ID to be used in headers for subsequent calls
-                      to the Canopy Sandbox API.
-                    example: be4e95b9-46ed-418a-ad7b-56c8065622cf
-  /api_users/invitations:
-    post:
-      summary: Invite a new API user
-      operationId: inviteApiUser
-      description: Invite a new user to the API
-      requestBody:
-        $ref: "#/components/requestBodies/CreateApiUserInvitation"
-      responses:
-        "200":
-          $ref: "#/components/responses/CreateApiUserInvitation"
-  /api_users:
-    post:
-      summary: Create a new API user
-      tags:
-        - users, authentication
+      summary: Invite a new API user to Canopy
       operationId: createApiUser
-      description: Create a new API User that exists under the umbrella of a
-        root-level user. An API user must first be
-        [invited](https://docs.canopyservicing.com/#endpoint-api-user-invitations)
-        before they can be created in the system.
+      description: When you create a new API user via this `POST` request, an email
+        invite will be sent for the new user to join your organization. The
+        email invite includes a link with a unique token that will allow the new
+        user to register to join your team in Canopy.
       requestBody:
         $ref: "#/components/requestBodies/CreateApiUser"
       responses:
         "200":
-          description: Successfully created a new API user
-          $ref: "#/components/responses/ApiUser"
+          $ref: "#/components/responses/CreateApiUser"
     get:
-      summary: Get all API users within an organization
+      security:
+        - api_key: []
       tags:
-        - users
         - authentication
+      summary: Get all API users in your organization
+      description: Returns a list of all API users in your organization.
       operationId: getApiUsers
-      description: Get a list of your API users
       parameters:
         - name: effective_as_of_date
           in: query
           description: The `Date-Time` you would like the system to return the data as of.
-            IE tell me what the customers were as if I had asked on `2020-10-20
+            IE tell me what the products were as if I had asked on `2020-10-20
             00:00:00 EST`. If empty it defaults to current time.
           required: false
           style: form
@@ -125,104 +97,78 @@ paths:
             format: date-time
       responses:
         "200":
-          description: A list of API users in the organization.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/API_User"
+          $ref: "#/components/responses/ApiUsers"
+        "404":
+          description: No Api Users found
+  /api_users/login:
+    post:
+      tags:
+        - authentication
+      summary: Log in as an API user
+      operationId: logInApiUser
+      description: When provided appropriate credentials, this route signs in an API user.
+      requestBody:
+        $ref: "#/components/requestBodies/LogInApiUser"
+      responses:
+        "200":
+          $ref: "#/components/responses/LogInApiUser"
   /api_users/password:
-    post:
-      summary: Set a new password for an API user
-      description: Update the password for an API user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                old_password:
-                  type: string
-                  example: old_password123
-                new_password:
-                  type: string
-                  example: secret_new_password123
-      responses:
-        "200":
-          description: Successful update of password
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Password updated.
-  "/api_users/{email}":
     put:
-      summary: Update an existing API user
-      description: Update content for an existing API user
+      tags:
+        - authentication
+      summary: Update the password for an API User
+      operationId: updateApiUserPassword
+      description: When provided appropriate credentials, this route changes an API
+        User's password.
       requestBody:
-        $ref: "#/components/requestBodies/UpdateApiUser"
+        $ref: "#/components/requestBodies/UpdateApiUserPassword"
       responses:
         "200":
-          description: Successfully updated API user
+          $ref: "#/components/responses/UpdateApiUserPassword"
+  /api_users/summary:
+    get:
+      security:
+        - api_key: []
+      tags:
+        - authentication
+      summary: Get summary info for an API user
+      description: Get all summarized information pertaining to the API user making
+        the request.
+      operationId: getApiUser
+      parameters:
+        - name: effective_as_of_date
+          in: query
+          description: The `Date-Time` you would like the system to return the data as of.
+            IE tell me what the api user's info was as if I had asked on
+            `2020-10-20 00:00:00 EST`. If empty it defaults to current time.
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
           $ref: "#/components/responses/ApiUser"
+        "404":
+          description: No Products
   /api_users/register:
-    post:
-      summary: Register an Invited API User
-      description: Finish the registration process for an API user you've invited to
-        join your team.
+    put:
+      tags:
+        - authentication
+      summary: Complete registration for an invited API user
+      operationId: registerApiUserPassword
+      description: When provided appropriate credentials, this route updates an API
+        user's information for registration.
       requestBody:
         $ref: "#/components/requestBodies/RegisterApiUser"
       responses:
         "200":
-          description: Successfully updated API user
-          $ref: "#/components/responses/ApiUser"
-  /api_users/login:
-    post:
-      summary: Log in as an API User
-      description: Sign in as an API user, under your root user's umbrella.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                  description: The email address of this API User
-                  example: marissa@globex.com
-                password:
-                  type: string
-                  description: The password for this API User's account
-                  example: secret_password123!!
-                mfa_code:
-                  type: string
-                  description: If configured, the multi-factor authentication code to log the user
-                    in.
-                  example: "555555"
-      responses:
-        "200":
-          description: Successfully logged in
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-                    format: uuid
-                    description: A unique token that is valid for the session and should be included
-                      in all authenticated API requests under the header
-                      `x-api-user`.
-                    example: 12f2aa7c-204a-46bc-b1c8-370b131cd135
+          $ref: "#/components/responses/RegisterApiUser"
   /customer_accounts:
     get:
       tags:
-        - customers, accounts
+        - customers
       summary: Get all accounts for all customers
       description: Returns all accounts from the perspective of each customer. For
         instance, if one account has two customers, these are reflected as two
@@ -274,21 +220,7 @@ paths:
             format: date-time
       responses:
         "200":
-          description: Array of Customers and their corresponding Accounts
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  accounts:
-                    type: array
-                    description: An array of information for all customer-account correspondences
-                      within the requested range.
-                    items:
-                      $ref: "#/components/schemas/CustomerAccount"
-                  total_customer_account_count:
-                    type: number
-                    description: Total number of unique customer-account correspondences
+          $ref: "#/components/responses/CustomerAccounts"
         "404":
           description: Unable to get customers
   /customers:
@@ -356,25 +288,11 @@ paths:
             format: date-time
       responses:
         "200":
-          description: Array of Customers
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  customers:
-                    type: array
-                    description: An array of information for all customers within the requested
-                      range.
-                    items:
-                      $ref: "#/components/schemas/Customer"
-                  total_customer_count:
-                    type: number
-                    description: Total number of customers
+          $ref: "#/components/responses/Customers"
         "404":
           description: Unable to get customers
   "/customers/{customer_id}":
-    patch:
+    put:
       security:
         - api_key: []
       tags:
@@ -397,7 +315,7 @@ paths:
         $ref: "#/components/requestBodies/UpdateCustomer"
       responses:
         "204":
-          $ref: "#/components/responses/CreateCustomer"
+          $ref: "#/components/responses/UpdateCustomer"
     get:
       tags:
         - customers
@@ -419,11 +337,87 @@ paths:
           $ref: "#/components/responses/Customer"
         "404":
           description: Unable to get customer
+  "/customers/{customer_id}/line_items/payments/installment_loans":
+    post:
+      security:
+        - api_key: []
+      tags:
+        - line_items
+      parameters:
+        - name: customer_id
+          in: path
+          description: Account ID
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: uuid
+      summary: Allocate a payment across all of a customer's installment loans
+      operationId: PayInstallmentLoansByCustomer
+      description: Utilize a payment allocation method to allocate a payment across
+        all of a customer's installment loans at once.
+      requestBody:
+        $ref: "#/components/requestBodies/CreatePaymentByCustomer"
+      responses:
+        "200":
+          $ref: "#/components/responses/CreatePaymentByCustomer"
+    get:
+      tags:
+        - customers
+      summary: Get all customers
+      description: Returns all of your customers. Results are paginated.
+      operationId: getCustomers
+      parameters:
+        - name: offset
+          in: query
+          description: The zero-indexed starting point for paginated account requests
+            sorted by account created date.
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: number
+            example: "110"
+        - name: limit
+          in: query
+          description: The maximum number of accounts to be returned. Defaults to 100.
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: number
+            example: "50"
+        - name: search_query
+          in: query
+          description: A search query to be applied to results before the customers list
+            is returned. Search by name, phone number, or SSN last-four digits.
+          required: false
+          style: form
+          example: true
+          schema:
+            type: string
+            example: Coco Parker
+        - name: effective_as_of_date
+          in: query
+          description: The `Date-Time` you would like the system to return the data as of.
+            IE tell me what the customers were as if I had asked on `2020-10-20
+            00:00:00 EST`. If empty it defaults to current time.
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          $ref: "#/components/responses/Customers"
+        "404":
+          description: Unable to get customers
   /notifications:
     get:
       tags:
         - notifications
-        - users
       summary: Get all notifications for a specific API User
       description: Returns all notifications for the authenticated caller.
       operationId: getNotifications
@@ -460,20 +454,7 @@ paths:
             format: date-time
       responses:
         "200":
-          description: Array of Notifications
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  customers:
-                    type: array
-                    description: An array of notifications within the requested range.
-                    items:
-                      $ref: "#/components/schemas/Notification"
-                  total_customer_count:
-                    type: number
-                    description: Total number of notifications for the api_user
+          $ref: "#/components/responses/Notifications"
         "404":
           description: Unable to get notifications
   "/notifications/{notification_id}":
@@ -552,13 +533,7 @@ paths:
             format: date-time
       responses:
         "200":
-          description: Array of Products
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Product_MVP"
+          $ref: "#/components/responses/Products"
         "404":
           description: No Products
   "/products/{product_id}":
@@ -669,7 +644,6 @@ paths:
     get:
       tags:
         - products
-        - accounts
       summary: Get all accounts created under a specific product
       description: Returns all accounts created under a specific product. Results are
         paginated.
@@ -702,8 +676,7 @@ paths:
   "/products/{product_id}/summaries":
     get:
       tags:
-        - accounts
-        - summary
+        - products
       summary: Get summary details for a specific product.
       description: For analytic purposes, retrieve commonly needed summary statistics
         computed for a specific product.
@@ -766,21 +739,7 @@ paths:
             example: "50"
       responses:
         "200":
-          description: Array of Accounts
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  accounts:
-                    type: array
-                    description: An array of information for all accounts within the requested
-                      range.
-                    items:
-                      $ref: "#/components/schemas/Account"
-                  total_account_count:
-                    type: number
-                    description: Total number of accounts
+          $ref: "#/components/responses/Accounts"
         "404":
           description: No accounts found
     post:
@@ -788,7 +747,6 @@ paths:
         - api_key: []
       tags:
         - accounts
-        - programmatic
       summary: Create a new account
       description: An account should be created for each end customer of each of your
         products. Once created, you will be able to add `line_items` to the
@@ -805,7 +763,6 @@ paths:
     get:
       tags:
         - accounts
-        - servicing
       summary: Get a specific Account
       description: ""
       operationId: getAccount
@@ -836,10 +793,9 @@ paths:
           $ref: "#/components/responses/Account"
         "404":
           description: Account not found
-    patch:
+    put:
       tags:
         - accounts
-        - programmatic
       summary: Update an account
       description: Update `rate`, `credit_limit_cents`, or `status` for an individual
         account, or update the customers assigned to the account.
@@ -864,15 +820,6 @@ paths:
               description: Update attributes for an account at any time after account
                 creation.
               properties:
-                account_status:
-                  type: string
-                  description: The Status of the Account. Active upon account creation.
-                  example: suspended
-                account_status_subtype:
-                  type: string
-                  description: The subtype of the Status of the Account. Null upon account
-                    creation.
-                  example: suspended-bankruptcy
                 existing_customers_to_add:
                   type: array
                   description: Array of existing customer IDs to be added to the account.
@@ -909,36 +856,6 @@ paths:
                           - primary
                         description: The role of the customer for the account being created
                         example: primary
-                ticket:
-                  type: object
-                  properties:
-                    workflow:
-                      type: string
-                      enum:
-                        - disputes
-                        - debit adjustments
-                        - credit adjustments
-                        - fraud
-                        - general
-                      description: The operational workflow into which this ticket should be assigned.
-                      example: disputes
-                    assignee:
-                      type: string
-                      format: uuid
-                      description: The `api_user_id` of the API user to be assigned to this ticket.
-                      example: 15ebcbfb-7238-4d78-8acf-4e0a39f9a4c9
-                    message:
-                      type: string
-                      description: A message to be included with the ticket.
-                      example: Customer card was stolen, and the transaction was not made by the
-                        customer.
-                note:
-                  type: object
-                  properties:
-                    message:
-                      type: string
-                      description: The contents of the note.
-                      example: Customer phone number updated.
         required: true
       responses:
         "201":
@@ -952,7 +869,6 @@ paths:
     delete:
       tags:
         - accounts
-        - servicing
       summary: Delete a specific Account
       description: Deleting an account also deletes all of its associated line items.
       operationId: deleteAccount
@@ -974,9 +890,7 @@ paths:
   "/accounts/{account_id}/notes":
     post:
       tags:
-        - accounts
         - notes
-        - tickets
       summary: Create a note for a specific account.
       description: A note to be added to the account.
       operationId: createAccountNote
@@ -1006,7 +920,6 @@ paths:
           $ref: "#/components/responses/CreateNote"
     get:
       tags:
-        - accounts
         - notes
       summary: Get All Notes for a specific Account
       description: ""
@@ -1041,7 +954,6 @@ paths:
   "/accounts/{account_id}/tickets":
     post:
       tags:
-        - accounts
         - tickets
       summary: Create a ticket for a specific account.
       description: A ticket that can be tracked across a workflow for a specific account.
@@ -1088,7 +1000,6 @@ paths:
           $ref: "#/components/responses/CreateTicket"
     get:
       tags:
-        - accounts
         - tickets
       summary: Get All Tickets for a specific Account
       description: ""
@@ -1123,7 +1034,6 @@ paths:
   "/accounts/{account_id}/tickets/{ticket_id}":
     get:
       tags:
-        - accounts
         - tickets
       summary: Get a specific Ticket for a specific Account
       description: ""
@@ -1167,7 +1077,6 @@ paths:
           description: Account not found
     put:
       tags:
-        - accounts
         - tickets
       summary: Update a ticket for a specific account
       description: Update information about a specific ticket - for instance, if its
@@ -1206,8 +1115,7 @@ paths:
   "/accounts/{account_id}/tickets/{ticket_id}/comments":
     post:
       tags:
-        - accounts
-        - comments
+        - tickets
       summary: Create a comment on a ticket.
       description: A comment ton a ticket that can be tracked across a workflow for an
         account.
@@ -1238,7 +1146,6 @@ paths:
           $ref: "#/components/responses/Comment"
     get:
       tags:
-        - accounts
         - tickets
       summary: Get all comments on a ticket
       description: ""
@@ -1284,8 +1191,6 @@ paths:
     get:
       tags:
         - accounts
-        - notes
-        - tickets
       summary: Get history of notes and tickets for a specific account
       description: Get a history of actions taken by your team of API users for a
         specific account. Results are returned in reverse-chronological order.
@@ -1336,7 +1241,6 @@ paths:
   "/accounts/{account_id}/line_items":
     get:
       tags:
-        - accounts
         - line_items
       summary: Get line items for a specific account.
       description: Line Items for an Account consist of `charges` to the account and
@@ -1519,7 +1423,6 @@ paths:
     get:
       tags:
         - line_items
-        - accounts
       summary: Get the amortization schedule for a lending product
       description: ""
       operationId: getAmortizationSchedule
@@ -1571,7 +1474,6 @@ paths:
     get:
       tags:
         - line_items
-        - accounts
       summary: Get information on a specific line item for a specific account
       description: ""
       operationId: getAccountLineItem
@@ -1614,8 +1516,6 @@ paths:
     post:
       tags:
         - line_items
-        - charges
-        - accounts
       summary: Create a charge for a specific account
       description: ""
       operationId: createAccountCharge
@@ -1644,8 +1544,6 @@ paths:
     post:
       tags:
         - line_items
-        - payments
-        - accounts
       summary: Create a payment for a specific account
       description: ""
       operationId: createAccountPayment
@@ -1669,9 +1567,7 @@ paths:
   "/accounts/{account_id}/line_items/{line_item_id}/chargebacks":
     post:
       tags:
-        - accounts
         - line_items
-        - refunds
       summary: Issue a chargeback for an existing charge
       description: ""
       operationId: createChargeback
@@ -1708,9 +1604,7 @@ paths:
   "/accounts/{account_id}/line_items/{line_item_id}/refunds":
     post:
       tags:
-        - accounts
         - line_items
-        - refunds
       summary: Issue a refund for an existing charge
       description: ""
       operationId: createRefund
@@ -1747,9 +1641,7 @@ paths:
   "/accounts/{account_id}/line_items/{line_item_id}/disputes":
     post:
       tags:
-        - accounts
         - line_items
-        - disputes
       summary: Create a dispute for a specific account's line item
       description: ""
       operationId: createDispute
@@ -1807,9 +1699,7 @@ paths:
   "/accounts/{account_id}/line_items/{line_item_id}/disputes/{dispute_id}":
     put:
       tags:
-        - accounts
         - line_items
-        - disputes
       summary: Update a dispute for a specific account's line item
       description: ""
       operationId: updateDispute
@@ -1877,8 +1767,6 @@ paths:
     post:
       tags:
         - line_items
-        - payments
-        - accounts
       summary: Create a credit adjustment for a specific account
       description: ""
       operationId: createAccountCreditAdjustment
@@ -1901,8 +1789,6 @@ paths:
     post:
       tags:
         - line_items
-        - payments
-        - accounts
       summary: Create a debit adjustment for a specific account
       description: ""
       operationId: createAccountDebitAdjustment
@@ -1921,11 +1807,10 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/CreateDebitAdjustment"
-  "/accounts/{account_id}/statements_list":
+  "/accounts/{account_id}/statements/list":
     get:
       tags:
-        - accounts
-        - summary
+        - statements
       summary: Get a list of all current and prior statements for a specific account
       description: List of statements for the account. To view line items for a
         specific statement, use the `/accounts/{account_id}/statements` route
@@ -2031,13 +1916,12 @@ paths:
   "/accounts/{account_id}/statements":
     get:
       tags:
-        - accounts
-        - summary
+        - statements
       summary: Get a statement for a given date for a specific account.
       description: This will return the most recent Statement information based on the
         `effective_as_of_date`. Relevant dates for an account's historical
         statements can be obtained from the
-        `accounts/{account_id}/statements_list` route.
+        `accounts/{account_id}/statements/list` route.
       operationId: getAccountStatementByDate
       parameters:
         - name: account_id
@@ -2068,12 +1952,11 @@ paths:
   "/accounts/{account_id}/statements/{statement_id}":
     get:
       tags:
-        - accounts
-        - summary
+        - statements
       summary: Get a specific statement for a specific account.
       description: This will return a statement that corresponds with the passed
         Statement ID. Relevant IDs for an account's historical statements can be
-        obtained from the `accounts/{account_id}/statements_list` route.
+        obtained from the `accounts/{account_id}/statements/list` route.
       operationId: getAccountStatement
       parameters:
         - name: account_id
@@ -2109,6 +1992,17 @@ components:
     Account:
       additionalProperties: false
       type: object
+      required:
+        - account_id
+        - account_status
+        - account_status_subtype
+        - effective_at
+        - created_at
+        - product
+        - total_balance
+        - credit_limit_cents
+        - rate
+        - available_credit_balance
       properties:
         account_id:
           type: string
@@ -2134,8 +2028,82 @@ components:
           format: date-time
           example: 2017-06-20T09:12:14Z
         product:
-          description: The product associated with the account
-          $ref: "#/components/schemas/Product_MVP"
+          required:
+            - policies
+            - product_id
+            - name
+            - description
+            - created_at
+            - type
+            - status
+            - policies
+            - product_summary
+            - default_attributes
+          type: object
+          additionalProperties: false
+          properties:
+            product_id:
+              type: string
+              format: uuid
+              description: The Canopy-generated ID for the product.
+              example: 8fe1eb97-d640-45d6-83bb-f415ddf97a51
+            name:
+              type: string
+              description: Name of Product, i.e. Express Card.
+              example: Blue Cash Express
+            description:
+              type: string
+              description: Description of the Product.
+              example: Student credit card.
+            created_at:
+              type: string
+              description: The `Date-Time` that this product was created on the server.
+              format: date-time
+              example: 2019-03-20T09:12:28Z
+            type:
+              type: string
+              description: The Type of Product
+              enum:
+                - CREDIT
+              example: CREDIT
+            status:
+              type: string
+              description: The status of a Product (i.e. `live`). Currently, all configured
+                products are in the `live` state.
+              enum:
+                - VALID
+              example: VALID
+            policies:
+              type: object
+              description: An object of policies that drive product behavior.
+              properties:
+                base_policy_config:
+                  $ref: "#/components/requestBodies/CreateProduct/content/application~1json/schem\
+                    a/properties/policies/properties/base_policy_config"
+            product_summary:
+              $ref: "#/components/responses/ProductSummary/content/application~1json/schema"
+            default_attributes:
+              type: object
+              required:
+                - rate
+                - credit_limit_cents
+              properties:
+                rate:
+                  type: number
+                  description: The percent default rate for this interest policy (i.e. 3.2 means a
+                    3.2% rate). This default rate can be overridden on a
+                    per-account basis if a `rate` is selected at the time of
+                    assigning an account to a product. Rates for an account can
+                    also be updated post-account creation.
+                  example: 3.2
+                credit_limit_cents:
+                  type: integer
+                  description: The default maximum principal credit (in cents) available for a
+                    customer account. This default limit can be overridden on a
+                    per-account basis if a `credit_limit` is selected at the
+                    time of assigning an account to a product. Credit limits for
+                    an account can also be updated post-account creation.
+                  example: 600000
         external_account_ids:
           type: array
           description: An Array of External Account IDs. These should be used to connect
@@ -2158,32 +2126,116 @@ components:
           example: "300000"
         credit_limit_cents:
           type: integer
-          description: For credit products, the total Amount (in cents) that this account
-            can borrow. This field is not necessary for installment products.
+          description: Total Amount (in cents) that this account can borrow.
           example: "400000"
         rate:
           type: number
           description: The percentage interest applied to the account (i.e. 6.2 means 6.2%)
           example: "6.2"
-        offer:
-          type: string
-          description: For installment loans, the offer applied to this account. This
-            field is not necessary for credit products.
-          example: Blue Cash 24 Month Offer
         available_credit_balance:
           type: number
           description: The total available credit balance (in cents) for the account.
           example: "100000"
     ComplexAccount:
       allOf:
-        - $ref: "#/components/schemas/Account"
+        - additionalProperties: false
+          type: object
+          required:
+            - account_id
+            - account_status
+            - account_status_subtype
+            - effective_at
+            - created_at
+            - product
+            - total_balance
+            - credit_limit_cents
+            - rate
+            - available_credit_balance
+          properties:
+            account_id:
+              type: string
+              format: uuid
+              description: This is generated by Canopy. A unique ID for the account.
+              example: 5fb3a288-5f6c-440f-b079-b06c828b7768
+            account_status:
+              type: string
+              description: The Status of the Account. Active upon account creation.
+              example: suspended
+            account_status_subtype:
+              type: string
+              description: The subtype of the Status of the Account. Null upon account
+                creation.
+              example: suspended-bankruptcy
+            effective_at:
+              type: string
+              description: The `Date-Time` that this account became/becomes active.
+              format: date-time
+              example: 2018-03-20T09:12:28Z
+            created_at:
+              type: string
+              description: The `Date-Time` which the account was created in the API.
+              format: date-time
+              example: 2017-06-20T09:12:14Z
+            product:
+              description: The product associated with the account
+              $ref: "#/components/schemas/Account/properties/product"
+            external_account_ids:
+              type: array
+              description: An Array of External Account IDs. These should be used to connect
+                accounts created in Canopy to Users in your system and any
+                connected external systems.
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Name of the External Party
+                    example: Umbrella Corporation
+                  id:
+                    type: string
+                    description: External Account ID
+                    example: 22445702-a389-431f-927d-07b8d0750787
+            total_balance:
+              type: number
+              description: The total balance (in cents) associated with the account.
+              example: "300000"
+            credit_limit_cents:
+              type: integer
+              description: Total Amount (in cents) that this account can borrow.
+              example: "400000"
+            rate:
+              type: number
+              description: The percentage interest applied to the account (i.e. 6.2 means
+                6.2%)
+              example: "6.2"
+            available_credit_balance:
+              type: number
+              description: The total available credit balance (in cents) for the account.
+              example: "100000"
         - type: object
           properties:
             customers:
               type: array
               description: An array of customers who have been assigned to the account
               items:
-                $ref: "#/components/schemas/ComplexCustomer"
+                allOf:
+                  - $ref: "#/components/responses/Customers/content/application~1json/schema/proper\
+                      ties/customers/items"
+                  - type: object
+                    properties:
+                      accounts:
+                        type: array
+                        description: An array of Accounts to which this Customer is assigned
+                        items:
+                          allOf:
+                            - $ref: "#/components/schemas/ComplexAccount/allOf/0"
+                            - type: object
+                              properties:
+                                customers:
+                                  type: array
+                                  description: An array of customers who have been assigned to the account
+                                  items:
+                                    $ref: "#/components/schemas/ComplexAccount/allOf/1/properties/customers/items"
     AccountStatement:
       type: object
       description: Statement for an account for a given billing cycle
@@ -2393,6 +2445,11 @@ components:
           type: string
           description: Social security number of the customer
           example: 888-88-8888
+        email:
+          type: string
+          format: email
+          description: The email address of this customer
+          example: marissa@protonmail.com
         date_of_birth:
           type: string
           format: date-time
@@ -2408,23 +2465,6 @@ components:
               description: An array of Accounts to which this Customer is assigned
               items:
                 $ref: "#/components/schemas/ComplexAccount"
-    CustomerAccount:
-      allOf:
-        - $ref: "#/components/schemas/Account"
-        - $ref: "#/components/schemas/Customer"
-        - type: object
-          properties:
-            customer_account_role:
-              type: string
-              enum:
-                - primary
-              example: primary
-            customer_account_pan:
-              type: string
-              description: A unique number for the customer on the account. For instance, a
-                credit card number. If none is provided, a Canopy-generated ID
-                can be used.
-              example: "4465220133024156"
     API_User:
       type: object
       properties:
@@ -2848,6 +2888,90 @@ components:
       description: An individual charge, payment, fee, or otherwise financial event
         that is used to calculate balances.
   requestBodies:
+    LogInApiUser:
+      description: Provide valid credentials to sign in to Canopy and receive a token
+        to make subsequent API requests.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+                format: email
+                description: The email address of the API User logging in
+                example: marissa@globex.com
+              password:
+                type: string
+                description: The password of the user logging in.
+                example: secretPassword123!
+    UpdateApiUserPassword:
+      description: Provide valid credentials, this route updates an API User's password.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - current_password
+              - new_password
+              - token
+            properties:
+              current_password:
+                type: string
+                description: The password of the user changing their password.
+                example: currentSecretPassword123!
+              new_password:
+                type: string
+                description: The new password of the user changing their password.
+                example: newSecretPassword123!
+              token:
+                type: string
+                description: A unique token included in Canopy's reset password email.
+    RegisterApiUser:
+      description: Provide valid credentials, this route updates an API User's password.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - email_confirm
+              - new_password
+              - first_name
+              - last_name
+              - phone
+              - token
+            properties:
+              email_confirm:
+                type: string
+                format: email
+                description: The email address of the user being updated.
+                example: harriet@acmecorporation.com
+              new_password:
+                type: string
+                description: The new password of the API user.
+                example: newSecretPassword123!
+              first_name:
+                type: string
+                description: The first name of the API user.
+                example: Karl
+              last_name:
+                type: string
+                description: The last name of the API user.
+                example: Martins
+              phone:
+                type: string
+                format: phonenumber
+                description: The phone number to add to the API User's information.
+                example: 1-222-222-2222
+              token:
+                type: string
+                description: A unique token included in Canopy's register user email.
     CreateProduct:
       description: ""
       required: true
@@ -2917,7 +3041,89 @@ components:
                 description: An Object of policies that drive Product behaviour.
                 properties:
                   base_policy_config:
-                    $ref: "#/components/schemas/Base_Policy_Config_MVP"
+                    type: object
+                    additionalProperties: false
+                    required:
+                      - min_pay
+                      - billing_cycle
+                      - interest_policies
+                      - close_of_business_and_timezone
+                    properties:
+                      min_pay:
+                        type: object
+                        requierd:
+                          - percentage
+                        properties:
+                          percentage:
+                            type: number
+                            description: The percentage of total balance calculated for min pay. (i.e. 20
+                              means 20%)
+                            example: "20"
+                        description: The configured minimum payment required for a given pay period.
+                      billing_cycle:
+                        type: object
+                        required:
+                          - period
+                          - billing_due_date_interval
+                        properties:
+                          period:
+                            type: string
+                            description: The length of the billing cycle. after which a statement is
+                              generated, and a due date assigned. IE '1 month'
+                              '3 months' or '7 days' (most common is monthly)
+                            format: interval
+                            example: 1 month
+                          billing_due_date_interval:
+                            type: string
+                            description: The amount of time you would like between the statement cut and the
+                              billing due date. IE '25 days'.  Cannot exceed the
+                              start of the next billing cycle and generally
+                              needs to be at least 21 days.
+                            format: interval
+                            example: 25 days
+                        description: The Billing Cycle Object
+                      interest_policies:
+                        type: object
+                        additionalProperties: false
+                        required:
+                          - type
+                          - method
+                          - day_calc_type
+                          - interest_calc_time
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - compound
+                            example: compound
+                          method:
+                            type: string
+                            description: The actual base formula used to calculate and assign interest.
+                            enum:
+                              - average daily balance
+                            example: average daily balance
+                          day_calc_type:
+                            type: string
+                            description: Affects the base calculation by determining how many days there are
+                              in a given year.
+                            enum:
+                              - "365"
+                            example: "365"
+                          interest_calc_time:
+                            type: string
+                            description: Interest for this policy is calculated at this time every X
+                              interval.
+                            format: date-time
+                            example: 05:00:00
+                        description: The Interest Policy Object
+                      close_of_business_and_timezone:
+                        type: string
+                        description: Time and timezone of the close of business. This is used for
+                          statement cuts and partner-level and issuing
+                          bank-level reconciliation
+                        format: date-time
+                        example: 2020-03-20T09:12:28Z
+                    description: A base group of policies that define a Product
     CreateCustomer:
       description: Create a new customer
       content:
@@ -2974,6 +3180,11 @@ components:
                 type: string
                 description: Social security number of the customer
                 example: 888-88-8888
+              email:
+                type: string
+                format: email
+                description: The email address of this Customer
+                example: marissa@protonmail.com
               date_of_birth:
                 type: string
                 format: date-time
@@ -2982,7 +3193,7 @@ components:
               accounts:
                 type: array
                 description: >-
-                  An array of existing accounts to which this Customer is
+                  An array of existing accounts to which this Customer should be
                   assigned. 
                    
                    If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. 
@@ -3009,36 +3220,6 @@ components:
                         credit card number. If none is provided, a
                         Canopy-generated ID can be used.
                       example: "4465220133024156"
-              ticket:
-                type: object
-                properties:
-                  workflow:
-                    type: string
-                    enum:
-                      - disputes
-                      - debit adjustments
-                      - credit adjustments
-                      - fraud
-                      - general
-                    description: The operational workflow into which this ticket should be assigned.
-                    example: disputes
-                  assignee:
-                    type: string
-                    format: uuid
-                    description: The `api_user_id` of the API user to be assigned to this ticket.
-                    example: 15ebcbfb-7238-4d78-8acf-4e0a39f9a4c9
-                  message:
-                    type: string
-                    description: A message to be included with the ticket.
-                    example: Customer card was stolen, and the transaction was not made by the
-                      customer.
-              note:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    description: The contents of the note.
-                    example: Customer phone number updated.
     UpdateNotification:
       description: Update the status of a notification
       content:
@@ -3131,177 +3312,19 @@ components:
                       enum:
                         - primary
                       example: primary
-              ticket:
-                type: object
-                properties:
-                  workflow:
-                    type: string
-                    enum:
-                      - disputes
-                      - debit adjustments
-                      - credit adjustments
-                      - fraud
-                      - general
-                    description: The operational workflow into which this ticket should be assigned.
-                    example: disputes
-                  assignee:
-                    type: string
-                    format: uuid
-                    description: The `api_user_id` of the API user to be assigned to this ticket.
-                    example: 15ebcbfb-7238-4d78-8acf-4e0a39f9a4c9
-                  message:
-                    type: string
-                    description: A message to be included with the ticket.
-                    example: Customer card was stolen, and the transaction was not made by the
-                      customer.
-              note:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    description: The contents of the note.
-                    example: Customer phone number updated.
+                    customer_account_pan:
+                      type: string
+                      description: A unique number for the customer on the account. For instance, a
+                        credit card number. If none is provided, a
+                        Canopy-generated ID can be used.
+                      example: "4465220133024156"
     CreateAccount:
       description: Create a new account
       required: true
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                required:
-                  - product_id
-                properties:
-                  product_id:
-                    type: string
-                    description: The Product ID of the account
-                    format: uuid
-                    example: d119341c-47fd-4a55-bce7-28406dacfa20
-                  external_ids:
-                    type: array
-                    description: An array of static references to ID fields in a third party system.
-                    items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                          description: Name of the External Party
-                          example: Globex Corporation
-                        id:
-                          type: string
-                          description: External Account ID
-                          example: 22445702-a389-431f-927d-07b8d0750787
-                  credit_limit_cents:
-                    type: integer
-                    description: For accounts created under credit products, total Amount (in cents)
-                      that this account can borrow.
-                    example: "400000"
-                  rate:
-                    type: number
-                    description: The percentage interest applied to the account (i.e. 6.2%)
-                    example: "6.2"
-                  loan_amount:
-                    type: number
-                    description: For installment products, the total amount (in cents) of the loan
-                      issued to this account
-                    example: "500000"
-                  offer:
-                    type: string
-                    format: uuid
-                    description: For accounts created under installment products, the ID that
-                      corresponds to the offer to be applied to the account.
-                    example: 1cf1fc4e-bb76-4e4f-8257-0fbf93fabfcd
-              - type: object
-                properties:
-                  existing_customers:
-                    type: array
-                    description: Array of existing customer IDs to be added to the account. At least
-                      one existing *OR* one new customer must be included in
-                      account creation.
-                    items:
-                      type: object
-                      properties:
-                        customer_id:
-                          type: string
-                          format: uuid
-                          description: Canopy-generated unique ID for this customer
-                          example: d581a0aa-5e11-473c-9569-64bc3a494287
-                        customer_account_role:
-                          type: string
-                          enum:
-                            - primary
-                          description: The role of the customer for the account being created
-                          example: primary
-              - type: object
-                properties:
-                  new_customers:
-                    type: array
-                    description: Array of new customers to be added to the account. At least one
-                      existing *OR* one new customer must be included in account
-                      creation.
-                    items:
-                      type: object
-                      properties:
-                        name_prefix:
-                          type: string
-                          description: Prefix to the customer's name
-                          example: Dr.
-                        first_name:
-                          type: string
-                          description: Customer's first name
-                          example: Miriam
-                        middle_name:
-                          type: string
-                          description: Customer's middle name
-                          example: Louise
-                        last_name:
-                          type: string
-                          description: Customer's last name
-                          example: Trevino
-                        name_suffix:
-                          type: string
-                          description: Prefix to the customer's name
-                          example: Jr
-                        phone_number:
-                          type: string
-                          format: phonenumber
-                          description: Phone number of the customer
-                          example: 555-555-5555
-                        address_line_one:
-                          type: string
-                          description: Address line one
-                          example: 12 Strawberry Road
-                        address_line_two:
-                          type: string
-                          description: Address line two
-                          example: Suite 101
-                        address_city:
-                          type: string
-                          description: Address city
-                          example: Atlanta
-                        address_state:
-                          type: string
-                          description: Address state
-                          example: GA
-                        address_zip:
-                          type: string
-                          description: Address zip code
-                          example: 99999-1000
-                        ssn:
-                          type: string
-                          description: Social security number of the customer
-                          example: 888-88-8888
-                        date_of_birth:
-                          type: string
-                          format: date-time
-                          description: Customer's date of birth
-                          example: 2018-06-20T09:12:30Z
-                        customer_account_role:
-                          type: string
-                          enum:
-                            - primary
-                          description: The role of the customer for the account being created
-                          example: primary
+            $ref: "#/components/schemas/ComplexAccount/allOf/0"
     CreateApiUserInvitation:
       description: Body of request to invite new API user. Checks permissions of
         invite-creator.
@@ -3332,105 +3355,28 @@ components:
                 description: The email address of this API User
                 example: marissa@globex.com
     CreateApiUser:
-      description: Body of request to create new API user.
+      description: Body of request to invite new API user. Checks permissions of
+        invite-creator.
       required: true
       content:
         application/json:
           schema:
             type: object
             required:
-              - first_name
-              - last_name
               - email
-              - invitation_code
+              - role
             properties:
-              invitation_code:
-                type: string
-                format: uuid
-                description: A secret, unique invite code to be used to set up the API User's
-                  account. Valid for 24 hours after an invite is created.
-                example: 5c92f11e-d137-4cd5-aac1-012919419cdf
-              name_prefix:
-                type: string
-                description: Prefix to the user's name
-                example: Dr.
-              first_name:
-                type: string
-                description: User's first name
-                example: Miriam
-              middle_name:
-                type: string
-                description: User's middle name
-                example: Louise
-              last_name:
-                type: string
-                description: User's last name
-                example: Trevino
-              name_suffix:
-                type: string
-                description: Prefix to the user's name
-                example: Jr
+              role:
+                type: number
+                description: A role to be made accessible for the user. [Contact our
+                  team](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request)
+                  for a full list of options.
+                example: 3
               email:
                 type: string
                 format: email
                 description: The email address of this API User
                 example: marissa@globex.com
-              password:
-                type: string
-                description: The password for this API User's account
-                example: secret_password123!!
-    RegisterApiUser:
-      description: Body of request to complete registration for an invited API user
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - invitation_code
-              - email
-              - first_name
-              - last_name
-              - new_password
-            properties:
-              name_prefix:
-                type: string
-                description: Prefix to the user's name
-                example: Dr.
-              first_name:
-                type: string
-                description: User's first name
-                example: Miriam
-              middle_name:
-                type: string
-                description: User's middle name
-                example: Louise
-              last_name:
-                type: string
-                description: User's last name
-                example: Trevino
-              name_suffix:
-                type: string
-                description: Prefix to the user's name
-                example: Jr
-              email:
-                type: string
-                format: email
-                description: The email address of this API User
-                example: marissa@globex.com
-              phone_number:
-                type: string
-                format: phonenumber
-                description: The phone number of this API User
-                example: "5555555555"
-              organization_id:
-                type: string
-                format: uuid
-                description: The ID of the organization the user will be joining
-              new_password:
-                type: string
-                description: The password for this API User's account
-                example: secret_password123!!
     UpdateApiUser:
       description: Body of request to update API user. Checks permissions of caller.
       required: true
@@ -3612,6 +3558,48 @@ components:
                       type: string
                       description: External Account ID
                       example: 22445702-a389-431f-927d-07b8d0750787
+    CreatePaymentByCustomer:
+      description: Allocate a payment across a customer's installment loans
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              payment_allocation_method:
+                type: string
+                description: Method by which payments will be allocated across customer's loans.
+                enum:
+                  - higher_interest_balance
+                example: higher_interest_balance
+              amount_cents:
+                type: integer
+                description: The Integer Amount of the Payment in Cents
+                example: "200"
+              effective_at:
+                type: string
+                description: The `Date-Time` that the payment should be recorded to the account.
+                  Although the payment is being added to Canopy today, it can
+                  actually be effective as of 10 days ago.
+                format: date-time
+                example: 2020-07-20T09:11:28Z
+              reference_id:
+                type: string
+                description: A unique ID generated in your system to associate with the Payment.
+                example: e39c6b0d-5793-49c5-bee7-a2dbf8808f3a
+              external_ids:
+                type: array
+                description: An array of static references to ID fields in a third party system.
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the External Party
+                      example: Globex Card Processing
+                    id:
+                      type: string
+                      description: External Account ID
+                      example: 22445702-a389-431f-927d-07b8d0750787
     CreateRefund:
       description: Body of request to create refund.
       required: true
@@ -3748,6 +3736,390 @@ components:
                       description: External Account ID
                       example: 22445702-a389-431f-927d-07b8d0750787
   responses:
+    LogInApiUser:
+      description: Successfully logged in as an API user
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - api_user_id
+              - organization_name
+              - email
+              - role
+              - token
+            properties:
+              api_user_id:
+                type: string
+                description: The unique ID in Canopy for this API user
+                example: 44197ea2-eb78-4511-bcf2-bc28201f9c01
+              organization_name:
+                type: string
+                description: The organization to which the API user belongs.
+                example: Lever Card 3000
+              first_name:
+                type: string
+                description: The first name of the API user.
+                example: Analise
+              last_name:
+                type: string
+                description: The last name of the API user.
+                example: Goldberg
+              email:
+                type: string
+                format: email
+                description: The email address of this API User
+                example: marissa@globex.com
+              phone:
+                type: string
+                format: phonenumber
+                description: Phone number of the API user
+                example: 1-123-456-7890
+              role:
+                type: string
+                enum:
+                  - SERVICING
+                  - OPERATIONS
+                  - ADMIN
+                description: The role of this user in the API
+                example: SERVICING
+              token:
+                type: string
+                description: The unique token to be included as an `x-api-key` header in all
+                  subsequent requests as this user.
+    UpdateApiUserPassword:
+      description: Successfully logged in as an API user
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - api_user_id
+              - organization_name
+              - email
+              - role
+              - token
+            properties:
+              api_user_id:
+                type: string
+                description: The unique ID in Canopy for this API user
+                example: 44197ea2-eb78-4511-bcf2-bc28201f9c01
+              organization_name:
+                type: string
+                description: The organization to which the API user belongs.
+                example: Lever Card 3000
+              first_name:
+                type: string
+                description: The first name of the API user.
+                example: Analise
+              last_name:
+                type: string
+                description: The last name of the API user.
+                example: Goldberg
+              email:
+                type: string
+                format: email
+                description: The email address of this API User
+                example: marissa@globex.com
+              phone:
+                type: string
+                format: phonenumber
+                description: Phone number of the API user
+                example: 1-123-456-7890
+              role:
+                type: string
+                enum:
+                  - SERVICING
+                  - OPERATIONS
+                  - ADMIN
+                description: The role of this user in the API
+                example: SERVICING
+    RegisterApiUser:
+      description: API user successfully registered
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - api_user_id
+              - organization_name
+              - email
+              - role
+            properties:
+              api_user_id:
+                type: string
+                description: The unique ID in Canopy for this API user
+                example: 44197ea2-eb78-4511-bcf2-bc28201f9c01
+              organization_name:
+                type: string
+                description: The organization to which the API user belongs.
+                example: Lever Card 3000
+              first_name:
+                type: string
+                description: The first name of the API user.
+                example: Analise
+              last_name:
+                type: string
+                description: The last name of the API user.
+                example: Goldberg
+              email:
+                type: string
+                format: email
+                description: The email address of this API User
+                example: marissa@globex.com
+              phone:
+                type: string
+                format: phonenumber
+                description: Phone number of the API user
+                example: 1-123-456-7890
+              role:
+                type: string
+                enum:
+                  - SERVICING
+                  - OPERATIONS
+                  - ADMIN
+                description: The role of this user in the API
+                example: SERVICING
+    CustomerAccount:
+      description: Array of Customers and their corresponding Accounts
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              accounts:
+                type: array
+                description: An array of information for all customer-account correspondences
+                  within the requested range.
+                items:
+                  allOf:
+                    - additionalProperties: false
+                      type: object
+                      required:
+                        - account_id
+                        - account_status
+                        - account_status_subtype
+                        - effective_at
+                        - created_at
+                        - product
+                        - total_balance
+                        - credit_limit_cents
+                        - rate
+                        - available_credit_balance
+                      properties:
+                        account_id:
+                          type: string
+                          format: uuid
+                          description: This is generated by Canopy. A unique ID for the account.
+                          example: 5fb3a288-5f6c-440f-b079-b06c828b7768
+                        account_status:
+                          type: string
+                          description: The Status of the Account. Active upon account creation.
+                          example: suspended
+                        account_status_subtype:
+                          type: string
+                          description: The subtype of the Status of the Account. Null upon account
+                            creation.
+                          example: suspended-bankruptcy
+                        effective_at:
+                          type: string
+                          description: The `Date-Time` that this account became/becomes active.
+                          format: date-time
+                          example: 2018-03-20T09:12:28Z
+                        created_at:
+                          type: string
+                          description: The `Date-Time` which the account was created in the API.
+                          format: date-time
+                          example: 2017-06-20T09:12:14Z
+                        product:
+                          description: The product associated with the account
+                          $ref: "#/components/schemas/Account/properties/product"
+                        external_account_ids:
+                          type: array
+                          description: An Array of External Account IDs. These should be used to connect
+                            accounts created in Canopy to Users in your system
+                            and any connected external systems.
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: Name of the External Party
+                                example: Umbrella Corporation
+                              id:
+                                type: string
+                                description: External Account ID
+                                example: 22445702-a389-431f-927d-07b8d0750787
+                        total_balance:
+                          type: number
+                          description: The total balance (in cents) associated with the account.
+                          example: "300000"
+                        credit_limit_cents:
+                          type: integer
+                          description: Total Amount (in cents) that this account can borrow.
+                          example: "400000"
+                        rate:
+                          type: number
+                          description: The percentage interest applied to the account (i.e. 6.2 means
+                            6.2%)
+                          example: "6.2"
+                        available_credit_balance:
+                          type: number
+                          description: The total available credit balance (in cents) for the account.
+                          example: "100000"
+                    - $ref: "#/components/responses/Customers/content/application~1json/schema/proper\
+                        ties/customers/items"
+                    - type: object
+                      properties:
+                        customer_account_role:
+                          type: string
+                          enum:
+                            - primary
+                          example: primary
+                        customer_account_pan:
+                          type: string
+                          description: A unique number for the customer on the account. For instance, a
+                            credit card number. If none is provided, a
+                            Canopy-generated ID can be used.
+                          example: "4465220133024156"
+              total_customer_account_count:
+                type: number
+                description: Total number of unique customer-account correspondences
+    CreateCustomer:
+      description: New Customer Created
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ComplexAccount/allOf/1/properties/customers/items"
+    Customers:
+      description: Array of Customers
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              customers:
+                type: array
+                description: An array of information for all customers within the requested
+                  range.
+                items:
+                  type: object
+                  properties:
+                    customer_id:
+                      type: string
+                      format: uuid
+                      description: A Canopy-generated unique ID for the customer
+                      example: 78e1bae0-b7dd-4626-bcda-9d7e7b81be30
+                    name_prefix:
+                      type: string
+                      description: Prefix to the customer's name
+                      example: Dr.
+                    first_name:
+                      type: string
+                      description: Customer's first name
+                      example: Miriam
+                    middle_name:
+                      type: string
+                      description: Customer's middle name
+                      example: Louise
+                    last_name:
+                      type: string
+                      description: Customer's last name
+                      example: Trevino
+                    name_suffix:
+                      type: string
+                      description: Prefix to the customer's name
+                      example: Jr
+                    phone_number:
+                      type: string
+                      format: phonenumber
+                      description: Phone number of the customer
+                      example: 555-555-5555
+                    address_line_one:
+                      type: string
+                      description: Address line one
+                      example: 12 Strawberry Road
+                    address_line_two:
+                      type: string
+                      description: Address line two
+                      example: Suite 101
+                    address_city:
+                      type: string
+                      description: Address city
+                      example: Atlanta
+                    address_state:
+                      type: string
+                      description: Address state
+                      example: GA
+                    address_zip:
+                      type: string
+                      description: Address zip code
+                      example: 99999-1000
+                    ssn:
+                      type: string
+                      description: Social security number of the customer
+                      example: 888-88-8888
+                    email:
+                      type: string
+                      format: email
+                      description: The email address of this customer
+                      example: marissa@protonmail.com
+                    date_of_birth:
+                      type: string
+                      format: date-time
+                      description: Customer's date of birth
+                      example: 2018-06-20T09:12:30Z
+              total_customer_count:
+                type: number
+                description: Total number of customers
+    UpdateCustomer:
+      description: Successful query of information for a specific customer
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ComplexAccount/allOf/1/properties/customers/items"
+    Notifications:
+      description: Array of Notifications
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              customers:
+                type: array
+                description: An array of notifications within the requested range.
+                items:
+                  type: object
+                  properties:
+                    notification_id:
+                      type: string
+                      format: uuid
+                      description: The canopy-generated ID for the notification
+                      example: b9bf081b-3e17-45ba-b3a9-1ea0ba38fa82
+                    created_at:
+                      type: string
+                      description: The `Date-Time` which the notification was created in the API
+                      format: date-time
+                      example: 2018-06-20T09:12:30Z
+                    status:
+                      type: string
+                      enum:
+                        - read
+                        - unread
+                      description: The viewership status of the notification
+                      example: unread
+                    message:
+                      type: string
+                      description: The message contents of the notification
+                      example: "Tedford reassigned Disputes ticket #6352533 to you."
+                    api_user_id:
+                      type: string
+                      format: uuid
+                      description: The canopy-generated ID of the owner of the notification
+                      example: 3bafc7d2-1867-4c1f-b16c-ea2dd29f588d
+              total_customer_count:
+                type: number
+                description: Total number of notifications for the api_user
     CreateProduct:
       description: Product Created
       content:
@@ -3779,18 +4151,20 @@ components:
                   - american express
                   - discover
                 example: visa
-    CreateCustomer:
-      description: New Customer Created
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/ComplexCustomer"
     ApiUser:
-      description: API User under umbrella of root user
+      description: API User
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/API_User"
+            $ref: "#/components/responses/RegisterApiUser/content/application~1json/schema"
+    ApiUsers:
+      description: Array of API Users
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/responses/RegisterApiUser/content/application~1json/schema"
     CreateAccount:
       description: New Account Created
       content:
@@ -3820,7 +4194,34 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Notification"
+            $ref: "#/components/responses/Notifications/content/application~1json/schema/pr\
+              operties/customers/items"
+    CreateApiUser:
+      description: Successfully invited a new user
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - email
+              - created_at
+              - expires_at
+            properties:
+              email:
+                type: string
+                format: email
+                description: The email address of this API User
+                example: marissa@globex.com
+              created_at:
+                type: string
+                description: The `Date-Time` which the invitation was created in the API
+                format: date-time
+                example: 2018-06-20T09:12:30Z
+              expires_at:
+                type: string
+                description: The `Date-Time` which the invitation expires
+                format: date-time
+                example: 2018-06-21T09:12:30Z
     CreateApiUserInvitation:
       description: Successfully invited a new user
       content:
@@ -3891,6 +4292,143 @@ components:
                 format: uuid
                 description: The ID in Canopy's system for this line item.
                 example: 464920a3-d531-422d-adfb-ce61e52255bf
+    CreatePaymentByCustomer:
+      description: Array of Line Items created in the system from your multipayment.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              required:
+                - account_id
+                - line_item_id
+                - line_item_status
+                - type
+                - originating_amount_cents
+                - balance_amount_cents
+                - total_interest_accrued_cents
+                - total_paid_down_cents
+                - merchant_data
+                - effective_at
+                - created_at
+                - product_id
+                - description
+                - reference_id
+                - dispute_id
+                - external_ids
+                - line_item_count
+              properties:
+                account_id:
+                  type: string
+                  format: uuid
+                  description: The account associated with the line item
+                  example: 2911ff2a-bebe-4c85-8d19-e6001015a8e3
+                line_item_id:
+                  type: string
+                  format: uuid
+                  example: ce9ed376-f151-435f-a59c-9e3cc183bbea
+                line_item_status:
+                  type: string
+                  description: the corresponding Status for a line item
+                  enum:
+                    - posted
+                    - valid
+                    - invalid
+                    - declined
+                    - authorized
+                    - void
+                    - pending
+                    - successful
+                    - unsuccessful
+                  example: posted
+                type:
+                  type: string
+                  description: The Line Item Type. Either `charge` or `payment`.
+                  enum:
+                    - charge
+                    - payment
+                  example: charge
+                originating_amount_cents:
+                  type: number
+                  description: The originating amount of money (in cents) relating to this line
+                    item.
+                  example: "2385"
+                balance_amount_cents:
+                  type: number
+                  description: The current balance of the line item, which accounts for interest
+                    accrued per the `product's` interest policy and the
+                    `account's` interest rate attribute.
+                  example: "2401"
+                total_interest_accrued_cents:
+                  type: number
+                  description: The sum (in cents) of all interest charges, if any, applied to this
+                    line item
+                  example: "16"
+                total_paid_down_cents:
+                  type: number
+                  description: The sum (in cents) of all payment splits, if any, applied to this
+                    line item
+                  example: "1125"
+                merchant_data:
+                  type: object
+                  description: ""
+                  properties:
+                    name:
+                      type: string
+                    id:
+                      type: string
+                    mcc_code:
+                      type: number
+                    phone_number:
+                      type: string
+                      format: phonenumber
+                effective_at:
+                  type: string
+                  description: The `Date-Time` that this account became/becomes active
+                  format: date-time
+                  example: 2018-07-20T09:12:30Z
+                created_at:
+                  type: string
+                  description: The `Date-Time` which the account was created in the API
+                  format: date-time
+                  example: 2018-06-20T09:12:30Z
+                product_id:
+                  type: string
+                  description: the Product ID of the account
+                  format: uuid
+                  example: 158cd7a1-d813-42d2-90a3-9a91c43f18f8
+                description:
+                  type: string
+                  description: A description of this particular line item if any. More common for
+                    adjustments.
+                  example: Refund for invalid purchase
+                reference_id:
+                  type: string
+                  description: User ID in your system to associate with the payment for the
+                    account defined in Canopy.
+                  example: e39c6b0d-5793-49c5-bee7-a2dbf8808f3a
+                dispute_id:
+                  type: string
+                  format: uuid
+                  description: The ID for a dispute if present for this line item.
+                external_ids:
+                  type: array
+                  description: An array of static references to ID fields in a third party system.
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Name of the External Party
+                        example: Globex Card Processing
+                      id:
+                        type: string
+                        description: External Account ID
+                        example: 22445702-a389-431f-927d-07b8d0750787
+                line_item_count:
+                  type: string
+                  description: Total number of line items for the account.
     CreateCreditAdjustment:
       description: Credit Adjustment Created
       content:
@@ -3921,6 +4459,25 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/ComplexAccount"
+    Accounts:
+      description: Array of Accounts
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              required:
+                - accounts
+                - total_account_count
+              accounts:
+                type: array
+                description: An array of information for all accounts within the requested
+                  range.
+                items:
+                  $ref: "#/components/schemas/ComplexAccount/allOf/0"
+              total_account_count:
+                type: number
+                description: Total number of accounts
     Ticket:
       description: Successful query of information for a specific ticket
       content:
@@ -4005,13 +4562,21 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ComplexCustomer"
+            $ref: "#/components/schemas/Customer"
     AccountStatement:
       description: ""
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/AccountStatement"
+    Products:
+      description: Array of Products
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/Account/properties/product"
     ProductAccounts:
       description: ""
       content:
@@ -4019,6 +4584,8 @@ components:
           schema:
             type: object
             description: ""
+            required:
+              - current_accounts
             properties:
               current_accounts:
                 type: array

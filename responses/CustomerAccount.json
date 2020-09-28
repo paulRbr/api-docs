@@ -1,0 +1,23 @@
+{
+  "description": "Array of Customers and their corresponding Accounts",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "accounts": {
+            "type": "array",
+            "description": "An array of information for all customer-account correspondences within the requested range.",
+            "items": {
+              "$ref": "./../schemas/CustomerAccount.json"
+            }
+          },
+          "total_customer_account_count": {
+            "type": "number",
+            "description": "Total number of unique customer-account correspondences"
+          }
+        }
+      }
+    }
+  }
+}

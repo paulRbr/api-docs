@@ -1,0 +1,23 @@
+{
+  "description": "Array of Notifications",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "description": "An array of notifications within the requested range.",
+            "items": {
+              "$ref": "./../schemas/Notification.json"
+            }
+          },
+          "total_customer_count": {
+            "type": "number",
+            "description": "Total number of notifications for the api_user"
+          }
+        }
+      }
+    }
+  }
+}

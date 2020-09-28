@@ -3,21 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "type": "object",
-        "description": "",
-        "required": ["current_accounts"],
-        "properties": {
-          "current_accounts": {
-            "type": "array",
-            "description": "Array of Accounts that are currently using this Product",
-            "items": {
-              "type": "string",
-              "description": "Account ID",
-              "format": "uuid",
-              "example": "5e860ad7-5fff-4130-844c-ec9ead83a025"
-            }
-          }
-        }
+        "$ref": "./../schemas/ProductAccounts.json"
       }
     }
   }

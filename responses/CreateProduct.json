@@ -4,7 +4,6 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": ["name", "product_id", "status"],
         "properties": {
           "name": {
             "type": "string",
@@ -21,6 +20,12 @@
             "type": "string",
             "description": "The Status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
             "example": "live"
+          },
+          "network": {
+            "type": "string",
+            "description": "The network, if applicable, on which the product is issued.",
+            "enum": ["visa", "mastercard", "american express", "discover"],
+            "example": "visa" 
           }
         }
       }

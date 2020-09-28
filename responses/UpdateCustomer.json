@@ -1,0 +1,10 @@
+{
+  "description": "Successful query of information for a specific customer",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/ComplexCustomer.json"
+      }
+    }
+  }
+}

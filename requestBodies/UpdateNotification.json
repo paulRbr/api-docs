@@ -1,0 +1,18 @@
+{
+  "description": "Update the status of a notification",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["read", "unread"],
+            "description": "The updated status of the notification",
+            "example": "read"
+          }
+        }
+      }
+    }
+  }
+}

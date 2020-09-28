@@ -49,7 +49,11 @@
     },
     {
       "name": "line_items",
-      "description": "Manage individual line items for your users in Canopy."
+      "description": "Manage individual line items for your customers in Canopy."
+    },
+    {
+      "name": "statements",
+      "description": "Generate per billing cycle statements for your accounts in Canopy."
     }
   ],
   "paths": {
@@ -724,7 +728,182 @@
           }
         }
       }
-    }
+    },
+    "/accounts/{account_id}/statements/list": {
+      "get": {
+        "tags": [
+          "statements"
+        ],
+        "summary": "Get a list of all current and prior statements for a specific account",
+        "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
+        "operationId": "getAccountStatementsList",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated statements list requests sorted by reverse statement date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Statements for the account.",
+                  "properties": {
+                    "account_id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "The Canopy-generated ID for the account",
+                      "example": "111eff36-cbec-4119-b188-b76200e804d8"
+                    },
+                    "effective_as_of_date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+                      "example": "2018-07-20T09:10:14Z"
+                    },
+                    "statements_list": {
+                      "type": "array",
+                      "description": "An array of statements included in the billing cycle.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "statement_id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "A Canopy-generated ID for the statement",
+                            "example": "3627809b-ff07-4e41-b127-44260efb3b80"
+                          },
+                          "available_credit_balance": {
+                            "type": "number",
+                            "description": "The total available credit balance (in cents) for the account.",
+                            "example": "600000"
+                          },
+                          "total_balance": {
+                            "type": "number",
+                            "description": "The total balance (in cents) associated with the account.",
+                            "example": "400000"
+                          },
+                          "min_pay_due_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The `Date-Time` at which the minimum payment is due."
+                          },
+                          "min_pay_amount_cents": {
+                            "type": "number",
+                            "description": "The minimum amount (in cents) due for this statement."
+                          },
+                          "billing_cycle_start_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                          },
+                          "billing_cycle_end_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/statements": {
+      "get": {
+        "tags": [
+          "statements"
+        ],
+        "summary": "Get a statement for a given date for a specific account.",
+        "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
+        "operationId": "getAccountStatementByDate",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AccountStatement"
+          },
+          "404": {
+            "description": "Statement not found"
+          }
+        }
+      }
+		}
   },
   "components": {
     "securitySchemes": {

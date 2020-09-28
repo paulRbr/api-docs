@@ -1,0 +1,168 @@
+{
+  "description": "Create a new account",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "product_id"
+            ],
+            "properties": {
+              "product_id": {
+                "type": "string",
+                "description": "The Product ID of the account",
+                "format": "uuid",
+                "example": "d119341c-47fd-4a55-bce7-28406dacfa20"
+              },
+              "external_ids": {
+                "type": "array",
+                "description": "An array of static references to ID fields in a third party system.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Name of the External Party",
+                      "example": "Globex Corporation"
+                    },
+                    "id": {
+                      "type": "string",
+                      "description": "External Account ID",
+                      "example": "22445702-a389-431f-927d-07b8d0750787"
+                    }
+                  }
+                }
+              },
+              "credit_limit_cents": {
+                "type": "integer",
+                "description": "For accounts created under credit products, total Amount (in cents) that this account can borrow.",
+                "example": "400000"
+              },
+              "rate": {
+                "type": "number",
+                "description": "The percentage interest applied to the account (i.e. 6.2%)",
+                "example": "6.2"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "existing_customers": {
+                "type": "array",
+                "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "customer_id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Canopy-generated unique ID for this customer",
+                      "example": "d581a0aa-5e11-473c-9569-64bc3a494287"
+                    },
+                    "customer_account_role": {
+                      "type": "string",
+                      "enum": ["primary"],
+                      "description": "The role of the customer for the account being created",
+                      "example": "primary"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "new_customers": {
+                "type": "array",
+                "description": "Array of new customers to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name_prefix": {
+                      "type": "string",
+                      "description": "Prefix to the customer's name",
+                      "example": "Dr."
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "description": "Customer's first name",
+                      "example": "Miriam"
+                    },
+                    "middle_name": {
+                      "type": "string",
+                      "description": "Customer's middle name",
+                      "example": "Louise"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "description": "Customer's last name",
+                      "example": "Trevino"
+                    },
+                    "name_suffix": {
+                      "type": "string",
+                      "description": "Prefix to the customer's name",
+                      "example": "Jr"
+                    },
+                    "phone_number": {
+                      "type": "string",
+                      "format": "phonenumber",
+                      "description": "Phone number of the customer",
+                      "example": "555-555-5555"
+                    },
+                    "address_line_one": {
+                      "type": "string",
+                      "description": "Address line one",
+                      "example": "12 Strawberry Road"
+                    },
+                    "address_line_two": {
+                      "type": "string",
+                      "description": "Address line two",
+                      "example": "Suite 101"
+                    },
+                    "address_city": {
+                      "type": "string",
+                      "description": "Address city",
+                      "example": "Atlanta"
+                    },
+                    "address_state": {
+                      "type": "string",
+                      "description": "Address state",
+                      "example": "GA"
+                    },
+                    "address_zip": {
+                      "type": "string",
+                      "description": "Address zip code",
+                      "example": "99999-1000"
+                    },
+                    "ssn": {
+                      "type": "string",
+                      "description": "Social security number of the customer",
+                      "example": "888-88-8888"
+                    },
+                    "date_of_birth": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Customer's date of birth",
+                      "example": "2018-06-20T09:12:30Z"
+                    },
+                    "customer_account_role": {
+                      "type": "string",
+                      "enum": ["primary"],
+                      "description": "The role of the customer for the account being created",
+                      "example": "primary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
