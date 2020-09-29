@@ -469,72 +469,6 @@
             "$ref": "#/components/responses/CreatePaymentByCustomer"
           }
         }
-      },
-      "get": {
-        "tags": [
-          "customers"
-        ],
-        "summary": "Get all customers",
-        "description": "Returns all of your customers. Results are paginated.",
-        "operationId": "getCustomers",
-        "parameters": [
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "example": "110"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of accounts to be returned. Defaults to 100.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "example": "50"
-            }
-          },
-					{
-						"name": "search_query",
-						"in": "query",
-						"description": "A search query to be applied to results before the customers list is returned. Search by name, phone number, or SSN last-four digits.",
-						"required": false,
-						"style": "form",
-						"example": true,
-						"schema": {
-							"type": "string",
-							"example": "Coco Parker"
-						}
-					},
-					{
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/Customers"
-          },
-          "404": {
-            "description": "Unable to get customers"
-          }
-        }
       }
     },
 		"/notifications": {
@@ -728,7 +662,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Product_MVP"
+                  "$ref": "#/components/schemas/Product"
                 }
               }
             }
@@ -2599,10 +2533,10 @@
     },
     "schemas": {
       "Account": {
-        "$ref": "./schemas/_customers_release_Account.json"
+        "$ref": "./schemas/_installments_release_Account.json"
       },
 			"ComplexAccount": {
-        "$ref": "./schemas/_customers_release_ComplexAccount.json"
+        "$ref": "./schemas/_installments_release_ComplexAccount.json"
       },
 			"AccountStatement": {
         "type": "object",
@@ -2653,133 +2587,16 @@
             "type": "array",
             "description": "An array of line items included in the billing cycle.",
             "items": {
-              "$ref": "#/components/schemas/Line_Item_MVP"
+              "$ref": "#/components/schemas/Line_Item"
             }
           }
         }
 			},
-      "Product_MVP": {
-        "required": [
-          "policies",
-          "product_id"
-        ],
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "product_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "The Canopy-generated ID for the product.",
-            "example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of Product, i.e. Express Card.",
-            "example": "Blue Cash Express"
-          },
-          "description": {
-            "type": "string",
-            "description": "Description of the Product.",
-            "example": "Student credit card."
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The `Date-Time` that this product was created on the server.",
-            "format": "date-time",
-            "example": "2019-03-20T09:12:28Z"
-          },
-          "type": {
-            "type": "string",
-            "description": "The Type of Product",
-            "enum": [
-              "CREDIT"
-            ],
-            "example": "CREDIT"
-          },
-          "status": {
-            "type": "string",
-            "description": "The status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
-            "enum": [
-              "VALID"
-            ],
-            "example": "VALID"
-          },
-          "policies": {
-            "type": "object",
-            "description": "An object of policies that drive product behavior.",
-            "properties": {
-              "base_policy_config": {
-                "$ref": "#/components/schemas/Base_Policy_Config_MVP"
-              }
-            }
-          },
-          "product_summary": {
-            "$ref": "#/components/schemas/Product_Summary"
-          },
-          "default_attributes": {
-            "type": "object",
-            "properties": {
-              "rate": {
-                "type": "number",
-                "description": "The percent default rate for this interest policy (i.e. 3.2 means a 3.2% rate). This default rate can be overridden on a per-account basis if a `rate` is selected at the time of assigning an account to a product. Rates for an account can also be updated post-account creation.",
-                "example": 3.2
-              },
-              "credit_limit_cents": {
-                "type": "integer",
-                "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
-                "example": 600000
-              },
-              "offer": {
-                "type": "string",
-                "description": "For installment loans, the offer applied to this account. This field is not necessary for credit products.",
-                "example": "Blue Cash 24 Month Offer"
-              }
-            }
-          }
-        }
+      "Product": {
+        "$ref": "./schemas/_installments_release_Product.json"
       },
       "Product_Summary": {
-        "type": "object",
-        "description": "Summary of product information.",
-        "properties": {
-          "accounts_overview": {
-            "type": "object",
-            "properties": {
-              "account_count_total": {
-                "type": "integer",
-                "description": "Total number of accounts under the product.",
-                "example": 10005
-              },
-              "account_count_delinquent": {
-                "type": "integer",
-                "description": "Total number of delinquent accounts under the product.",
-                "example": 200
-              }
-            }
-          },
-          "total_credit_issued_cents": {
-            "type": "integer",
-            "description": "Total amount (in cents) of credit issued to accounts under the product.",
-            "example": 25500000
-          },
-          "utilization_rate": {
-            "type": "number",
-            "description": "The percent utilization rate of the product.",
-            "example": 30.34
-          },
-          "product_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "The Canopy-generated ID for the product.",
-            "example": "ca3cf4e9-5048-4461-a763-8f67b46dfd4d"
-          },
-          "effective_as_of_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE \"tell me what the product information was as if I had asked on `2020-01-20 00:00:00 EST`\". If empty defaults to current time.",
-            "example": "2017-06-20T09:12:14Z"
-          }
-        }
+        "$ref": "./schemas/ProductSummary.json"
       },
       "Customer": {
         "$ref": "./schemas/Customer.json"
@@ -2966,7 +2783,7 @@
           }
         }
       },
-      "Base_Policy_Config_MVP": {
+      "Base_Policy_Config": {
 				"type": "object",
 				"additionalProperties": false,
 				"properties": {
@@ -2984,35 +2801,9 @@
 						"description":"Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
 						"format": "date-time",
 						"example": "2020-03-20T09:12:28Z"
-          },
-          "installment_offers": {
-            "$ref": "#/components/schemas/Base_Policy_Config_Installment_Offers"
           }
 				},
 				"description": "A base group of policies that define a Product"
-      },
-      "Base_Policy_Config_Installment_Offers": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "amortization_period_length": {
-              "type": "number",
-              "description": "Length of amortization period over which interest accrues per interest policy. IE '1 month' '3 months' or '7 days'",
-              "example": "24 months"
-            },
-            "offer_name": {
-              "type": "string",
-              "description": "A name to identify this specific offer for the product.",
-              "example": "Blue-Cash 24 Mo."
-            },
-            "offer_disclosure": {
-              "type": "string",
-              "description": "A disclosure to include with the offer for consumer protection.",
-              "example": "60 month loan. 60 amortized payments at an APR of 6.99% based on the balance at approval date."
-            }
-          }
-        }
       },
       "Base_Policy_Config_Min_Pay": {
         "type": "object",
@@ -3043,7 +2834,7 @@
         },
         "description": "The Billing Cycle Object"
       },
-      "Interest_Policy_MVP": {
+      "Interest_Policy": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -3079,7 +2870,7 @@
         },
         "description": "The Interest Policy Object"
       },
-      "Line_Item_MVP": {
+      "Line_Item": {
         "required": [
           "account_id",
           "effective_at",
@@ -3251,7 +3042,7 @@
         "$ref": "./requestBodies/UpdateCustomer.json"
       },
       "CreateAccount": {
-        "$ref": "./requestBodies/_customers_release_CreateAccount.json"
+        "$ref": "./requestBodies/_installments_release_CreateAccount.json"
 			},
 			"CreateApiUserInvitation": {
 				"description": "Body of request to invite new API user. Checks permissions of invite-creator.",
@@ -3710,7 +3501,7 @@
         "$ref": "./responses/Notifications.json"
       },
       "CreateProduct": {
-        "$ref": "./responses/CreateProduct.json"
+        "$ref": "./responses/_installments_release_CreateProduct.json"
       },
       "ApiUser": {
         "$ref": "./responses/ApiUser.json"
@@ -3916,7 +3707,7 @@
         }
       },
       "Accounts": {
-        "$ref": "./responses/_customers_release_Accounts.json"
+        "$ref": "./responses/_installments_release_Accounts.json"
       },
 			"Ticket": {
         "description": "Successful query of information for a specific ticket",
@@ -4062,7 +3853,7 @@
         }
       },
       "Products": {
-        "$ref": "./responses/Products.json"
+        "$ref": "./responses/_installments_release_Products.json"
       },
       "ProductAccounts": {
         "$ref": "./responses/ProductAccounts.json"
@@ -4071,51 +3862,7 @@
         "$ref": "./responses/ProductSummary.json"
       },
       "AmortizationSchedule": {
-        "description": "Amortization schedule for a loan",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "array",
-              "description": "Amortization schedule",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "date": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "The date of the scheduled payment",
-                    "example": "2018-07-20T09:10:14Z"
-                  },
-                  "amount_due_cents": {
-                    "type": "number",
-                    "description": "The amount in cents of the scheduled payment due",
-                    "example": "18325"
-                  },
-                  "amount_paid_cents": {
-                    "type": "number",
-                    "description": "The amount in cents that was actually paid for the billing cycle",
-                    "example": "18325"
-                  },
-                  "interest_allocation": {
-                    "type": "number",
-                    "description": "The amount in cents allocated to interest from this payment",
-                    "example": "2415"
-                  },
-                  "principal_allocation": {
-                    "type": "number",
-                    "description": "The amount in cents allocated to principal from this payment",
-                    "example": "15911"
-                  },
-                  "end_balance": {
-                    "type": "number",
-                    "description": "The ending balance on the loan after this payment",
-                    "example": "136691"
-                  }
-                }
-              }
-            }
-          }
-        }
+        "$ref": "./responses/AmortizationSchedule.json"
       },
       "LineItem": {
         "description": "Detailed info about a specific line item",

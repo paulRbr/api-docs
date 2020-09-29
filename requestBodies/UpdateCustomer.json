@@ -61,6 +61,12 @@
             "description": "Address zip code",
             "example": "99999-1000"
           },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of this Customer",
+            "example": "marissa@protonmail.com"
+          },
           "ssn": {
             "type": "string",
             "description": "Social security number of the customer",

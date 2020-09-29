@@ -1,0 +1,13 @@
+{
+  "description": "Array of Products",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "./../schemas/_installments_release_Product.json"
+        }
+      }
+    }
+  }
+}

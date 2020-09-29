@@ -1,0 +1,47 @@
+{
+  "description": "Amortization schedule for a loan",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "array",
+        "description": "Amortization schedule",
+        "items": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date of the scheduled payment",
+              "example": "2018-07-20T09:10:14Z"
+            },
+            "amount_due_cents": {
+              "type": "number",
+              "description": "The amount in cents of the scheduled payment due",
+              "example": "18325"
+            },
+            "amount_paid_cents": {
+              "type": "number",
+              "description": "The amount in cents that was actually paid for the billing cycle",
+              "example": "18325"
+            },
+            "interest_allocation": {
+              "type": "number",
+              "description": "The amount in cents allocated to interest from this payment",
+              "example": "2415"
+            },
+            "principal_allocation": {
+              "type": "number",
+              "description": "The amount in cents allocated to principal from this payment",
+              "example": "15911"
+            },
+            "end_balance": {
+              "type": "number",
+              "description": "The ending balance on the loan after this payment",
+              "example": "136691"
+            }
+          }
+        }
+      }
+    }
+  }
+}

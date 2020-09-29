@@ -8,7 +8,7 @@
           "type": "array",
           "description": "An array of Accounts to which this Customer is assigned",
           "items": {
-            "$ref": "./_customers_release_ComplexAccount.json"
+            "$ref": "./_customers_release_Account.json"
           }
         }
       }

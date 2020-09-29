@@ -1,0 +1,110 @@
+{
+  "required": [
+    "policies",
+    "product_id"
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The Canopy-generated ID for the product.",
+      "example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of Product, i.e. Express Card.",
+      "example": "Blue Cash Express"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the Product.",
+      "example": "Student credit card."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The `Date-Time` that this product was created on the server.",
+      "format": "date-time",
+      "example": "2019-03-20T09:12:28Z"
+    },
+    "type": {
+      "type": "string",
+      "description": "The Type of Product",
+      "enum": [
+        "revolving, installment"
+      ],
+      "example": "revolving"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of a Product (i.e. `live` or `draft`). Products with the `draft` status require additional policy configurations to launch.",
+      "enum": [
+        "live"
+      ],
+      "example": "live"
+    },
+    "policies": {
+      "type": "object",
+      "description": "An object of policies that drive product behavior.",
+      "properties": {
+        "base_policy_config": {
+          "$ref": "./BasePolicyConfig.json"
+        }
+      }
+    },
+    "offers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "offer_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "A canopy-generated unique ID for this offer",
+            "example": "a1c265f4-54a5-443b-b361-677a0e524419"
+          }, 
+          "offer_name": {
+            "type": "string",
+            "description": "The name of this offer",
+            "example": "APR of 7.99% - 16.99% for 60 months"
+          }, 
+          "offer_term": {
+            "type": "string",
+            "description": "The term duration of this offer in months",
+            "example": "36"
+          },
+          "offer_disclosure": {
+            "type": "string",
+            "description": "The disclosure of this offer",
+            "example": "Subject to credit approval. fixed APR of 7.99% - 16.99% based on creditworthiness for 60 months.  For each $1,000 financed, 36 amortized payments of $18.75 - $22.52"
+          }
+        }
+      },
+      "description": "For installment loans, the set of offers accessible to customers of this loan product."
+    },
+    "product_summary": {
+      "$ref": "./ProductSummary.json"
+    },
+    "default_attributes": {
+      "type": "object",
+      "properties": {
+        "rate": {
+          "type": "number",
+          "description": "The percent default rate for this interest policy (i.e. 3.2 means a 3.2% rate). This default rate can be overridden on a per-account basis if a `rate` is selected at the time of assigning an account to a product. Rates for an account can also be updated post-account creation.",
+          "example": 3.2
+        },
+        "credit_limit_cents": {
+          "type": "integer",
+          "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
+          "example": 600000
+        },
+        "offer": {
+          "type": "string",
+          "description": "For installment loans, the offer applied to this account. This field is not necessary for credit products.",
+          "example": "Blue Cash 24 Month Offer"
+        }
+      }
+    }
+  }
+}

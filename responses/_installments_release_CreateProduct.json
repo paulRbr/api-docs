@@ -1,0 +1,10 @@
+{
+  "description": "Product Created",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/_installments_release_Product.json"
+      }
+    }
+  }
+}
