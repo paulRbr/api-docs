@@ -220,7 +220,7 @@ paths:
             format: date-time
       responses:
         "200":
-          $ref: "#/components/responses/CustomerAccounts"
+          $ref: "#/components/responses/CustomerAccount"
         "404":
           description: Unable to get customers
   /customers:
@@ -2320,6 +2320,27 @@ components:
           enum:
             - VALID
           example: VALID
+        offers:
+          type: array
+          items:
+            type: object
+            properties:
+              offer_name:
+                type: string
+                description: The name of this offer
+                example: APR of 7.99% - 16.99% for 60 months
+              offer_term:
+                type: string
+                description: The term duration of this offer in months
+                example: "36"
+              offer_disclosure:
+                type: string
+                description: The disclosure of this offer
+                example: Subject to credit approval. fixed APR of 7.99% - 16.99% based on
+                  creditworthiness for 60 months.  For each $1,000 financed, 36
+                  amortized payments of $18.75 - $22.52
+          description: For installment loans, the set of offers accessible to customers of
+            this loan product.
         policies:
           type: object
           description: An object of policies that drive product behavior.
@@ -3036,6 +3057,27 @@ components:
                 enum:
                   - draft, live
                 example: draft
+              offers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    offer_name:
+                      type: string
+                      description: The name of this offer
+                      example: APR of 7.99% - 16.99% for 60 months
+                    offer_term:
+                      type: string
+                      description: The term duration of this offer in months
+                      example: "36"
+                    offer_disclosure:
+                      type: string
+                      description: The disclosure of this offer
+                      example: Subject to credit approval. fixed APR of 7.99% - 16.99% based on
+                        creditworthiness for 60 months.  For each $1,000
+                        financed, 36 amortized payments of $18.75 - $22.52
+                description: For installment loans, the set of offers accessible to customers of
+                  this loan product.
               policies:
                 type: object
                 description: An Object of policies that drive Product behaviour.
@@ -4641,34 +4683,36 @@ components:
       content:
         application/json:
           schema:
-            type: object
+            type: array
             description: Amortization schedule
-            properties:
-              date:
-                type: string
-                format: date-time
-                description: The date of the scheduled payment
-                example: 2018-07-20T09:10:14Z
-              amount_due_cents:
-                type: number
-                description: The amount in cents of the scheduled payment due
-                example: "18325"
-              amount_paid_cents:
-                type: number
-                description: The amount in cents that was actually paid for the billing cycle
-                example: "18325"
-              interest_allocation:
-                type: number
-                description: The amount in cents allocated to interest from this payment
-                example: "2415"
-              principal_allocation:
-                type: number
-                description: The amount in cents allocated to principal from this payment
-                example: "15911"
-              end_balance:
-                type: number
-                description: The ending balance on the loan after this payment
-                example: "136691"
+            items:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date of the scheduled payment
+                  example: 2018-07-20T09:10:14Z
+                amount_due_cents:
+                  type: number
+                  description: The amount in cents of the scheduled payment due
+                  example: "18325"
+                amount_paid_cents:
+                  type: number
+                  description: The amount in cents that was actually paid for the billing cycle
+                  example: "18325"
+                interest_allocation:
+                  type: number
+                  description: The amount in cents allocated to interest from this payment
+                  example: "2415"
+                principal_allocation:
+                  type: number
+                  description: The amount in cents allocated to principal from this payment
+                  example: "15911"
+                end_balance:
+                  type: number
+                  description: The ending balance on the loan after this payment
+                  example: "136691"
     LineItem:
       description: Detailed info about a specific line item
       content:

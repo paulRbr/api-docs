@@ -56,6 +56,30 @@
             ],
             "example": "draft"
           },
+          "offers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "offer_name": {
+                  "type": "string",
+                  "description": "The name of this offer",
+                  "example": "APR of 7.99% - 16.99% for 60 months"
+                }, 
+                "offer_term": {
+                  "type": "string",
+                  "description": "The term duration of this offer in months",
+                  "example": "36"
+                },
+                "offer_disclosure": {
+                  "type": "string",
+                  "description": "The disclosure of this offer",
+                  "example": "Subject to credit approval. fixed APR of 7.99% - 16.99% based on creditworthiness for 60 months.  For each $1,000 financed, 36 amortized payments of $18.75 - $22.52"
+                }
+              }
+            },
+            "description": "For installment loans, the set of offers accessible to customers of this loan product."
+          },
           "policies": {
             "type": "object",
             "description": "An Object of policies that drive Product behaviour.",
