@@ -1,0 +1,10 @@
+{
+  "description": "New Installment Loan",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/InstallmentLoan.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "description": "Add a Note to an account",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The contents of the note.",
+            "example": "Attempted to call back customer, but no response."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "description": "New Customer Created",
+  "description": "Successful query of information for a specific customer",
   "content": {
     "application/json": {
       "schema": {

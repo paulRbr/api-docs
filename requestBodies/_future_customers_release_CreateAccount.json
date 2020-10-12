@@ -65,8 +65,8 @@
                     },
                     "customer_account_role": {
                       "type": "string",
-                      "enum": ["primary"],
-                      "description": "The role of the customer for the account being created",
+                      "description": "The role of the customer for the account.",
+                      "enum": ["primary", "secondary"],
                       "example": "primary"
                     }
                   }
@@ -152,8 +152,8 @@
                     },
                     "customer_account_role": {
                       "type": "string",
-                      "enum": ["primary"],
-                      "description": "The role of the customer for the account being created",
+                      "description": "The role of the customer for the account.",
+                      "enum": ["primary", "secondary"],
                       "example": "primary"
                     }
                   }

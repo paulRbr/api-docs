@@ -1,0 +1,10 @@
+{
+  "description": "Successful query of history of notes for a specific account",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/Notes.json"
+      }
+    }
+  }
+}

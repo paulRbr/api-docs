@@ -1,0 +1,10 @@
+{
+  "description": "New Note Created",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/Note.json"
+      }
+    }
+  }
+}

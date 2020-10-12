@@ -13,7 +13,7 @@
             }
           },
           "total_customer_count": {
-            "type": "number",
+            "type": "integer",
             "description": "Total number of customers"
           }
         }

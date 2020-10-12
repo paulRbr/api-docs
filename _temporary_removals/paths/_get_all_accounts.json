@@ -1,0 +1,51 @@
+{
+  "/accounts": {
+    "get": {
+      "security": [
+        {
+          "api_key": []
+        }
+      ],
+      "tags": [
+        "accounts"
+      ],
+      "summary": "Get all available Accounts",
+      "description": "Get details for all accounts linked to any of your products. Results are sorted by the date the account was created.",
+      "operationId": "getAccounts",
+      "parameters": [
+        {
+          "name": "offset",
+          "in": "query",
+          "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "integer",
+            "example": "110"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "description": "The maximum number of accounts to be returned. Defaults to 100.",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "integer",
+            "example": "50"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/Accounts"
+        },
+        "404": {
+          "description": "No accounts found"
+        }
+      }
+    }
+  }
+}

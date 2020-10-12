@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "properties": {
+    "note_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "A Canopy-generated unique ID for the note",
+      "example": "7b2e189d-d6bb-41c2-95c1-1174b58246fa"
+    },
+    "account_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The ID of the account to which the Note is assigned",
+      "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
+    },
+    "author": {
+      "description": "The API User who authored the note",
+      "$ref": "./ApiUser.json"
+    },
+    "message": {
+      "type": "string",
+      "description": "The contents of the note.",
+      "example": "Attempted to call back customer, but no response."
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the note was created."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "array",
+  "description": "A history of all notes on an account.",
+  "items": {
+    "$ref": "./Note.json"
+  }
+}

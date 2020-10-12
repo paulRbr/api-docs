@@ -1,0 +1,94 @@
+{
+  "description": "Create a new customer",
+  "required": [
+    "account_id",
+    "effective_at",
+    "loan_status",
+    "loan_id",
+    "product_id",
+    "type",
+    "amount_cents",
+    "created_at",
+    "reference_id"
+  ],
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The account associated with the loan",
+            "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
+          },
+          "product_id": {
+            "type": "string",
+            "description": "the Product ID of the loan (to determine which policies to apply to the loan).",
+            "format": "uuid",
+            "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+          },
+          "original_loan_amount_cents": {
+            "type": "integer",
+            "description": "For installment loans, the originating loan amount for the first loan created for the account.",
+            "example": "40000"
+          },
+          "rate": {
+            "type": "number",
+            "description": "The percentage rate applied to this line item (i.e. 15.5 means 15.5%). If it was not set at the time of loan creation, its default value is the default rate of the account.",
+            "example": "15.5%"
+          },
+          "offer_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "For installment loans, the offer_id of the offer applied to the first loan created for the account. This field is not necessary for credit products. If left blank, the default offer will be applied.",
+            "example": "a1c265f4-54a5-443b-b361-677a0e524419"
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that this line item became/becomes active",
+            "format": "date-time",
+            "example": "2018-07-20T09:12:30Z"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The `Date-Time` which the line item was created in the API",
+            "format": "date-time",
+            "example": "2018-06-20T09:12:30Z"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of this particular loan if any.",
+            "example": "Loan taken out to fund automobile purchase."
+          },
+          "reference_id": {
+            "type": "string",
+            "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
+            "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+          },
+          "external_ids": {
+            "type": "array",
+            "description": "An array of static references to ID fields in a third party system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the External Party",
+                  "example": "Globex Loans Processing"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        },
+        "description": "An individual installment loan for an account holder at Canopy."
+      }
+    }
+  }
+}

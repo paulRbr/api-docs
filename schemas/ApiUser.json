@@ -17,12 +17,12 @@
       "description": "The organization to which the API user belongs.",
       "example": "Lever Card 3000"
     },
-    "first_name": {
+    "name_first": {
       "type": "string",
       "description": "The first name of the API user.",
       "example": "Analise"
     },
-    "last_name": {
+    "name_last": {
       "type": "string",
       "description": "The last name of the API user.",
       "example": "Goldberg"

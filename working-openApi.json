@@ -209,7 +209,7 @@
         }
       }
     },
-		"/customer_accounts": {
+		"/customers/accounts": {
       "get": {
         "tags": [
           "customers"
@@ -226,7 +226,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -238,7 +238,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           },
@@ -269,7 +269,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/CustomerAccount"
+            "$ref": "#/components/responses/CustomerAccounts"
           },
           "404": {
             "description": "Unable to get customers"
@@ -315,7 +315,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -327,7 +327,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           },
@@ -486,7 +486,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -498,7 +498,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           },
@@ -554,7 +554,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -566,7 +566,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           },
@@ -845,7 +845,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -857,7 +857,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
@@ -938,7 +938,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -950,7 +950,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
@@ -1668,7 +1668,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -1680,7 +1680,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
@@ -1880,7 +1880,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -1892,7 +1892,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
@@ -2410,7 +2410,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -2422,7 +2422,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
@@ -2818,7 +2818,7 @@
 								"type": "array",
 								"description": "An array of Accounts to which this Customer is assigned",
 								"items": {
-									"$ref": "#/components/schemas/ComplexAccount"
+									"$ref": "#/components/schemas/Account"
 								}
 							}
 						}
@@ -2826,60 +2826,8 @@
 				]
 			},
       "API_User": {
-        "type": "object",
-        "properties": {
-					"role": {
-						"type": "string",
-						"description": "The role of this API User.",
-						"enum": [
-							"superuser", "root"
-						],
-						"example": "superuser"
-					},
-					"organization_name": {
-            "type": "string",
-            "description": "A string describing the organization name under whom this user exists",
-            "example": "Acme Corporation"
-					},
-          "api_user_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "A Canopy-generated unique ID for the API User",
-            "example": "b10fccd1-6c6f-4678-9240-6094296c0a91"
-          },
-          "name_prefix": {
-            "type": "string",
-            "description": "Prefix to the user's name",
-            "example": "Dr."
-          },
-          "first_name": {
-            "type": "string",
-            "description": "User's first name",
-            "example": "Miriam"
-          },
-          "middle_name": {
-            "type": "string",
-            "description": "User's middle name",
-            "example": "Louise"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "User's last name",
-            "example": "Trevino"
-          },
-          "name_suffix": {
-            "type": "string",
-            "description": "Prefix to the user's name",
-            "example": "Jr"
-          },
-					"email": {
-						"type": "string",
-						"format": "email",
-						"description": "The email address of this API User",
-						"example": "miriam@globex.com"
-					}
-        }
-			},
+        "$ref": "./schemas/ApiUser.json"
+      },
 			"Notification": {
         "$ref": "./schemas/Notification.json"
 			},
@@ -2945,16 +2893,15 @@
             "description": "The API User who authored the note",
             "$ref": "#/components/schemas/API_User"
           },
-					"purpose": {
-						"description": "The purpose for which the note was assigned.",
-						"type": "string",
-						"enum": ["user_update", "new_user", "account_status_change", "credit_adjustment", "debit_adjustment", "general_note"],
-						"example": "debit_adjustment"
-					},
-					"amount": {
-						"description": "The amount (in cents) (if any) associated with the note. For example, when a note pertains to a credit adjustment. I.e. 450 = $4.50",
-						"type": "string",
-						"example": "450"
+          "message": {
+            "type": "string",
+            "description": "The contents of the note.",
+            "example": "Attempted to call back customer, but no response."
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time the note was created."
           }
         }
       },
@@ -3323,17 +3270,17 @@
 									"description": "Prefix to the user's name",
 									"example": "Dr."
 								},
-								"first_name": {
+								"name_first": {
 									"type": "string",
 									"description": "User's first name",
 									"example": "Miriam"
 								},
-								"middle_name": {
+								"name_middle": {
 									"type": "string",
 									"description": "User's middle name",
 									"example": "Louise"
 								},
-								"last_name": {
+								"name_last": {
 									"type": "string",
 									"description": "User's last name",
 									"example": "Trevino"
@@ -3718,8 +3665,8 @@
       "RegisterApiUser": {
         "$ref": "./responses/RegisterApiUser.json"
       },
-      "CustomerAccount": {
-        "$ref": "./responses/CustomerAccount.json"
+      "CustomerAccounts": {
+        "$ref": "./responses/CustomerAccounts.json"
       },
       "CreateCustomer": {
         "$ref": "./responses/CreateCustomer.json"
@@ -3982,11 +3929,6 @@
 											}
 										]
 									}
-								},
-								"created_date": {
-									"type": "string",
-									"format": "date-time",
-									"description": "The date and time the account was created."
 								}
 							}
             }
@@ -4006,11 +3948,6 @@
 									"items": {
                     "$ref": "#/components/schemas/Ticket"
 									}
-								},
-								"created_date": {
-									"type": "string",
-									"format": "date-time",
-									"description": "The date and time the account was created."
 								}
 							}
             }
@@ -4030,11 +3967,6 @@
 									"items": {
                     "$ref": "#/components/schemas/Note"
 									}
-								},
-								"created_date": {
-									"type": "string",
-									"format": "date-time",
-									"description": "The date and time the account was created."
 								}
 							}
             }
@@ -4054,11 +3986,6 @@
 									"items": {
                     "$ref": "#/components/schemas/Note"
 									}
-								},
-								"created_date": {
-									"type": "string",
-									"format": "date-time",
-									"description": "The date and time the account was created."
 								}
 							}
             }

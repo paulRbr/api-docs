@@ -14,7 +14,7 @@
             }
           },
           "total_account_count": {
-            "type": "number",
+            "type": "integer",
             "description": "Total number of accounts"
           }
         }

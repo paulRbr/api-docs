@@ -12,17 +12,17 @@
       "description": "Prefix to the customer's name",
       "example": "Dr."
     },
-    "first_name": {
+    "name_first": {
       "type": "string",
       "description": "Customer's first name",
       "example": "Miriam"
     },
-    "middle_name": {
+    "name_middle": {
       "type": "string",
       "description": "Customer's middle name",
       "example": "Louise"
     },
-    "last_name": {
+    "name_last": {
       "type": "string",
       "description": "Customer's last name",
       "example": "Trevino"

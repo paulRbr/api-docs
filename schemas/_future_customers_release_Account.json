@@ -70,10 +70,10 @@
                 "example": "d581a0aa-5e11-473c-9569-64bc3a494287"
               },
               "customer_account_role": {
-                "type": "string",
-                "enum": ["primary"],
-                "description": "The role of the customer for the account being created",
-                "example": "primary"
+                "type": "integer",
+                "description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
+                "enum": ["1", "2"],
+                "example": "1"
               }
             }
           }

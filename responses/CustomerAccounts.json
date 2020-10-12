@@ -1,0 +1,10 @@
+{
+  "description": "Array of Customers and their corresponding Accounts",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/CustomerAccounts.json"
+      }
+    }
+  }
+}

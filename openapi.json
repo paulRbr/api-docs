@@ -52,6 +52,14 @@
       "description": "Manage individual line items for your customers in Canopy."
     },
     {
+      "name": "notes",
+      "description": "Help your customer service team track its activity across accounts."
+    },
+    {
+      "name": "customers",
+      "description": "Onboard customers into your system, so they can begin using your credit products"
+    },
+    {
       "name": "statements",
       "description": "Generate per billing cycle statements for your accounts in Canopy."
     }
@@ -324,7 +332,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -336,14 +344,14 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
         ],
         "responses": {
           "200": {
-            "$ref": "./responses/ProductAccounts.json"
+            "$ref": "#/components/responses/ProductAccounts"
           },
           "404": {
             "description": "Account not found"
@@ -388,7 +396,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "./responses/ProductSummary.json"
+            "$ref": "#/components/responses/ProductSummary"
           },
           "404": {
             "description": "Account not found"
@@ -396,19 +404,14 @@
         }
       }
     },
-    "/accounts": {
+    "/customers/accounts": {
       "get": {
-        "security": [
-          {
-            "api_key": []
-          }
-        ],
         "tags": [
-          "accounts"
+          "customers"
         ],
-        "summary": "Get all available Accounts",
-        "description": "Get details for all accounts linked to any of your products. Results are sorted by the date the account was created.",
-        "operationId": "getAccounts",
+        "summary": "Get all accounts for all customers",
+        "description": "Returns all accounts from the perspective of each customer. For instance, if one account has two customers, these are reflected as two separate items in the response array. Similarly, if one customer has multiple accounts, each account is reflected as a separate item in the response array.",
+        "operationId": "getCustomersAccounts",
         "parameters": [
           {
             "name": "offset",
@@ -418,7 +421,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -430,20 +433,46 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
+            }
+          },
+					{
+						"name": "search_query",
+						"in": "query",
+						"description": "A search query to be applied to results before the customer accounts list is returned. Search by name, phone number, account ID, or SSN last-four digits.",
+						"required": false,
+						"style": "form",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					},
+					{
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
             }
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Accounts"
+            "$ref": "#/components/responses/CustomerAccounts"
           },
           "404": {
-            "description": "No accounts found"
+            "description": "Unable to get customers"
           }
         }
-      },
+      }
+    },
+    "/customers": {
       "post": {
         "security": [
           {
@@ -451,11 +480,101 @@
           }
         ],
         "tags": [
-          "accounts",
-          "programmatic"
+          "customers"
         ],
-        "summary": "Create a new customer account",
-        "description": "An account should be created for each end user of each of your products. Once created, you will be able to add `line_items` to the account.",
+        "summary": "Create a new customer",
+        "operationId": "CreateCustomer",
+        "description": "Customer can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateCustomer"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateCustomer"
+          }
+        }
+      }
+    },
+    "/customers/{customer_id}": {
+      "put": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "customers"
+        ],
+        "summary": "Update an existing customer",
+        "operationId": "UpdateCustomer",
+        "description": "Update data for a customer in Canopy.",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "The ID of the customer to be updated.",
+            "required": true,
+            "style": "simple",
+            "explode": true,
+            "schema": {
+              "type": "string",
+							"format": "uuid",
+              "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
+            }
+          }
+				],
+				"requestBody": {
+          "$ref": "#/components/requestBodies/UpdateCustomer"
+        },
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/UpdateCustomer"
+          }
+        }
+      },
+			"get": {
+				"tags": [
+          "customers"
+        ],
+        "summary": "Get a specific customer",
+        "description": "Returns summary information for a specific customer.",
+        "operationId": "getCustomer",
+        "parameters": [
+					{
+						"name": "customer_id",
+						"in": "path",
+						"description": "The ID of the customer to return.",
+						"required": true,
+						"style": "simple",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					}
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Customer"
+          },
+          "404": {
+            "description": "Unable to get customer"
+          }
+        }
+			}
+    },
+    "/accounts": {
+      "post": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Create a new account",
+        "description": "At least one account should be created for customer of each of your products. Once created, you will be able to add `line_items` to the account.",
         "operationId": "createAccount",
         "requestBody": {
           "$ref": "#/components/requestBodies/CreateAccount"
@@ -473,8 +592,7 @@
     "/accounts/{account_id}": {
       "get": {
         "tags": [
-          "accounts",
-          "servicing"
+          "accounts"
         ],
         "summary": "Get a specific Account",
         "description": "",
@@ -516,6 +634,81 @@
         }
       }
     },
+    "/accounts/{account_id}/notes": {
+			"post": {
+				"tags": [
+          "notes"
+        ],
+        "summary": "Create a note for a specific account.",
+        "description": "A note to be added to the account.",
+				"operationId": "createAccountNote",
+				"parameters": [
+					{
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+				],
+				"requestBody": {
+          "$ref": "#/components/requestBodies/CreateNote"
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/CreateNote"
+					}
+				}
+      },
+      "get": {
+        "tags": [
+          "notes"
+        ],
+        "summary": "Get All Notes for a specific Account",
+        "description": "",
+        "operationId": "getNotes",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+            }
+					},
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+					"200": {
+						"$ref": "#/components/responses/Notes"
+					},
+          "404": {
+            "description": "Account not found"
+          }
+        }
+			}
+		},
     "/accounts/{account_id}/line_items": {
       "get": {
         "tags": [
@@ -567,7 +760,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -579,7 +772,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
@@ -652,9 +845,7 @@
     "/accounts/{account_id}/line_items/charges": {
       "post": {
         "tags": [
-          "line_items",
-          "charges",
-          "accounts"
+          "line_items"
         ],
         "summary": "Create a charge for a specific account",
         "description": "",
@@ -695,9 +886,7 @@
     "/accounts/{account_id}/line_items/payments": {
       "post": {
         "tags": [
-          "line_items",
-          "payments",
-          "accounts"
+          "line_items"
         ],
         "summary": "Create a payment for a specific account",
         "description": "",
@@ -770,7 +959,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "110"
             }
           },
@@ -782,7 +971,7 @@
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "number",
+              "type": "integer",
               "example": "50"
             }
           }
@@ -914,8 +1103,20 @@
       }
     },
     "schemas": {
+      "ApiUser": {
+        "$ref": "./schemas/ApiUser.json"
+      },
       "Account": {
         "$ref": "./schemas/Account.json"
+      },
+      "ComplexAccount": {
+        "$ref": "./schemas/ComplexAccount.json"
+      },
+      "Customer": {
+        "$ref": "./schemas/Customer.json"
+      },
+      "ComplexCustomer": {
+        "$ref": "./schemas/ComplexCustomer.json"
       },
       "AccountStatement": {
         "$ref": "./schemas/AccountStatement.json"
@@ -925,6 +1126,9 @@
       },
       "ProductSummary": {
         "$ref": "./schemas/ProductSummary.json"
+      },
+      "ProductAccounts": {
+        "$ref": "./schemas/ProductAccounts.json"
       },
       "BasePolicyConfig": {
         "$ref": "./schemas/BasePolicyConfig.json"
@@ -955,14 +1159,20 @@
       "CreateProduct": {
         "$ref": "./requestBodies/CreateProduct.json"
       },
+      "CreateCustomer": {
+        "$ref": "./requestBodies/CreateCustomer.json"
+      },
+      "UpdateCustomer": {
+        "$ref": "./requestBodies/UpdateCustomer.json"
+      },
       "CreateAccount": {
         "$ref": "./requestBodies/CreateAccount.json"
       },
+      "CreateNote": {
+        "$ref": "./requestBodies/CreateNote.json"
+      },
       "CreateApiUser": {
         "$ref": "./requestBodies/CreateApiUser.json"
-      },
-      "UpdateAccount": {
-        "$ref": "./requestBodies/UpdateAccount.json"
       },
       "CreateCharge": {
         "$ref": "./requestBodies/CreateCharge.json"
@@ -996,8 +1206,20 @@
       "Products": {
         "$ref": "./responses/Products.json"
       },
-      "DeleteProduct": {
-        "$ref": "./responses/DeleteProduct.json"
+      "CustomerAccounts": {
+        "$ref": "./responses/CustomerAccounts.json"
+      },
+      "CreateCustomer": {
+        "$ref": "./responses/CreateCustomer.json"
+      },
+      "UpdateCustomer": {
+        "$ref": "./responses/UpdateCustomer.json"
+      },
+      "Customer": {
+        "$ref": "./responses/Customer.json"
+      },
+      "Customers": {
+        "$ref": "./responses/Customers.json"
       },
       "CreateAccount": {
         "$ref": "./responses/CreateAccount.json"
@@ -1005,8 +1227,11 @@
       "Accounts": {
         "$ref": "./responses/Accounts.json"
       },
-      "UpdateAccount": {
-        "$ref": "./responses/UpdateAccount.json"
+      "CreateNote": {
+        "$ref": "./responses/CreateNote.json"
+      },
+      "Notes": {
+        "$ref": "./responses/Notes.json"
       },
       "CreateCharge": {
         "$ref": "./responses/CreateCharge.json"

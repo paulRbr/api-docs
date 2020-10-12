@@ -5,7 +5,7 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": ["email_confirm", "new_password", "first_name", "last_name", "phone","token"],
+        "required": ["email_confirm", "new_password", "name_first", "name_last", "phone","token"],
         "properties": {
           "email_confirm": {
             "type": "string",
@@ -18,12 +18,12 @@
             "description": "The new password of the API user.",
             "example": "newSecretPassword123!"
           },
-          "first_name": {
+          "name_first": {
             "type": "string",
             "description": "The first name of the API user.",
             "example": "Karl"
           },
-          "last_name": {
+          "name_last": {
             "type": "string",
             "description": "The last name of the API user.",
             "example": "Martins"
