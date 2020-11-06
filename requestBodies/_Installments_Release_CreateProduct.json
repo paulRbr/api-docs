@@ -39,23 +39,10 @@
             "description": "For installment loans, the default offer to provide for this product if none is passed at account origination. This field is not necessary for credit products.",
             "example": "Blue Cash 24 Month Offer"
           },
-          "default_loan_amount": {
-            "type": "string",
-            "description": "For installment loans, the default loan amount to provide for this product if none is passed at account origination. This field is not necessary for credit products.",
-            "example": "Blue Cash 24 Month Offer"
-          },
           "description": {
             "type": "string",
             "description": "Description of the Product.",
             "example": "Consumer credit card"
-          },
-          "status": {
-            "type": "string",
-            "description": "The status to publish this product with. This can only be `live` if all fields necessary for product creation are populated. \n If not included and all fields necessary for product creation are populated, the product will publish to the `live` state. \n If not included and any necessary fields for product creation are not populated, the product will publish to the `draft` state.",
-            "enum": [
-              "draft, live"
-            ],
-            "example": "draft"
           },
           "offers": {
             "type": "array",

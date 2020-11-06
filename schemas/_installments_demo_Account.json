@@ -58,6 +58,54 @@
       "description": "The total balance (in cents) associated with the account.",
       "example": "300000"
     },
+    "principal_balance_cents": {
+      "type": "number",
+      "description": "The total amount (in cents) associated with the account's principal balance.",
+      "example": "200000"
+    },
+    "total_payments_to_date": {
+      "type": "number",
+      "description": "The sum of payments to date (in cents) associated with the account.",
+      "example": "800000"
+    },
+    "total_interest_paid_to_date": {
+      "type": "number",
+      "description": "The sum of interest payments to date (in cents) associated with the account.",
+      "example": "250000"
+    },
+    "payoff_date": {
+      "type": "string",
+      "description": "The `Date-Time` that this account is scheduled to make its final payment.",
+      "format": "date-time",
+      "example": "2019-04-20T09:12:28Z"
+    },
+    "payment_detail": {
+      "type": "object",
+      "description": "Payment details for the account holder",
+      "properties": {
+        "due_date": {
+          "type": "string",
+          "description": "The `Date-Time` that this account's next due date is due'.",
+          "format": "date-time",
+          "example": "2018-04-20T09:12:28Z"
+        },
+        "total_due_cents": {
+          "type": "number",
+          "description": "The total amount due for the account.",
+          "example": "250000"
+        }, 
+        "current_due_cents": {
+          "type": "number",
+          "description": "The current due amount for the account.",
+          "example": "110000"
+        },
+        "past_due_cents": {
+          "type": "number",
+          "description": "The past due amount for the account.",
+          "example": "140000"
+        }
+      }
+    },
     "credit_limit_cents": {
       "type": "integer",
       "description": "For credit products, the total Amount (in cents) that this account can borrow. This field is not necessary for installment products.",

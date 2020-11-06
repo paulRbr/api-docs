@@ -40,7 +40,7 @@
 			"type": "string",
 			"description": "The Type of Product",
 			"enum": [
-				"CREDIT"
+				"CREDIT", "INSTALLMENT"
 			],
 			"example": "CREDIT"
 		},

@@ -438,133 +438,6 @@
         }
 			}
     },
-    "/customers/{customer_id}/line_items/payments/installment_loans": {
-      "post": {
-        "security": [
-          {
-            "api_key": []
-          }
-        ],
-        "tags": [
-          "line_items"
-        ],
-        "parameters": [
-					{
-            "name": "customer_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-				],
-        "summary": "Allocate a payment across all of a customer's installment loans",
-        "operationId": "PayInstallmentLoansByCustomer",
-        "description": "Utilize a payment allocation method to allocate a payment across all of a customer's installment loans at once.",
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreatePaymentByCustomer"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/CreatePaymentByCustomer"
-          }
-        }
-      }
-    },
-		"/notifications": {
-			"get": {
-        "tags": [
-					"notifications"
-        ],
-        "summary": "Get all notifications for a specific API User",
-        "description": "Returns all notifications for the authenticated caller.",
-        "operationId": "getNotifications",
-        "parameters": [
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "The zero-indexed starting point for paginated notification requests sorted by reverse notification created date.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "example": "110"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of accounts to be returned. Defaults to 100.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "example": "50"
-            }
-          },
-					{
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/Notifications"
-          },
-          "404": {
-            "description": "Unable to get notifications"
-          }
-        }
-      }
-		},
-		"/notifications/{notification_id}": {
-      "put": {
-        "tags": [
-          "notifications"
-        ],
-        "summary": "Update an existing notification",
-        "description": "Change the status of a notification between `read` and `unread`.",
-        "parameters": [
-          {
-            "name": "notification_id",
-            "in": "path",
-            "description": "Notification ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/UpdateNotification"
-        },
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/UpdateNotification"
-          },
-          "422": {
-            "description": "Invalid input"
-          }
-        }
-      }
-		},
     "/products": {
       "post": {
         "security": [
@@ -673,95 +546,6 @@
           },
           "404": {
             "description": "No Products found"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "products"
-        ],
-        "summary": "Update an existing product",
-        "description": "Add additional configurations to a product. Products must be in the `draft` state to be updated.",
-        "parameters": [
-          {
-            "name": "product_id",
-            "in": "path",
-            "description": "Product ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreateProduct"
-        },
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/CreateProduct"
-          },
-          "422": {
-            "description": "Invalid input"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "products"
-        ],
-        "summary": "Delete an existing product",
-        "description": "Delete an existing product. Product `status` must be `draft` to be deleted.",
-        "parameters": [
-          {
-            "name": "product_id",
-            "in": "query",
-            "description": "The Canopy-generated ID for your product.",
-            "required": true,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Product deleted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "description": "The name of the product"
-                    },
-                    "product_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "description": "The ID of the deleted product.",
-                      "example": "44c7298f-b515-4dc3-84b2-21186e1b1d3b"
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       }
@@ -1511,287 +1295,19 @@
         }
       }
     },
-    "/accounts/{account_id}/line_items/{line_item_id}/chargebacks": {
+    "/accounts/{account_id}/line_items/payments/multipayments/installment_loans": {
       "post": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
         "tags": [
           "line_items"
         ],
-        "summary": "Issue a chargeback for an existing charge",
-        "description": "",
-        "operationId": "createChargeback",
         "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "line_item_id",
-            "in": "path",
-            "description": "Line Item ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreateChargeback"
-        },
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/CreateChargeback"
-          },
-          "401": {
-            "description": "You are not authenticated"
-          },
-          "403": {
-            "description": "You are not authorized"
-          },
-          "404": {
-            "description": "Account not found"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/line_items/{line_item_id}/refunds": {
-      "post": {
-        "tags": [
-          "line_items"
-        ],
-        "summary": "Issue a refund for an existing charge",
-        "description": "",
-        "operationId": "createRefund",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "line_item_id",
-            "in": "path",
-            "description": "Line Item ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreateRefund"
-        },
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/CreateRefund"
-          },
-          "401": {
-            "description": "You are not authenticated"
-          },
-          "403": {
-            "description": "You are not authorized"
-          },
-          "404": {
-            "description": "Account not found"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/line_items/{line_item_id}/disputes": {
-      "post": {
-        "tags": [
-          "line_items"
-        ],
-        "summary": "Create a dispute for a specific account's line item",
-        "description": "",
-        "operationId": "createDispute",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "line_item_id",
-            "in": "path",
-            "description": "Line Item ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreateDispute"
-        },
-        "responses": {
-          "204": {
-            "description": "Response upon successful creation of a dispute",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "account_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "49713755-b144-4116-a6d2-f19384b71b61"
-                    },
-                    "line_item_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "c5a63240-71b6-4305-a508-57335e8f595c"
-                    },
-                    "dispute_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "40c3c75d-57b1-4405-a756-57c33120ee4f"
-                    }, 
-                    "dispute_status": {
-                      "type": "string",
-                      "enum": ["pending", "cx_won", "cx_won", "refunded"],
-                      "example": "pending"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Account not found"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/line_items/{line_item_id}/disputes/{dispute_id}": {
-      "put": {
-        "tags": [
-          "line_items"
-        ],
-        "summary": "Update a dispute for a specific account's line item",
-        "description": "",
-        "operationId": "updateDispute",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "line_item_id",
-            "in": "path",
-            "description": "Line Item ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "dispute_id",
-            "in": "path",
-            "description": "Dispute ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/UpdateDispute"
-        },
-        "responses": {
-          "204": {
-            "description": "Response upon successful update of a dispute",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "account_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "49713755-b144-4116-a6d2-f19384b71b61"
-                    },
-                    "line_item_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "c5a63240-71b6-4305-a508-57335e8f595c"
-                    },
-                    "dispute_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "40c3c75d-57b1-4405-a756-57c33120ee4f"
-                    }, 
-                    "dispute_status": {
-                      "type": "string",
-                      "enum": ["pending", "cx_won", "cx_won", "refunded"],
-                      "example": "pending"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Account not found"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/line_items/adjustments/credit": {
-      "post": {
-        "tags": [
-          "line_items"
-        ],
-        "summary": "Create a credit adjustment for a specific account",
-        "description": "",
-        "operationId": "createAccountCreditAdjustment",
-        "parameters": [
-          {
-            "name": "account_id",
+					{
+            "name": "customer_id",
             "in": "path",
             "description": "Account ID",
             "required": true,
@@ -1802,45 +1318,16 @@
               "format": "uuid"
             }
           }
-        ],
+				],
+        "summary": "Allocate a payment across all installment loans on an account",
+        "operationId": "PayInstallmentLoansByCustomer",
+        "description": "Utilize a payment allocation method to allocate a payment across all of a customer's installment loans at once.",
         "requestBody": {
-          "$ref": "#/components/requestBodies/CreateCreditAdjustment"
+          "$ref": "#/components/requestBodies/CreateInstallmentLoansMultipayment"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/CreateCreditAdjustment"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/line_items/adjustments/debit": {
-      "post": {
-				"tags": [
-          "line_items"
-        ],
-        "summary": "Create a debit adjustment for a specific account",
-        "description": "",
-        "operationId": "createAccountDebitAdjustment",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/CreateDebitAdjustment"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/CreateDebitAdjustment"
+            "$ref": "#/components/responses/CreateInstallmentLoansMultipayment"
           }
         }
       }
@@ -1976,50 +1463,6 @@
         }
       }
     },
-    "/accounts/{account_id}/statements": {
-      "get": {
-        "tags": [
-          "statements"
-        ],
-        "summary": "Get a statement for a given date for a specific account.",
-        "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
-        "operationId": "getAccountStatementByDate",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/AccountStatement"
-          },
-          "404": {
-            "description": "Statement not found"
-          }
-        }
-      }
-		},
 		"/accounts/{account_id}/statements/{statement_id}": {
       "get": {
         "tags": [
@@ -2561,8 +2004,8 @@
           }
         }
       },
-      "CreatePaymentByCustomer": {
-        "$ref": "./requestBodies/CreatePaymentByCustomer.json"
+      "CreateInstallmentLoansMultipayment": {
+        "$ref": "./requestBodies/CreateInstallmentLoansMultipayment.json"
       },
       "CreateRefund": {
         "description": "Body of request to create refund.",
@@ -2920,8 +2363,8 @@
           }
         }
       },
-      "CreatePaymentByCustomer": {
-        "$ref": "./responses/CreatePaymentByCustomer.json"
+      "CreateInstallmentLoansMultipayment": {
+        "$ref": "./responses/CreateInstallmentLoansMultipayment.json"
       },
       "CreateCreditAdjustment": {
         "description": "Credit Adjustment Created",
@@ -2960,14 +2403,7 @@
         }
       },
       "Account": {
-        "description": "Successful query of information for a specific account",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ComplexAccount"
-            }
-          }
-        }
+        "$ref": "./responses/_installments_release_Account.json"
       },
       "Accounts": {
         "$ref": "./responses/_installments_release_Accounts.json"
@@ -3106,14 +2542,7 @@
         }
       },
       "AccountStatement": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/AccountStatement"
-            }
-          }
-        }
+        "$ref": "./responses/_installments_release_AccountStatement.json"
       },
       "Products": {
         "$ref": "./responses/_installments_release_Products.json"

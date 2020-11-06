@@ -1,0 +1,17 @@
+{
+  "allOf": [
+    {"$ref": "./_installments_demo_Account.json"},
+    {
+      "type": "object",
+      "properties": {
+        "customers": {
+          "type": "array",
+          "description": "An array of customers who have been assigned to the account",
+          "items": {
+            "$ref": "./ComplexCustomer.json"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -8,7 +8,7 @@
         "type": "object",
         "properties": {
           "account": {
-            "$ref": "./Account.json"
+            "$ref": "./ComplexAccount.json"
           },
           "customer": {
             "$ref": "./Customer.json"

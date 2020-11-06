@@ -1,0 +1,10 @@
+{
+  "description": "Successful query of information for a specific account",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/_installments_demo_ComplexAccount.json"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "description": "Allocate a payment across a customer's installment loans",
+  "description": "Allocate a payment across all installment loans on an account",
   "content": {
     "application/json": {
       "schema": {

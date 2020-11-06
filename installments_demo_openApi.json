@@ -1,0 +1,1350 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Canopy Servicing Core API",
+    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://admin.canopyservicing.com), and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.",
+    "termsOfService": "https://api.canopyservicing.com/terms/",
+    "contact": {
+      "email": "will@canopyservicing.com"
+    },
+    "version": "1.3"
+	},
+	"x-topics": [
+		{
+			"title": "Getting Started",
+			"content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:support@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
+		},
+		{
+			"title": "Authentication",
+			"content": "To create your organization within Canopy, [contact our team](mailto:support@canopyservicing.com?subject=API%20Access%20Request). Once created, review our API Users routes to handle all subsequent authentication-related activities, including inviting your team members to join your organization."
+		}
+	],
+  "servers": [
+    {
+      "url": "https://sandbox.canopyservicing.com",
+      "description": "Sandbox"
+    }
+  ],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "authentication",
+      "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
+    },
+    {
+      "name": "products",
+      "description": "Create and launch credit products within the Canopy system."
+    },
+    {
+      "name": "customers",
+      "description": "Onboard customers into your system, so they can begin using your credit products"
+    },
+    {
+      "name": "accounts",
+      "description": "Manage the way your users use credit products you've launched in Canopy"
+    },
+    {
+      "name": "line_items",
+      "description": "Manage individual line items for your customers in Canopy."
+    },
+    {
+      "name": "notes",
+      "description": "Help your customer service team track its activity across accounts."
+    },
+    {
+      "name": "customers",
+      "description": "Onboard customers into your system, so they can begin using your credit products"
+    },
+    {
+      "name": "statements",
+      "description": "Generate per billing cycle statements for your accounts in Canopy."
+    }
+  ],
+  "paths": {
+    "/api_users": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Invite a new API user to Canopy",
+        "operationId": "createApiUser",
+        "description": "When you create a new API user via this `POST` request, an email invite will be sent for the new user to join your organization. The email invite includes a link with a unique token that will allow the new user to register to join your team in Canopy.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateApiUser"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateApiUser"
+          }
+        }
+      },
+      "get": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Get all API users in your organization",
+        "description": "Returns a list of all API users in your organization.",
+        "operationId": "getApiUsers",
+        "parameters": [
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ApiUsers"
+          },
+          "404": {
+            "description": "No Api Users found"
+          }
+        }
+      }
+    },
+    "/api_users/login": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Log in as an API user",
+        "operationId": "logInApiUser",
+        "description": "When provided appropriate credentials, this route signs in an API user.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/LogInApiUser"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/LogInApiUser"
+          }
+        }
+      }
+    },
+    "/api_users/password": {
+      "put": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Update the password for an API User",
+        "operationId": "updateApiUserPassword",
+        "description": "When provided appropriate credentials, this route changes an API User's password.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UpdateApiUserPassword"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UpdateApiUserPassword"
+          }
+        }
+      }
+    },
+    "/api_users/register": {
+      "put": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Complete registration for an invited API user",
+        "operationId": "registerApiUserPassword",
+        "description": "When provided appropriate credentials, this route updates an API user's information for registration.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/RegisterApiUser"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/RegisterApiUser"
+          }
+        }
+      }
+    },
+    "/api_users/summary": {
+      "get": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Get summary info for an API user",
+        "description": "Get all summarized information pertaining to the API user making the request.",
+        "operationId": "getApiUser",
+        "parameters": [
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the api user's info was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ApiUser"
+          },
+          "404": {
+            "description": "No Products"
+          }
+        }
+      }
+    },
+    "/products": {
+      "post": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "products"
+        ],
+        "summary": "Create a new product",
+        "operationId": "createProduct",
+        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateProduct"
+        },
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/CreateProduct"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "products"
+        ],
+        "summary": "Get all available products",
+        "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
+        "operationId": "getProducts",
+        "parameters": [
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Products"
+          },
+          "404": {
+            "description": "No Products"
+          }
+        }
+      }
+    },
+    "/products/{product_id}": {
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Get info on a particular product",
+        "operationId": "getProduct",
+        "description": "Using the `product_id` which was generated when the product was launched, retrieve information pertaining to a specific product.",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the Products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Product"
+          },
+          "404": {
+            "description": "No Products found"
+          }
+        }
+      }
+    },
+    "/products/{product_id}/accounts": {
+      "get": {
+        "tags": [
+          "products",
+          "accounts"
+        ],
+        "summary": "Get all accounts created under a specific product",
+        "description": "Returns all accounts created under a specific product. Results are paginated.",
+        "operationId": "getProductAccounts",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ProductAccounts"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/products/{product_id}/summaries": {
+      "get": {
+        "tags": [
+          "accounts",
+          "summary"
+        ],
+        "summary": "Get summary details for a specific product.",
+        "description": "For analytic purposes, retrieve commonly needed summary statistics computed for a specific product.",
+        "operationId": "getProductSummary",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product summary information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ProductSummary"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/customers/accounts": {
+      "get": {
+        "tags": [
+          "customers"
+        ],
+        "summary": "Get all accounts for all customers",
+        "description": "Returns all accounts from the perspective of each customer. For instance, if one account has two customers, these are reflected as two separate items in the response array. Similarly, if one customer has multiple accounts, each account is reflected as a separate item in the response array.",
+        "operationId": "getCustomersAccounts",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "50"
+            }
+          },
+					{
+						"name": "search_query",
+						"in": "query",
+						"description": "A search query to be applied to results before the customer accounts list is returned. Search by name, phone number, account ID, or SSN last-four digits.",
+						"required": false,
+						"style": "form",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					},
+					{
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CustomerAccounts"
+          },
+          "404": {
+            "description": "Unable to get customers"
+          }
+        }
+      }
+    },
+    "/customers": {
+      "post": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "customers"
+        ],
+        "summary": "Create a new customer",
+        "operationId": "CreateCustomer",
+        "description": "Customer can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateCustomer"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateCustomer"
+          }
+        }
+      }
+    },
+    "/customers/{customer_id}": {
+      "put": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "customers"
+        ],
+        "summary": "Update an existing customer",
+        "operationId": "UpdateCustomer",
+        "description": "Update data for a customer in Canopy.",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "The ID of the customer to be updated.",
+            "required": true,
+            "style": "simple",
+            "explode": true,
+            "schema": {
+              "type": "string",
+							"format": "uuid",
+              "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
+            }
+          }
+				],
+				"requestBody": {
+          "$ref": "#/components/requestBodies/UpdateCustomer"
+        },
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/UpdateCustomer"
+          }
+        }
+      },
+			"get": {
+				"tags": [
+          "customers"
+        ],
+        "summary": "Get a specific customer",
+        "description": "Returns summary information for a specific customer.",
+        "operationId": "getCustomer",
+        "parameters": [
+					{
+						"name": "customer_id",
+						"in": "path",
+						"description": "The ID of the customer to return.",
+						"required": true,
+						"style": "simple",
+						"example": true,
+						"schema": {
+							"type": "string",
+							"example": "Coco Parker"
+						}
+					}
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Customer"
+          },
+          "404": {
+            "description": "Unable to get customer"
+          }
+        }
+			}
+    },
+    "/accounts": {
+      "post": {
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Create a new account",
+        "description": "At least one account should be created for customer of each of your products. Once created, you will be able to add `line_items` to the account.",
+        "operationId": "createAccount",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateAccount"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/CreateAccount"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get a specific Account",
+        "description": "",
+        "operationId": "getAccount",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Account"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/amortization_schedule": {
+      "get": {
+        "tags": [
+          "installment_loans"
+        ],
+        "summary": "Get the amortization schedule for a specific loan",
+        "description": "",
+        "operationId": "getAmortizationSchedule",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+            }
+          },
+          {
+            "name": "loan_id",
+            "in": "path",
+            "description": "Loan ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "bd142b24-74e2-40e1-a583-fddc5c3f88d8"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of line items to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/AmortizationSchedule"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/notes": {
+			"post": {
+				"tags": [
+          "notes"
+        ],
+        "summary": "Create a note for a specific account.",
+        "description": "A note to be added to the account.",
+				"operationId": "createAccountNote",
+				"parameters": [
+					{
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+				],
+				"requestBody": {
+          "$ref": "#/components/requestBodies/CreateNote"
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/CreateNote"
+					}
+				}
+      },
+      "get": {
+        "tags": [
+          "notes"
+        ],
+        "summary": "Get All Notes for a specific Account",
+        "description": "",
+        "operationId": "getNotes",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+            }
+					},
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+					"200": {
+						"$ref": "#/components/responses/Notes"
+					},
+          "404": {
+            "description": "Account not found"
+          }
+        }
+			}
+		},
+    "/accounts/{account_id}/line_items": {
+      "get": {
+        "tags": [
+          "line_items"
+        ],
+        "summary": "Get line items for a specific account.",
+        "description": "Line Items for an Account consist of `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
+        "operationId": "getAccountLineItems",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the line items were on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "line_item_type",
+            "in": "query",
+            "description": "The type of line items you would like to view. Options are `charges` and `payments`. If not provided, no filters will be applied.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "charges"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of line items to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/LineItems"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/line_items/{line_item_id}": {
+      "get": {
+        "tags": [
+          "line_items"
+        ],
+        "summary": "Get information on a specific line item for a specific account",
+        "description": "",
+        "operationId": "getAccountLineItem",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+            }
+          },
+          {
+            "name": "line_item_id",
+            "in": "path",
+            "description": "Line Item ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/LineItem"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/line_items/charges": {
+      "post": {
+        "tags": [
+          "line_items"
+        ],
+        "summary": "Create a charge for a specific account",
+        "description": "",
+        "operationId": "createAccountCharge",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateCharge"
+        },
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/CreateCharge"
+          },
+          "401": {
+            "description": "You are not authenticated"
+          },
+          "403": {
+            "description": "You are not authorized"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/line_items/payments": {
+      "post": {
+        "tags": [
+          "line_items"
+        ],
+        "summary": "Create a payment for a specific account",
+        "description": "",
+        "operationId": "createAccountPayment",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreatePayment"
+        },
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/CreatePayment"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/statements/list": {
+      "get": {
+        "tags": [
+          "statements"
+        ],
+        "summary": "Get a list of all current and prior statements for a specific account",
+        "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
+        "operationId": "getAccountStatementsList",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated statements list requests sorted by reverse statement date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Statements for the account.",
+                  "properties": {
+                    "account_id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "The Canopy-generated ID for the account",
+                      "example": "111eff36-cbec-4119-b188-b76200e804d8"
+                    },
+                    "effective_as_of_date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+                      "example": "2018-07-20T09:10:14Z"
+                    },
+                    "statements_list": {
+                      "type": "array",
+                      "description": "An array of statements included in the billing cycle.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "statement_id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "A Canopy-generated ID for the statement",
+                            "example": "3627809b-ff07-4e41-b127-44260efb3b80"
+                          },
+                          "available_credit_balance": {
+                            "type": "number",
+                            "description": "The total available credit balance (in cents) for the account.",
+                            "example": "600000"
+                          },
+                          "total_balance": {
+                            "type": "number",
+                            "description": "The total balance (in cents) associated with the account.",
+                            "example": "400000"
+                          },
+                          "min_pay_due_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The `Date-Time` at which the minimum payment is due."
+                          },
+                          "min_pay_amount_cents": {
+                            "type": "number",
+                            "description": "The minimum amount (in cents) due for this statement."
+                          },
+                          "billing_cycle_start_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                          },
+                          "billing_cycle_end_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/statements": {
+      "get": {
+        "tags": [
+          "statements"
+        ],
+        "summary": "Get a statement for a given date for a specific account.",
+        "description": "This will return the most recent Statement information based on the `effective_as_of_date`. Relevant dates for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
+        "operationId": "getAccountStatementByDate",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "effective_as_of_date",
+            "in": "query",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AccountStatement"
+          },
+          "404": {
+            "description": "Statement not found"
+          }
+        }
+      }
+		}
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "ApiUser": {
+        "$ref": "./schemas/ApiUser.json"
+      },
+      "Account": {
+        "$ref": "./schemas/Account.json"
+      },
+      "ComplexAccount": {
+        "$ref": "./schemas/ComplexAccount.json"
+      },
+      "Customer": {
+        "$ref": "./schemas/Customer.json"
+      },
+      "ComplexCustomer": {
+        "$ref": "./schemas/ComplexCustomer.json"
+      },
+      "AccountStatement": {
+        "$ref": "./schemas/AccountStatement.json"
+      },
+      "Product": {
+        "$ref": "./schemas/Product.json"
+      },
+      "ProductSummary": {
+        "$ref": "./schemas/ProductSummary.json"
+      },
+      "ProductAccounts": {
+        "$ref": "./schemas/ProductAccounts.json"
+      },
+      "BasePolicyConfig": {
+        "$ref": "./schemas/BasePolicyConfig.json"
+      },
+      "BasePolicyConfigMinPay": {
+        "$ref": "./schemas/BasePolicyConfigMinPay.json"
+      },
+      "BasePolicyConfigBillingCycle": {
+        "$ref": "./schemas/BasePolicyConfigBillingCycle.json"
+      },
+      "InterestPolicy": {
+        "$ref": "./schemas/InterestPolicy.json"
+      },
+      "LineItem": {
+        "$ref": "./schemas/LineItem.json"
+      }
+    },
+    "requestBodies": {
+      "LogInApiUser": {
+        "$ref": "./requestBodies/LogInApiUser.json"
+      },
+      "UpdateApiUserPassword": {
+        "$ref": "./requestBodies/UpdateApiUserPassword.json"
+      },
+      "RegisterApiUser": {
+        "$ref": "./requestBodies/RegisterApiUser.json"
+      },
+      "CreateProduct": {
+        "$ref": "./requestBodies/CreateProduct.json"
+      },
+      "CreateCustomer": {
+        "$ref": "./requestBodies/CreateCustomer.json"
+      },
+      "UpdateCustomer": {
+        "$ref": "./requestBodies/UpdateCustomer.json"
+      },
+      "CreateAccount": {
+        "$ref": "./requestBodies/CreateAccount.json"
+      },
+      "CreateNote": {
+        "$ref": "./requestBodies/CreateNote.json"
+      },
+      "CreateApiUser": {
+        "$ref": "./requestBodies/CreateApiUser.json"
+      },
+      "CreateCharge": {
+        "$ref": "./requestBodies/CreateCharge.json"
+      },
+      "CreatePayment": {
+        "$ref": "./requestBodies/CreatePayment.json"
+      }
+    },
+    "responses": {
+      "ApiUser": {
+        "$ref": "./responses/ApiUser.json"
+      },
+      "ApiUsers": {
+        "$ref": "./responses/ApiUsers.json"
+      },
+      "LogInApiUser": {
+        "$ref": "./responses/LogInApiUser.json"
+      },
+      "AmortizationSchedule": {
+        "$ref": "./responses/_installments_demo_AmortizationSchedule.json"
+      },
+      "UpdateApiUserPassword": {
+        "$ref": "./responses/UpdateApiUserPassword.json"
+      },
+      "RegisterApiUser": {
+        "$ref": "./responses/RegisterApiUser.json"
+      },
+      "CreateProduct": {
+        "$ref": "./responses/CreateProduct.json"
+      },
+      "Product": {
+        "$ref": "./responses/_installments_demo_Product.json"
+      },
+      "Products": {
+        "$ref": "./responses/_installments_demo_Products.json"
+      },
+      "CustomerAccounts": {
+        "$ref": "./responses/CustomerAccounts.json"
+      },
+      "CreateCustomer": {
+        "$ref": "./responses/CreateCustomer.json"
+      },
+      "UpdateCustomer": {
+        "$ref": "./responses/UpdateCustomer.json"
+      },
+      "Customer": {
+        "$ref": "./responses/Customer.json"
+      },
+      "Customers": {
+        "$ref": "./responses/Customers.json"
+      },
+      "CreateAccount": {
+        "$ref": "./responses/CreateAccount.json"
+      },
+      "Accounts": {
+        "$ref": "./responses/Accounts.json"
+      },
+      "CreateNote": {
+        "$ref": "./responses/CreateNote.json"
+      },
+      "Notes": {
+        "$ref": "./responses/Notes.json"
+      },
+      "CreateCharge": {
+        "$ref": "./responses/CreateCharge.json"
+      },
+      "CreatePayment": {
+        "$ref": "./responses/CreatePayment.json"
+      },
+      "Account": {
+        "$ref": "./responses/installments_demo_Account.json"
+      },
+      "AccountStatement": {
+        "$ref": "./responses/AccountStatement.json"
+      },
+      "ProductAccounts": {
+        "$ref": "./responses/ProductAccounts.json"
+      },
+      "ProductSummary": {
+        "$ref": "./responses/ProductSummary.json"
+      },
+      "LineItem": {
+        "$ref": "./responses/LineItem.json"
+      },
+      "LineItems": {
+        "$ref": "./responses/LineItems.json"
+      },
+      "StatementsList": {
+        "$ref": "./responses/StatementsList.json"
+      },
+      "CreateApiUser": {
+        "$ref": "./responses/CreateApiUser.json"
+      }
+    }
+  }
+}
