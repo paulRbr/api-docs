@@ -2841,6 +2841,30 @@ components:
                         type: string
                         description: The type of product the account is on
                         example: Same-as-cash, No Payment
+                      type_config:
+                        type: object
+                        properties:
+                          purchase_window_duration:
+                            type: number
+                            description: If applicable, the number of cycles during which this product runs
+                              a purchase window
+                            example: 6
+                          promo_period_duration:
+                            type: number
+                            description: The number of cycles during which this product falls under a
+                              promotional window
+                            example: 6
+                          amortization_period_length:
+                            type: number
+                            description: The number of cycles during which this product falls under an
+                              amortization period
+                            example: 24
+                          payoff_date:
+                            type: string
+                            description: The `Date-Time` at which the account is scheduled to finish being
+                              paid off.
+                            format: date-time
+                            example: 2017-06-20T09:12:14Z
                   external_account_ids:
                     type: array
                     description: An Array of External Account IDs. These should be used to connect
@@ -2878,87 +2902,90 @@ components:
                         type: number
                         description: The unpaid fee balance of the account.
                         example: "1000"
-                  total_balance:
-                    type: number
-                    description: The total balance (in cents) associated with the account.
-                    example: "300000"
-                  principal_balance:
-                    type: number
-                    description: The total balance (in cents) associated with the account.
-                    example: "200000"
-                  interest_balance:
-                    type: number
-                    description: The total interest balance (in cents) associated with the account.
-                    example: "60000"
-                  deferred_interest_balance:
-                    type: number
-                    description: The total deferred interest balance (in cents) associated with the
-                      account.
-                    example: "40000"
-                  total_paid_to_date:
-                    type: number
-                    description: The total sum of payments made to date (in cents) associated with
-                      the account.
-                    example: "40000"
-                  total_interest_paid_to_date:
-                    type: number
-                    description: The total sum of interest allocations for payments made to date (in
-                      cents) associated with the account.
-                    example: "10000"
-                  credit_limit_cents:
-                    type: integer
-                    description: Total Amount (in cents) that this account can borrow.
-                    example: "400000"
-                  max_approve_cents:
-                    type: integer
-                    description: Total Amount (in cents) that this account can borrow.
-                    example: "400000"
-                  rate:
-                    type: number
-                    description: The percentage interest applied to the account (i.e. 6.2 means
-                      6.2%)
-                    example: "6.2"
-                  available_credit_balance:
-                    type: number
-                    description: The total available credit balance (in cents) for the account.
-                    example: "100000"
-                  loan_document:
-                    type: string
-                    description: The base64-encoded signed loan agreement for the account.
-                  purchase_window_start_date:
-                    type: string
-                    format: datetime
-                    description: If applicable, the start date for a purchase window for the account
-                    example: 2013-01-13T05:25:13.813Z
-                  purchase_window_end_date:
-                    type: string
-                    format: datetime
-                    description: If applicable, the end date for a purchase window for the account
-                    example: 2013-01-13T05:25:13.813Z
-                  promo_period_start_date:
-                    type: string
-                    format: datetime
-                    description: If applicable, the start date for a promotional period for the
-                      account.
-                    example: 2013-01-13T05:25:13.813Z
-                  promo_period_end_date:
-                    type: string
-                    format: datetime
-                    description: If applicable, the start date for a promotional period for the
-                      account.
-                    example: 2013-01-13T05:25:13.813Z
-                  amortization_roll_date:
-                    type: string
-                    format: datetime
-                    description: If applicable, the date at which the account's principal balance
-                      rolls to amortization, generating an amortization
-                      schedule.
-                    example: 2013-01-13T05:25:13.813Z
-                  term_end_date:
-                    type: string
-                    format: datetime
-                    description: If applicable, the account's loan repayment date.
-                    example: 2013-01-13T05:25:13.813Z
+                  summary:
+                    type: object
+                    properties:
+                      total_balance:
+                        type: number
+                        description: The total balance (in cents) associated with the account.
+                        example: "300000"
+                      principal_balance:
+                        type: number
+                        description: The total balance (in cents) associated with the account.
+                        example: "200000"
+                      interest_balance:
+                        type: number
+                        description: The total interest balance (in cents) associated with the account.
+                        example: "60000"
+                      deferred_interest_balance:
+                        type: number
+                        description: The total deferred interest balance (in cents) associated with the
+                          account.
+                        example: "40000"
+                      total_paid_to_date:
+                        type: number
+                        description: The total sum of payments made to date (in cents) associated with
+                          the account.
+                        example: "40000"
+                      total_interest_paid_to_date:
+                        type: number
+                        description: The total sum of interest allocations for payments made to date (in
+                          cents) associated with the account.
+                        example: "10000"
+                      credit_limit_cents:
+                        type: integer
+                        description: Total Amount (in cents) that this account can borrow.
+                        example: "400000"
+                      max_approve_cents:
+                        type: integer
+                        description: Total Amount (in cents) that this account can borrow.
+                        example: "400000"
+                      rate:
+                        type: number
+                        description: The percentage interest applied to the account (i.e. 6.2 means
+                          6.2%)
+                        example: "6.2"
+                      available_credit_balance:
+                        type: number
+                        description: The total available credit balance (in cents) for the account.
+                        example: "100000"
+                      loan_document:
+                        type: string
+                        description: The base64-encoded signed loan agreement for the account.
+                      purchase_window_start_date:
+                        type: string
+                        format: datetime
+                        description: If applicable, the start date for a purchase window for the account
+                        example: 2013-01-13T05:25:13.813Z
+                      purchase_window_end_date:
+                        type: string
+                        format: datetime
+                        description: If applicable, the end date for a purchase window for the account
+                        example: 2013-01-13T05:25:13.813Z
+                      promo_period_start_date:
+                        type: string
+                        format: datetime
+                        description: If applicable, the start date for a promotional period for the
+                          account.
+                        example: 2013-01-13T05:25:13.813Z
+                      promo_period_end_date:
+                        type: string
+                        format: datetime
+                        description: If applicable, the start date for a promotional period for the
+                          account.
+                        example: 2013-01-13T05:25:13.813Z
+                      amortization_roll_date:
+                        type: string
+                        format: datetime
+                        description: If applicable, the date at which the account's principal balance
+                          rolls to amortization, generating an amortization
+                          schedule.
+                        example: 2013-01-13T05:25:13.813Z
+                      term_end_date:
+                        type: string
+                        format: datetime
+                        description: If applicable, the account's loan repayment date.
+                        example: 2013-01-13T05:25:13.813Z
                   associated_entities:
                     type: object
                     properties:
@@ -2970,8 +2997,6 @@ components:
                         type: string
                         description: A lender name associated with the account
                         example: Globex Lending Corp
-                  notes:
-                    $ref: "#/components/responses/Notes/content/application~1json/schema"
               - type: object
                 properties:
                   customers:
