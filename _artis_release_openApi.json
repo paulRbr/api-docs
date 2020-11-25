@@ -1199,6 +1199,9 @@
       "CreateProduct": {
         "$ref": "./responses/CreateProduct.json"
       },
+      "Program": {
+        "$ref": "./responses/Program.json"
+      },
       "Product": {
         "$ref": "./responses/Product.json"
       },

@@ -1,0 +1,17 @@
+{
+  "allOf": [
+    {"$ref": "./_simplified_Account.json"},
+    {
+      "type": "object",
+      "properties": {
+        "customers": {
+          "type": "array",
+          "description": "An array of customers who have been assigned to the account",
+          "items": {
+            "$ref": "./Customer.json"
+          }
+        }
+      }
+    }
+  ]
+}

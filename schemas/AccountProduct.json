@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "description": "The product associated with the account",
+  "properties": {
+		"product_id": {
+			"type": "string",
+			"format": "uuid",
+			"description": "The Canopy-generated ID for the product.",
+			"example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
+		},
+		"name": {
+			"type": "string",
+			"description": "Name of Product, i.e. Express Card.",
+			"example": "Blue Cash Express"
+    },
+    "description": {
+			"type": "string",
+			"description": "Description of the Product.",
+			"example": "Student credit card."
+		},
+		"type": {
+			"type": "string",
+			"description": "The type of product the account is on",
+			"example": "Same-as-cash, No Payment"
+		}
+  }
+}

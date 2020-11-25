@@ -650,7 +650,7 @@ paths:
             format: date-time
       responses:
         "204":
-          $ref: "#/components/responses/LineItem"
+          $ref: "#/components/responses/LineItemWithChildren"
   "/accounts/{account_id}/line_items/charges":
     post:
       tags:
@@ -2255,34 +2255,83 @@ components:
                 required:
                   - product_id
                 properties:
+                  effective_at:
+                    type: string
+                    description: The `Date-Time` that this account became/becomes active.
+                    format: date-time
+                    example: 2018-03-20T09:12:28Z
+                  created_at:
+                    type: string
+                    description: The `Date-Time` which the account was created in the API.
+                    format: date-time
+                    example: 2017-06-20T09:12:14Z
                   product_id:
                     type: string
                     description: The Product ID of the account
-                    format: uuid
-                    example: d119341c-47fd-4a55-bce7-28406dacfa20
-                  external_ids:
+                    format: int
+                    example: "6"
+                  external_account_ids:
                     type: array
-                    description: An array of static references to ID fields in a third party system.
+                    description: An Array of External Account IDs. These should be used to connect
+                      accounts created in Canopy to Users in your system and any
+                      connected external systems.
                     items:
                       type: object
                       properties:
                         name:
                           type: string
                           description: Name of the External Party
-                          example: Globex Corporation
+                          example: Umbrella Corporation
                         id:
                           type: string
                           description: External Account ID
                           example: 22445702-a389-431f-927d-07b8d0750787
+                  late_fee_cents:
+                    type: number
+                    description: The fee charged for late payments on the account.
+                    example: "2900"
+                  payment_reversal_fee_cents:
+                    type: number
+                    description: The fee charged for payment reversals on the account.
+                    example: "2900"
+                  initial_principal:
+                    type: number
+                    description: The initial principal balance (in cents) for the account.
+                    example: "400000"
                   credit_limit_cents:
                     type: integer
-                    description: For accounts created under credit products, total Amount (in cents)
-                      that this account can borrow.
+                    description: Total Amount (in cents) that this account can borrow.
+                    example: "400000"
+                  max_approve_cents:
+                    type: integer
+                    description: Total Amount (in cents) that this account can borrow.
                     example: "400000"
                   rate:
                     type: number
-                    description: The percentage interest applied to the account (i.e. 6.2%)
+                    description: The percentage interest applied to the account (i.e. 6.2 means
+                      6.2%)
                     example: "6.2"
+                  loan_document:
+                    type: string
+                    description: The base64-encoded signed loan agreement for the account.
+                  amortization_duration:
+                    type: string
+                    format: datetime
+                    description: If provided, this will override the amortization duration
+                      configured for the product and be used to generate the end
+                      date of the loan.
+                    example: 2013-01-13T05:25:13.813Z
+                  associated_entities:
+                    type: object
+                    properties:
+                      merchant_name:
+                        type: string
+                        description: A merchant name associated with the account
+                        example: Acme Corporation
+                      lender_name:
+                        type: string
+                        description: A lender name associated with the account
+                        example: Globex Lending Corp
               - type: object
                 properties:
                   existing_customers:
@@ -2660,7 +2709,15 @@ components:
                   type: object
                   properties:
                     account:
-                      $ref: "#/components/responses/CreateAccount/content/application~1json/schema"
+                      allOf:
+                        - $ref: "#/components/schemas/ComplexAccount/allOf/0"
+                        - type: object
+                          properties:
+                            customers:
+                              type: array
+                              description: An array of customers who have been assigned to the account
+                              items:
+                                $ref: "#/components/schemas/ComplexAccount/allOf/1/properties/customers/items"
                     customer:
                       $ref: "#/components/schemas/ComplexAccount/allOf/1/properties/customers/items"
                     customers:
@@ -2720,12 +2777,201 @@ components:
                 type: integer
                 description: Total number of customers
     CreateAccount:
-      description: New Account Created
+      description: Successful query of information for a specific account
       content:
         application/json:
           schema:
             allOf:
-              - $ref: "#/components/schemas/ComplexAccount/allOf/0"
+              - additionalProperties: false
+                type: object
+                required:
+                  - account_id
+                  - account_status
+                  - account_status_subtype
+                  - effective_at
+                  - created_at
+                  - product
+                  - total_balance
+                  - credit_limit_cents
+                  - rate
+                  - available_credit_balance
+                properties:
+                  account_id:
+                    type: string
+                    format: uuid
+                    description: This is generated by Canopy. A unique ID for the account.
+                    example: 5fb3a288-5f6c-440f-b079-b06c828b7768
+                  account_status:
+                    type: string
+                    description: The Status of the Account. Active upon account creation.
+                    example: suspended
+                  account_status_subtype:
+                    type: string
+                    description: The subtype of the Status of the Account. Null upon account
+                      creation.
+                    example: suspended-bankruptcy
+                  effective_at:
+                    type: string
+                    description: The `Date-Time` that this account became/becomes active.
+                    format: date-time
+                    example: 2018-03-20T09:12:28Z
+                  created_at:
+                    type: string
+                    description: The `Date-Time` which the account was created in the API.
+                    format: date-time
+                    example: 2017-06-20T09:12:14Z
+                  account_product:
+                    type: object
+                    description: The product associated with the account
+                    properties:
+                      product_id:
+                        type: string
+                        format: uuid
+                        description: The Canopy-generated ID for the product.
+                        example: 8fe1eb97-d640-45d6-83bb-f415ddf97a51
+                      name:
+                        type: string
+                        description: Name of Product, i.e. Express Card.
+                        example: Blue Cash Express
+                      description:
+                        type: string
+                        description: Description of the Product.
+                        example: Student credit card.
+                      type:
+                        type: string
+                        description: The type of product the account is on
+                        example: Same-as-cash, No Payment
+                  external_account_ids:
+                    type: array
+                    description: An Array of External Account IDs. These should be used to connect
+                      accounts created in Canopy to Users in your system and any
+                      connected external systems.
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Name of the External Party
+                          example: Umbrella Corporation
+                        id:
+                          type: string
+                          description: External Account ID
+                          example: 22445702-a389-431f-927d-07b8d0750787
+                  payment_due:
+                    type: object
+                    properties:
+                      payment_due_date:
+                        type: string
+                        description: The `Date-Time` when the next payment is due for the account.
+                        format: date-time
+                        example: 2013-01-13T05:25:13.813Z
+                      current_due:
+                        type: number
+                        description: The account's payment due for the current cycle, not including past
+                          due or fee balances.
+                        example: "8000"
+                      past_due:
+                        type: number
+                        description: The account's past due balances that are yet to be paid off.
+                        example: "2000"
+                      fees:
+                        type: number
+                        description: The unpaid fee balance of the account.
+                        example: "1000"
+                  total_balance:
+                    type: number
+                    description: The total balance (in cents) associated with the account.
+                    example: "300000"
+                  principal_balance:
+                    type: number
+                    description: The total balance (in cents) associated with the account.
+                    example: "200000"
+                  interest_balance:
+                    type: number
+                    description: The total interest balance (in cents) associated with the account.
+                    example: "60000"
+                  deferred_interest_balance:
+                    type: number
+                    description: The total deferred interest balance (in cents) associated with the
+                      account.
+                    example: "40000"
+                  total_paid_to_date:
+                    type: number
+                    description: The total sum of payments made to date (in cents) associated with
+                      the account.
+                    example: "40000"
+                  total_interest_paid_to_date:
+                    type: number
+                    description: The total sum of interest allocations for payments made to date (in
+                      cents) associated with the account.
+                    example: "10000"
+                  credit_limit_cents:
+                    type: integer
+                    description: Total Amount (in cents) that this account can borrow.
+                    example: "400000"
+                  max_approve_cents:
+                    type: integer
+                    description: Total Amount (in cents) that this account can borrow.
+                    example: "400000"
+                  rate:
+                    type: number
+                    description: The percentage interest applied to the account (i.e. 6.2 means
+                      6.2%)
+                    example: "6.2"
+                  available_credit_balance:
+                    type: number
+                    description: The total available credit balance (in cents) for the account.
+                    example: "100000"
+                  loan_document:
+                    type: string
+                    description: The base64-encoded signed loan agreement for the account.
+                  purchase_window_start_date:
+                    type: string
+                    format: datetime
+                    description: If applicable, the start date for a purchase window for the account
+                    example: 2013-01-13T05:25:13.813Z
+                  purchase_window_end_date:
+                    type: string
+                    format: datetime
+                    description: If applicable, the end date for a purchase window for the account
+                    example: 2013-01-13T05:25:13.813Z
+                  promo_period_start_date:
+                    type: string
+                    format: datetime
+                    description: If applicable, the start date for a promotional period for the
+                      account.
+                    example: 2013-01-13T05:25:13.813Z
+                  promo_period_end_date:
+                    type: string
+                    format: datetime
+                    description: If applicable, the start date for a promotional period for the
+                      account.
+                    example: 2013-01-13T05:25:13.813Z
+                  amortization_roll_date:
+                    type: string
+                    format: datetime
+                    description: If applicable, the date at which the account's principal balance
+                      rolls to amortization, generating an amortization
+                      schedule.
+                    example: 2013-01-13T05:25:13.813Z
+                  term_end_date:
+                    type: string
+                    format: datetime
+                    description: If applicable, the account's loan repayment date.
+                    example: 2013-01-13T05:25:13.813Z
+                  associated_entities:
+                    type: object
+                    properties:
+                      merchant_name:
+                        type: string
+                        description: A merchant name associated with the account
+                        example: Acme Corporation
+                      lender_name:
+                        type: string
+                        description: A lender name associated with the account
+                        example: Globex Lending Corp
+                  notes:
+                    $ref: "#/components/responses/Notes/content/application~1json/schema"
               - type: object
                 properties:
                   customers:
@@ -2914,6 +3160,15 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/AccountStatement/properties/line_items/items"
+    LineItemWithChildren:
+      description: Array of Line Items where the last element is the root line item
+        whose details were requested.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/AccountStatement/properties/line_items/items"
     LineItems:
       description: Array of Line Items and their corresponding balances at their
         effective dates and times.

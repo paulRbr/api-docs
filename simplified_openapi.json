@@ -1165,7 +1165,7 @@
         "$ref": "./requestBodies/UpdateCustomer.json"
       },
       "CreateAccount": {
-        "$ref": "./requestBodies/CreateAccount.json"
+        "$ref": "./requestBodies/_simplified_CreateAccount.json"
       },
       "CreateNote": {
         "$ref": "./requestBodies/CreateNote.json"
@@ -1221,7 +1221,7 @@
         "$ref": "./responses/Customers.json"
       },
       "CreateAccount": {
-        "$ref": "./responses/CreateAccount.json"
+        "$ref": "./responses/_simplified_CreateAccount.json"
       },
       "Accounts": {
         "$ref": "./responses/Accounts.json"
@@ -1239,7 +1239,7 @@
         "$ref": "./responses/CreatePayment.json"
       },
       "Account": {
-        "$ref": "./responses/Account.json"
+        "$ref": "./responses/_simplified_Account.json"
       },
       "AccountStatement": {
         "$ref": "./responses/AccountStatement.json"

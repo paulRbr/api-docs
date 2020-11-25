@@ -657,19 +657,6 @@
             }
           },
           {
-            "name": "loan_id",
-            "in": "path",
-            "description": "Loan ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "bd142b24-74e2-40e1-a583-fddc5c3f88d8"
-            }
-          },
-          {
             "name": "effective_as_of_date",
             "in": "query",
             "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
@@ -1322,7 +1309,7 @@
         "$ref": "./responses/CreatePayment.json"
       },
       "Account": {
-        "$ref": "./responses/installments_demo_Account.json"
+        "$ref": "./responses/_installments_demo_Account.json"
       },
       "AccountStatement": {
         "$ref": "./responses/AccountStatement.json"
