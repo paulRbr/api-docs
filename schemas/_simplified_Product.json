@@ -25,6 +25,11 @@
 			"description": "Name of Product, i.e. Express Card.",
 			"example": "Blue Cash Express"
     },
+    "product_color": {
+      "type": "string",
+      "description": "A color to be associated with the product for UI purposes.",
+      "example": "#0000FF"
+    },
     "short_description": {
       "type": "string",
       "description": "Short description of the Product - max of 30 characters.",

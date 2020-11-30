@@ -38,6 +38,11 @@
             "description": "If non-revolving, the number of billing cycles that define the full term of the product. Must be longer than promotional duration and purchase window duration.",
             "example": "48"
           },
+          "product_color": {
+            "type": "string",
+            "description": "A color to be associated with the product for UI purposes.",
+            "example": "#0000FF"
+          },
           "short_description": {
             "type": "string",
             "description": "Short description of the Product - max of 30 characters.",
