@@ -25,10 +25,9 @@
                 "example": "2017-06-20T09:12:14Z"
               },
               "product_id": {
-                "type": "string",
+                "type": "integer",
                 "description": "The Product ID of the account",
-                "format": "int",
-                "example": "6"
+                "example": 6
               },
               "external_account_ids": {
                 "type": "array",
@@ -52,32 +51,32 @@
               "late_fee_cents": {
                 "type": "number",
                 "description": "The fee charged for late payments on the account.",
-                "example": "2900"
+                "example": 2900
               },
               "payment_reversal_fee_cents": {
                 "type": "number",
                 "description": "The fee charged for payment reversals on the account.",
-                "example": "2900"
+                "example": 2900
               },
               "initial_principal": {
                 "type": "number",
                 "description": "The initial principal balance (in cents) for the account.",
-                "example": "400000"
+                "example": 400000
               },
               "credit_limit_cents": {
                 "type": "integer",
                 "description": "Total Amount (in cents) that this account can borrow.",
-                "example": "400000"
+                "example": 400000
               },
               "max_approve_cents": {
                 "type": "integer",
                 "description": "Total Amount (in cents) that this account can borrow.",
-                "example": "400000"
+                "example": 400000
               },
               "rate": {
                 "type": "number",
                 "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
-                "example": "6.2"
+                "example": 6.2
               },
               "loan_document": {
                 "type": "string",
@@ -116,16 +115,15 @@
                   "type": "object",
                   "properties": {
                     "customer_id": {
-                      "type": "string",
-                      "format": "uuid",
+                      "type": "integer",
                       "description": "Canopy-generated unique ID for this customer",
-                      "example": "d581a0aa-5e11-473c-9569-64bc3a494287"
+                      "example": 6
                     },
                     "customer_account_role": {
                       "type": "integer",
                       "description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
                       "enum": ["1", "2"],
-                      "example": "1"
+                      "example": 1
                     }
                   }
                 }

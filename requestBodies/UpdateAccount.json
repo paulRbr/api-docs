@@ -10,12 +10,12 @@
           "rate": {
             "type": "number",
             "description": "The percentage default rate for accounts created under this interest policy (i.e. 5.2 indicates a 5.2% interest rate). You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
-            "example": "5.2"
+            "example": 5.2
           },
           "credit_limit_cents": {
             "type": "integer",
             "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
-            "example": "700000"
+            "example": 700000
           }
         }
       }

@@ -689,9 +689,9 @@ components:
         - role
       properties:
         api_user_id:
-          type: string
+          type: integer
           description: The unique ID in Canopy for this API user
-          example: 44197ea2-eb78-4511-bcf2-bc28201f9c01
+          example: 23
         organization_name:
           type: string
           description: The organization to which the API user belongs.
@@ -955,10 +955,9 @@ components:
                 type: object
                 properties:
                   customer_id:
-                    type: string
-                    format: uuid
+                    type: integer
                     description: A Canopy-generated unique ID for the customer
-                    example: 78e1bae0-b7dd-4626-bcda-9d7e7b81be30
+                    example: 8
                   name_prefix:
                     type: string
                     description: Prefix to the customer's name
@@ -1022,10 +1021,9 @@ components:
       type: object
       properties:
         customer_id:
-          type: string
-          format: uuid
+          type: integer
           description: A Canopy-generated unique ID for the customer
-          example: 78e1bae0-b7dd-4626-bcda-9d7e7b81be30
+          example: 8
         name_prefix:
           type: string
           description: Prefix to the customer's name
@@ -1112,16 +1110,15 @@ components:
         available_credit_balance:
           type: number
           description: The total available credit balance (in cents) for the account.
-          example: "600000"
+          example: 600000
         total_balance:
           type: number
           description: The total balance (in cents) associated with the account.
-          example: "400000"
+          example: 400000
         account_id:
-          type: string
-          format: uuid
+          type: integer
           description: The Canopy-generated ID for the account
-          example: 111eff36-cbec-4119-b188-b76200e804d8
+          example: 6
         effective_as_of_date:
           type: string
           format: date-time
@@ -1136,6 +1133,7 @@ components:
         min_pay_amount_cents:
           type: number
           description: The minimum amount (in cents) due for this statement.
+          example: 2000
         billing_cycle_start_date:
           type: string
           format: date-time
@@ -1148,79 +1146,63 @@ components:
             part of this statement.
         line_items:
           type: array
-          description: An array of line items included in the billing cycle.
           items:
-            required:
-              - account_id
-              - effective_at
-              - line_item_status
-              - line_item_id
-              - product_id
-              - type
-              - amount_cents
-              - created_at
-              - reference_id
             type: object
-            additionalProperties: false
             properties:
               account_id:
-                type: string
-                format: uuid
+                type: integer
                 description: The account associated with the line item
-                example: 2911ff2a-bebe-4c85-8d19-e6001015a8e3
+                example: 4
               line_item_id:
-                type: string
-                format: uuid
-                example: ce9ed376-f151-435f-a59c-9e3cc183bbea
+                type: integer
+                description: The ID associated with the line item
+                example: 2
               line_item_status:
                 type: string
                 description: the corresponding Status for a line item
                 enum:
-                  - posted
-                  - valid
-                  - invalid
-                  - declined
-                  - authorized
-                  - void
-                  - pending
-                  - successful
-                  - unsuccessful
-                example: posted
+                  - POSTED
+                  - VALID
+                  - INVALID
+                  - DECLINED
+                  - AUTHORIZED
+                  - VOID
+                  - PENDING
+                  - SUCCESSFUL
+                  - UNSUCCESSFUL
+                example: POSTED
               type:
                 type: string
-                description: The Line Item Type. Either `charge` or `payment`.
+                description: The Line Item Type. i.e. `charge`, `payment`.
                 enum:
-                  - charge
-                  - payment
-                example: charge
+                  - CHARGE
+                  - PAYMENT
+                  - FEE
+                example: CHARGE
               originating_amount_cents:
                 type: number
                 description: The originating amount of money (in cents) relating to this line
                   item.
+                example: 2385
               balance_amount_cents:
                 type: number
                 description: The current balance of the line item, which accounts for interest
                   accrued per the `product's` interest policy and the
                   `account's` interest rate attribute.
+                example: 2401
               total_interest_accrued_cents:
                 type: number
                 description: The sum (in cents) of all interest charges, if any, applied to this
                   line item
-                example: "16"
+                example: 16
               total_paid_down_cents:
                 type: number
                 description: The sum (in cents) of all payment splits, if any, applied to this
                   line item
-                example: "1125"
-              rate:
-                type: number
-                description: The percentage rate applied to this line item (i.e. 15.5 means
-                  15.5%). If it was not set at the time of charge creation, its
-                  default value is the default rate of the account.
-                example: 15.5%
+                example: 1125
               merchant_data:
                 type: object
-                description: ""
+                description: Merchant information if applicable.
                 properties:
                   name:
                     type: string
@@ -1233,12 +1215,12 @@ components:
                     format: phonenumber
               effective_at:
                 type: string
-                description: The `Date-Time` that this line item became/becomes active
+                description: The `Date-Time` that this account became/becomes active
                 format: date-time
                 example: 2018-07-20T09:12:30Z
               created_at:
                 type: string
-                description: The `Date-Time` which the line item was created in the API
+                description: The `Date-Time` which the account was created in the API
                 format: date-time
                 example: 2018-06-20T09:12:30Z
               product_id:
@@ -1274,8 +1256,6 @@ components:
                       type: string
                       description: External Account ID
                       example: 22445702-a389-431f-927d-07b8d0750787
-            description: An individual charge, payment, fee, or otherwise financial event
-              that is used to calculate balances.
     Product:
       required:
         - policies
@@ -1477,7 +1457,7 @@ components:
               type: number
               description: The percentage of total balance calculated for min pay. (i.e. 20
                 means 20%)
-              example: "20"
+              example: 20
           description: The configured minimum payment required for a given pay period.
         billing_cycle:
           type: object
@@ -1551,7 +1531,7 @@ components:
           type: number
           description: The percentage of total balance calculated for min pay. (i.e. 20
             means 20%)
-          example: "20"
+          example: 20
       description: The configured minimum payment required for a given pay period.
     BasePolicyConfigBillingCycle:
       type: object
@@ -1744,8 +1724,8 @@ components:
           schema:
             type: object
             required:
-              - email
-              - password
+              - EMAIL
+              - PASSWORD
             properties:
               email:
                 type: string
@@ -1851,7 +1831,7 @@ components:
                   may customize rates for each account by overriding this
                   default rate at the time of account creation or updating the
                   rate for a given account.
-                example: "5.2"
+                example: 5.2
               default_credit_limit_cents:
                 type: integer
                 description: The default total oustanding amout of money (in cents) that an
@@ -1859,13 +1839,13 @@ components:
                   customize rates for each account by overriding this default
                   rate at the time of account creation or updating the rate for
                   a given account.
-                example: "700000"
+                example: 700000
               default_term:
                 type: number
                 description: If non-revolving, the number of billing cycles that define the full
                   term of the product. Must be longer than promotional duration
                   and purchase window duration.
-                example: "48"
+                example: 48
               product_color:
                 type: string
                 description: A color to be associated with the product for UI purposes.
@@ -1901,7 +1881,7 @@ components:
                     type: number
                     description: The rate that serves as the active interest rate for accounts
                       during the promotional period.
-                    example: "3"
+                    example: 3
               policies:
                 type: object
                 description: An Object of policies that drive Product behaviour.
@@ -1924,7 +1904,7 @@ components:
                             type: number
                             description: The percentage of total balance calculated for min pay. (i.e. 20
                               means 20%)
-                            example: "20"
+                            example: 20
                           payment_due_interval:
                             type: string
                             description: The amount of time before statement cut that the payment should be
@@ -2121,12 +2101,14 @@ components:
                       description: This is generated by Canopy. A unique ID for the account.
                       example: 5fb3a288-5f6c-440f-b079-b06c828b7768
                     customer_account_role:
-                      type: string
-                      description: The role of the customer for the account.
+                      type: integer
+                      description: The role of the customer for the account. For instance, 1 may
+                        correspond to a primary account holder while 2
+                        corresponds to secondary.
                       enum:
-                        - primary
-                        - secondary
-                      example: primary
+                        - "1"
+                        - "2"
+                      example: 1
                     customer_account_pan:
                       type: string
                       description: A unique number for the customer on the account. For instance, a
@@ -2200,12 +2182,11 @@ components:
                 description: Customer's date of birth
                 example: 2018-06-20T09:12:30Z
               account_id:
-                type: string
-                format: uuid
+                type: integer
                 description: The ID of the account for which you are updating the customer's
                   information. (I.e. change the customer's address for this
                   account) .
-                example: 39495885-2116-4707-9522-9e90f110e93d
+                example: 6
               new_accounts:
                 type: array
                 description: An array of existing accounts to which this Customer will be newly
@@ -2214,10 +2195,9 @@ components:
                   type: object
                   properties:
                     account_id:
-                      type: string
-                      format: uuid
+                      type: integer
                       description: This is generated by Canopy. A unique ID for the account.
-                      example: 5fb3a288-5f6c-440f-b079-b06c828b7768
+                      example: 11
                     customer_account_role:
                       type: string
                       description: The role of the customer for the account.
@@ -2253,10 +2233,9 @@ components:
                     format: date-time
                     example: 2017-06-20T09:12:14Z
                   product_id:
-                    type: string
+                    type: integer
                     description: The Product ID of the account
-                    format: int
-                    example: "6"
+                    example: 6
                   external_account_ids:
                     type: array
                     description: An Array of External Account IDs. These should be used to connect
@@ -2276,28 +2255,28 @@ components:
                   late_fee_cents:
                     type: number
                     description: The fee charged for late payments on the account.
-                    example: "2900"
+                    example: 2900
                   payment_reversal_fee_cents:
                     type: number
                     description: The fee charged for payment reversals on the account.
-                    example: "2900"
+                    example: 2900
                   initial_principal:
                     type: number
                     description: The initial principal balance (in cents) for the account.
-                    example: "400000"
+                    example: 400000
                   credit_limit_cents:
                     type: integer
                     description: Total Amount (in cents) that this account can borrow.
-                    example: "400000"
+                    example: 400000
                   max_approve_cents:
                     type: integer
                     description: Total Amount (in cents) that this account can borrow.
-                    example: "400000"
+                    example: 400000
                   rate:
                     type: number
                     description: The percentage interest applied to the account (i.e. 6.2 means
                       6.2%)
-                    example: "6.2"
+                    example: 6.2
                   loan_document:
                     type: string
                     description: The base64-encoded signed loan agreement for the account.
@@ -2330,10 +2309,9 @@ components:
                       type: object
                       properties:
                         customer_id:
-                          type: string
-                          format: uuid
+                          type: integer
                           description: Canopy-generated unique ID for this customer
-                          example: d581a0aa-5e11-473c-9569-64bc3a494287
+                          example: 6
                         customer_account_role:
                           type: integer
                           description: The role of the customer for the account. For instance, 1 may
@@ -2342,7 +2320,7 @@ components:
                           enum:
                             - "1"
                             - "2"
-                          example: "1"
+                          example: 1
     CreateNote:
       description: Add a Note to an account
       content:
@@ -2393,7 +2371,7 @@ components:
               amount_cents:
                 type: integer
                 description: The Integer Amount of the Charge in Cents
-                example: "200"
+                example: 200
               effective_at:
                 type: string
                 description: The `Date-Time` that the charge should be recorded to the account.
@@ -2405,7 +2383,7 @@ components:
                 type: number
                 description: The percentage rate to be applied to this charge (i.e. 15.5 means
                   15.5%). If not included, defaults to the rate for the account.
-                example: 15.5%
+                example: 15.5
               merchant_data:
                 type: object
                 description: ""
@@ -2451,7 +2429,7 @@ components:
               amount_cents:
                 type: integer
                 description: The Integer Amount of the Payment in Cents
-                example: "200"
+                example: 200
               effective_at:
                 type: string
                 description: The `Date-Time` that the payment should be recorded to the account.
@@ -2491,9 +2469,9 @@ components:
               - role
             properties:
               api_user_id:
-                type: string
+                type: integer
                 description: The unique ID in Canopy for this API user
-                example: 44197ea2-eb78-4511-bcf2-bc28201f9c01
+                example: 23
               organization_name:
                 type: string
                 description: The organization to which the API user belongs.
@@ -2656,10 +2634,9 @@ components:
             additionalProperties: false
             properties:
               product_id:
-                type: string
-                format: uuid
+                type: integer
                 description: The Canopy-generated ID for the product.
-                example: 8fe1eb97-d640-45d6-83bb-f415ddf97a51
+                example: 6
               name:
                 type: string
                 description: Name of Product, i.e. Express Card.
@@ -2693,11 +2670,11 @@ components:
                 example: REVOLVING
               status:
                 type: string
-                description: The status of a Product (i.e. `live`). Currently, all configured
-                  products are in the `live` state.
+                description: The status of a Product (i.e. `LIVE`). Currently, all configured
+                  products are in the `LIVE` state.
                 enum:
-                  - VALID
-                example: VALID
+                  - LIVE
+                example: LIVE
               policies:
                 $ref: "#/components/requestBodies/CreateProduct/content/application~1json/schem\
                   a/properties/policies/properties/base_policy_config"
@@ -2722,7 +2699,7 @@ components:
                     description: If non-revolving, the number of billing cycles that define the full
                       term of the product. Must be longer than promotional
                       duration and purchase window duration.
-                    example: "48"
+                    example: 48
                   default_credit_limit_cents:
                     type: integer
                     description: The default maximum principal credit (in cents) available for a
@@ -2844,10 +2821,9 @@ components:
                   - available_credit_cents
                 properties:
                   account_id:
-                    type: string
-                    format: uuid
+                    type: integer
                     description: This is generated by Canopy. A unique ID for the account.
-                    example: 5fb3a288-5f6c-440f-b079-b06c828b7768
+                    example: 9
                   account_status:
                     type: string
                     description: The Status of the Account. Active upon account creation.
@@ -2872,10 +2848,9 @@ components:
                     description: The product associated with the account
                     properties:
                       product_id:
-                        type: string
-                        format: uuid
+                        type: integer
                         description: The Canopy-generated ID for the product.
-                        example: 8fe1eb97-d640-45d6-83bb-f415ddf97a51
+                        example: 4
                       name:
                         type: string
                         description: Name of Product, i.e. Express Card.
@@ -2948,67 +2923,67 @@ components:
                         type: number
                         description: The account's payment due for the current cycle, not including past
                           due or fee balances.
-                        example: "8000"
+                        example: 8000
                       past_due:
                         type: number
                         description: The account's past due balances that are yet to be paid off.
-                        example: "2000"
+                        example: 2000
                       fees:
                         type: number
                         description: The unpaid fee balance of the account.
-                        example: "1000"
+                        example: 1000
                   summary:
                     type: object
                     properties:
                       total_balance:
                         type: number
                         description: The total balance (in cents) associated with the account.
-                        example: "300000"
+                        example: 300000
                       principal_balance:
                         type: number
                         description: The total balance (in cents) associated with the account.
-                        example: "200000"
+                        example: 200000
                       interest_balance:
                         type: number
                         description: The total interest balance (in cents) associated with the account.
-                        example: "60000"
+                        example: 60000
                       deferred_interest_balance:
                         type: number
                         description: The total deferred interest balance (in cents) associated with the
                           account.
-                        example: "40000"
+                        example: 40000
                       total_paid_to_date:
                         type: number
                         description: The total sum of payments made to date (in cents) associated with
                           the account.
-                        example: "40000"
+                        example: 40000
                       total_interest_paid_to_date:
                         type: number
                         description: The total sum of interest allocations for payments made to date (in
                           cents) associated with the account.
-                        example: "10000"
+                        example: 10000
                       credit_limit_cents:
                         type: integer
                         description: Total Amount (in cents) that this account can borrow.
-                        example: "400000"
+                        example: 400000
                       max_approve_cents:
                         type: integer
                         description: Total Amount (in cents) that this account can borrow.
-                        example: "400000"
+                        example: 400000
                       interest_rate:
                         type: number
                         description: The percentage interest applied to the account (i.e. 6.2 means
                           6.2%)
-                        example: "3"
+                        example: 3
                       interest_rate_account_default:
                         type: number
                         description: The percentage interest applied to the account during default, or
                           non-promotional periods (i.e. 6.2%)
-                        example: "6.2"
+                        example: 6.2
                       available_credit_cents:
                         type: number
                         description: The total available credit balance (in cents) for the account.
-                        example: "100000"
+                        example: 100000
                       loan_document:
                         type: string
                         description: The base64-encoded signed loan agreement for the account.
@@ -3047,8 +3022,9 @@ components:
                         description: If applicable, the account's loan repayment date.
                         example: 2013-01-13T05:25:13.813Z
                       line_item_count:
-                        type: string
+                        type: integer
                         description: Total number of line items for the account.
+                        example: 200
                       merchant_name:
                         type: string
                         description: A merchant name associated with the account
@@ -3063,57 +3039,56 @@ components:
                       type: object
                       properties:
                         account_id:
-                          type: string
-                          format: uuid
+                          type: integer
                           description: The account associated with the line item
-                          example: 2911ff2a-bebe-4c85-8d19-e6001015a8e3
+                          example: 4
                         line_item_id:
-                          type: string
-                          format: uuid
-                          example: ce9ed376-f151-435f-a59c-9e3cc183bbea
+                          type: integer
+                          description: The ID associated with the line item
+                          example: 2
                         line_item_status:
                           type: string
                           description: the corresponding Status for a line item
                           enum:
-                            - posted
-                            - valid
-                            - invalid
-                            - declined
-                            - authorized
-                            - void
-                            - pending
-                            - successful
-                            - unsuccessful
-                          example: posted
+                            - POSTED
+                            - VALID
+                            - INVALID
+                            - DECLINED
+                            - AUTHORIZED
+                            - VOID
+                            - PENDING
+                            - SUCCESSFUL
+                            - UNSUCCESSFUL
+                          example: POSTED
                         type:
                           type: string
                           description: The Line Item Type. i.e. `charge`, `payment`.
                           enum:
-                            - charge
-                            - payment
-                            - fee
-                          example: charge
+                            - CHARGE
+                            - PAYMENT
+                            - FEE
+                          example: CHARGE
                         originating_amount_cents:
                           type: number
                           description: The originating amount of money (in cents) relating to this line
                             item.
-                          example: "2385"
+                          example: 2385
                         balance_amount_cents:
                           type: number
                           description: The current balance of the line item, which accounts for interest
                             accrued per the `product's` interest policy and the
                             `account's` interest rate attribute.
-                          example: "2401"
+                          example: 2401
                         total_interest_accrued_cents:
                           type: number
                           description: The sum (in cents) of all interest charges, if any, applied to this
                             line item
-                          example: "16"
+                          example: 16
                         total_paid_down_cents:
                           type: number
                           description: The sum (in cents) of all payment splits, if any, applied to this
                             line item
-                          example: "1125"
+                          example: 1125
                         merchant_data:
                           type: object
                           description: Merchant information if applicable.
@@ -3184,38 +3159,37 @@ components:
                         amount_due_cents:
                           type: number
                           description: The amount in cents of the scheduled payment due
-                          example: "18325"
+                          example: 18325
                         amount_paid_cents:
                           type: number
                           description: The amount in cents that was actually paid for the billing cycle
-                          example: "18325"
+                          example: 18325
                         interest_allocation:
                           type: number
                           description: The amount in cents allocated to interest from this payment
-                          example: "2415"
+                          example: 2415
                         deferred_interest_allocation:
                           type: number
                           description: The amount in cents allocated to deferred interest from this
                             payment
-                          example: "400"
+                          example: 400
                         principal_allocation:
                           type: number
                           description: The amount in cents allocated to principal from this payment
-                          example: "15911"
+                          example: 15911
                         end_balance:
                           type: number
                           description: The ending balance on the loan after this payment
-                          example: "136691"
+                          example: 136691
                   statements_list:
                     type: array
                     items:
                       type: object
                       properties:
                         account_id:
-                          type: string
-                          format: uuid
+                          type: integer
                           description: The Canopy-generated ID for the account
-                          example: 111eff36-cbec-4119-b188-b76200e804d8
+                          example: 8
                         effective_as_of_date:
                           type: string
                           format: date-time
@@ -3231,18 +3205,17 @@ components:
                             type: object
                             properties:
                               statement_id:
-                                type: string
-                                format: uuid
+                                type: integer
                                 description: A Canopy-generated ID for the statement
-                                example: 3627809b-ff07-4e41-b127-44260efb3b80
+                                example: 5
                               available_credit_balance:
                                 type: number
                                 description: The total available credit balance (in cents) for the account.
-                                example: "600000"
+                                example: 600000
                               total_balance:
                                 type: number
                                 description: The total balance (in cents) associated with the account.
-                                example: "400000"
+                                example: 400000
                               min_pay_due_date:
                                 type: string
                                 format: date-time
@@ -3250,6 +3223,7 @@ components:
                               min_pay_amount_cents:
                                 type: number
                                 description: The minimum amount (in cents) due for this statement.
+                                example: 2000
                               billing_cycle_start_date:
                                 type: string
                                 format: date-time
@@ -3378,16 +3352,15 @@ components:
               available_credit_balance:
                 type: number
                 description: The total available credit balance (in cents) for the account.
-                example: "600000"
+                example: 600000
               total_balance:
                 type: number
                 description: The total balance (in cents) associated with the account.
-                example: "400000"
+                example: 400000
               account_id:
-                type: string
-                format: uuid
+                type: integer
                 description: The Canopy-generated ID for the account
-                example: 111eff36-cbec-4119-b188-b76200e804d8
+                example: 6
               effective_as_of_date:
                 type: string
                 format: date-time
@@ -3403,6 +3376,7 @@ components:
               min_pay_amount_cents:
                 type: number
                 description: The minimum amount (in cents) due for this statement.
+                example: 2000
               billing_cycle_start_date:
                 type: string
                 format: date-time
@@ -3415,9 +3389,116 @@ components:
                   part of this statement.
               line_items:
                 type: array
-                description: An array of line items included in the billing cycle.
                 items:
-                  $ref: "#/components/schemas/AccountStatement/properties/line_items/items"
+                  type: object
+                  properties:
+                    account_id:
+                      type: integer
+                      description: The account associated with the line item
+                      example: 4
+                    line_item_id:
+                      type: integer
+                      description: The ID associated with the line item
+                      example: 2
+                    line_item_status:
+                      type: string
+                      description: the corresponding Status for a line item
+                      enum:
+                        - POSTED
+                        - VALID
+                        - INVALID
+                        - DECLINED
+                        - AUTHORIZED
+                        - VOID
+                        - PENDING
+                        - SUCCESSFUL
+                        - UNSUCCESSFUL
+                      example: POSTED
+                    type:
+                      type: string
+                      description: The Line Item Type. i.e. `charge`, `payment`.
+                      enum:
+                        - CHARGE
+                        - PAYMENT
+                        - FEE
+                      example: CHARGE
+                    originating_amount_cents:
+                      type: number
+                      description: The originating amount of money (in cents) relating to this line
+                        item.
+                      example: 2385
+                    balance_amount_cents:
+                      type: number
+                      description: The current balance of the line item, which accounts for interest
+                        accrued per the `product's` interest policy and the
+                        `account's` interest rate attribute.
+                      example: 2401
+                    total_interest_accrued_cents:
+                      type: number
+                      description: The sum (in cents) of all interest charges, if any, applied to this
+                        line item
+                      example: 16
+                    total_paid_down_cents:
+                      type: number
+                      description: The sum (in cents) of all payment splits, if any, applied to this
+                        line item
+                      example: 1125
+                    merchant_data:
+                      type: object
+                      description: Merchant information if applicable.
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: string
+                        mcc_code:
+                          type: number
+                        phone_number:
+                          type: string
+                          format: phonenumber
+                    effective_at:
+                      type: string
+                      description: The `Date-Time` that this account became/becomes active
+                      format: date-time
+                      example: 2018-07-20T09:12:30Z
+                    created_at:
+                      type: string
+                      description: The `Date-Time` which the account was created in the API
+                      format: date-time
+                      example: 2018-06-20T09:12:30Z
+                    product_id:
+                      type: string
+                      description: the Product ID of the account
+                      format: uuid
+                      example: 158cd7a1-d813-42d2-90a3-9a91c43f18f8
+                    description:
+                      type: string
+                      description: A description of this particular line item if any. More common for
+                        adjustments.
+                      example: Refund for invalid purchase
+                    reference_id:
+                      type: string
+                      description: User ID in your system to associate with the payment for the
+                        account defined in Canopy.
+                      example: e39c6b0d-5793-49c5-bee7-a2dbf8808f3a
+                    dispute_id:
+                      type: string
+                      format: uuid
+                      description: The ID for a dispute if present for this line item.
+                    external_ids:
+                      type: array
+                      description: An array of static references to ID fields in a third party system.
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: Name of the External Party
+                            example: Globex Card Processing
+                          id:
+                            type: string
+                            description: External Account ID
+                            example: 22445702-a389-431f-927d-07b8d0750787
     ProductAccounts:
       description: ""
       content:
@@ -3447,7 +3528,132 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/AccountStatement/properties/line_items/items"
+            required:
+              - account_id
+              - effective_at
+              - line_item_status
+              - line_item_id
+              - product_id
+              - type
+              - amount_cents
+              - created_at
+              - reference_id
+            type: object
+            additionalProperties: false
+            properties:
+              account_id:
+                type: string
+                format: uuid
+                description: The account associated with the line item
+                example: 2911ff2a-bebe-4c85-8d19-e6001015a8e3
+              line_item_id:
+                type: string
+                format: uuid
+                example: ce9ed376-f151-435f-a59c-9e3cc183bbea
+              line_item_status:
+                type: string
+                description: the corresponding Status for a line item
+                enum:
+                  - posted
+                  - valid
+                  - invalid
+                  - declined
+                  - authorized
+                  - void
+                  - pending
+                  - successful
+                  - unsuccessful
+                example: posted
+              type:
+                type: string
+                description: The Line Item Type. Either `charge` or `payment`.
+                enum:
+                  - charge
+                  - payment
+                example: charge
+              originating_amount_cents:
+                type: number
+                description: The originating amount of money (in cents) relating to this line
+                  item.
+              balance_amount_cents:
+                type: number
+                description: The current balance of the line item, which accounts for interest
+                  accrued per the `product's` interest policy and the
+                  `account's` interest rate attribute.
+              total_interest_accrued_cents:
+                type: number
+                description: The sum (in cents) of all interest charges, if any, applied to this
+                  line item
+                example: "16"
+              total_paid_down_cents:
+                type: number
+                description: The sum (in cents) of all payment splits, if any, applied to this
+                  line item
+                example: "1125"
+              rate:
+                type: number
+                description: The percentage rate applied to this line item (i.e. 15.5 means
+                  15.5%). If it was not set at the time of charge creation, its
+                  default value is the default rate of the account.
+                example: 15.5%
+              merchant_data:
+                type: object
+                description: ""
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
+                  mcc_code:
+                    type: number
+                  phone_number:
+                    type: string
+                    format: phonenumber
+              effective_at:
+                type: string
+                description: The `Date-Time` that this line item became/becomes active
+                format: date-time
+                example: 2018-07-20T09:12:30Z
+              created_at:
+                type: string
+                description: The `Date-Time` which the line item was created in the API
+                format: date-time
+                example: 2018-06-20T09:12:30Z
+              product_id:
+                type: string
+                description: the Product ID of the account
+                format: uuid
+                example: 158cd7a1-d813-42d2-90a3-9a91c43f18f8
+              description:
+                type: string
+                description: A description of this particular line item if any. More common for
+                  adjustments.
+                example: Refund for invalid purchase
+              reference_id:
+                type: string
+                description: User ID in your system to associate with the payment for the
+                  account defined in Canopy.
+                example: e39c6b0d-5793-49c5-bee7-a2dbf8808f3a
+              dispute_id:
+                type: string
+                format: uuid
+                description: The ID for a dispute if present for this line item.
+              external_ids:
+                type: array
+                description: An array of static references to ID fields in a third party system.
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the External Party
+                      example: Globex Card Processing
+                    id:
+                      type: string
+                      description: External Account ID
+                      example: 22445702-a389-431f-927d-07b8d0750787
+            description: An individual charge, payment, fee, or otherwise financial event
+              that is used to calculate balances.
     LineItemWithChildren:
       description: Array of Line Items where the last element is the root line item
         whose details were requested.
@@ -3456,7 +3662,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/AccountStatement/properties/line_items/items"
+              $ref: "#/components/responses/LineItem/content/application~1json/schema"
     LineItems:
       description: Array of Line Items and their corresponding balances at their
         effective dates and times.

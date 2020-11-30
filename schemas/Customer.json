@@ -2,10 +2,9 @@
   "type": "object",
   "properties": {
     "customer_id": {
-      "type": "string",
-      "format": "uuid",
+      "type": "integer",
       "description": "A Canopy-generated unique ID for the customer",
-      "example": "78e1bae0-b7dd-4626-bcda-9d7e7b81be30"
+      "example": 8
     },
     "name_prefix": {
       "type": "string",

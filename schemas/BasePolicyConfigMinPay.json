@@ -7,7 +7,7 @@
     "percentage": {
       "type": "number",
       "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
-      "example": "20"
+      "example": 20
     }
   },
   "description": "The configured minimum payment required for a given pay period."

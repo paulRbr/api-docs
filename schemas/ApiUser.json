@@ -8,9 +8,9 @@
   ],
   "properties": {
     "api_user_id": {
-      "type": "string",
+      "type": "integer",
       "description": "The unique ID in Canopy for this API user",
-      "example": "44197ea2-eb78-4511-bcf2-bc28201f9c01"
+      "example": 23
     },
     "organization_name": {
       "type": "string",

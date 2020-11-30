@@ -3,10 +3,9 @@
   "description": "The product associated with the account",
   "properties": {
 		"product_id": {
-			"type": "string",
-			"format": "uuid",
+			"type": "integer",
 			"description": "The Canopy-generated ID for the product.",
-			"example": "8fe1eb97-d640-45d6-83bb-f415ddf97a51"
+			"example": 4
 		},
 		"name": {
 			"type": "string",

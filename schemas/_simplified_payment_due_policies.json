@@ -7,7 +7,7 @@
     "min_pay_percentage": {
       "type": "number",
       "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
-      "example": "20"
+      "example": 20
     },
     "payment_due_interval": {
       "type": "string",
