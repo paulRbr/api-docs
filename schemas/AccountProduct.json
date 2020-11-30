@@ -30,8 +30,11 @@
 		},
 		"type": {
 			"type": "string",
-			"description": "The type of product the account is on",
-			"example": "Same-as-cash, No Payment"
+			"description": "The Type of Product. If not included, defaults to `REVOLVING`",
+			"enum": [
+				"REVOLVING", "INSTALLMENT", "MIXED_RATE_INSTALLMENT", "DEFERRED_INSTALLMENT", "FIXED_RATE_INSTALLMENT"
+			],
+			"example": "REVOLVING"
 		},
 		"type_config": {
 			"type": "object",
@@ -50,12 +53,6 @@
 					"type": "number",
 					"description": "The number of cycles during which this product falls under an amortization period",
 					"example": 24
-				},
-				"payoff_date": {
-					"type": "string",
-					"description": "The `Date-Time` at which the account is scheduled to finish being paid off.",
-					"format": "date-time",
-					"example": "2017-06-20T09:12:14Z"
 				}
 			}
 		}
