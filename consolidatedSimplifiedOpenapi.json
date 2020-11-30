@@ -1866,6 +1866,10 @@ components:
                   term of the product. Must be longer than promotional duration
                   and purchase window duration.
                 example: "48"
+              product_color:
+                type: string
+                description: A color to be associated with the product for UI purposes.
+                example: "#0000FF"
               short_description:
                 type: string
                 description: Short description of the Product - max of 30 characters.
@@ -2660,6 +2664,10 @@ components:
                 type: string
                 description: Name of Product, i.e. Express Card.
                 example: Blue Cash Express
+              product_color:
+                type: string
+                description: A color to be associated with the product for UI purposes.
+                example: "#0000FF"
               short_description:
                 type: string
                 description: Short description of the Product - max of 30 characters.
@@ -2872,6 +2880,14 @@ components:
                         type: string
                         description: Name of Product, i.e. Express Card.
                         example: Blue Cash Express
+                      product_color:
+                        type: string
+                        description: A color to be associated with the product for UI purposes.
+                        example: "#0000FF"
+                      short_description:
+                        type: string
+                        description: Short description of the Product - max of 30 characters.
+                        example: Consumer credit card
                       description:
                         type: string
                         description: Description of the Product.
