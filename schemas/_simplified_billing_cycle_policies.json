@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "required": [
+    "period",
+    "billing_due_date_interval"
+  ],
+  "properties": {
+    "billing_cycle_period": {
+      "type": "string",
+      "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
+      "format": "interval",
+      "example": "1 month"
+    },
+    "billing_due_date_interval": {
+      "type": "string",
+      "description": "The amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
+      "format": "interval",
+      "example": "25 days"
+    },
+    "first_cycle_statement_period": {
+      "type": "string",
+      "description": "If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
+      "format": "interval",
+      "example": "25 days"
+    }
+  },
+  "description": "The set of policies governing the billing cycle for the product. "
+}

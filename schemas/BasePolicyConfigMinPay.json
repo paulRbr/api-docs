@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "requierd": [
+  "required": [
     "percentage"
   ],
   "properties": {

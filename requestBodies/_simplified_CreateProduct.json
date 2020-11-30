@@ -1,0 +1,90 @@
+{
+  "description": "",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The Name of the Product",
+            "example": "Blue Cash Express"
+          },
+          "type": {
+            "type": "string",
+            "description": "The Type of Product. If not included, defaults to `REVOLVING`",
+            "enum": [
+              "REVOLVING", "INSTALLMENT", "MIXED_RATE_INSTALLMENT", "DEFERRED_INSTALLMENT", "FIXED_RATE_INSTALLMENT"
+            ],
+            "example": "REVOLVING"
+          },
+          "default_rate": {
+            "type": "number",
+            "description": "The percentage default rate for accounts created under this interest policy (i.e. 5.2 indicates a 5.2% interest rate). You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+            "example": "5.2"
+          },
+          "default_credit_limit_cents": {
+            "type": "integer",
+            "description": "The default total oustanding amout of money (in cents) that an account created under this product could borrow. You may customize rates for each account by overriding this default rate at the time of account creation or updating the rate for a given account.",
+            "example": "700000"
+          },
+          "default_term": {
+            "type": "number",
+            "description": "If non-revolving, the number of billing cycles that define the full term of the product. Must be longer than promotional duration and purchase window duration.",
+            "example": "48"
+          },
+          "short_description": {
+            "type": "string",
+            "description": "Short description of the Product - max of 30 characters.",
+            "example": "Consumer credit card"
+          },
+          "description": {
+            "type": "string",
+            "description": "Full description of the Product.",
+            "example": "Consumer credit card"
+          },
+          "promotions": {
+            "type": "object",
+            "description": "If applicable, a promotional configuration for the product.",
+            "properties": {
+              "promotion_interval": {
+                "type": "number",
+                "description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                "example": 6
+              },
+              "promotion_min_payments": {
+                "type": "boolean",
+                "description": "Whether minimum payments are due during the promotional period or not.",
+                "example": false
+              },
+              "deferred_interest": {
+                "type": "boolean",
+                "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
+                "example": true
+              },
+              "promotion_interest_rate": {
+                "type": "number",
+                "description": "The rate that serves as the active interest rate for accounts during the promotional period.",
+                "example": "3"
+              }
+            }
+          },
+          "policies": {
+            "type": "object",
+            "description": "An Object of policies that drive Product behaviour.",
+            "properties": {
+              "base_policy_config": {
+                "$ref": "./../schemas/_simplified_BasePolicyConfig.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "min_pay_percentage"
+  ],
+  "properties": {
+    "min_pay_percentage": {
+      "type": "number",
+      "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
+      "example": "20"
+    },
+    "payment_due_interval": {
+      "type": "string",
+      "description": "The amount of time before statement cut that the payment should be due for the billing cycle. IE '5 days'. Cannot exceed the duration of the billing cycle.",
+      "format": "interval",
+      "example": "5 days"
+    },
+    "roll_to_amortization": {
+      "type": "boolean",
+      "description": "Set false for revolving products. If applicable, a boolean to indicate whether an account's balance rolls to amortization. Note - if there are any promotions configured for the product, it will roll to amortization *at the end of the promotion*. Otherwise, as in a standard installment product, it will roll to amortization upon origination.",
+      "example": true
+    },
+    "automated_status_updates": {
+      "type": "array",
+      "description": "Status changes for missed payments to correspond to index in array + 1. For example, ['current', 'delinquent', 'delinquent', 'default'] would keep the account status as `current` after the first consecutive missed payment, set it to `delinquent` after the second consecutive missed payment, and set it to `default` after the fourth.",
+      "example": ["current", "delinquent", "delinquent", "default"]
+    }
+  },
+  "description": "The set of policies governing payment due information for the product."
+}

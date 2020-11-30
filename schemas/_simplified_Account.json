@@ -11,7 +11,7 @@
     "total_balance",
     "credit_limit_cents",
     "rate",
-    "available_credit_balance"
+    "available_credit_cents"
   ],
   "properties": {
     "account_id": {
@@ -134,12 +134,17 @@
           "description": "Total Amount (in cents) that this account can borrow.",
           "example": "400000"
         },
-        "rate": {
+        "interest_rate": {
           "type": "number",
           "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
+          "example": "3"
+        },
+        "interest_rate_account_default": {
+          "type": "number",
+          "description": "The percentage interest applied to the account during default, or non-promotional periods (i.e. 6.2%)",
           "example": "6.2"
         },
-        "available_credit_balance": {
+        "available_credit_cents": {
           "type": "number",
           "description": "The total available credit balance (in cents) for the account.",
           "example": "100000"
@@ -178,17 +183,16 @@
           "description": "If applicable, the date at which the account's principal balance rolls to amortization, generating an amortization schedule.",
           "example": "2013-01-13T05:25:13.813Z"
         },
-        "term_end_date": {
+        "loan_end_date": {
           "type": "string",
           "format": "datetime",
           "description": "If applicable, the account's loan repayment date.",
           "example": "2013-01-13T05:25:13.813Z"
-        }
-      }
-    },
-    "associated_entities": {
-      "type": "object",
-      "properties": {
+        },
+        "line_item_count": {
+          "type": "string",
+          "description": "Total number of line items for the account."
+        },
         "merchant_name": {
           "type": "string",
           "description": "A merchant name associated with the account",
@@ -198,6 +202,251 @@
           "type": "string",
           "description": "A lender name associated with the account",
           "example": "Globex Lending Corp"
+        }
+      }
+    },
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The account associated with the line item",
+            "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
+          },
+          "line_item_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "ce9ed376-f151-435f-a59c-9e3cc183bbea"
+          },
+          "line_item_status": {
+            "type": "string",
+            "description": "the corresponding Status for a line item",
+            "enum": [
+              "posted",
+              "valid",
+              "invalid",
+              "declined",
+              "authorized",
+              "void",
+              "pending",
+              "successful",
+              "unsuccessful"
+            ],
+            "example": "posted"
+          },
+          "type": {
+            "type": "string",
+            "description": "The Line Item Type. i.e. `charge`, `payment`.",
+            "enum": [
+              "charge",
+              "payment",
+              "fee"
+            ],
+            "example": "charge"
+          },
+          "originating_amount_cents": {
+            "type": "number",
+            "description": "The originating amount of money (in cents) relating to this line item.",
+            "example": "2385"
+          },
+          "balance_amount_cents": {
+            "type": "number",
+            "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+            "example": "2401"
+          },
+          "total_interest_accrued_cents": {
+            "type": "number",
+            "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+            "example": "16"
+          },
+          "total_paid_down_cents": {
+            "type": "number",
+            "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
+            "example": "1125"
+          },
+          "merchant_data": {
+            "type": "object",
+            "description": "Merchant information if applicable.",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "mcc_code": {
+                "type": "number"
+              },
+              "phone_number": {
+                "type": "string",
+                "format": "phonenumber"
+              }
+            }
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that this account became/becomes active",
+            "format": "date-time",
+            "example": "2018-07-20T09:12:30Z"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The `Date-Time` which the account was created in the API",
+            "format": "date-time",
+            "example": "2018-06-20T09:12:30Z"
+          },
+          "product_id": {
+            "type": "string",
+            "description": "the Product ID of the account",
+            "format": "uuid",
+            "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of this particular line item if any. More common for adjustments.",
+            "example": "Refund for invalid purchase"
+          },
+          "reference_id": {
+            "type": "string",
+            "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
+            "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+          },
+          "dispute_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID for a dispute if present for this line item."
+          },
+          "external_ids": {
+            "type": "array",
+            "description": "An array of static references to ID fields in a third party system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the External Party",
+                  "example": "Globex Card Processing"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "amortization_schedule": {
+      "type": "array",
+      "description": "Amortization schedule",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scheduled_payment_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date of the scheduled payment",
+            "example": "2018-07-20T09:10:14Z"
+          },
+          "amount_due_cents": {
+            "type": "number",
+            "description": "The amount in cents of the scheduled payment due",
+            "example": "18325"
+          },
+          "amount_paid_cents": {
+            "type": "number",
+            "description": "The amount in cents that was actually paid for the billing cycle",
+            "example": "18325"
+          },
+          "interest_allocation": {
+            "type": "number",
+            "description": "The amount in cents allocated to interest from this payment",
+            "example": "2415"
+          },
+          "deferred_interest_allocation": {
+            "type": "number",
+            "description": "The amount in cents allocated to deferred interest from this payment",
+            "example": "400"
+          },
+          "principal_allocation": {
+            "type": "number",
+            "description": "The amount in cents allocated to principal from this payment",
+            "example": "15911"
+          },
+          "end_balance": {
+            "type": "number",
+            "description": "The ending balance on the loan after this payment",
+            "example": "136691"
+          }
+        }
+      }
+    },
+    "statements_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The Canopy-generated ID for the account",
+            "example": "111eff36-cbec-4119-b188-b76200e804d8"
+          },
+          "effective_as_of_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "example": "2018-07-20T09:10:14Z"
+          },
+          "statements_list": {
+            "type": "array",
+            "description": "An array of statements included in the billing cycle.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "statement_id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "A Canopy-generated ID for the statement",
+                  "example": "3627809b-ff07-4e41-b127-44260efb3b80"
+                },
+                "available_credit_balance": {
+                  "type": "number",
+                  "description": "The total available credit balance (in cents) for the account.",
+                  "example": "600000"
+                },
+                "total_balance": {
+                  "type": "number",
+                  "description": "The total balance (in cents) associated with the account.",
+                  "example": "400000"
+                },
+                "min_pay_due_date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The `Date-Time` at which the minimum payment is due."
+                },
+                "min_pay_amount_cents": {
+                  "type": "number",
+                  "description": "The minimum amount (in cents) due for this statement."
+                },
+                "billing_cycle_start_date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                },
+                "billing_cycle_end_date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                }
+              }
+            }
+          }
         }
       }
     }

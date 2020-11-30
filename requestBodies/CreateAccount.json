@@ -36,14 +36,29 @@
                   }
                 }
               },
+              "merchant_name": {
+                "type": "string",
+                "description": "A merchant name associated with the account",
+                "example": "Acme Corporation"
+              },
+              "lender_name": {
+                "type": "string",
+                "description": "A lender name associated with the account",
+                "example": "Globex Lending Corp"
+              },
               "credit_limit_cents": {
                 "type": "integer",
                 "description": "For accounts created under credit products, total Amount (in cents) that this account can borrow.",
                 "example": "400000"
               },
-              "rate": {
+              "max_approve_cents": {
+                "type": "integer",
+                "description": "For accounts created under credit products, total Amount (in cents) that this account can borrow.",
+                "example": "400000"
+              },
+              "interest_rate_account_default": {
                 "type": "number",
-                "description": "The percentage interest applied to the account (i.e. 6.2%)",
+                "description": "The percentage interest applied to the account during default, or non-promotional periods (i.e. 6.2%)",
                 "example": "6.2"
               }
             }
