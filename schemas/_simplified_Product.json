@@ -39,6 +39,16 @@
 			"description": "Description of the Product.",
 			"example": "Student credit card."
 		},
+		"apr_range": {
+			"type": "string",
+			"description": "Optional APR Range for the product.",
+			"example": "2% - 5%"
+		},
+		"term_range": {
+			"type": "string",
+			"description": "Optional term Range for the product.",
+			"example": "48 - 64 cycles"
+		},
 		"created_at": {
 			"type": "string",
 			"description": "The `Date-Time` that this product was created on the server.",

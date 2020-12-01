@@ -1844,6 +1844,14 @@ components:
                   term of the product. Must be longer than promotional duration
                   and purchase window duration.
                 example: 48
+              apr_range:
+                type: string
+                description: Optional APR Range for the product.
+                example: 2% - 5%
+              term_range:
+                type: string
+                description: Optional term Range for the product.
+                example: 48 - 64 cycles
               product_color:
                 type: string
                 description: A color to be associated with the product for UI purposes.
@@ -2651,6 +2659,14 @@ components:
                 type: string
                 description: Description of the Product.
                 example: Student credit card.
+              apr_range:
+                type: string
+                description: Optional APR Range for the product.
+                example: 2% - 5%
+              term_range:
+                type: string
+                description: Optional term Range for the product.
+                example: 48 - 64 cycles
               created_at:
                 type: string
                 description: The `Date-Time` that this product was created on the server.
