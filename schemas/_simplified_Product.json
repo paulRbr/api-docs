@@ -63,7 +63,33 @@
 		},
 		"policies": {
       "$ref": "./_simplified_BasePolicyConfig.json"
-    },
+		},
+		"promotions": {
+			"type": "object",
+			"description": "If applicable, a promotional configuration for the product.",
+			"properties": {
+				"promotion_interval": {
+					"type": "number",
+					"description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+					"example": 6
+				},
+				"promotion_min_payments": {
+					"type": "boolean",
+					"description": "Whether minimum payments are due during the promotional period or not.",
+					"example": false
+				},
+				"deferred_interest": {
+					"type": "boolean",
+					"description": "Indicates whether interest accrued during the promotional period is deferred interest.",
+					"example": true
+				},
+				"promotion_interest_rate": {
+					"type": "number",
+					"description": "The rate that serves as the active interest rate for accounts during the promotional period.",
+					"example": 3
+				}
+			}
+		},
 		"product_summary": {
 			"$ref": "./ProductSummary.json"
 		},
