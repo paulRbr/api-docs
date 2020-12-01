@@ -1033,7 +1033,7 @@
         "$ref": "./responses/_simplified_Account.json"
       },
       "AccountStatement": {
-        "$ref": "./responses/AccountStatement.json"
+        "$ref": "./responses/_simplified_AccountStatement.json"
       },
       "ProductAccounts": {
         "$ref": "./responses/ProductAccounts.json"
