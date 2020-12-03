@@ -5,23 +5,28 @@
     "billing_due_date_interval"
   ],
   "properties": {
-    "billing_cycle_period": {
+    "cycle_interval": {
       "type": "string",
       "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
       "format": "interval",
       "example": "1 month"
     },
-    "billing_due_date_interval": {
+    "cycle_due_interval": {
       "type": "string",
-      "description": "The amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
+      "description": "The amount of time before statement cut that the payment should be due for the billing cycle. If positive, it will count days from the start of the cycle. Note, this field has a signage convention: if negative, it will count days back from the end of the cycle. IE '25 days' indicates that payments are due 25 days after the statement is cut. `-5` days indicates that payments will be due five days prior to the cut of the *next* cycle. Cannot exceed the duration of the billing cycle.",
       "format": "interval",
-      "example": "25 days"
+      "example": "-5 days"
     },
-    "first_cycle_statement_period": {
+    "first_cycle_interval": {
       "type": "string",
       "description": "If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
       "format": "interval",
       "example": "25 days"
+    },
+    "close_of_business_timetz": {
+      "type": "string",
+      "description": "Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+      "example": "17:00.000001-05"
     }
   },
   "description": "The set of policies governing the billing cycle for the product. "

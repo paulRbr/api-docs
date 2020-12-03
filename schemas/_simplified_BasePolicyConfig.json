@@ -9,25 +9,16 @@
   ],
   "properties": {
     "payment_due_policies": {
-      "$ref": "./_simplified_payment_due_policies.json"
+      "$ref": "./_simplified_PaymentDuePolicies.json"
     },
     "fee_policies": {
-      "$ref": "./_simplified_fee_policies.json"
-    },
-    "purchase_window_policies": {
-      "$ref": "./_simplified_purchase_window_policies.json"
+      "$ref": "./_simplified_FeePolicies.json"
     },
     "billing_cycle_policies": {
-      "$ref": "./_simplified_billing_cycle_policies.json"
+      "$ref": "./_simplified_BillingCyclePolicies.json"
     },
     "interest_policies": {
-      "$ref": "./InterestPolicy.json"
-    },
-    "close_of_business_and_timezone_policies": {
-      "type": "string",
-      "description": "Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
-      "format": "date-time",
-      "example": "2020-03-20T09:12:28Z"
+      "$ref": "./_simplified_InterestPolicies.json"
     }
   },
   "description": "A base group of policies that define a Product"
