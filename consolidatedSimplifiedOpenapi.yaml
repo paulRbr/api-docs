@@ -1808,211 +1808,238 @@ components:
               - name
             additionalProperties: false
             properties:
-              product_name:
-                type: string
-                description: The Name of the Product
-                example: Blue Cash Express
-              product_type:
-                type: string
-                description: The Type of Product. If not included, defaults to `REVOLVING`
-                enum:
-                  - REVOLVING
-                  - INSTALLMENT
-                  - MIXED_RATE_INSTALLMENT
-                  - DEFERRED_INSTALLMENT
-                  - FIXED_RATE_INSTALLMENT
-                example: REVOLVING
-              default_rate:
-                type: number
-                description: The percentage default rate for accounts created under this
-                  interest policy (i.e. 5.2 indicates a 5.2% interest rate). You
-                  may customize rates for each account by overriding this
-                  default rate at the time of account creation or updating the
-                  rate for a given account.
-                example: 5.2
-              default_credit_limit_cents:
-                type: integer
-                description: The default total oustanding amout of money (in cents) that an
-                  account created under this product could borrow. You may
-                  customize rates for each account by overriding this default
-                  rate at the time of account creation or updating the rate for
-                  a given account.
-                example: 700000
-              default_term:
-                type: number
-                description: If non-revolving, the number of billing cycles that define the full
-                  term of the product. Must be longer than promotional duration
-                  and purchase window duration.
-                example: 48
-              apr_range:
-                type: string
-                description: Optional APR Range for the product.
-                example: 2% - 5%
-              term_range:
-                type: string
-                description: Optional term Range for the product.
-                example: 48 - 64 cycles
-              product_color:
-                type: string
-                description: A color to be associated with the product for UI purposes.
-                example: "#0000FF"
-              short_description:
-                type: string
-                description: Short description of the Product - max of 30 characters.
-                example: Consumer credit card
-              description:
-                type: string
-                description: Full description of the Product.
-                example: Consumer credit card
-              promotions:
+              product_overview:
                 type: object
-                description: If applicable, a promotional configuration for the product.
+                description: A series of static fields about the product.
                 properties:
-                  promotion_interval:
-                    type: number
-                    description: The number of billing cycles from account origination during which
-                      accounts on this product are on a promotional period.
-                    example: 6
-                  promotion_min_payments:
-                    type: boolean
-                    description: Whether minimum payments are due during the promotional period or
-                      not.
-                    example: false
-                  deferred_interest:
-                    type: boolean
-                    description: Indicates whether interest accrued during the promotional period is
-                      deferred interest.
-                    example: true
-                  promotion_interest_rate:
-                    type: number
-                    description: The rate that serves as the active interest rate for accounts
-                      during the promotional period.
-                    example: 3
-              policies:
+                  product_name:
+                    type: string
+                    description: Name of Product, i.e. Express Card.
+                    example: Blue Cash Express
+                  product_type:
+                    type: string
+                    description: The Type of Product
+                    enum:
+                      - REVOLVING
+                      - INSTALLMENT
+                      - MIXED_RATE_INSTALLMENT
+                      - DEFERRED_INSTALLMENT
+                      - FIXED_RATE_INSTALLMENT
+                    example: REVOLVING
+                  product_short_description:
+                    type: string
+                    description: A short description of the product ranging from 0 - 60 characters.
+                    example: 12mm3apr.
+                  product_long_description:
+                    type: string
+                    description: Description of the Product ranging from 0 - 1000.
+                    example: Student credit card.
+                  product_color:
+                    type: string
+                    description: A color to be associated with the product for UI purposes.
+                    example: "#0000FF"
+              product_lifecycle_policies:
                 type: object
-                description: An Object of policies that drive Product behaviour.
                 properties:
-                  base_policy_config:
+                  payment_due_policies:
+                    type: object
+                    required:
+                      - min_pay_percentage
+                    properties:
+                      min_pay_percentage:
+                        type: number
+                        description: The percentage of total balance calculated for min pay. (i.e. 20
+                          means 20%)
+                        example: 20
+                      roll_to_amortization:
+                        type: boolean
+                        description: Set false for revolving products. If applicable, a boolean to
+                          indicate whether an account's balance rolls to
+                          amortization. Note - if there are any promotions
+                          configured for the product, it will roll to
+                          amortization *at the end of the promotion*. Otherwise,
+                          as in a standard installment product, it will roll to
+                          amortization upon origination.
+                        example: true
+                      delinquent_on_n_consecutive_late_fees:
+                        type: integer
+                        description: After this number of consecutive late events, the account status
+                          shifts to `suspended` with a status subtype of
+                          `delinquent`
+                      suspend_on_n_consecutive_late_fees:
+                        type: integer
+                        description: After this number of consecutive late events, the account status
+                          shifts to `suspended` with a status subtype of
+                          `charged_off`
+                    description: The set of policies governing payment due information for the
+                      product.
+                  fee_policies:
+                    type: object
+                    required:
+                      - period
+                      - billing_due_date_interval
+                    properties:
+                      late_fee_grace:
+                        type: string
+                        description: The amount of time after a payment is late after which you would
+                          like for a late fee to be incurred.
+                        format: interval
+                        example: 5 days
+                    description: "The set of policies governing fees for the product. "
+                  billing_cycle_policies:
+                    type: object
+                    required:
+                      - period
+                      - billing_due_date_interval
+                    properties:
+                      cycle_interval:
+                        type: string
+                        description: The length of the billing cycle. after which a statement is
+                          generated, and a due date assigned. IE '1 month' '3
+                          months' or '7 days' (most common is monthly)
+                        format: interval
+                        example: 1 month
+                      cycle_due_interval:
+                        type: string
+                        description: "The amount of time before statement cut that the payment should be
+                          due for the billing cycle. If positive, it will count
+                          days from the start of the cycle. Note, this field has
+                          a signage convention: if negative, it will count days
+                          back from the end of the cycle. IE '25 days' indicates
+                          that payments are due 25 days after the statement is
+                          cut. `-5` days indicates that payments will be due
+                          five days prior to the cut of the *next* cycle. Cannot
+                          exceed the duration of the billing cycle."
+                        format: interval
+                        example: -5 days
+                      first_cycle_interval:
+                        type: string
+                        description: If applicable, the amount of time you would like between
+                          origination and the first statement cut. IE '10 days'.
+                          If you would like the first billing cycle to be the
+                          same length as all other billing cycles, either do not
+                          include this field in the request, or set its value to
+                          the same as `billing_cycle_period`
+                        format: interval
+                        example: 25 days
+                      close_of_business_timetz:
+                        type: string
+                        description: Time and timezone of the close of business. This is used for
+                          statement cuts and partner-level and issuing
+                          bank-level reconciliation
+                        example: 17:00.000001-05
+                    description: "The set of policies governing the billing cycle for the product. "
+                  interest_policies:
                     type: object
                     additionalProperties: false
                     required:
-                      - min_pay
-                      - billing_cycle
-                      - interest_policies
-                      - close_of_business_and_timezone
+                      - type
+                      - method
+                      - day_calc_type
+                      - interest_calc_time
                     properties:
-                      payment_due_policies:
-                        type: object
-                        required:
-                          - min_pay_percentage
-                        properties:
-                          min_pay_percentage:
-                            type: number
-                            description: The percentage of total balance calculated for min pay. (i.e. 20
-                              means 20%)
-                            example: 20
-                          roll_to_amortization:
-                            type: boolean
-                            description: Set false for revolving products. If applicable, a boolean to
-                              indicate whether an account's balance rolls to
-                              amortization. Note - if there are any promotions
-                              configured for the product, it will roll to
-                              amortization *at the end of the promotion*.
-                              Otherwise, as in a standard installment product,
-                              it will roll to amortization upon origination.
-                            example: true
-                          delinquent_on_n_consecutive_late_fees:
-                            type: integer
-                            description: After this number of consecutive late events, the account status
-                              shifts to `suspended` with a status subtype of
-                              `delinquent`
-                          suspend_on_n_consecutive_late_fees:
-                            type: integer
-                            description: After this number of consecutive late events, the account status
-                              shifts to `suspended` with a status subtype of
-                              `charged_off`
-                        description: The set of policies governing payment due information for the
-                          product.
-                      fee_policies:
-                        type: object
-                        required:
-                          - period
-                          - billing_due_date_interval
-                        properties:
-                          late_fee_grace:
-                            type: string
-                            description: The amount of time after a payment is late after which you would
-                              like for a late fee to be incurred.
-                            format: interval
-                            example: 5 days
-                        description: "The set of policies governing fees for the product. "
-                      billing_cycle_policies:
-                        type: object
-                        required:
-                          - period
-                          - billing_due_date_interval
-                        properties:
-                          cycle_interval:
-                            type: string
-                            description: The length of the billing cycle. after which a statement is
-                              generated, and a due date assigned. IE '1 month'
-                              '3 months' or '7 days' (most common is monthly)
-                            format: interval
-                            example: 1 month
-                          cycle_due_interval:
-                            type: string
-                            description: "The amount of time before statement cut that the payment should be
-                              due for the billing cycle. If positive, it will
-                              count days from the start of the cycle. Note, this
-                              field has a signage convention: if negative, it
-                              will count days back from the end of the cycle. IE
-                              '25 days' indicates that payments are due 25 days
-                              after the statement is cut. `-5` days indicates
-                              that payments will be due five days prior to the
-                              cut of the *next* cycle. Cannot exceed the
-                              duration of the billing cycle."
-                            format: interval
-                            example: -5 days
-                          first_cycle_interval:
-                            type: string
-                            description: If applicable, the amount of time you would like between
-                              origination and the first statement cut. IE '10
-                              days'. If you would like the first billing cycle
-                              to be the same length as all other billing cycles,
-                              either do not include this field in the request,
-                              or set its value to the same as
-                              `billing_cycle_period`
-                            format: interval
-                            example: 25 days
-                          close_of_business_timetz:
-                            type: string
-                            description: Time and timezone of the close of business. This is used for
-                              statement cuts and partner-level and issuing
-                              bank-level reconciliation
-                            example: 17:00.000001-05
-                        description: "The set of policies governing the billing cycle for the product. "
-                      interest_policies:
-                        type: object
-                        additionalProperties: false
-                        required:
-                          - type
-                          - method
-                          - day_calc_type
-                          - interest_calc_time
-                        properties:
-                          type:
-                            type: string
-                            enum:
-                              - compound
-                            example: compound
-                          interest_calc_time:
-                            type: string
-                            description: Interest for this policy is calculated at this time every X
-                              interval.
-                            format: date-time
-                            example: 05:00:00
-                        description: The Interest Policy Object
-                    description: A base group of policies that define a Product
+                      type:
+                        type: string
+                        enum:
+                          - compound
+                        example: compound
+                      interest_calc_time:
+                        type: string
+                        description: Interest for this policy is calculated at this time every X
+                          interval.
+                        format: date-time
+                        example: 05:00:00
+                    description: The Interest Policy Object
+                  default_attributes:
+                    default_credit_limit_cents:
+                      type: integer
+                      description: The default maximum principal credit (in cents) available for a
+                        customer account. This default limit can be overridden
+                        on a per-account basis if a `credit_limit` is selected
+                        at the time of assigning an account to a product. Credit
+                        limits for an account can also be updated post-account
+                        creation.
+                      example: 600000
+              promotional_policies:
+                type: object
+                description: If applicable, a promotional configuration for the product.
+                properties:
+                  promo_len:
+                    type: integer
+                    description: The number of billing cycles from account origination during which
+                      accounts on this product are on a promotional period.
+                    example: 6
+                  post_promo_min_pay_type:
+                    type: string
+                    enum:
+                      - AM
+                      - "%INTEREST"
+                      - "%PRINCIPAL"
+                    description: Current due calculation method for the promotional period.
+                promo_purchase_window_len:
+                  type: number
+                  description: If applicable, the number of billing cycles from account
+                    origination under which this product falls under a purchas
+                    window period.
+                  example: 5
+                promotion_min_payments:
+                  type: boolean
+                  description: Whether minimum payments are due during the promotional period or
+                    not.
+                  example: false
+                promo_interest_deferred:
+                  type: boolean
+                  description: Indicates whether interest accrued during the promotional period is
+                    deferred interest.
+                  example: true
+                promo_default_interest_rate_percent:
+                  type: number
+                  description: The rate that serves as the active interest rate for accounts
+                    during the promotional period.
+                  example: 3
+                promo_apr_range_inclusive_lower:
+                  type: number
+                  description: Optional lower bound for APR Range for the product (i.e. 2 = 2%).
+                  example: 2
+                promo_apr_range_inclusive_upper:
+                  type: number
+                  description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
+                  example: 5
+              post_promotional_policies:
+                post_promo_default_am_len:
+                  type: integer
+                  description: Default duration for the amortization period during post-promotion
+                  example: 48
+                post_promo_am_len_range_inclusive_u:
+                  type: number
+                  description: Optional lower bound for amortization length in billing cycles for
+                    the product.
+                  example: 2
+                post_promo_am_len_range_inclusive_upper:
+                  type: number
+                  description: Optional upper bound for amortization length in billing cycles for
+                    the product.
+                  example: 5
+                post_promo_min_pay_type:
+                  type: string
+                  enum:
+                    - AM
+                    - "%INTEREST"
+                    - "%PRINCIPAL"
+                  description: Current due calculation method for the post-promotional period.
+                post_promo_default_interest_rate_percent:
+                  type: number
+                  description: The rate that serves as the active interest rate for accounts
+                    during the post-promotional period.
+                  example: 3
+                promo_apr_range_inclusive_lower:
+                  type: number
+                  description: Optional lower bound for APR Range for the product (i.e. 2 = 2%).
+                  example: 2
+                promo_apr_range_inclusive_upper:
+                  type: number
+                  description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
+                  example: 5
     CreateCustomer:
       description: Create a new customer
       required:
@@ -2683,20 +2710,20 @@ components:
                 properties:
                   payment_due_policies:
                     $ref: "#/components/requestBodies/CreateProduct/content/application~1json/schem\
-                      a/properties/policies/properties/base_policy_config/prope\
-                      rties/payment_due_policies"
+                      a/properties/product_lifecycle_policies/properties/paymen\
+                      t_due_policies"
                   fee_policies:
                     $ref: "#/components/requestBodies/CreateProduct/content/application~1json/schem\
-                      a/properties/policies/properties/base_policy_config/prope\
-                      rties/fee_policies"
+                      a/properties/product_lifecycle_policies/properties/fee_po\
+                      licies"
                   billing_cycle_policies:
                     $ref: "#/components/requestBodies/CreateProduct/content/application~1json/schem\
-                      a/properties/policies/properties/base_policy_config/prope\
-                      rties/billing_cycle_policies"
+                      a/properties/product_lifecycle_policies/properties/billin\
+                      g_cycle_policies"
                   interest_policies:
                     $ref: "#/components/requestBodies/CreateProduct/content/application~1json/schem\
-                      a/properties/policies/properties/base_policy_config/prope\
-                      rties/interest_policies"
+                      a/properties/product_lifecycle_policies/properties/intere\
+                      st_policies"
                   default_attributes:
                     default_credit_limit_cents:
                       type: integer

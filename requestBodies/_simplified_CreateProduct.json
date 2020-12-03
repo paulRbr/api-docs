@@ -48,16 +48,16 @@
             "type": "object",
             "properties": {
               "payment_due_policies": {
-                "$ref": "./_simplified_PaymentDuePolicies.json"
+                "$ref": "./../schemas/_simplified_PaymentDuePolicies.json"
               },
               "fee_policies": {
-                "$ref": "./_simplified_FeePolicies.json"
+                "$ref": "./../schemas/_simplified_FeePolicies.json"
               },
               "billing_cycle_policies": {
-                "$ref": "./_simplified_BillingCyclePolicies.json"
+                "$ref": "./../schemas/_simplified_BillingCyclePolicies.json"
               },
               "interest_policies": {
-                "$ref": "./_simplified_InterestPolicies.json"
+                "$ref": "./../schemas/_simplified_InterestPolicies.json"
               },
               "default_attributes": {
                 "default_credit_limit_cents": {
