@@ -3118,6 +3118,14 @@ components:
                         type: number
                         description: The total available credit balance (in cents) for the account.
                         example: 100000
+                      late_fee_active_cents:
+                        type: number
+                        description: The fee charged for late payments on the account.
+                        example: 2900
+                      payment_reversal_fee_active_cents:
+                        type: number
+                        description: The fee charged for payment reversals on the account.
+                        example: 2900
                       purchase_window_start_date:
                         type: string
                         format: datetime
