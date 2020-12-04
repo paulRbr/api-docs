@@ -55,6 +55,22 @@
 					"type": "string",
 					"description": "A color to be associated with the product for UI purposes.",
 					"example": "#0000FF"
+				},
+				"external_fields": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"key": {
+								"type": "string",
+								"example": "client_product_id"
+							},
+							"value": {
+								"type": "string",
+								"example": "3e93a899-d267-4193-8509-6dba53c13b7b"
+							}
+						}
+					}
 				}
 			}
 		},
@@ -75,6 +91,16 @@
 				},
 				"default_attributes": {
 					"default_credit_limit_cents": {
+						"type": "integer",
+						"description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
+						"example": 600000
+					},
+					"default_late_fee_cents": {
+						"type": "integer",
+						"description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
+						"example": 600000
+					},
+					"default_payment_reversal_fee_cents": {
 						"type": "integer",
 						"description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
 						"example": 600000
@@ -112,7 +138,7 @@
 					"description": "Indicates whether interest accrued during the promotional period is deferred interest.",
 					"example": true
 				},
-				"promo_default_interest_rate_percent": {
+				"promo_default_interest_rate": {
 					"type": "number",
 					"description": "The rate that serves as the active interest rate for accounts during the promotional period.",
 					"example": 3
@@ -149,7 +175,7 @@
 				"enum": ["AM", "%INTEREST", "%PRINCIPAL"],
 				"description": "Current due calculation method for the post-promotional period."
 			},
-			"post_promo_default_interest_rate_percent": {
+			"post_promo_default_interest_rate": {
 				"type": "number",
 				"description": "The rate that serves as the active interest rate for accounts during the post-promotional period.",
 				"example": 3
