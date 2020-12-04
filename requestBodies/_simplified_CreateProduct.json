@@ -5,9 +5,7 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "additionalProperties": false,
         "properties": {
           "product_overview": {
@@ -23,7 +21,11 @@
                 "type": "string",
                 "description": "The Type of Product",
                 "enum": [
-                  "REVOLVING", "INSTALLMENT", "MIXED_RATE_INSTALLMENT", "DEFERRED_INSTALLMENT", "FIXED_RATE_INSTALLMENT"
+                  "REVOLVING",
+                  "INSTALLMENT",
+                  "MIXED_RATE_INSTALLMENT",
+                  "DEFERRED_INSTALLMENT",
+                  "FIXED_RATE_INSTALLMENT"
                 ],
                 "example": "REVOLVING"
               },
@@ -83,36 +85,36 @@
                 "description": "Current due calculation method for the promotional period."
               }
             },
-              "promo_purchase_window_len": {
-                "type": "number",
-                "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
-                "example": 5
-              },
-              "promotion_min_payments": {
-                "type": "boolean",
-                "description": "Whether minimum payments are due during the promotional period or not.",
-                "example": false
-              },
-              "promo_interest_deferred": {
-                "type": "boolean",
-                "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
-                "example": true
-              },
-              "promo_default_interest_rate_percent": {
-                "type": "number",
-                "description": "The rate that serves as the active interest rate for accounts during the promotional period.",
-                "example": 3
-              },
-              "promo_apr_range_inclusive_lower": {
-                "type": "number",
-                "description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
-                "example": 2
-              },
-              "promo_apr_range_inclusive_upper": {
-                "type": "number",
-                "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
-                "example": 5
-              }
+            "promo_purchase_window_len": {
+              "type": "number",
+              "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
+              "example": 5
+            },
+            "promotion_min_payments": {
+              "type": "boolean",
+              "description": "Whether minimum payments are due during the promotional period or not.",
+              "example": false
+            },
+            "promo_interest_deferred": {
+              "type": "boolean",
+              "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
+              "example": true
+            },
+            "promo_default_interest_rate_percent": {
+              "type": "number",
+              "description": "The rate that serves as the active interest rate for accounts during the promotional period.",
+              "example": 3
+            },
+            "promo_apr_range_inclusive_lower": {
+              "type": "number",
+              "description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
+              "example": 2
+            },
+            "promo_apr_range_inclusive_upper": {
+              "type": "number",
+              "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
+              "example": 5
+            }
           },
           "post_promotional_policies": {
             "post_promo_default_am_len": {
@@ -150,7 +152,7 @@
               "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
               "example": 5
             }
-          },
+          }
         }
       }
     }
