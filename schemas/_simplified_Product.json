@@ -121,8 +121,7 @@
 					"type": "string",
 					"enum": ["AM", "%INTEREST", "%PRINCIPAL"],
 					"description": "Current due calculation method for the promotional period."
-				}
-			},
+				},
 				"promo_purchase_window_len": {
 					"type": "number",
 					"description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
@@ -153,6 +152,7 @@
 					"description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
 					"example": 5
 				}
+			}
 		},
 		"post_promotional_policies": {
 			"post_promo_default_am_len": {
