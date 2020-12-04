@@ -155,40 +155,43 @@
 			}
 		},
 		"post_promotional_policies": {
-			"post_promo_default_am_len": {
-				"type": "integer",
-				"description": "Default duration for the amortization period during post-promotion",
-				"example": 48
-			},
-			"post_promo_am_len_range_inclusive_u": {
-				"type": "number",
-				"description": "Optional lower bound for amortization length in billing cycles for the product.",
-				"example": 2
-			},
-			"post_promo_am_len_range_inclusive_upper": {
-				"type": "number",
-				"description": "Optional upper bound for amortization length in billing cycles for the product.",
-				"example": 5
-			},
-			"post_promo_min_pay_type": {
-				"type": "string",
-				"enum": ["AM", "%INTEREST", "%PRINCIPAL"],
-				"description": "Current due calculation method for the post-promotional period."
-			},
-			"post_promo_default_interest_rate": {
-				"type": "number",
-				"description": "The rate that serves as the active interest rate for accounts during the post-promotional period.",
-				"example": 3
-			},
-			"promo_apr_range_inclusive_lower": {
-				"type": "number",
-				"description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
-				"example": 2
-			},
-			"promo_apr_range_inclusive_upper": {
-				"type": "number",
-				"description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
-				"example": 5
+			"type": "object",
+			"properties": {
+				"post_promo_default_am_len": {
+					"type": "integer",
+					"description": "Default duration for the amortization period during post-promotion",
+					"example": 48
+				},
+				"post_promo_am_len_range_inclusive_u": {
+					"type": "number",
+					"description": "Optional lower bound for amortization length in billing cycles for the product.",
+					"example": 2
+				},
+				"post_promo_am_len_range_inclusive_upper": {
+					"type": "number",
+					"description": "Optional upper bound for amortization length in billing cycles for the product.",
+					"example": 5
+				},
+				"post_promo_min_pay_type": {
+					"type": "string",
+					"enum": ["AM", "%INTEREST", "%PRINCIPAL"],
+					"description": "Current due calculation method for the post-promotional period."
+				},
+				"post_promo_default_interest_rate": {
+					"type": "number",
+					"description": "The rate that serves as the active interest rate for accounts during the post-promotional period.",
+					"example": 3
+				},
+				"promo_apr_range_inclusive_lower": {
+					"type": "number",
+					"description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
+					"example": 2
+				},
+				"promo_apr_range_inclusive_upper": {
+					"type": "number",
+					"description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
+					"example": 5
+				}
 			}
 		},
 		"product_summary": {
