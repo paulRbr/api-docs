@@ -1,137 +1,134 @@
-
 {
-  "description": "Create a new account",
-  "required": true,
-  "content": {
-    "application/json": {
-      "schema": {
-        "allOf": [
-          {
-            "type": "object",
-            "required": [
-              "product_id"
-            ],
-            "properties": {
-              "effective_at": {
-                "type": "string",
-                "description": "The `Date-Time` that this account became/becomes active.",
-                "format": "date-time",
-                "example": "2018-03-20T09:12:28Z"
-              },
-              "created_at": {
-                "type": "string",
-                "description": "The `Date-Time` which the account was created in the API.",
-                "format": "date-time",
-                "example": "2017-06-20T09:12:14Z"
-              },
-              "product_id": {
-                "type": "integer",
-                "description": "The Product ID of the account",
-                "example": 6
-              },
-              "external_account_ids": {
-                "type": "array",
-                "description": "An Array of External Account IDs. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "description": "Name of the External Party",
-                      "example": "Umbrella Corporation"
-                    },
-                    "id": {
-                      "type": "string",
-                      "description": "External Account ID",
-                      "example": "22445702-a389-431f-927d-07b8d0750787"
-                    }
-                  }
-                }
-              },
-              "late_fee_cents": {
-                "type": "number",
-                "description": "The fee charged for late payments on the account.",
-                "example": 2900
-              },
-              "payment_reversal_fee_cents": {
-                "type": "number",
-                "description": "The fee charged for payment reversals on the account.",
-                "example": 2900
-              },
-              "initial_principal": {
-                "type": "number",
-                "description": "The initial principal balance (in cents) for the account.",
-                "example": 400000
-              },
-              "credit_limit_cents": {
-                "type": "integer",
-                "description": "Total Amount (in cents) that this account can borrow.",
-                "example": 400000
-              },
-              "max_approve_cents": {
-                "type": "integer",
-                "description": "Total Amount (in cents) that this account can borrow.",
-                "example": 400000
-              },
-              "rate": {
-                "type": "number",
-                "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
-                "example": 6.2
-              },
-              "loan_document": {
-                "type": "string",
-                "description": "The base64-encoded signed loan agreement for the account."
-              },
-              "amortization_duration": {
-                "type": "string",
-                "format": "datetime",
-                "description": "If provided, this will override the amortization duration configured for the product and be used to generate the end date of the loan.",
-                "example": "2013-01-13T05:25:13.813Z"
-              },
-              "associated_entities": {
-                "type": "object",
-                "properties": {
-                  "merchant_name": {
-                    "type": "string",
-                    "description": "A merchant name associated with the account",
-                    "example": "Acme Corporation"
-                  },
-                  "lender_name": {
-                    "type": "string",
-                    "description": "A lender name associated with the account",
-                    "example": "Globex Lending Corp"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "type": "object",
-            "properties": {
-              "existing_customers": {
-                "type": "array",
-                "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "customer_id": {
-                      "type": "integer",
-                      "description": "Canopy-generated unique ID for this customer",
-                      "example": 6
-                    },
-                    "customer_account_role": {
-                      "type": "integer",
-                      "description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
-                      "enum": ["1", "2"],
-                      "example": 1
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ]
-      }
-    }
-  }
+	"description": "Create a new account",
+	"required": true,
+	"content": {
+		"application/json": {
+			"schema": {
+				"allOf": [
+					{
+						"type": "object",
+						"required": ["product_id"],
+						"properties": {
+							"effective_at": {
+								"type": "string",
+								"description": "The `Date-Time` that this account became/becomes active.",
+								"format": "date-time",
+								"example": "2018-03-20T09:12:28Z"
+							},
+							"created_at": {
+								"type": "string",
+								"description": "The `Date-Time` which the account was created in the API.",
+								"format": "date-time",
+								"example": "2017-06-20T09:12:14Z"
+							},
+							"product_id": {
+								"type": "integer",
+								"description": "The Product ID of the account",
+								"example": 6
+							},
+							"external_account_ids": {
+								"type": "array",
+								"description": "An Array of External Account IDs. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string",
+											"description": "Name of the External Party",
+											"example": "Umbrella Corporation"
+										},
+										"id": {
+											"type": "string",
+											"description": "External Account ID",
+											"example": "22445702-a389-431f-927d-07b8d0750787"
+										}
+									}
+								}
+							},
+							"late_fee_cents": {
+								"type": "number",
+								"description": "The fee charged for late payments on the account.",
+								"example": 2900
+							},
+							"payment_reversal_fee_cents": {
+								"type": "number",
+								"description": "The fee charged for payment reversals on the account.",
+								"example": 2900
+							},
+							"initial_principal": {
+								"type": "number",
+								"description": "The initial principal balance (in cents) for the account.",
+								"example": 400000
+							},
+							"credit_limit_cents": {
+								"type": "integer",
+								"description": "Total Amount (in cents) that this account can borrow.",
+								"example": 400000
+							},
+							"max_approve_cents": {
+								"type": "integer",
+								"description": "Total Amount (in cents) that this account can borrow.",
+								"example": 400000
+							},
+							"rate": {
+								"type": "number",
+								"description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
+								"example": 6.2
+							},
+							"loan_document": {
+								"type": "string",
+								"description": "The base64-encoded signed loan agreement for the account."
+							},
+							"amortization_duration": {
+								"type": "string",
+								"format": "datetime",
+								"description": "If provided, this will override the amortization duration configured for the product and be used to generate the end date of the loan.",
+								"example": "2013-01-13T05:25:13.813Z"
+							},
+							"associated_entities": {
+								"type": "object",
+								"properties": {
+									"merchant_name": {
+										"type": "string",
+										"description": "A merchant name associated with the account",
+										"example": "Acme Corporation"
+									},
+									"lender_name": {
+										"type": "string",
+										"description": "A lender name associated with the account",
+										"example": "Globex Lending Corp"
+									}
+								}
+							}
+						}
+					},
+					{
+						"type": "object",
+						"properties": {
+							"existing_customers": {
+								"type": "array",
+								"description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
+								"items": {
+									"type": "object",
+									"properties": {
+										"customer_id": {
+											"type": "integer",
+											"description": "Canopy-generated unique ID for this customer",
+											"example": 6
+										},
+										"customer_account_role": {
+											"type": "integer",
+											"description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
+											"enum": ["1", "2"],
+											"example": 1
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		}
+	}
 }
