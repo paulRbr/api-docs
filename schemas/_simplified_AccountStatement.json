@@ -83,7 +83,7 @@
         }
       }
     },
-    "billing_cycle_summary": {
+    "cycle_summary": {
       "type": "object",
       "properties": {
         "cycle_inclusive_start": {
@@ -158,7 +158,7 @@
         }
       }
     },
-    "cycle_amounts_due": {
+    "min_pay_due": {
       "type": "object",
       "properties": {
         "min_pay_cents": {
@@ -166,6 +166,17 @@
           "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
           "example": 160000
         },
+        "min_pay_due_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The `Date-Time` the payment for this billing cycle is due.",
+          "example": "2019-10-18T23:04:48.321Z"
+        }
+      }
+    },
+    "additional_min_pay_details": {
+      "type": "object",
+      "properties": {
         "min_pay_root_principal_cents": {
           "type": "integer",
           "description": "Total principal due for the billing cycle.",
@@ -185,37 +196,11 @@
           "type": "integer",
           "description": "Total fees due for the billing cycle.",
           "example": 20000
-        }
-      }
-    },
-    "total_amounts_due": {
-      "type": "object",
-      "properties": {
-        "min_pay_fees_cents": {
-          "type": "integer",
-          "description": "Total fees due.",
-          "example": 300000
         },
         "previous_min_pay_cents": {
           "type": "integer",
           "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
           "example": 400000
-        },
-        "current_cycle_min_pay_cents": {
-          "type": "integer",
-          "description": "Current cycle amounts due, including fees. This is a subset of min_pay_cents.",
-          "example": 660000
-        },
-        "min_pay_cents": {
-          "type": "integer",
-          "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding. This sums up `previous_min_pay_cents`, and `current_cycle_min_pay_cents`",
-          "example": 160000
-        },
-        "min_pay_due_at": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The `Date-Time` the payment for this billing cycle is due.",
-          "example": "2019-10-18T23:04:48.321Z"
         }
       }
     },
