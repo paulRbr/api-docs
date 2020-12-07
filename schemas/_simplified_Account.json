@@ -69,7 +69,7 @@
         }
       }
     },
-    "payment_due": {
+    "payment_info": {
       "type": "object",
       "properties": {
         "payment_due_date": {
@@ -133,65 +133,30 @@
           "description": "Total Amount (in cents) that this account can borrow.",
           "example": 400000
         },
-        "max_approve_cents": {
+        "max_approved_credit_limit_cents": {
           "type": "integer",
           "description": "Total Amount (in cents) that this account can borrow.",
           "example": 400000
         },
-        "interest_rate_account_active": {
+        "interest_rate_percent": {
           "type": "number",
           "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
           "example": 3
-        },
-        "interest_rate_account_default": {
-          "type": "number",
-          "description": "The percentage interest applied to the account during default, or non-promotional periods (i.e. 6.2%)",
-          "example": 6.2
         },
         "available_credit_cents": {
           "type": "number",
           "description": "The total available credit balance (in cents) for the account.",
           "example": 100000
         },
-        "late_fee_active_cents": {
+        "late_fee_cents": {
           "type": "number",
           "description": "The fee charged for late payments on the account.",
           "example": 2900
         },
-        "payment_reversal_fee_active_cents": {
+        "payment_reversal_fee_cents": {
           "type": "number",
           "description": "The fee charged for payment reversals on the account.",
           "example": 2900
-        },
-        "purchase_window_start_date": {
-          "type": "string",
-          "format": "datetime",
-          "description": "If applicable, the start date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813Z"
-        },
-        "purchase_window_end_date": {
-          "type": "string",
-          "format": "datetime",
-          "description": "If applicable, the end date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813Z"
-        },
-        "promo_period_start_date": {
-          "type": "string",
-          "format": "datetime",
-          "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813Z"
-        },
-        "promo_period_end_date": {
-          "type": "string",
-          "format": "datetime",
-          "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813Z"
-        },
-        "amortization_roll_date": {
-          "type": "string",
-          "format": "datetime",
-          "description": "If applicable, the date at which the account's principal balance rolls to amortization, generating an amortization schedule.",
-          "example": "2013-01-13T05:25:13.813Z"
         },
         "loan_end_date": {
           "type": "string",
@@ -214,6 +179,61 @@
           "description": "A lender name associated with the account",
           "example": "Globex Lending Corp"
         }
+      }
+    },
+    "promo_overview": {
+      "promo_purchase_window_inclusive_start": {
+        "type": "string",
+        "format": "datetime",
+        "description": "If applicable, the start date for a purchase window for the account",
+        "example": "2013-01-13T05:25:13.813Z"
+      },
+      "promo_purchase_window_exclusive_end": {
+        "type": "string",
+        "format": "datetime",
+        "description": "If applicable, the end date for a purchase window for the account",
+        "example": "2013-01-13T05:25:13.813Z"
+      },
+      "promo_inclusive_start": {
+        "type": "string",
+        "format": "datetime",
+        "description": "If applicable, the start date for a promotional period for the account.",
+        "example": "2013-01-13T05:25:13.813Z"
+      },
+      "promo_exclusive_end": {
+        "type": "string",
+        "format": "datetime",
+        "description": "If applicable, the start date for a promotional period for the account.",
+        "example": "2013-01-13T05:25:13.813Z"
+      },
+      "promo_impl_interest_rate": {
+        "type": "number",
+        "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+        "example": 6.2
+      }
+    },
+    "post_promo_overview": {
+      "post_promo_inclusive_start": {
+        "type": "string",
+        "format": "datetime",
+        "description": "If applicable, the start date for a promotional period for the account.",
+        "example": "2013-01-13T05:25:13.813Z"
+      },
+      "post_promo_exclusive_end": {
+        "type": "string",
+        "format": "datetime",
+        "description": "If applicable, the start date for a promotional period for the account.",
+        "example": "2013-01-13T05:25:13.813Z"
+      },
+      "post_promo_impl_interest_rate": {
+        "type": "number",
+        "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+        "example": 6.2
+      },
+      "post_promo_impl_am_len": {
+        "type": "integer",
+        "description": "If applicable, post-promotional amortization length in cycles.",
+        "example": 48
       }
     },
     "line_items": {
