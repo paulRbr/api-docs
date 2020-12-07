@@ -162,7 +162,7 @@
 					"description": "Default duration for the amortization period during post-promotion",
 					"example": 48
 				},
-				"post_promo_am_len_range_inclusive_u": {
+				"post_promo_am_len_range_inclusive_lower": {
 					"type": "number",
 					"description": "Optional lower bound for amortization length in billing cycles for the product.",
 					"example": 2
