@@ -2,15 +2,9 @@
   "type": "object",
   "description": "Statement for an account for a given billing cycle",
   "required": [
-    "available_credit_balance",
-    "total_balance",
     "account_id",
-    "effective_as_of_date",
-    "min_pay_due_date",
-    "min_pay_amount_cents",
-    "billing_cycle_start_date",
-    "billing_cycle_end_date",
-    "line_items"
+    "statement_id",
+    "effective_as_of_date"
   ],
   "properties": {
     "account_id": {
@@ -18,11 +12,52 @@
       "description": "The Canopy-generated ID for the account",
       "example": 6
     },
+    "statement_id": {
+      "type": "integer",
+      "description": "The Canopy-generated ID for the statement",
+      "example": 8
+    },
     "effective_as_of_date": {
       "type": "string",
       "format": "date-time",
       "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
       "example": "2018-07-20T09:10:14Z"
+    },
+    "account_overview": {
+      "promo_purchase_window_inclusive_start": {
+        "type": "string",
+        "format": "date-time",
+        "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
+        "example": "2015-08-31T10:49:44.461Z"
+      },
+      "promo_purchase_window_exclusive_end": {
+        "type": "string",
+        "format": "date-time",
+        "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
+        "example": "2015-08-31T10:49:44.461Z"
+      },
+      "promo_inclusive_start": {
+        "type": "string",
+        "format": "date-time",
+        "description": "If applicable, the `Date-Time` the promo period for the account starts.",
+        "example": "2015-08-31T10:49:44.461Z"
+      },
+      "promo_exlcusive_end": {
+        "type": "string",
+        "format": "date-time",
+        "description": "If applicable, the `Date-Time` the promo period for the account ends.",
+        "example": "2015-08-31T10:49:44.461Z"
+      },
+      "account_status": {
+        "type": "string",
+        "description": "The Status of the Account. Active upon account creation.",
+        "example": "suspended"
+      },
+      "account_status_subtype": {
+        "type": "string",
+        "description": "The subtype of the Status of the Account. Null upon account creation.",
+        "example": "suspended-bankruptcy"
+      }
     },
     "open_to_buy": {
       "type": "object",
@@ -38,122 +73,145 @@
           "example": 800000
         },
         "available_credit_cents": {
-          "type": "number",
+          "type": "integer",
           "description": "The total available credit balance (in cents) for the account.",
           "example": 600000
         },
-        "purchase_window_close_date": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The `Date-Time` the purchase window for the account ends.",
-          "example": "2015-08-31T10:49:44.461Z"
+        "open_to_buy_cents": {
+          "type": "integer",
+          "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase."
         }
       }
     },
     "billing_cycle_summary": {
       "type": "object",
       "properties": {
-        "billing_cycle_start_date": {
+        "cycle_inclusive_start": {
           "type": "string",
           "format": "date-time",
           "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
         },
-        "billing_cycle_end_date": {
+        "cycle_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
         },
-        "billing_cycle_purchases_cents": {
-          "type": "number",
+        "cycle_charges_cents": {
+          "type": "integer",
           "description": "Sum of all charges that occurred on the account during the billing cycle.",
           "example": 700000
         },
-        "billing_cycle_returns_cents": {
-          "type": "number",
+        "cycle_loans_cents": {
+          "type": "integer",
+          "description": "Sum of all loans amounts that were initiated on the account during the billing cycle.",
+          "example": 700000
+        },
+        "cycle_charge_returns_cents": {
+          "type": "integer",
           "description": "Sum of all returns that occurred on the account during the billing cycle.",
           "example": 100000
         },
-        "billing_cycle_payments_cents": {
-          "type": "number",
+        "cycle_payments_cents": {
+          "type": "integer",
           "description": "Sum of all payments that occurred on the account during the billing cycle.",
           "example": 200000
         },
-        "billing_cycle_payment_reversals_cents": {
-          "type": "number",
+        "cycle_payment_reversals_cents": {
+          "type": "integer",
           "description": "Sum of all payment reversal amounts that occurred on the account during the billing cycle.",
           "example": 200000
         },
-        "billing_cycle_debit_adjustments_cents": {
-          "type": "number",
+        "cycle_debit_adjustments_cents": {
+          "type": "integer",
           "description": "Sum of all debit adjustment amounts that occurred on the account during the billing cycle.",
           "example": 40000
         },
-        "billing_cycle_credit_adjustments_cents": {
-          "type": "number",
+        "cycle_credit_adjustments_cents": {
+          "type": "integer",
           "description": "Sum of all credit adjustment amounts that occurred on the account during the billing cycle.",
           "example": 53000
         },
-        "billing_cycle_interest_accrued_cents": {
-          "type": "number",
+        "cycle_interest_cents": {
+          "type": "integer",
           "description": "Total interest accrued during the billing cycle.",
           "example": 110000
         },
-        "billing_cycle_deferred_interest_accrued_cents": {
-          "type": "number",
+        "cycle_deferred_interest_cents": {
+          "type": "integer",
           "description": "Total interest accrued during the billing cycle.",
           "example": 300000
         },
-        "billing_cycle_late_fees_cents": {
-          "type": "number",
+        "cycle_late_fees_cents": {
+          "type": "integer",
           "description": "Total late fees incurred during the billing cycle.",
           "example": 300000
         },
-        "billing_cycle_payment_reversal_fees_cents": {
-          "type": "number",
+        "cycle_payment_reversals_fees_cents": {
+          "type": "integer",
           "description": "Total payment reversal fees incurred during the billing cycle.",
           "example": 300000
+        },
+        "cycle_forgiven_deferred_interest_cents": {
+          "type": "integer",
+          "description": "Total deferred interest that was forgiven on the account during the billing cycle.",
+          "example": 40000
         }
       }
     },
-    "current_amounts_due": {
+    "cycle_amounts_due": {
       "type": "object",
       "properties": {
-        "current_principal_due_cents": {
-          "type": "number",
-          "description": "Current principal due for the billing cycle.",
+        "min_pay_cents": {
+          "type": "integer",
+          "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
+          "example": 160000
+        },
+        "min_pay_root_principal_cents": {
+          "type": "integer",
+          "description": "Total principal due for the billing cycle.",
           "example": 100000
         },
-        "current_interest_due_cents": {
-          "type": "number",
-          "description": "Current interest due for the billing cycle.",
-          "example": 100000
+        "min_pay_interest_cents": {
+          "type": "integer",
+          "description": "Total interest due for the billing cycle.",
+          "example": 30000
         },
-        "current_deferred_interest_due_cents": {
-          "type": "number",
-          "description": "Current deferred interest due for the billing cycle.",
-          "example": 600000
+        "min_pay_deferred_cents": {
+          "type": "integer",
+          "description": "Total deferred interest due for the billing cycle.",
+          "example": 10000
+        },
+        "min_pay_fees_cents": {
+          "type": "integer",
+          "description": "Total fees due for the billing cycle.",
+          "example": 20000
         }
       }
     },
     "total_amounts_due": {
       "type": "object",
       "properties": {
-        "fees_due_cents": {
-          "type": "number",
+        "min_pay_fees_cents": {
+          "type": "integer",
           "description": "Total fees due.",
           "example": 300000
         },
-        "previous_amount_due_cents": {
-          "type": "number",
-          "description": "Previous amounts due, including fees.",
+        "previous_min_pay_cents": {
+          "type": "integer",
+          "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
           "example": 400000
         },
-        "total_amount_due_cents": {
-          "type": "number",
-          "description": "Total amount due, including fees.",
-          "example": 100000
+        "current_cycle_min_pay_cents": {
+          "type": "integer",
+          "description": "Current cycle amounts due, including fees. This is a subset of min_pay_cents.",
+          "example": 660000
         },
-        "payment_due_date": {
+        "min_pay_cents": {
+          "type": "integer",
+          "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding. This sums up `previous_min_pay_cents`, and `current_cycle_min_pay_cents`",
+          "example": 160000
+        },
+        "min_pay_due_at": {
           "type": "string",
           "format": "date-time",
           "description": "The `Date-Time` the payment for this billing cycle is due.",
@@ -164,28 +222,28 @@
     "balance_summary": {
       "type": "object",
       "properties": {
-        "principal_balance_cents": {
-          "type": "number",
+        "root_principal_balance_cents": {
+          "type": "integer",
           "description": "Total principal balance for the account.",
           "example": 900000
         },
         "interest_balance_cents": {
-          "type": "number",
+          "type": "integer",
           "description": "Total interest balance for the account.",
           "example": 100000
         },
         "deferred_interest_balance_cents": {
-          "type": "number",
+          "type": "integer",
           "description": "Total deferred interest balance for the account.",
           "example": 700000
         },
         "fees_balance_cents": {
-          "type": "number",
+          "type": "integer",
           "description": "Total fee balance for the account.",
           "example": 700000
         },
         "total_balance_cents": {
-          "type": "number",
+          "type": "integer",
           "description": "The total balance (in cents) associated with the account.",
           "example": 400000
         }
@@ -194,8 +252,8 @@
     "payoff": {
       "type": "object",
       "properties": {
-        "total_payoff_amount_cents": {
-          "type": "number",
+        "total_payoff_cents": {
+          "type": "integer",
           "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
           "example": 1100000
         }
