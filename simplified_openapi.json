@@ -997,7 +997,7 @@
         "$ref": "./responses/_simplified_Products.json"
       },
       "CustomerAccounts": {
-        "$ref": "./responses/CustomerAccounts.json"
+        "$ref": "./responses/_simplified_CustomerAccounts.json"
       },
       "CreateCustomer": {
         "$ref": "./responses/CreateCustomer.json"
