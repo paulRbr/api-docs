@@ -69,7 +69,7 @@
         "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
         "example": 2401
       },
-      "principal_balance_cents": {
+      "principal_cents": {
         "type": "integer",
         "description": "The principal balance of the line item.",
         "example": 2400

@@ -38,7 +38,7 @@
         }
       }
     },
-    "min_pay_due": {
+    "min_pay_due_cents": {
       "type": "object",
       "properties": {
         "min_pay_cents": {
