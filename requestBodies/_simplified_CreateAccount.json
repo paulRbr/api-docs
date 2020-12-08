@@ -26,64 +26,79 @@
                 "description": "The Product ID of the account",
                 "example": 6
               },
-              "external_account_ids": {
+              "external_fields": {
                 "type": "array",
-                "description": "An Array of External Account IDs. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
+                "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                 "items": {
                   "type": "object",
                   "properties": {
-                    "name": {
+                    "key": {
                       "type": "string",
-                      "description": "Name of the External Party",
+                      "description": "key: i.e. Name of the External Party",
                       "example": "Umbrella Corporation"
                     },
-                    "id": {
+                    "value": {
                       "type": "string",
-                      "description": "External Account ID",
+                      "description": "value: i.e. External Account ID",
                       "example": "22445702-a389-431f-927d-07b8d0750787"
                     }
                   }
                 }
               },
-              "late_fee_cents": {
-                "type": "number",
-                "description": "The fee charged for late payments on the account.",
-                "example": 2900
+              "summary": {
+                "type": "object",
+                "properties": {
+                  "credit_limit_cents": {
+                    "type": "integer",
+                    "description": "Total Amount (in cents) that this account can borrow.",
+                    "example": 400000
+                  },
+                  "max_approved_credit_limit_cents": {
+                    "type": "integer",
+                    "description": "Total Amount (in cents) that this account can borrow.",
+                    "example": 400000
+                  },
+                  "late_fee_cents": {
+                    "type": "number",
+                    "description": "The fee charged for late payments on the account.",
+                    "example": 2900
+                  },
+                  "payment_reversal_fee_cents": {
+                    "type": "number",
+                    "description": "The fee charged for payment reversals on the account.",
+                    "example": 2900
+                  },
+                  "initial_principal": {
+                    "type": "number",
+                    "description": "The initial principal balance (in cents) for the account.",
+                    "example": 400000
+                  }
+                }
               },
-              "payment_reversal_fee_cents": {
-                "type": "number",
-                "description": "The fee charged for payment reversals on the account.",
-                "example": 2900
+              "promo_overview": {
+                "type": "object",
+                "properties": {
+                  "promo_impl_interest_rate": {
+                    "type": "number",
+                    "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+                    "example": 6.2
+                  }
+                }
               },
-              "initial_principal": {
-                "type": "number",
-                "description": "The initial principal balance (in cents) for the account.",
-                "example": 400000
-              },
-              "credit_limit_cents": {
-                "type": "integer",
-                "description": "Total Amount (in cents) that this account can borrow.",
-                "example": 400000
-              },
-              "max_approve_cents": {
-                "type": "integer",
-                "description": "Total Amount (in cents) that this account can borrow.",
-                "example": 400000
-              },
-              "rate": {
-                "type": "number",
-                "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
-                "example": 6.2
-              },
-              "loan_document": {
-                "type": "string",
-                "description": "The base64-encoded signed loan agreement for the account."
-              },
-              "amortization_duration": {
-                "type": "string",
-                "format": "datetime",
-                "description": "If provided, this will override the amortization duration configured for the product and be used to generate the end date of the loan.",
-                "example": "2013-01-13T05:25:13.813Z"
+              "post_promo_overview": {
+                "type": "object",
+                "properties": {
+                  "post_promo_impl_interest_rate": {
+                    "type": "number",
+                    "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+                    "example": 6.2
+                  },
+                  "post_promo_impl_am_len": {
+                    "type": "integer",
+                    "description": "If applicable, post-promotional amortization length in cycles.",
+                    "example": 48
+                  }
+                }
               },
               "associated_entities": {
                 "type": "object",

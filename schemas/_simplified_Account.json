@@ -50,20 +50,20 @@
       "$ref": "./AccountProduct.json",
       "description": "The product associated with the account"
     },
-    "external_account_ids": {
+    "external_fields": {
       "type": "array",
-      "description": "An Array of External Account IDs. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
+      "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
       "items": {
         "type": "object",
         "properties": {
-          "name": {
+          "key": {
             "type": "string",
-            "description": "Name of the External Party",
+            "description": "key: i.e. Name of the External Party",
             "example": "Umbrella Corporation"
           },
-          "id": {
+          "value": {
             "type": "string",
-            "description": "External Account ID",
+            "description": "value: i.e. External Account ID",
             "example": "22445702-a389-431f-927d-07b8d0750787"
           }
         }
@@ -168,7 +168,73 @@
           "type": "integer",
           "description": "Total number of line items for the account.",
           "example": 200
+        }
+      }
+    },
+    "promo_overview": {
+      "type": "object",
+      "properties": {
+        "promo_purchase_window_inclusive_start": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a purchase window for the account",
+          "example": "2013-01-13T05:25:13.813Z"
         },
+        "promo_purchase_window_exclusive_end": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the end date for a purchase window for the account",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "promo_inclusive_start": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "promo_exclusive_end": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "promo_impl_interest_rate": {
+          "type": "number",
+          "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+          "example": 6.2
+        }
+      }
+    },
+    "post_promo_overview": {
+      "type": "object",
+      "properties": {
+        "post_promo_inclusive_start": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "post_promo_exclusive_end": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "post_promo_impl_interest_rate": {
+          "type": "number",
+          "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+          "example": 6.2
+        },
+        "post_promo_impl_am_len": {
+          "type": "integer",
+          "description": "If applicable, post-promotional amortization length in cycles.",
+          "example": 48
+        }
+      }
+    },
+    "associated_entities": {
+      "type": "object",
+      "properties": {
         "merchant_name": {
           "type": "string",
           "description": "A merchant name associated with the account",
@@ -179,61 +245,6 @@
           "description": "A lender name associated with the account",
           "example": "Globex Lending Corp"
         }
-      }
-    },
-    "promo_overview": {
-      "promo_purchase_window_inclusive_start": {
-        "type": "string",
-        "format": "datetime",
-        "description": "If applicable, the start date for a purchase window for the account",
-        "example": "2013-01-13T05:25:13.813Z"
-      },
-      "promo_purchase_window_exclusive_end": {
-        "type": "string",
-        "format": "datetime",
-        "description": "If applicable, the end date for a purchase window for the account",
-        "example": "2013-01-13T05:25:13.813Z"
-      },
-      "promo_inclusive_start": {
-        "type": "string",
-        "format": "datetime",
-        "description": "If applicable, the start date for a promotional period for the account.",
-        "example": "2013-01-13T05:25:13.813Z"
-      },
-      "promo_exclusive_end": {
-        "type": "string",
-        "format": "datetime",
-        "description": "If applicable, the start date for a promotional period for the account.",
-        "example": "2013-01-13T05:25:13.813Z"
-      },
-      "promo_impl_interest_rate": {
-        "type": "number",
-        "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
-        "example": 6.2
-      }
-    },
-    "post_promo_overview": {
-      "post_promo_inclusive_start": {
-        "type": "string",
-        "format": "datetime",
-        "description": "If applicable, the start date for a promotional period for the account.",
-        "example": "2013-01-13T05:25:13.813Z"
-      },
-      "post_promo_exclusive_end": {
-        "type": "string",
-        "format": "datetime",
-        "description": "If applicable, the start date for a promotional period for the account.",
-        "example": "2013-01-13T05:25:13.813Z"
-      },
-      "post_promo_impl_interest_rate": {
-        "type": "number",
-        "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
-        "example": 6.2
-      },
-      "post_promo_impl_am_len": {
-        "type": "integer",
-        "description": "If applicable, post-promotional amortization length in cycles.",
-        "example": 48
       }
     },
     "line_items": {

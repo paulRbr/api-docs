@@ -1951,15 +1951,17 @@ components:
                         example: 05:00:00
                     description: The Interest Policy Object
                   default_attributes:
-                    default_credit_limit_cents:
-                      type: integer
-                      description: The default maximum principal credit (in cents) available for a
-                        customer account. This default limit can be overridden
-                        on a per-account basis if a `credit_limit` is selected
-                        at the time of assigning an account to a product. Credit
-                        limits for an account can also be updated post-account
-                        creation.
-                      example: 600000
+                    type: object
+                    properties:
+                      default_credit_limit_cents:
+                        type: integer
+                        description: The default maximum principal credit (in cents) available for a
+                          customer account. This default limit can be overridden
+                          on a per-account basis if a `credit_limit` is selected
+                          at the time of assigning an account to a product.
+                          Credit limits for an account can also be updated
+                          post-account creation.
+                        example: 600000
               promotional_policies:
                 type: object
                 description: If applicable, a promotional configuration for the product.
@@ -2006,40 +2008,42 @@ components:
                   description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
                   example: 5
               post_promotional_policies:
-                post_promo_default_am_len:
-                  type: integer
-                  description: Default duration for the amortization period during post-promotion
-                  example: 48
-                post_promo_am_len_range_inclusive_u:
-                  type: number
-                  description: Optional lower bound for amortization length in billing cycles for
-                    the product.
-                  example: 2
-                post_promo_am_len_range_inclusive_upper:
-                  type: number
-                  description: Optional upper bound for amortization length in billing cycles for
-                    the product.
-                  example: 5
-                post_promo_min_pay_type:
-                  type: string
-                  enum:
-                    - AM
-                    - "%INTEREST"
-                    - "%PRINCIPAL"
-                  description: Current due calculation method for the post-promotional period.
-                post_promo_default_interest_rate_percent:
-                  type: number
-                  description: The rate that serves as the active interest rate for accounts
-                    during the post-promotional period.
-                  example: 3
-                promo_apr_range_inclusive_lower:
-                  type: number
-                  description: Optional lower bound for APR Range for the product (i.e. 2 = 2%).
-                  example: 2
-                promo_apr_range_inclusive_upper:
-                  type: number
-                  description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
-                  example: 5
+                type: object
+                properties:
+                  post_promo_default_am_len:
+                    type: integer
+                    description: Default duration for the amortization period during post-promotion
+                    example: 48
+                  post_promo_am_len_range_exclusive_lower:
+                    type: number
+                    description: Optional lower bound for amortization length in billing cycles for
+                      the product.
+                    example: 2
+                  post_promo_am_len_range_inclusive_upper:
+                    type: number
+                    description: Optional upper bound for amortization length in billing cycles for
+                      the product.
+                    example: 5
+                  post_promo_min_pay_type:
+                    type: string
+                    enum:
+                      - AM
+                      - "%INTEREST"
+                      - "%PRINCIPAL"
+                    description: Current due calculation method for the post-promotional period.
+                  post_promo_default_interest_rate_percent:
+                    type: number
+                    description: The rate that serves as the active interest rate for accounts
+                      during the post-promotional period.
+                    example: 3
+                  promo_apr_range_inclusive_lower:
+                    type: number
+                    description: Optional lower bound for APR Range for the product (i.e. 2 = 2%).
+                    example: 2
+                  promo_apr_range_inclusive_upper:
+                    type: number
+                    description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
+                    example: 5
     CreateCustomer:
       description: Create a new customer
       required:
@@ -2270,57 +2274,65 @@ components:
                     type: integer
                     description: The Product ID of the account
                     example: 6
-                  external_account_ids:
+                  external_fields:
                     type: array
-                    description: An Array of External Account IDs. These should be used to connect
+                    description: An Array of External Fields. These should be used to connect
                       accounts created in Canopy to Users in your system and any
                       connected external systems.
                     items:
                       type: object
                       properties:
-                        name:
+                        key:
                           type: string
-                          description: Name of the External Party
+                          description: "key: i.e. Name of the External Party"
                           example: Umbrella Corporation
-                        id:
+                        value:
                           type: string
-                          description: External Account ID
+                          description: "value: i.e. External Account ID"
                           example: 22445702-a389-431f-927d-07b8d0750787
-                  late_fee_cents:
-                    type: number
-                    description: The fee charged for late payments on the account.
-                    example: 2900
-                  payment_reversal_fee_cents:
-                    type: number
-                    description: The fee charged for payment reversals on the account.
-                    example: 2900
-                  initial_principal:
-                    type: number
-                    description: The initial principal balance (in cents) for the account.
-                    example: 400000
-                  credit_limit_cents:
-                    type: integer
-                    description: Total Amount (in cents) that this account can borrow.
-                    example: 400000
-                  max_approve_cents:
-                    type: integer
-                    description: Total Amount (in cents) that this account can borrow.
-                    example: 400000
-                  rate:
-                    type: number
-                    description: The percentage interest applied to the account (i.e. 6.2 means
-                      6.2%)
-                    example: 6.2
-                  loan_document:
-                    type: string
-                    description: The base64-encoded signed loan agreement for the account.
-                  amortization_duration:
-                    type: string
-                    format: datetime
-                    description: If provided, this will override the amortization duration
-                      configured for the product and be used to generate the end
-                      date of the loan.
-                    example: 2013-01-13T05:25:13.813Z
+                  summary:
+                    type: object
+                    properties:
+                      credit_limit_cents:
+                        type: integer
+                        description: Total Amount (in cents) that this account can borrow.
+                        example: 400000
+                      max_approved_credit_limit_cents:
+                        type: integer
+                        description: Total Amount (in cents) that this account can borrow.
+                        example: 400000
+                      late_fee_cents:
+                        type: number
+                        description: The fee charged for late payments on the account.
+                        example: 2900
+                      payment_reversal_fee_cents:
+                        type: number
+                        description: The fee charged for payment reversals on the account.
+                        example: 2900
+                      initial_principal:
+                        type: number
+                        description: The initial principal balance (in cents) for the account.
+                        example: 400000
+                  promo_overview:
+                    type: object
+                    properties:
+                      promo_impl_interest_rate:
+                        type: number
+                        description: The percentage interest applied to the account during the
+                          promotional period (i.e. 6.2%)
+                        example: 6.2
+                  post_promo_overview:
+                    type: object
+                    properties:
+                      post_promo_impl_interest_rate:
+                        type: number
+                        description: The percentage interest applied to the account during the
+                          post-promotional period (i.e. 6.2%)
+                        example: 6.2
+                      post_promo_impl_am_len:
+                        type: integer
+                        description: If applicable, post-promotional amortization length in cycles.
+                        example: 48
                   associated_entities:
                     type: object
                     properties:
@@ -2975,21 +2987,21 @@ components:
                                     origination under which this product falls
                                     under a purchas window period.
                                   example: 5
-                        external_account_ids:
+                        external_fields:
                           type: array
-                          description: An Array of External Account IDs. These should be used to connect
+                          description: An Array of External Fields. These should be used to connect
                             accounts created in Canopy to Users in your system
                             and any connected external systems.
                           items:
                             type: object
                             properties:
-                              name:
+                              key:
                                 type: string
-                                description: Name of the External Party
+                                description: "key: i.e. Name of the External Party"
                                 example: Umbrella Corporation
-                              id:
+                              value:
                                 type: string
-                                description: External Account ID
+                                description: "value: i.e. External Account ID"
                                 example: 22445702-a389-431f-927d-07b8d0750787
                         payment_info:
                           type: object
@@ -3077,6 +3089,63 @@ components:
                               type: integer
                               description: Total number of line items for the account.
                               example: 200
+                        promo_overview:
+                          type: object
+                          properties:
+                            promo_purchase_window_inclusive_start:
+                              type: string
+                              format: datetime
+                              description: If applicable, the start date for a purchase window for the account
+                              example: 2013-01-13T05:25:13.813Z
+                            promo_purchase_window_exclusive_end:
+                              type: string
+                              format: datetime
+                              description: If applicable, the end date for a purchase window for the account
+                              example: 2013-01-13T05:25:13.813Z
+                            promo_inclusive_start:
+                              type: string
+                              format: datetime
+                              description: If applicable, the start date for a promotional period for the
+                                account.
+                              example: 2013-01-13T05:25:13.813Z
+                            promo_exclusive_end:
+                              type: string
+                              format: datetime
+                              description: If applicable, the start date for a promotional period for the
+                                account.
+                              example: 2013-01-13T05:25:13.813Z
+                            promo_impl_interest_rate:
+                              type: number
+                              description: The percentage interest applied to the account during the
+                                promotional period (i.e. 6.2%)
+                              example: 6.2
+                        post_promo_overview:
+                          type: object
+                          properties:
+                            post_promo_inclusive_start:
+                              type: string
+                              format: datetime
+                              description: If applicable, the start date for a promotional period for the
+                                account.
+                              example: 2013-01-13T05:25:13.813Z
+                            post_promo_exclusive_end:
+                              type: string
+                              format: datetime
+                              description: If applicable, the start date for a promotional period for the
+                                account.
+                              example: 2013-01-13T05:25:13.813Z
+                            post_promo_impl_interest_rate:
+                              type: number
+                              description: The percentage interest applied to the account during the
+                                post-promotional period (i.e. 6.2%)
+                              example: 6.2
+                            post_promo_impl_am_len:
+                              type: integer
+                              description: If applicable, post-promotional amortization length in cycles.
+                              example: 48
+                        associated_entities:
+                          type: object
+                          properties:
                             merchant_name:
                               type: string
                               description: A merchant name associated with the account
@@ -3085,56 +3154,6 @@ components:
                               type: string
                               description: A lender name associated with the account
                               example: Globex Lending Corp
-                        promo_overview:
-                          promo_purchase_window_inclusive_start:
-                            type: string
-                            format: datetime
-                            description: If applicable, the start date for a purchase window for the account
-                            example: 2013-01-13T05:25:13.813Z
-                          promo_purchase_window_exclusive_end:
-                            type: string
-                            format: datetime
-                            description: If applicable, the end date for a purchase window for the account
-                            example: 2013-01-13T05:25:13.813Z
-                          promo_inclusive_start:
-                            type: string
-                            format: datetime
-                            description: If applicable, the start date for a promotional period for the
-                              account.
-                            example: 2013-01-13T05:25:13.813Z
-                          promo_exclusive_end:
-                            type: string
-                            format: datetime
-                            description: If applicable, the start date for a promotional period for the
-                              account.
-                            example: 2013-01-13T05:25:13.813Z
-                          promo_impl_interest_rate:
-                            type: number
-                            description: The percentage interest applied to the account during the
-                              promotional period (i.e. 6.2%)
-                            example: 6.2
-                        post_promo_overview:
-                          post_promo_inclusive_start:
-                            type: string
-                            format: datetime
-                            description: If applicable, the start date for a promotional period for the
-                              account.
-                            example: 2013-01-13T05:25:13.813Z
-                          post_promo_exclusive_end:
-                            type: string
-                            format: datetime
-                            description: If applicable, the start date for a promotional period for the
-                              account.
-                            example: 2013-01-13T05:25:13.813Z
-                          post_promo_impl_interest_rate:
-                            type: number
-                            description: The percentage interest applied to the account during the
-                              post-promotional period (i.e. 6.2%)
-                            example: 6.2
-                          post_promo_impl_am_len:
-                            type: integer
-                            description: If applicable, post-promotional amortization length in cycles.
-                            example: 48
                         line_items:
                           type: array
                           items:
@@ -3164,51 +3183,56 @@ components:
                                 format: uuid
                                 example: 158cd7a1-d813-42d2-90a3-9a91c43f18f8
                               line_item_overview:
-                                line_item_status:
-                                  type: string
-                                  description: the corresponding Status for a line item
-                                  enum:
-                                    - VALID
-                                    - INVALID
-                                  example: VALID
-                                line_item_type:
-                                  type: string
-                                  description: The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
-                                  enum:
-                                    - CHARGE
-                                    - PAYMENT
-                                    - FEE
-                                  example: CHARGE
-                                description:
-                                  type: string
-                                  description: A description of this particular line item if any. More common for
-                                    adjustments.
-                                  example: Refund for invalid purchase
-                                dispute_id:
-                                  type: string
-                                  format: uuid
-                                  description: The ID for a dispute if present for this line item.
+                                type: object
+                                properties:
+                                  line_item_status:
+                                    type: string
+                                    description: the corresponding Status for a line item
+                                    enum:
+                                      - VALID
+                                      - INVALID
+                                    example: VALID
+                                  line_item_type:
+                                    type: string
+                                    description: The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
+                                    enum:
+                                      - CHARGE
+                                      - PAYMENT
+                                      - FEE
+                                    example: CHARGE
+                                  description:
+                                    type: string
+                                    description: A description of this particular line item if any. More common for
+                                      adjustments.
+                                    example: Refund for invalid purchase
+                                  dispute_id:
+                                    type: string
+                                    format: uuid
+                                    description: The ID for a dispute if present for this line item.
                               line_item_summary:
-                                original_amount_cents:
-                                  type: integer
-                                  description: The originating amount of money (in cents) relating to this line
-                                    item.
-                                  example: 2385
-                                balance_cents:
-                                  type: integer
-                                  description: The current balance of the line item, which accounts for interest
-                                    accrued per the `product's` interest policy
-                                    and the `account's` interest rate attribute.
-                                  example: 2401
-                                principal_balance_cents:
-                                  type: integer
-                                  description: The principal balance of the line item.
-                                  example: 2400
-                                total_interest_accrued_cents:
-                                  type: integer
-                                  description: The sum (in cents) of all interest charges, if any, applied to this
-                                    line item
-                                  example: 16
+                                type: object
+                                properties:
+                                  original_amount_cents:
+                                    type: integer
+                                    description: The originating amount of money (in cents) relating to this line
+                                      item.
+                                    example: 2385
+                                  balance_cents:
+                                    type: integer
+                                    description: The current balance of the line item, which accounts for interest
+                                      accrued per the `product's` interest
+                                      policy and the `account's` interest rate
+                                      attribute.
+                                    example: 2401
+                                  principal_balance_cents:
+                                    type: integer
+                                    description: The principal balance of the line item.
+                                    example: 2400
+                                  total_interest_accrued_cents:
+                                    type: integer
+                                    description: The sum (in cents) of all interest charges, if any, applied to this
+                                      line item
+                                    example: 16
                               merchant_data:
                                 type: object
                                 description: Merchant information if applicable.
