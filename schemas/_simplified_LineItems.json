@@ -32,56 +32,62 @@
         "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
       },
       "line_item_overview": {
-        "line_item_status": {
-          "type": "string",
-          "description": "the corresponding Status for a line item",
-          "enum": [
-            "VALID",
-            "INVALID"
-          ],
-          "example": "VALID"
-        },
-        "line_item_type": {
-          "type": "string",
-          "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-          "enum": [
-            "CHARGE",
-            "PAYMENT",
-            "FEE"
-          ],
-          "example": "CHARGE"
-        },
-        "description": {
-          "type": "string",
-          "description": "A description of this particular line item if any. More common for adjustments.",
-          "example": "Refund for invalid purchase"
-        },
-        "dispute_id": {
-          "type": "string",
-          "format": "uuid",
-          "description": "The ID for a dispute if present for this line item."
+        "type": "object",
+        "properties": {
+          "line_item_status": {
+            "type": "string",
+            "description": "the corresponding Status for a line item",
+            "enum": [
+              "VALID",
+              "INVALID"
+            ],
+            "example": "VALID"
+          },
+          "line_item_type": {
+            "type": "string",
+            "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+            "enum": [
+              "CHARGE",
+              "PAYMENT",
+              "FEE"
+            ],
+            "example": "CHARGE"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of this particular line item if any. More common for adjustments.",
+            "example": "Refund for invalid purchase"
+          },
+          "dispute_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID for a dispute if present for this line item."
+          }
         }
       },
       "line_item_summary": {
-        "original_amount_cents": {
-          "type": "integer",
-          "description": "The originating amount of money (in cents) relating to this line item.",
-          "example": 2385
-        },
-        "balance_cents": {
-          "type": "integer",
-          "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-          "example": 2401
-        },
-        "principal_balance_cents": {
-          "type": "integer",
-          "description": "The principal balance of the line item.",
-          "example": 2400
-        },
-        "total_interest_accrued_cents": {
-          "type": "integer",
-          "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-          "example": 16
+        "type": "object",
+        "properties": {
+          "original_amount_cents": {
+            "type": "integer",
+            "description": "The originating amount of money (in cents) relating to this line item.",
+            "example": 2385
+          },
+          "balance_cents": {
+            "type": "integer",
+            "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+            "example": 2401
+          },
+          "principal_balance_cents": {
+            "type": "integer",
+            "description": "The principal balance of the line item.",
+            "example": 2400
+          },
+          "total_interest_accrued_cents": {
+            "type": "integer",
+            "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
+            "example": 16
+          }
         }
       },
       "merchant_data": {
