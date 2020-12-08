@@ -11,18 +11,6 @@
 					"example": 10005
 				}
 			}
-		},
-		"product_id": {
-			"type": "string",
-			"format": "uuid",
-			"description": "The Canopy-generated ID for the product.",
-			"example": "ca3cf4e9-5048-4461-a763-8f67b46dfd4d"
-		},
-		"effective_as_of_date": {
-			"type": "string",
-			"format": "date-time",
-			"description": "The `Date-Time` you would like the system to return the data as of. IE \"tell me what the product information was as if I had asked on `2020-01-20 00:00:00 EST`\". If empty defaults to current time.",
-			"example": "2017-06-20T09:12:14Z"
 		}
 	}
 }
