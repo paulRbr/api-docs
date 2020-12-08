@@ -8,17 +8,17 @@
       "email": "will@canopyservicing.com"
     },
     "version": "1.3"
-	},
-	"x-topics": [
-		{
-			"title": "Getting Started",
-			"content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:support@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
-		},
-		{
-			"title": "Authentication",
-			"content": "To create your organization within Canopy, [contact our team](mailto:support@canopyservicing.com?subject=API%20Access%20Request). Once created, review our API Users routes to handle all subsequent authentication-related activities, including inviting your team members to join your organization."
-		}
-	],
+  },
+  "x-topics": [
+    {
+      "title": "Getting Started",
+      "content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:support@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
+    },
+    {
+      "title": "Authentication",
+      "content": "To create your organization within Canopy, [contact our team](mailto:support@canopyservicing.com?subject=API%20Access%20Request). Once created, review our API Users routes to handle all subsequent authentication-related activities, including inviting your team members to join your organization."
+    }
+  ],
   "servers": [
     {
       "url": "https://sandbox.canopyservicing.com",
@@ -67,9 +67,7 @@
   "paths": {
     "/api_users": {
       "post": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Invite a new API user to Canopy",
         "operationId": "createApiUser",
         "description": "When you create a new API user via this `POST` request, an email invite will be sent for the new user to join your organization. The email invite includes a link with a unique token that will allow the new user to register to join your team in Canopy.",
@@ -88,15 +86,11 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Get all API users in your organization",
         "description": "Returns a list of all API users in your organization.",
         "operationId": "getApiUsers",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ApiUsers"
@@ -109,9 +103,7 @@
     },
     "/api_users/login": {
       "post": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Log in as an API user",
         "operationId": "logInApiUser",
         "description": "When provided appropriate credentials, this route signs in an API user.",
@@ -127,9 +119,7 @@
     },
     "/api_users/password": {
       "put": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Update the password for an API User",
         "operationId": "updateApiUserPassword",
         "description": "When provided appropriate credentials, this route changes an API User's password.",
@@ -145,9 +135,7 @@
     },
     "/api_users/register": {
       "put": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Complete registration for an invited API user",
         "operationId": "registerApiUserPassword",
         "description": "When provided appropriate credentials, this route updates an API user's information for registration.",
@@ -168,15 +156,11 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Get summary info for an API user",
         "description": "Get all summarized information pertaining to the API user making the request.",
         "operationId": "getApiUser",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ApiUser"
@@ -194,9 +178,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "products"
-        ],
+        "tags": ["products"],
         "summary": "Create a new product",
         "operationId": "createProduct",
         "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
@@ -218,9 +200,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "products"
-        ],
+        "tags": ["products"],
         "summary": "Get all available products",
         "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
         "operationId": "getProducts",
@@ -262,9 +242,7 @@
     },
     "/customers/accounts": {
       "get": {
-        "tags": [
-          "customers"
-        ],
+        "tags": ["customers"],
         "summary": "Get all accounts for all customers",
         "description": "Returns all accounts from the perspective of each customer. For instance, if one account has two customers, these are reflected as two separate items in the response array. Similarly, if one customer has multiple accounts, each account is reflected as a separate item in the response array.",
         "operationId": "getCustomersAccounts",
@@ -311,9 +289,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "customers"
-        ],
+        "tags": ["customers"],
         "summary": "Create a new customer",
         "operationId": "CreateCustomer",
         "description": "Customer can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
@@ -334,9 +310,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "customers"
-        ],
+        "tags": ["customers"],
         "summary": "Update an existing customer",
         "operationId": "UpdateCustomer",
         "description": "Update data for a customer in Canopy.",
@@ -350,12 +324,12 @@
             "explode": true,
             "schema": {
               "type": "string",
-							"format": "uuid",
+              "format": "uuid",
               "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
             }
           }
-				],
-				"requestBody": {
+        ],
+        "requestBody": {
           "$ref": "#/components/requestBodies/UpdateCustomer"
         },
         "responses": {
@@ -364,26 +338,24 @@
           }
         }
       },
-			"get": {
-				"tags": [
-          "customers"
-        ],
+      "get": {
+        "tags": ["customers"],
         "summary": "Get a specific customer",
         "description": "Returns summary information for a specific customer.",
         "operationId": "getCustomer",
         "parameters": [
-					{
-						"name": "customer_id",
-						"in": "path",
-						"description": "The ID of the customer to return.",
-						"required": true,
-						"style": "simple",
-						"example": true,
-						"schema": {
-							"type": "string",
-							"example": "Coco Parker"
-						}
-					}
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "The ID of the customer to return.",
+            "required": true,
+            "style": "simple",
+            "example": true,
+            "schema": {
+              "type": "string",
+              "example": "Coco Parker"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -393,7 +365,7 @@
             "description": "Unable to get customer"
           }
         }
-			}
+      }
     },
     "/accounts": {
       "post": {
@@ -402,9 +374,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "summary": "Create a new account",
         "description": "At least one account should be created for customer of each of your products. Once created, you will be able to add `line_items` to the account.",
         "operationId": "createAccount",
@@ -423,9 +393,7 @@
     },
     "/accounts/{account_id}": {
       "get": {
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "summary": "Get a specific Account",
         "description": "",
         "operationId": "getAccount",
@@ -455,15 +423,13 @@
       }
     },
     "/accounts/{account_id}/notes": {
-			"post": {
-				"tags": [
-          "notes"
-        ],
+      "post": {
+        "tags": ["notes"],
         "summary": "Create a note for a specific account.",
         "description": "A note to be added to the account.",
-				"operationId": "createAccountNote",
-				"parameters": [
-					{
+        "operationId": "createAccountNote",
+        "parameters": [
+          {
             "name": "account_id",
             "in": "path",
             "description": "Account ID",
@@ -475,20 +441,18 @@
               "format": "uuid"
             }
           }
-				],
-				"requestBody": {
+        ],
+        "requestBody": {
           "$ref": "#/components/requestBodies/CreateNote"
-				},
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/CreateNote"
-					}
-				}
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateNote"
+          }
+        }
       },
       "get": {
-        "tags": [
-          "notes"
-        ],
+        "tags": ["notes"],
         "summary": "Get All Notes for a specific Account",
         "description": "",
         "operationId": "getNotes",
@@ -505,23 +469,21 @@
               "format": "uuid",
               "example": "a361c813-92e5-4765-82ea-9df368a81a89"
             }
-					}
+          }
         ],
         "responses": {
-					"200": {
-						"$ref": "#/components/responses/Notes"
-					},
+          "200": {
+            "$ref": "#/components/responses/Notes"
+          },
           "404": {
             "description": "Account not found"
           }
         }
-			}
+      }
     },
     "/accounts/{account_id}/line_items": {
       "get": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Get line items for a specific account.",
         "description": "Line Items for an Account include `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
         "operationId": "getAccountLineItems",
@@ -575,9 +537,7 @@
     },
     "/accounts/{account_id}/line_items/{line_item_id}": {
       "get": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Get information on a specific line item for a specific account",
         "description": "",
         "operationId": "getAccountLineItem",
@@ -618,9 +578,7 @@
     },
     "/accounts/{account_id}/line_items/charges": {
       "post": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Create a charge for a specific account",
         "description": "",
         "operationId": "createAccountCharge",
@@ -659,9 +617,7 @@
     },
     "/accounts/{account_id}/line_items/payments": {
       "post": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Create a payment for a specific account",
         "description": "",
         "operationId": "createAccountPayment",
@@ -694,9 +650,7 @@
     },
     "/accounts/{account_id}/statements/list": {
       "get": {
-        "tags": [
-          "statements"
-        ],
+        "tags": ["statements"],
         "summary": "Get a list of all current and prior statements for a specific account",
         "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
         "operationId": "getAccountStatementsList",
@@ -709,7 +663,7 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "integer",
+              "type": "integer"
             }
           },
           {
@@ -756,9 +710,7 @@
     },
     "/accounts/{account_id}/{loan_id}/amortization_schedule": {
       "get": {
-        "tags": [
-          "amortization_schedule"
-        ],
+        "tags": ["amortization_schedule"],
         "summary": "Get the amortization schedule for a specific loan",
         "description": "",
         "operationId": "getAmortizationSchedule",
@@ -808,11 +760,9 @@
         }
       }
     },
-		"/accounts/{account_id}/statements/{statement_id}": {
+    "/accounts/{account_id}/statements/{statement_id}": {
       "get": {
-        "tags": [
-          "statements"
-        ],
+        "tags": ["statements"],
         "summary": "Get a specific statement for a specific account.",
         "description": "This will return a statement that corresponds with the passed Statement ID. Relevant IDs for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
         "operationId": "getAccountStatement",
@@ -841,8 +791,8 @@
               "format": "date-time"
             }
           }
-				],
-				"responses": {
+        ],
+        "responses": {
           "200": {
             "$ref": "#/components/responses/AccountStatement"
           },
@@ -851,7 +801,7 @@
           }
         }
       }
-		}
+    }
   },
   "components": {
     "securitySchemes": {

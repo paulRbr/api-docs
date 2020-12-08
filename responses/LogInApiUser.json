@@ -4,13 +4,7 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": [
-          "api_user_id",
-          "organization_name",
-          "email",
-          "role",
-          "token"
-        ],
+        "required": ["api_user_id", "organization_name", "email", "role", "token"],
         "properties": {
           "api_user_id": {
             "type": "string",

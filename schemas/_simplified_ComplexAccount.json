@@ -1,6 +1,6 @@
 {
   "allOf": [
-    {"$ref": "./_simplified_Account.json"},
+    { "$ref": "./_simplified_Account.json" },
     {
       "type": "object",
       "properties": {

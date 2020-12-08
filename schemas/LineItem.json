@@ -26,26 +26,13 @@
     "line_item_status": {
       "type": "string",
       "description": "the corresponding Status for a line item",
-      "enum": [
-        "posted",
-        "valid",
-        "invalid",
-        "declined",
-        "authorized",
-        "void",
-        "pending",
-        "successful",
-        "unsuccessful"
-      ],
+      "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
       "example": "posted"
     },
     "line_item_type": {
       "type": "string",
       "description": "The Line Item Type. Either `charge` or `payment`.",
-      "enum": [
-        "charge",
-        "payment"
-      ],
+      "enum": ["charge", "payment"],
       "example": "charge"
     },
     "original_amount_cents": {

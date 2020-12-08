@@ -5,9 +5,7 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "additionalProperties": false,
         "properties": {
           "name": {
@@ -18,9 +16,7 @@
           "type": {
             "type": "string",
             "description": "The Type of Product. If not included, defaults to `credit`",
-            "enum": [
-              "credit"
-            ],
+            "enum": ["credit"],
             "example": "credit"
           },
           "default_rate": {

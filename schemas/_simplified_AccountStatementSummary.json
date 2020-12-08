@@ -1,11 +1,7 @@
 {
   "type": "object",
   "description": "Statement for an account for a given billing cycle",
-  "required": [
-    "account_id",
-    "statement_id",
-    "effective_as_of_date"
-  ],
+  "required": ["account_id", "statement_id", "effective_as_of_date"],
   "properties": {
     "account_id": {
       "type": "integer",

@@ -1,9 +1,6 @@
 {
   "type": "object",
-  "required": [
-    "period",
-    "billing_due_date_interval"
-  ],
+  "required": ["period", "billing_due_date_interval"],
   "properties": {
     "period": {
       "type": "string",

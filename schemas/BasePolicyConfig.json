@@ -1,12 +1,7 @@
 {
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "min_pay",
-    "billing_cycle",
-    "interest_policies",
-    "close_of_business_and_timezone"
-  ],
+  "required": ["min_pay", "billing_cycle", "interest_policies", "close_of_business_and_timezone"],
   "properties": {
     "min_pay": {
       "$ref": "./BasePolicyConfigMinPay.json"

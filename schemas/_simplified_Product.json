@@ -1,209 +1,213 @@
 {
-	"required": [
-		"policies",
-		"product_id",
-		"name",
-		"description",
-		"created_at",
-		"type",
-		"policies",
-		"product_summary",
-		"default_attributes"
-	],
-	"type": "object",
-	"additionalProperties": false,
-	"properties": {
-		"product_id": {
-			"type": "integer",
-			"description": "The Canopy-generated ID for the product.",
-			"example": 6
-		},
-		"external_product_id": {
-			"type": "string",
-			"description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-			"example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
-		},
-		"created_at": {
-			"type": "string",
-			"description": "The `Date-Time` that this product was created on the server.",
-			"format": "date-time",
-			"example": "2019-03-20T09:12:28Z"
-		},
-		"product_overview": {
-			"type": "object",
-			"description": "A series of static fields about the product.",
-			"properties": {
-				"product_name": {
-					"type": "string",
-					"description": "Name of Product, i.e. Express Card.",
-					"example": "Blue Cash Express"
-				},
-				"product_type": {
-					"type": "string",
-					"description": "The Type of Product",
-					"enum": [
-						"REVOLVING", "INSTALLMENT", "MIXED_RATE_INSTALLMENT", "DEFERRED_INSTALLMENT", "FIXED_RATE_INSTALLMENT"
-					],
-					"example": "REVOLVING"
-				},
-				"product_short_description": {
-					"type": "string",
-					"description": "A short description of the product ranging from 0 - 60 characters.",
-					"example": "12mm3apr."
-				},
-				"product_long_description": {
-					"type": "string",
-					"description": "Description of the Product ranging from 0 - 1000.",
-					"example": "Student credit card."
-				},
-				"product_color": {
-					"type": "string",
-					"description": "A color to be associated with the product for UI purposes.",
-					"example": "#0000FF"
-				},
-				"external_fields": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"key": {
-								"type": "string",
-								"example": "client_product_id"
-							},
-							"value": {
-								"type": "string",
-								"example": "3e93a899-d267-4193-8509-6dba53c13b7b"
-							}
-						}
-					}
-				}
-			}
-		},
-		"product_lifecycle_policies": {
-			"type": "object",
-			"properties": {
-				"payment_due_policies": {
-					"$ref": "./_simplified_PaymentDuePolicies.json"
-				},
-				"fee_policies": {
-					"$ref": "./_simplified_FeePolicies.json"
-				},
-				"billing_cycle_policies": {
-					"$ref": "./_simplified_BillingCyclePolicies.json"
-				},
-				"interest_policies": {
-					"$ref": "./_simplified_InterestPolicies.json"
-				},
-				"default_attributes": {
-					"type": "object",
-					"properties": {
-						"default_credit_limit_cents": {
-							"type": "integer",
-							"description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
-							"example": 600000
-						},
-						"default_late_fee_cents": {
-							"type": "integer",
-							"description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
-							"example": 600000
-						},
-						"default_payment_reversal_fee_cents": {
-							"type": "integer",
-							"description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
-							"example": 600000
-						}
-					}
-				}
-			}
-		},
-		"promotional_policies": {
-			"type": "object",
-			"description": "If applicable, a promotional configuration for the product.",
-			"properties": {
-				"promo_len": {
-					"type": "integer",
-					"description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
-					"example": 6
-				},
-				"post_promo_min_pay_type": {
-					"type": "string",
-					"enum": ["AM", "%INTEREST", "%PRINCIPAL"],
-					"description": "Current due calculation method for the promotional period."
-				},
-				"promo_purchase_window_len": {
-					"type": "number",
-					"description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
-					"example": 5
-				},
-				"promotion_min_payments": {
-					"type": "boolean",
-					"description": "Whether minimum payments are due during the promotional period or not.",
-					"example": false
-				},
-				"promo_interest_deferred": {
-					"type": "boolean",
-					"description": "Indicates whether interest accrued during the promotional period is deferred interest.",
-					"example": true
-				},
-				"promo_default_interest_rate": {
-					"type": "number",
-					"description": "The rate that serves as the active interest rate for accounts during the promotional period.",
-					"example": 3
-				},
-				"promo_apr_range_inclusive_lower": {
-					"type": "number",
-					"description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
-					"example": 2
-				},
-				"promo_apr_range_inclusive_upper": {
-					"type": "number",
-					"description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
-					"example": 5
-				}
-			}
-		},
-		"post_promotional_policies": {
-			"type": "object",
-			"properties": {
-				"post_promo_default_am_len": {
-					"type": "integer",
-					"description": "Default duration for the amortization period during post-promotion",
-					"example": 48
-				},
-				"post_promo_am_len_range_inclusive_lower": {
-					"type": "number",
-					"description": "Optional lower bound for amortization length in billing cycles for the product.",
-					"example": 2
-				},
-				"post_promo_am_len_range_inclusive_upper": {
-					"type": "number",
-					"description": "Optional upper bound for amortization length in billing cycles for the product.",
-					"example": 5
-				},
-				"post_promo_min_pay_type": {
-					"type": "string",
-					"enum": ["AM", "%INTEREST", "%PRINCIPAL"],
-					"description": "Current due calculation method for the post-promotional period."
-				},
-				"post_promo_default_interest_rate": {
-					"type": "number",
-					"description": "The rate that serves as the active interest rate for accounts during the post-promotional period.",
-					"example": 3
-				},
-				"promo_apr_range_inclusive_lower": {
-					"type": "number",
-					"description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
-					"example": 2
-				},
-				"promo_apr_range_inclusive_upper": {
-					"type": "number",
-					"description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
-					"example": 5
-				}
-			}
-		},
-		"product_summary": {
-			"$ref": "./_simplified_ProductSummary.json"
-		}
-	}
+  "required": [
+    "policies",
+    "product_id",
+    "name",
+    "description",
+    "created_at",
+    "type",
+    "policies",
+    "product_summary",
+    "default_attributes"
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "product_id": {
+      "type": "integer",
+      "description": "The Canopy-generated ID for the product.",
+      "example": 6
+    },
+    "external_product_id": {
+      "type": "string",
+      "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The `Date-Time` that this product was created on the server.",
+      "format": "date-time",
+      "example": "2019-03-20T09:12:28Z"
+    },
+    "product_overview": {
+      "type": "object",
+      "description": "A series of static fields about the product.",
+      "properties": {
+        "product_name": {
+          "type": "string",
+          "description": "Name of Product, i.e. Express Card.",
+          "example": "Blue Cash Express"
+        },
+        "product_type": {
+          "type": "string",
+          "description": "The Type of Product",
+          "enum": [
+            "REVOLVING",
+            "INSTALLMENT",
+            "MIXED_RATE_INSTALLMENT",
+            "DEFERRED_INSTALLMENT",
+            "FIXED_RATE_INSTALLMENT"
+          ],
+          "example": "REVOLVING"
+        },
+        "product_short_description": {
+          "type": "string",
+          "description": "A short description of the product ranging from 0 - 60 characters.",
+          "example": "12mm3apr."
+        },
+        "product_long_description": {
+          "type": "string",
+          "description": "Description of the Product ranging from 0 - 1000.",
+          "example": "Student credit card."
+        },
+        "product_color": {
+          "type": "string",
+          "description": "A color to be associated with the product for UI purposes.",
+          "example": "#0000FF"
+        },
+        "external_fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "example": "client_product_id"
+              },
+              "value": {
+                "type": "string",
+                "example": "3e93a899-d267-4193-8509-6dba53c13b7b"
+              }
+            }
+          }
+        }
+      }
+    },
+    "product_lifecycle_policies": {
+      "type": "object",
+      "properties": {
+        "payment_due_policies": {
+          "$ref": "./_simplified_PaymentDuePolicies.json"
+        },
+        "fee_policies": {
+          "$ref": "./_simplified_FeePolicies.json"
+        },
+        "billing_cycle_policies": {
+          "$ref": "./_simplified_BillingCyclePolicies.json"
+        },
+        "interest_policies": {
+          "$ref": "./_simplified_InterestPolicies.json"
+        },
+        "default_attributes": {
+          "type": "object",
+          "properties": {
+            "default_credit_limit_cents": {
+              "type": "integer",
+              "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
+              "example": 600000
+            },
+            "default_late_fee_cents": {
+              "type": "integer",
+              "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
+              "example": 600000
+            },
+            "default_payment_reversal_fee_cents": {
+              "type": "integer",
+              "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
+              "example": 600000
+            }
+          }
+        }
+      }
+    },
+    "promotional_policies": {
+      "type": "object",
+      "description": "If applicable, a promotional configuration for the product.",
+      "properties": {
+        "promo_len": {
+          "type": "integer",
+          "description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+          "example": 6
+        },
+        "post_promo_min_pay_type": {
+          "type": "string",
+          "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
+          "description": "Current due calculation method for the promotional period."
+        },
+        "promo_purchase_window_len": {
+          "type": "number",
+          "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
+          "example": 5
+        },
+        "promotion_min_payments": {
+          "type": "boolean",
+          "description": "Whether minimum payments are due during the promotional period or not.",
+          "example": false
+        },
+        "promo_interest_deferred": {
+          "type": "boolean",
+          "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
+          "example": true
+        },
+        "promo_default_interest_rate": {
+          "type": "number",
+          "description": "The rate that serves as the active interest rate for accounts during the promotional period.",
+          "example": 3
+        },
+        "promo_apr_range_inclusive_lower": {
+          "type": "number",
+          "description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
+          "example": 2
+        },
+        "promo_apr_range_inclusive_upper": {
+          "type": "number",
+          "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
+          "example": 5
+        }
+      }
+    },
+    "post_promotional_policies": {
+      "type": "object",
+      "properties": {
+        "post_promo_default_am_len": {
+          "type": "integer",
+          "description": "Default duration for the amortization period during post-promotion",
+          "example": 48
+        },
+        "post_promo_am_len_range_inclusive_lower": {
+          "type": "number",
+          "description": "Optional lower bound for amortization length in billing cycles for the product.",
+          "example": 2
+        },
+        "post_promo_am_len_range_inclusive_upper": {
+          "type": "number",
+          "description": "Optional upper bound for amortization length in billing cycles for the product.",
+          "example": 5
+        },
+        "post_promo_min_pay_type": {
+          "type": "string",
+          "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
+          "description": "Current due calculation method for the post-promotional period."
+        },
+        "post_promo_default_interest_rate": {
+          "type": "number",
+          "description": "The rate that serves as the active interest rate for accounts during the post-promotional period.",
+          "example": 3
+        },
+        "promo_apr_range_inclusive_lower": {
+          "type": "number",
+          "description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
+          "example": 2
+        },
+        "promo_apr_range_inclusive_upper": {
+          "type": "number",
+          "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
+          "example": 5
+        }
+      }
+    },
+    "product_summary": {
+      "$ref": "./_simplified_ProductSummary.json"
+    }
+  }
 }

@@ -33,20 +33,13 @@
       "line_item_status": {
         "type": "string",
         "description": "the corresponding Status for a line item",
-        "enum": [
-          "VALID",
-          "INVALID"
-        ],
+        "enum": ["VALID", "INVALID"],
         "example": "VALID"
       },
       "line_item_type": {
         "type": "string",
         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-        "enum": [
-          "CHARGE",
-          "PAYMENT",
-          "FEE"
-        ],
+        "enum": ["CHARGE", "PAYMENT", "FEE"],
         "example": "CHARGE"
       },
       "description": {
