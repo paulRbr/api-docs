@@ -692,7 +692,7 @@
         }
       }
     },
-    "/accounts/{account_id}/statements": {
+    "/accounts/{account_id}/statements/list": {
       "get": {
         "tags": [
           "statements"
@@ -745,7 +745,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/AccountStatement"
+                    "$ref": "#/components/schemas/AccountStatementSummary"
                   }
                 }
               }
@@ -879,6 +879,9 @@
       },
       "AccountStatement": {
         "$ref": "./schemas/_simplified_AccountStatement.json"
+      },
+      "AccountStatementSummary": {
+        "$ref": "./schemas/_simplified_AccountStatementSummary.json"
       },
       "Product": {
         "$ref": "./schemas/Product.json"
