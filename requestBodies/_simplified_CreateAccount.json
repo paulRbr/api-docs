@@ -23,8 +23,13 @@
               },
               "product_id": {
                 "type": "integer",
-                "description": "The Product ID of the account",
+                "description": "The Canopy-generated Product ID of the account. Either this, or the `external_product_id` must be passed at the time of account creation.",
                 "example": 6
+              },
+              "external_product_id": {
+                "type": "string",
+                "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either this, or the Canopy product ID must be passed at the time of account creation.",
+                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
               },
               "external_fields": {
                 "type": "array",

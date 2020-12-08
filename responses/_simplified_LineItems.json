@@ -1,0 +1,16 @@
+{
+  "description": "Array of Line Items and their corresponding balances at their effective dates and times.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "$ref": "./../schemas/_simplified_LineItem.json"
+          }
+        }
+      }
+    }
+  }
+}

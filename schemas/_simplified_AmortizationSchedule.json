@@ -1,0 +1,45 @@
+{
+  "type": "array",
+  "description": "Amortization schedule",
+  "items": {
+    "type": "object",
+    "properties": {
+      "min_pay_due_at": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The date of the scheduled payment",
+        "example": "2018-07-20T09:10:14Z"
+      },
+      "am_min_pay_cents": {
+        "type": "integer",
+        "description": "Total amount due from the amortization schedule.",
+        "example": 160000
+      },
+      "amount_paid_cents": {
+        "type": "number",
+        "description": "The amount in cents that was actually paid for the billing cycle",
+        "example": 18325
+      },
+      "interest_allocation_cents": {
+        "type": "number",
+        "description": "The amount in cents allocated to interest from this payment",
+        "example": 2415
+      },
+      "deferred_interest_allocation_cents": {
+        "type": "number",
+        "description": "The amount in cents allocated to deferred interest from this payment",
+        "example": 400
+      },
+      "principal_allocation_cents": {
+        "type": "number",
+        "description": "The amount in cents allocated to principal from this payment",
+        "example": 15911
+      },
+      "end_balance_cents": {
+        "type": "number",
+        "description": "The ending balance on the loan after this payment",
+        "example": 136691
+      }
+    }
+  }
+}
