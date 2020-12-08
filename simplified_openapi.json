@@ -95,18 +95,7 @@
         "description": "Returns a list of all API users in your organization.",
         "operationId": "getApiUsers",
         "parameters": [
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+
         ],
         "responses": {
           "200": {
@@ -186,18 +175,7 @@
         "description": "Get all summarized information pertaining to the API user making the request.",
         "operationId": "getApiUser",
         "parameters": [
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the api user's info was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+
         ],
         "responses": {
           "200": {
@@ -270,18 +248,6 @@
               "type": "integer",
               "example": "50"
             }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
           }
         ],
         "responses": {
@@ -325,30 +291,6 @@
             "schema": {
               "type": "integer",
               "example": "50"
-            }
-          },
-					{
-						"name": "search_query",
-						"in": "query",
-						"description": "A search query to be applied to results before the customer accounts list is returned. Search by name, phone number, account ID, or SSN last-four digits.",
-						"required": false,
-						"style": "form",
-						"example": true,
-						"schema": {
-							"type": "string",
-							"example": "Coco Parker"
-						}
-					},
-					{
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
             }
           }
         ],
@@ -500,18 +442,6 @@
               "format": "uuid",
               "example": "a361c813-92e5-4765-82ea-9df368a81a89"
             }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
           }
         ],
         "responses": {
@@ -575,19 +505,7 @@
               "format": "uuid",
               "example": "a361c813-92e5-4765-82ea-9df368a81a89"
             }
-					},
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+					}
         ],
         "responses": {
 					"200": {
@@ -618,18 +536,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the line items were on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
             }
           },
           {
@@ -700,18 +606,6 @@
               "type": "string",
               "format": "uuid",
               "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
             }
           }
         ],
@@ -819,18 +713,6 @@
             }
           },
           {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
             "name": "offset",
             "in": "query",
             "description": "The zero-indexed starting point for paginated statements list requests sorted by reverse statement date.",
@@ -892,18 +774,6 @@
               "type": "string",
               "format": "uuid",
               "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
             }
           },
           {
