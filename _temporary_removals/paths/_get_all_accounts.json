@@ -6,9 +6,7 @@
           "api_key": []
         }
       ],
-      "tags": [
-        "accounts"
-      ],
+      "tags": ["accounts"],
       "summary": "Get all available Accounts",
       "description": "Get details for all accounts linked to any of your products. Results are sorted by the date the account was created.",
       "operationId": "getAccounts",

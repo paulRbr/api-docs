@@ -1,26 +1,19 @@
 {
-	"type": "object",
-	"additionalProperties": false,
-	"required": [
-		"type",
-		"method",
-		"day_calc_type",
-		"interest_calc_time"
-	],
-	"properties": {
-		"type": {
-			"type": "string",
-			"enum": [
-				"compound"
-			],
-			"example": "compound"
-		},
-		"interest_calc_time": {
-			"type": "string",
-			"description": "Interest for this policy is calculated at this time every X interval.",
-			"format": "date-time",
-			"example": "05:00:00"
-		}
-	},
-	"description": "The Interest Policy Object"
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "method", "day_calc_type", "interest_calc_time"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["compound"],
+      "example": "compound"
+    },
+    "interest_calc_time": {
+      "type": "string",
+      "description": "Interest for this policy is calculated at this time every X interval.",
+      "format": "date-time",
+      "example": "05:00:00"
+    }
+  },
+  "description": "The Interest Policy Object"
 }

@@ -1,11 +1,6 @@
 {
   "type": "object",
-  "required": [
-    "api_user_id",
-    "organization_name",
-    "email",
-    "role"
-  ],
+  "required": ["api_user_id", "organization_name", "email", "role"],
   "properties": {
     "api_user_id": {
       "type": "integer",

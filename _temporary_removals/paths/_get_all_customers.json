@@ -1,9 +1,7 @@
 {
   "/customers": {
     "get": {
-      "tags": [
-        "customers"
-      ],
+      "tags": ["customers"],
       "summary": "Get all customers",
       "description": "Returns all of your customers. Results are paginated.",
       "operationId": "getCustomers",

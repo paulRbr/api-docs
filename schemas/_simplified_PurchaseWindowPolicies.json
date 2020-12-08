@@ -1,7 +1,6 @@
 {
   "type": "object",
-  "required": [
-  ],
+  "required": [],
   "properties": {
     "purchase_window_duration": {
       "type": "number",

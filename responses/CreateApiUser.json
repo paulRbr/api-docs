@@ -4,9 +4,7 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": [
-          "email", "created_at", "expires_at"
-        ],
+        "required": ["email", "created_at", "expires_at"],
         "properties": {
           "email": {
             "type": "string",

@@ -27,17 +27,7 @@
     "loan_status": {
       "type": "string",
       "description": "the corresponding Status for a line item",
-      "enum": [
-        "posted",
-        "valid",
-        "invalid",
-        "declined",
-        "authorized",
-        "void",
-        "pending",
-        "successful",
-        "unsuccessful"
-      ],
+      "enum": ["posted", "valid", "invalid", "declined", "authorized", "void", "pending", "successful", "unsuccessful"],
       "example": "posted"
     },
     "offer": {
@@ -53,7 +43,7 @@
           "type": "string",
           "description": "The name of this offer",
           "example": "APR of 7.99% - 16.99% for 60 months"
-        }, 
+        },
         "offer_term": {
           "type": "string",
           "description": "The term duration of this offer in months",

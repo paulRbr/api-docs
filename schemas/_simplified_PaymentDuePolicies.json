@@ -1,8 +1,6 @@
 {
   "type": "object",
-  "required": [
-    "min_pay_percentage"
-  ],
+  "required": ["min_pay_percentage"],
   "properties": {
     "min_pay_percentage": {
       "type": "number",
@@ -22,7 +20,6 @@
       "type": "integer",
       "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`"
     }
-
   },
   "description": "The set of policies governing payment due information for the product."
 }
