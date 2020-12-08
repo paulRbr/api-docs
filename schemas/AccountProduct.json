@@ -2,94 +2,98 @@
   "type": "object",
   "description": "The product associated with the account",
   "properties": {
-		"product_id": {
-			"type": "integer",
-			"description": "The Canopy-generated ID for the product.",
-			"example": 4
-		},
-		"external_product_id": {
-			"type": "string",
-			"description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-			"example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
-		},
-		"product_overview": {
-			"type": "object",
-			"properties": {
-				"product_name": {
-					"type": "string",
-					"description": "Name of Product, i.e. Express Card.",
-					"example": "Blue Cash Express"
-				},
-				"product_color": {
-					"type": "string",
-					"description": "A color to be associated with the product for UI purposes.",
-					"example": "#0000FF"
-				},
-				"product_short_description": {
-					"type": "string",
-					"description": "Short description of the Product - max of 30 characters.",
-					"example": "Consumer credit card"
-				},
-				"product_long_description": {
-					"type": "string",
-					"description": "Description of the Product.",
-					"example": "Student credit card."
-				},
-				"product_type": {
-					"type": "string",
-					"description": "The Type of Product. If not included, defaults to `REVOLVING`",
-					"enum": [
-						"REVOLVING", "INSTALLMENT", "MIXED_RATE_INSTALLMENT", "DEFERRED_INSTALLMENT", "FIXED_RATE_INSTALLMENT"
-					],
-					"example": "REVOLVING"
-				}
-			}
-		},
-		"product_lifecycle": {
-			"type": "object",
-			"properties": {
-				"late_fee_impl_cents": {
-					"type": "number",
-					"description": "The fee charged for late payments on the account.",
-					"example": 2900
-				},
-				"payment_reversal_fee_impl_cents": {
-					"type": "number",
-					"description": "The fee charged for payment reversals on the account.",
-					"example": 2900
-				},
-				"loan_end_date": {
-					"type": "string",
-					"format": "datetime",
-					"description": "If applicable, the account's loan repayment date.",
-					"example": "2013-01-13T05:25:13.813Z"
-				}
-			}
-		},
-		"promo_overview": {
+    "product_id": {
+      "type": "integer",
+      "description": "The Canopy-generated ID for the product.",
+      "example": 4
+    },
+    "external_product_id": {
+      "type": "string",
+      "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+    },
+    "product_overview": {
+      "type": "object",
+      "properties": {
+        "product_name": {
+          "type": "string",
+          "description": "Name of Product, i.e. Express Card.",
+          "example": "Blue Cash Express"
+        },
+        "product_color": {
+          "type": "string",
+          "description": "A color to be associated with the product for UI purposes.",
+          "example": "#0000FF"
+        },
+        "product_short_description": {
+          "type": "string",
+          "description": "Short description of the Product - max of 30 characters.",
+          "example": "Consumer credit card"
+        },
+        "product_long_description": {
+          "type": "string",
+          "description": "Description of the Product.",
+          "example": "Student credit card."
+        },
+        "product_type": {
+          "type": "string",
+          "description": "The Type of Product. If not included, defaults to `REVOLVING`",
+          "enum": [
+            "REVOLVING",
+            "INSTALLMENT",
+            "MIXED_RATE_INSTALLMENT",
+            "DEFERRED_INSTALLMENT",
+            "FIXED_RATE_INSTALLMENT"
+          ],
+          "example": "REVOLVING"
+        }
+      }
+    },
+    "product_lifecycle": {
+      "type": "object",
+      "properties": {
+        "late_fee_impl_cents": {
+          "type": "number",
+          "description": "The fee charged for late payments on the account.",
+          "example": 2900
+        },
+        "payment_reversal_fee_impl_cents": {
+          "type": "number",
+          "description": "The fee charged for payment reversals on the account.",
+          "example": 2900
+        },
+        "loan_end_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "If applicable, the account's loan repayment date.",
+          "example": "2013-01-13T05:25:13.813Z"
+        }
+      }
+    },
+    "promo_overview": {
       "type": "object",
       "properties": {
         "promo_purchase_window_inclusive_start": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "If applicable, the start date for a purchase window for the account",
           "example": "2013-01-13T05:25:13.813Z"
         },
         "promo_purchase_window_exclusive_end": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "If applicable, the end date for a purchase window for the account",
           "example": "2013-01-13T05:25:13.813Z"
         },
         "promo_inclusive_start": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
           "example": "2013-01-13T05:25:13.813Z"
         },
         "promo_exclusive_end": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
           "example": "2013-01-13T05:25:13.813Z"
         },
@@ -105,13 +109,13 @@
       "properties": {
         "post_promo_inclusive_start": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
           "example": "2013-01-13T05:25:13.813Z"
         },
         "post_promo_exclusive_end": {
           "type": "string",
-          "format": "datetime",
+          "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
           "example": "2013-01-13T05:25:13.813Z"
         },
@@ -127,20 +131,20 @@
         }
       }
     },
-		"product_duration_information": {
-			"type": "object",
-			"properties": {
-				"promo_len": {
-					"type": "integer",
-					"description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
-					"example": 6
-				},
-				"promo_purchase_window_len": {
-					"type": "number",
-					"description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
-					"example": 5
-				}
-			}
-		}
+    "product_duration_information": {
+      "type": "object",
+      "properties": {
+        "promo_len": {
+          "type": "integer",
+          "description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+          "example": 6
+        },
+        "promo_purchase_window_len": {
+          "type": "number",
+          "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
+          "example": 5
+        }
+      }
+    }
   }
 }
