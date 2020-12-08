@@ -95,18 +95,7 @@
         "description": "Returns a list of all API users in your organization.",
         "operationId": "getApiUsers",
         "parameters": [
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+
         ],
         "responses": {
           "200": {
@@ -186,18 +175,7 @@
         "description": "Get all summarized information pertaining to the API user making the request.",
         "operationId": "getApiUser",
         "parameters": [
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the api user's info was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+
         ],
         "responses": {
           "200": {
@@ -248,86 +226,9 @@
         "operationId": "getProducts",
         "parameters": [
           {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/Products"
-          },
-          "404": {
-            "description": "No Products"
-          }
-        }
-      }
-    },
-    "/products/{product_id}": {
-      "get": {
-        "tags": [
-          "products"
-        ],
-        "summary": "Get info on a particular product",
-        "operationId": "getProduct",
-        "description": "Using the `product_id` which was generated when the product was launched, retrieve information pertaining to a specific product.",
-        "parameters": [
-          {
-            "name": "product_id",
-            "in": "path",
-            "description": "Product ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the Products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/Product"
-          },
-          "404": {
-            "description": "No Products found"
-          }
-        }
-      }
-    },
-    "/products/{product_id}/accounts": {
-      "get": {
-        "tags": [
-          "products",
-          "accounts"
-        ],
-        "summary": "Get all accounts created under a specific product",
-        "description": "Returns all accounts created under a specific product. Results are paginated.",
-        "operationId": "getProductAccounts",
-        "parameters": [
-          {
             "name": "offset",
             "in": "query",
-            "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+            "description": "The zero-indexed starting point for paginated product requests sorted by reverse product created date.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -339,7 +240,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "description": "The maximum number of products to be returned. Defaults to 100.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -351,54 +252,10 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ProductAccounts"
+            "$ref": "#/components/responses/Products"
           },
           "404": {
-            "description": "Account not found"
-          }
-        }
-      }
-    },
-    "/products/{product_id}/summaries": {
-      "get": {
-        "tags": [
-          "products"
-        ],
-        "summary": "Get summary details for a specific product.",
-        "description": "For analytic purposes, retrieve commonly needed summary statistics computed for a specific product.",
-        "operationId": "getProductSummary",
-        "parameters": [
-          {
-            "name": "product_id",
-            "in": "path",
-            "description": "Product ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the product summary information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ProductSummary"
-          },
-          "404": {
-            "description": "Account not found"
+            "description": "No Products"
           }
         }
       }
@@ -434,30 +291,6 @@
             "schema": {
               "type": "integer",
               "example": "50"
-            }
-          },
-					{
-						"name": "search_query",
-						"in": "query",
-						"description": "A search query to be applied to results before the customer accounts list is returned. Search by name, phone number, account ID, or SSN last-four digits.",
-						"required": false,
-						"style": "form",
-						"example": true,
-						"schema": {
-							"type": "string",
-							"example": "Coco Parker"
-						}
-					},
-					{
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the customers were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
             }
           }
         ],
@@ -609,18 +442,6 @@
               "format": "uuid",
               "example": "a361c813-92e5-4765-82ea-9df368a81a89"
             }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
           }
         ],
         "responses": {
@@ -684,19 +505,7 @@
               "format": "uuid",
               "example": "a361c813-92e5-4765-82ea-9df368a81a89"
             }
-					},
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+					}
         ],
         "responses": {
 					"200": {
@@ -707,7 +516,63 @@
           }
         }
 			}
-		},
+    },
+    "/accounts/{account_id}/line_items": {
+      "get": {
+        "tags": [
+          "line_items"
+        ],
+        "summary": "Get line items for a specific account.",
+        "description": "Line Items for an Account include `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
+        "operationId": "getAccountLineItems",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of line items to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/LineItems"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/line_items/{line_item_id}": {
       "get": {
         "tags": [
@@ -741,18 +606,6 @@
               "type": "string",
               "format": "uuid",
               "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
-            }
-          },
-          {
-            "name": "effective_as_of_date",
-            "in": "query",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the products were as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
             }
           }
         ],
@@ -839,6 +692,122 @@
         }
       }
     },
+    "/accounts/{account_id}/statements": {
+      "get": {
+        "tags": [
+          "statements"
+        ],
+        "summary": "Get a list of all current and prior statements for a specific account",
+        "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
+        "operationId": "getAccountStatementsList",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated statements list requests sorted by reverse statement date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AccountStatement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/{loan_id}/amortization_schedule": {
+      "get": {
+        "tags": [
+          "amortization_schedule"
+        ],
+        "summary": "Get the amortization schedule for a specific loan",
+        "description": "",
+        "operationId": "getAmortizationSchedule",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "110"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of line items to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number",
+              "example": "50"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/AmortizationSchedule"
+          }
+        }
+      }
+    },
 		"/accounts/{account_id}/statements/{statement_id}": {
       "get": {
         "tags": [
@@ -909,7 +878,7 @@
         "$ref": "./schemas/ComplexCustomer.json"
       },
       "AccountStatement": {
-        "$ref": "./schemas/AccountStatement.json"
+        "$ref": "./schemas/_simplified_AccountStatement.json"
       },
       "Product": {
         "$ref": "./schemas/Product.json"
@@ -1017,6 +986,9 @@
       "Accounts": {
         "$ref": "./responses/Accounts.json"
       },
+      "AmortizationSchedule": {
+        "$ref": "./responses/_simplified_AmortizationSchedule.json"
+      },
       "CreateNote": {
         "$ref": "./responses/CreateNote.json"
       },
@@ -1045,10 +1017,10 @@
         "$ref": "./responses/LineItem.json"
       },
       "LineItemWithChildren": {
-        "$ref": "./responses/LineItemWithChildren.json"
+        "$ref": "./responses/_simplified_LineItemWithChildren.json"
       },
       "LineItems": {
-        "$ref": "./responses/LineItems.json"
+        "$ref": "./responses/_simplified_LineItems.json"
       },
       "StatementsList": {
         "$ref": "./responses/StatementsList.json"

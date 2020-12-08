@@ -14,15 +14,14 @@
   "additionalProperties": false,
   "properties": {
     "account_id": {
-      "type": "string",
-      "format": "uuid",
+      "type": "integer",
       "description": "The account associated with the line item",
-      "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
+      "example": 4
     },
     "line_item_id": {
-      "type": "string",
-      "format": "uuid",
-      "example": "ce9ed376-f151-435f-a59c-9e3cc183bbea"
+      "type": "integer",
+      "description": "The Canopy-generated ID for this line item.",
+      "example": 22
     },
     "line_item_status": {
       "type": "string",
@@ -40,7 +39,7 @@
       ],
       "example": "posted"
     },
-    "type": {
+    "line_item_type": {
       "type": "string",
       "description": "The Line Item Type. Either `charge` or `payment`.",
       "enum": [
@@ -49,7 +48,7 @@
       ],
       "example": "charge"
     },
-    "originating_amount_cents": {
+    "original_amount_cents": {
       "type": "number",
       "description": "The originating amount of money (in cents) relating to this line item."
     },
@@ -66,11 +65,6 @@
       "type": "number",
       "description": "The sum (in cents) of all payment splits, if any, applied to this line item",
       "example": "1125"
-    },
-    "rate": {
-      "type": "number",
-      "description": "The percentage rate applied to this line item (i.e. 15.5 means 15.5%). If it was not set at the time of charge creation, its default value is the default rate of the account.",
-      "example": "15.5%"
     },
     "merchant_data": {
       "type": "object",
@@ -113,16 +107,6 @@
       "type": "string",
       "description": "A description of this particular line item if any. More common for adjustments.",
       "example": "Refund for invalid purchase"
-    },
-    "reference_id": {
-      "type": "string",
-      "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
-      "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
-    },
-    "dispute_id": {
-      "type": "string",
-      "format": "uuid",
-      "description": "The ID for a dispute if present for this line item."
     },
     "external_ids": {
       "type": "array",

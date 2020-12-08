@@ -7,6 +7,11 @@
 			"description": "The Canopy-generated ID for the product.",
 			"example": 4
 		},
+		"external_product_id": {
+			"type": "string",
+			"description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+			"example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+		},
 		"product_overview": {
 			"type": "object",
 			"properties": {
@@ -20,7 +25,7 @@
 					"description": "A color to be associated with the product for UI purposes.",
 					"example": "#0000FF"
 				},
-				"short_description": {
+				"product_short_description": {
 					"type": "string",
 					"description": "Short description of the Product - max of 30 characters.",
 					"example": "Consumer credit card"
@@ -30,7 +35,7 @@
 					"description": "Description of the Product.",
 					"example": "Student credit card."
 				},
-				"type": {
+				"product_type": {
 					"type": "string",
 					"description": "The Type of Product. If not included, defaults to `REVOLVING`",
 					"enum": [
@@ -40,6 +45,88 @@
 				}
 			}
 		},
+		"product_lifecycle": {
+			"type": "object",
+			"properties": {
+				"late_fee_impl_cents": {
+					"type": "number",
+					"description": "The fee charged for late payments on the account.",
+					"example": 2900
+				},
+				"payment_reversal_fee_impl_cents": {
+					"type": "number",
+					"description": "The fee charged for payment reversals on the account.",
+					"example": 2900
+				},
+				"loan_end_date": {
+					"type": "string",
+					"format": "datetime",
+					"description": "If applicable, the account's loan repayment date.",
+					"example": "2013-01-13T05:25:13.813Z"
+				}
+			}
+		},
+		"promo_overview": {
+      "type": "object",
+      "properties": {
+        "promo_purchase_window_inclusive_start": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a purchase window for the account",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "promo_purchase_window_exclusive_end": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the end date for a purchase window for the account",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "promo_inclusive_start": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "promo_exclusive_end": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "promo_impl_interest_rate": {
+          "type": "number",
+          "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+          "example": 6.2
+        }
+      }
+    },
+    "post_promo_overview": {
+      "type": "object",
+      "properties": {
+        "post_promo_inclusive_start": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "post_promo_exclusive_end": {
+          "type": "string",
+          "format": "datetime",
+          "description": "If applicable, the start date for a promotional period for the account.",
+          "example": "2013-01-13T05:25:13.813Z"
+        },
+        "post_promo_impl_interest_rate": {
+          "type": "number",
+          "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+          "example": 6.2
+        },
+        "post_promo_impl_am_len": {
+          "type": "integer",
+          "description": "If applicable, post-promotional amortization length in cycles.",
+          "example": 48
+        }
+      }
+    },
 		"product_duration_information": {
 			"type": "object",
 			"properties": {

@@ -1,0 +1,10 @@
+{
+  "description": "Amortization schedule for a loan",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/_simplified_AmortizationSchedule.json"
+      }
+    }
+  }
+}

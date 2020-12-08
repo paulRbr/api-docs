@@ -18,6 +18,11 @@
 			"description": "The Canopy-generated ID for the product.",
 			"example": 6
 		},
+		"external_product_id": {
+			"type": "string",
+			"description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+			"example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+		},
 		"created_at": {
 			"type": "string",
 			"description": "The `Date-Time` that this product was created on the server.",

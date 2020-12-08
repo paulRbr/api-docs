@@ -12,6 +12,11 @@
             "type": "object",
             "description": "A series of static fields about the product.",
             "properties": {
+              "external_product_id": {
+                "type": "string",
+                "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+              },
               "product_name": {
                 "type": "string",
                 "description": "Name of Product, i.e. Express Card.",
