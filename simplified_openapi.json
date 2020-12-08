@@ -692,7 +692,7 @@
         }
       }
     },
-    "/accounts/{account_id}/statements/list": {
+    "/accounts/{account_id}/statements": {
       "get": {
         "tags": [
           "statements"
