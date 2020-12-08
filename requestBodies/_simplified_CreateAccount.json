@@ -9,18 +9,6 @@
             "type": "object",
             "required": ["product_id"],
             "properties": {
-              "effective_at": {
-                "type": "string",
-                "description": "The `Date-Time` that this account became/becomes active.",
-                "format": "date-time",
-                "example": "2018-03-20T09:12:28Z"
-              },
-              "created_at": {
-                "type": "string",
-                "description": "The `Date-Time` which the account was created in the API.",
-                "format": "date-time",
-                "example": "2017-06-20T09:12:14Z"
-              },
               "product_id": {
                 "type": "integer",
                 "description": "The Canopy-generated Product ID of the account. Either this, or the `external_product_id` must be passed at the time of account creation.",
