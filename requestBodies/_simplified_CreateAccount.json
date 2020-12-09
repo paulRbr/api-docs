@@ -61,7 +61,7 @@
                     "description": "The fee charged for payment reversals on the account.",
                     "example": 2900
                   },
-                  "initial_principal": {
+                  "initial_principal_cents": {
                     "type": "number",
                     "description": "The initial principal balance (in cents) for the account.",
                     "example": 400000
@@ -71,7 +71,7 @@
               "promo_overview": {
                 "type": "object",
                 "properties": {
-                  "promo_impl_interest_rate": {
+                  "promo_impl_interest_rate_percent": {
                     "type": "number",
                     "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                     "example": 6.2
@@ -81,7 +81,7 @@
               "post_promo_overview": {
                 "type": "object",
                 "properties": {
-                  "post_promo_impl_interest_rate": {
+                  "post_promo_impl_interest_rate_percent": {
                     "type": "number",
                     "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
                     "example": 6.2

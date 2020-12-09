@@ -935,7 +935,6 @@ components:
                     example: Jr
                   phone_number:
                     type: string
-                    format: phonenumber
                     description: Phone number of the customer
                     example: 555-555-5555
                   address_line_one:
@@ -1001,7 +1000,6 @@ components:
           example: Jr
         phone_number:
           type: string
-          format: phonenumber
           description: Phone number of the customer
           example: 555-555-5555
         address_line_one:
@@ -1213,7 +1211,7 @@ components:
         additional_min_pay_details:
           type: object
           properties:
-            min_pay_root_principal_cents:
+            min_pay_charges_principal_cents:
               type: integer
               description: Total principal due for the billing cycle.
               example: 100000
@@ -1237,9 +1235,13 @@ components:
         balance_summary:
           type: object
           properties:
-            root_principal_balance_cents:
+            charges_principal_cents:
               type: integer
               description: Total principal balance for the account.
+              example: 900000
+            loans_principal_cents:
+              type: integer
+              description: Total principal balance for loans for the account.
               example: 900000
             interest_balance_cents:
               type: integer
@@ -1301,7 +1303,7 @@ components:
               format: date-time
               description: The inclusive ending `Date-Time` that defines which transations are
                 part of this statement.
-        min_pay_due:
+        min_pay_due_cents:
           type: object
           properties:
             min_pay_cents:
@@ -2316,16 +2318,6 @@ components:
                 required:
                   - product_id
                 properties:
-                  effective_at:
-                    type: string
-                    description: The `Date-Time` that this account became/becomes active.
-                    format: date-time
-                    example: 2018-03-20T09:12:28Z
-                  created_at:
-                    type: string
-                    description: The `Date-Time` which the account was created in the API.
-                    format: date-time
-                    example: 2017-06-20T09:12:14Z
                   product_id:
                     type: integer
                     description: The Canopy-generated Product ID of the account. Either this, or the
@@ -2373,14 +2365,14 @@ components:
                         type: number
                         description: The fee charged for payment reversals on the account.
                         example: 2900
-                      initial_principal:
+                      initial_principal_cents:
                         type: number
                         description: The initial principal balance (in cents) for the account.
                         example: 400000
                   promo_overview:
                     type: object
                     properties:
-                      promo_impl_interest_rate:
+                      promo_impl_interest_rate_percent:
                         type: number
                         description: The percentage interest applied to the account during the
                           promotional period (i.e. 6.2%)
@@ -2388,7 +2380,7 @@ components:
                   post_promo_overview:
                     type: object
                     properties:
-                      post_promo_impl_interest_rate:
+                      post_promo_impl_interest_rate_percent:
                         type: number
                         description: The percentage interest applied to the account during the
                           post-promotional period (i.e. 6.2%)
@@ -2865,7 +2857,7 @@ components:
                     description: Indicates whether interest accrued during the promotional period is
                       deferred interest.
                     example: true
-                  promo_default_interest_rate:
+                  promo_default_interest_rate_percent:
                     type: number
                     description: The rate that serves as the active interest rate for accounts
                       during the promotional period.
@@ -2902,7 +2894,7 @@ components:
                       - "%INTEREST"
                       - "%PRINCIPAL"
                     description: Current due calculation method for the post-promotional period.
-                  post_promo_default_interest_rate:
+                  post_promo_default_interest_rate_percent:
                     type: number
                     description: The rate that serves as the active interest rate for accounts
                       during the post-promotional period.
@@ -3046,7 +3038,7 @@ components:
                                   example: 2900
                                 loan_end_date:
                                   type: string
-                                  format: datetime
+                                  format: date-time
                                   description: If applicable, the account's loan repayment date.
                                   example: 2013-01-13T05:25:13.813Z
                             promo_overview:
@@ -3054,27 +3046,27 @@ components:
                               properties:
                                 promo_purchase_window_inclusive_start:
                                   type: string
-                                  format: datetime
+                                  format: date-time
                                   description: If applicable, the start date for a purchase window for the account
                                   example: 2013-01-13T05:25:13.813Z
                                 promo_purchase_window_exclusive_end:
                                   type: string
-                                  format: datetime
+                                  format: date-time
                                   description: If applicable, the end date for a purchase window for the account
                                   example: 2013-01-13T05:25:13.813Z
                                 promo_inclusive_start:
                                   type: string
-                                  format: datetime
+                                  format: date-time
                                   description: If applicable, the start date for a promotional period for the
                                     account.
                                   example: 2013-01-13T05:25:13.813Z
                                 promo_exclusive_end:
                                   type: string
-                                  format: datetime
+                                  format: date-time
                                   description: If applicable, the start date for a promotional period for the
                                     account.
                                   example: 2013-01-13T05:25:13.813Z
-                                promo_impl_interest_rate:
+                                promo_impl_interest_rate_percent:
                                   type: number
                                   description: The percentage interest applied to the account during the
                                     promotional period (i.e. 6.2%)
@@ -3084,17 +3076,17 @@ components:
                               properties:
                                 post_promo_inclusive_start:
                                   type: string
-                                  format: datetime
+                                  format: date-time
                                   description: If applicable, the start date for a promotional period for the
                                     account.
                                   example: 2013-01-13T05:25:13.813Z
                                 post_promo_exclusive_end:
                                   type: string
-                                  format: datetime
+                                  format: date-time
                                   description: If applicable, the start date for a promotional period for the
                                     account.
                                   example: 2013-01-13T05:25:13.813Z
-                                post_promo_impl_interest_rate:
+                                post_promo_impl_interest_rate_percent:
                                   type: number
                                   description: The percentage interest applied to the account during the
                                     post-promotional period (i.e. 6.2%)
@@ -3134,7 +3126,7 @@ components:
                                 type: string
                                 description: "value: i.e. External Account ID"
                                 example: 22445702-a389-431f-927d-07b8d0750787
-                        min_pay_due:
+                        min_pay_due_cents:
                           type: object
                           properties:
                             min_pay_cents:
@@ -3179,25 +3171,25 @@ components:
                               type: number
                               description: The total balance (in cents) associated with the account.
                               example: 300000
-                            principal_balance:
+                            principal_cents:
                               type: number
                               description: The total balance (in cents) associated with the account.
                               example: 200000
-                            interest_balance:
+                            interest_balance_cents:
                               type: number
                               description: The total interest balance (in cents) associated with the account.
                               example: 60000
-                            deferred_interest_balance:
+                            deferred_interest_balance_cents:
                               type: number
                               description: The total deferred interest balance (in cents) associated with the
                                 account.
                               example: 40000
-                            total_paid_to_date:
+                            total_paid_to_date_cents:
                               type: number
                               description: The total sum of payments made to date (in cents) associated with
                                 the account.
                               example: 40000
-                            total_interest_paid_to_date:
+                            total_interest_paid_to_date_cents:
                               type: number
                               description: The total sum of interest allocations for payments made to date (in
                                 cents) associated with the account.
@@ -3601,7 +3593,7 @@ components:
               additional_min_pay_details:
                 type: object
                 properties:
-                  min_pay_root_principal_cents:
+                  min_pay_charges_principal_cents:
                     type: integer
                     description: Total principal due for the billing cycle.
                     example: 100000
@@ -3625,9 +3617,13 @@ components:
               balance_summary:
                 type: object
                 properties:
-                  root_principal_balance_cents:
+                  charges_principal_cents:
                     type: integer
                     description: Total principal balance for the account.
+                    example: 900000
+                  loans_principal_cents:
+                    type: integer
+                    description: Total principal balance for loans for the account.
                     example: 900000
                   interest_balance_cents:
                     type: integer
@@ -3800,102 +3796,104 @@ components:
           schema:
             type: array
             items:
-              account_id:
-                type: integer
-                description: The account associated with the line item
-                example: 4
-              line_item_id:
-                type: integer
-                description: The ID associated with the line item
-                example: 2
-              effective_at:
-                type: string
-                description: The `Date-Time` that this line item became/becomes active
-                format: date-time
-                example: 2018-07-20T09:12:30Z
-              created_at:
-                type: string
-                description: The `Date-Time` which the line item was created.
-                format: date-time
-                example: 2018-06-20T09:12:30Z
-              product_id:
-                type: string
-                description: the Product ID of the account
-                format: uuid
-                example: 158cd7a1-d813-42d2-90a3-9a91c43f18f8
-              line_item_overview:
-                type: object
-                properties:
-                  line_item_status:
-                    type: string
-                    description: the corresponding Status for a line item
-                    enum:
-                      - VALID
-                      - INVALID
-                    example: VALID
-                  line_item_type:
-                    type: string
-                    description: The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
-                    enum:
-                      - CHARGE
-                      - PAYMENT
-                      - FEE
-                    example: CHARGE
-                  description:
-                    type: string
-                    description: A description of this particular line item if any. More common for
-                      adjustments.
-                    example: Refund for invalid purchase
-              line_item_summary:
-                type: object
-                properties:
-                  original_amount_cents:
-                    type: integer
-                    description: The originating amount of money (in cents) relating to this line
-                      item.
-                    example: 2385
-                  balance_cents:
-                    type: integer
-                    description: The current balance of the line item, which accounts for interest
-                      accrued per the `product's` interest policy and the
-                      `account's` interest rate attribute.
-                    example: 2401
-                  principal_balance_cents:
-                    type: integer
-                    description: The principal balance of the line item.
-                    example: 2400
-                  total_interest_accrued_cents:
-                    type: integer
-                    description: The sum (in cents) of all interest charges, if any, applied to this
-                      line item
-                    example: 16
-              merchant_data:
-                type: object
-                description: Merchant information if applicable.
-                properties:
-                  name:
-                    type: string
-                  id:
-                    type: string
-                  mcc_code:
-                    type: number
-                  phone_number:
-                    type: string
-                    format: phonenumber
-              external_fields:
-                type: array
-                description: An array of static references to fields in a third party system.
-                items:
+              type: object
+              properties:
+                account_id:
+                  type: integer
+                  description: The account associated with the line item
+                  example: 4
+                line_item_id:
+                  type: integer
+                  description: The ID associated with the line item
+                  example: 2
+                effective_at:
+                  type: string
+                  description: The `Date-Time` that this line item became/becomes active
+                  format: date-time
+                  example: 2018-07-20T09:12:30Z
+                created_at:
+                  type: string
+                  description: The `Date-Time` which the line item was created.
+                  format: date-time
+                  example: 2018-06-20T09:12:30Z
+                product_id:
+                  type: string
+                  description: the Product ID of the account
+                  format: uuid
+                  example: 158cd7a1-d813-42d2-90a3-9a91c43f18f8
+                line_item_overview:
                   type: object
                   properties:
-                    key:
+                    line_item_status:
                       type: string
-                      description: Key - i.e. Name of the External Party
-                      example: Globex Card Processing Account ID
-                    value:
+                      description: the corresponding Status for a line item
+                      enum:
+                        - VALID
+                        - INVALID
+                      example: VALID
+                    line_item_type:
                       type: string
-                      description: Value - i.e. External Account ID
-                      example: 22445702-a389-431f-927d-07b8d0750787
+                      description: The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
+                      enum:
+                        - CHARGE
+                        - PAYMENT
+                        - FEE
+                      example: CHARGE
+                    description:
+                      type: string
+                      description: A description of this particular line item if any. More common for
+                        adjustments.
+                      example: Refund for invalid purchase
+                line_item_summary:
+                  type: object
+                  properties:
+                    original_amount_cents:
+                      type: integer
+                      description: The originating amount of money (in cents) relating to this line
+                        item.
+                      example: 2385
+                    balance_cents:
+                      type: integer
+                      description: The current balance of the line item, which accounts for interest
+                        accrued per the `product's` interest policy and the
+                        `account's` interest rate attribute.
+                      example: 2401
+                    principal_cents:
+                      type: integer
+                      description: The principal balance of the line item.
+                      example: 2400
+                    total_interest_accrued_cents:
+                      type: integer
+                      description: The sum (in cents) of all interest charges, if any, applied to this
+                        line item
+                      example: 16
+                merchant_data:
+                  type: object
+                  description: Merchant information if applicable.
+                  properties:
+                    name:
+                      type: string
+                    id:
+                      type: string
+                    mcc_code:
+                      type: number
+                    phone_number:
+                      type: string
+                      format: phonenumber
+                external_fields:
+                  type: array
+                  description: An array of static references to fields in a third party system.
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                        description: Key - i.e. Name of the External Party
+                        example: Globex Card Processing Account ID
+                      value:
+                        type: string
+                        description: Value - i.e. External Account ID
+                        example: 22445702-a389-431f-927d-07b8d0750787
     LineItems:
       description: Array of Line Items and their corresponding balances at their
         effective dates and times.
@@ -3907,7 +3905,7 @@ components:
               type: object
               properties:
                 $ref: "#/components/responses/LineItemWithChildren/content/application~1json/sc\
-                  hema/items"
+                  hema/items/properties"
     StatementsList:
       description: A list of statements for the account.
       content:
