@@ -69,7 +69,7 @@
         }
       }
     },
-    "min_pay_due": {
+    "min_pay_due_cents": {
       "type": "object",
       "properties": {
         "min_pay_cents": {
@@ -123,27 +123,27 @@
           "description": "The total balance (in cents) associated with the account.",
           "example": 300000
         },
-        "principal_balance": {
+        "principal_cents": {
           "type": "number",
           "description": "The total balance (in cents) associated with the account.",
           "example": 200000
         },
-        "interest_balance": {
+        "interest_balance_cents": {
           "type": "number",
           "description": "The total interest balance (in cents) associated with the account.",
           "example": 60000
         },
-        "deferred_interest_balance": {
+        "deferred_interest_balance_cents": {
           "type": "number",
           "description": "The total deferred interest balance (in cents) associated with the account.",
           "example": 40000
         },
-        "total_paid_to_date": {
+        "total_paid_to_date_cents": {
           "type": "number",
           "description": "The total sum of payments made to date (in cents) associated with the account.",
           "example": 40000
         },
-        "total_interest_paid_to_date": {
+        "total_interest_paid_to_date_cents": {
           "type": "number",
           "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
           "example": 10000

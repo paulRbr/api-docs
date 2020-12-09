@@ -176,7 +176,7 @@
     "additional_min_pay_details": {
       "type": "object",
       "properties": {
-        "min_pay_root_principal_cents": {
+        "min_pay_charges_principal_cents": {
           "type": "integer",
           "description": "Total principal due for the billing cycle.",
           "example": 100000
@@ -206,9 +206,14 @@
     "balance_summary": {
       "type": "object",
       "properties": {
-        "root_principal_balance_cents": {
+        "charges_principal_cents": {
           "type": "integer",
           "description": "Total principal balance for the account.",
+          "example": 900000
+        },
+        "loans_principal_cents": {
+          "type": "integer",
+          "description": "Total principal balance for loans for the account.",
           "example": 900000
         },
         "interest_balance_cents": {
