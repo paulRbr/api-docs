@@ -149,7 +149,7 @@
           "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
           "example": true
         },
-        "promo_default_interest_rate": {
+        "promo_default_interest_rate_percent": {
           "type": "number",
           "description": "The rate that serves as the active interest rate for accounts during the promotional period.",
           "example": 3
@@ -189,7 +189,7 @@
           "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
           "description": "Current due calculation method for the post-promotional period."
         },
-        "post_promo_default_interest_rate": {
+        "post_promo_default_interest_rate_percent": {
           "type": "number",
           "description": "The rate that serves as the active interest rate for accounts during the post-promotional period.",
           "example": 3

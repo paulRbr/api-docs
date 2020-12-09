@@ -5,7 +5,10 @@
       "schema": {
         "type": "array",
         "items": {
-          "$ref": "./../schemas/_simplified_LineItem.json"
+          "type": "object",
+          "properties": {
+            "$ref": "./../schemas/_simplified_LineItem.json"
+          }
         }
       }
     }
