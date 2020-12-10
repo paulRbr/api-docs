@@ -106,11 +106,6 @@
                 "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                 "example": 5
               },
-              "promo_min_payments": {
-                "type": "boolean",
-                "description": "Whether minimum payments are due during the promotional period or not.",
-                "example": false
-              },
               "promo_interest_deferred": {
                 "type": "boolean",
                 "description": "Indicates whether interest accrued during the promotional period is deferred interest.",

@@ -1801,6 +1801,7 @@ components:
                 - PERCENT_INTEREST
                 - PERCENT_PRINCIPAL
               description: Current due calculation method for the promotional period.
+              example: PERCENT_PRINCIPAL
             promo_purchase_window_len:
               type: number
               description: If applicable, the number of billing cycles from account
@@ -1854,16 +1855,17 @@ components:
                 - PERCENT_INTEREST
                 - PERCENT_PRINCIPAL
               description: Current due calculation method for the post-promotional period.
+              example: AM
             post_promo_default_interest_rate_percent:
               type: number
               description: The rate that serves as the active interest rate for accounts
                 during the post-promotional period.
               example: 3
-            promo_apr_range_inclusive_lower:
+            post_promo_apr_range_inclusive_lower:
               type: number
               description: Optional lower bound for APR Range for the product (i.e. 2 = 2%).
               example: 2
-            promo_apr_range_inclusive_upper:
+            post_promo_apr_range_inclusive_upper:
               type: number
               description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
               example: 5
@@ -2282,6 +2284,7 @@ components:
                       - "%INTEREST"
                       - "%PRINCIPAL"
                     description: Current due calculation method for the promotional period.
+                    example: PERCENT_PRINCIPAL
                   promo_purchase_window_len:
                     type: number
                     description: If applicable, the number of billing cycles from account
@@ -2340,16 +2343,17 @@ components:
                       - "%INTEREST"
                       - "%PRINCIPAL"
                     description: Current due calculation method for the post-promotional period.
+                    example: AM
                   post_promo_default_interest_rate_percent:
                     type: number
                     description: The rate that serves as the active interest rate for accounts
                       during the post-promotional period.
                     example: 3
-                  promo_apr_range_inclusive_lower:
+                  post_promo_apr_range_inclusive_lower:
                     type: number
                     description: Optional lower bound for APR Range for the product (i.e. 2 = 2%).
                     example: 2
-                  promo_apr_range_inclusive_upper:
+                  post_promo_apr_range_inclusive_upper:
                     type: number
                     description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
                     example: 5
@@ -3089,6 +3093,7 @@ components:
                       - PERCENT_INTEREST
                       - PERCENT_PRINCIPAL
                     description: Current due calculation method for the promotional period.
+                    example: PERCENT_PRINCIPAL
                   promo_purchase_window_len:
                     type: number
                     description: If applicable, the number of billing cycles from account
@@ -3142,16 +3147,17 @@ components:
                       - PERCENT_INTEREST
                       - PERCENT_PRINCIPAL
                     description: Current due calculation method for the post-promotional period.
+                    example: AM
                   post_promo_default_interest_rate_percent:
                     type: number
                     description: The rate that serves as the active interest rate for accounts
                       during the post-promotional period.
                     example: 3
-                  promo_apr_range_inclusive_lower:
+                  post_promo_apr_range_inclusive_lower:
                     type: number
                     description: Optional lower bound for APR Range for the product (i.e. 2 = 2%).
                     example: 2
-                  promo_apr_range_inclusive_upper:
+                  post_promo_apr_range_inclusive_upper:
                     type: number
                     description: Optional upper bound for APR Range for the product (i.e. 5 = 5%).
                     example: 5
