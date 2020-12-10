@@ -29,6 +29,10 @@
   },
   "line_item_overview": {
     "type": "object",
+    "required": [
+      "line_item_status",
+      "line_item_type"
+    ],
     "properties": {
       "line_item_status": {
         "type": "string",
@@ -51,6 +55,12 @@
   },
   "line_item_summary": {
     "type": "object",
+    "required": [
+      "original_amount_cents",
+      "balance_cents",
+      "principal_cents",
+      "total_interest_accrued_cents"
+    ],
     "properties": {
       "original_amount_cents": {
         "type": "integer",

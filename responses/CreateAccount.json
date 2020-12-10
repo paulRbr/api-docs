@@ -1,5 +1,5 @@
 {
-  "description": "New Account Created",
+  "description": "Successful query of information for a specific account",
   "content": {
     "application/json": {
       "schema": {

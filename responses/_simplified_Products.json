@@ -5,7 +5,7 @@
       "schema": {
         "type": "array",
         "items": {
-          "$ref": "./../schemas/_simplified_Product.json"
+          "$ref": "./../schemas/Product.json"
         }
       }
     }

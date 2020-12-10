@@ -4,16 +4,16 @@
   "required": ["min_pay", "billing_cycle", "interest_policies", "close_of_business_and_timezone"],
   "properties": {
     "payment_due_policies": {
-      "$ref": "./_simplified_PaymentDuePolicies.json"
+      "$ref": "./PaymentDuePolicies.json"
     },
     "fee_policies": {
-      "$ref": "./_simplified_FeePolicies.json"
+      "$ref": "./FeePolicies.json"
     },
     "billing_cycle_policies": {
-      "$ref": "./_simplified_BillingCyclePolicies.json"
+      "$ref": "./BillingCyclePolicies.json"
     },
     "interest_policies": {
-      "$ref": "./_simplified_InterestPolicies.json"
+      "$ref": "./InterestPolicies.json"
     }
   },
   "description": "A base group of policies that define a Product"

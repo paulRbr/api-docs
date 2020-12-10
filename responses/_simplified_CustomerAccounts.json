@@ -3,7 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/_simplified_CustomerAccounts.json"
+        "$ref": "./../schemas/CustomerAccounts.json"
       }
     }
   }

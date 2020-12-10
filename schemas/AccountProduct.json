@@ -1,6 +1,9 @@
 {
   "type": "object",
   "description": "The product associated with the account",
+  "required": [
+    "product_id"
+  ],
   "properties": {
     "product_id": {
       "type": "integer",
@@ -14,6 +17,11 @@
     },
     "product_overview": {
       "type": "object",
+      "required": [
+        "product_name",
+        "product_type",
+        "product_long_description"
+      ],
       "properties": {
         "product_name": {
           "type": "string",
@@ -41,9 +49,10 @@
           "enum": [
             "REVOLVING",
             "INSTALLMENT",
+            "SAME_AS_CASH_INSTALLMENT",
+            "FIXED_RATE_INSTALLMENT",
             "MIXED_RATE_INSTALLMENT",
-            "DEFERRED_INSTALLMENT",
-            "FIXED_RATE_INSTALLMENT"
+            "ZERO_INTEREST_INSTALLMENT"
           ],
           "example": "REVOLVING"
         }
@@ -51,6 +60,10 @@
     },
     "product_lifecycle": {
       "type": "object",
+      "required": [
+        "late_fee_impl_cents",
+        "payment_reversal_fee_impl_cents"      
+      ],
       "properties": {
         "late_fee_impl_cents": {
           "type": "number",

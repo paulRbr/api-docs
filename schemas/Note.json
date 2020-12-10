@@ -1,5 +1,12 @@
 {
   "type": "object",
+  "required": [
+    "note_id",
+    "account_id",
+    "author",
+    "message",
+    "created_date"
+  ],
   "properties": {
     "note_id": {
       "type": "string",

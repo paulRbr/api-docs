@@ -1,8 +1,9 @@
 {
   "allOf": [
-    { "$ref": "./_simplified_Account.json" },
+    { "$ref": "./Account.json" },
     {
       "type": "object",
+      "required": ["customers"],
       "properties": {
         "customers": {
           "type": "array",

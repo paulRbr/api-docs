@@ -159,6 +159,10 @@
     },
     "min_pay_due": {
       "type": "object",
+      "required": [
+        "min_pay_cents",
+        "min_pay_due_at"
+      ],
       "properties": {
         "min_pay_cents": {
           "type": "integer",
@@ -175,6 +179,13 @@
     },
     "additional_min_pay_details": {
       "type": "object",
+      "required": [
+        "min_pay_root_principal_cents",
+        "min_pay_interest_cents",
+        "min_pay_deferred_cents",
+        "min_pay_fees_cents",
+        "previous_min_pay_cents"
+      ],
       "properties": {
         "min_pay_charges_principal_cents": {
           "type": "integer",

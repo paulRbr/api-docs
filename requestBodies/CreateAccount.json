@@ -1,6 +1,5 @@
 {
   "description": "Create a new account",
-  "required": true,
   "content": {
     "application/json": {
       "schema": {
@@ -11,52 +10,102 @@
             "properties": {
               "product_id": {
                 "type": "integer",
-                "description": "The Product ID of the account",
-                "example": 2
+                "description": "The Canopy-generated Product ID of the account. Either this, or the `external_product_id` must be passed at the time of account creation.",
+                "example": 6
               },
-              "external_ids": {
+              "external_product_id": {
+                "type": "string",
+                "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either this, or the Canopy product ID must be passed at the time of account creation.",
+                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+              },
+              "external_fields": {
                 "type": "array",
-                "description": "An array of static references to ID fields in a third party system.",
+                "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                 "items": {
                   "type": "object",
                   "properties": {
-                    "name": {
+                    "key": {
                       "type": "string",
-                      "description": "Name of the External Party",
-                      "example": "Globex Corporation"
+                      "description": "key: i.e. Name of the External Party",
+                      "example": "Umbrella Corporation"
                     },
-                    "id": {
+                    "value": {
                       "type": "string",
-                      "description": "External Account ID",
+                      "description": "value: i.e. External Account ID",
                       "example": "22445702-a389-431f-927d-07b8d0750787"
                     }
                   }
                 }
               },
-              "merchant_name": {
-                "type": "string",
-                "description": "A merchant name associated with the account",
-                "example": "Acme Corporation"
+              "summary": {
+                "type": "object",
+                "properties": {
+                  "credit_limit_cents": {
+                    "type": "integer",
+                    "description": "Total Amount (in cents) that this account can borrow.",
+                    "example": 400000
+                  },
+                  "max_approved_credit_limit_cents": {
+                    "type": "integer",
+                    "description": "Total Amount (in cents) that this account can borrow.",
+                    "example": 400000
+                  },
+                  "late_fee_cents": {
+                    "type": "number",
+                    "description": "The fee charged for late payments on the account.",
+                    "example": 2900
+                  },
+                  "payment_reversal_fee_cents": {
+                    "type": "number",
+                    "description": "The fee charged for payment reversals on the account.",
+                    "example": 2900
+                  },
+                  "initial_principal_cents": {
+                    "type": "number",
+                    "description": "The initial principal balance (in cents) for the account.",
+                    "example": 400000
+                  }
+                }
               },
-              "lender_name": {
-                "type": "string",
-                "description": "A lender name associated with the account",
-                "example": "Globex Lending Corp"
+              "promo_overview": {
+                "type": "object",
+                "properties": {
+                  "promo_impl_interest_rate_percent": {
+                    "type": "number",
+                    "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+                    "example": 6.2
+                  }
+                }
               },
-              "credit_limit_cents": {
-                "type": "integer",
-                "description": "For accounts created under credit products, total Amount (in cents) that this account can borrow.",
-                "example": 400000
+              "post_promo_overview": {
+                "type": "object",
+                "properties": {
+                  "post_promo_impl_interest_rate_percent": {
+                    "type": "number",
+                    "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+                    "example": 6.2
+                  },
+                  "post_promo_impl_am_len": {
+                    "type": "integer",
+                    "description": "If applicable, post-promotional amortization length in cycles.",
+                    "example": 48
+                  }
+                }
               },
-              "max_approve_cents": {
-                "type": "integer",
-                "description": "For accounts created under credit products, total Amount (in cents) that this account can borrow.",
-                "example": 400000
-              },
-              "interest_rate_account_default": {
-                "type": "number",
-                "description": "The percentage interest applied to the account during default, or non-promotional periods (i.e. 6.2%)",
-                "example": 6.2
+              "associated_entities": {
+                "type": "object",
+                "properties": {
+                  "merchant_name": {
+                    "type": "string",
+                    "description": "A merchant name associated with the account",
+                    "example": "Acme Corporation"
+                  },
+                  "lender_name": {
+                    "type": "string",
+                    "description": "A lender name associated with the account",
+                    "example": "Globex Lending Corp"
+                  }
+                }
               }
             }
           },
@@ -72,12 +121,12 @@
                     "customer_id": {
                       "type": "integer",
                       "description": "Canopy-generated unique ID for this customer",
-                      "example": 7
+                      "example": 6
                     },
                     "customer_account_role": {
                       "type": "integer",
                       "description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
-                      "enum": [1, 2],
+                      "enum": ["1", "2"],
                       "example": 1
                     }
                   }

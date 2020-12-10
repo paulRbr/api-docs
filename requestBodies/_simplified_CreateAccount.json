@@ -1,6 +1,5 @@
 {
   "description": "Create a new account",
-  "required": true,
   "content": {
     "application/json": {
       "schema": {

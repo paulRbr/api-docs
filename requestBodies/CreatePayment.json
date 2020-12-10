@@ -1,6 +1,6 @@
 {
   "description": "Body of request to create payment.",
-  "required": true,
+  "required": ["amount_cents"],
   "content": {
     "application/json": {
       "schema": {

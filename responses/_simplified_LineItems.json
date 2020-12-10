@@ -6,8 +6,15 @@
         "type": "array",
         "items": {
           "type": "object",
+          "required": [
+            "account_id",
+            "line_item_id",
+            "effective_at",
+            "created_at",
+            "product_id"
+          ],
           "properties": {
-            "$ref": "./../schemas/_simplified_LineItem.json"
+            "$ref": "./../schemas/LineItem.json"
           }
         }
       }

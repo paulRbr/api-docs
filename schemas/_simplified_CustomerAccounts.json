@@ -1,5 +1,6 @@
 {
   "type": "object",
+  "required": ["customer_accounts", "total_customer_account_count"],
   "properties": {
     "customer_accounts": {
       "type": "array",
@@ -8,7 +9,7 @@
         "type": "object",
         "properties": {
           "account": {
-            "$ref": "./_simplified_Account.json"
+            "$ref": "./Account.json"
           },
           "customer_account_config": {
             "allOf": [
@@ -18,6 +19,7 @@
               {
                 "type": "object",
                 "properties": {
+                  "required": ["customer_account_role"],
                   "customer_account_role": {
                     "type": "string",
                     "description": "The role of the customer for the account.",
@@ -38,7 +40,8 @@
     },
     "total_customer_account_count": {
       "type": "integer",
-      "description": "Total number of unique customer-account correspondences"
+      "description": "Total number of unique customer-account correspondences",
+      "example": 500
     }
   }
 }

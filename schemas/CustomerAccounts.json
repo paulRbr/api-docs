@@ -1,5 +1,6 @@
 {
   "type": "object",
+  "required": ["customer_accounts", "total_customer_account_count"],
   "properties": {
     "customer_accounts": {
       "type": "array",
@@ -8,35 +9,39 @@
         "type": "object",
         "properties": {
           "account": {
-            "$ref": "./ComplexAccount.json"
+            "$ref": "./Account.json"
           },
-          "customer": {
-            "$ref": "./Customer.json"
-          },
-          "customers": {
-            "type": "array",
-            "description": "An array of information for all customers within the requested range.",
-            "items": {
-              "$ref": "./Customer.json"
-            }
-          },
-          "customer_account_role": {
-            "type": "string",
-            "description": "The role of the customer for the account.",
-            "enum": ["primary", "secondary"],
-            "example": "primary"
-          },
-          "customer_account_pan": {
-            "type": "string",
-            "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
-            "example": "4465220133024156"
+          "customer_account_config": {
+            "allOf": [
+              {
+                "$ref": "./Customer.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "required": ["customer_account_role"],
+                  "customer_account_role": {
+                    "type": "string",
+                    "description": "The role of the customer for the account.",
+                    "enum": ["primary", "secondary"],
+                    "example": "primary"
+                  },
+                  "customer_account_pan": {
+                    "type": "string",
+                    "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
+                    "example": "4465220133024156"
+                  }
+                }
+              }
+            ]
           }
         }
       }
     },
     "total_customer_account_count": {
       "type": "integer",
-      "description": "Total number of unique customer-account correspondences"
+      "description": "Total number of unique customer-account correspondences",
+      "example": 500
     }
   }
 }

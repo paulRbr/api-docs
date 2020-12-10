@@ -1,14 +1,7 @@
 {
   "required": [
-    "policies",
     "product_id",
-    "name",
-    "description",
-    "created_at",
-    "type",
-    "policies",
-    "product_summary",
-    "default_attributes"
+    "created_at"
   ],
   "type": "object",
   "additionalProperties": false,
@@ -32,6 +25,11 @@
     "product_overview": {
       "type": "object",
       "description": "A series of static fields about the product.",
+      "required": [
+        "product_name",
+        "product_type",
+        "product_long_description"
+      ],
       "properties": {
         "product_name": {
           "type": "string",
@@ -44,9 +42,10 @@
           "enum": [
             "REVOLVING",
             "INSTALLMENT",
+            "SAME_AS_CASH_INSTALLMENT",
+            "FIXED_RATE_INSTALLMENT",
             "MIXED_RATE_INSTALLMENT",
-            "DEFERRED_INSTALLMENT",
-            "FIXED_RATE_INSTALLMENT"
+            "ZERO_INTEREST_INSTALLMENT"
           ],
           "example": "REVOLVING"
         },
@@ -87,19 +86,22 @@
       "type": "object",
       "properties": {
         "payment_due_policies": {
-          "$ref": "./_simplified_PaymentDuePolicies.json"
+          "$ref": "./PaymentDuePolicies.json"
         },
         "fee_policies": {
-          "$ref": "./_simplified_FeePolicies.json"
+          "$ref": "./FeePolicies.json"
         },
         "billing_cycle_policies": {
-          "$ref": "./_simplified_BillingCyclePolicies.json"
+          "$ref": "./BillingCyclePolicies.json"
         },
         "interest_policies": {
-          "$ref": "./_simplified_InterestPolicies.json"
+          "$ref": "./InterestPolicies.json"
         },
         "default_attributes": {
           "type": "object",
+          "required": [
+            "default_credit_limit_cents"
+          ],
           "properties": {
             "default_credit_limit_cents": {
               "type": "integer",
@@ -109,12 +111,12 @@
             "default_late_fee_cents": {
               "type": "integer",
               "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
-              "example": 600000
+              "example": 50000
             },
             "default_payment_reversal_fee_cents": {
               "type": "integer",
               "description": "The default maximum principal credit (in cents) available for a customer account. This default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product. Credit limits for an account can also be updated post-account creation.",
-              "example": 600000
+              "example": 10000
             }
           }
         }
@@ -129,9 +131,9 @@
           "description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
           "example": 6
         },
-        "post_promo_min_pay_type": {
+        "promo_min_pay_type": {
           "type": "string",
-          "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
+          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL"],
           "description": "Current due calculation method for the promotional period."
         },
         "promo_purchase_window_len": {
@@ -139,11 +141,11 @@
           "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
           "example": 5
         },
-        "promotion_min_payments": {
-          "type": "boolean",
-          "description": "Whether minimum payments are due during the promotional period or not.",
-          "example": false
-        },
+				"promo_min_pay_percent": {
+					"type": "number",
+					"description": "Defaults to 100. The percent of new interest in the cycle used to determine the minimum payment.",
+					"example": 100
+				},
         "promo_interest_deferred": {
           "type": "boolean",
           "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
@@ -186,7 +188,7 @@
         },
         "post_promo_min_pay_type": {
           "type": "string",
-          "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
+          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL"],
           "description": "Current due calculation method for the post-promotional period."
         },
         "post_promo_default_interest_rate_percent": {
@@ -207,7 +209,7 @@
       }
     },
     "product_summary": {
-      "$ref": "./_simplified_ProductSummary.json"
+      "$ref": "./ProductSummary.json"
     }
   }
 }

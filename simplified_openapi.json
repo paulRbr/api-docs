@@ -2,10 +2,10 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Canopy Servicing Core API",
-    "description": "**API Overview** \n Canopy allows you to easily manage credit products from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can access and track information related to disputes, see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Simply configure your product’s policies through our [Policy Management Dashboard](https://admin.canopyservicing.com), and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.",
-    "termsOfService": "https://api.canopyservicing.com/terms/",
+    "description": "**API Overview** \n Canopy allows you to easily manage credit, installment, or other more complex lending programs from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Canopy additionally surfaces information around all of your lending activity through its intuitive UI which provides a customer support interface as well as at-a-glance data needed for compliance and insights. \n \n Simply configure your product’s policies through our Create Product API endpoint, and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.",
+    "termsOfService": "https://canopyservicing.com/terms/",
     "contact": {
-      "email": "will@canopyservicing.com"
+      "email": "dev@canopyservicing.com"
     },
     "version": "1.3"
   },
@@ -181,7 +181,7 @@
         "tags": ["products"],
         "summary": "Create a new product",
         "operationId": "createProduct",
-        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by using the [Policy Management Dashboard](https://canopyservicing.com); however, you can also configure and manage products programmatically. \n \n Request body for creating a new product. \n \n The following fields are minimum requirements for products to be published with the `live` status: \n - `name` \n - `default_rate` \n - `default_credit_limit_cents` \n `policies` (with an appropriate Base Policy Configuration)",
+        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by sending an excel file detailing your preferred configurations to the [Canopy team](mailto:support@canopyservicing.com?subject=API%20Access%20Request); however, you can also configure and manage products programmatically using this API documentation. \n \n Request body for creating a new product.",
         "requestBody": {
           "$ref": "#/components/requestBodies/CreateProduct"
         },
@@ -250,7 +250,7 @@
           {
             "name": "offset",
             "in": "query",
-            "description": "The zero-indexed starting point for paginated account requests sorted by account created date.",
+            "description": "The zero-indexed starting point for paginated customer account requests sorted by account created date.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -262,7 +262,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "description": "The maximum number of customer accounts to be returned. Defaults to 100.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -708,6 +708,48 @@
         }
       }
     },
+    "/accounts/{account_id}/statements/{statement_id}": {
+      "get": {
+        "tags": ["statements"],
+        "summary": "Get a specific statement for a specific account.",
+        "description": "This will return a statement that corresponds with the passed Statement ID. Relevant IDs for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
+        "operationId": "getAccountStatement",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "statement_id",
+            "in": "path",
+            "description": "The ID of a specific statement you would like returned.",
+            "required": true,
+            "style": "simple",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AccountStatement"
+          },
+          "404": {
+            "description": "Statement not found"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/{loan_id}/amortization_schedule": {
       "get": {
         "tags": ["amortization_schedule"],
@@ -759,48 +801,6 @@
           }
         }
       }
-    },
-    "/accounts/{account_id}/statements/{statement_id}": {
-      "get": {
-        "tags": ["statements"],
-        "summary": "Get a specific statement for a specific account.",
-        "description": "This will return a statement that corresponds with the passed Statement ID. Relevant IDs for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
-        "operationId": "getAccountStatement",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "statement_id",
-            "in": "path",
-            "description": "The ID of a specific statement you would like returned.",
-            "required": true,
-            "style": "simple",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/AccountStatement"
-          },
-          "404": {
-            "description": "Statement not found"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -828,10 +828,10 @@
         "$ref": "./schemas/ComplexCustomer.json"
       },
       "AccountStatement": {
-        "$ref": "./schemas/_simplified_AccountStatement.json"
+        "$ref": "./schemas/AccountStatement.json"
       },
       "AccountStatementSummary": {
-        "$ref": "./schemas/_simplified_AccountStatementSummary.json"
+        "$ref": "./schemas/AccountStatementSummary.json"
       },
       "Product": {
         "$ref": "./schemas/Product.json"
@@ -869,7 +869,7 @@
         "$ref": "./requestBodies/RegisterApiUser.json"
       },
       "CreateProduct": {
-        "$ref": "./requestBodies/_simplified_CreateProduct.json"
+        "$ref": "./requestBodies/CreateProduct.json"
       },
       "CreateCustomer": {
         "$ref": "./requestBodies/CreateCustomer.json"
@@ -878,7 +878,7 @@
         "$ref": "./requestBodies/UpdateCustomer.json"
       },
       "CreateAccount": {
-        "$ref": "./requestBodies/_simplified_CreateAccount.json"
+        "$ref": "./requestBodies/CreateAccount.json"
       },
       "CreateNote": {
         "$ref": "./requestBodies/CreateNote.json"
@@ -910,16 +910,16 @@
         "$ref": "./responses/RegisterApiUser.json"
       },
       "CreateProduct": {
-        "$ref": "./responses/_simplified_Product.json"
+        "$ref": "./responses/Product.json"
       },
       "Product": {
-        "$ref": "./responses/_simplified_Product.json"
+        "$ref": "./responses/Product.json"
       },
       "Products": {
-        "$ref": "./responses/_simplified_Products.json"
+        "$ref": "./responses/Products.json"
       },
       "CustomerAccounts": {
-        "$ref": "./responses/_simplified_CustomerAccounts.json"
+        "$ref": "./responses/CustomerAccounts.json"
       },
       "CreateCustomer": {
         "$ref": "./responses/CreateCustomer.json"
@@ -934,13 +934,13 @@
         "$ref": "./responses/Customers.json"
       },
       "CreateAccount": {
-        "$ref": "./responses/_simplified_CreateAccount.json"
+        "$ref": "./responses/CreateAccount.json"
       },
       "Accounts": {
         "$ref": "./responses/Accounts.json"
       },
       "AmortizationSchedule": {
-        "$ref": "./responses/_simplified_AmortizationSchedule.json"
+        "$ref": "./responses/AmortizationSchedule.json"
       },
       "CreateNote": {
         "$ref": "./responses/CreateNote.json"
@@ -955,10 +955,10 @@
         "$ref": "./responses/CreatePayment.json"
       },
       "Account": {
-        "$ref": "./responses/_simplified_Account.json"
+        "$ref": "./responses/Account.json"
       },
       "AccountStatement": {
-        "$ref": "./responses/_simplified_AccountStatement.json"
+        "$ref": "./responses/AccountStatement.json"
       },
       "ProductAccounts": {
         "$ref": "./responses/ProductAccounts.json"
@@ -970,10 +970,10 @@
         "$ref": "./responses/LineItem.json"
       },
       "LineItemWithChildren": {
-        "$ref": "./responses/_simplified_LineItemWithChildren.json"
+        "$ref": "./responses/LineItemWithChildren.json"
       },
       "LineItems": {
-        "$ref": "./responses/_simplified_LineItems.json"
+        "$ref": "./responses/LineItems.json"
       },
       "StatementsList": {
         "$ref": "./responses/StatementsList.json"
