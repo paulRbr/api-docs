@@ -98,7 +98,8 @@
               "promo_min_pay_type": {
                 "type": "string",
                 "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
-                "description": "Current due calculation method for the promotional period."
+                "description": "Current due calculation method for the promotional period.",
+                "example": "PERCENT_PRINCIPAL"
               },
               "promo_purchase_window_len": {
                 "type": "number",
@@ -158,7 +159,8 @@
               "post_promo_min_pay_type": {
                 "type": "string",
                 "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
-                "description": "Current due calculation method for the post-promotional period."
+                "description": "Current due calculation method for the post-promotional period.",
+                "example": "AM"
               },
               "post_promo_default_interest_rate_percent": {
                 "type": "number",
