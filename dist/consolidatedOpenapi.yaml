@@ -2326,7 +2326,7 @@ components:
                     description: Optional upper bound for amortization length in billing cycles for
                       the product.
                     example: 5
-                  promo_min_pay_percent:
+                  post_promo_min_pay_percent:
                     type: number
                     description: Defaults to 100. The percent of new interest in the cycle used to
                       determine the minimum payment.
