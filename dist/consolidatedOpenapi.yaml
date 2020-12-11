@@ -2291,11 +2291,6 @@ components:
                       origination under which this product falls under a purchas
                       window period.
                     example: 5
-                  promo_min_payments:
-                    type: boolean
-                    description: Whether minimum payments are due during the promotional period or
-                      not.
-                    example: false
                   promo_interest_deferred:
                     type: boolean
                     description: Indicates whether interest accrued during the promotional period is
@@ -3203,9 +3198,9 @@ components:
                               type: string
                               description: The role of the customer for the account.
                               enum:
-                                - primary
-                                - secondary
-                              example: primary
+                                - PRIMARY
+                                - SECONDARY
+                              example: PRIMARY
                             customer_account_pan:
                               type: string
                               description: A unique number for the customer on the account. For instance, a
