@@ -750,7 +750,7 @@
         }
       }
     },
-    "/accounts/{account_id}/{loan_id}/amortization_schedule": {
+    "/accounts/{account_id}/amortization_schedule": {
       "get": {
         "tags": ["amortization_schedule"],
         "summary": "Get the amortization schedule for a specific loan",
