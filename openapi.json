@@ -202,7 +202,7 @@
           "$ref": "#/components/requestBodies/CreateProduct"
         },
         "responses": {
-          "204": {
+          "200": {
             "$ref": "#/components/responses/CreateProduct"
           },
           "422": {
@@ -404,7 +404,7 @@
           "$ref": "#/components/requestBodies/CreateAccount"
         },
         "responses": {
-          "201": {
+          "200": {
             "$ref": "#/components/responses/CreateAccount"
           },
           "422": {
@@ -628,7 +628,7 @@
           "$ref": "#/components/requestBodies/CreateCharge"
         },
         "responses": {
-          "204": {
+          "200": {
             "$ref": "#/components/responses/CreateCharge"
           },
           "422": {
