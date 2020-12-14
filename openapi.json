@@ -17,6 +17,10 @@
     {
       "title": "Authentication",
       "content": "To create your organization within Canopy, [contact our team](mailto:support@canopyservicing.com?subject=API%20Access%20Request). Once created, review our API Users routes to handle all subsequent authentication-related activities, including inviting your team members to join your organization."
+    },
+    {
+      "title": "Troubleshooting",
+      "content": "See a [detailed overview of error codes supported by Canopy and their meanings.](https://www.notion.so/canopy1/External-API-Status-Codes-576e6b9e43154db286d39a9aba1391aa)"
     }
   ],
   "servers": [
@@ -32,7 +36,7 @@
   ],
   "tags": [
     {
-      "name": "authentication",
+      "name": "api_users",
       "description": "Authenticate to use the appropriate environment (sandbox or production) within Canopy"
     },
     {
@@ -77,6 +81,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/CreateApiUser"
+          },
+          "422": {
+            "description": "Invalid input."
           }
         }
       },
@@ -113,6 +120,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/LogInApiUser"
+          },
+          "404": {
+            "description": "Not found."
           }
         }
       }
@@ -129,6 +139,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/UpdateApiUserPassword"
+          },
+          "404": {
+            "description": "Not found."
           }
         }
       }
@@ -145,6 +158,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/RegisterApiUser"
+          },
+          "404": {
+            "description": "Not found."
           }
         }
       }
@@ -166,7 +182,7 @@
             "$ref": "#/components/responses/ApiUser"
           },
           "404": {
-            "description": "No Products"
+            "description": "No API user found."
           }
         }
       }
@@ -235,7 +251,7 @@
             "$ref": "#/components/responses/Products"
           },
           "404": {
-            "description": "No Products"
+            "description": "Unable to get products"
           }
         }
       }
@@ -299,6 +315,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/CreateCustomer"
+          },
+          "422": {
+            "description": "Invalid input"
           }
         }
       }
@@ -333,8 +352,11 @@
           "$ref": "#/components/requestBodies/UpdateCustomer"
         },
         "responses": {
-          "204": {
+          "200": {
             "$ref": "#/components/responses/UpdateCustomer"
+          },
+          "422": {
+            "description": "Invalid input"
           }
         }
       },
@@ -385,7 +407,7 @@
           "201": {
             "$ref": "#/components/responses/CreateAccount"
           },
-          "405": {
+          "422": {
             "description": "Invalid input"
           }
         }
@@ -448,6 +470,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/CreateNote"
+          },
+          "422": {
+            "description": "Invalid input"
           }
         }
       },
@@ -476,7 +501,7 @@
             "$ref": "#/components/responses/Notes"
           },
           "404": {
-            "description": "Account not found"
+            "description": "Note not found"
           }
         }
       }
@@ -530,7 +555,7 @@
             "$ref": "#/components/responses/LineItems"
           },
           "404": {
-            "description": "Account not found"
+            "description": "Line Items not found"
           }
         }
       }
@@ -570,8 +595,11 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "$ref": "#/components/responses/LineItemWithChildren"
+          },
+          "404": {
+            "description": "Line Items not found"
           }
         }
       }
@@ -603,14 +631,8 @@
           "204": {
             "$ref": "#/components/responses/CreateCharge"
           },
-          "401": {
-            "description": "You are not authenticated"
-          },
-          "403": {
-            "description": "You are not authorized"
-          },
-          "404": {
-            "description": "Account not found"
+          "422": {
+            "description": "Invalid input"
           }
         }
       }
@@ -639,11 +661,11 @@
           "$ref": "#/components/requestBodies/CreatePayment"
         },
         "responses": {
-          "204": {
+          "200": {
             "$ref": "#/components/responses/CreatePayment"
           },
-          "404": {
-            "description": "Account not found"
+          "422": {
+            "description": "Invalid input"
           }
         }
       }
@@ -704,6 +726,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Statements not found"
           }
         }
       }
@@ -796,8 +821,11 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "$ref": "#/components/responses/AmortizationSchedule"
+          },
+          "404": {
+            "description": "Amortization Schedule not found"
           }
         }
       }

@@ -32,6 +32,9 @@ x-topics:
       Once created, review our API Users routes to handle all subsequent
       authentication-related activities, including inviting your team members to
       join your organization.
+  - title: Troubleshooting
+    content: See a [detailed overview of error codes supported by Canopy and their
+      meanings.](https://www.notion.so/canopy1/External-API-Status-Codes-576e6b9e43154db286d39a9aba1391aa)
 servers:
   - url: https://sandbox.canopyservicing.com
     description: Sandbox
@@ -587,7 +590,7 @@ paths:
           $ref: "#/components/responses/AccountStatement"
         "404":
           description: Statement not found
-  "/accounts/{account_id}/{loan_id}/amortization_schedule":
+  "/accounts/{account_id}/amortization_schedule":
     get:
       tags:
         - amortization_schedule
