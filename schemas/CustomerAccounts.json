@@ -11,22 +11,19 @@
           "account": {
             "$ref": "./Account.json"
           },
-          "customer_account_config": {
+          "customer_account": {
             "allOf": [
-              {
-                "$ref": "./Customer.json"
-              },
+              {"$ref": "./Customer.json"},
               {
                 "type": "object",
                 "properties": {
-                  "required": ["customer_account_role"],
                   "customer_account_role": {
                     "type": "string",
                     "description": "The role of the customer for the account.",
                     "enum": ["PRIMARY", "SECONDARY"],
                     "example": "PRIMARY"
                   },
-                  "customer_account_pan": {
+                  "customer_account_external_id": {
                     "type": "string",
                     "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
                     "example": "4465220133024156"
