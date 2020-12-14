@@ -1,9 +1,5 @@
-
 {
-  "required": [
-    "product_id",
-    "created_at"
-  ],
+  "required": ["product_id", "created_at"],
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -11,11 +7,6 @@
       "type": "integer",
       "description": "The Canopy-generated ID for the product.",
       "example": 6
-    },
-    "external_product_id": {
-      "type": "string",
-      "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
     },
     "created_at": {
       "type": "string",
@@ -26,11 +17,7 @@
     "product_overview": {
       "type": "object",
       "description": "A series of static fields about the product.",
-      "required": [
-        "product_name",
-        "product_type",
-        "product_long_description"
-      ],
+      "required": ["product_name", "product_type", "product_long_description"],
       "properties": {
         "product_name": {
           "type": "string",
@@ -64,6 +51,12 @@
           "type": "string",
           "description": "A color to be associated with the product for UI purposes.",
           "example": "#0000FF"
+        },
+
+        "external_product_id": {
+          "type": "string",
+          "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+          "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
         },
         "external_fields": {
           "type": "array",
@@ -100,9 +93,7 @@
         },
         "default_attributes": {
           "type": "object",
-          "required": [
-            "default_credit_limit_cents"
-          ],
+          "required": ["default_credit_limit_cents"],
           "properties": {
             "default_credit_limit_cents": {
               "type": "integer",
@@ -143,11 +134,11 @@
           "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
           "example": 5
         },
-				"promo_min_pay_percent": {
-					"type": "number",
-					"description": "Defaults to 100. The percent of new interest in the cycle used to determine the minimum payment.",
-					"example": 100
-				},
+        "promo_min_pay_percent": {
+          "type": "number",
+          "description": "Defaults to 100. The percent of new interest in the cycle used to determine the minimum payment.",
+          "example": 100
+        },
         "promo_interest_deferred": {
           "type": "boolean",
           "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
