@@ -628,7 +628,7 @@
           "$ref": "#/components/requestBodies/CreateCharge"
         },
         "responses": {
-          "204": {
+          "200": {
             "$ref": "#/components/responses/CreateCharge"
           },
           "422": {
