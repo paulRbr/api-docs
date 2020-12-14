@@ -496,7 +496,7 @@ paths:
       requestBody:
         $ref: "#/components/requestBodies/CreateCharge"
       responses:
-        "204":
+        "200":
           $ref: "#/components/responses/CreateCharge"
         "422":
           description: Invalid input
@@ -1628,6 +1628,10 @@ components:
       required:
         - product_id
         - created_at
+        - product_overview
+        - product_lifecycle_policies
+        - promotional_policies
+        - post_promotional_policies
       type: object
       additionalProperties: false
       properties:
@@ -1635,11 +1639,6 @@ components:
           type: integer
           description: The Canopy-generated ID for the product.
           example: 6
-        external_product_id:
-          type: string
-          description: A unique external ID that may be used interchangeably with the
-            Canopy-generated product ID
-          example: 95fea111-d121-40f8-9e8e-a6c335e48a45
         created_at:
           type: string
           description: The `Date-Time` that this product was created on the server.
@@ -1680,6 +1679,11 @@ components:
               type: string
               description: A color to be associated with the product for UI purposes.
               example: "#0000FF"
+            external_product_id:
+              type: string
+              description: A unique external ID that may be used interchangeably with the
+                Canopy-generated product ID
+              example: 95fea111-d121-40f8-9e8e-a6c335e48a45
             external_fields:
               type: array
               items:
@@ -1718,7 +1722,6 @@ components:
                   type: string
                   description: Defaults to 0 days. The amount of time after a payment is late
                     after which you would like for a late fee to be incurred.
-                  format: interval
                   example: 5 days
               description: "The set of policies governing fees for the product. "
             billing_cycle_policies:
@@ -1731,7 +1734,6 @@ components:
                   description: The length of the billing cycle. after which a statement is
                     generated, and a due date assigned. IE '1 month' '3 months'
                     or '7 days' (most common is monthly)
-                  format: interval
                   example: 1 month
                 cycle_due_interval:
                   type: string
@@ -1744,7 +1746,6 @@ components:
                     is cut. `-5` days indicates that payments will be due five
                     days prior to the cut of the *next* cycle. Cannot exceed the
                     duration of the billing cycle."
-                  format: interval
                   example: -5 days
                 first_cycle_interval:
                   type: string
@@ -1754,7 +1755,6 @@ components:
                     same length as all other billing cycles, either do not
                     include this field in the request, or set its value to the
                     same as `billing_cycle_period`
-                  format: interval
                   example: 25 days
                 close_of_business_timetz:
                   type: string
@@ -1819,6 +1819,7 @@ components:
                 - AM
                 - PERCENT_INTEREST
                 - PERCENT_PRINCIPAL
+                - NONE
               description: Current due calculation method for the promotional period.
               example: PERCENT_PRINCIPAL
             promo_purchase_window_len:
@@ -1873,6 +1874,7 @@ components:
                 - AM
                 - PERCENT_INTEREST
                 - PERCENT_PRINCIPAL
+                - NONE
               description: Current due calculation method for the post-promotional period.
               example: AM
             post_promo_default_interest_rate_percent:
@@ -1972,14 +1974,12 @@ components:
           description: The length of the billing cycle. after which a statement is
             generated, and a due date assigned. IE '1 month' '3 months' or '7
             days' (most common is monthly)
-          format: interval
           example: 1 month
         billing_due_date_interval:
           type: string
           description: The amount of time you would like between the statement cut and the
             billing due date. IE '25 days'.  Cannot exceed the start of the next
             billing cycle and generally needs to be at least 21 days.
-          format: interval
           example: 25 days
       description: The Billing Cycle Object
     InterestPolicy:
@@ -2012,8 +2012,8 @@ components:
         interest_calc_time:
           type: string
           description: Interest for this policy is calculated at this time every X interval.
-          format: date-time
-          example: 05:00:00
+          format: time
+          example: 11:21:04-08:00
       description: The Interest Policy Object
     LineItem:
       type: object
@@ -2220,7 +2220,11 @@ components:
         application/json:
           schema:
             type: object
-            required: []
+            required:
+              - product_overview
+              - product_lifecycle_policies
+              - promotional_policies
+              - post_promotional_policies
             additionalProperties: false
             properties:
               product_overview:
@@ -2308,8 +2312,9 @@ components:
                     type: string
                     enum:
                       - AM
-                      - "%INTEREST"
-                      - "%PRINCIPAL"
+                      - PERCENT_INTEREST
+                      - PERCENT_PRINCIPAL
+                      - NONE
                     description: Current due calculation method for the promotional period.
                     example: PERCENT_PRINCIPAL
                   promo_purchase_window_len:
@@ -2989,6 +2994,10 @@ components:
             required:
               - product_id
               - created_at
+              - product_overview
+              - product_lifecycle_policies
+              - promotional_policies
+              - post_promotional_policies
             type: object
             additionalProperties: false
             properties:
@@ -2996,11 +3005,6 @@ components:
                 type: integer
                 description: The Canopy-generated ID for the product.
                 example: 6
-              external_product_id:
-                type: string
-                description: A unique external ID that may be used interchangeably with the
-                  Canopy-generated product ID
-                example: 95fea111-d121-40f8-9e8e-a6c335e48a45
               created_at:
                 type: string
                 description: The `Date-Time` that this product was created on the server.
@@ -3041,6 +3045,11 @@ components:
                     type: string
                     description: A color to be associated with the product for UI purposes.
                     example: "#0000FF"
+                  external_product_id:
+                    type: string
+                    description: A unique external ID that may be used interchangeably with the
+                      Canopy-generated product ID
+                    example: 95fea111-d121-40f8-9e8e-a6c335e48a45
                   external_fields:
                     type: array
                     items:
@@ -3114,6 +3123,7 @@ components:
                       - AM
                       - PERCENT_INTEREST
                       - PERCENT_PRINCIPAL
+                      - NONE
                     description: Current due calculation method for the promotional period.
                     example: PERCENT_PRINCIPAL
                   promo_purchase_window_len:
@@ -3168,6 +3178,7 @@ components:
                       - AM
                       - PERCENT_INTEREST
                       - PERCENT_PRINCIPAL
+                      - NONE
                     description: Current due calculation method for the post-promotional period.
                     example: AM
                   post_promo_default_interest_rate_percent:

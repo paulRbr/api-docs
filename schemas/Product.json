@@ -1,5 +1,12 @@
 {
-  "required": ["product_id", "created_at"],
+  "required": [
+    "product_id", 
+    "created_at",
+    "product_overview",
+    "product_lifecycle_policies",
+    "promotional_policies",
+    "post_promotional_policies"
+  ],
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -52,7 +59,6 @@
           "description": "A color to be associated with the product for UI purposes.",
           "example": "#0000FF"
         },
-
         "external_product_id": {
           "type": "string",
           "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
@@ -125,7 +131,7 @@
         },
         "promo_min_pay_type": {
           "type": "string",
-          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL"],
+          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
           "description": "Current due calculation method for the promotional period.",
           "example": "PERCENT_PRINCIPAL"
         },
@@ -181,7 +187,7 @@
         },
         "post_promo_min_pay_type": {
           "type": "string",
-          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL"],
+          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
           "description": "Current due calculation method for the post-promotional period.",
           "example": "AM"
         },

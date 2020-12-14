@@ -23,8 +23,8 @@
     "interest_calc_time": {
       "type": "string",
       "description": "Interest for this policy is calculated at this time every X interval.",
-      "format": "date-time",
-      "example": "05:00:00"
+      "format": "time",
+      "example": "11:21:04-08:00"
     }
   },
   "description": "The Interest Policy Object"
