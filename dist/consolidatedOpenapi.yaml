@@ -41,7 +41,7 @@ servers:
 security:
   - api_key: []
 tags:
-  - name: authentication
+  - name: api_users
     description: Authenticate to use the appropriate environment (sandbox or
       production) within Canopy
   - name: products
@@ -76,6 +76,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/CreateApiUser"
+        "422":
+          description: Invalid input.
     get:
       security:
         - api_key: []
@@ -102,6 +104,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/LogInApiUser"
+        "404":
+          description: Not found.
   /api_users/password:
     put:
       tags:
@@ -115,6 +119,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/UpdateApiUserPassword"
+        "404":
+          description: Not found.
   /api_users/register:
     put:
       tags:
@@ -128,6 +134,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/RegisterApiUser"
+        "404":
+          description: Not found.
   /api_users/summary:
     get:
       security:
@@ -143,7 +151,7 @@ paths:
         "200":
           $ref: "#/components/responses/ApiUser"
         "404":
-          description: No Products
+          description: No API user found.
   /products:
     post:
       security:
@@ -163,7 +171,7 @@ paths:
       requestBody:
         $ref: "#/components/requestBodies/CreateProduct"
       responses:
-        "204":
+        "200":
           $ref: "#/components/responses/CreateProduct"
         "422":
           description: Invalid input
@@ -201,7 +209,7 @@ paths:
         "200":
           $ref: "#/components/responses/Products"
         "404":
-          description: No Products
+          description: Unable to get products
   /customers/accounts:
     get:
       tags:
@@ -255,6 +263,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/CreateCustomer"
+        "422":
+          description: Invalid input
   "/customers/{customer_id}":
     put:
       security:
@@ -278,8 +288,10 @@ paths:
       requestBody:
         $ref: "#/components/requestBodies/UpdateCustomer"
       responses:
-        "204":
+        "200":
           $ref: "#/components/responses/UpdateCustomer"
+        "422":
+          description: Invalid input
     get:
       tags:
         - customers
@@ -315,9 +327,9 @@ paths:
       requestBody:
         $ref: "#/components/requestBodies/CreateAccount"
       responses:
-        "201":
+        "200":
           $ref: "#/components/responses/CreateAccount"
-        "405":
+        "422":
           description: Invalid input
   "/accounts/{account_id}":
     get:
@@ -364,6 +376,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/CreateNote"
+        "422":
+          description: Invalid input
     get:
       tags:
         - notes
@@ -385,7 +399,7 @@ paths:
         "200":
           $ref: "#/components/responses/Notes"
         "404":
-          description: Account not found
+          description: Note not found
   "/accounts/{account_id}/line_items":
     get:
       tags:
@@ -428,7 +442,7 @@ paths:
         "200":
           $ref: "#/components/responses/LineItems"
         "404":
-          description: Account not found
+          description: Line Items not found
   "/accounts/{account_id}/line_items/{line_item_id}":
     get:
       tags:
@@ -458,8 +472,10 @@ paths:
             format: uuid
             example: 8f0a3e81-24b9-4d32-b15b-a59257ed7485
       responses:
-        "204":
+        "200":
           $ref: "#/components/responses/LineItemWithChildren"
+        "404":
+          description: Line Items not found
   "/accounts/{account_id}/line_items/charges":
     post:
       tags:
@@ -482,12 +498,8 @@ paths:
       responses:
         "204":
           $ref: "#/components/responses/CreateCharge"
-        "401":
-          description: You are not authenticated
-        "403":
-          description: You are not authorized
-        "404":
-          description: Account not found
+        "422":
+          description: Invalid input
   "/accounts/{account_id}/line_items/payments":
     post:
       tags:
@@ -508,10 +520,10 @@ paths:
       requestBody:
         $ref: "#/components/requestBodies/CreatePayment"
       responses:
-        "204":
+        "200":
           $ref: "#/components/responses/CreatePayment"
-        "404":
-          description: Account not found
+        "422":
+          description: Invalid input
   "/accounts/{account_id}/statements/list":
     get:
       tags:
@@ -557,6 +569,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/AccountStatementSummary"
+        "404":
+          description: Statements not found
   "/accounts/{account_id}/statements/{statement_id}":
     get:
       tags:
@@ -628,8 +642,10 @@ paths:
             type: number
             example: "50"
       responses:
-        "204":
+        "200":
           $ref: "#/components/responses/AmortizationSchedule"
+        "404":
+          description: Amortization Schedule not found
 components:
   securitySchemes:
     api_key:
