@@ -5,17 +5,17 @@
     "application/json": {
       "schema": {
         "type": "object",
-        "required": [],
+        "required": [
+          "product_overview",
+          "product_lifecycle_policies",
+          "promotional_policies",
+          "post_promotional_policies"
+        ],
         "additionalProperties": false,
         "properties": {
           "product_overview": {
             "type": "object",
-            "required": [
-              "product_name",
-              "product_type",
-              "product_short_description",
-              "product_long_description"
-            ],
+            "required": ["product_name", "product_type", "product_short_description", "product_long_description"],
             "description": "A series of static fields about the product.",
             "properties": {
               "external_product_id": {

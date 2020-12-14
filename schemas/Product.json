@@ -52,7 +52,6 @@
           "description": "A color to be associated with the product for UI purposes.",
           "example": "#0000FF"
         },
-
         "external_product_id": {
           "type": "string",
           "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
