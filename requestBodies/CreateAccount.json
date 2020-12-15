@@ -20,6 +20,7 @@
               },
               "external_fields": {
                 "type": "array",
+                "maxItems": 10,
                 "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                 "items": {
                   "type": "object",
@@ -114,6 +115,7 @@
             "properties": {
               "existing_customers": {
                 "type": "array",
+                "maxItems": 10,
                 "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
                 "items": {
                   "type": "object",
@@ -126,7 +128,6 @@
                     "customer_account_role": {
                       "type": "integer",
                       "description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
-                      "enum": ["1", "2"],
                       "example": 1
                     }
                   }

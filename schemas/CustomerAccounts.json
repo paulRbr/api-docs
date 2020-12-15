@@ -4,6 +4,7 @@
   "properties": {
     "customer_accounts": {
       "type": "array",
+      "maxItems": 10,
       "description": "An array of information for all customer-account correspondences within the requested range.",
       "items": {
         "type": "object",
@@ -13,7 +14,7 @@
           },
           "customer_account": {
             "allOf": [
-              {"$ref": "./Customer.json"},
+              { "$ref": "./Customer.json" },
               {
                 "type": "object",
                 "properties": {

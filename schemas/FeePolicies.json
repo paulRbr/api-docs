@@ -1,6 +1,5 @@
 {
   "type": "object",
-  "required": [],
   "properties": {
     "late_fee_grace": {
       "type": "string",

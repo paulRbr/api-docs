@@ -6,7 +6,8 @@
       "properties": {
         "accounts": {
           "type": "array",
-          "description": "An array of Accounts to which this Customer is assigned",
+          "maxItems": 10,
+          "description": "An array of Accounts this Customer is assigned to.",
           "items": {
             "$ref": "./Account.json"
           }

@@ -1,7 +1,6 @@
 {
   "type": "object",
   "additionalProperties": false,
-  "required": [],
   "properties": {
     "interest_calc_time": {
       "type": "string",

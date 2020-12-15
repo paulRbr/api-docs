@@ -159,10 +159,7 @@
     },
     "min_pay_due": {
       "type": "object",
-      "required": [
-        "min_pay_cents",
-        "min_pay_due_at"
-      ],
+      "required": ["min_pay_cents", "min_pay_due_at"],
       "properties": {
         "min_pay_cents": {
           "type": "integer",
@@ -187,7 +184,7 @@
         "previous_min_pay_cents"
       ],
       "properties": {
-        "min_pay_charges_principal_cents": {
+        "min_pay_root_principal_cents": {
           "type": "integer",
           "description": "Total principal due for the billing cycle.",
           "example": 100000

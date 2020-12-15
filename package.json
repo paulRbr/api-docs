@@ -1,11 +1,12 @@
 {
   "name": "canopy-api",
   "author": "Canopy, Inc",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "private": true,
   "scripts": {
-    "install": "sudo  gem install bump-cli",
-    "deploy": "bump deploy --doc 2cbc8b10-f3ac-4302-98b7-509b8ae66537 --token 2a875f01263a1b976bee2d232544150b openapi.json"
+    "deploy": "bump deploy --doc 2cbc8b10-f3ac-4302-98b7-509b8ae66537 --token 2a875f01263a1b976bee2d232544150b dist/consolidated.json",
+    "bundle": "rm -rf dist/* && swagger-cli bundle -r -o dist/consolidated.json openapi.json",
+    "validate": "swagger-cli validate openapi.json"
   },
   "husky": {
     "hooks": {
@@ -14,8 +15,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "husky": "^4.3.5",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0"
+    "husky": "4.3.5",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0",
+    "swagger-cli": "4.0.4"
   }
 }

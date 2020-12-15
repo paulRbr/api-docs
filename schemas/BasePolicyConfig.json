@@ -1,7 +1,7 @@
 {
   "type": "object",
   "additionalProperties": false,
-  "required": ["min_pay", "billing_cycle", "interest_policies", "close_of_business_and_timezone"],
+  "required": ["payment_due_policies", "fee_policies", "billing_cycle_policies", "interest_policies"],
   "properties": {
     "payment_due_policies": {
       "$ref": "./PaymentDuePolicies.json"

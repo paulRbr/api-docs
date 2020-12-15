@@ -1,5 +1,6 @@
 {
   "type": "array",
+  "maxItems": 100,
   "description": "A history of all notes on an account.",
   "items": {
     "$ref": "./Note.json"

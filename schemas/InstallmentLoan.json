@@ -111,6 +111,7 @@
     },
     "external_ids": {
       "type": "array",
+      "maxItems": 10,
       "description": "An array of static references to ID fields in a third party system.",
       "items": {
         "type": "object",
