@@ -93,8 +93,7 @@
                   "type": "number"
                 },
                 "phone_number": {
-                  "type": "string",
-                  "format": "phonenumber"
+                  "type": "string"
                 }
               }
             },

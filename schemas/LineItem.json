@@ -1,12 +1,6 @@
 {
   "type": "object",
-  "required": [
-    "account_id",
-    "line_item_id",
-    "effective_at",
-    "created_at",
-    "product_id"
-  ],
+  "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
   "properties": {
     "account_id": {
       "type": "integer",
@@ -99,8 +93,7 @@
           "type": "number"
         },
         "phone_number": {
-          "type": "string",
-          "format": "phonenumber"
+          "type": "string"
         }
       }
     },

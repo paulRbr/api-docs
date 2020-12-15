@@ -30,7 +30,6 @@
     },
     "phone": {
       "type": "string",
-      "format": "phonenumber",
       "description": "Phone number of the API user",
       "example": "1-123-456-7890"
     },

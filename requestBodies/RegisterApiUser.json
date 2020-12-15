@@ -30,7 +30,6 @@
           },
           "phone": {
             "type": "string",
-            "format": "phonenumber",
             "description": "The phone number to add to the API User's information.",
             "example": "1-222-222-2222"
           },
