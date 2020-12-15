@@ -87,7 +87,7 @@
       "type": "object",
       "properties": {
         "payment_due_policies": {
-          "$ref": "../schemas/PaymentDuePolicies.json"
+          "$ref": "./PaymentDuePolicies.json"
         },
         "fee_policies": {
           "$ref": "./FeePolicies.json"
