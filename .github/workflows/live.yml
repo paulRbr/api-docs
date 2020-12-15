@@ -1,9 +1,9 @@
-name: Deploy documentation
+name: Deploy documentation to live docs site
 
 on:
   push:
     branches:
-      - master
+      - production
 
 jobs:
   deploy:
@@ -31,6 +31,6 @@ jobs:
       - name: Deploy to internal documentation
         uses: bump-sh/github-action@0.1
         with:
-          id: ${{ secrets.BUMP_DOC_ID }}
-          token: ${{ secrets.BUMP_TOKEN }}
+          id: ${{ secrets.BUMP_DOC_ID_LIVE }}
+          token: ${{ secrets.BUMP_TOKEN_LIVE }}
           file: dist/consolidated.json
