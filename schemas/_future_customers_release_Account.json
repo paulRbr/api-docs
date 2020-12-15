@@ -117,7 +117,6 @@
               },
               "phone_number": {
                 "type": "string",
-                "format": "phonenumber",
                 "description": "Phone number of the customer",
                 "example": "555-555-5555"
               },
