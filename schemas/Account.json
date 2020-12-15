@@ -1,11 +1,7 @@
 {
   "additionalProperties": false,
   "type": "object",
-  "required": [
-    "account_id",
-    "created_at",
-    "effective_at"
-  ],
+  "required": ["account_id", "created_at", "effective_at"],
   "properties": {
     "account_id": {
       "type": "integer",
@@ -46,6 +42,7 @@
     },
     "external_fields": {
       "type": "array",
+      "maxItems": 10,
       "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
       "items": {
         "type": "object",
@@ -65,10 +62,7 @@
     },
     "min_pay_due_cents": {
       "type": "object",
-      "required": [
-        "min_pay_cents",
-        "min_pay_due_at"
-      ],
+      "required": ["min_pay_cents", "min_pay_due_at"],
       "properties": {
         "min_pay_cents": {
           "type": "integer",
@@ -86,14 +80,14 @@
     "additional_min_pay_details": {
       "type": "object",
       "required": [
-        "min_pay_root_principal_cents",
+        "min_pay_charges_principal_cents",
         "min_pay_interest_cents",
         "min_pay_deferred_cents",
         "min_pay_fees_cents",
         "previous_min_pay_cents"
       ],
       "properties": {
-        "min_pay_root_principal_cents": {
+        "min_pay_charges_principal_cents": {
           "type": "integer",
           "description": "Total principal due for the billing cycle.",
           "example": 100000

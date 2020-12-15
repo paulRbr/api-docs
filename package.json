@@ -1,21 +1,28 @@
 {
   "name": "canopy-api",
-  "author": "Canopy, Inc",
-  "version": "1.0.0",
+  "description": "OpenAPI v3 specification for CanopyAPI",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:canopy1/api-docs.git"
+  },
+  "author": "CanopyServicing",
+  "license": "ISC",
   "scripts": {
-    "install": "sudo  gem install bump-cli",
-    "deploy": "bump deploy --doc 2cbc8b10-f3ac-4302-98b7-509b8ae66537 --token 2a875f01263a1b976bee2d232544150b openapi.json"
+    "bundle": "rm -rf dist/* && swagger-cli bundle -r -o dist/consolidated.json openapi.json",
+    "validate": "swagger-cli validate dist/consolidated.json"
   },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "swagger-cli": "4.0.4"
+  },
   "devDependencies": {
-    "husky": "^4.3.5",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0"
+    "husky": "4.3.5",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0"
   }
 }

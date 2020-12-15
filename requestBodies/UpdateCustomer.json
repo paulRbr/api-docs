@@ -85,6 +85,7 @@
           },
           "new_accounts": {
             "type": "array",
+            "maxItems": 10,
             "description": "An array of existing accounts to which this Customer will be newly assigned.",
             "items": {
               "type": "object",

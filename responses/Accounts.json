@@ -8,7 +8,8 @@
         "properties": {
           "accounts": {
             "type": "array",
-            "description": "An array of information for all accounts within the requested range.",
+            "maxItems": 100,
+            "description": "An array of accounts within the requested range.",
             "items": {
               "$ref": "./../schemas/Account.json"
             }

@@ -1,6 +1,6 @@
 {
   "description": "Body of request to create payment.",
-  "required": ["amount_cents"],
+  "required": true,
   "content": {
     "application/json": {
       "schema": {
@@ -20,6 +20,7 @@
           },
           "external_fields": {
             "type": "array",
+            "maxItems": 10,
             "description": "An array of static references to fields in a third party system.",
             "items": {
               "type": "object",

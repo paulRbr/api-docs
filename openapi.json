@@ -1,11 +1,11 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.0.3",
   "info": {
     "title": "Canopy Servicing Core API",
     "description": "**API Overview** \n Canopy allows you to easily manage credit, installment, or other more complex lending programs from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Canopy additionally surfaces information around all of your lending activity through its intuitive UI which provides a customer support interface as well as at-a-glance data needed for compliance and insights. \n \n Simply configure your product’s policies through our Create Product API endpoint, and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.",
     "termsOfService": "https://canopyservicing.com/terms/",
     "contact": {
-      "email": "dev@canopyservicing.com"
+      "email": "devs@canopyservicing.com"
     },
     "version": "1.3"
   },
@@ -58,10 +58,6 @@
     {
       "name": "notes",
       "description": "Help your customer service team track its activity across accounts."
-    },
-    {
-      "name": "customers",
-      "description": "Onboard customers into your system, so they can begin using your credit products"
     },
     {
       "name": "statements",
@@ -230,7 +226,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "110"
+              "example": 110
             }
           },
           {
@@ -242,7 +238,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "50"
+              "example": 50
             }
           }
         ],
@@ -272,7 +268,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "110"
+              "example": 110
             }
           },
           {
@@ -284,7 +280,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "50"
+              "example": 50
             }
           }
         ],
@@ -372,7 +368,7 @@
             "description": "The ID of the customer to return.",
             "required": true,
             "style": "simple",
-            "example": true,
+            "example": "",
             "schema": {
               "type": "string",
               "example": "Coco Parker"
@@ -534,7 +530,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "110"
+              "example": 20
             }
           },
           {
@@ -546,7 +542,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "50"
+              "example": 50
             }
           }
         ],
@@ -697,7 +693,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "110"
+              "example": 50
             }
           },
           {
@@ -709,7 +705,7 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": "50"
+              "example": 50
             }
           }
         ],
@@ -720,6 +716,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
+                  "maxItems": 100,
                   "items": {
                     "$ref": "#/components/schemas/AccountStatementSummary"
                   }
@@ -804,7 +801,7 @@
             "explode": true,
             "schema": {
               "type": "number",
-              "example": "110"
+              "example": 20
             }
           },
           {
@@ -816,7 +813,7 @@
             "explode": true,
             "schema": {
               "type": "number",
-              "example": "50"
+              "example": 50
             }
           }
         ],
@@ -923,7 +920,7 @@
     },
     "responses": {
       "ApiUser": {
-        "$ref": "./responses/ApiUser.json"
+        "$ref": "./responses/ApiUserResp.json"
       },
       "ApiUsers": {
         "$ref": "./responses/ApiUsers.json"

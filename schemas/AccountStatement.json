@@ -159,10 +159,7 @@
     },
     "min_pay_due": {
       "type": "object",
-      "required": [
-        "min_pay_cents",
-        "min_pay_due_at"
-      ],
+      "required": ["min_pay_cents", "min_pay_due_at"],
       "properties": {
         "min_pay_cents": {
           "type": "integer",

@@ -1,21 +1,22 @@
 {
   "description": "Create a new customer",
-  "required": [
-    "name_first",
-    "name_last",
-    "phone_number",
-    "address_line_one",
-    "address_city",
-    "address_state",
-    "address_zip",
-    "ssn",
-    "email",
-    "date_of_birth"
-  ],
+  "required": true,
   "content": {
     "application/json": {
       "schema": {
         "type": "object",
+        "required": [
+          "name_first",
+          "name_last",
+          "phone_number",
+          "address_line_one",
+          "address_city",
+          "address_state",
+          "address_zip",
+          "ssn",
+          "email",
+          "date_of_birth"
+        ],
         "properties": {
           "name_prefix": {
             "type": "string",
@@ -92,6 +93,7 @@
           },
           "accounts": {
             "type": "array",
+            "maxItems": 10,
             "description": "An array of existing accounts to which this Customer should be assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
             "items": {
               "type": "object",
@@ -105,7 +107,6 @@
                 "customer_account_role": {
                   "type": "integer",
                   "description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
-                  "enum": ["1", "2"],
                   "example": 1
                 },
                 "customer_account_pan": {

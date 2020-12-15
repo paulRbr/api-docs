@@ -5,7 +5,6 @@
       "schema": {
         "type": "object",
         "description": "Update attributes for an account at any time after account creation.",
-        "required": [],
         "properties": {
           "rate": {
             "type": "number",

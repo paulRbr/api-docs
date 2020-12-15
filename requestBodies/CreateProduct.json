@@ -88,7 +88,6 @@
           "promotional_policies": {
             "type": "object",
             "description": "If applicable, a promotional configuration for the product.",
-            "required": [],
             "properties": {
               "promo_len": {
                 "type": "integer",

@@ -16,6 +16,7 @@
     },
     "statements_list": {
       "type": "array",
+      "maxItems": 10,
       "description": "An array of statements included in the billing cycle.",
       "items": {
         "type": "object",

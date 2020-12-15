@@ -1,5 +1,6 @@
 {
   "type": "array",
+  "maxItems": 10,
   "description": "Amortization schedule",
   "items": {
     "type": "object",
