@@ -339,8 +339,8 @@
             "explode": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
-              "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
+              "format": "integer",
+              "example": 2
             }
           }
         ],
@@ -424,9 +424,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+              "type": "integer",
+              "example": 6
             }
           }
         ],
@@ -455,8 +454,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 5
             }
           }
         ],
@@ -486,9 +485,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+              "type": "integer",
+              "example": 6
             }
           }
         ],
@@ -517,8 +515,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 4
             }
           },
           {
@@ -571,9 +569,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+              "type": "integer",
+              "example": 4
             }
           },
           {
@@ -584,9 +581,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
+              "type": "integer",
+              "example": 8
             }
           }
         ],
@@ -615,8 +611,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 11
             }
           }
         ],
@@ -648,8 +644,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 4
             }
           }
         ],
@@ -745,8 +741,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 2
             }
           },
           {
@@ -787,9 +783,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+              "type": "integer",
+              "example": 5
             }
           },
           {
