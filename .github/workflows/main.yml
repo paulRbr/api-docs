@@ -1,36 +1,36 @@
-# This is a basic workflow to help you get started with Actions
+name: Deploy documentation
 
-name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
-    branches: [master]
-#   pull_request:
-#     branches: [ master ]
+    branches:
+      - master
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Deploy API documentation
+      - name: Check out latest code
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install node_modules
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn
+
+      - name: Bundle into one file
+        run: yarn bundle
+
+      - name: Validate
+        run: yarn validate
+
+      - name: Deploy to internal documentation
         uses: bump-sh/github-action@0.1
         with:
-          id: 2cbc8b10-f3ac-4302-98b7-509b8ae66537
-          token: e4b6902f6f4d737cdf2840c2b5aa83af
-          file: openapi.json
-  deploy-working:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Deploy Working API documentation
-        uses: bump-sh/github-action@0.1
-        with:
-          id: 6077a609-1786-44be-a865-bf962a990cb2
-          token: f6893f8dcad6c65edbe0b06314ecad7a
-          file: working-openApi.json
+          id: ${{ secrets.BUMP_DOC_ID }}
+          token: ${{ secrets.BUMP_TOKEN }}
+          file: dist/consolidated.json
