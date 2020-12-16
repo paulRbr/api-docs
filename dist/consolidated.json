@@ -3112,7 +3112,6 @@
                     },
                     {
                       "type": "object",
-                      "required": ["customers"],
                       "properties": {
                         "customers": {
                           "type": "array",
@@ -3598,7 +3597,6 @@
                     },
                     {
                       "type": "object",
-                      "required": ["customers"],
                       "properties": {
                         "customers": {
                           "type": "array",
@@ -6041,7 +6039,6 @@
           },
           {
             "type": "object",
-            "required": ["customers"],
             "properties": {
               "customers": {
                 "type": "array",
@@ -10837,7 +10834,6 @@
                 },
                 {
                   "type": "object",
-                  "required": ["customers"],
                   "properties": {
                     "customers": {
                       "type": "array",
@@ -12163,7 +12159,6 @@
                 },
                 {
                   "type": "object",
-                  "required": ["customers"],
                   "properties": {
                     "customers": {
                       "type": "array",
