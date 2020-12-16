@@ -90,7 +90,7 @@
             "description": "Customer's date of birth",
             "example": "2018-06-20T09:12:30+00:00"
           },
-          "accounts": {
+          "assign_to_accounts": {
             "type": "array",
             "maxItems": 10,
             "description": "An array of existing accounts to which this Customer should be assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
@@ -105,7 +105,7 @@
                 "customer_account_role": {
                   "type": "string",
                   "enum": ["PRIMARY", "SECONDARY"],
-                  "description": "The role of the customer for the account. For instance, 1 may correspond to a primary account holder while 2 corresponds to secondary.",
+                  "description": "The role of the customer for the account",
                   "example": "PRIMARY"
                 },
                 "customer_account_external_id": {

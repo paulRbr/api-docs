@@ -97,8 +97,8 @@
                 "customer_account_role": {
                   "type": "string",
                   "description": "The role of the customer for the account.",
-                  "enum": ["primary", "secondary"],
-                  "example": "primary"
+                  "enum": ["PRIMARY", "SECONDARY"],
+                  "example": "PRIMARY"
                 },
                 "customer_account_pan": {
                   "type": "string",
