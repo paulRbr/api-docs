@@ -13,6 +13,12 @@
         ],
         "additionalProperties": false,
         "properties": {
+          "effective_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The `Date-Time` as of which this product is effective on the server.",
+            "example": "2016-11-27T13:19:56+00:00"
+          },
           "product_overview": {
             "type": "object",
             "required": ["product_name", "product_type", "product_short_description", "product_long_description"],

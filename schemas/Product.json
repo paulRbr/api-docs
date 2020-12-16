@@ -21,6 +21,12 @@
       "format": "date-time",
       "example": "2019-03-20T09:12:28Z"
     },
+    "effective_at": {
+      "type": "string",
+      "description": "The `Date-Time` as of which this product is effective on the server.",
+      "format": "date-time",
+            "example": "2016-11-27T13:19:56+00:00"
+    },
     "external_product_id": {
       "type": "string",
       "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
