@@ -42,10 +42,9 @@
           "enum": [
             "REVOLVING",
             "INSTALLMENT",
-            "SAME_AS_CASH_INSTALLMENT",
-            "FIXED_RATE_INSTALLMENT",
             "MIXED_RATE_INSTALLMENT",
-            "ZERO_INTEREST_INSTALLMENT"
+            "DEFERRED_INSTALLMENT",
+            "FIXED_RATE_INSTALLMENT"
           ],
           "example": "REVOLVING"
         },
