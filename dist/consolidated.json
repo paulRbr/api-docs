@@ -594,6 +594,12 @@
                 ],
                 "additionalProperties": false,
                 "properties": {
+                  "effective_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The `Date-Time` as of which this product is effective on the server.",
+                    "example": "2016-11-27T13:19:56+00:00"
+                  },
                   "product_overview": {
                     "type": "object",
                     "required": [
@@ -846,6 +852,12 @@
                       "format": "date-time",
                       "example": "2019-03-20T09:12:28Z"
                     },
+                    "effective_at": {
+                      "type": "string",
+                      "description": "The `Date-Time` as of which this product is effective on the server.",
+                      "format": "date-time",
+                      "example": "2016-11-27T13:19:56+00:00"
+                    },
                     "external_product_id": {
                       "type": "string",
                       "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
@@ -867,10 +879,9 @@
                           "enum": [
                             "REVOLVING",
                             "INSTALLMENT",
-                            "SAME_AS_CASH_INSTALLMENT",
-                            "FIXED_RATE_INSTALLMENT",
                             "MIXED_RATE_INSTALLMENT",
-                            "ZERO_INTEREST_INSTALLMENT"
+                            "DEFERRED_INSTALLMENT",
+                            "FIXED_RATE_INSTALLMENT"
                           ],
                           "example": "REVOLVING"
                         },
@@ -1185,6 +1196,12 @@
                         "format": "date-time",
                         "example": "2019-03-20T09:12:28Z"
                       },
+                      "effective_at": {
+                        "type": "string",
+                        "description": "The `Date-Time` as of which this product is effective on the server.",
+                        "format": "date-time",
+                        "example": "2016-11-27T13:19:56+00:00"
+                      },
                       "external_product_id": {
                         "type": "string",
                         "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
@@ -1206,10 +1223,9 @@
                             "enum": [
                               "REVOLVING",
                               "INSTALLMENT",
-                              "SAME_AS_CASH_INSTALLMENT",
-                              "FIXED_RATE_INSTALLMENT",
                               "MIXED_RATE_INSTALLMENT",
-                              "ZERO_INTEREST_INSTALLMENT"
+                              "DEFERRED_INSTALLMENT",
+                              "FIXED_RATE_INSTALLMENT"
                             ],
                             "example": "REVOLVING"
                           },
@@ -2588,6 +2604,12 @@
                     "type": "object",
                     "required": ["product_id"],
                     "properties": {
+                      "effective_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The `Date-Time` as of which this account is effective on the server.",
+                        "example": "2016-11-27T13:19:56+00:00"
+                      },
                       "product_id": {
                         "type": "integer",
                         "description": "The Canopy-generated Product ID of the account. Either this, or the `external_product_id` must be passed at the time of account creation.",
@@ -6761,6 +6783,12 @@
             "format": "date-time",
             "example": "2019-03-20T09:12:28Z"
           },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` as of which this product is effective on the server.",
+            "format": "date-time",
+            "example": "2016-11-27T13:19:56+00:00"
+          },
           "external_product_id": {
             "type": "string",
             "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
@@ -6782,10 +6810,9 @@
                 "enum": [
                   "REVOLVING",
                   "INSTALLMENT",
-                  "SAME_AS_CASH_INSTALLMENT",
-                  "FIXED_RATE_INSTALLMENT",
                   "MIXED_RATE_INSTALLMENT",
-                  "ZERO_INTEREST_INSTALLMENT"
+                  "DEFERRED_INSTALLMENT",
+                  "FIXED_RATE_INSTALLMENT"
                 ],
                 "example": "REVOLVING"
               },
@@ -7426,6 +7453,12 @@
               ],
               "additionalProperties": false,
               "properties": {
+                "effective_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The `Date-Time` as of which this product is effective on the server.",
+                  "example": "2016-11-27T13:19:56+00:00"
+                },
                 "product_overview": {
                   "type": "object",
                   "required": ["product_name", "product_type", "product_short_description", "product_long_description"],
@@ -7893,6 +7926,12 @@
                   "type": "object",
                   "required": ["product_id"],
                   "properties": {
+                    "effective_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The `Date-Time` as of which this account is effective on the server.",
+                      "example": "2016-11-27T13:19:56+00:00"
+                    },
                     "product_id": {
                       "type": "integer",
                       "description": "The Canopy-generated Product ID of the account. Either this, or the `external_product_id` must be passed at the time of account creation.",
@@ -8469,6 +8508,12 @@
                   "format": "date-time",
                   "example": "2019-03-20T09:12:28Z"
                 },
+                "effective_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` as of which this product is effective on the server.",
+                  "format": "date-time",
+                  "example": "2016-11-27T13:19:56+00:00"
+                },
                 "external_product_id": {
                   "type": "string",
                   "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
@@ -8490,10 +8535,9 @@
                       "enum": [
                         "REVOLVING",
                         "INSTALLMENT",
-                        "SAME_AS_CASH_INSTALLMENT",
-                        "FIXED_RATE_INSTALLMENT",
                         "MIXED_RATE_INSTALLMENT",
-                        "ZERO_INTEREST_INSTALLMENT"
+                        "DEFERRED_INSTALLMENT",
+                        "FIXED_RATE_INSTALLMENT"
                       ],
                       "example": "REVOLVING"
                     },
@@ -8760,6 +8804,12 @@
                   "format": "date-time",
                   "example": "2019-03-20T09:12:28Z"
                 },
+                "effective_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` as of which this product is effective on the server.",
+                  "format": "date-time",
+                  "example": "2016-11-27T13:19:56+00:00"
+                },
                 "external_product_id": {
                   "type": "string",
                   "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
@@ -8781,10 +8831,9 @@
                       "enum": [
                         "REVOLVING",
                         "INSTALLMENT",
-                        "SAME_AS_CASH_INSTALLMENT",
-                        "FIXED_RATE_INSTALLMENT",
                         "MIXED_RATE_INSTALLMENT",
-                        "ZERO_INTEREST_INSTALLMENT"
+                        "DEFERRED_INSTALLMENT",
+                        "FIXED_RATE_INSTALLMENT"
                       ],
                       "example": "REVOLVING"
                     },
@@ -9054,6 +9103,12 @@
                     "format": "date-time",
                     "example": "2019-03-20T09:12:28Z"
                   },
+                  "effective_at": {
+                    "type": "string",
+                    "description": "The `Date-Time` as of which this product is effective on the server.",
+                    "format": "date-time",
+                    "example": "2016-11-27T13:19:56+00:00"
+                  },
                   "external_product_id": {
                     "type": "string",
                     "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
@@ -9075,10 +9130,9 @@
                         "enum": [
                           "REVOLVING",
                           "INSTALLMENT",
-                          "SAME_AS_CASH_INSTALLMENT",
-                          "FIXED_RATE_INSTALLMENT",
                           "MIXED_RATE_INSTALLMENT",
-                          "ZERO_INTEREST_INSTALLMENT"
+                          "DEFERRED_INSTALLMENT",
+                          "FIXED_RATE_INSTALLMENT"
                         ],
                         "example": "REVOLVING"
                       },

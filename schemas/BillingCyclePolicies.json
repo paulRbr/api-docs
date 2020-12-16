@@ -20,7 +20,8 @@
     "close_of_business_timetz": {
       "type": "string",
       "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
-      "example": "17:00.000001-05"
+      "format": "time",
+      "example": "17:00:00-05:00"
     }
   },
   "description": "The set of policies governing the billing cycle for the product. "
