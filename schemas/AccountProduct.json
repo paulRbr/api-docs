@@ -1,9 +1,7 @@
 {
   "type": "object",
   "description": "The product associated with the account",
-  "required": [
-    "product_id"
-  ],
+  "required": ["product_id"],
   "properties": {
     "product_id": {
       "type": "integer",
@@ -17,11 +15,7 @@
     },
     "product_overview": {
       "type": "object",
-      "required": [
-        "product_name",
-        "product_type",
-        "product_long_description"
-      ],
+      "required": ["product_name", "product_type", "product_long_description"],
       "properties": {
         "product_name": {
           "type": "string",
@@ -60,10 +54,7 @@
     },
     "product_lifecycle": {
       "type": "object",
-      "required": [
-        "late_fee_impl_cents",
-        "payment_reversal_fee_impl_cents"      
-      ],
+      "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
       "properties": {
         "late_fee_impl_cents": {
           "type": "number",
@@ -79,7 +70,7 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the account's loan repayment date.",
-          "example": "2013-01-13T05:25:13.813Z"
+          "example": "2013-01-13T05:25:13.813+00:00"
         }
       }
     },
@@ -90,25 +81,25 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813Z"
+          "example": "2013-01-13T05:25:13.813+00:00"
         },
         "promo_purchase_window_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the end date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813Z"
+          "example": "2013-01-13T05:25:13.813+00:00"
         },
         "promo_inclusive_start": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813Z"
+          "example": "2013-01-13T05:25:13.813+00:00"
         },
         "promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813Z"
+          "example": "2013-01-13T05:25:13.813+00:00"
         },
         "promo_impl_interest_rate_percent": {
           "type": "number",
@@ -124,13 +115,13 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813Z"
+          "example": "2013-01-13T05:25:13.813+00:00"
         },
         "post_promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813Z"
+          "example": "2013-01-13T05:25:13.813+00:00"
         },
         "post_promo_impl_interest_rate_percent": {
           "type": "number",

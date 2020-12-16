@@ -19,7 +19,7 @@
       "type": "string",
       "description": "The `Date-Time` that this product was created on the server.",
       "format": "date-time",
-      "example": "2019-03-20T09:12:28Z"
+      "example": "2019-03-20T09:12:28+00:00"
     },
     "effective_at": {
       "type": "string",

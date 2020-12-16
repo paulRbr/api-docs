@@ -12,13 +12,13 @@
       "type": "string",
       "description": "The `Date-Time` which the account was created in the API.",
       "format": "date-time",
-      "example": "2017-06-20T09:12:14Z"
+      "example": "2017-06-20T09:12:14+00:00"
     },
     "effective_at": {
       "type": "string",
       "description": "The `Date-Time` that this account became/becomes active.",
       "format": "date-time",
-      "example": "2018-03-20T09:12:28Z"
+      "example": "2018-03-20T09:12:28+00:00"
     },
     "account_overview": {
       "type": "object",
@@ -73,7 +73,7 @@
           "type": "string",
           "format": "date-time",
           "description": "The `Date-Time` the payment for this billing cycle is due.",
-          "example": "2019-10-18T23:04:48.321Z"
+          "example": "2019-10-18T23:04:48.321+00:00"
         }
       }
     },

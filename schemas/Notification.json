@@ -11,7 +11,7 @@
       "type": "string",
       "description": "The `Date-Time` which the notification was created in the API",
       "format": "date-time",
-      "example": "2018-06-20T09:12:30Z"
+      "example": "2018-06-20T09:12:30+00:00"
     },
     "status": {
       "type": "string",

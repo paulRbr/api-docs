@@ -115,13 +115,13 @@
                       "type": "string",
                       "description": "The `Date-Time` which the invitation was created in the API",
                       "format": "date-time",
-                      "example": "2018-06-20T09:12:30Z"
+                      "example": "2018-06-20T09:12:30+00:00"
                     },
                     "expires_at": {
                       "type": "string",
                       "description": "The `Date-Time` which the invitation expires",
                       "format": "date-time",
-                      "example": "2018-06-21T09:12:30Z"
+                      "example": "2018-06-21T09:12:30+00:00"
                     }
                   }
                 }
@@ -851,7 +851,7 @@
                       "type": "string",
                       "description": "The `Date-Time` that this product was created on the server.",
                       "format": "date-time",
-                      "example": "2019-03-20T09:12:28Z"
+                      "example": "2019-03-20T09:12:28+00:00"
                     },
                     "effective_at": {
                       "type": "string",
@@ -1200,7 +1200,7 @@
                         "type": "string",
                         "description": "The `Date-Time` that this product was created on the server.",
                         "format": "date-time",
-                        "example": "2019-03-20T09:12:28Z"
+                        "example": "2019-03-20T09:12:28+00:00"
                       },
                       "effective_at": {
                         "type": "string",
@@ -1544,13 +1544,13 @@
                                 "type": "string",
                                 "description": "The `Date-Time` which the account was created in the API.",
                                 "format": "date-time",
-                                "example": "2017-06-20T09:12:14Z"
+                                "example": "2017-06-20T09:12:14+00:00"
                               },
                               "effective_at": {
                                 "type": "string",
                                 "description": "The `Date-Time` that this account became/becomes active.",
                                 "format": "date-time",
-                                "example": "2018-03-20T09:12:28Z"
+                                "example": "2018-03-20T09:12:28+00:00"
                               },
                               "account_overview": {
                                 "type": "object",
@@ -1640,7 +1640,7 @@
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the account's loan repayment date.",
-                                        "example": "2013-01-13T05:25:13.813Z"
+                                        "example": "2013-01-13T05:25:13.813+00:00"
                                       }
                                     }
                                   },
@@ -1651,25 +1651,25 @@
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a purchase window for the account",
-                                        "example": "2013-01-13T05:25:13.813Z"
+                                        "example": "2013-01-13T05:25:13.813+00:00"
                                       },
                                       "promo_purchase_window_exclusive_end": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the end date for a purchase window for the account",
-                                        "example": "2013-01-13T05:25:13.813Z"
+                                        "example": "2013-01-13T05:25:13.813+00:00"
                                       },
                                       "promo_inclusive_start": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813Z"
+                                        "example": "2013-01-13T05:25:13.813+00:00"
                                       },
                                       "promo_exclusive_end": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813Z"
+                                        "example": "2013-01-13T05:25:13.813+00:00"
                                       },
                                       "promo_impl_interest_rate_percent": {
                                         "type": "number",
@@ -1685,13 +1685,13 @@
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813Z"
+                                        "example": "2013-01-13T05:25:13.813+00:00"
                                       },
                                       "post_promo_exclusive_end": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813Z"
+                                        "example": "2013-01-13T05:25:13.813+00:00"
                                       },
                                       "post_promo_impl_interest_rate_percent": {
                                         "type": "number",
@@ -1755,7 +1755,7 @@
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "The `Date-Time` the payment for this billing cycle is due.",
-                                    "example": "2019-10-18T23:04:48.321Z"
+                                    "example": "2019-10-18T23:04:48.321+00:00"
                                   }
                                 }
                               },
@@ -1965,7 +1965,7 @@
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "Customer's date of birth",
-                                    "example": "2018-06-20T09:12:30Z"
+                                    "example": "2018-06-20T09:12:30+00:00"
                                   }
                                 }
                               },
@@ -2107,7 +2107,7 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "Customer's date of birth",
-                    "example": "2018-06-20T09:12:30Z"
+                    "example": "2018-06-20T09:12:30+00:00"
                   },
                   "accounts": {
                     "type": "array",
@@ -2224,7 +2224,7 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "Customer's date of birth",
-                      "example": "2018-06-20T09:12:30Z"
+                      "example": "2018-06-20T09:12:30+00:00"
                     }
                   }
                 }
@@ -2340,7 +2340,7 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "Customer's date of birth",
-                    "example": "2018-06-20T09:12:30Z"
+                    "example": "2018-06-20T09:12:30+00:00"
                   },
                   "account_id": {
                     "type": "integer",
@@ -2462,7 +2462,7 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "Customer's date of birth",
-                      "example": "2018-06-20T09:12:30Z"
+                      "example": "2018-06-20T09:12:30+00:00"
                     }
                   }
                 }
@@ -2577,7 +2577,7 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "Customer's date of birth",
-                      "example": "2018-06-20T09:12:30Z"
+                      "example": "2018-06-20T09:12:30+00:00"
                     }
                   }
                 }
@@ -2770,13 +2770,13 @@
                           "type": "string",
                           "description": "The `Date-Time` which the account was created in the API.",
                           "format": "date-time",
-                          "example": "2017-06-20T09:12:14Z"
+                          "example": "2017-06-20T09:12:14+00:00"
                         },
                         "effective_at": {
                           "type": "string",
                           "description": "The `Date-Time` that this account became/becomes active.",
                           "format": "date-time",
-                          "example": "2018-03-20T09:12:28Z"
+                          "example": "2018-03-20T09:12:28+00:00"
                         },
                         "account_overview": {
                           "type": "object",
@@ -2866,7 +2866,7 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the account's loan repayment date.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 }
                               }
                             },
@@ -2877,25 +2877,25 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_purchase_window_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the end date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_inclusive_start": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -2911,13 +2911,13 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "post_promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "post_promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -2981,7 +2981,7 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "The `Date-Time` the payment for this billing cycle is due.",
-                              "example": "2019-10-18T23:04:48.321Z"
+                              "example": "2019-10-18T23:04:48.321+00:00"
                             }
                           }
                         },
@@ -3197,7 +3197,7 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "Customer's date of birth",
-                                "example": "2018-06-20T09:12:30Z"
+                                "example": "2018-06-20T09:12:30+00:00"
                               }
                             }
                           }
@@ -3256,13 +3256,13 @@
                           "type": "string",
                           "description": "The `Date-Time` which the account was created in the API.",
                           "format": "date-time",
-                          "example": "2017-06-20T09:12:14Z"
+                          "example": "2017-06-20T09:12:14+00:00"
                         },
                         "effective_at": {
                           "type": "string",
                           "description": "The `Date-Time` that this account became/becomes active.",
                           "format": "date-time",
-                          "example": "2018-03-20T09:12:28Z"
+                          "example": "2018-03-20T09:12:28+00:00"
                         },
                         "account_overview": {
                           "type": "object",
@@ -3352,7 +3352,7 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the account's loan repayment date.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 }
                               }
                             },
@@ -3363,25 +3363,25 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_purchase_window_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the end date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_inclusive_start": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -3397,13 +3397,13 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "post_promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813Z"
+                                  "example": "2013-01-13T05:25:13.813+00:00"
                                 },
                                 "post_promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -3467,7 +3467,7 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "The `Date-Time` the payment for this billing cycle is due.",
-                              "example": "2019-10-18T23:04:48.321Z"
+                              "example": "2019-10-18T23:04:48.321+00:00"
                             }
                           }
                         },
@@ -3683,7 +3683,7 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "Customer's date of birth",
-                                "example": "2018-06-20T09:12:30Z"
+                                "example": "2018-06-20T09:12:30+00:00"
                               }
                             }
                           }
@@ -4004,13 +4004,13 @@
                         "type": "string",
                         "description": "The `Date-Time` that this line item became/becomes active",
                         "format": "date-time",
-                        "example": "2018-07-20T09:12:30Z"
+                        "example": "2018-07-20T09:12:30+00:00"
                       },
                       "created_at": {
                         "type": "string",
                         "description": "The `Date-Time` which the line item was created.",
                         "format": "date-time",
-                        "example": "2018-06-20T09:12:30Z"
+                        "example": "2018-06-20T09:12:30+00:00"
                       },
                       "product_id": {
                         "type": "string",
@@ -4180,13 +4180,13 @@
                         "type": "string",
                         "description": "The `Date-Time` that this line item became/becomes active",
                         "format": "date-time",
-                        "example": "2018-07-20T09:12:30Z"
+                        "example": "2018-07-20T09:12:30+00:00"
                       },
                       "created_at": {
                         "type": "string",
                         "description": "The `Date-Time` which the line item was created.",
                         "format": "date-time",
-                        "example": "2018-06-20T09:12:30Z"
+                        "example": "2018-06-20T09:12:30+00:00"
                       },
                       "product_id": {
                         "type": "string",
@@ -4337,7 +4337,7 @@
                     "type": "string",
                     "description": "The `Date-Time` that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
                     "format": "date-time",
-                    "example": "2020-07-20T09:11:28Z"
+                    "example": "2020-07-20T09:11:28+00:00"
                   },
                   "merchant_data": {
                     "type": "object",
@@ -4406,13 +4406,13 @@
                       "type": "string",
                       "description": "The `Date-Time` that this line item became/becomes active",
                       "format": "date-time",
-                      "example": "2018-07-20T09:12:30Z"
+                      "example": "2018-07-20T09:12:30+00:00"
                     },
                     "created_at": {
                       "type": "string",
                       "description": "The `Date-Time` which the line item was created.",
                       "format": "date-time",
-                      "example": "2018-06-20T09:12:30Z"
+                      "example": "2018-06-20T09:12:30+00:00"
                     },
                     "product_id": {
                       "type": "string",
@@ -4562,7 +4562,7 @@
                     "type": "string",
                     "description": "The `Date-Time` that the payment should be recorded to the account. Although the payment is being added to Canopy today, it can actually be effective as of 10 days ago.",
                     "format": "date-time",
-                    "example": "2020-07-20T09:11:28Z"
+                    "example": "2020-07-20T09:11:28+00:00"
                   },
                   "external_fields": {
                     "type": "array",
@@ -4612,13 +4612,13 @@
                       "type": "string",
                       "description": "The `Date-Time` that this line item became/becomes active",
                       "format": "date-time",
-                      "example": "2018-07-20T09:12:30Z"
+                      "example": "2018-07-20T09:12:30+00:00"
                     },
                     "created_at": {
                       "type": "string",
                       "description": "The `Date-Time` which the line item was created.",
                       "format": "date-time",
-                      "example": "2018-06-20T09:12:30Z"
+                      "example": "2018-06-20T09:12:30+00:00"
                     },
                     "product_id": {
                       "type": "string",
@@ -4799,7 +4799,7 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                        "example": "2018-07-20T09:10:14Z"
+                        "example": "2018-07-20T09:10:14+00:00"
                       },
                       "cycle_summary": {
                         "type": "object",
@@ -4830,7 +4830,7 @@
                             "type": "string",
                             "format": "date-time",
                             "description": "The `Date-Time` the payment for this billing cycle is due.",
-                            "example": "2019-10-18T23:04:48.321Z"
+                            "example": "2019-10-18T23:04:48.321+00:00"
                           }
                         }
                       },
@@ -4913,7 +4913,7 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                      "example": "2018-07-20T09:10:14Z"
+                      "example": "2018-07-20T09:10:14+00:00"
                     },
                     "account_overview": {
                       "type": "object",
@@ -4922,25 +4922,25 @@
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                          "example": "2015-08-31T10:49:44.461Z"
+                          "example": "2015-08-31T10:49:44.461+00:00"
                         },
                         "promo_purchase_window_exclusive_end": {
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                          "example": "2015-08-31T10:49:44.461Z"
+                          "example": "2015-08-31T10:49:44.461+00:00"
                         },
                         "promo_inclusive_start": {
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                          "example": "2015-08-31T10:49:44.461Z"
+                          "example": "2015-08-31T10:49:44.461+00:00"
                         },
                         "promo_exlcusive_end": {
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                          "example": "2015-08-31T10:49:44.461Z"
+                          "example": "2015-08-31T10:49:44.461+00:00"
                         },
                         "account_status": {
                           "type": "string",
@@ -5066,7 +5066,7 @@
                           "type": "string",
                           "format": "date-time",
                           "description": "The `Date-Time` the payment for this billing cycle is due.",
-                          "example": "2019-10-18T23:04:48.321Z"
+                          "example": "2019-10-18T23:04:48.321+00:00"
                         }
                       }
                     },
@@ -5232,7 +5232,7 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "The date of the scheduled payment",
-                        "example": "2018-07-20T09:10:14Z"
+                        "example": "2018-07-20T09:10:14+00:00"
                       },
                       "am_min_pay_cents": {
                         "type": "integer",
@@ -5343,13 +5343,13 @@
             "type": "string",
             "description": "The `Date-Time` which the account was created in the API.",
             "format": "date-time",
-            "example": "2017-06-20T09:12:14Z"
+            "example": "2017-06-20T09:12:14+00:00"
           },
           "effective_at": {
             "type": "string",
             "description": "The `Date-Time` that this account became/becomes active.",
             "format": "date-time",
-            "example": "2018-03-20T09:12:28Z"
+            "example": "2018-03-20T09:12:28+00:00"
           },
           "account_overview": {
             "type": "object",
@@ -5439,7 +5439,7 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the account's loan repayment date.",
-                    "example": "2013-01-13T05:25:13.813Z"
+                    "example": "2013-01-13T05:25:13.813+00:00"
                   }
                 }
               },
@@ -5450,25 +5450,25 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a purchase window for the account",
-                    "example": "2013-01-13T05:25:13.813Z"
+                    "example": "2013-01-13T05:25:13.813+00:00"
                   },
                   "promo_purchase_window_exclusive_end": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the end date for a purchase window for the account",
-                    "example": "2013-01-13T05:25:13.813Z"
+                    "example": "2013-01-13T05:25:13.813+00:00"
                   },
                   "promo_inclusive_start": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813Z"
+                    "example": "2013-01-13T05:25:13.813+00:00"
                   },
                   "promo_exclusive_end": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813Z"
+                    "example": "2013-01-13T05:25:13.813+00:00"
                   },
                   "promo_impl_interest_rate_percent": {
                     "type": "number",
@@ -5484,13 +5484,13 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813Z"
+                    "example": "2013-01-13T05:25:13.813+00:00"
                   },
                   "post_promo_exclusive_end": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813Z"
+                    "example": "2013-01-13T05:25:13.813+00:00"
                   },
                   "post_promo_impl_interest_rate_percent": {
                     "type": "number",
@@ -5554,7 +5554,7 @@
                 "type": "string",
                 "format": "date-time",
                 "description": "The `Date-Time` the payment for this billing cycle is due.",
-                "example": "2019-10-18T23:04:48.321Z"
+                "example": "2019-10-18T23:04:48.321+00:00"
               }
             }
           },
@@ -5699,13 +5699,13 @@
                 "type": "string",
                 "description": "The `Date-Time` which the account was created in the API.",
                 "format": "date-time",
-                "example": "2017-06-20T09:12:14Z"
+                "example": "2017-06-20T09:12:14+00:00"
               },
               "effective_at": {
                 "type": "string",
                 "description": "The `Date-Time` that this account became/becomes active.",
                 "format": "date-time",
-                "example": "2018-03-20T09:12:28Z"
+                "example": "2018-03-20T09:12:28+00:00"
               },
               "account_overview": {
                 "type": "object",
@@ -5795,7 +5795,7 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the account's loan repayment date.",
-                        "example": "2013-01-13T05:25:13.813Z"
+                        "example": "2013-01-13T05:25:13.813+00:00"
                       }
                     }
                   },
@@ -5806,25 +5806,25 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a purchase window for the account",
-                        "example": "2013-01-13T05:25:13.813Z"
+                        "example": "2013-01-13T05:25:13.813+00:00"
                       },
                       "promo_purchase_window_exclusive_end": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the end date for a purchase window for the account",
-                        "example": "2013-01-13T05:25:13.813Z"
+                        "example": "2013-01-13T05:25:13.813+00:00"
                       },
                       "promo_inclusive_start": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813Z"
+                        "example": "2013-01-13T05:25:13.813+00:00"
                       },
                       "promo_exclusive_end": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813Z"
+                        "example": "2013-01-13T05:25:13.813+00:00"
                       },
                       "promo_impl_interest_rate_percent": {
                         "type": "number",
@@ -5840,13 +5840,13 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813Z"
+                        "example": "2013-01-13T05:25:13.813+00:00"
                       },
                       "post_promo_exclusive_end": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813Z"
+                        "example": "2013-01-13T05:25:13.813+00:00"
                       },
                       "post_promo_impl_interest_rate_percent": {
                         "type": "number",
@@ -5910,7 +5910,7 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "The `Date-Time` the payment for this billing cycle is due.",
-                    "example": "2019-10-18T23:04:48.321Z"
+                    "example": "2019-10-18T23:04:48.321+00:00"
                   }
                 }
               },
@@ -6126,7 +6126,7 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "Customer's date of birth",
-                      "example": "2018-06-20T09:12:30Z"
+                      "example": "2018-06-20T09:12:30+00:00"
                     }
                   }
                 }
@@ -6214,7 +6214,7 @@
             "type": "string",
             "format": "date-time",
             "description": "Customer's date of birth",
-            "example": "2018-06-20T09:12:30Z"
+            "example": "2018-06-20T09:12:30+00:00"
           }
         }
       },
@@ -6299,7 +6299,7 @@
                 "type": "string",
                 "format": "date-time",
                 "description": "Customer's date of birth",
-                "example": "2018-06-20T09:12:30Z"
+                "example": "2018-06-20T09:12:30+00:00"
               }
             }
           },
@@ -6324,13 +6324,13 @@
                       "type": "string",
                       "description": "The `Date-Time` which the account was created in the API.",
                       "format": "date-time",
-                      "example": "2017-06-20T09:12:14Z"
+                      "example": "2017-06-20T09:12:14+00:00"
                     },
                     "effective_at": {
                       "type": "string",
                       "description": "The `Date-Time` that this account became/becomes active.",
                       "format": "date-time",
-                      "example": "2018-03-20T09:12:28Z"
+                      "example": "2018-03-20T09:12:28+00:00"
                     },
                     "account_overview": {
                       "type": "object",
@@ -6420,7 +6420,7 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the account's loan repayment date.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             }
                           }
                         },
@@ -6431,25 +6431,25 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_purchase_window_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the end date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_inclusive_start": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -6465,13 +6465,13 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "post_promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "post_promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -6535,7 +6535,7 @@
                           "type": "string",
                           "format": "date-time",
                           "description": "The `Date-Time` the payment for this billing cycle is due.",
-                          "example": "2019-10-18T23:04:48.321Z"
+                          "example": "2019-10-18T23:04:48.321+00:00"
                         }
                       }
                     },
@@ -6688,7 +6688,7 @@
             "type": "string",
             "format": "date-time",
             "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "example": "2018-07-20T09:10:14Z"
+            "example": "2018-07-20T09:10:14+00:00"
           },
           "account_overview": {
             "type": "object",
@@ -6697,25 +6697,25 @@
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                "example": "2015-08-31T10:49:44.461Z"
+                "example": "2015-08-31T10:49:44.461+00:00"
               },
               "promo_purchase_window_exclusive_end": {
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                "example": "2015-08-31T10:49:44.461Z"
+                "example": "2015-08-31T10:49:44.461+00:00"
               },
               "promo_inclusive_start": {
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                "example": "2015-08-31T10:49:44.461Z"
+                "example": "2015-08-31T10:49:44.461+00:00"
               },
               "promo_exlcusive_end": {
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                "example": "2015-08-31T10:49:44.461Z"
+                "example": "2015-08-31T10:49:44.461+00:00"
               },
               "account_status": {
                 "type": "string",
@@ -6841,7 +6841,7 @@
                 "type": "string",
                 "format": "date-time",
                 "description": "The `Date-Time` the payment for this billing cycle is due.",
-                "example": "2019-10-18T23:04:48.321Z"
+                "example": "2019-10-18T23:04:48.321+00:00"
               }
             }
           },
@@ -6948,7 +6948,7 @@
             "type": "string",
             "format": "date-time",
             "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "example": "2018-07-20T09:10:14Z"
+            "example": "2018-07-20T09:10:14+00:00"
           },
           "cycle_summary": {
             "type": "object",
@@ -6979,7 +6979,7 @@
                 "type": "string",
                 "format": "date-time",
                 "description": "The `Date-Time` the payment for this billing cycle is due.",
-                "example": "2019-10-18T23:04:48.321Z"
+                "example": "2019-10-18T23:04:48.321+00:00"
               }
             }
           },
@@ -7017,7 +7017,7 @@
             "type": "string",
             "description": "The `Date-Time` that this product was created on the server.",
             "format": "date-time",
-            "example": "2019-03-20T09:12:28Z"
+            "example": "2019-03-20T09:12:28+00:00"
           },
           "effective_at": {
             "type": "string",
@@ -7474,13 +7474,13 @@
             "type": "string",
             "description": "The `Date-Time` that this line item became/becomes active",
             "format": "date-time",
-            "example": "2018-07-20T09:12:30Z"
+            "example": "2018-07-20T09:12:30+00:00"
           },
           "created_at": {
             "type": "string",
             "description": "The `Date-Time` which the line item was created.",
             "format": "date-time",
-            "example": "2018-06-20T09:12:30Z"
+            "example": "2018-06-20T09:12:30+00:00"
           },
           "product_id": {
             "type": "string",
@@ -8007,7 +8007,7 @@
                   "type": "string",
                   "format": "date-time",
                   "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 },
                 "accounts": {
                   "type": "array",
@@ -8117,7 +8117,7 @@
                   "type": "string",
                   "format": "date-time",
                   "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 },
                 "account_id": {
                   "type": "integer",
@@ -8365,7 +8365,7 @@
                   "type": "string",
                   "description": "The `Date-Time` that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
                   "format": "date-time",
-                  "example": "2020-07-20T09:11:28Z"
+                  "example": "2020-07-20T09:11:28+00:00"
                 },
                 "merchant_data": {
                   "type": "object",
@@ -8430,7 +8430,7 @@
                   "type": "string",
                   "description": "The `Date-Time` that the payment should be recorded to the account. Although the payment is being added to Canopy today, it can actually be effective as of 10 days ago.",
                   "format": "date-time",
-                  "example": "2020-07-20T09:11:28Z"
+                  "example": "2020-07-20T09:11:28+00:00"
                 },
                 "external_fields": {
                   "type": "array",
@@ -8746,7 +8746,7 @@
                   "type": "string",
                   "description": "The `Date-Time` that this product was created on the server.",
                   "format": "date-time",
-                  "example": "2019-03-20T09:12:28Z"
+                  "example": "2019-03-20T09:12:28+00:00"
                 },
                 "effective_at": {
                   "type": "string",
@@ -9043,7 +9043,7 @@
                   "type": "string",
                   "description": "The `Date-Time` that this product was created on the server.",
                   "format": "date-time",
-                  "example": "2019-03-20T09:12:28Z"
+                  "example": "2019-03-20T09:12:28+00:00"
                 },
                 "effective_at": {
                   "type": "string",
@@ -9343,7 +9343,7 @@
                     "type": "string",
                     "description": "The `Date-Time` that this product was created on the server.",
                     "format": "date-time",
-                    "example": "2019-03-20T09:12:28Z"
+                    "example": "2019-03-20T09:12:28+00:00"
                   },
                   "effective_at": {
                     "type": "string",
@@ -9645,13 +9645,13 @@
                             "type": "string",
                             "description": "The `Date-Time` which the account was created in the API.",
                             "format": "date-time",
-                            "example": "2017-06-20T09:12:14Z"
+                            "example": "2017-06-20T09:12:14+00:00"
                           },
                           "effective_at": {
                             "type": "string",
                             "description": "The `Date-Time` that this account became/becomes active.",
                             "format": "date-time",
-                            "example": "2018-03-20T09:12:28Z"
+                            "example": "2018-03-20T09:12:28+00:00"
                           },
                           "account_overview": {
                             "type": "object",
@@ -9741,7 +9741,7 @@
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "If applicable, the account's loan repayment date.",
-                                    "example": "2013-01-13T05:25:13.813Z"
+                                    "example": "2013-01-13T05:25:13.813+00:00"
                                   }
                                 }
                               },
@@ -9752,25 +9752,25 @@
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "If applicable, the start date for a purchase window for the account",
-                                    "example": "2013-01-13T05:25:13.813Z"
+                                    "example": "2013-01-13T05:25:13.813+00:00"
                                   },
                                   "promo_purchase_window_exclusive_end": {
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "If applicable, the end date for a purchase window for the account",
-                                    "example": "2013-01-13T05:25:13.813Z"
+                                    "example": "2013-01-13T05:25:13.813+00:00"
                                   },
                                   "promo_inclusive_start": {
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "If applicable, the start date for a promotional period for the account.",
-                                    "example": "2013-01-13T05:25:13.813Z"
+                                    "example": "2013-01-13T05:25:13.813+00:00"
                                   },
                                   "promo_exclusive_end": {
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "If applicable, the start date for a promotional period for the account.",
-                                    "example": "2013-01-13T05:25:13.813Z"
+                                    "example": "2013-01-13T05:25:13.813+00:00"
                                   },
                                   "promo_impl_interest_rate_percent": {
                                     "type": "number",
@@ -9786,13 +9786,13 @@
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "If applicable, the start date for a promotional period for the account.",
-                                    "example": "2013-01-13T05:25:13.813Z"
+                                    "example": "2013-01-13T05:25:13.813+00:00"
                                   },
                                   "post_promo_exclusive_end": {
                                     "type": "string",
                                     "format": "date-time",
                                     "description": "If applicable, the start date for a promotional period for the account.",
-                                    "example": "2013-01-13T05:25:13.813Z"
+                                    "example": "2013-01-13T05:25:13.813+00:00"
                                   },
                                   "post_promo_impl_interest_rate_percent": {
                                     "type": "number",
@@ -9856,7 +9856,7 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "The `Date-Time` the payment for this billing cycle is due.",
-                                "example": "2019-10-18T23:04:48.321Z"
+                                "example": "2019-10-18T23:04:48.321+00:00"
                               }
                             }
                           },
@@ -10066,7 +10066,7 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "Customer's date of birth",
-                                "example": "2018-06-20T09:12:30Z"
+                                "example": "2018-06-20T09:12:30+00:00"
                               }
                             }
                           },
@@ -10184,7 +10184,7 @@
                   "type": "string",
                   "format": "date-time",
                   "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 }
               }
             }
@@ -10274,7 +10274,7 @@
                   "type": "string",
                   "format": "date-time",
                   "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 }
               }
             }
@@ -10364,7 +10364,7 @@
                   "type": "string",
                   "format": "date-time",
                   "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 }
               }
             }
@@ -10461,7 +10461,7 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "Customer's date of birth",
-                        "example": "2018-06-20T09:12:30Z"
+                        "example": "2018-06-20T09:12:30+00:00"
                       }
                     }
                   }
@@ -10495,13 +10495,13 @@
                       "type": "string",
                       "description": "The `Date-Time` which the account was created in the API.",
                       "format": "date-time",
-                      "example": "2017-06-20T09:12:14Z"
+                      "example": "2017-06-20T09:12:14+00:00"
                     },
                     "effective_at": {
                       "type": "string",
                       "description": "The `Date-Time` that this account became/becomes active.",
                       "format": "date-time",
-                      "example": "2018-03-20T09:12:28Z"
+                      "example": "2018-03-20T09:12:28+00:00"
                     },
                     "account_overview": {
                       "type": "object",
@@ -10591,7 +10591,7 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the account's loan repayment date.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             }
                           }
                         },
@@ -10602,25 +10602,25 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_purchase_window_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the end date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_inclusive_start": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -10636,13 +10636,13 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "post_promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "post_promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -10706,7 +10706,7 @@
                           "type": "string",
                           "format": "date-time",
                           "description": "The `Date-Time` the payment for this billing cycle is due.",
-                          "example": "2019-10-18T23:04:48.321Z"
+                          "example": "2019-10-18T23:04:48.321+00:00"
                         }
                       }
                     },
@@ -10922,7 +10922,7 @@
                             "type": "string",
                             "format": "date-time",
                             "description": "Customer's date of birth",
-                            "example": "2018-06-20T09:12:30Z"
+                            "example": "2018-06-20T09:12:30+00:00"
                           }
                         }
                       }
@@ -10960,13 +10960,13 @@
                         "type": "string",
                         "description": "The `Date-Time` which the account was created in the API.",
                         "format": "date-time",
-                        "example": "2017-06-20T09:12:14Z"
+                        "example": "2017-06-20T09:12:14+00:00"
                       },
                       "effective_at": {
                         "type": "string",
                         "description": "The `Date-Time` that this account became/becomes active.",
                         "format": "date-time",
-                        "example": "2018-03-20T09:12:28Z"
+                        "example": "2018-03-20T09:12:28+00:00"
                       },
                       "account_overview": {
                         "type": "object",
@@ -11056,7 +11056,7 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the account's loan repayment date.",
-                                "example": "2013-01-13T05:25:13.813Z"
+                                "example": "2013-01-13T05:25:13.813+00:00"
                               }
                             }
                           },
@@ -11067,25 +11067,25 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a purchase window for the account",
-                                "example": "2013-01-13T05:25:13.813Z"
+                                "example": "2013-01-13T05:25:13.813+00:00"
                               },
                               "promo_purchase_window_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the end date for a purchase window for the account",
-                                "example": "2013-01-13T05:25:13.813Z"
+                                "example": "2013-01-13T05:25:13.813+00:00"
                               },
                               "promo_inclusive_start": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813Z"
+                                "example": "2013-01-13T05:25:13.813+00:00"
                               },
                               "promo_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813Z"
+                                "example": "2013-01-13T05:25:13.813+00:00"
                               },
                               "promo_impl_interest_rate_percent": {
                                 "type": "number",
@@ -11101,13 +11101,13 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813Z"
+                                "example": "2013-01-13T05:25:13.813+00:00"
                               },
                               "post_promo_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813Z"
+                                "example": "2013-01-13T05:25:13.813+00:00"
                               },
                               "post_promo_impl_interest_rate_percent": {
                                 "type": "number",
@@ -11171,7 +11171,7 @@
                             "type": "string",
                             "format": "date-time",
                             "description": "The `Date-Time` the payment for this billing cycle is due.",
-                            "example": "2019-10-18T23:04:48.321Z"
+                            "example": "2019-10-18T23:04:48.321+00:00"
                           }
                         }
                       },
@@ -11334,7 +11334,7 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "The date of the scheduled payment",
-                    "example": "2018-07-20T09:10:14Z"
+                    "example": "2018-07-20T09:10:14+00:00"
                   },
                   "am_min_pay_cents": {
                     "type": "integer",
@@ -11557,13 +11557,13 @@
                   "type": "string",
                   "description": "The `Date-Time` that this line item became/becomes active",
                   "format": "date-time",
-                  "example": "2018-07-20T09:12:30Z"
+                  "example": "2018-07-20T09:12:30+00:00"
                 },
                 "created_at": {
                   "type": "string",
                   "description": "The `Date-Time` which the line item was created.",
                   "format": "date-time",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 },
                 "product_id": {
                   "type": "string",
@@ -11690,13 +11690,13 @@
                   "type": "string",
                   "description": "The `Date-Time` that this line item became/becomes active",
                   "format": "date-time",
-                  "example": "2018-07-20T09:12:30Z"
+                  "example": "2018-07-20T09:12:30+00:00"
                 },
                 "created_at": {
                   "type": "string",
                   "description": "The `Date-Time` which the line item was created.",
                   "format": "date-time",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 },
                 "product_id": {
                   "type": "string",
@@ -11821,13 +11821,13 @@
                       "type": "string",
                       "description": "The `Date-Time` which the account was created in the API.",
                       "format": "date-time",
-                      "example": "2017-06-20T09:12:14Z"
+                      "example": "2017-06-20T09:12:14+00:00"
                     },
                     "effective_at": {
                       "type": "string",
                       "description": "The `Date-Time` that this account became/becomes active.",
                       "format": "date-time",
-                      "example": "2018-03-20T09:12:28Z"
+                      "example": "2018-03-20T09:12:28+00:00"
                     },
                     "account_overview": {
                       "type": "object",
@@ -11917,7 +11917,7 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the account's loan repayment date.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             }
                           }
                         },
@@ -11928,25 +11928,25 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_purchase_window_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the end date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_inclusive_start": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -11962,13 +11962,13 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "post_promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813Z"
+                              "example": "2013-01-13T05:25:13.813+00:00"
                             },
                             "post_promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -12032,7 +12032,7 @@
                           "type": "string",
                           "format": "date-time",
                           "description": "The `Date-Time` the payment for this billing cycle is due.",
-                          "example": "2019-10-18T23:04:48.321Z"
+                          "example": "2019-10-18T23:04:48.321+00:00"
                         }
                       }
                     },
@@ -12248,7 +12248,7 @@
                             "type": "string",
                             "format": "date-time",
                             "description": "Customer's date of birth",
-                            "example": "2018-06-20T09:12:30Z"
+                            "example": "2018-06-20T09:12:30+00:00"
                           }
                         }
                       }
@@ -12283,7 +12283,7 @@
                   "type": "string",
                   "format": "date-time",
                   "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                  "example": "2018-07-20T09:10:14Z"
+                  "example": "2018-07-20T09:10:14+00:00"
                 },
                 "account_overview": {
                   "type": "object",
@@ -12292,25 +12292,25 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                      "example": "2015-08-31T10:49:44.461Z"
+                      "example": "2015-08-31T10:49:44.461+00:00"
                     },
                     "promo_purchase_window_exclusive_end": {
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                      "example": "2015-08-31T10:49:44.461Z"
+                      "example": "2015-08-31T10:49:44.461+00:00"
                     },
                     "promo_inclusive_start": {
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                      "example": "2015-08-31T10:49:44.461Z"
+                      "example": "2015-08-31T10:49:44.461+00:00"
                     },
                     "promo_exlcusive_end": {
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                      "example": "2015-08-31T10:49:44.461Z"
+                      "example": "2015-08-31T10:49:44.461+00:00"
                     },
                     "account_status": {
                       "type": "string",
@@ -12436,7 +12436,7 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "The `Date-Time` the payment for this billing cycle is due.",
-                      "example": "2019-10-18T23:04:48.321Z"
+                      "example": "2019-10-18T23:04:48.321+00:00"
                     }
                   }
                 },
@@ -12598,13 +12598,13 @@
                   "type": "string",
                   "description": "The `Date-Time` that this line item became/becomes active",
                   "format": "date-time",
-                  "example": "2018-07-20T09:12:30Z"
+                  "example": "2018-07-20T09:12:30+00:00"
                 },
                 "created_at": {
                   "type": "string",
                   "description": "The `Date-Time` which the line item was created.",
                   "format": "date-time",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 },
                 "product_id": {
                   "type": "string",
@@ -12734,13 +12734,13 @@
                     "type": "string",
                     "description": "The `Date-Time` that this line item became/becomes active",
                     "format": "date-time",
-                    "example": "2018-07-20T09:12:30Z"
+                    "example": "2018-07-20T09:12:30+00:00"
                   },
                   "created_at": {
                     "type": "string",
                     "description": "The `Date-Time` which the line item was created.",
                     "format": "date-time",
-                    "example": "2018-06-20T09:12:30Z"
+                    "example": "2018-06-20T09:12:30+00:00"
                   },
                   "product_id": {
                     "type": "string",
@@ -12871,13 +12871,13 @@
                     "type": "string",
                     "description": "The `Date-Time` that this line item became/becomes active",
                     "format": "date-time",
-                    "example": "2018-07-20T09:12:30Z"
+                    "example": "2018-07-20T09:12:30+00:00"
                   },
                   "created_at": {
                     "type": "string",
                     "description": "The `Date-Time` which the line item was created.",
                     "format": "date-time",
-                    "example": "2018-06-20T09:12:30Z"
+                    "example": "2018-06-20T09:12:30+00:00"
                   },
                   "product_id": {
                     "type": "string",
@@ -13001,7 +13001,7 @@
                   "type": "string",
                   "format": "date-time",
                   "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                  "example": "2018-07-20T09:10:14Z"
+                  "example": "2018-07-20T09:10:14+00:00"
                 },
                 "statements_list": {
                   "type": "array",
@@ -13071,13 +13071,13 @@
                   "type": "string",
                   "description": "The `Date-Time` which the invitation was created in the API",
                   "format": "date-time",
-                  "example": "2018-06-20T09:12:30Z"
+                  "example": "2018-06-20T09:12:30+00:00"
                 },
                 "expires_at": {
                   "type": "string",
                   "description": "The `Date-Time` which the invitation expires",
                   "format": "date-time",
-                  "example": "2018-06-21T09:12:30Z"
+                  "example": "2018-06-21T09:12:30+00:00"
                 }
               }
             }
