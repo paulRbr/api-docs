@@ -2,18 +2,7 @@
   "description": "Payment Created",
   "content": {
     "application/json": {
-      "schema": {
-        "type": "object",
-        "required": ["line_item_id"],
-        "properties": {
-          "line_item_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "The ID in Canopy's system for this line item.",
-            "example": "464920a3-d531-422d-adfb-ce61e52255bf"
-          }
-        }
-      }
+      "$ref": "./../schemas/LineItem.json"
     }
   }
 }

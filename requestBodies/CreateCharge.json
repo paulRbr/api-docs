@@ -8,7 +8,7 @@
         "additionalProperties": false,
         "required": ["amount_cents", "merchant_data"],
         "properties": {
-          "amount_cents": {
+          "original_amount_cents": {
             "type": "integer",
             "description": "The Integer Amount of the Charge in Cents",
             "example": 200

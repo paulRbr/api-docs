@@ -7,7 +7,7 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "amount_cents": {
+          "original_amount_cents": {
             "type": "integer",
             "description": "The Integer Amount of the Payment in Cents",
             "example": 200

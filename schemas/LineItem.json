@@ -60,12 +60,12 @@
         "original_amount_cents": {
           "type": "integer",
           "description": "The originating amount of money (in cents) relating to this line item.",
-          "example": 2385
+          "example": 2484
         },
         "balance_cents": {
           "type": "integer",
           "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-          "example": 2401
+          "example": 2416
         },
         "principal_cents": {
           "type": "integer",
