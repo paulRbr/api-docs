@@ -17,7 +17,7 @@
               },
               "external_ids": {
                 "type": "array",
-                "maxItems": 10,
+                "maxItems": 1000,
                 "description": "An array of static references to ID fields in a third party system.",
                 "items": {
                   "type": "object",
@@ -52,7 +52,7 @@
             "properties": {
               "existing_customers": {
                 "type": "array",
-                "maxItems": 10,
+                "maxItems": 1000,
                 "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
                 "items": {
                   "type": "object",
@@ -79,7 +79,7 @@
             "properties": {
               "new_customers": {
                 "type": "array",
-                "maxItems": 10,
+                "maxItems": 1000,
                 "description": "Array of new customers to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
                 "items": {
                   "type": "object",

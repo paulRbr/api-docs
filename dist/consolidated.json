@@ -903,7 +903,7 @@
                         },
                         "external_fields": {
                           "type": "array",
-                          "maxItems": 10,
+                          "maxItems": 1000,
                           "items": {
                             "type": "object",
                             "properties": {
@@ -1178,7 +1178,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "items": {
                     "required": [
                       "product_id",
@@ -1252,7 +1252,7 @@
                           },
                           "external_fields": {
                             "type": "array",
-                            "maxItems": 10,
+                            "maxItems": 1000,
                             "items": {
                               "type": "object",
                               "properties": {
@@ -1525,7 +1525,7 @@
                   "properties": {
                     "customer_accounts": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An array of information for all customer-account correspondences within the requested range.",
                       "items": {
                         "type": "object",
@@ -1724,7 +1724,7 @@
                               },
                               "external_fields": {
                                 "type": "array",
-                                "maxItems": 10,
+                                "maxItems": 1000,
                                 "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                                 "items": {
                                   "type": "object",
@@ -2950,7 +2950,7 @@
                         },
                         "external_fields": {
                           "type": "array",
-                          "maxItems": 10,
+                          "maxItems": 1000,
                           "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                           "items": {
                             "type": "object",
@@ -3116,7 +3116,7 @@
                       "properties": {
                         "customers": {
                           "type": "array",
-                          "maxItems": 10,
+                          "maxItems": 1000,
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
                             "type": "object",
@@ -3436,7 +3436,7 @@
                         },
                         "external_fields": {
                           "type": "array",
-                          "maxItems": 10,
+                          "maxItems": 1000,
                           "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                           "items": {
                             "type": "object",
@@ -3602,7 +3602,7 @@
                       "properties": {
                         "customers": {
                           "type": "array",
-                          "maxItems": 10,
+                          "maxItems": 1000,
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
                             "type": "object",
@@ -3850,7 +3850,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "maxItems": 100,
+                  "maxItems": 1000,
                   "description": "A history of all notes on an account.",
                   "items": {
                     "type": "object",
@@ -3985,7 +3985,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "maxItems": 100,
+                  "maxItems": 1000,
                   "items": {
                     "type": "object",
                     "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
@@ -4092,7 +4092,7 @@
                       },
                       "external_fields": {
                         "type": "array",
-                        "maxItems": 10,
+                        "maxItems": 1000,
                         "description": "An array of static references to fields in a third party system.",
                         "items": {
                           "type": "object",
@@ -4161,7 +4161,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "items": {
                     "type": "object",
                     "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
@@ -4268,7 +4268,7 @@
                       },
                       "external_fields": {
                         "type": "array",
-                        "maxItems": 10,
+                        "maxItems": 1000,
                         "description": "An array of static references to fields in a third party system.",
                         "items": {
                           "type": "object",
@@ -4494,7 +4494,7 @@
                     },
                     "external_fields": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An array of static references to fields in a third party system.",
                       "items": {
                         "type": "object",
@@ -4700,7 +4700,7 @@
                     },
                     "external_fields": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An array of static references to fields in a third party system.",
                       "items": {
                         "type": "object",
@@ -5214,7 +5214,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "description": "Amortization schedule",
                   "items": {
                     "type": "object",
@@ -5523,7 +5523,7 @@
           },
           "external_fields": {
             "type": "array",
-            "maxItems": 10,
+            "maxItems": 1000,
             "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
             "items": {
               "type": "object",
@@ -5879,7 +5879,7 @@
               },
               "external_fields": {
                 "type": "array",
-                "maxItems": 10,
+                "maxItems": 1000,
                 "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                 "items": {
                   "type": "object",
@@ -6045,7 +6045,7 @@
             "properties": {
               "customers": {
                 "type": "array",
-                "maxItems": 10,
+                "maxItems": 1000,
                 "description": "An array of customers who have been assigned to the account",
                 "items": {
                   "type": "object",
@@ -6308,7 +6308,7 @@
             "properties": {
               "accounts": {
                 "type": "array",
-                "maxItems": 10,
+                "maxItems": 1000,
                 "description": "An array of Accounts this Customer is assigned to.",
                 "items": {
                   "additionalProperties": false,
@@ -6504,7 +6504,7 @@
                     },
                     "external_fields": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                       "items": {
                         "type": "object",
@@ -7069,7 +7069,7 @@
               },
               "external_fields": {
                 "type": "array",
-                "maxItems": 10,
+                "maxItems": 1000,
                 "items": {
                   "type": "object",
                   "properties": {
@@ -7310,7 +7310,7 @@
         "properties": {
           "current_accounts": {
             "type": "array",
-            "maxItems": 100,
+            "maxItems": 1000,
             "description": "Array of Accounts that are currently using this Product",
             "items": {
               "type": "string",
@@ -7557,7 +7557,7 @@
           },
           "external_fields": {
             "type": "array",
-            "maxItems": 10,
+            "maxItems": 1000,
             "description": "An array of static references to fields in a third party system.",
             "items": {
               "type": "object",
@@ -8798,7 +8798,7 @@
                     },
                     "external_fields": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "items": {
                         "type": "object",
                         "properties": {
@@ -9095,7 +9095,7 @@
                     },
                     "external_fields": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "items": {
                         "type": "object",
                         "properties": {
@@ -9321,7 +9321,7 @@
           "application/json": {
             "schema": {
               "type": "array",
-              "maxItems": 10,
+              "maxItems": 1000,
               "items": {
                 "required": [
                   "product_id",
@@ -9395,7 +9395,7 @@
                       },
                       "external_fields": {
                         "type": "array",
-                        "maxItems": 10,
+                        "maxItems": 1000,
                         "items": {
                           "type": "object",
                           "properties": {
@@ -9626,7 +9626,7 @@
               "properties": {
                 "customer_accounts": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "description": "An array of information for all customer-account correspondences within the requested range.",
                   "items": {
                     "type": "object",
@@ -9825,7 +9825,7 @@
                           },
                           "external_fields": {
                             "type": "array",
-                            "maxItems": 10,
+                            "maxItems": 1000,
                             "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                             "items": {
                               "type": "object",
@@ -10380,7 +10380,7 @@
               "properties": {
                 "customers": {
                   "type": "array",
-                  "maxItems": 100,
+                  "maxItems": 1000,
                   "description": "An array of customers within the requested range.",
                   "items": {
                     "type": "object",
@@ -10675,7 +10675,7 @@
                     },
                     "external_fields": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                       "items": {
                         "type": "object",
@@ -10841,7 +10841,7 @@
                   "properties": {
                     "customers": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
                         "type": "object",
@@ -10944,7 +10944,7 @@
               "properties": {
                 "accounts": {
                   "type": "array",
-                  "maxItems": 100,
+                  "maxItems": 1000,
                   "description": "An array of accounts within the requested range.",
                   "items": {
                     "additionalProperties": false,
@@ -11140,7 +11140,7 @@
                       },
                       "external_fields": {
                         "type": "array",
-                        "maxItems": 10,
+                        "maxItems": 1000,
                         "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                         "items": {
                           "type": "object",
@@ -11316,7 +11316,7 @@
           "application/json": {
             "schema": {
               "type": "array",
-              "maxItems": 10,
+              "maxItems": 1000,
               "description": "Amortization schedule",
               "items": {
                 "type": "object",
@@ -11457,7 +11457,7 @@
           "application/json": {
             "schema": {
               "type": "array",
-              "maxItems": 100,
+              "maxItems": 1000,
               "description": "A history of all notes on an account.",
               "items": {
                 "type": "object",
@@ -11645,7 +11645,7 @@
                 },
                 "external_fields": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
                     "type": "object",
@@ -11778,7 +11778,7 @@
                 },
                 "external_fields": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
                     "type": "object",
@@ -12001,7 +12001,7 @@
                     },
                     "external_fields": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                       "items": {
                         "type": "object",
@@ -12167,7 +12167,7 @@
                   "properties": {
                     "customers": {
                       "type": "array",
-                      "maxItems": 10,
+                      "maxItems": 1000,
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
                         "type": "object",
@@ -12538,7 +12538,7 @@
               "properties": {
                 "current_accounts": {
                   "type": "array",
-                  "maxItems": 100,
+                  "maxItems": 1000,
                   "description": "Array of Accounts that are currently using this Product",
                   "items": {
                     "type": "string",
@@ -12686,7 +12686,7 @@
                 },
                 "external_fields": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
                     "type": "object",
@@ -12715,7 +12715,7 @@
           "application/json": {
             "schema": {
               "type": "array",
-              "maxItems": 10,
+              "maxItems": 1000,
               "items": {
                 "type": "object",
                 "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
@@ -12822,7 +12822,7 @@
                   },
                   "external_fields": {
                     "type": "array",
-                    "maxItems": 10,
+                    "maxItems": 1000,
                     "description": "An array of static references to fields in a third party system.",
                     "items": {
                       "type": "object",
@@ -12852,7 +12852,7 @@
           "application/json": {
             "schema": {
               "type": "array",
-              "maxItems": 100,
+              "maxItems": 1000,
               "items": {
                 "type": "object",
                 "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
@@ -12959,7 +12959,7 @@
                   },
                   "external_fields": {
                     "type": "array",
-                    "maxItems": 10,
+                    "maxItems": 1000,
                     "description": "An array of static references to fields in a third party system.",
                     "items": {
                       "type": "object",
@@ -13005,7 +13005,7 @@
                 },
                 "statements_list": {
                   "type": "array",
-                  "maxItems": 10,
+                  "maxItems": 1000,
                   "description": "An array of statements included in the billing cycle.",
                   "items": {
                     "type": "object",

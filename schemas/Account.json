@@ -42,6 +42,7 @@
     },
     "external_fields": {
       "type": "array",
+      "maxItems": 1000,
       "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
       "items": {
         "type": "object",

@@ -7,6 +7,7 @@
       "properties": {
         "customers": {
           "type": "array",
+          "maxItems": 1000,
           "description": "An array of customers who have been assigned to the account",
           "items": {
             "$ref": "./Customer.json"
