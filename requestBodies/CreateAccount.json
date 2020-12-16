@@ -6,7 +6,6 @@
         "allOf": [
           {
             "type": "object",
-            "required": ["product_id"],
             "properties": {
               "effective_at": {
                 "type": "string",
