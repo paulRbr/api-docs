@@ -3,7 +3,6 @@
     { "$ref": "./Account.json" },
     {
       "type": "object",
-      "required": ["customers"],
       "properties": {
         "customers": {
           "type": "array",
