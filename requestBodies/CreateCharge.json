@@ -6,7 +6,7 @@
       "schema": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["amount_cents", "merchant_data"],
+        "required": ["original_amount_cents", "merchant_data"],
         "properties": {
           "original_amount_cents": {
             "type": "integer",

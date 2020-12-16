@@ -6,6 +6,7 @@
       "schema": {
         "type": "object",
         "additionalProperties": false,
+        "required": ["original_amount_cents"],
         "properties": {
           "original_amount_cents": {
             "type": "integer",

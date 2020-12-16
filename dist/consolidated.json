@@ -1151,7 +1151,9 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": 110
+              "minimum": 0,
+              "maximum": 10,
+              "example": 10
             }
           },
           {
@@ -1163,6 +1165,8 @@
             "explode": true,
             "schema": {
               "type": "integer",
+              "minimum": 0,
+              "maximum": 100,
               "example": 50
             }
           }
@@ -4322,7 +4326,7 @@
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["amount_cents", "merchant_data"],
+                "required": ["original_amount_cents", "merchant_data"],
                 "properties": {
                   "original_amount_cents": {
                     "type": "integer",
@@ -4547,6 +4551,7 @@
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
+                "required": ["original_amount_cents"],
                 "properties": {
                   "original_amount_cents": {
                     "type": "integer",
@@ -5075,7 +5080,7 @@
                         "previous_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_charges_principal_cents": {
+                        "min_pay_root_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000
@@ -6850,7 +6855,7 @@
               "previous_min_pay_cents"
             ],
             "properties": {
-              "min_pay_charges_principal_cents": {
+              "min_pay_root_principal_cents": {
                 "type": "integer",
                 "description": "Total principal due for the billing cycle.",
                 "example": 100000
@@ -8349,7 +8354,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["amount_cents", "merchant_data"],
+              "required": ["original_amount_cents", "merchant_data"],
               "properties": {
                 "original_amount_cents": {
                   "type": "integer",
@@ -8414,6 +8419,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": false,
+              "required": ["original_amount_cents"],
               "properties": {
                 "original_amount_cents": {
                   "type": "integer",
@@ -12444,7 +12450,7 @@
                     "previous_min_pay_cents"
                   ],
                   "properties": {
-                    "min_pay_charges_principal_cents": {
+                    "min_pay_root_principal_cents": {
                       "type": "integer",
                       "description": "Total principal due for the billing cycle.",
                       "example": 100000

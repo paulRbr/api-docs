@@ -226,7 +226,9 @@
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": 110
+              "minimum": 0,
+              "maximum": 10,
+              "example": 10
             }
           },
           {
@@ -238,6 +240,8 @@
             "explode": true,
             "schema": {
               "type": "integer",
+              "minimum": 0,
+              "maximum": 100,
               "example": 50
             }
           }
