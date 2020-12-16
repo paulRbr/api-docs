@@ -99,7 +99,6 @@
     },
     "external_fields": {
       "type": "array",
-      "maxItems": 10,
       "description": "An array of static references to fields in a third party system.",
       "items": {
         "type": "object",

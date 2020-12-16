@@ -1,6 +1,5 @@
 {
   "type": "array",
-  "maxItems": 10,
   "items": {
     "$ref": "./LineItem.json"
   }
