@@ -2,3 +2,4 @@ canopy-slate.md
 .DS_Store
 .swagger-codegen-ignore
 node_modules
+.idea

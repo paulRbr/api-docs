@@ -2,7 +2,9 @@
   "description": "Payment Created",
   "content": {
     "application/json": {
-      "$ref": "./../schemas/LineItem.json"
+      "schema": {
+        "$ref": "./../schemas/LineItem.json"
+      }
     }
   }
 }

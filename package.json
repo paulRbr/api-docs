@@ -10,18 +10,26 @@
   "license": "ISC",
   "scripts": {
     "bundle": "rm -rf dist/* && swagger-cli bundle -r -o dist/consolidated.json openapi.json",
-    "validate": "swagger-cli validate dist/consolidated.json"
+    "validate": "swagger-cli validate dist/consolidated.json",
+    "flight-check": "yarn bundle && yarn validate"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && yarn bundle"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*": [
+      "yarn flight-check",
+      "pretty-quick"
+    ]
   },
   "dependencies": {
     "swagger-cli": "4.0.4"
   },
   "devDependencies": {
     "husky": "4.3.5",
+    "lint-staged": "^10.5.3",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0"
   }

@@ -16,13 +16,13 @@ We consolidate these modules and dereference them into one unified json file tha
 
 Changes made to the `master` branch are deployed via GitHub Actions to internal docs [here](https://bump.sh/hub/internal-docs-hub/doc/artis_api_interface_updates).
 
-Changes made to the `production` branch are deployed via GitHub Actions to the [live documentation site](docs.canopyservicing.com).
+Changes made to the `production` branch are deployed via GitHub Actions to the [live documentation site](https://docs.canopyservicing.com).
 
 ## Validation
 
 The CI workflow validates the consolidated OpenAPI file before deploying it. Please validate your changes in one of two ways before pushing:
 
 1. `yarn validate`
-2. Open up the [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode with `dist/consolidated.json` in the editor and run a security audit by either clickingon the purple icon in the top right corner of the editor or opening up the launcher via Cmd-Option-P and entering "security". First option should be `OpenAPI: perform security audit`.
+2. Open up the [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode with `dist/consolidated.json` in the editor and run a security audit by either clicking on the purple icon in the top right corner of the editor or opening up the launcher via Cmd-Option-P and entering "security". First option should be `OpenAPI: perform security audit`.
 
    See [docs](https://github.com/42Crunch/vscode-openapi#use-the-extension-to-audit-the-security-of-your-api) for more info.
