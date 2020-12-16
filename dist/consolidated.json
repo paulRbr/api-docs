@@ -184,7 +184,6 @@
                       },
                       "phone": {
                         "type": "string",
-                        "format": "phonenumber",
                         "description": "Phone number of the API user",
                         "example": "1-123-456-7890"
                       },
@@ -274,7 +273,6 @@
                     },
                     "phone": {
                       "type": "string",
-                      "format": "phonenumber",
                       "description": "Phone number of the API user",
                       "example": "1-123-456-7890"
                     },
@@ -370,7 +368,6 @@
                     },
                     "phone": {
                       "type": "string",
-                      "format": "phonenumber",
                       "description": "Phone number of the API user",
                       "example": "1-123-456-7890"
                     },
@@ -433,7 +430,6 @@
                   },
                   "phone": {
                     "type": "string",
-                    "format": "phonenumber",
                     "description": "The phone number to add to the API User's information.",
                     "example": "1-222-222-2222"
                   },
@@ -483,7 +479,6 @@
                     },
                     "phone": {
                       "type": "string",
-                      "format": "phonenumber",
                       "description": "Phone number of the API user",
                       "example": "1-123-456-7890"
                     },
@@ -553,7 +548,6 @@
                     },
                     "phone": {
                       "type": "string",
-                      "format": "phonenumber",
                       "description": "Phone number of the API user",
                       "example": "1-123-456-7890"
                     },
@@ -1745,14 +1739,14 @@
                               "additional_min_pay_details": {
                                 "type": "object",
                                 "required": [
-                                  "min_pay_root_principal_cents",
+                                  "min_pay_charges_principal_cents",
                                   "min_pay_interest_cents",
                                   "min_pay_deferred_cents",
                                   "min_pay_fees_cents",
                                   "previous_min_pay_cents"
                                 ],
                                 "properties": {
-                                  "min_pay_root_principal_cents": {
+                                  "min_pay_charges_principal_cents": {
                                     "type": "integer",
                                     "description": "Total principal due for the billing cycle.",
                                     "example": 100000
@@ -2047,7 +2041,6 @@
                   },
                   "phone_number": {
                     "type": "string",
-                    "format": "phonenumber",
                     "description": "Phone number of the customer",
                     "example": "555-555-5555"
                   },
@@ -2242,8 +2235,8 @@
             "explode": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
-              "example": "975d11ab-92d3-489e-9aa5-8d0277b0222a"
+              "format": "integer",
+              "example": 2
             }
           }
         ],
@@ -2281,7 +2274,6 @@
                   },
                   "phone_number": {
                     "type": "string",
-                    "format": "phonenumber",
                     "description": "Phone number of the customer",
                     "example": "555-555-5555"
                   },
@@ -2967,14 +2959,14 @@
                         "additional_min_pay_details": {
                           "type": "object",
                           "required": [
-                            "min_pay_root_principal_cents",
+                            "min_pay_charges_principal_cents",
                             "min_pay_interest_cents",
                             "min_pay_deferred_cents",
                             "min_pay_fees_cents",
                             "previous_min_pay_cents"
                           ],
                           "properties": {
-                            "min_pay_root_principal_cents": {
+                            "min_pay_charges_principal_cents": {
                               "type": "integer",
                               "description": "Total principal due for the billing cycle.",
                               "example": 100000
@@ -3209,9 +3201,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+              "type": "integer",
+              "example": 6
             }
           }
         ],
@@ -3454,14 +3445,14 @@
                         "additional_min_pay_details": {
                           "type": "object",
                           "required": [
-                            "min_pay_root_principal_cents",
+                            "min_pay_charges_principal_cents",
                             "min_pay_interest_cents",
                             "min_pay_deferred_cents",
                             "min_pay_fees_cents",
                             "previous_min_pay_cents"
                           ],
                           "properties": {
-                            "min_pay_root_principal_cents": {
+                            "min_pay_charges_principal_cents": {
                               "type": "integer",
                               "description": "Total principal due for the billing cycle.",
                               "example": 100000
@@ -3696,8 +3687,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 5
             }
           }
         ],
@@ -3773,7 +3764,6 @@
                         },
                         "phone": {
                           "type": "string",
-                          "format": "phonenumber",
                           "description": "Phone number of the API user",
                           "example": "1-123-456-7890"
                         },
@@ -3819,9 +3809,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "a361c813-92e5-4765-82ea-9df368a81a89"
+              "type": "integer",
+              "example": 6
             }
           }
         ],
@@ -3883,7 +3872,6 @@
                           },
                           "phone": {
                             "type": "string",
-                            "format": "phonenumber",
                             "description": "Phone number of the API user",
                             "example": "1-123-456-7890"
                           },
@@ -3932,8 +3920,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 4
             }
           },
           {
@@ -4069,8 +4057,7 @@
                             "type": "number"
                           },
                           "phone_number": {
-                            "type": "string",
-                            "format": "phonenumber"
+                            "type": "string"
                           }
                         }
                       },
@@ -4121,9 +4108,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+              "type": "integer",
+              "example": 4
             }
           },
           {
@@ -4134,9 +4120,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "8f0a3e81-24b9-4d32-b15b-a59257ed7485"
+              "type": "integer",
+              "example": 8
             }
           }
         ],
@@ -4248,8 +4233,7 @@
                             "type": "number"
                           },
                           "phone_number": {
-                            "type": "string",
-                            "format": "phonenumber"
+                            "type": "string"
                           }
                         }
                       },
@@ -4300,8 +4284,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 11
             }
           }
         ],
@@ -4341,8 +4325,7 @@
                         "type": "number"
                       },
                       "phone_number": {
-                        "type": "string",
-                        "format": "phonenumber"
+                        "type": "string"
                       }
                     }
                   },
@@ -4412,8 +4395,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 4
             }
           }
         ],
@@ -4631,8 +4614,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "integer",
+              "example": 2
             }
           },
           {
@@ -4839,7 +4822,7 @@
                         "previous_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_root_principal_cents": {
+                        "min_pay_charges_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000
@@ -4937,9 +4920,8 @@
             "style": "simple",
             "explode": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "17d25206-1012-4576-89f0-c5fe128edd3e"
+              "type": "integer",
+              "example": 5
             }
           },
           {
@@ -5078,7 +5060,6 @@
           },
           "phone": {
             "type": "string",
-            "format": "phonenumber",
             "description": "Phone number of the API user",
             "example": "1-123-456-7890"
           },
@@ -5322,14 +5303,14 @@
           "additional_min_pay_details": {
             "type": "object",
             "required": [
-              "min_pay_root_principal_cents",
+              "min_pay_charges_principal_cents",
               "min_pay_interest_cents",
               "min_pay_deferred_cents",
               "min_pay_fees_cents",
               "previous_min_pay_cents"
             ],
             "properties": {
-              "min_pay_root_principal_cents": {
+              "min_pay_charges_principal_cents": {
                 "type": "integer",
                 "description": "Total principal due for the billing cycle.",
                 "example": 100000
@@ -5678,14 +5659,14 @@
               "additional_min_pay_details": {
                 "type": "object",
                 "required": [
-                  "min_pay_root_principal_cents",
+                  "min_pay_charges_principal_cents",
                   "min_pay_interest_cents",
                   "min_pay_deferred_cents",
                   "min_pay_fees_cents",
                   "previous_min_pay_cents"
                 ],
                 "properties": {
-                  "min_pay_root_principal_cents": {
+                  "min_pay_charges_principal_cents": {
                     "type": "integer",
                     "description": "Total principal due for the billing cycle.",
                     "example": 100000
@@ -6303,14 +6284,14 @@
                     "additional_min_pay_details": {
                       "type": "object",
                       "required": [
-                        "min_pay_root_principal_cents",
+                        "min_pay_charges_principal_cents",
                         "min_pay_interest_cents",
                         "min_pay_deferred_cents",
                         "min_pay_fees_cents",
                         "previous_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_root_principal_cents": {
+                        "min_pay_charges_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000
@@ -6616,7 +6597,7 @@
               "previous_min_pay_cents"
             ],
             "properties": {
-              "min_pay_root_principal_cents": {
+              "min_pay_charges_principal_cents": {
                 "type": "integer",
                 "description": "Total principal due for the billing cycle.",
                 "example": 100000
@@ -7305,8 +7286,7 @@
                 "type": "number"
               },
               "phone_number": {
-                "type": "string",
-                "format": "phonenumber"
+                "type": "string"
               }
             }
           },
@@ -7419,7 +7399,6 @@
                 },
                 "phone": {
                   "type": "string",
-                  "format": "phonenumber",
                   "description": "The phone number to add to the API User's information.",
                   "example": "1-222-222-2222"
                 },
@@ -7713,7 +7692,6 @@
                 },
                 "phone_number": {
                   "type": "string",
-                  "format": "phonenumber",
                   "description": "Phone number of the customer",
                   "example": "555-555-5555"
                 },
@@ -7824,7 +7802,6 @@
                 },
                 "phone_number": {
                   "type": "string",
-                  "format": "phonenumber",
                   "description": "Phone number of the customer",
                   "example": "555-555-5555"
                 },
@@ -8127,8 +8104,7 @@
                       "type": "number"
                     },
                     "phone_number": {
-                      "type": "string",
-                      "format": "phonenumber"
+                      "type": "string"
                     }
                   }
                 },
@@ -8240,7 +8216,6 @@
                 },
                 "phone": {
                   "type": "string",
-                  "format": "phonenumber",
                   "description": "Phone number of the API user",
                   "example": "1-123-456-7890"
                 },
@@ -8294,7 +8269,6 @@
                   },
                   "phone": {
                     "type": "string",
-                    "format": "phonenumber",
                     "description": "Phone number of the API user",
                     "example": "1-123-456-7890"
                   },
@@ -8346,7 +8320,6 @@
                 },
                 "phone": {
                   "type": "string",
-                  "format": "phonenumber",
                   "description": "Phone number of the API user",
                   "example": "1-123-456-7890"
                 },
@@ -8401,7 +8374,6 @@
                 },
                 "phone": {
                   "type": "string",
-                  "format": "phonenumber",
                   "description": "Phone number of the API user",
                   "example": "1-123-456-7890"
                 },
@@ -8456,7 +8428,6 @@
                 },
                 "phone": {
                   "type": "string",
-                  "format": "phonenumber",
                   "description": "Phone number of the API user",
                   "example": "1-123-456-7890"
                 },
@@ -9595,14 +9566,14 @@
                           "additional_min_pay_details": {
                             "type": "object",
                             "required": [
-                              "min_pay_root_principal_cents",
+                              "min_pay_charges_principal_cents",
                               "min_pay_interest_cents",
                               "min_pay_deferred_cents",
                               "min_pay_fees_cents",
                               "previous_min_pay_cents"
                             ],
                             "properties": {
-                              "min_pay_root_principal_cents": {
+                              "min_pay_charges_principal_cents": {
                                 "type": "integer",
                                 "description": "Total principal due for the billing cycle.",
                                 "example": 100000
@@ -10445,14 +10416,14 @@
                     "additional_min_pay_details": {
                       "type": "object",
                       "required": [
-                        "min_pay_root_principal_cents",
+                        "min_pay_charges_principal_cents",
                         "min_pay_interest_cents",
                         "min_pay_deferred_cents",
                         "min_pay_fees_cents",
                         "previous_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_root_principal_cents": {
+                        "min_pay_charges_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000
@@ -10910,14 +10881,14 @@
                       "additional_min_pay_details": {
                         "type": "object",
                         "required": [
-                          "min_pay_root_principal_cents",
+                          "min_pay_charges_principal_cents",
                           "min_pay_interest_cents",
                           "min_pay_deferred_cents",
                           "min_pay_fees_cents",
                           "previous_min_pay_cents"
                         ],
                         "properties": {
-                          "min_pay_root_principal_cents": {
+                          "min_pay_charges_principal_cents": {
                             "type": "integer",
                             "description": "Total principal due for the billing cycle.",
                             "example": 100000
@@ -11157,7 +11128,6 @@
                     },
                     "phone": {
                       "type": "string",
-                      "format": "phonenumber",
                       "description": "Phone number of the API user",
                       "example": "1-123-456-7890"
                     },
@@ -11241,7 +11211,6 @@
                       },
                       "phone": {
                         "type": "string",
-                        "format": "phonenumber",
                         "description": "Phone number of the API user",
                         "example": "1-123-456-7890"
                       },
@@ -11545,14 +11514,14 @@
                     "additional_min_pay_details": {
                       "type": "object",
                       "required": [
-                        "min_pay_root_principal_cents",
+                        "min_pay_charges_principal_cents",
                         "min_pay_interest_cents",
                         "min_pay_deferred_cents",
                         "min_pay_fees_cents",
                         "previous_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_root_principal_cents": {
+                        "min_pay_charges_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000
@@ -11956,7 +11925,7 @@
                     "previous_min_pay_cents"
                   ],
                   "properties": {
-                    "min_pay_root_principal_cents": {
+                    "min_pay_charges_principal_cents": {
                       "type": "integer",
                       "description": "Total principal due for the billing cycle.",
                       "example": 100000
@@ -12186,8 +12155,7 @@
                       "type": "number"
                     },
                     "phone_number": {
-                      "type": "string",
-                      "format": "phonenumber"
+                      "type": "string"
                     }
                   }
                 },
@@ -12323,8 +12291,7 @@
                         "type": "number"
                       },
                       "phone_number": {
-                        "type": "string",
-                        "format": "phonenumber"
+                        "type": "string"
                       }
                     }
                   },
@@ -12461,8 +12428,7 @@
                         "type": "number"
                       },
                       "phone_number": {
-                        "type": "string",
-                        "format": "phonenumber"
+                        "type": "string"
                       }
                     }
                   },
