@@ -1531,7 +1531,6 @@
                         "type": "object",
                         "properties": {
                           "account": {
-                            "additionalProperties": false,
                             "type": "object",
                             "required": ["account_id", "created_at", "effective_at"],
                             "properties": {
@@ -2757,7 +2756,6 @@
                 "schema": {
                   "allOf": [
                     {
-                      "additionalProperties": false,
                       "type": "object",
                       "required": ["account_id", "created_at", "effective_at"],
                       "properties": {
@@ -3243,7 +3241,6 @@
                 "schema": {
                   "allOf": [
                     {
-                      "additionalProperties": false,
                       "type": "object",
                       "required": ["account_id", "created_at", "effective_at"],
                       "properties": {
@@ -5330,7 +5327,6 @@
         }
       },
       "Account": {
-        "additionalProperties": false,
         "type": "object",
         "required": ["account_id", "created_at", "effective_at"],
         "properties": {
@@ -5686,7 +5682,6 @@
       "ComplexAccount": {
         "allOf": [
           {
-            "additionalProperties": false,
             "type": "object",
             "required": ["account_id", "created_at", "effective_at"],
             "properties": {
@@ -6311,7 +6306,6 @@
                 "maxItems": 1000,
                 "description": "An array of Accounts this Customer is assigned to.",
                 "items": {
-                  "additionalProperties": false,
                   "type": "object",
                   "required": ["account_id", "created_at", "effective_at"],
                   "properties": {
@@ -9632,7 +9626,6 @@
                     "type": "object",
                     "properties": {
                       "account": {
-                        "additionalProperties": false,
                         "type": "object",
                         "required": ["account_id", "created_at", "effective_at"],
                         "properties": {
@@ -10482,7 +10475,6 @@
             "schema": {
               "allOf": [
                 {
-                  "additionalProperties": false,
                   "type": "object",
                   "required": ["account_id", "created_at", "effective_at"],
                   "properties": {
@@ -10947,7 +10939,6 @@
                   "maxItems": 1000,
                   "description": "An array of accounts within the requested range.",
                   "items": {
-                    "additionalProperties": false,
                     "type": "object",
                     "required": ["account_id", "created_at", "effective_at"],
                     "properties": {
@@ -11808,7 +11799,6 @@
             "schema": {
               "allOf": [
                 {
-                  "additionalProperties": false,
                   "type": "object",
                   "required": ["account_id", "created_at", "effective_at"],
                   "properties": {

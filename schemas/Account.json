@@ -1,5 +1,4 @@
 {
-  "additionalProperties": false,
   "type": "object",
   "required": ["account_id", "created_at", "effective_at"],
   "properties": {
