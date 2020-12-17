@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "required": ["customer_accounts", "total_customer_account_count"],
+  "required": ["results"],
   "properties": {
     "results": {
       "type": "array",
