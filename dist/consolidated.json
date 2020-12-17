@@ -67,9 +67,7 @@
   "paths": {
     "/api_users": {
       "post": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Invite a new API user to Canopy",
         "operationId": "createApiUser",
         "description": "When you create a new API user via this `POST` request, an email invite will be sent for the new user to join your organization. The email invite includes a link with a unique token that will allow the new user to register to join your team in Canopy.",
@@ -80,10 +78,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "email",
-                  "role"
-                ],
+                "required": ["email", "role"],
                 "properties": {
                   "role": {
                     "type": "number",
@@ -108,11 +103,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "email",
-                    "created_at",
-                    "expires_at"
-                  ],
+                  "required": ["email", "created_at", "expires_at"],
                   "properties": {
                     "email": {
                       "type": "string",
@@ -148,9 +139,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Get all API users in your organization",
         "description": "Returns a list of all API users in your organization.",
         "operationId": "getApiUsers",
@@ -165,12 +154,7 @@
                   "maxItems": 10,
                   "items": {
                     "type": "object",
-                    "required": [
-                      "api_user_id",
-                      "organization_name",
-                      "email",
-                      "role"
-                    ],
+                    "required": ["api_user_id", "organization_name", "email", "role"],
                     "properties": {
                       "api_user_id": {
                         "type": "integer",
@@ -205,11 +189,7 @@
                       },
                       "role": {
                         "type": "string",
-                        "enum": [
-                          "SERVICING",
-                          "OPERATIONS",
-                          "ADMIN"
-                        ],
+                        "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                         "description": "The role of this user in the API",
                         "example": "SERVICING"
                       }
@@ -227,9 +207,7 @@
     },
     "/api_users/login": {
       "post": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Log in as an API user",
         "operationId": "logInApiUser",
         "description": "When provided appropriate credentials, this route signs in an API user.",
@@ -240,10 +218,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "email",
-                  "password"
-                ],
+                "required": ["email", "password"],
                 "properties": {
                   "email": {
                     "type": "string",
@@ -268,13 +243,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "api_user_id",
-                    "organization_name",
-                    "email",
-                    "role",
-                    "token"
-                  ],
+                  "required": ["api_user_id", "organization_name", "email", "role", "token"],
                   "properties": {
                     "api_user_id": {
                       "type": "string",
@@ -309,11 +278,7 @@
                     },
                     "role": {
                       "type": "string",
-                      "enum": [
-                        "SERVICING",
-                        "OPERATIONS",
-                        "ADMIN"
-                      ],
+                      "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                       "description": "The role of this user in the API",
                       "example": "SERVICING"
                     },
@@ -334,9 +299,7 @@
     },
     "/api_users/password": {
       "put": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Update the password for an API User",
         "operationId": "updateApiUserPassword",
         "description": "When provided appropriate credentials, this route changes an API User's password.",
@@ -347,11 +310,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "current_password",
-                  "new_password",
-                  "token"
-                ],
+                "required": ["current_password", "new_password", "token"],
                 "properties": {
                   "current_password": {
                     "type": "string",
@@ -379,13 +338,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "api_user_id",
-                    "organization_name",
-                    "email",
-                    "role",
-                    "token"
-                  ],
+                  "required": ["api_user_id", "organization_name", "email", "role", "token"],
                   "properties": {
                     "api_user_id": {
                       "type": "string",
@@ -420,11 +373,7 @@
                     },
                     "role": {
                       "type": "string",
-                      "enum": [
-                        "SERVICING",
-                        "OPERATIONS",
-                        "ADMIN"
-                      ],
+                      "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                       "description": "The role of this user in the API",
                       "example": "SERVICING"
                     },
@@ -445,9 +394,7 @@
     },
     "/api_users/register": {
       "put": {
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Complete registration for an invited API user",
         "operationId": "registerApiUserPassword",
         "description": "When provided appropriate credentials, this route updates an API user's information for registration.",
@@ -458,14 +405,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "email_confirm",
-                  "new_password",
-                  "name_first",
-                  "name_last",
-                  "phone",
-                  "token"
-                ],
+                "required": ["email_confirm", "new_password", "name_first", "name_last", "phone", "token"],
                 "properties": {
                   "email_confirm": {
                     "type": "string",
@@ -509,12 +449,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "api_user_id",
-                    "organization_name",
-                    "email",
-                    "role"
-                  ],
+                  "required": ["api_user_id", "organization_name", "email", "role"],
                   "properties": {
                     "api_user_id": {
                       "type": "integer",
@@ -549,11 +484,7 @@
                     },
                     "role": {
                       "type": "string",
-                      "enum": [
-                        "SERVICING",
-                        "OPERATIONS",
-                        "ADMIN"
-                      ],
+                      "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                       "description": "The role of this user in the API",
                       "example": "SERVICING"
                     }
@@ -575,9 +506,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "authentication"
-        ],
+        "tags": ["authentication"],
         "summary": "Get summary info for an API user",
         "description": "Get all summarized information pertaining to the API user making the request.",
         "operationId": "getApiUser",
@@ -589,12 +518,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "api_user_id",
-                    "organization_name",
-                    "email",
-                    "role"
-                  ],
+                  "required": ["api_user_id", "organization_name", "email", "role"],
                   "properties": {
                     "api_user_id": {
                       "type": "integer",
@@ -629,11 +553,7 @@
                     },
                     "role": {
                       "type": "string",
-                      "enum": [
-                        "SERVICING",
-                        "OPERATIONS",
-                        "ADMIN"
-                      ],
+                      "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                       "description": "The role of this user in the API",
                       "example": "SERVICING"
                     }
@@ -655,9 +575,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "products"
-        ],
+        "tags": ["products"],
         "summary": "Create a new product",
         "operationId": "createProduct",
         "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by sending an excel file detailing your preferred configurations to the [Canopy team](mailto:support@canopyservicing.com?subject=API%20Access%20Request); however, you can also configure and manage products programmatically using this API documentation. \n \n Request body for creating a new product.",
@@ -736,10 +654,7 @@
                     "properties": {
                       "payment_due_policies": {
                         "type": "object",
-                        "required": [
-                          "delinquent_on_n_consecutive_late_fees",
-                          "charge_off_on_n_consecutive_late_fees"
-                        ],
+                        "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
                         "properties": {
                           "delinquent_on_n_consecutive_late_fees": {
                             "type": "integer",
@@ -765,9 +680,7 @@
                       },
                       "billing_cycle_policies": {
                         "type": "object",
-                        "required": [
-                          "cycle_interval"
-                        ],
+                        "required": ["cycle_interval"],
                         "properties": {
                           "cycle_interval": {
                             "type": "string",
@@ -807,9 +720,7 @@
                         "description": "The Interest Policy Object"
                       },
                       "default_attributes": {
-                        "required": [
-                          "default_credit_limit_cents"
-                        ],
+                        "required": ["default_credit_limit_cents"],
                         "type": "object",
                         "properties": {
                           "default_credit_limit_cents": {
@@ -832,12 +743,7 @@
                       },
                       "promo_min_pay_type": {
                         "type": "string",
-                        "enum": [
-                          "AM",
-                          "PERCENT_INTEREST",
-                          "PERCENT_PRINCIPAL",
-                          "NONE"
-                        ],
+                        "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                         "description": "Current due calculation method for the promotional period.",
                         "example": "PERCENT_PRINCIPAL"
                       },
@@ -893,11 +799,7 @@
                       },
                       "post_promo_min_pay_type": {
                         "type": "string",
-                        "enum": [
-                          "AM",
-                          "%INTEREST",
-                          "%PRINCIPAL"
-                        ],
+                        "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
                         "description": "Current due calculation method for the post-promotional period.",
                         "example": "AM"
                       },
@@ -965,11 +867,7 @@
                     "product_overview": {
                       "type": "object",
                       "description": "A series of static fields about the product.",
-                      "required": [
-                        "product_name",
-                        "product_type",
-                        "product_long_description"
-                      ],
+                      "required": ["product_name", "product_type", "product_long_description"],
                       "properties": {
                         "product_name": {
                           "type": "string",
@@ -1056,9 +954,7 @@
                         },
                         "billing_cycle_policies": {
                           "type": "object",
-                          "required": [
-                            "cycle_interval"
-                          ],
+                          "required": ["cycle_interval"],
                           "properties": {
                             "cycle_interval": {
                               "type": "string",
@@ -1099,9 +995,7 @@
                         },
                         "default_attributes": {
                           "type": "object",
-                          "required": [
-                            "default_credit_limit_cents"
-                          ],
+                          "required": ["default_credit_limit_cents"],
                           "properties": {
                             "default_credit_limit_cents": {
                               "type": "integer",
@@ -1133,12 +1027,7 @@
                         },
                         "promo_min_pay_type": {
                           "type": "string",
-                          "enum": [
-                            "AM",
-                            "PERCENT_INTEREST",
-                            "PERCENT_PRINCIPAL",
-                            "NONE"
-                          ],
+                          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                           "description": "Current due calculation method for the promotional period.",
                           "example": "PERCENT_PRINCIPAL"
                         },
@@ -1194,12 +1083,7 @@
                         },
                         "post_promo_min_pay_type": {
                           "type": "string",
-                          "enum": [
-                            "AM",
-                            "PERCENT_INTEREST",
-                            "PERCENT_PRINCIPAL",
-                            "NONE"
-                          ],
+                          "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                           "description": "Current due calculation method for the post-promotional period.",
                           "example": "AM"
                         },
@@ -1226,9 +1110,7 @@
                       "properties": {
                         "accounts_overview": {
                           "type": "object",
-                          "required": [
-                            "account_count_total"
-                          ],
+                          "required": ["account_count_total"],
                           "properties": {
                             "account_count_total": {
                               "type": "integer",
@@ -1255,9 +1137,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "products"
-        ],
+        "tags": ["products"],
         "summary": "Get all available products",
         "description": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
         "operationId": "getProducts",
@@ -1336,11 +1216,7 @@
                       "product_overview": {
                         "type": "object",
                         "description": "A series of static fields about the product.",
-                        "required": [
-                          "product_name",
-                          "product_type",
-                          "product_long_description"
-                        ],
+                        "required": ["product_name", "product_type", "product_long_description"],
                         "properties": {
                           "product_name": {
                             "type": "string",
@@ -1427,9 +1303,7 @@
                           },
                           "billing_cycle_policies": {
                             "type": "object",
-                            "required": [
-                              "cycle_interval"
-                            ],
+                            "required": ["cycle_interval"],
                             "properties": {
                               "cycle_interval": {
                                 "type": "string",
@@ -1470,9 +1344,7 @@
                           },
                           "default_attributes": {
                             "type": "object",
-                            "required": [
-                              "default_credit_limit_cents"
-                            ],
+                            "required": ["default_credit_limit_cents"],
                             "properties": {
                               "default_credit_limit_cents": {
                                 "type": "integer",
@@ -1504,12 +1376,7 @@
                           },
                           "promo_min_pay_type": {
                             "type": "string",
-                            "enum": [
-                              "AM",
-                              "PERCENT_INTEREST",
-                              "PERCENT_PRINCIPAL",
-                              "NONE"
-                            ],
+                            "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                             "description": "Current due calculation method for the promotional period.",
                             "example": "PERCENT_PRINCIPAL"
                           },
@@ -1565,12 +1432,7 @@
                           },
                           "post_promo_min_pay_type": {
                             "type": "string",
-                            "enum": [
-                              "AM",
-                              "PERCENT_INTEREST",
-                              "PERCENT_PRINCIPAL",
-                              "NONE"
-                            ],
+                            "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                             "description": "Current due calculation method for the post-promotional period.",
                             "example": "AM"
                           },
@@ -1597,9 +1459,7 @@
                         "properties": {
                           "accounts_overview": {
                             "type": "object",
-                            "required": [
-                              "account_count_total"
-                            ],
+                            "required": ["account_count_total"],
                             "properties": {
                               "account_count_total": {
                                 "type": "integer",
@@ -1624,9 +1484,7 @@
     },
     "/customers/accounts": {
       "get": {
-        "tags": [
-          "customers"
-        ],
+        "tags": ["customers"],
         "summary": "Get all accounts for all customers",
         "description": "Returns all accounts from the perspective of each customer. For instance, if one account has two customers, these are reflected as two separate items in the response array. Similarly, if one customer has multiple accounts, each account is reflected as a separate item in the response array.",
         "operationId": "getCustomersAccounts",
@@ -1663,9 +1521,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "results"
-                  ],
+                  "required": ["results"],
                   "properties": {
                     "results": {
                       "type": "array",
@@ -1675,9 +1531,7 @@
                         "allOf": [
                           {
                             "type": "object",
-                            "required": [
-                              "customer_id"
-                            ],
+                            "required": ["customer_id"],
                             "properties": {
                               "customer_id": {
                                 "type": "integer",
@@ -1764,10 +1618,7 @@
                               "customer_account_role": {
                                 "type": "string",
                                 "description": "The role of the customer for the account.",
-                                "enum": [
-                                  "PRIMARY",
-                                  "SECONDARY"
-                                ],
+                                "enum": ["PRIMARY", "SECONDARY"],
                                 "example": "PRIMARY"
                               },
                               "customer_account_external_id": {
@@ -1782,11 +1633,7 @@
                             "properties": {
                               "account": {
                                 "type": "object",
-                                "required": [
-                                  "account_id",
-                                  "created_at",
-                                  "effective_at"
-                                ],
+                                "required": ["account_id", "created_at", "effective_at"],
                                 "properties": {
                                   "account_id": {
                                     "type": "integer",
@@ -1807,9 +1654,7 @@
                                   },
                                   "account_overview": {
                                     "type": "object",
-                                    "required": [
-                                      "account_status"
-                                    ],
+                                    "required": ["account_status"],
                                     "properties": {
                                       "account_status": {
                                         "type": "string",
@@ -1826,9 +1671,7 @@
                                   "account_product": {
                                     "description": "The product associated with the account",
                                     "type": "object",
-                                    "required": [
-                                      "product_id"
-                                    ],
+                                    "required": ["product_id"],
                                     "properties": {
                                       "product_id": {
                                         "type": "integer",
@@ -1842,11 +1685,7 @@
                                       },
                                       "product_overview": {
                                         "type": "object",
-                                        "required": [
-                                          "product_name",
-                                          "product_type",
-                                          "product_long_description"
-                                        ],
+                                        "required": ["product_name", "product_type", "product_long_description"],
                                         "properties": {
                                           "product_name": {
                                             "type": "string",
@@ -1885,10 +1724,7 @@
                                       },
                                       "product_lifecycle": {
                                         "type": "object",
-                                        "required": [
-                                          "late_fee_impl_cents",
-                                          "payment_reversal_fee_impl_cents"
-                                        ],
+                                        "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                                         "properties": {
                                           "late_fee_impl_cents": {
                                             "type": "number",
@@ -2008,10 +1844,7 @@
                                   },
                                   "min_pay_due_cents": {
                                     "type": "object",
-                                    "required": [
-                                      "min_pay_cents",
-                                      "min_pay_due_at"
-                                    ],
+                                    "required": ["min_pay_cents", "min_pay_due_at"],
                                     "properties": {
                                       "min_pay_cents": {
                                         "type": "integer",
@@ -2174,9 +2007,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "customers"
-        ],
+        "tags": ["customers"],
         "summary": "Create a new customer",
         "operationId": "CreateCustomer",
         "description": "Customer can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
@@ -2286,10 +2117,7 @@
                         },
                         "customer_account_role": {
                           "type": "string",
-                          "enum": [
-                            "PRIMARY",
-                            "SECONDARY"
-                          ],
+                          "enum": ["PRIMARY", "SECONDARY"],
                           "description": "The role of the customer for the account",
                           "example": "PRIMARY"
                         },
@@ -2313,9 +2141,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "customer_id"
-                  ],
+                  "required": ["customer_id"],
                   "properties": {
                     "customer_id": {
                       "type": "integer",
@@ -2412,9 +2238,7 @@
             "api_key": []
           }
         ],
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "summary": "Create a new account",
         "description": "At least one account should be created for customer of each of your products. Once created, you will be able to add `line_items` to the account.",
         "operationId": "createAccount",
@@ -2552,10 +2376,7 @@
                             },
                             "customer_account_role": {
                               "type": "string",
-                              "enum": [
-                                "PRIMARY",
-                                "SECONDARY"
-                              ],
+                              "enum": ["PRIMARY", "SECONDARY"],
                               "description": "The role of the customer for the account.",
                               "example": "SECONDARY"
                             }
@@ -2578,11 +2399,7 @@
                   "allOf": [
                     {
                       "type": "object",
-                      "required": [
-                        "account_id",
-                        "created_at",
-                        "effective_at"
-                      ],
+                      "required": ["account_id", "created_at", "effective_at"],
                       "properties": {
                         "account_id": {
                           "type": "integer",
@@ -2603,9 +2420,7 @@
                         },
                         "account_overview": {
                           "type": "object",
-                          "required": [
-                            "account_status"
-                          ],
+                          "required": ["account_status"],
                           "properties": {
                             "account_status": {
                               "type": "string",
@@ -2622,9 +2437,7 @@
                         "account_product": {
                           "description": "The product associated with the account",
                           "type": "object",
-                          "required": [
-                            "product_id"
-                          ],
+                          "required": ["product_id"],
                           "properties": {
                             "product_id": {
                               "type": "integer",
@@ -2638,11 +2451,7 @@
                             },
                             "product_overview": {
                               "type": "object",
-                              "required": [
-                                "product_name",
-                                "product_type",
-                                "product_long_description"
-                              ],
+                              "required": ["product_name", "product_type", "product_long_description"],
                               "properties": {
                                 "product_name": {
                                   "type": "string",
@@ -2681,10 +2490,7 @@
                             },
                             "product_lifecycle": {
                               "type": "object",
-                              "required": [
-                                "late_fee_impl_cents",
-                                "payment_reversal_fee_impl_cents"
-                              ],
+                              "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                               "properties": {
                                 "late_fee_impl_cents": {
                                   "type": "number",
@@ -2804,10 +2610,7 @@
                         },
                         "min_pay_due_cents": {
                           "type": "object",
-                          "required": [
-                            "min_pay_cents",
-                            "min_pay_due_at"
-                          ],
+                          "required": ["min_pay_cents", "min_pay_due_at"],
                           "properties": {
                             "min_pay_cents": {
                               "type": "integer",
@@ -2949,9 +2752,7 @@
                     },
                     {
                       "type": "object",
-                      "required": [
-                        "customers"
-                      ],
+                      "required": ["customers"],
                       "properties": {
                         "customers": {
                           "type": "array",
@@ -2959,9 +2760,7 @@
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
                             "type": "object",
-                            "required": [
-                              "customer_id"
-                            ],
+                            "required": ["customer_id"],
                             "properties": {
                               "customer_id": {
                                 "type": "integer",
@@ -3058,9 +2857,7 @@
     },
     "/accounts/{account_id}": {
       "get": {
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "summary": "Get a specific Account",
         "description": "",
         "operationId": "getAccount",
@@ -3087,11 +2884,7 @@
                   "allOf": [
                     {
                       "type": "object",
-                      "required": [
-                        "account_id",
-                        "created_at",
-                        "effective_at"
-                      ],
+                      "required": ["account_id", "created_at", "effective_at"],
                       "properties": {
                         "account_id": {
                           "type": "integer",
@@ -3112,9 +2905,7 @@
                         },
                         "account_overview": {
                           "type": "object",
-                          "required": [
-                            "account_status"
-                          ],
+                          "required": ["account_status"],
                           "properties": {
                             "account_status": {
                               "type": "string",
@@ -3131,9 +2922,7 @@
                         "account_product": {
                           "description": "The product associated with the account",
                           "type": "object",
-                          "required": [
-                            "product_id"
-                          ],
+                          "required": ["product_id"],
                           "properties": {
                             "product_id": {
                               "type": "integer",
@@ -3147,11 +2936,7 @@
                             },
                             "product_overview": {
                               "type": "object",
-                              "required": [
-                                "product_name",
-                                "product_type",
-                                "product_long_description"
-                              ],
+                              "required": ["product_name", "product_type", "product_long_description"],
                               "properties": {
                                 "product_name": {
                                   "type": "string",
@@ -3190,10 +2975,7 @@
                             },
                             "product_lifecycle": {
                               "type": "object",
-                              "required": [
-                                "late_fee_impl_cents",
-                                "payment_reversal_fee_impl_cents"
-                              ],
+                              "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                               "properties": {
                                 "late_fee_impl_cents": {
                                   "type": "number",
@@ -3313,10 +3095,7 @@
                         },
                         "min_pay_due_cents": {
                           "type": "object",
-                          "required": [
-                            "min_pay_cents",
-                            "min_pay_due_at"
-                          ],
+                          "required": ["min_pay_cents", "min_pay_due_at"],
                           "properties": {
                             "min_pay_cents": {
                               "type": "integer",
@@ -3458,9 +3237,7 @@
                     },
                     {
                       "type": "object",
-                      "required": [
-                        "customers"
-                      ],
+                      "required": ["customers"],
                       "properties": {
                         "customers": {
                           "type": "array",
@@ -3468,9 +3245,7 @@
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
                             "type": "object",
-                            "required": [
-                              "customer_id"
-                            ],
+                            "required": ["customer_id"],
                             "properties": {
                               "customer_id": {
                                 "type": "integer",
@@ -3567,9 +3342,7 @@
     },
     "/accounts/{account_id}/notes": {
       "post": {
-        "tags": [
-          "notes"
-        ],
+        "tags": ["notes"],
         "summary": "Create a note for a specific account.",
         "description": "A note to be added to the account.",
         "operationId": "createAccountNote",
@@ -3593,9 +3366,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "message"
-                ],
+                "required": ["message"],
                 "properties": {
                   "message": {
                     "type": "string",
@@ -3614,13 +3385,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "note_id",
-                    "account_id",
-                    "author",
-                    "message",
-                    "created_date"
-                  ],
+                  "required": ["note_id", "account_id", "author", "message", "created_date"],
                   "properties": {
                     "note_id": {
                       "type": "string",
@@ -3637,12 +3402,7 @@
                     "author": {
                       "description": "The API User who authored the note",
                       "type": "object",
-                      "required": [
-                        "api_user_id",
-                        "organization_name",
-                        "email",
-                        "role"
-                      ],
+                      "required": ["api_user_id", "organization_name", "email", "role"],
                       "properties": {
                         "api_user_id": {
                           "type": "integer",
@@ -3677,11 +3437,7 @@
                         },
                         "role": {
                           "type": "string",
-                          "enum": [
-                            "SERVICING",
-                            "OPERATIONS",
-                            "ADMIN"
-                          ],
+                          "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                           "description": "The role of this user in the API",
                           "example": "SERVICING"
                         }
@@ -3708,9 +3464,7 @@
         }
       },
       "get": {
-        "tags": [
-          "notes"
-        ],
+        "tags": ["notes"],
         "summary": "Get All Notes for a specific Account",
         "description": "",
         "operationId": "getNotes",
@@ -3739,13 +3493,7 @@
                   "description": "A history of all notes on an account.",
                   "items": {
                     "type": "object",
-                    "required": [
-                      "note_id",
-                      "account_id",
-                      "author",
-                      "message",
-                      "created_date"
-                    ],
+                    "required": ["note_id", "account_id", "author", "message", "created_date"],
                     "properties": {
                       "note_id": {
                         "type": "string",
@@ -3762,12 +3510,7 @@
                       "author": {
                         "description": "The API User who authored the note",
                         "type": "object",
-                        "required": [
-                          "api_user_id",
-                          "organization_name",
-                          "email",
-                          "role"
-                        ],
+                        "required": ["api_user_id", "organization_name", "email", "role"],
                         "properties": {
                           "api_user_id": {
                             "type": "integer",
@@ -3802,11 +3545,7 @@
                           },
                           "role": {
                             "type": "string",
-                            "enum": [
-                              "SERVICING",
-                              "OPERATIONS",
-                              "ADMIN"
-                            ],
+                            "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                             "description": "The role of this user in the API",
                             "example": "SERVICING"
                           }
@@ -3836,9 +3575,7 @@
     },
     "/accounts/{account_id}/line_items": {
       "get": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Get line items for a specific account.",
         "description": "Line Items for an Account include `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
         "operationId": "getAccountLineItems",
@@ -3890,13 +3627,7 @@
                   "maxItems": 1000,
                   "items": {
                     "type": "object",
-                    "required": [
-                      "account_id",
-                      "line_item_id",
-                      "effective_at",
-                      "created_at",
-                      "product_id"
-                    ],
+                    "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
                     "properties": {
                       "account_id": {
                         "type": "integer",
@@ -3928,28 +3659,18 @@
                       },
                       "line_item_overview": {
                         "type": "object",
-                        "required": [
-                          "line_item_status",
-                          "line_item_type"
-                        ],
+                        "required": ["line_item_status", "line_item_type"],
                         "properties": {
                           "line_item_status": {
                             "type": "string",
                             "description": "the corresponding Status for a line item",
-                            "enum": [
-                              "VALID",
-                              "INVALID"
-                            ],
+                            "enum": ["VALID", "INVALID"],
                             "example": "VALID"
                           },
                           "line_item_type": {
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": [
-                              "CHARGE",
-                              "PAYMENT",
-                              "FEE"
-                            ],
+                            "enum": ["CHARGE", "PAYMENT", "FEE"],
                             "example": "CHARGE"
                           },
                           "description": {
@@ -4042,9 +3763,7 @@
     },
     "/accounts/{account_id}/line_items/{line_item_id}": {
       "get": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Get information on a specific line item for a specific account",
         "description": "",
         "operationId": "getAccountLineItem",
@@ -4084,13 +3803,7 @@
                   "maxItems": 1000,
                   "items": {
                     "type": "object",
-                    "required": [
-                      "account_id",
-                      "line_item_id",
-                      "effective_at",
-                      "created_at",
-                      "product_id"
-                    ],
+                    "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
                     "properties": {
                       "account_id": {
                         "type": "integer",
@@ -4122,28 +3835,18 @@
                       },
                       "line_item_overview": {
                         "type": "object",
-                        "required": [
-                          "line_item_status",
-                          "line_item_type"
-                        ],
+                        "required": ["line_item_status", "line_item_type"],
                         "properties": {
                           "line_item_status": {
                             "type": "string",
                             "description": "the corresponding Status for a line item",
-                            "enum": [
-                              "VALID",
-                              "INVALID"
-                            ],
+                            "enum": ["VALID", "INVALID"],
                             "example": "VALID"
                           },
                           "line_item_type": {
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": [
-                              "CHARGE",
-                              "PAYMENT",
-                              "FEE"
-                            ],
+                            "enum": ["CHARGE", "PAYMENT", "FEE"],
                             "example": "CHARGE"
                           },
                           "description": {
@@ -4236,9 +3939,7 @@
     },
     "/accounts/{account_id}/line_items/charges": {
       "post": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Create a charge for a specific account",
         "description": "",
         "operationId": "createAccountCharge",
@@ -4264,10 +3965,7 @@
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": [
-                  "original_amount_cents",
-                  "merchant_data"
-                ],
+                "required": ["original_amount_cents", "merchant_data"],
                 "properties": {
                   "original_amount_cents": {
                     "type": "integer",
@@ -4283,9 +3981,7 @@
                   "merchant_data": {
                     "type": "object",
                     "description": "",
-                    "required": [
-                      "mcc_code"
-                    ],
+                    "required": ["mcc_code"],
                     "properties": {
                       "name": {
                         "type": "string"
@@ -4333,13 +4029,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "account_id",
-                    "line_item_id",
-                    "effective_at",
-                    "created_at",
-                    "product_id"
-                  ],
+                  "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -4371,28 +4061,18 @@
                     },
                     "line_item_overview": {
                       "type": "object",
-                      "required": [
-                        "line_item_status",
-                        "line_item_type"
-                      ],
+                      "required": ["line_item_status", "line_item_type"],
                       "properties": {
                         "line_item_status": {
                           "type": "string",
                           "description": "the corresponding Status for a line item",
-                          "enum": [
-                            "VALID",
-                            "INVALID"
-                          ],
+                          "enum": ["VALID", "INVALID"],
                           "example": "VALID"
                         },
                         "line_item_type": {
                           "type": "string",
                           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                          "enum": [
-                            "CHARGE",
-                            "PAYMENT",
-                            "FEE"
-                          ],
+                          "enum": ["CHARGE", "PAYMENT", "FEE"],
                           "example": "CHARGE"
                         },
                         "description": {
@@ -4415,21 +4095,6 @@
                           "type": "integer",
                           "description": "The originating amount of money (in cents) relating to this line item.",
                           "example": 2484
-                        },
-                        "balance_cents": {
-                          "type": "integer",
-                          "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                          "example": 2416
-                        },
-                        "principal_cents": {
-                          "type": "integer",
-                          "description": "The principal balance of the line item.",
-                          "example": 2400
-                        },
-                        "total_interest_accrued_cents": {
-                          "type": "integer",
-                          "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-                          "example": 16
                         }
                       }
                     },
@@ -4484,9 +4149,7 @@
     },
     "/accounts/{account_id}/line_items/payments": {
       "post": {
-        "tags": [
-          "line_items"
-        ],
+        "tags": ["line_items"],
         "summary": "Create a payment for a specific account",
         "description": "",
         "operationId": "createAccountPayment",
@@ -4512,9 +4175,7 @@
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": [
-                  "original_amount_cents"
-                ],
+                "required": ["original_amount_cents"],
                 "properties": {
                   "original_amount_cents": {
                     "type": "integer",
@@ -4559,13 +4220,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "account_id",
-                    "line_item_id",
-                    "effective_at",
-                    "created_at",
-                    "product_id"
-                  ],
+                  "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -4597,28 +4252,18 @@
                     },
                     "line_item_overview": {
                       "type": "object",
-                      "required": [
-                        "line_item_status",
-                        "line_item_type"
-                      ],
+                      "required": ["line_item_status", "line_item_type"],
                       "properties": {
                         "line_item_status": {
                           "type": "string",
                           "description": "the corresponding Status for a line item",
-                          "enum": [
-                            "VALID",
-                            "INVALID"
-                          ],
+                          "enum": ["VALID", "INVALID"],
                           "example": "VALID"
                         },
                         "line_item_type": {
                           "type": "string",
                           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                          "enum": [
-                            "CHARGE",
-                            "PAYMENT",
-                            "FEE"
-                          ],
+                          "enum": ["CHARGE", "PAYMENT", "FEE"],
                           "example": "CHARGE"
                         },
                         "description": {
@@ -4641,21 +4286,6 @@
                           "type": "integer",
                           "description": "The originating amount of money (in cents) relating to this line item.",
                           "example": 2484
-                        },
-                        "balance_cents": {
-                          "type": "integer",
-                          "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                          "example": 2416
-                        },
-                        "principal_cents": {
-                          "type": "integer",
-                          "description": "The principal balance of the line item.",
-                          "example": 2400
-                        },
-                        "total_interest_accrued_cents": {
-                          "type": "integer",
-                          "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-                          "example": 16
                         }
                       }
                     },
@@ -4710,9 +4340,7 @@
     },
     "/accounts/{account_id}/statements/list": {
       "get": {
-        "tags": [
-          "statements"
-        ],
+        "tags": ["statements"],
         "summary": "Get a list of all current and prior statements for a specific account",
         "description": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
         "operationId": "getAccountStatementsList",
@@ -4764,11 +4392,7 @@
                   "items": {
                     "type": "object",
                     "description": "Statement for an account for a given billing cycle",
-                    "required": [
-                      "account_id",
-                      "statement_id",
-                      "effective_as_of_date"
-                    ],
+                    "required": ["account_id", "statement_id", "effective_as_of_date"],
                     "properties": {
                       "account_id": {
                         "type": "integer",
@@ -4788,10 +4412,7 @@
                       },
                       "cycle_summary": {
                         "type": "object",
-                        "required": [
-                          "cycle_inclusive_start",
-                          "cycle_exclusive_end"
-                        ],
+                        "required": ["cycle_inclusive_start", "cycle_exclusive_end"],
                         "properties": {
                           "cycle_inclusive_start": {
                             "type": "string",
@@ -4807,10 +4428,7 @@
                       },
                       "min_pay_due_cents": {
                         "type": "object",
-                        "required": [
-                          "min_pay_cents",
-                          "min_pay_due_at"
-                        ],
+                        "required": ["min_pay_cents", "min_pay_due_at"],
                         "properties": {
                           "min_pay_cents": {
                             "type": "integer",
@@ -4827,9 +4445,7 @@
                       },
                       "balance_summary": {
                         "type": "object",
-                        "required": [
-                          "total_balance_cents"
-                        ],
+                        "required": ["total_balance_cents"],
                         "properties": {
                           "total_balance_cents": {
                             "type": "integer",
@@ -4852,9 +4468,7 @@
     },
     "/accounts/{account_id}/statements/{statement_id}": {
       "get": {
-        "tags": [
-          "statements"
-        ],
+        "tags": ["statements"],
         "summary": "Get a specific statement for a specific account.",
         "description": "This will return a statement that corresponds with the passed Statement ID. Relevant IDs for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
         "operationId": "getAccountStatement",
@@ -4892,11 +4506,7 @@
                 "schema": {
                   "type": "object",
                   "description": "Statement for an account for a given billing cycle",
-                  "required": [
-                    "account_id",
-                    "statement_id",
-                    "effective_as_of_date"
-                  ],
+                  "required": ["account_id", "statement_id", "effective_as_of_date"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -5054,10 +4664,7 @@
                     },
                     "min_pay_due": {
                       "type": "object",
-                      "required": [
-                        "min_pay_cents",
-                        "min_pay_due_at"
-                      ],
+                      "required": ["min_pay_cents", "min_pay_due_at"],
                       "properties": {
                         "min_pay_cents": {
                           "type": "integer",
@@ -5167,9 +4774,7 @@
     },
     "/accounts/{account_id}/amortization_schedule": {
       "get": {
-        "tags": [
-          "amortization_schedule"
-        ],
+        "tags": ["amortization_schedule"],
         "summary": "Get the amortization schedule for a specific loan",
         "description": "",
         "operationId": "getAmortizationSchedule",
@@ -5292,12 +4897,7 @@
     "schemas": {
       "ApiUser": {
         "type": "object",
-        "required": [
-          "api_user_id",
-          "organization_name",
-          "email",
-          "role"
-        ],
+        "required": ["api_user_id", "organization_name", "email", "role"],
         "properties": {
           "api_user_id": {
             "type": "integer",
@@ -5332,11 +4932,7 @@
           },
           "role": {
             "type": "string",
-            "enum": [
-              "SERVICING",
-              "OPERATIONS",
-              "ADMIN"
-            ],
+            "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
             "description": "The role of this user in the API",
             "example": "SERVICING"
           }
@@ -5344,11 +4940,7 @@
       },
       "Account": {
         "type": "object",
-        "required": [
-          "account_id",
-          "created_at",
-          "effective_at"
-        ],
+        "required": ["account_id", "created_at", "effective_at"],
         "properties": {
           "account_id": {
             "type": "integer",
@@ -5369,9 +4961,7 @@
           },
           "account_overview": {
             "type": "object",
-            "required": [
-              "account_status"
-            ],
+            "required": ["account_status"],
             "properties": {
               "account_status": {
                 "type": "string",
@@ -5388,9 +4978,7 @@
           "account_product": {
             "description": "The product associated with the account",
             "type": "object",
-            "required": [
-              "product_id"
-            ],
+            "required": ["product_id"],
             "properties": {
               "product_id": {
                 "type": "integer",
@@ -5404,11 +4992,7 @@
               },
               "product_overview": {
                 "type": "object",
-                "required": [
-                  "product_name",
-                  "product_type",
-                  "product_long_description"
-                ],
+                "required": ["product_name", "product_type", "product_long_description"],
                 "properties": {
                   "product_name": {
                     "type": "string",
@@ -5447,10 +5031,7 @@
               },
               "product_lifecycle": {
                 "type": "object",
-                "required": [
-                  "late_fee_impl_cents",
-                  "payment_reversal_fee_impl_cents"
-                ],
+                "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                 "properties": {
                   "late_fee_impl_cents": {
                     "type": "number",
@@ -5570,10 +5151,7 @@
           },
           "min_pay_due_cents": {
             "type": "object",
-            "required": [
-              "min_pay_cents",
-              "min_pay_due_at"
-            ],
+            "required": ["min_pay_cents", "min_pay_due_at"],
             "properties": {
               "min_pay_cents": {
                 "type": "integer",
@@ -5717,11 +5295,7 @@
         "allOf": [
           {
             "type": "object",
-            "required": [
-              "account_id",
-              "created_at",
-              "effective_at"
-            ],
+            "required": ["account_id", "created_at", "effective_at"],
             "properties": {
               "account_id": {
                 "type": "integer",
@@ -5742,9 +5316,7 @@
               },
               "account_overview": {
                 "type": "object",
-                "required": [
-                  "account_status"
-                ],
+                "required": ["account_status"],
                 "properties": {
                   "account_status": {
                     "type": "string",
@@ -5761,9 +5333,7 @@
               "account_product": {
                 "description": "The product associated with the account",
                 "type": "object",
-                "required": [
-                  "product_id"
-                ],
+                "required": ["product_id"],
                 "properties": {
                   "product_id": {
                     "type": "integer",
@@ -5777,11 +5347,7 @@
                   },
                   "product_overview": {
                     "type": "object",
-                    "required": [
-                      "product_name",
-                      "product_type",
-                      "product_long_description"
-                    ],
+                    "required": ["product_name", "product_type", "product_long_description"],
                     "properties": {
                       "product_name": {
                         "type": "string",
@@ -5820,10 +5386,7 @@
                   },
                   "product_lifecycle": {
                     "type": "object",
-                    "required": [
-                      "late_fee_impl_cents",
-                      "payment_reversal_fee_impl_cents"
-                    ],
+                    "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                     "properties": {
                       "late_fee_impl_cents": {
                         "type": "number",
@@ -5943,10 +5506,7 @@
               },
               "min_pay_due_cents": {
                 "type": "object",
-                "required": [
-                  "min_pay_cents",
-                  "min_pay_due_at"
-                ],
+                "required": ["min_pay_cents", "min_pay_due_at"],
                 "properties": {
                   "min_pay_cents": {
                     "type": "integer",
@@ -6088,9 +5648,7 @@
           },
           {
             "type": "object",
-            "required": [
-              "customers"
-            ],
+            "required": ["customers"],
             "properties": {
               "customers": {
                 "type": "array",
@@ -6098,9 +5656,7 @@
                 "description": "An array of customers who have been assigned to the account",
                 "items": {
                   "type": "object",
-                  "required": [
-                    "customer_id"
-                  ],
+                  "required": ["customer_id"],
                   "properties": {
                     "customer_id": {
                       "type": "integer",
@@ -6188,9 +5744,7 @@
       },
       "Customer": {
         "type": "object",
-        "required": [
-          "customer_id"
-        ],
+        "required": ["customer_id"],
         "properties": {
           "customer_id": {
             "type": "integer",
@@ -6275,9 +5829,7 @@
         "allOf": [
           {
             "type": "object",
-            "required": [
-              "customer_id"
-            ],
+            "required": ["customer_id"],
             "properties": {
               "customer_id": {
                 "type": "integer",
@@ -6367,11 +5919,7 @@
                 "description": "An array of Accounts this Customer is assigned to.",
                 "items": {
                   "type": "object",
-                  "required": [
-                    "account_id",
-                    "created_at",
-                    "effective_at"
-                  ],
+                  "required": ["account_id", "created_at", "effective_at"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -6392,9 +5940,7 @@
                     },
                     "account_overview": {
                       "type": "object",
-                      "required": [
-                        "account_status"
-                      ],
+                      "required": ["account_status"],
                       "properties": {
                         "account_status": {
                           "type": "string",
@@ -6411,9 +5957,7 @@
                     "account_product": {
                       "description": "The product associated with the account",
                       "type": "object",
-                      "required": [
-                        "product_id"
-                      ],
+                      "required": ["product_id"],
                       "properties": {
                         "product_id": {
                           "type": "integer",
@@ -6427,11 +5971,7 @@
                         },
                         "product_overview": {
                           "type": "object",
-                          "required": [
-                            "product_name",
-                            "product_type",
-                            "product_long_description"
-                          ],
+                          "required": ["product_name", "product_type", "product_long_description"],
                           "properties": {
                             "product_name": {
                               "type": "string",
@@ -6470,10 +6010,7 @@
                         },
                         "product_lifecycle": {
                           "type": "object",
-                          "required": [
-                            "late_fee_impl_cents",
-                            "payment_reversal_fee_impl_cents"
-                          ],
+                          "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                           "properties": {
                             "late_fee_impl_cents": {
                               "type": "number",
@@ -6593,10 +6130,7 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": [
-                        "min_pay_cents",
-                        "min_pay_due_at"
-                      ],
+                      "required": ["min_pay_cents", "min_pay_due_at"],
                       "properties": {
                         "min_pay_cents": {
                           "type": "integer",
@@ -6744,11 +6278,7 @@
       "AccountStatement": {
         "type": "object",
         "description": "Statement for an account for a given billing cycle",
-        "required": [
-          "account_id",
-          "statement_id",
-          "effective_as_of_date"
-        ],
+        "required": ["account_id", "statement_id", "effective_as_of_date"],
         "properties": {
           "account_id": {
             "type": "integer",
@@ -6906,10 +6436,7 @@
           },
           "min_pay_due": {
             "type": "object",
-            "required": [
-              "min_pay_cents",
-              "min_pay_due_at"
-            ],
+            "required": ["min_pay_cents", "min_pay_due_at"],
             "properties": {
               "min_pay_cents": {
                 "type": "integer",
@@ -7011,11 +6538,7 @@
       "AccountStatementSummary": {
         "type": "object",
         "description": "Statement for an account for a given billing cycle",
-        "required": [
-          "account_id",
-          "statement_id",
-          "effective_as_of_date"
-        ],
+        "required": ["account_id", "statement_id", "effective_as_of_date"],
         "properties": {
           "account_id": {
             "type": "integer",
@@ -7035,10 +6558,7 @@
           },
           "cycle_summary": {
             "type": "object",
-            "required": [
-              "cycle_inclusive_start",
-              "cycle_exclusive_end"
-            ],
+            "required": ["cycle_inclusive_start", "cycle_exclusive_end"],
             "properties": {
               "cycle_inclusive_start": {
                 "type": "string",
@@ -7054,10 +6574,7 @@
           },
           "min_pay_due_cents": {
             "type": "object",
-            "required": [
-              "min_pay_cents",
-              "min_pay_due_at"
-            ],
+            "required": ["min_pay_cents", "min_pay_due_at"],
             "properties": {
               "min_pay_cents": {
                 "type": "integer",
@@ -7074,9 +6591,7 @@
           },
           "balance_summary": {
             "type": "object",
-            "required": [
-              "total_balance_cents"
-            ],
+            "required": ["total_balance_cents"],
             "properties": {
               "total_balance_cents": {
                 "type": "integer",
@@ -7124,11 +6639,7 @@
           "product_overview": {
             "type": "object",
             "description": "A series of static fields about the product.",
-            "required": [
-              "product_name",
-              "product_type",
-              "product_long_description"
-            ],
+            "required": ["product_name", "product_type", "product_long_description"],
             "properties": {
               "product_name": {
                 "type": "string",
@@ -7186,10 +6697,7 @@
             "properties": {
               "payment_due_policies": {
                 "type": "object",
-                "required": [
-                  "delinquent_on_n_consecutive_late_fees",
-                  "charge_off_on_n_consecutive_late_fees"
-                ],
+                "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
                 "properties": {
                   "delinquent_on_n_consecutive_late_fees": {
                     "type": "integer",
@@ -7215,9 +6723,7 @@
               },
               "billing_cycle_policies": {
                 "type": "object",
-                "required": [
-                  "cycle_interval"
-                ],
+                "required": ["cycle_interval"],
                 "properties": {
                   "cycle_interval": {
                     "type": "string",
@@ -7258,9 +6764,7 @@
               },
               "default_attributes": {
                 "type": "object",
-                "required": [
-                  "default_credit_limit_cents"
-                ],
+                "required": ["default_credit_limit_cents"],
                 "properties": {
                   "default_credit_limit_cents": {
                     "type": "integer",
@@ -7292,12 +6796,7 @@
               },
               "promo_min_pay_type": {
                 "type": "string",
-                "enum": [
-                  "AM",
-                  "PERCENT_INTEREST",
-                  "PERCENT_PRINCIPAL",
-                  "NONE"
-                ],
+                "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                 "description": "Current due calculation method for the promotional period.",
                 "example": "PERCENT_PRINCIPAL"
               },
@@ -7353,12 +6852,7 @@
               },
               "post_promo_min_pay_type": {
                 "type": "string",
-                "enum": [
-                  "AM",
-                  "PERCENT_INTEREST",
-                  "PERCENT_PRINCIPAL",
-                  "NONE"
-                ],
+                "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                 "description": "Current due calculation method for the post-promotional period.",
                 "example": "AM"
               },
@@ -7385,9 +6879,7 @@
             "properties": {
               "accounts_overview": {
                 "type": "object",
-                "required": [
-                  "account_count_total"
-                ],
+                "required": ["account_count_total"],
                 "properties": {
                   "account_count_total": {
                     "type": "integer",
@@ -7406,9 +6898,7 @@
         "properties": {
           "accounts_overview": {
             "type": "object",
-            "required": [
-              "account_count_total"
-            ],
+            "required": ["account_count_total"],
             "properties": {
               "account_count_total": {
                 "type": "integer",
@@ -7422,9 +6912,7 @@
       "ProductAccounts": {
         "type": "object",
         "description": "",
-        "required": [
-          "current_accounts"
-        ],
+        "required": ["current_accounts"],
         "properties": {
           "current_accounts": {
             "type": "array",
@@ -7442,19 +6930,11 @@
       "BasePolicyConfig": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "payment_due_policies",
-          "fee_policies",
-          "billing_cycle_policies",
-          "interest_policies"
-        ],
+        "required": ["payment_due_policies", "fee_policies", "billing_cycle_policies", "interest_policies"],
         "properties": {
           "payment_due_policies": {
             "type": "object",
-            "required": [
-              "delinquent_on_n_consecutive_late_fees",
-              "charge_off_on_n_consecutive_late_fees"
-            ],
+            "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
             "properties": {
               "delinquent_on_n_consecutive_late_fees": {
                 "type": "integer",
@@ -7480,9 +6960,7 @@
           },
           "billing_cycle_policies": {
             "type": "object",
-            "required": [
-              "cycle_interval"
-            ],
+            "required": ["cycle_interval"],
             "properties": {
               "cycle_interval": {
                 "type": "string",
@@ -7526,9 +7004,7 @@
       },
       "BasePolicyConfigMinPay": {
         "type": "object",
-        "required": [
-          "percentage"
-        ],
+        "required": ["percentage"],
         "properties": {
           "percentage": {
             "type": "number",
@@ -7540,10 +7016,7 @@
       },
       "BasePolicyConfigBillingCycle": {
         "type": "object",
-        "required": [
-          "period",
-          "billing_due_date_interval"
-        ],
+        "required": ["period", "billing_due_date_interval"],
         "properties": {
           "period": {
             "type": "string",
@@ -7561,34 +7034,23 @@
       "InterestPolicy": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "type",
-          "method",
-          "day_calc_type",
-          "interest_calc_time"
-        ],
+        "required": ["type", "method", "day_calc_type", "interest_calc_time"],
         "properties": {
           "type": {
             "type": "string",
-            "enum": [
-              "compound"
-            ],
+            "enum": ["compound"],
             "example": "compound"
           },
           "method": {
             "type": "string",
             "description": "The actual base formula used to calculate and assign interest.",
-            "enum": [
-              "average daily balance"
-            ],
+            "enum": ["average daily balance"],
             "example": "average daily balance"
           },
           "day_calc_type": {
             "type": "string",
             "description": "Affects the base calculation by determining how many days there are in a given year.",
-            "enum": [
-              "365"
-            ],
+            "enum": ["365"],
             "example": "365"
           },
           "interest_calc_time": {
@@ -7602,13 +7064,7 @@
       },
       "LineItem": {
         "type": "object",
-        "required": [
-          "account_id",
-          "line_item_id",
-          "effective_at",
-          "created_at",
-          "product_id"
-        ],
+        "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
         "properties": {
           "account_id": {
             "type": "integer",
@@ -7640,28 +7096,18 @@
           },
           "line_item_overview": {
             "type": "object",
-            "required": [
-              "line_item_status",
-              "line_item_type"
-            ],
+            "required": ["line_item_status", "line_item_type"],
             "properties": {
               "line_item_status": {
                 "type": "string",
                 "description": "the corresponding Status for a line item",
-                "enum": [
-                  "VALID",
-                  "INVALID"
-                ],
+                "enum": ["VALID", "INVALID"],
                 "example": "VALID"
               },
               "line_item_type": {
                 "type": "string",
                 "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                "enum": [
-                  "CHARGE",
-                  "PAYMENT",
-                  "FEE"
-                ],
+                "enum": ["CHARGE", "PAYMENT", "FEE"],
                 "example": "CHARGE"
               },
               "description": {
@@ -7673,12 +7119,7 @@
           },
           "line_item_summary": {
             "type": "object",
-            "required": [
-              "original_amount_cents",
-              "balance_cents",
-              "principal_cents",
-              "total_interest_accrued_cents"
-            ],
+            "required": ["original_amount_cents", "balance_cents", "principal_cents", "total_interest_accrued_cents"],
             "properties": {
               "original_amount_cents": {
                 "type": "integer",
@@ -7751,10 +7192,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "email",
-                "password"
-              ],
+              "required": ["email", "password"],
               "properties": {
                 "email": {
                   "type": "string",
@@ -7779,11 +7217,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "current_password",
-                "new_password",
-                "token"
-              ],
+              "required": ["current_password", "new_password", "token"],
               "properties": {
                 "current_password": {
                   "type": "string",
@@ -7811,14 +7245,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "email_confirm",
-                "new_password",
-                "name_first",
-                "name_last",
-                "phone",
-                "token"
-              ],
+              "required": ["email_confirm", "new_password", "name_first", "name_last", "phone", "token"],
               "properties": {
                 "email_confirm": {
                   "type": "string",
@@ -7878,12 +7305,7 @@
                 },
                 "product_overview": {
                   "type": "object",
-                  "required": [
-                    "product_name",
-                    "product_type",
-                    "product_short_description",
-                    "product_long_description"
-                  ],
+                  "required": ["product_name", "product_type", "product_short_description", "product_long_description"],
                   "description": "A series of static fields about the product.",
                   "properties": {
                     "external_product_id": {
@@ -7930,10 +7352,7 @@
                   "properties": {
                     "payment_due_policies": {
                       "type": "object",
-                      "required": [
-                        "delinquent_on_n_consecutive_late_fees",
-                        "charge_off_on_n_consecutive_late_fees"
-                      ],
+                      "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
                       "properties": {
                         "delinquent_on_n_consecutive_late_fees": {
                           "type": "integer",
@@ -7959,9 +7378,7 @@
                     },
                     "billing_cycle_policies": {
                       "type": "object",
-                      "required": [
-                        "cycle_interval"
-                      ],
+                      "required": ["cycle_interval"],
                       "properties": {
                         "cycle_interval": {
                           "type": "string",
@@ -8001,9 +7418,7 @@
                       "description": "The Interest Policy Object"
                     },
                     "default_attributes": {
-                      "required": [
-                        "default_credit_limit_cents"
-                      ],
+                      "required": ["default_credit_limit_cents"],
                       "type": "object",
                       "properties": {
                         "default_credit_limit_cents": {
@@ -8026,12 +7441,7 @@
                     },
                     "promo_min_pay_type": {
                       "type": "string",
-                      "enum": [
-                        "AM",
-                        "PERCENT_INTEREST",
-                        "PERCENT_PRINCIPAL",
-                        "NONE"
-                      ],
+                      "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                       "description": "Current due calculation method for the promotional period.",
                       "example": "PERCENT_PRINCIPAL"
                     },
@@ -8087,11 +7497,7 @@
                     },
                     "post_promo_min_pay_type": {
                       "type": "string",
-                      "enum": [
-                        "AM",
-                        "%INTEREST",
-                        "%PRINCIPAL"
-                      ],
+                      "enum": ["AM", "%INTEREST", "%PRINCIPAL"],
                       "description": "Current due calculation method for the post-promotional period.",
                       "example": "AM"
                     },
@@ -8223,10 +7629,7 @@
                       },
                       "customer_account_role": {
                         "type": "string",
-                        "enum": [
-                          "PRIMARY",
-                          "SECONDARY"
-                        ],
+                        "enum": ["PRIMARY", "SECONDARY"],
                         "description": "The role of the customer for the account",
                         "example": "PRIMARY"
                       },
@@ -8342,10 +7745,7 @@
                       "customer_account_role": {
                         "type": "string",
                         "description": "The role of the customer for the account.",
-                        "enum": [
-                          "PRIMARY",
-                          "SECONDARY"
-                        ],
+                        "enum": ["PRIMARY", "SECONDARY"],
                         "example": "PRIMARY"
                       },
                       "customer_account_pan": {
@@ -8495,10 +7895,7 @@
                           },
                           "customer_account_role": {
                             "type": "string",
-                            "enum": [
-                              "PRIMARY",
-                              "SECONDARY"
-                            ],
+                            "enum": ["PRIMARY", "SECONDARY"],
                             "description": "The role of the customer for the account.",
                             "example": "SECONDARY"
                           }
@@ -8518,9 +7915,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "message"
-              ],
+              "required": ["message"],
               "properties": {
                 "message": {
                   "type": "string",
@@ -8539,10 +7934,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "email",
-                "role"
-              ],
+              "required": ["email", "role"],
               "properties": {
                 "role": {
                   "type": "number",
@@ -8568,10 +7960,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": false,
-              "required": [
-                "original_amount_cents",
-                "merchant_data"
-              ],
+              "required": ["original_amount_cents", "merchant_data"],
               "properties": {
                 "original_amount_cents": {
                   "type": "integer",
@@ -8587,9 +7976,7 @@
                 "merchant_data": {
                   "type": "object",
                   "description": "",
-                  "required": [
-                    "mcc_code"
-                  ],
+                  "required": ["mcc_code"],
                   "properties": {
                     "name": {
                       "type": "string"
@@ -8638,9 +8025,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": false,
-              "required": [
-                "original_amount_cents"
-              ],
+              "required": ["original_amount_cents"],
               "properties": {
                 "original_amount_cents": {
                   "type": "integer",
@@ -8686,12 +8071,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "api_user_id",
-                "organization_name",
-                "email",
-                "role"
-              ],
+              "required": ["api_user_id", "organization_name", "email", "role"],
               "properties": {
                 "api_user_id": {
                   "type": "integer",
@@ -8726,11 +8106,7 @@
                 },
                 "role": {
                   "type": "string",
-                  "enum": [
-                    "SERVICING",
-                    "OPERATIONS",
-                    "ADMIN"
-                  ],
+                  "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                   "description": "The role of this user in the API",
                   "example": "SERVICING"
                 }
@@ -8748,12 +8124,7 @@
               "maxItems": 10,
               "items": {
                 "type": "object",
-                "required": [
-                  "api_user_id",
-                  "organization_name",
-                  "email",
-                  "role"
-                ],
+                "required": ["api_user_id", "organization_name", "email", "role"],
                 "properties": {
                   "api_user_id": {
                     "type": "integer",
@@ -8788,11 +8159,7 @@
                   },
                   "role": {
                     "type": "string",
-                    "enum": [
-                      "SERVICING",
-                      "OPERATIONS",
-                      "ADMIN"
-                    ],
+                    "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                     "description": "The role of this user in the API",
                     "example": "SERVICING"
                   }
@@ -8808,13 +8175,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "api_user_id",
-                "organization_name",
-                "email",
-                "role",
-                "token"
-              ],
+              "required": ["api_user_id", "organization_name", "email", "role", "token"],
               "properties": {
                 "api_user_id": {
                   "type": "string",
@@ -8849,11 +8210,7 @@
                 },
                 "role": {
                   "type": "string",
-                  "enum": [
-                    "SERVICING",
-                    "OPERATIONS",
-                    "ADMIN"
-                  ],
+                  "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                   "description": "The role of this user in the API",
                   "example": "SERVICING"
                 },
@@ -8872,13 +8229,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "api_user_id",
-                "organization_name",
-                "email",
-                "role",
-                "token"
-              ],
+              "required": ["api_user_id", "organization_name", "email", "role", "token"],
               "properties": {
                 "api_user_id": {
                   "type": "string",
@@ -8913,11 +8264,7 @@
                 },
                 "role": {
                   "type": "string",
-                  "enum": [
-                    "SERVICING",
-                    "OPERATIONS",
-                    "ADMIN"
-                  ],
+                  "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                   "description": "The role of this user in the API",
                   "example": "SERVICING"
                 },
@@ -8936,12 +8283,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "api_user_id",
-                "organization_name",
-                "email",
-                "role"
-              ],
+              "required": ["api_user_id", "organization_name", "email", "role"],
               "properties": {
                 "api_user_id": {
                   "type": "integer",
@@ -8976,11 +8318,7 @@
                 },
                 "role": {
                   "type": "string",
-                  "enum": [
-                    "SERVICING",
-                    "OPERATIONS",
-                    "ADMIN"
-                  ],
+                  "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                   "description": "The role of this user in the API",
                   "example": "SERVICING"
                 }
@@ -9030,11 +8368,7 @@
                 "product_overview": {
                   "type": "object",
                   "description": "A series of static fields about the product.",
-                  "required": [
-                    "product_name",
-                    "product_type",
-                    "product_long_description"
-                  ],
+                  "required": ["product_name", "product_type", "product_long_description"],
                   "properties": {
                     "product_name": {
                       "type": "string",
@@ -9092,10 +8426,7 @@
                   "properties": {
                     "payment_due_policies": {
                       "type": "object",
-                      "required": [
-                        "delinquent_on_n_consecutive_late_fees",
-                        "charge_off_on_n_consecutive_late_fees"
-                      ],
+                      "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
                       "properties": {
                         "delinquent_on_n_consecutive_late_fees": {
                           "type": "integer",
@@ -9121,9 +8452,7 @@
                     },
                     "billing_cycle_policies": {
                       "type": "object",
-                      "required": [
-                        "cycle_interval"
-                      ],
+                      "required": ["cycle_interval"],
                       "properties": {
                         "cycle_interval": {
                           "type": "string",
@@ -9164,9 +8493,7 @@
                     },
                     "default_attributes": {
                       "type": "object",
-                      "required": [
-                        "default_credit_limit_cents"
-                      ],
+                      "required": ["default_credit_limit_cents"],
                       "properties": {
                         "default_credit_limit_cents": {
                           "type": "integer",
@@ -9198,12 +8525,7 @@
                     },
                     "promo_min_pay_type": {
                       "type": "string",
-                      "enum": [
-                        "AM",
-                        "PERCENT_INTEREST",
-                        "PERCENT_PRINCIPAL",
-                        "NONE"
-                      ],
+                      "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                       "description": "Current due calculation method for the promotional period.",
                       "example": "PERCENT_PRINCIPAL"
                     },
@@ -9259,12 +8581,7 @@
                     },
                     "post_promo_min_pay_type": {
                       "type": "string",
-                      "enum": [
-                        "AM",
-                        "PERCENT_INTEREST",
-                        "PERCENT_PRINCIPAL",
-                        "NONE"
-                      ],
+                      "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                       "description": "Current due calculation method for the post-promotional period.",
                       "example": "AM"
                     },
@@ -9291,9 +8608,7 @@
                   "properties": {
                     "accounts_overview": {
                       "type": "object",
-                      "required": [
-                        "account_count_total"
-                      ],
+                      "required": ["account_count_total"],
                       "properties": {
                         "account_count_total": {
                           "type": "integer",
@@ -9350,11 +8665,7 @@
                 "product_overview": {
                   "type": "object",
                   "description": "A series of static fields about the product.",
-                  "required": [
-                    "product_name",
-                    "product_type",
-                    "product_long_description"
-                  ],
+                  "required": ["product_name", "product_type", "product_long_description"],
                   "properties": {
                     "product_name": {
                       "type": "string",
@@ -9412,10 +8723,7 @@
                   "properties": {
                     "payment_due_policies": {
                       "type": "object",
-                      "required": [
-                        "delinquent_on_n_consecutive_late_fees",
-                        "charge_off_on_n_consecutive_late_fees"
-                      ],
+                      "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
                       "properties": {
                         "delinquent_on_n_consecutive_late_fees": {
                           "type": "integer",
@@ -9441,9 +8749,7 @@
                     },
                     "billing_cycle_policies": {
                       "type": "object",
-                      "required": [
-                        "cycle_interval"
-                      ],
+                      "required": ["cycle_interval"],
                       "properties": {
                         "cycle_interval": {
                           "type": "string",
@@ -9484,9 +8790,7 @@
                     },
                     "default_attributes": {
                       "type": "object",
-                      "required": [
-                        "default_credit_limit_cents"
-                      ],
+                      "required": ["default_credit_limit_cents"],
                       "properties": {
                         "default_credit_limit_cents": {
                           "type": "integer",
@@ -9518,12 +8822,7 @@
                     },
                     "promo_min_pay_type": {
                       "type": "string",
-                      "enum": [
-                        "AM",
-                        "PERCENT_INTEREST",
-                        "PERCENT_PRINCIPAL",
-                        "NONE"
-                      ],
+                      "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                       "description": "Current due calculation method for the promotional period.",
                       "example": "PERCENT_PRINCIPAL"
                     },
@@ -9579,12 +8878,7 @@
                     },
                     "post_promo_min_pay_type": {
                       "type": "string",
-                      "enum": [
-                        "AM",
-                        "PERCENT_INTEREST",
-                        "PERCENT_PRINCIPAL",
-                        "NONE"
-                      ],
+                      "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                       "description": "Current due calculation method for the post-promotional period.",
                       "example": "AM"
                     },
@@ -9611,9 +8905,7 @@
                   "properties": {
                     "accounts_overview": {
                       "type": "object",
-                      "required": [
-                        "account_count_total"
-                      ],
+                      "required": ["account_count_total"],
                       "properties": {
                         "account_count_total": {
                           "type": "integer",
@@ -9673,11 +8965,7 @@
                   "product_overview": {
                     "type": "object",
                     "description": "A series of static fields about the product.",
-                    "required": [
-                      "product_name",
-                      "product_type",
-                      "product_long_description"
-                    ],
+                    "required": ["product_name", "product_type", "product_long_description"],
                     "properties": {
                       "product_name": {
                         "type": "string",
@@ -9735,10 +9023,7 @@
                     "properties": {
                       "payment_due_policies": {
                         "type": "object",
-                        "required": [
-                          "delinquent_on_n_consecutive_late_fees",
-                          "charge_off_on_n_consecutive_late_fees"
-                        ],
+                        "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
                         "properties": {
                           "delinquent_on_n_consecutive_late_fees": {
                             "type": "integer",
@@ -9764,9 +9049,7 @@
                       },
                       "billing_cycle_policies": {
                         "type": "object",
-                        "required": [
-                          "cycle_interval"
-                        ],
+                        "required": ["cycle_interval"],
                         "properties": {
                           "cycle_interval": {
                             "type": "string",
@@ -9807,9 +9090,7 @@
                       },
                       "default_attributes": {
                         "type": "object",
-                        "required": [
-                          "default_credit_limit_cents"
-                        ],
+                        "required": ["default_credit_limit_cents"],
                         "properties": {
                           "default_credit_limit_cents": {
                             "type": "integer",
@@ -9841,12 +9122,7 @@
                       },
                       "promo_min_pay_type": {
                         "type": "string",
-                        "enum": [
-                          "AM",
-                          "PERCENT_INTEREST",
-                          "PERCENT_PRINCIPAL",
-                          "NONE"
-                        ],
+                        "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                         "description": "Current due calculation method for the promotional period.",
                         "example": "PERCENT_PRINCIPAL"
                       },
@@ -9902,12 +9178,7 @@
                       },
                       "post_promo_min_pay_type": {
                         "type": "string",
-                        "enum": [
-                          "AM",
-                          "PERCENT_INTEREST",
-                          "PERCENT_PRINCIPAL",
-                          "NONE"
-                        ],
+                        "enum": ["AM", "PERCENT_INTEREST", "PERCENT_PRINCIPAL", "NONE"],
                         "description": "Current due calculation method for the post-promotional period.",
                         "example": "AM"
                       },
@@ -9934,9 +9205,7 @@
                     "properties": {
                       "accounts_overview": {
                         "type": "object",
-                        "required": [
-                          "account_count_total"
-                        ],
+                        "required": ["account_count_total"],
                         "properties": {
                           "account_count_total": {
                             "type": "integer",
@@ -9959,9 +9228,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "results"
-              ],
+              "required": ["results"],
               "properties": {
                 "results": {
                   "type": "array",
@@ -9971,9 +9238,7 @@
                     "allOf": [
                       {
                         "type": "object",
-                        "required": [
-                          "customer_id"
-                        ],
+                        "required": ["customer_id"],
                         "properties": {
                           "customer_id": {
                             "type": "integer",
@@ -10060,10 +9325,7 @@
                           "customer_account_role": {
                             "type": "string",
                             "description": "The role of the customer for the account.",
-                            "enum": [
-                              "PRIMARY",
-                              "SECONDARY"
-                            ],
+                            "enum": ["PRIMARY", "SECONDARY"],
                             "example": "PRIMARY"
                           },
                           "customer_account_external_id": {
@@ -10078,11 +9340,7 @@
                         "properties": {
                           "account": {
                             "type": "object",
-                            "required": [
-                              "account_id",
-                              "created_at",
-                              "effective_at"
-                            ],
+                            "required": ["account_id", "created_at", "effective_at"],
                             "properties": {
                               "account_id": {
                                 "type": "integer",
@@ -10103,9 +9361,7 @@
                               },
                               "account_overview": {
                                 "type": "object",
-                                "required": [
-                                  "account_status"
-                                ],
+                                "required": ["account_status"],
                                 "properties": {
                                   "account_status": {
                                     "type": "string",
@@ -10122,9 +9378,7 @@
                               "account_product": {
                                 "description": "The product associated with the account",
                                 "type": "object",
-                                "required": [
-                                  "product_id"
-                                ],
+                                "required": ["product_id"],
                                 "properties": {
                                   "product_id": {
                                     "type": "integer",
@@ -10138,11 +9392,7 @@
                                   },
                                   "product_overview": {
                                     "type": "object",
-                                    "required": [
-                                      "product_name",
-                                      "product_type",
-                                      "product_long_description"
-                                    ],
+                                    "required": ["product_name", "product_type", "product_long_description"],
                                     "properties": {
                                       "product_name": {
                                         "type": "string",
@@ -10181,10 +9431,7 @@
                                   },
                                   "product_lifecycle": {
                                     "type": "object",
-                                    "required": [
-                                      "late_fee_impl_cents",
-                                      "payment_reversal_fee_impl_cents"
-                                    ],
+                                    "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                                     "properties": {
                                       "late_fee_impl_cents": {
                                         "type": "number",
@@ -10304,10 +9551,7 @@
                               },
                               "min_pay_due_cents": {
                                 "type": "object",
-                                "required": [
-                                  "min_pay_cents",
-                                  "min_pay_due_at"
-                                ],
+                                "required": ["min_pay_cents", "min_pay_due_at"],
                                 "properties": {
                                   "min_pay_cents": {
                                     "type": "integer",
@@ -10463,9 +9707,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "customer_id"
-              ],
+              "required": ["customer_id"],
               "properties": {
                 "customer_id": {
                   "type": "integer",
@@ -10555,9 +9797,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "customer_id"
-              ],
+              "required": ["customer_id"],
               "properties": {
                 "customer_id": {
                   "type": "integer",
@@ -10647,9 +9887,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "customer_id"
-              ],
+              "required": ["customer_id"],
               "properties": {
                 "customer_id": {
                   "type": "integer",
@@ -10746,9 +9984,7 @@
                   "description": "An array of customers within the requested range.",
                   "items": {
                     "type": "object",
-                    "required": [
-                      "customer_id"
-                    ],
+                    "required": ["customer_id"],
                     "properties": {
                       "customer_id": {
                         "type": "integer",
@@ -10847,11 +10083,7 @@
               "allOf": [
                 {
                   "type": "object",
-                  "required": [
-                    "account_id",
-                    "created_at",
-                    "effective_at"
-                  ],
+                  "required": ["account_id", "created_at", "effective_at"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -10872,9 +10104,7 @@
                     },
                     "account_overview": {
                       "type": "object",
-                      "required": [
-                        "account_status"
-                      ],
+                      "required": ["account_status"],
                       "properties": {
                         "account_status": {
                           "type": "string",
@@ -10891,9 +10121,7 @@
                     "account_product": {
                       "description": "The product associated with the account",
                       "type": "object",
-                      "required": [
-                        "product_id"
-                      ],
+                      "required": ["product_id"],
                       "properties": {
                         "product_id": {
                           "type": "integer",
@@ -10907,11 +10135,7 @@
                         },
                         "product_overview": {
                           "type": "object",
-                          "required": [
-                            "product_name",
-                            "product_type",
-                            "product_long_description"
-                          ],
+                          "required": ["product_name", "product_type", "product_long_description"],
                           "properties": {
                             "product_name": {
                               "type": "string",
@@ -10950,10 +10174,7 @@
                         },
                         "product_lifecycle": {
                           "type": "object",
-                          "required": [
-                            "late_fee_impl_cents",
-                            "payment_reversal_fee_impl_cents"
-                          ],
+                          "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                           "properties": {
                             "late_fee_impl_cents": {
                               "type": "number",
@@ -11073,10 +10294,7 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": [
-                        "min_pay_cents",
-                        "min_pay_due_at"
-                      ],
+                      "required": ["min_pay_cents", "min_pay_due_at"],
                       "properties": {
                         "min_pay_cents": {
                           "type": "integer",
@@ -11218,9 +10436,7 @@
                 },
                 {
                   "type": "object",
-                  "required": [
-                    "customers"
-                  ],
+                  "required": ["customers"],
                   "properties": {
                     "customers": {
                       "type": "array",
@@ -11228,9 +10444,7 @@
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
                         "type": "object",
-                        "required": [
-                          "customer_id"
-                        ],
+                        "required": ["customer_id"],
                         "properties": {
                           "customer_id": {
                             "type": "integer",
@@ -11325,10 +10539,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "accounts",
-                "total_account_count"
-              ],
+              "required": ["accounts", "total_account_count"],
               "properties": {
                 "accounts": {
                   "type": "array",
@@ -11336,11 +10547,7 @@
                   "description": "An array of accounts within the requested range.",
                   "items": {
                     "type": "object",
-                    "required": [
-                      "account_id",
-                      "created_at",
-                      "effective_at"
-                    ],
+                    "required": ["account_id", "created_at", "effective_at"],
                     "properties": {
                       "account_id": {
                         "type": "integer",
@@ -11361,9 +10568,7 @@
                       },
                       "account_overview": {
                         "type": "object",
-                        "required": [
-                          "account_status"
-                        ],
+                        "required": ["account_status"],
                         "properties": {
                           "account_status": {
                             "type": "string",
@@ -11380,9 +10585,7 @@
                       "account_product": {
                         "description": "The product associated with the account",
                         "type": "object",
-                        "required": [
-                          "product_id"
-                        ],
+                        "required": ["product_id"],
                         "properties": {
                           "product_id": {
                             "type": "integer",
@@ -11396,11 +10599,7 @@
                           },
                           "product_overview": {
                             "type": "object",
-                            "required": [
-                              "product_name",
-                              "product_type",
-                              "product_long_description"
-                            ],
+                            "required": ["product_name", "product_type", "product_long_description"],
                             "properties": {
                               "product_name": {
                                 "type": "string",
@@ -11439,10 +10638,7 @@
                           },
                           "product_lifecycle": {
                             "type": "object",
-                            "required": [
-                              "late_fee_impl_cents",
-                              "payment_reversal_fee_impl_cents"
-                            ],
+                            "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                             "properties": {
                               "late_fee_impl_cents": {
                                 "type": "number",
@@ -11562,10 +10758,7 @@
                       },
                       "min_pay_due_cents": {
                         "type": "object",
-                        "required": [
-                          "min_pay_cents",
-                          "min_pay_due_at"
-                        ],
+                        "required": ["min_pay_cents", "min_pay_due_at"],
                         "properties": {
                           "min_pay_cents": {
                             "type": "integer",
@@ -11783,13 +10976,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "note_id",
-                "account_id",
-                "author",
-                "message",
-                "created_date"
-              ],
+              "required": ["note_id", "account_id", "author", "message", "created_date"],
               "properties": {
                 "note_id": {
                   "type": "string",
@@ -11806,12 +10993,7 @@
                 "author": {
                   "description": "The API User who authored the note",
                   "type": "object",
-                  "required": [
-                    "api_user_id",
-                    "organization_name",
-                    "email",
-                    "role"
-                  ],
+                  "required": ["api_user_id", "organization_name", "email", "role"],
                   "properties": {
                     "api_user_id": {
                       "type": "integer",
@@ -11846,11 +11028,7 @@
                     },
                     "role": {
                       "type": "string",
-                      "enum": [
-                        "SERVICING",
-                        "OPERATIONS",
-                        "ADMIN"
-                      ],
+                      "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                       "description": "The role of this user in the API",
                       "example": "SERVICING"
                     }
@@ -11881,13 +11059,7 @@
               "description": "A history of all notes on an account.",
               "items": {
                 "type": "object",
-                "required": [
-                  "note_id",
-                  "account_id",
-                  "author",
-                  "message",
-                  "created_date"
-                ],
+                "required": ["note_id", "account_id", "author", "message", "created_date"],
                 "properties": {
                   "note_id": {
                     "type": "string",
@@ -11904,12 +11076,7 @@
                   "author": {
                     "description": "The API User who authored the note",
                     "type": "object",
-                    "required": [
-                      "api_user_id",
-                      "organization_name",
-                      "email",
-                      "role"
-                    ],
+                    "required": ["api_user_id", "organization_name", "email", "role"],
                     "properties": {
                       "api_user_id": {
                         "type": "integer",
@@ -11944,11 +11111,7 @@
                       },
                       "role": {
                         "type": "string",
-                        "enum": [
-                          "SERVICING",
-                          "OPERATIONS",
-                          "ADMIN"
-                        ],
+                        "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
                         "description": "The role of this user in the API",
                         "example": "SERVICING"
                       }
@@ -11976,13 +11139,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "account_id",
-                "line_item_id",
-                "effective_at",
-                "created_at",
-                "product_id"
-              ],
+              "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
               "properties": {
                 "account_id": {
                   "type": "integer",
@@ -12014,28 +11171,18 @@
                 },
                 "line_item_overview": {
                   "type": "object",
-                  "required": [
-                    "line_item_status",
-                    "line_item_type"
-                  ],
+                  "required": ["line_item_status", "line_item_type"],
                   "properties": {
                     "line_item_status": {
                       "type": "string",
                       "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "VALID",
-                        "INVALID"
-                      ],
+                      "enum": ["VALID", "INVALID"],
                       "example": "VALID"
                     },
                     "line_item_type": {
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "CHARGE",
-                        "PAYMENT",
-                        "FEE"
-                      ],
+                      "enum": ["CHARGE", "PAYMENT", "FEE"],
                       "example": "CHARGE"
                     },
                     "description": {
@@ -12058,21 +11205,6 @@
                       "type": "integer",
                       "description": "The originating amount of money (in cents) relating to this line item.",
                       "example": 2484
-                    },
-                    "balance_cents": {
-                      "type": "integer",
-                      "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                      "example": 2416
-                    },
-                    "principal_cents": {
-                      "type": "integer",
-                      "description": "The principal balance of the line item.",
-                      "example": 2400
-                    },
-                    "total_interest_accrued_cents": {
-                      "type": "integer",
-                      "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-                      "example": 16
                     }
                   }
                 },
@@ -12125,13 +11257,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "account_id",
-                "line_item_id",
-                "effective_at",
-                "created_at",
-                "product_id"
-              ],
+              "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
               "properties": {
                 "account_id": {
                   "type": "integer",
@@ -12163,28 +11289,18 @@
                 },
                 "line_item_overview": {
                   "type": "object",
-                  "required": [
-                    "line_item_status",
-                    "line_item_type"
-                  ],
+                  "required": ["line_item_status", "line_item_type"],
                   "properties": {
                     "line_item_status": {
                       "type": "string",
                       "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "VALID",
-                        "INVALID"
-                      ],
+                      "enum": ["VALID", "INVALID"],
                       "example": "VALID"
                     },
                     "line_item_type": {
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "CHARGE",
-                        "PAYMENT",
-                        "FEE"
-                      ],
+                      "enum": ["CHARGE", "PAYMENT", "FEE"],
                       "example": "CHARGE"
                     },
                     "description": {
@@ -12207,21 +11323,6 @@
                       "type": "integer",
                       "description": "The originating amount of money (in cents) relating to this line item.",
                       "example": 2484
-                    },
-                    "balance_cents": {
-                      "type": "integer",
-                      "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                      "example": 2416
-                    },
-                    "principal_cents": {
-                      "type": "integer",
-                      "description": "The principal balance of the line item.",
-                      "example": 2400
-                    },
-                    "total_interest_accrued_cents": {
-                      "type": "integer",
-                      "description": "The sum (in cents) of all interest charges, if any, applied to this line item",
-                      "example": 16
                     }
                   }
                 },
@@ -12276,11 +11377,7 @@
               "allOf": [
                 {
                   "type": "object",
-                  "required": [
-                    "account_id",
-                    "created_at",
-                    "effective_at"
-                  ],
+                  "required": ["account_id", "created_at", "effective_at"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -12301,9 +11398,7 @@
                     },
                     "account_overview": {
                       "type": "object",
-                      "required": [
-                        "account_status"
-                      ],
+                      "required": ["account_status"],
                       "properties": {
                         "account_status": {
                           "type": "string",
@@ -12320,9 +11415,7 @@
                     "account_product": {
                       "description": "The product associated with the account",
                       "type": "object",
-                      "required": [
-                        "product_id"
-                      ],
+                      "required": ["product_id"],
                       "properties": {
                         "product_id": {
                           "type": "integer",
@@ -12336,11 +11429,7 @@
                         },
                         "product_overview": {
                           "type": "object",
-                          "required": [
-                            "product_name",
-                            "product_type",
-                            "product_long_description"
-                          ],
+                          "required": ["product_name", "product_type", "product_long_description"],
                           "properties": {
                             "product_name": {
                               "type": "string",
@@ -12379,10 +11468,7 @@
                         },
                         "product_lifecycle": {
                           "type": "object",
-                          "required": [
-                            "late_fee_impl_cents",
-                            "payment_reversal_fee_impl_cents"
-                          ],
+                          "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                           "properties": {
                             "late_fee_impl_cents": {
                               "type": "number",
@@ -12502,10 +11588,7 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": [
-                        "min_pay_cents",
-                        "min_pay_due_at"
-                      ],
+                      "required": ["min_pay_cents", "min_pay_due_at"],
                       "properties": {
                         "min_pay_cents": {
                           "type": "integer",
@@ -12647,9 +11730,7 @@
                 },
                 {
                   "type": "object",
-                  "required": [
-                    "customers"
-                  ],
+                  "required": ["customers"],
                   "properties": {
                     "customers": {
                       "type": "array",
@@ -12657,9 +11738,7 @@
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
                         "type": "object",
-                        "required": [
-                          "customer_id"
-                        ],
+                        "required": ["customer_id"],
                         "properties": {
                           "customer_id": {
                             "type": "integer",
@@ -12755,11 +11834,7 @@
             "schema": {
               "type": "object",
               "description": "Statement for an account for a given billing cycle",
-              "required": [
-                "account_id",
-                "statement_id",
-                "effective_as_of_date"
-              ],
+              "required": ["account_id", "statement_id", "effective_as_of_date"],
               "properties": {
                 "account_id": {
                   "type": "integer",
@@ -12917,10 +11992,7 @@
                 },
                 "min_pay_due": {
                   "type": "object",
-                  "required": [
-                    "min_pay_cents",
-                    "min_pay_due_at"
-                  ],
+                  "required": ["min_pay_cents", "min_pay_due_at"],
                   "properties": {
                     "min_pay_cents": {
                       "type": "integer",
@@ -13029,9 +12101,7 @@
             "schema": {
               "type": "object",
               "description": "",
-              "required": [
-                "current_accounts"
-              ],
+              "required": ["current_accounts"],
               "properties": {
                 "current_accounts": {
                   "type": "array",
@@ -13059,9 +12129,7 @@
               "properties": {
                 "accounts_overview": {
                   "type": "object",
-                  "required": [
-                    "account_count_total"
-                  ],
+                  "required": ["account_count_total"],
                   "properties": {
                     "account_count_total": {
                       "type": "integer",
@@ -13081,13 +12149,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "account_id",
-                "line_item_id",
-                "effective_at",
-                "created_at",
-                "product_id"
-              ],
+              "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
               "properties": {
                 "account_id": {
                   "type": "integer",
@@ -13119,28 +12181,18 @@
                 },
                 "line_item_overview": {
                   "type": "object",
-                  "required": [
-                    "line_item_status",
-                    "line_item_type"
-                  ],
+                  "required": ["line_item_status", "line_item_type"],
                   "properties": {
                     "line_item_status": {
                       "type": "string",
                       "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "VALID",
-                        "INVALID"
-                      ],
+                      "enum": ["VALID", "INVALID"],
                       "example": "VALID"
                     },
                     "line_item_type": {
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "CHARGE",
-                        "PAYMENT",
-                        "FEE"
-                      ],
+                      "enum": ["CHARGE", "PAYMENT", "FEE"],
                       "example": "CHARGE"
                     },
                     "description": {
@@ -13233,13 +12285,7 @@
               "maxItems": 1000,
               "items": {
                 "type": "object",
-                "required": [
-                  "account_id",
-                  "line_item_id",
-                  "effective_at",
-                  "created_at",
-                  "product_id"
-                ],
+                "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
                 "properties": {
                   "account_id": {
                     "type": "integer",
@@ -13271,28 +12317,18 @@
                   },
                   "line_item_overview": {
                     "type": "object",
-                    "required": [
-                      "line_item_status",
-                      "line_item_type"
-                    ],
+                    "required": ["line_item_status", "line_item_type"],
                     "properties": {
                       "line_item_status": {
                         "type": "string",
                         "description": "the corresponding Status for a line item",
-                        "enum": [
-                          "VALID",
-                          "INVALID"
-                        ],
+                        "enum": ["VALID", "INVALID"],
                         "example": "VALID"
                       },
                       "line_item_type": {
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                        "enum": [
-                          "CHARGE",
-                          "PAYMENT",
-                          "FEE"
-                        ],
+                        "enum": ["CHARGE", "PAYMENT", "FEE"],
                         "example": "CHARGE"
                       },
                       "description": {
@@ -13386,13 +12422,7 @@
               "maxItems": 1000,
               "items": {
                 "type": "object",
-                "required": [
-                  "account_id",
-                  "line_item_id",
-                  "effective_at",
-                  "created_at",
-                  "product_id"
-                ],
+                "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
                 "properties": {
                   "account_id": {
                     "type": "integer",
@@ -13424,28 +12454,18 @@
                   },
                   "line_item_overview": {
                     "type": "object",
-                    "required": [
-                      "line_item_status",
-                      "line_item_type"
-                    ],
+                    "required": ["line_item_status", "line_item_type"],
                     "properties": {
                       "line_item_status": {
                         "type": "string",
                         "description": "the corresponding Status for a line item",
-                        "enum": [
-                          "VALID",
-                          "INVALID"
-                        ],
+                        "enum": ["VALID", "INVALID"],
                         "example": "VALID"
                       },
                       "line_item_type": {
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                        "enum": [
-                          "CHARGE",
-                          "PAYMENT",
-                          "FEE"
-                        ],
+                        "enum": ["CHARGE", "PAYMENT", "FEE"],
                         "example": "CHARGE"
                       },
                       "description": {
@@ -13606,11 +12626,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "email",
-                "created_at",
-                "expires_at"
-              ],
+              "required": ["email", "created_at", "expires_at"],
               "properties": {
                 "email": {
                   "type": "string",
