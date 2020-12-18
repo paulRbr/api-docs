@@ -787,7 +787,7 @@
                         "description": "Default duration for any amortization period during post-promotion",
                         "example": 48
                       },
-                      "post_promo_am_len_range_exclusive_lower": {
+                      "post_promo_am_len_range_inclusive_lower": {
                         "type": "number",
                         "description": "Optional lower bound for amortization length in billing cycles for the product.",
                         "example": 2
@@ -1713,10 +1713,9 @@
                                             "enum": [
                                               "REVOLVING",
                                               "INSTALLMENT",
-                                              "SAME_AS_CASH_INSTALLMENT",
-                                              "FIXED_RATE_INSTALLMENT",
                                               "MIXED_RATE_INSTALLMENT",
-                                              "ZERO_INTEREST_INSTALLMENT"
+                                              "DEFERRED_INSTALLMENT",
+                                              "FIXED_RATE_INSTALLMENT"
                                             ],
                                             "example": "REVOLVING"
                                           }
@@ -2479,10 +2478,9 @@
                                   "enum": [
                                     "REVOLVING",
                                     "INSTALLMENT",
-                                    "SAME_AS_CASH_INSTALLMENT",
-                                    "FIXED_RATE_INSTALLMENT",
                                     "MIXED_RATE_INSTALLMENT",
-                                    "ZERO_INTEREST_INSTALLMENT"
+                                    "DEFERRED_INSTALLMENT",
+                                    "FIXED_RATE_INSTALLMENT"
                                   ],
                                   "example": "REVOLVING"
                                 }
@@ -2964,10 +2962,9 @@
                                   "enum": [
                                     "REVOLVING",
                                     "INSTALLMENT",
-                                    "SAME_AS_CASH_INSTALLMENT",
-                                    "FIXED_RATE_INSTALLMENT",
                                     "MIXED_RATE_INSTALLMENT",
-                                    "ZERO_INTEREST_INSTALLMENT"
+                                    "DEFERRED_INSTALLMENT",
+                                    "FIXED_RATE_INSTALLMENT"
                                   ],
                                   "example": "REVOLVING"
                                 }
@@ -5002,10 +4999,9 @@
                     "enum": [
                       "REVOLVING",
                       "INSTALLMENT",
-                      "SAME_AS_CASH_INSTALLMENT",
-                      "FIXED_RATE_INSTALLMENT",
                       "MIXED_RATE_INSTALLMENT",
-                      "ZERO_INTEREST_INSTALLMENT"
+                      "DEFERRED_INSTALLMENT",
+                      "FIXED_RATE_INSTALLMENT"
                     ],
                     "example": "REVOLVING"
                   }
@@ -5357,10 +5353,9 @@
                         "enum": [
                           "REVOLVING",
                           "INSTALLMENT",
-                          "SAME_AS_CASH_INSTALLMENT",
-                          "FIXED_RATE_INSTALLMENT",
                           "MIXED_RATE_INSTALLMENT",
-                          "ZERO_INTEREST_INSTALLMENT"
+                          "DEFERRED_INSTALLMENT",
+                          "FIXED_RATE_INSTALLMENT"
                         ],
                         "example": "REVOLVING"
                       }
@@ -5981,10 +5976,9 @@
                               "enum": [
                                 "REVOLVING",
                                 "INSTALLMENT",
-                                "SAME_AS_CASH_INSTALLMENT",
-                                "FIXED_RATE_INSTALLMENT",
                                 "MIXED_RATE_INSTALLMENT",
-                                "ZERO_INTEREST_INSTALLMENT"
+                                "DEFERRED_INSTALLMENT",
+                                "FIXED_RATE_INSTALLMENT"
                               ],
                               "example": "REVOLVING"
                             }
@@ -7465,7 +7459,7 @@
                       "description": "Default duration for any amortization period during post-promotion",
                       "example": 48
                     },
-                    "post_promo_am_len_range_exclusive_lower": {
+                    "post_promo_am_len_range_inclusive_lower": {
                       "type": "number",
                       "description": "Optional lower bound for amortization length in billing cycles for the product.",
                       "example": 2
@@ -9400,10 +9394,9 @@
                                         "enum": [
                                           "REVOLVING",
                                           "INSTALLMENT",
-                                          "SAME_AS_CASH_INSTALLMENT",
-                                          "FIXED_RATE_INSTALLMENT",
                                           "MIXED_RATE_INSTALLMENT",
-                                          "ZERO_INTEREST_INSTALLMENT"
+                                          "DEFERRED_INSTALLMENT",
+                                          "FIXED_RATE_INSTALLMENT"
                                         ],
                                         "example": "REVOLVING"
                                       }
@@ -10143,10 +10136,9 @@
                               "enum": [
                                 "REVOLVING",
                                 "INSTALLMENT",
-                                "SAME_AS_CASH_INSTALLMENT",
-                                "FIXED_RATE_INSTALLMENT",
                                 "MIXED_RATE_INSTALLMENT",
-                                "ZERO_INTEREST_INSTALLMENT"
+                                "DEFERRED_INSTALLMENT",
+                                "FIXED_RATE_INSTALLMENT"
                               ],
                               "example": "REVOLVING"
                             }
@@ -10607,10 +10599,9 @@
                                 "enum": [
                                   "REVOLVING",
                                   "INSTALLMENT",
-                                  "SAME_AS_CASH_INSTALLMENT",
-                                  "FIXED_RATE_INSTALLMENT",
                                   "MIXED_RATE_INSTALLMENT",
-                                  "ZERO_INTEREST_INSTALLMENT"
+                                  "DEFERRED_INSTALLMENT",
+                                  "FIXED_RATE_INSTALLMENT"
                                 ],
                                 "example": "REVOLVING"
                               }
@@ -11421,10 +11412,9 @@
                               "enum": [
                                 "REVOLVING",
                                 "INSTALLMENT",
-                                "SAME_AS_CASH_INSTALLMENT",
-                                "FIXED_RATE_INSTALLMENT",
                                 "MIXED_RATE_INSTALLMENT",
-                                "ZERO_INTEREST_INSTALLMENT"
+                                "DEFERRED_INSTALLMENT",
+                                "FIXED_RATE_INSTALLMENT"
                               ],
                               "example": "REVOLVING"
                             }
