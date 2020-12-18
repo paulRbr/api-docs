@@ -11,7 +11,8 @@
   "scripts": {
     "bundle": "rm -rf dist/* && swagger-cli bundle -r -o dist/consolidated.json openapi.json",
     "validate": "swagger-cli validate dist/consolidated.json",
-    "flight-check": "yarn bundle && yarn validate"
+    "flight-check": "yarn bundle && yarn validate",
+    "preview": "bundle exec bump preview dist/consolidated.json"
   },
   "husky": {
     "hooks": {

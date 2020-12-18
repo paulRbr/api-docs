@@ -21,6 +21,10 @@
     {
       "title": "Troubleshooting",
       "content": "See a [detailed overview of error codes supported by Canopy and their meanings.](https://www.notion.so/canopy1/External-API-Status-Codes-576e6b9e43154db286d39a9aba1391aa)"
+    },
+    {
+      "title": "Test it out",
+      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the button below to import our collection of endpoints. Be sure to define the required environment variables.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/86f09603f15291d2cf83)"
     }
   ],
   "servers": [
