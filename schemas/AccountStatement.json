@@ -40,7 +40,7 @@
           "description": "If applicable, the `Date-Time` the promo period for the account starts.",
           "example": "2015-08-31T10:49:44.461+00:00"
         },
-        "promo_exlcusive_end": {
+        "promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the `Date-Time` the promo period for the account ends.",
