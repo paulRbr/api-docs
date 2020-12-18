@@ -42,7 +42,7 @@
         "line_item_type": {
           "type": "string",
           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-          "enum": ["CHARGE", "PAYMENT", "FEE"],
+          "enum": ["CHARGE", "PAYMENT", "LATE_FEE", "PAYMENT_REVERSAL_FEE"],
           "example": "CHARGE"
         },
         "description": {
