@@ -1,24 +1,16 @@
 {
   "type": "object",
-  "required": [
-    "note_id",
-    "account_id",
-    "author",
-    "message",
-    "created_date"
-  ],
+  "required": ["note_id", "account_id", "author", "message", "created_date"],
   "properties": {
     "note_id": {
-      "type": "string",
-      "format": "uuid",
+      "type": "integer",
       "description": "A Canopy-generated unique ID for the note",
-      "example": "7b2e189d-d6bb-41c2-95c1-1174b58246fa"
+      "example": 1
     },
     "account_id": {
-      "type": "string",
-      "format": "uuid",
+      "type": "integer",
       "description": "The ID of the account to which the Note is assigned",
-      "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
+      "example": 1
     },
     "author": {
       "description": "The API User who authored the note",

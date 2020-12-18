@@ -8,10 +8,9 @@
       "maxItems": 1000,
       "description": "Array of Accounts that are currently using this Product",
       "items": {
-        "type": "string",
+        "type": "integer",
         "description": "Account ID",
-        "format": "uuid",
-        "example": "5e860ad7-5fff-4130-844c-ec9ead83a025"
+        "example": 1
       }
     }
   }

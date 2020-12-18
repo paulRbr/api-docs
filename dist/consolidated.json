@@ -3388,16 +3388,14 @@
                   "required": ["note_id", "account_id", "author", "message", "created_date"],
                   "properties": {
                     "note_id": {
-                      "type": "string",
-                      "format": "uuid",
+                      "type": "integer",
                       "description": "A Canopy-generated unique ID for the note",
-                      "example": "7b2e189d-d6bb-41c2-95c1-1174b58246fa"
+                      "example": 1
                     },
                     "account_id": {
-                      "type": "string",
-                      "format": "uuid",
+                      "type": "integer",
                       "description": "The ID of the account to which the Note is assigned",
-                      "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
+                      "example": 1
                     },
                     "author": {
                       "description": "The API User who authored the note",
@@ -3496,16 +3494,14 @@
                     "required": ["note_id", "account_id", "author", "message", "created_date"],
                     "properties": {
                       "note_id": {
-                        "type": "string",
-                        "format": "uuid",
+                        "type": "integer",
                         "description": "A Canopy-generated unique ID for the note",
-                        "example": "7b2e189d-d6bb-41c2-95c1-1174b58246fa"
+                        "example": 1
                       },
                       "account_id": {
-                        "type": "string",
-                        "format": "uuid",
+                        "type": "integer",
                         "description": "The ID of the account to which the Note is assigned",
-                        "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
+                        "example": 1
                       },
                       "author": {
                         "description": "The API User who authored the note",
@@ -3652,10 +3648,9 @@
                         "example": "2018-06-20T09:12:30+00:00"
                       },
                       "product_id": {
-                        "type": "string",
+                        "type": "integer",
                         "description": "the Product ID of the account",
-                        "format": "uuid",
-                        "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                        "example": 1
                       },
                       "line_item_overview": {
                         "type": "object",
@@ -3828,10 +3823,9 @@
                         "example": "2018-06-20T09:12:30+00:00"
                       },
                       "product_id": {
-                        "type": "string",
+                        "type": "integer",
                         "description": "the Product ID of the account",
-                        "format": "uuid",
-                        "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                        "example": 1
                       },
                       "line_item_overview": {
                         "type": "object",
@@ -4054,10 +4048,9 @@
                       "example": "2018-06-20T09:12:30+00:00"
                     },
                     "product_id": {
-                      "type": "string",
+                      "type": "integer",
                       "description": "the Product ID of the account",
-                      "format": "uuid",
-                      "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                      "example": 158
                     },
                     "line_item_overview": {
                       "type": "object",
@@ -4084,12 +4077,7 @@
                     },
                     "line_item_summary": {
                       "type": "object",
-                      "required": [
-                        "original_amount_cents",
-                        "balance_cents",
-                        "principal_cents",
-                        "total_interest_accrued_cents"
-                      ],
+                      "required": ["original_amount_cents"],
                       "properties": {
                         "original_amount_cents": {
                           "type": "integer",
@@ -4245,10 +4233,9 @@
                       "example": "2018-06-20T09:12:30+00:00"
                     },
                     "product_id": {
-                      "type": "string",
+                      "type": "integer",
                       "description": "the Product ID of the account",
-                      "format": "uuid",
-                      "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                      "example": 158
                     },
                     "line_item_overview": {
                       "type": "object",
@@ -4275,12 +4262,7 @@
                     },
                     "line_item_summary": {
                       "type": "object",
-                      "required": [
-                        "original_amount_cents",
-                        "balance_cents",
-                        "principal_cents",
-                        "total_interest_accrued_cents"
-                      ],
+                      "required": ["original_amount_cents"],
                       "properties": {
                         "original_amount_cents": {
                           "type": "integer",
@@ -6919,10 +6901,9 @@
             "maxItems": 1000,
             "description": "Array of Accounts that are currently using this Product",
             "items": {
-              "type": "string",
+              "type": "integer",
               "description": "Account ID",
-              "format": "uuid",
-              "example": "5e860ad7-5fff-4130-844c-ec9ead83a025"
+              "example": 1
             }
           }
         }
@@ -7089,10 +7070,9 @@
             "example": "2018-06-20T09:12:30+00:00"
           },
           "product_id": {
-            "type": "string",
+            "type": "integer",
             "description": "the Product ID of the account",
-            "format": "uuid",
-            "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+            "example": 1
           },
           "line_item_overview": {
             "type": "object",
@@ -10979,16 +10959,14 @@
               "required": ["note_id", "account_id", "author", "message", "created_date"],
               "properties": {
                 "note_id": {
-                  "type": "string",
-                  "format": "uuid",
+                  "type": "integer",
                   "description": "A Canopy-generated unique ID for the note",
-                  "example": "7b2e189d-d6bb-41c2-95c1-1174b58246fa"
+                  "example": 1
                 },
                 "account_id": {
-                  "type": "string",
-                  "format": "uuid",
+                  "type": "integer",
                   "description": "The ID of the account to which the Note is assigned",
-                  "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
+                  "example": 1
                 },
                 "author": {
                   "description": "The API User who authored the note",
@@ -11062,16 +11040,14 @@
                 "required": ["note_id", "account_id", "author", "message", "created_date"],
                 "properties": {
                   "note_id": {
-                    "type": "string",
-                    "format": "uuid",
+                    "type": "integer",
                     "description": "A Canopy-generated unique ID for the note",
-                    "example": "7b2e189d-d6bb-41c2-95c1-1174b58246fa"
+                    "example": 1
                   },
                   "account_id": {
-                    "type": "string",
-                    "format": "uuid",
+                    "type": "integer",
                     "description": "The ID of the account to which the Note is assigned",
-                    "example": "bb6db06e-32ea-4e6a-8e6f-6e704b606a7e"
+                    "example": 1
                   },
                   "author": {
                     "description": "The API User who authored the note",
@@ -11164,10 +11140,9 @@
                   "example": "2018-06-20T09:12:30+00:00"
                 },
                 "product_id": {
-                  "type": "string",
+                  "type": "integer",
                   "description": "the Product ID of the account",
-                  "format": "uuid",
-                  "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                  "example": 158
                 },
                 "line_item_overview": {
                   "type": "object",
@@ -11194,12 +11169,7 @@
                 },
                 "line_item_summary": {
                   "type": "object",
-                  "required": [
-                    "original_amount_cents",
-                    "balance_cents",
-                    "principal_cents",
-                    "total_interest_accrued_cents"
-                  ],
+                  "required": ["original_amount_cents"],
                   "properties": {
                     "original_amount_cents": {
                       "type": "integer",
@@ -11282,10 +11252,9 @@
                   "example": "2018-06-20T09:12:30+00:00"
                 },
                 "product_id": {
-                  "type": "string",
+                  "type": "integer",
                   "description": "the Product ID of the account",
-                  "format": "uuid",
-                  "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                  "example": 158
                 },
                 "line_item_overview": {
                   "type": "object",
@@ -11312,12 +11281,7 @@
                 },
                 "line_item_summary": {
                   "type": "object",
-                  "required": [
-                    "original_amount_cents",
-                    "balance_cents",
-                    "principal_cents",
-                    "total_interest_accrued_cents"
-                  ],
+                  "required": ["original_amount_cents"],
                   "properties": {
                     "original_amount_cents": {
                       "type": "integer",
@@ -12108,10 +12072,9 @@
                   "maxItems": 1000,
                   "description": "Array of Accounts that are currently using this Product",
                   "items": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "Account ID",
-                    "format": "uuid",
-                    "example": "5e860ad7-5fff-4130-844c-ec9ead83a025"
+                    "example": 1
                   }
                 }
               }
@@ -12174,10 +12137,9 @@
                   "example": "2018-06-20T09:12:30+00:00"
                 },
                 "product_id": {
-                  "type": "string",
+                  "type": "integer",
                   "description": "the Product ID of the account",
-                  "format": "uuid",
-                  "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                  "example": 1
                 },
                 "line_item_overview": {
                   "type": "object",
@@ -12310,10 +12272,9 @@
                     "example": "2018-06-20T09:12:30+00:00"
                   },
                   "product_id": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "the Product ID of the account",
-                    "format": "uuid",
-                    "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                    "example": 1
                   },
                   "line_item_overview": {
                     "type": "object",
@@ -12447,10 +12408,9 @@
                     "example": "2018-06-20T09:12:30+00:00"
                   },
                   "product_id": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "the Product ID of the account",
-                    "format": "uuid",
-                    "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+                    "example": 1
                   },
                   "line_item_overview": {
                     "type": "object",
@@ -12559,10 +12519,9 @@
               "description": "Statements for the account.",
               "properties": {
                 "account_id": {
-                  "type": "string",
-                  "format": "uuid",
+                  "type": "integer",
                   "description": "The Canopy-generated ID for the account",
-                  "example": "111eff36-cbec-4119-b188-b76200e804d8"
+                  "example": 1
                 },
                 "effective_as_of_date": {
                   "type": "string",
@@ -12578,10 +12537,9 @@
                     "type": "object",
                     "properties": {
                       "statement_id": {
-                        "type": "string",
-                        "format": "uuid",
+                        "type": "integer",
                         "description": "A Canopy-generated ID for the statement",
-                        "example": "3627809b-ff07-4e41-b127-44260efb3b80"
+                        "example": 1
                       },
                       "available_credit_balance": {
                         "type": "number",

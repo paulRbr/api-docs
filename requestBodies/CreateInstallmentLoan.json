@@ -18,16 +18,14 @@
         "additionalProperties": false,
         "properties": {
           "account_id": {
-            "type": "string",
-            "format": "uuid",
+            "type": "integer",
             "description": "The account associated with the loan",
-            "example": "2911ff2a-bebe-4c85-8d19-e6001015a8e3"
+            "example": 1
           },
           "product_id": {
-            "type": "string",
+            "type": "integer",
             "description": "the Product ID of the loan (to determine which policies to apply to the loan).",
-            "format": "uuid",
-            "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+            "example": 1
           },
           "original_loan_amount_cents": {
             "type": "integer",

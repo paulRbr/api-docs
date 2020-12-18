@@ -3,10 +3,9 @@
   "description": "Statements for the account.",
   "properties": {
     "account_id": {
-      "type": "string",
-      "format": "uuid",
+      "type": "integer",
       "description": "The Canopy-generated ID for the account",
-      "example": "111eff36-cbec-4119-b188-b76200e804d8"
+      "example": 1
     },
     "effective_as_of_date": {
       "type": "string",
@@ -22,10 +21,9 @@
         "type": "object",
         "properties": {
           "statement_id": {
-            "type": "string",
-            "format": "uuid",
+            "type": "integer",
             "description": "A Canopy-generated ID for the statement",
-            "example": "3627809b-ff07-4e41-b127-44260efb3b80"
+            "example": 1
           },
           "available_credit_balance": {
             "type": "number",

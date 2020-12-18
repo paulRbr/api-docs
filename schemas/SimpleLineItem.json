@@ -25,10 +25,9 @@
       "example": "2018-06-20T09:12:30+00:00"
     },
     "product_id": {
-      "type": "string",
+      "type": "integer",
       "description": "the Product ID of the account",
-      "format": "uuid",
-      "example": "158cd7a1-d813-42d2-90a3-9a91c43f18f8"
+      "example": 158
     },
     "line_item_overview": {
       "type": "object",
@@ -55,7 +54,7 @@
     },
     "line_item_summary": {
       "type": "object",
-      "required": ["original_amount_cents", "balance_cents", "principal_cents", "total_interest_accrued_cents"],
+      "required": ["original_amount_cents"],
       "properties": {
         "original_amount_cents": {
           "type": "integer",
