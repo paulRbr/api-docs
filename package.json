@@ -1,6 +1,6 @@
 {
-  "name": "canopy-api",
-  "description": "OpenAPI v3 specification for CanopyAPI",
+  "name": "canopy-docs",
+  "description": "OpenAPI v3.0.3 Spec for CanopyAPI",
   "private": true,
   "repository": {
     "type": "git",
@@ -12,7 +12,8 @@
     "bundle": "rm -rf dist/* && swagger-cli bundle -r -o dist/consolidated.json openapi.json",
     "validate": "swagger-cli validate dist/consolidated.json",
     "flight-check": "yarn bundle && yarn validate",
-    "preview": "bundle exec bump preview dist/consolidated.json"
+    "preview": "bundle exec bump preview dist/consolidated.json",
+    "postman": "openapi2postmanv2 -s dist/consolidated.json -o Canopy_UAT_Postman_2.json -p -O folderStrategy=Tags includeAuthInfoInExample=false requestParametersResolution=Example"
   },
   "husky": {
     "hooks": {
@@ -30,7 +31,8 @@
   },
   "devDependencies": {
     "husky": "4.3.5",
-    "lint-staged": "^10.5.3",
+    "lint-staged": "10.5.3",
+    "openapi-to-postmanv2": "2.0.0",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0"
   }

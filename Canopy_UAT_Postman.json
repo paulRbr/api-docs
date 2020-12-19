@@ -1,0 +1,2665 @@
+{
+  "item": [
+    {
+      "id": "1b955894-65a7-4a46-84da-3bd093a4e09a",
+      "name": "api_users",
+      "description": {
+        "content": "Authenticate to use the appropriate environment (sandbox or production) within Canopy",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "75a1ff8f-1598-4a90-804f-669670d79f13",
+      "name": "products",
+      "description": {
+        "content": "Create and launch credit products within the Canopy system.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e8d33e3-1d36-41a2-b397-f9f669454c8e",
+          "name": "Create a new product",
+          "request": {
+            "name": "Create a new product",
+            "description": {
+              "content": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by sending an excel file detailing your preferred configurations to the [Canopy team](mailto:support@canopyservicing.com?subject=API%20Access%20Request); however, you can also configure and manage products programmatically using this API documentation. \n \n Request body for creating a new product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["products"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": true
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"product_overview\": {\n        \"product_name\": \"<string>\",\n        \"product_type\": \"<string>\",\n        \"product_short_description\": \"<string>\",\n        \"product_long_description\": \"<string>\",\n        \"external_product_id\": \"<string>\",\n        \"product_color\": \"<string>\"\n    },\n    \"product_lifecycle_policies\": {\n        \"payment_due_policies\": {\n            \"delinquent_on_n_consecutive_late_fees\": \"<integer>\",\n            \"charge_off_on_n_consecutive_late_fees\": \"<integer>\"\n        },\n        \"fee_policies\": {\n            \"late_fee_grace\": \"<string>\"\n        },\n        \"billing_cycle_policies\": {\n            \"cycle_interval\": \"<string>\",\n            \"cycle_due_interval\": \"<string>\",\n            \"first_cycle_interval\": \"<string>\",\n            \"close_of_business_timetz\": \"<time>\"\n        },\n        \"interest_policies\": {\n            \"interest_calc_time\": \"<time>\"\n        },\n        \"default_attributes\": {\n            \"default_credit_limit_cents\": \"<integer>\"\n        }\n    },\n    \"promotional_policies\": {\n        \"promo_len\": \"<integer>\",\n        \"promo_min_pay_type\": \"<string>\",\n        \"promo_purchase_window_len\": \"<number>\",\n        \"promo_interest_deferred\": \"<boolean>\",\n        \"promo_default_interest_rate_percent\": \"<number>\",\n        \"promo_min_pay_percent\": \"<number>\",\n        \"promo_apr_range_inclusive_lower\": \"<number>\",\n        \"promo_apr_range_inclusive_upper\": \"<number>\"\n    },\n    \"post_promotional_policies\": {\n        \"post_promo_default_am_len\": \"<integer>\",\n        \"post_promo_am_len_range_inclusive_lower\": \"<number>\",\n        \"post_promo_am_len_range_inclusive_upper\": \"<number>\",\n        \"post_promo_min_pay_type\": \"<string>\",\n        \"post_promo_default_interest_rate_percent\": \"<number>\",\n        \"post_promo_apr_range_inclusive_lower\": \"<number>\",\n        \"post_promo_apr_range_inclusive_upper\": \"<number>\"\n    },\n    \"effective_at\": \"<dateTime>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "21f303f9-7e4d-4bdd-ae94-f105c6b3e7a4",
+              "name": "Product",
+              "originalRequest": {
+                "url": {
+                  "path": ["products"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"product_overview\": {\n        \"product_name\": \"BNPL 24 Month Standard\",\n        \"product_type\": \"REVOLVING\",\n        \"product_short_description\": \"12mm3apr.\",\n        \"product_long_description\": \"Student credit card.\",\n        \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n        \"product_color\": \"#0000FF\"\n    },\n    \"product_lifecycle_policies\": {\n        \"payment_due_policies\": {\n            \"delinquent_on_n_consecutive_late_fees\": \"<integer>\",\n            \"charge_off_on_n_consecutive_late_fees\": \"<integer>\"\n        },\n        \"fee_policies\": {\n            \"late_fee_grace\": \"5 days\"\n        },\n        \"billing_cycle_policies\": {\n            \"cycle_interval\": \"1 month\",\n            \"cycle_due_interval\": \"-5 days\",\n            \"first_cycle_interval\": \"25 days\",\n            \"close_of_business_timetz\": \"17:00:00-05:00\"\n        },\n        \"interest_policies\": {\n            \"interest_calc_time\": \"11:21:04-08:00\"\n        },\n        \"default_attributes\": {\n            \"default_credit_limit_cents\": 600000\n        }\n    },\n    \"promotional_policies\": {\n        \"promo_len\": 6,\n        \"promo_min_pay_type\": \"PERCENT_PRINCIPAL\",\n        \"promo_purchase_window_len\": 5,\n        \"promo_interest_deferred\": true,\n        \"promo_default_interest_rate_percent\": 3,\n        \"promo_min_pay_percent\": 100,\n        \"promo_apr_range_inclusive_lower\": 2,\n        \"promo_apr_range_inclusive_upper\": 5\n    },\n    \"post_promotional_policies\": {\n        \"post_promo_default_am_len\": 48,\n        \"post_promo_am_len_range_inclusive_lower\": 2,\n        \"post_promo_am_len_range_inclusive_upper\": 5,\n        \"post_promo_min_pay_type\": \"AM\",\n        \"post_promo_default_interest_rate_percent\": 3,\n        \"post_promo_apr_range_inclusive_lower\": 2,\n        \"post_promo_apr_range_inclusive_upper\": 5\n    },\n    \"effective_at\": \"2016-11-27T13:19:56+00:00\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"product_id\": 6,\n \"created_at\": \"2019-03-20T09:12:28+00:00\",\n \"product_overview\": {\n  \"product_name\": \"Blue Cash Express\",\n  \"product_type\": \"REVOLVING\",\n  \"product_long_description\": \"Student credit card.\",\n  \"product_short_description\": \"12mm3apr.\",\n  \"product_color\": \"#0000FF\",\n  \"external_fields\": [\n   {\n    \"key\": \"client_product_id\",\n    \"value\": \"3e93a899-d267-4193-8509-6dba53c13b7b\"\n   },\n   {\n    \"key\": \"client_product_id\",\n    \"value\": \"3e93a899-d267-4193-8509-6dba53c13b7b\"\n   }\n  ]\n },\n \"product_lifecycle_policies\": {\n  \"payment_due_policies\": {\n   \"delinquent_on_n_consecutive_late_fees\": -61118434,\n   \"charge_off_on_n_consecutive_late_fees\": 57407483\n  },\n  \"fee_policies\": {\n   \"late_fee_grace\": \"5 days\"\n  },\n  \"billing_cycle_policies\": {\n   \"cycle_interval\": \"1 month\",\n   \"cycle_due_interval\": \"-5 days\",\n   \"first_cycle_interval\": \"25 days\",\n   \"close_of_business_timetz\": \"17:00:00-05:00\"\n  },\n  \"interest_policies\": {\n   \"interest_calc_time\": \"11:21:04-08:00\"\n  },\n  \"default_attributes\": {\n   \"default_credit_limit_cents\": 600000,\n   \"default_late_fee_cents\": 50000,\n   \"default_payment_reversal_fee_cents\": 10000\n  }\n },\n \"promotional_policies\": {\n  \"promo_len\": 6,\n  \"promo_min_pay_type\": \"PERCENT_PRINCIPAL\",\n  \"promo_purchase_window_len\": 5,\n  \"promo_min_pay_percent\": 100,\n  \"promo_interest_deferred\": true,\n  \"promo_default_interest_rate_percent\": 3,\n  \"promo_apr_range_inclusive_lower\": 2,\n  \"promo_apr_range_inclusive_upper\": 5\n },\n \"post_promotional_policies\": {\n  \"post_promo_default_am_len\": 48,\n  \"post_promo_am_len_range_inclusive_lower\": 2,\n  \"post_promo_am_len_range_inclusive_upper\": 5,\n  \"post_promo_min_pay_type\": \"AM\",\n  \"post_promo_default_interest_rate_percent\": 3,\n  \"post_promo_apr_range_inclusive_lower\": 2,\n  \"post_promo_apr_range_inclusive_upper\": 5\n },\n \"effective_at\": \"2016-11-27T13:19:56+00:00\",\n \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n \"product_summary\": {\n  \"accounts_overview\": {\n   \"account_count_total\": 10005\n  }\n }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a4fee12-62fa-49a5-9e9b-70e41823519f",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": ["products"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"product_overview\": {\n        \"product_name\": \"BNPL 24 Month Standard\",\n        \"product_type\": \"REVOLVING\",\n        \"product_short_description\": \"12mm3apr.\",\n        \"product_long_description\": \"Student credit card.\",\n        \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n        \"product_color\": \"#0000FF\"\n    },\n    \"product_lifecycle_policies\": {\n        \"payment_due_policies\": {\n            \"delinquent_on_n_consecutive_late_fees\": \"<integer>\",\n            \"charge_off_on_n_consecutive_late_fees\": \"<integer>\"\n        },\n        \"fee_policies\": {\n            \"late_fee_grace\": \"5 days\"\n        },\n        \"billing_cycle_policies\": {\n            \"cycle_interval\": \"1 month\",\n            \"cycle_due_interval\": \"-5 days\",\n            \"first_cycle_interval\": \"25 days\",\n            \"close_of_business_timetz\": \"17:00:00-05:00\"\n        },\n        \"interest_policies\": {\n            \"interest_calc_time\": \"11:21:04-08:00\"\n        },\n        \"default_attributes\": {\n            \"default_credit_limit_cents\": 600000\n        }\n    },\n    \"promotional_policies\": {\n        \"promo_len\": 6,\n        \"promo_min_pay_type\": \"PERCENT_PRINCIPAL\",\n        \"promo_purchase_window_len\": 5,\n        \"promo_interest_deferred\": true,\n        \"promo_default_interest_rate_percent\": 3,\n        \"promo_min_pay_percent\": 100,\n        \"promo_apr_range_inclusive_lower\": 2,\n        \"promo_apr_range_inclusive_upper\": 5\n    },\n    \"post_promotional_policies\": {\n        \"post_promo_default_am_len\": 48,\n        \"post_promo_am_len_range_inclusive_lower\": 2,\n        \"post_promo_am_len_range_inclusive_upper\": 5,\n        \"post_promo_min_pay_type\": \"AM\",\n        \"post_promo_default_interest_rate_percent\": 3,\n        \"post_promo_apr_range_inclusive_lower\": 2,\n        \"post_promo_apr_range_inclusive_upper\": 5\n    },\n    \"effective_at\": \"2016-11-27T13:19:56+00:00\"\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "f16bd3ea-805e-4ebc-a2de-e03eae5c0621",
+          "name": "Get all available products",
+          "request": {
+            "name": "Get all available products",
+            "description": {
+              "content": "If you have configured and launched multiple products within Canopy, retrieve information related to all of your configured products at once.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["products"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                {
+                  "description": "The zero-indexed starting point for paginated product requests sorted by reverse product created date.",
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The maximum number of products to be returned. Defaults to 100.",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": true
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4626753f-16c5-4307-bb51-ae7cd75a8af5",
+              "name": "Array of Products",
+              "originalRequest": {
+                "url": {
+                  "path": ["products"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n {\n  \"product_id\": 6,\n  \"created_at\": \"2019-03-20T09:12:28+00:00\",\n  \"product_overview\": {\n   \"product_name\": \"Blue Cash Express\",\n   \"product_type\": \"REVOLVING\",\n   \"product_long_description\": \"Student credit card.\",\n   \"product_short_description\": \"12mm3apr.\",\n   \"product_color\": \"#0000FF\",\n   \"external_fields\": [\n    {\n     \"key\": \"client_product_id\",\n     \"value\": \"3e93a899-d267-4193-8509-6dba53c13b7b\"\n    },\n    {\n     \"key\": \"client_product_id\",\n     \"value\": \"3e93a899-d267-4193-8509-6dba53c13b7b\"\n    }\n   ]\n  },\n  \"product_lifecycle_policies\": {\n   \"payment_due_policies\": {\n    \"delinquent_on_n_consecutive_late_fees\": 41888918,\n    \"charge_off_on_n_consecutive_late_fees\": 96806365\n   },\n   \"fee_policies\": {\n    \"late_fee_grace\": \"5 days\"\n   },\n   \"billing_cycle_policies\": {\n    \"cycle_interval\": \"1 month\",\n    \"cycle_due_interval\": \"-5 days\",\n    \"first_cycle_interval\": \"25 days\",\n    \"close_of_business_timetz\": \"17:00:00-05:00\"\n   },\n   \"interest_policies\": {\n    \"interest_calc_time\": \"11:21:04-08:00\"\n   },\n   \"default_attributes\": {\n    \"default_credit_limit_cents\": 600000,\n    \"default_late_fee_cents\": 50000,\n    \"default_payment_reversal_fee_cents\": 10000\n   }\n  },\n  \"promotional_policies\": {\n   \"promo_len\": 6,\n   \"promo_min_pay_type\": \"PERCENT_PRINCIPAL\",\n   \"promo_purchase_window_len\": 5,\n   \"promo_min_pay_percent\": 100,\n   \"promo_interest_deferred\": true,\n   \"promo_default_interest_rate_percent\": 3,\n   \"promo_apr_range_inclusive_lower\": 2,\n   \"promo_apr_range_inclusive_upper\": 5\n  },\n  \"post_promotional_policies\": {\n   \"post_promo_default_am_len\": 48,\n   \"post_promo_am_len_range_inclusive_lower\": 2,\n   \"post_promo_am_len_range_inclusive_upper\": 5,\n   \"post_promo_min_pay_type\": \"AM\",\n   \"post_promo_default_interest_rate_percent\": 3,\n   \"post_promo_apr_range_inclusive_lower\": 2,\n   \"post_promo_apr_range_inclusive_upper\": 5\n  },\n  \"effective_at\": \"2016-11-27T13:19:56+00:00\",\n  \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n  \"product_summary\": {\n   \"accounts_overview\": {\n    \"account_count_total\": 10005\n   }\n  }\n },\n {\n  \"product_id\": 6,\n  \"created_at\": \"2019-03-20T09:12:28+00:00\",\n  \"product_overview\": {\n   \"product_name\": \"Blue Cash Express\",\n   \"product_type\": \"REVOLVING\",\n   \"product_long_description\": \"Student credit card.\",\n   \"product_short_description\": \"12mm3apr.\",\n   \"product_color\": \"#0000FF\",\n   \"external_fields\": [\n    {\n     \"key\": \"client_product_id\",\n     \"value\": \"3e93a899-d267-4193-8509-6dba53c13b7b\"\n    },\n    {\n     \"key\": \"client_product_id\",\n     \"value\": \"3e93a899-d267-4193-8509-6dba53c13b7b\"\n    }\n   ]\n  },\n  \"product_lifecycle_policies\": {\n   \"payment_due_policies\": {\n    \"delinquent_on_n_consecutive_late_fees\": -13406443,\n    \"charge_off_on_n_consecutive_late_fees\": -63431512\n   },\n   \"fee_policies\": {\n    \"late_fee_grace\": \"5 days\"\n   },\n   \"billing_cycle_policies\": {\n    \"cycle_interval\": \"1 month\",\n    \"cycle_due_interval\": \"-5 days\",\n    \"first_cycle_interval\": \"25 days\",\n    \"close_of_business_timetz\": \"17:00:00-05:00\"\n   },\n   \"interest_policies\": {\n    \"interest_calc_time\": \"11:21:04-08:00\"\n   },\n   \"default_attributes\": {\n    \"default_credit_limit_cents\": 600000,\n    \"default_late_fee_cents\": 50000,\n    \"default_payment_reversal_fee_cents\": 10000\n   }\n  },\n  \"promotional_policies\": {\n   \"promo_len\": 6,\n   \"promo_min_pay_type\": \"PERCENT_PRINCIPAL\",\n   \"promo_purchase_window_len\": 5,\n   \"promo_min_pay_percent\": 100,\n   \"promo_interest_deferred\": true,\n   \"promo_default_interest_rate_percent\": 3,\n   \"promo_apr_range_inclusive_lower\": 2,\n   \"promo_apr_range_inclusive_upper\": 5\n  },\n  \"post_promotional_policies\": {\n   \"post_promo_default_am_len\": 48,\n   \"post_promo_am_len_range_inclusive_lower\": 2,\n   \"post_promo_am_len_range_inclusive_upper\": 5,\n   \"post_promo_min_pay_type\": \"AM\",\n   \"post_promo_default_interest_rate_percent\": 3,\n   \"post_promo_apr_range_inclusive_lower\": 2,\n   \"post_promo_apr_range_inclusive_upper\": 5\n  },\n  \"effective_at\": \"2016-11-27T13:19:56+00:00\",\n  \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n  \"product_summary\": {\n   \"accounts_overview\": {\n    \"account_count_total\": 10005\n   }\n  }\n }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d2e15e3-f1f3-4ce2-a99f-c703ae49731a",
+              "name": "Unable to get products",
+              "originalRequest": {
+                "url": {
+                  "path": ["products"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8728ee6d-41ec-4788-b5de-7691ccab72a7",
+      "name": "customers",
+      "description": {
+        "content": "Onboard customers into your system, so they can begin using your credit products",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75ee137c-0c25-4a4d-9a92-ec8529e5ea76",
+          "name": "Get all accounts for all customers",
+          "request": {
+            "name": "Get all accounts for all customers",
+            "description": {
+              "content": "Returns all accounts from the perspective of each customer. For instance, if one account has two customers, these are reflected as two separate items in the response array. Similarly, if one customer has multiple accounts, each account is reflected as a separate item in the response array.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["customers", "accounts"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                {
+                  "description": "The zero-indexed starting point for paginated customer account requests sorted by account created date.",
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The maximum number of customer accounts to be returned. Defaults to 100.",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "021585d3-42a5-45c6-8035-dce5bedde51f",
+              "name": "Array of Customers and their corresponding Accounts",
+              "originalRequest": {
+                "url": {
+                  "path": ["customers", "accounts"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "110"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"results\": [\n  {\n   \"customer_id\": 8,\n   \"name_prefix\": \"Dr.\",\n   \"name_first\": \"Miriam\",\n   \"name_middle\": \"Louise\",\n   \"name_last\": \"Trevino\",\n   \"name_suffix\": \"Jr\",\n   \"phone_number\": \"555-555-5555\",\n   \"address_line_one\": \"12 Strawberry Road\",\n   \"address_line_two\": \"Suite 101\",\n   \"address_city\": \"Atlanta\",\n   \"address_state\": \"GA\",\n   \"address_zip\": \"99999-1000\",\n   \"ssn\": \"888-88-8888\",\n   \"email\": \"marissa@protonmail.com\",\n   \"date_of_birth\": \"2018-06-20T09:12:30+00:00\",\n   \"customer_account_role\": \"PRIMARY\",\n   \"customer_account_external_id\": \"4465220133024156\",\n   \"account\": {\n    \"account_id\": 9,\n    \"created_at\": \"2017-06-20T09:12:14+00:00\",\n    \"effective_at\": \"2018-03-20T09:12:28+00:00\",\n    \"account_overview\": {\n     \"account_status\": \"suspended\",\n     \"account_status_subtype\": \"suspended-bankruptcy\"\n    },\n    \"account_product\": {\n     \"product_id\": 4,\n     \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n     \"product_overview\": {\n      \"product_name\": \"Blue Cash Express\",\n      \"product_type\": \"REVOLVING\",\n      \"product_long_description\": \"Student credit card.\",\n      \"product_color\": \"#0000FF\",\n      \"product_short_description\": \"Consumer credit card\"\n     },\n     \"product_lifecycle\": {\n      \"late_fee_impl_cents\": 2900,\n      \"payment_reversal_fee_impl_cents\": 2900,\n      \"loan_end_date\": \"2013-01-13T05:25:13.813+00:00\"\n     },\n     \"promo_overview\": {\n      \"promo_purchase_window_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_purchase_window_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_impl_interest_rate_percent\": 6.2\n     },\n     \"post_promo_overview\": {\n      \"post_promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n      \"post_promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n      \"post_promo_impl_interest_rate_percent\": 6.2,\n      \"post_promo_impl_am_len\": 48\n     },\n     \"product_duration_information\": {\n      \"promo_len\": 6,\n      \"promo_purchase_window_len\": 5\n     }\n    },\n    \"external_fields\": [\n     {\n      \"key\": \"Umbrella Corporation\",\n      \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n     },\n     {\n      \"key\": \"Umbrella Corporation\",\n      \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n     }\n    ],\n    \"min_pay_due_cents\": {\n     \"min_pay_cents\": 160000,\n     \"min_pay_due_at\": \"2019-10-18T23:04:48.321+00:00\"\n    },\n    \"additional_min_pay_details\": {\n     \"min_pay_charges_principal_cents\": 100000,\n     \"min_pay_interest_cents\": 30000,\n     \"min_pay_deferred_cents\": 10000,\n     \"min_pay_fees_cents\": 20000,\n     \"previous_min_pay_cents\": 400000\n    },\n    \"summary\": {\n     \"total_balance_cents\": 300000,\n     \"principal_cents\": 200000,\n     \"interest_balance_cents\": 60000,\n     \"deferred_interest_balance_cents\": 40000,\n     \"total_paid_to_date_cents\": 40000,\n     \"total_interest_paid_to_date_cents\": 10000,\n     \"credit_limit_cents\": 400000,\n     \"interest_rate_percent\": 3,\n     \"available_credit_cents\": 100000,\n     \"max_approved_credit_limit_cents\": 400000,\n     \"open_to_buy_cents\": 5000\n    },\n    \"associated_entities\": {\n     \"merchant_name\": \"Acme Corporation\",\n     \"lender_name\": \"Globex Lending Corp\"\n    }\n   }\n  },\n  {\n   \"customer_id\": 8,\n   \"name_prefix\": \"Dr.\",\n   \"name_first\": \"Miriam\",\n   \"name_middle\": \"Louise\",\n   \"name_last\": \"Trevino\",\n   \"name_suffix\": \"Jr\",\n   \"phone_number\": \"555-555-5555\",\n   \"address_line_one\": \"12 Strawberry Road\",\n   \"address_line_two\": \"Suite 101\",\n   \"address_city\": \"Atlanta\",\n   \"address_state\": \"GA\",\n   \"address_zip\": \"99999-1000\",\n   \"ssn\": \"888-88-8888\",\n   \"email\": \"marissa@protonmail.com\",\n   \"date_of_birth\": \"2018-06-20T09:12:30+00:00\",\n   \"customer_account_role\": \"PRIMARY\",\n   \"customer_account_external_id\": \"4465220133024156\",\n   \"account\": {\n    \"account_id\": 9,\n    \"created_at\": \"2017-06-20T09:12:14+00:00\",\n    \"effective_at\": \"2018-03-20T09:12:28+00:00\",\n    \"account_overview\": {\n     \"account_status\": \"suspended\",\n     \"account_status_subtype\": \"suspended-bankruptcy\"\n    },\n    \"account_product\": {\n     \"product_id\": 4,\n     \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n     \"product_overview\": {\n      \"product_name\": \"Blue Cash Express\",\n      \"product_type\": \"REVOLVING\",\n      \"product_long_description\": \"Student credit card.\",\n      \"product_color\": \"#0000FF\",\n      \"product_short_description\": \"Consumer credit card\"\n     },\n     \"product_lifecycle\": {\n      \"late_fee_impl_cents\": 2900,\n      \"payment_reversal_fee_impl_cents\": 2900,\n      \"loan_end_date\": \"2013-01-13T05:25:13.813+00:00\"\n     },\n     \"promo_overview\": {\n      \"promo_purchase_window_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_purchase_window_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n      \"promo_impl_interest_rate_percent\": 6.2\n     },\n     \"post_promo_overview\": {\n      \"post_promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n      \"post_promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n      \"post_promo_impl_interest_rate_percent\": 6.2,\n      \"post_promo_impl_am_len\": 48\n     },\n     \"product_duration_information\": {\n      \"promo_len\": 6,\n      \"promo_purchase_window_len\": 5\n     }\n    },\n    \"external_fields\": [\n     {\n      \"key\": \"Umbrella Corporation\",\n      \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n     },\n     {\n      \"key\": \"Umbrella Corporation\",\n      \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n     }\n    ],\n    \"min_pay_due_cents\": {\n     \"min_pay_cents\": 160000,\n     \"min_pay_due_at\": \"2019-10-18T23:04:48.321+00:00\"\n    },\n    \"additional_min_pay_details\": {\n     \"min_pay_charges_principal_cents\": 100000,\n     \"min_pay_interest_cents\": 30000,\n     \"min_pay_deferred_cents\": 10000,\n     \"min_pay_fees_cents\": 20000,\n     \"previous_min_pay_cents\": 400000\n    },\n    \"summary\": {\n     \"total_balance_cents\": 300000,\n     \"principal_cents\": 200000,\n     \"interest_balance_cents\": 60000,\n     \"deferred_interest_balance_cents\": 40000,\n     \"total_paid_to_date_cents\": 40000,\n     \"total_interest_paid_to_date_cents\": 10000,\n     \"credit_limit_cents\": 400000,\n     \"interest_rate_percent\": 3,\n     \"available_credit_cents\": 100000,\n     \"max_approved_credit_limit_cents\": 400000,\n     \"open_to_buy_cents\": 5000\n    },\n    \"associated_entities\": {\n     \"merchant_name\": \"Acme Corporation\",\n     \"lender_name\": \"Globex Lending Corp\"\n    }\n   }\n  }\n ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b15e5e96-238e-42e1-ae45-4f1500fcbc55",
+              "name": "Unable to get customers",
+              "originalRequest": {
+                "url": {
+                  "path": ["customers", "accounts"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "110"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "4971ca12-2870-475d-b91a-3eec32145eb5",
+          "name": "Create a new customer",
+          "request": {
+            "name": "Create a new customer",
+            "description": {
+              "content": "Customer can be created within Canopy with attached data managed in a secure and compliant way to facilitate providing the best service for products created through Canopy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["customers"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": true
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name_first\": \"<string>\",\n    \"name_last\": \"<string>\",\n    \"phone_number\": \"<string>\",\n    \"address_line_one\": \"<string>\",\n    \"address_city\": \"<string>\",\n    \"address_state\": \"<string>\",\n    \"address_zip\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"email\": \"<email>\",\n    \"date_of_birth\": \"<dateTime>\",\n    \"name_prefix\": \"<string>\",\n    \"name_middle\": \"<string>\",\n    \"name_suffix\": \"<string>\",\n    \"address_line_two\": \"<string>\",\n    \"assign_to_accounts\": [\n        {\n            \"account_id\": \"<integer>\",\n            \"customer_account_role\": \"<string>\",\n            \"customer_account_external_id\": \"<string>\"\n        },\n        {\n            \"account_id\": \"<integer>\",\n            \"customer_account_role\": \"<string>\",\n            \"customer_account_external_id\": \"<string>\"\n        }\n    ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "468d9fb4-6246-4d77-a99b-b526da90c056",
+              "name": "New Customer Created",
+              "originalRequest": {
+                "url": {
+                  "path": ["customers"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name_first\": \"Miriam\",\n    \"name_last\": \"Trevino\",\n    \"phone_number\": \"555-555-5555\",\n    \"address_line_one\": \"12 Strawberry Road\",\n    \"address_city\": \"Atlanta\",\n    \"address_state\": \"GA\",\n    \"address_zip\": \"99999-1000\",\n    \"ssn\": \"888-88-8888\",\n    \"email\": \"marissa@protonmail.com\",\n    \"date_of_birth\": \"2018-06-20T09:12:30+00:00\",\n    \"name_prefix\": \"Dr.\",\n    \"name_middle\": \"Louise\",\n    \"name_suffix\": \"Jr\",\n    \"address_line_two\": \"Suite 101\",\n    \"assign_to_accounts\": [\n        {\n            \"account_id\": 103,\n            \"customer_account_role\": \"PRIMARY\",\n            \"customer_account_external_id\": \"4465220133024156\"\n        },\n        {\n            \"account_id\": 103,\n            \"customer_account_role\": \"PRIMARY\",\n            \"customer_account_external_id\": \"4465220133024156\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"customer_id\": 8,\n \"name_prefix\": \"Dr.\",\n \"name_first\": \"Miriam\",\n \"name_middle\": \"Louise\",\n \"name_last\": \"Trevino\",\n \"name_suffix\": \"Jr\",\n \"phone_number\": \"555-555-5555\",\n \"address_line_one\": \"12 Strawberry Road\",\n \"address_line_two\": \"Suite 101\",\n \"address_city\": \"Atlanta\",\n \"address_state\": \"GA\",\n \"address_zip\": \"99999-1000\",\n \"ssn\": \"888-88-8888\",\n \"email\": \"marissa@protonmail.com\",\n \"date_of_birth\": \"2018-06-20T09:12:30+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb5229fb-e059-4bcd-8c97-500e7df4adb3",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": ["customers"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name_first\": \"Miriam\",\n    \"name_last\": \"Trevino\",\n    \"phone_number\": \"555-555-5555\",\n    \"address_line_one\": \"12 Strawberry Road\",\n    \"address_city\": \"Atlanta\",\n    \"address_state\": \"GA\",\n    \"address_zip\": \"99999-1000\",\n    \"ssn\": \"888-88-8888\",\n    \"email\": \"marissa@protonmail.com\",\n    \"date_of_birth\": \"2018-06-20T09:12:30+00:00\",\n    \"name_prefix\": \"Dr.\",\n    \"name_middle\": \"Louise\",\n    \"name_suffix\": \"Jr\",\n    \"address_line_two\": \"Suite 101\",\n    \"assign_to_accounts\": [\n        {\n            \"account_id\": 103,\n            \"customer_account_role\": \"PRIMARY\",\n            \"customer_account_external_id\": \"4465220133024156\"\n        },\n        {\n            \"account_id\": 103,\n            \"customer_account_role\": \"PRIMARY\",\n            \"customer_account_external_id\": \"4465220133024156\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d5cab9d1-98ac-48a0-8012-ef46c4ef96df",
+      "name": "accounts",
+      "description": {
+        "content": "Manage the way your users use credit products you've launched in Canopy",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7dd2e4f3-2f18-4f9b-b0ae-73192f0ef6a6",
+          "name": "Create a new account",
+          "request": {
+            "name": "Create a new account",
+            "description": {
+              "content": "At least one account should be created for customer of each of your products. Once created, you will be able to add `line_items` to the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": true
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"effective_at\": \"<dateTime>\",\n    \"product_id\": \"<integer>\",\n    \"external_product_id\": \"<string>\",\n    \"external_fields\": [\n        {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n        },\n        {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n        }\n    ],\n    \"summary\": {\n        \"credit_limit_cents\": \"<integer>\",\n        \"max_approved_credit_limit_cents\": \"<integer>\",\n        \"late_fee_cents\": \"<number>\",\n        \"payment_reversal_fee_cents\": \"<number>\",\n        \"initial_principal_cents\": \"<number>\"\n    },\n    \"promo_overview\": {\n        \"promo_impl_interest_rate_percent\": \"<number>\"\n    },\n    \"post_promo_overview\": {\n        \"post_promo_impl_interest_rate_percent\": \"<number>\",\n        \"post_promo_impl_am_len\": \"<integer>\"\n    },\n    \"associated_entities\": {\n        \"merchant_name\": \"<string>\",\n        \"lender_name\": \"<string>\"\n    },\n    \"assign_customers\": [\n        {\n            \"customer_id\": \"<integer>\",\n            \"customer_account_role\": \"<string>\"\n        },\n        {\n            \"customer_id\": \"<integer>\",\n            \"customer_account_role\": \"<string>\"\n        }\n    ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "97540a45-65ca-4474-ae6b-9249075c08f0",
+              "name": "Successful query of information for a specific account",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"effective_at\": \"2016-11-27T13:19:56+00:00\",\n    \"product_id\": 6,\n    \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n    \"external_fields\": [\n        {\n            \"key\": \"Umbrella Corporation\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        },\n        {\n            \"key\": \"Umbrella Corporation\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        }\n    ],\n    \"summary\": {\n        \"credit_limit_cents\": 400000,\n        \"max_approved_credit_limit_cents\": 400000,\n        \"late_fee_cents\": 2900,\n        \"payment_reversal_fee_cents\": 2900,\n        \"initial_principal_cents\": 400000\n    },\n    \"promo_overview\": {\n        \"promo_impl_interest_rate_percent\": 6.2\n    },\n    \"post_promo_overview\": {\n        \"post_promo_impl_interest_rate_percent\": 6.2,\n        \"post_promo_impl_am_len\": 48\n    },\n    \"associated_entities\": {\n        \"merchant_name\": \"Acme Corporation\",\n        \"lender_name\": \"Globex Lending Corp\"\n    },\n    \"assign_customers\": [\n        {\n            \"customer_id\": 6,\n            \"customer_account_role\": \"SECONDARY\"\n        },\n        {\n            \"customer_id\": 6,\n            \"customer_account_role\": \"SECONDARY\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"account_id\": 9,\n \"created_at\": \"2017-06-20T09:12:14+00:00\",\n \"customers\": [\n  {\n   \"customer_id\": 8,\n   \"name_prefix\": \"Dr.\",\n   \"name_first\": \"Miriam\",\n   \"name_middle\": \"Louise\",\n   \"name_last\": \"Trevino\",\n   \"name_suffix\": \"Jr\",\n   \"phone_number\": \"555-555-5555\",\n   \"address_line_one\": \"12 Strawberry Road\",\n   \"address_line_two\": \"Suite 101\",\n   \"address_city\": \"Atlanta\",\n   \"address_state\": \"GA\",\n   \"address_zip\": \"99999-1000\",\n   \"ssn\": \"888-88-8888\",\n   \"email\": \"marissa@protonmail.com\",\n   \"date_of_birth\": \"2018-06-20T09:12:30+00:00\"\n  },\n  {\n   \"customer_id\": 8,\n   \"name_prefix\": \"Dr.\",\n   \"name_first\": \"Miriam\",\n   \"name_middle\": \"Louise\",\n   \"name_last\": \"Trevino\",\n   \"name_suffix\": \"Jr\",\n   \"phone_number\": \"555-555-5555\",\n   \"address_line_one\": \"12 Strawberry Road\",\n   \"address_line_two\": \"Suite 101\",\n   \"address_city\": \"Atlanta\",\n   \"address_state\": \"GA\",\n   \"address_zip\": \"99999-1000\",\n   \"ssn\": \"888-88-8888\",\n   \"email\": \"marissa@protonmail.com\",\n   \"date_of_birth\": \"2018-06-20T09:12:30+00:00\"\n  }\n ],\n \"effective_at\": \"2018-03-20T09:12:28+00:00\",\n \"account_overview\": {\n  \"account_status\": \"suspended\",\n  \"account_status_subtype\": \"suspended-bankruptcy\"\n },\n \"account_product\": {\n  \"product_id\": 4,\n  \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n  \"product_overview\": {\n   \"product_name\": \"Blue Cash Express\",\n   \"product_type\": \"REVOLVING\",\n   \"product_long_description\": \"Student credit card.\",\n   \"product_color\": \"#0000FF\",\n   \"product_short_description\": \"Consumer credit card\"\n  },\n  \"product_lifecycle\": {\n   \"late_fee_impl_cents\": 2900,\n   \"payment_reversal_fee_impl_cents\": 2900,\n   \"loan_end_date\": \"2013-01-13T05:25:13.813+00:00\"\n  },\n  \"promo_overview\": {\n   \"promo_purchase_window_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_purchase_window_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_impl_interest_rate_percent\": 6.2\n  },\n  \"post_promo_overview\": {\n   \"post_promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n   \"post_promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n   \"post_promo_impl_interest_rate_percent\": 6.2,\n   \"post_promo_impl_am_len\": 48\n  },\n  \"product_duration_information\": {\n   \"promo_len\": 6,\n   \"promo_purchase_window_len\": 5\n  }\n },\n \"external_fields\": [\n  {\n   \"key\": \"Umbrella Corporation\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  },\n  {\n   \"key\": \"Umbrella Corporation\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  }\n ],\n \"min_pay_due_cents\": {\n  \"min_pay_cents\": 160000,\n  \"min_pay_due_at\": \"2019-10-18T23:04:48.321+00:00\"\n },\n \"additional_min_pay_details\": {\n  \"min_pay_charges_principal_cents\": 100000,\n  \"min_pay_interest_cents\": 30000,\n  \"min_pay_deferred_cents\": 10000,\n  \"min_pay_fees_cents\": 20000,\n  \"previous_min_pay_cents\": 400000\n },\n \"summary\": {\n  \"total_balance_cents\": 300000,\n  \"principal_cents\": 200000,\n  \"interest_balance_cents\": 60000,\n  \"deferred_interest_balance_cents\": 40000,\n  \"total_paid_to_date_cents\": 40000,\n  \"total_interest_paid_to_date_cents\": 10000,\n  \"credit_limit_cents\": 400000,\n  \"interest_rate_percent\": 3,\n  \"available_credit_cents\": 100000,\n  \"max_approved_credit_limit_cents\": 400000,\n  \"open_to_buy_cents\": 5000\n },\n \"associated_entities\": {\n  \"merchant_name\": \"Acme Corporation\",\n  \"lender_name\": \"Globex Lending Corp\"\n }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3492dc0c-62cf-40b6-bec3-6a5907091439",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"effective_at\": \"2016-11-27T13:19:56+00:00\",\n    \"product_id\": 6,\n    \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n    \"external_fields\": [\n        {\n            \"key\": \"Umbrella Corporation\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        },\n        {\n            \"key\": \"Umbrella Corporation\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        }\n    ],\n    \"summary\": {\n        \"credit_limit_cents\": 400000,\n        \"max_approved_credit_limit_cents\": 400000,\n        \"late_fee_cents\": 2900,\n        \"payment_reversal_fee_cents\": 2900,\n        \"initial_principal_cents\": 400000\n    },\n    \"promo_overview\": {\n        \"promo_impl_interest_rate_percent\": 6.2\n    },\n    \"post_promo_overview\": {\n        \"post_promo_impl_interest_rate_percent\": 6.2,\n        \"post_promo_impl_am_len\": 48\n    },\n    \"associated_entities\": {\n        \"merchant_name\": \"Acme Corporation\",\n        \"lender_name\": \"Globex Lending Corp\"\n    },\n    \"assign_customers\": [\n        {\n            \"customer_id\": 6,\n            \"customer_account_role\": \"SECONDARY\"\n        },\n        {\n            \"customer_id\": 6,\n            \"customer_account_role\": \"SECONDARY\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "10fe0122-39c6-4152-b18f-018ad8f26fc3",
+          "name": "Get a specific Account",
+          "request": {
+            "name": "Get a specific Account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "577dc8b2-70e5-4e5e-a9d0-9053fad4519c",
+              "name": "Successful query of information for a specific account",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"account_id\": 9,\n \"created_at\": \"2017-06-20T09:12:14+00:00\",\n \"customers\": [\n  {\n   \"customer_id\": 8,\n   \"name_prefix\": \"Dr.\",\n   \"name_first\": \"Miriam\",\n   \"name_middle\": \"Louise\",\n   \"name_last\": \"Trevino\",\n   \"name_suffix\": \"Jr\",\n   \"phone_number\": \"555-555-5555\",\n   \"address_line_one\": \"12 Strawberry Road\",\n   \"address_line_two\": \"Suite 101\",\n   \"address_city\": \"Atlanta\",\n   \"address_state\": \"GA\",\n   \"address_zip\": \"99999-1000\",\n   \"ssn\": \"888-88-8888\",\n   \"email\": \"marissa@protonmail.com\",\n   \"date_of_birth\": \"2018-06-20T09:12:30+00:00\"\n  },\n  {\n   \"customer_id\": 8,\n   \"name_prefix\": \"Dr.\",\n   \"name_first\": \"Miriam\",\n   \"name_middle\": \"Louise\",\n   \"name_last\": \"Trevino\",\n   \"name_suffix\": \"Jr\",\n   \"phone_number\": \"555-555-5555\",\n   \"address_line_one\": \"12 Strawberry Road\",\n   \"address_line_two\": \"Suite 101\",\n   \"address_city\": \"Atlanta\",\n   \"address_state\": \"GA\",\n   \"address_zip\": \"99999-1000\",\n   \"ssn\": \"888-88-8888\",\n   \"email\": \"marissa@protonmail.com\",\n   \"date_of_birth\": \"2018-06-20T09:12:30+00:00\"\n  }\n ],\n \"effective_at\": \"2018-03-20T09:12:28+00:00\",\n \"account_overview\": {\n  \"account_status\": \"suspended\",\n  \"account_status_subtype\": \"suspended-bankruptcy\"\n },\n \"account_product\": {\n  \"product_id\": 4,\n  \"external_product_id\": \"95fea111-d121-40f8-9e8e-a6c335e48a45\",\n  \"product_overview\": {\n   \"product_name\": \"Blue Cash Express\",\n   \"product_type\": \"REVOLVING\",\n   \"product_long_description\": \"Student credit card.\",\n   \"product_color\": \"#0000FF\",\n   \"product_short_description\": \"Consumer credit card\"\n  },\n  \"product_lifecycle\": {\n   \"late_fee_impl_cents\": 2900,\n   \"payment_reversal_fee_impl_cents\": 2900,\n   \"loan_end_date\": \"2013-01-13T05:25:13.813+00:00\"\n  },\n  \"promo_overview\": {\n   \"promo_purchase_window_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_purchase_window_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n   \"promo_impl_interest_rate_percent\": 6.2\n  },\n  \"post_promo_overview\": {\n   \"post_promo_inclusive_start\": \"2013-01-13T05:25:13.813+00:00\",\n   \"post_promo_exclusive_end\": \"2013-01-13T05:25:13.813+00:00\",\n   \"post_promo_impl_interest_rate_percent\": 6.2,\n   \"post_promo_impl_am_len\": 48\n  },\n  \"product_duration_information\": {\n   \"promo_len\": 6,\n   \"promo_purchase_window_len\": 5\n  }\n },\n \"external_fields\": [\n  {\n   \"key\": \"Umbrella Corporation\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  },\n  {\n   \"key\": \"Umbrella Corporation\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  }\n ],\n \"min_pay_due_cents\": {\n  \"min_pay_cents\": 160000,\n  \"min_pay_due_at\": \"2019-10-18T23:04:48.321+00:00\"\n },\n \"additional_min_pay_details\": {\n  \"min_pay_charges_principal_cents\": 100000,\n  \"min_pay_interest_cents\": 30000,\n  \"min_pay_deferred_cents\": 10000,\n  \"min_pay_fees_cents\": 20000,\n  \"previous_min_pay_cents\": 400000\n },\n \"summary\": {\n  \"total_balance_cents\": 300000,\n  \"principal_cents\": 200000,\n  \"interest_balance_cents\": 60000,\n  \"deferred_interest_balance_cents\": 40000,\n  \"total_paid_to_date_cents\": 40000,\n  \"total_interest_paid_to_date_cents\": 10000,\n  \"credit_limit_cents\": 400000,\n  \"interest_rate_percent\": 3,\n  \"available_credit_cents\": 100000,\n  \"max_approved_credit_limit_cents\": 400000,\n  \"open_to_buy_cents\": 5000\n },\n \"associated_entities\": {\n  \"merchant_name\": \"Acme Corporation\",\n  \"lender_name\": \"Globex Lending Corp\"\n }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb3666e4-ff0c-4f6f-9bbd-4af80d070f75",
+              "name": "Account not found",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "80df7322-eb71-47ca-8686-af2abc1d25d8",
+      "name": "line_items",
+      "description": {
+        "content": "Manage individual line items for your customers in Canopy.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1fdd0de4-9eb4-444b-a5d4-1a3b764400aa",
+          "name": "Get line items for a specific account.",
+          "request": {
+            "name": "Get line items for a specific account.",
+            "description": {
+              "content": "Line Items for an Account include `charges` to the account and `payments` by the account holder. Results are paginated and sorted by line item effective date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "line_items"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                {
+                  "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The maximum number of line items to be returned. Defaults to 100.",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a291d68-70e8-444f-8efe-6c2a94482b69",
+              "name": "Array of Line Items and their corresponding balances at their effective dates and times.",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "20"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n {\n  \"account_id\": 4,\n  \"line_item_id\": 2,\n  \"effective_at\": \"2018-07-20T09:12:30+00:00\",\n  \"created_at\": \"2018-06-20T09:12:30+00:00\",\n  \"product_id\": 1,\n  \"line_item_overview\": {\n   \"line_item_status\": \"VALID\",\n   \"line_item_type\": \"CHARGE\",\n   \"description\": \"Refund for invalid purchase\"\n  },\n  \"line_item_summary\": {\n   \"original_amount_cents\": 2484,\n   \"balance_cents\": 2416,\n   \"principal_cents\": 2400,\n   \"total_interest_accrued_cents\": 16\n  },\n  \"merchant_data\": {\n   \"name\": \"Ut Duis in\",\n   \"id\": \"cillum nisi\",\n   \"mcc_code\": -19415969.22589715,\n   \"phone_number\": \"culpa Excepteur irure\"\n  },\n  \"external_fields\": [\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   },\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   }\n  ]\n },\n {\n  \"account_id\": 4,\n  \"line_item_id\": 2,\n  \"effective_at\": \"2018-07-20T09:12:30+00:00\",\n  \"created_at\": \"2018-06-20T09:12:30+00:00\",\n  \"product_id\": 1,\n  \"line_item_overview\": {\n   \"line_item_status\": \"VALID\",\n   \"line_item_type\": \"CHARGE\",\n   \"description\": \"Refund for invalid purchase\"\n  },\n  \"line_item_summary\": {\n   \"original_amount_cents\": 2484,\n   \"balance_cents\": 2416,\n   \"principal_cents\": 2400,\n   \"total_interest_accrued_cents\": 16\n  },\n  \"merchant_data\": {\n   \"name\": \"f\",\n   \"id\": \"laboris fugiat minim\",\n   \"mcc_code\": -91782783.3676386,\n   \"phone_number\": \"nisi proident\"\n  },\n  \"external_fields\": [\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   },\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   }\n  ]\n }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0818492f-3f8d-4113-a6cf-0f6a3389dda2",
+              "name": "Line Items not found",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "20"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "c7a6bc04-31b1-43c3-a28c-2bf9fb3e1f1d",
+          "name": "Get information on a specific line item for a specific account",
+          "request": {
+            "name": "Get information on a specific line item for a specific account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "line_items", ":line_item_id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                },
+                {
+                  "description": "(Required) Line Item ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "line_item_id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ed79a15-47ef-42d8-9c91-9633ba5e0f60",
+              "name": "Array of Line Items where the last element is the root line item whose details were requested.",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items", ":line_item_id"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    },
+                    {
+                      "type": "any",
+                      "key": "line_item_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n {\n  \"account_id\": 4,\n  \"line_item_id\": 2,\n  \"effective_at\": \"2018-07-20T09:12:30+00:00\",\n  \"created_at\": \"2018-06-20T09:12:30+00:00\",\n  \"product_id\": 1,\n  \"line_item_overview\": {\n   \"line_item_status\": \"VALID\",\n   \"line_item_type\": \"CHARGE\",\n   \"description\": \"Refund for invalid purchase\"\n  },\n  \"line_item_summary\": {\n   \"original_amount_cents\": 2484,\n   \"balance_cents\": 2416,\n   \"principal_cents\": 2400,\n   \"total_interest_accrued_cents\": 16\n  },\n  \"merchant_data\": {\n   \"name\": \"Ut Duis in\",\n   \"id\": \"cillum nisi\",\n   \"mcc_code\": -19415969.22589715,\n   \"phone_number\": \"culpa Excepteur irure\"\n  },\n  \"external_fields\": [\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   },\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   }\n  ]\n },\n {\n  \"account_id\": 4,\n  \"line_item_id\": 2,\n  \"effective_at\": \"2018-07-20T09:12:30+00:00\",\n  \"created_at\": \"2018-06-20T09:12:30+00:00\",\n  \"product_id\": 1,\n  \"line_item_overview\": {\n   \"line_item_status\": \"VALID\",\n   \"line_item_type\": \"CHARGE\",\n   \"description\": \"Refund for invalid purchase\"\n  },\n  \"line_item_summary\": {\n   \"original_amount_cents\": 2484,\n   \"balance_cents\": 2416,\n   \"principal_cents\": 2400,\n   \"total_interest_accrued_cents\": 16\n  },\n  \"merchant_data\": {\n   \"name\": \"f\",\n   \"id\": \"laboris fugiat minim\",\n   \"mcc_code\": -91782783.3676386,\n   \"phone_number\": \"nisi proident\"\n  },\n  \"external_fields\": [\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   },\n   {\n    \"key\": \"Globex Card Processing Account ID\",\n    \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n   }\n  ]\n }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54330de0-7456-4771-98ec-58540a9d055e",
+              "name": "Line Items not found",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items", ":line_item_id"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    },
+                    {
+                      "type": "any",
+                      "key": "line_item_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "886332e6-cd30-4bd3-af1d-8aff7e79e731",
+          "name": "Create a charge for a specific account",
+          "request": {
+            "name": "Create a charge for a specific account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "line_items", "charges"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"original_amount_cents\": \"<integer>\",\n    \"merchant_data\": {\n        \"mcc_code\": \"<number>\",\n        \"name\": \"<string>\",\n        \"id\": \"<string>\",\n        \"phone_number\": \"<string>\"\n    },\n    \"effective_at\": \"<dateTime>\",\n    \"external_fields\": [\n        {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n        },\n        {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n        }\n    ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "abf61e78-8628-4316-b45d-273d96301586",
+              "name": "Charge Created",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items", "charges"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"original_amount_cents\": 200,\n    \"merchant_data\": {\n        \"mcc_code\": \"<number>\",\n        \"name\": \"<string>\",\n        \"id\": \"<string>\",\n        \"phone_number\": \"<string>\"\n    },\n    \"effective_at\": \"2020-07-20T09:11:28+00:00\",\n    \"external_fields\": [\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        },\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"account_id\": 4,\n \"line_item_id\": 2,\n \"effective_at\": \"2018-07-20T09:12:30+00:00\",\n \"created_at\": \"2018-06-20T09:12:30+00:00\",\n \"product_id\": 158,\n \"line_item_overview\": {\n  \"line_item_status\": \"VALID\",\n  \"line_item_type\": \"CHARGE\",\n  \"description\": \"Refund for invalid purchase\"\n },\n \"line_item_summary\": {\n  \"original_amount_cents\": 2484\n },\n \"merchant_data\": {\n  \"name\": \"pa\",\n  \"id\": \"cillum Ut amet culpa\",\n  \"mcc_code\": -775802.7062365115,\n  \"phone_number\": \"in\"\n },\n \"external_fields\": [\n  {\n   \"key\": \"Globex Card Processing Account ID\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  },\n  {\n   \"key\": \"Globex Card Processing Account ID\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  }\n ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4d6d919-ba6e-4fcf-bb29-e55d5f092c80",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items", "charges"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"original_amount_cents\": 200,\n    \"merchant_data\": {\n        \"mcc_code\": \"<number>\",\n        \"name\": \"<string>\",\n        \"id\": \"<string>\",\n        \"phone_number\": \"<string>\"\n    },\n    \"effective_at\": \"2020-07-20T09:11:28+00:00\",\n    \"external_fields\": [\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        },\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "a0a22a90-3625-480f-8ce5-28da58c4ae94",
+          "name": "Create a payment for a specific account",
+          "request": {
+            "name": "Create a payment for a specific account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "line_items", "payments"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"original_amount_cents\": \"<integer>\",\n    \"effective_at\": \"<dateTime>\",\n    \"external_fields\": [\n        {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n        },\n        {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n        }\n    ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "f039608f-7714-4f0a-ba0a-7a3a791751fa",
+              "name": "Payment Created",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items", "payments"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"original_amount_cents\": 200,\n    \"effective_at\": \"2020-07-20T09:11:28+00:00\",\n    \"external_fields\": [\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        },\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"account_id\": 4,\n \"line_item_id\": 2,\n \"effective_at\": \"2018-07-20T09:12:30+00:00\",\n \"created_at\": \"2018-06-20T09:12:30+00:00\",\n \"product_id\": 158,\n \"line_item_overview\": {\n  \"line_item_status\": \"VALID\",\n  \"line_item_type\": \"CHARGE\",\n  \"description\": \"Refund for invalid purchase\"\n },\n \"line_item_summary\": {\n  \"original_amount_cents\": 2484\n },\n \"merchant_data\": {\n  \"name\": \"pa\",\n  \"id\": \"cillum Ut amet culpa\",\n  \"mcc_code\": -775802.7062365115,\n  \"phone_number\": \"in\"\n },\n \"external_fields\": [\n  {\n   \"key\": \"Globex Card Processing Account ID\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  },\n  {\n   \"key\": \"Globex Card Processing Account ID\",\n   \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n  }\n ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c29a09d9-bcf5-46fc-8330-2f00713ae78c",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "line_items", "payments"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"original_amount_cents\": 200,\n    \"effective_at\": \"2020-07-20T09:11:28+00:00\",\n    \"external_fields\": [\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        },\n        {\n            \"key\": \"Globex Card Processing Account ID\",\n            \"value\": \"22445702-a389-431f-927d-07b8d0750787\"\n        }\n    ]\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "245fb297-4ecf-4a0f-b46e-122f5d9ecc8f",
+      "name": "notes",
+      "description": {
+        "content": "Help your customer service team track its activity across accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2e80026-900b-4d47-8d5f-a4e726726b65",
+          "name": "Create a note for a specific account.",
+          "request": {
+            "name": "Create a note for a specific account.",
+            "description": {
+              "content": "A note to be added to the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "notes"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"message\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "e99cc461-b277-458f-921b-384a43cad2db",
+              "name": "New Note Created",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "notes"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"message\": \"Attempted to call back customer, but no response.\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"note_id\": 1,\n \"account_id\": 1,\n \"author\": {\n  \"api_user_id\": 23,\n  \"organization_name\": \"Lever Card 3000\",\n  \"email\": \"marissa@globex.com\",\n  \"role\": \"SERVICING\",\n  \"name_first\": \"Analise\",\n  \"name_last\": \"Goldberg\",\n  \"phone\": \"1-123-456-7890\"\n },\n \"message\": \"Attempted to call back customer, but no response.\",\n \"created_date\": \"2017-08-18T04:21:59.971Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3f5c45a-2cec-46bb-b00b-62da1fc79d68",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "notes"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"message\": \"Attempted to call back customer, but no response.\"\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "8c382ef8-6cd7-4953-a97b-2ed96f8bbadc",
+          "name": "Get All Notes for a specific Account",
+          "request": {
+            "name": "Get All Notes for a specific Account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "notes"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e303db2-c171-4278-9d0c-de89beec09f4",
+              "name": "Successful query of history of notes for a specific account",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "notes"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n {\n  \"note_id\": 1,\n  \"account_id\": 1,\n  \"author\": {\n   \"api_user_id\": 23,\n   \"organization_name\": \"Lever Card 3000\",\n   \"email\": \"marissa@globex.com\",\n   \"role\": \"SERVICING\",\n   \"name_first\": \"Analise\",\n   \"name_last\": \"Goldberg\",\n   \"phone\": \"1-123-456-7890\"\n  },\n  \"message\": \"Attempted to call back customer, but no response.\",\n  \"created_date\": \"1988-03-12T06:42:07.310Z\"\n },\n {\n  \"note_id\": 1,\n  \"account_id\": 1,\n  \"author\": {\n   \"api_user_id\": 23,\n   \"organization_name\": \"Lever Card 3000\",\n   \"email\": \"marissa@globex.com\",\n   \"role\": \"SERVICING\",\n   \"name_first\": \"Analise\",\n   \"name_last\": \"Goldberg\",\n   \"phone\": \"1-123-456-7890\"\n  },\n  \"message\": \"Attempted to call back customer, but no response.\",\n  \"created_date\": \"1989-07-18T04:44:24.752Z\"\n }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c47f47f3-6379-414e-8f91-c4687428c86f",
+              "name": "Note not found",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "notes"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cef843ec-999b-40ce-bc2c-2843bc19184f",
+      "name": "statements",
+      "description": {
+        "content": "Generate per billing cycle statements for your accounts in Canopy.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0205b90-214b-4cd8-9540-4d1309688a3a",
+          "name": "Get a list of all current and prior statements for a specific account",
+          "request": {
+            "name": "Get a list of all current and prior statements for a specific account",
+            "description": {
+              "content": "List of statements for the account. To view line items for a specific statement, use the `/accounts/{account_id}/statements` route",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "statements", "list"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                {
+                  "description": "The zero-indexed starting point for paginated statements list requests sorted by reverse statement date.",
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The maximum number of accounts to be returned. Defaults to 100.",
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "baae85ca-096e-4543-bf89-873789df7bc6",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "statements", "list"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "50"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n {\n  \"account_id\": 6,\n  \"statement_id\": 8,\n  \"effective_as_of_date\": \"2018-07-20T09:10:14+00:00\",\n  \"cycle_summary\": {\n   \"cycle_inclusive_start\": \"1999-10-04T16:54:58.208Z\",\n   \"cycle_exclusive_end\": \"1979-12-03T14:16:34.302Z\"\n  },\n  \"min_pay_due_cents\": {\n   \"min_pay_cents\": 160000,\n   \"min_pay_due_at\": \"2019-10-18T23:04:48.321+00:00\"\n  },\n  \"balance_summary\": {\n   \"total_balance_cents\": 400000\n  }\n },\n {\n  \"account_id\": 6,\n  \"statement_id\": 8,\n  \"effective_as_of_date\": \"2018-07-20T09:10:14+00:00\",\n  \"cycle_summary\": {\n   \"cycle_inclusive_start\": \"1945-11-03T09:51:09.572Z\",\n   \"cycle_exclusive_end\": \"1989-06-06T12:03:53.674Z\"\n  },\n  \"min_pay_due_cents\": {\n   \"min_pay_cents\": 160000,\n   \"min_pay_due_at\": \"2019-10-18T23:04:48.321+00:00\"\n  },\n  \"balance_summary\": {\n   \"total_balance_cents\": 400000\n  }\n }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db6e7067-4851-4b4c-a545-695fbdc48260",
+              "name": "Statements not found",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "statements", "list"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "50"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "d0b94d6e-a481-4300-92b7-90570bb23e2c",
+          "name": "Get a specific statement for a specific account.",
+          "request": {
+            "name": "Get a specific statement for a specific account.",
+            "description": {
+              "content": "This will return a statement that corresponds with the passed Statement ID. Relevant IDs for an account's historical statements can be obtained from the `accounts/{account_id}/statements/list` route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "statements", ":statement_id"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                },
+                {
+                  "description": "(Required) The ID of a specific statement you would like returned.",
+                  "type": "any",
+                  "value": "<dateTime>",
+                  "key": "statement_id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ce075a5-18a8-4c35-9bce-3481e89026ee",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "statements", ":statement_id"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    },
+                    {
+                      "type": "any",
+                      "key": "statement_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"account_id\": 6,\n \"statement_id\": 8,\n \"effective_as_of_date\": \"2018-07-20T09:10:14+00:00\",\n \"account_overview\": {\n  \"promo_purchase_window_inclusive_start\": \"2015-08-31T10:49:44.461+00:00\",\n  \"promo_purchase_window_exclusive_end\": \"2015-08-31T10:49:44.461+00:00\",\n  \"promo_inclusive_start\": \"2015-08-31T10:49:44.461+00:00\",\n  \"promo_exclusive_end\": \"2015-08-31T10:49:44.461+00:00\",\n  \"account_status\": \"suspended\",\n  \"account_status_subtype\": \"suspended-bankruptcy\"\n },\n \"open_to_buy\": {\n  \"credit_limit_cents\": 400000,\n  \"total_charges_cents\": 800000,\n  \"available_credit_cents\": 600000,\n  \"open_to_buy_cents\": -64186390\n },\n \"cycle_summary\": {\n  \"cycle_inclusive_start\": \"1972-02-18T08:07:31.020Z\",\n  \"cycle_exclusive_end\": \"1996-09-18T07:22:55.243Z\",\n  \"cycle_charges_cents\": 700000,\n  \"cycle_loans_cents\": 700000,\n  \"cycle_charge_returns_cents\": 100000,\n  \"cycle_payments_cents\": 200000,\n  \"cycle_payment_reversals_cents\": 200000,\n  \"cycle_debit_adjustments_cents\": 40000,\n  \"cycle_credit_adjustments_cents\": 53000,\n  \"cycle_interest_cents\": 110000,\n  \"cycle_deferred_interest_cents\": 300000,\n  \"cycle_late_fees_cents\": 300000,\n  \"cycle_payment_reversals_fees_cents\": 300000,\n  \"cycle_forgiven_deferred_interest_cents\": 40000\n },\n \"min_pay_due\": {\n  \"min_pay_cents\": 160000,\n  \"min_pay_due_at\": \"2019-10-18T23:04:48.321+00:00\"\n },\n \"additional_min_pay_details\": {\n  \"min_pay_charges_principal_cents\": 100000,\n  \"min_pay_interest_cents\": 30000,\n  \"min_pay_deferred_cents\": 10000,\n  \"min_pay_fees_cents\": 20000,\n  \"previous_min_pay_cents\": 400000\n },\n \"balance_summary\": {\n  \"charges_principal_cents\": 900000,\n  \"loans_principal_cents\": 900000,\n  \"interest_balance_cents\": 100000,\n  \"deferred_interest_balance_cents\": 700000,\n  \"fees_balance_cents\": 700000,\n  \"total_balance_cents\": 400000\n },\n \"payoff\": {\n  \"total_payoff_cents\": 1100000\n }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6423d705-8931-4794-bbdc-b5097e7a49f4",
+              "name": "Statement not found",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "statements", ":statement_id"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    },
+                    {
+                      "type": "any",
+                      "key": "statement_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5116c917-8938-4ff7-8adb-033833123eca",
+      "name": "authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0dcb0820-2ac1-4977-bc33-bfeb7895930c",
+          "name": "Invite a new API user to Canopy",
+          "request": {
+            "name": "Invite a new API user to Canopy",
+            "description": {
+              "content": "When you create a new API user via this `POST` request, an email invite will be sent for the new user to join your organization. The email invite includes a link with a unique token that will allow the new user to register to join your team in Canopy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["api_users"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"<email>\",\n    \"role\": \"<number>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "f3ea1858-7f90-48d6-b361-ea2f46b884de",
+              "name": "Successfully invited a new user",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"marissa@globex.com\",\n    \"role\": 3\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"email\": \"marissa@globex.com\",\n \"created_at\": \"2018-06-20T09:12:30+00:00\",\n \"expires_at\": \"2018-06-21T09:12:30+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09524565-9820-45e4-ab8a-3e447e3c9860",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"marissa@globex.com\",\n    \"role\": 3\n}"
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "3ac68548-d86d-4c99-bd13-cd68883fd9a0",
+          "name": "Get all API users in your organization",
+          "request": {
+            "name": "Get all API users in your organization",
+            "description": {
+              "content": "Returns a list of all API users in your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["api_users"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": true
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f9212017-7abb-48b7-99d9-be7aabcf6492",
+              "name": "Array of API Users",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n {\n  \"api_user_id\": 23,\n  \"organization_name\": \"Lever Card 3000\",\n  \"email\": \"marissa@globex.com\",\n  \"role\": \"SERVICING\",\n  \"name_first\": \"Analise\",\n  \"name_last\": \"Goldberg\",\n  \"phone\": \"1-123-456-7890\"\n },\n {\n  \"api_user_id\": 23,\n  \"organization_name\": \"Lever Card 3000\",\n  \"email\": \"marissa@globex.com\",\n  \"role\": \"SERVICING\",\n  \"name_first\": \"Analise\",\n  \"name_last\": \"Goldberg\",\n  \"phone\": \"1-123-456-7890\"\n }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d4b32e4-5ed6-48b4-9d61-883f07d1b767",
+              "name": "No Api Users found",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "76147678-4160-4f04-b377-9eeea0cf8b6e",
+          "name": "Log in as an API user",
+          "request": {
+            "name": "Log in as an API user",
+            "description": {
+              "content": "When provided appropriate credentials, this route signs in an API user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["api_users", "login"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"<email>\",\n    \"password\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "c6361525-5309-43e9-a77c-6bc354aa67b5",
+              "name": "Successfully logged in as an API user",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "login"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"marissa@globex.com\",\n    \"password\": \"secretPassword123!\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"api_user_id\": \"44197ea2-eb78-4511-bcf2-bc28201f9c01\",\n \"organization_name\": \"Lever Card 3000\",\n \"email\": \"marissa@globex.com\",\n \"role\": \"SERVICING\",\n \"token\": \"commodo in reprehenderit nulla\",\n \"first_name\": \"Analise\",\n \"last_name\": \"Goldberg\",\n \"phone\": \"1-123-456-7890\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d77d4cb7-49e8-401b-9081-07165d0c7350",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "login"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"marissa@globex.com\",\n    \"password\": \"secretPassword123!\"\n}"
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "796b9579-f9ba-460f-8147-ba192ba54ac8",
+          "name": "Update the password for an API User",
+          "request": {
+            "name": "Update the password for an API User",
+            "description": {
+              "content": "When provided appropriate credentials, this route changes an API User's password.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["api_users", "password"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"current_password\": \"<string>\",\n    \"new_password\": \"<string>\",\n    \"token\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "c1e76593-9e57-4164-ba3e-d1ecf2cbfcfc",
+              "name": "Successfully logged in as an API user",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "password"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"current_password\": \"currentSecretPassword123!\",\n    \"new_password\": \"newSecretPassword123!\",\n    \"token\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"api_user_id\": \"44197ea2-eb78-4511-bcf2-bc28201f9c01\",\n \"organization_name\": \"Lever Card 3000\",\n \"email\": \"marissa@globex.com\",\n \"role\": \"SERVICING\",\n \"token\": \"commodo in reprehenderit nulla\",\n \"first_name\": \"Analise\",\n \"last_name\": \"Goldberg\",\n \"phone\": \"1-123-456-7890\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b145f36-c517-4b74-a393-4d01318c311a",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "password"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"current_password\": \"currentSecretPassword123!\",\n    \"new_password\": \"newSecretPassword123!\",\n    \"token\": \"<string>\"\n}"
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "fa5a1c2b-44b6-4a88-9b83-0d4ed30ce65d",
+          "name": "Complete registration for an invited API user",
+          "request": {
+            "name": "Complete registration for an invited API user",
+            "description": {
+              "content": "When provided appropriate credentials, this route updates an API user's information for registration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["api_users", "register"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email_confirm\": \"<email>\",\n    \"new_password\": \"<string>\",\n    \"name_first\": \"<string>\",\n    \"name_last\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"token\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "32eeb5b0-a959-4a92-8429-a6bb31a2dc02",
+              "name": "API user successfully registered",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "register"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email_confirm\": \"harriet@acmecorporation.com\",\n    \"new_password\": \"newSecretPassword123!\",\n    \"name_first\": \"Karl\",\n    \"name_last\": \"Martins\",\n    \"phone\": \"1-222-222-2222\",\n    \"token\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"api_user_id\": 23,\n \"organization_name\": \"Lever Card 3000\",\n \"email\": \"marissa@globex.com\",\n \"role\": \"SERVICING\",\n \"name_first\": \"Analise\",\n \"name_last\": \"Goldberg\",\n \"phone\": \"1-123-456-7890\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33a571d4-3729-48a1-8356-77ea960d6c96",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "register"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email_confirm\": \"harriet@acmecorporation.com\",\n    \"new_password\": \"newSecretPassword123!\",\n    \"name_first\": \"Karl\",\n    \"name_last\": \"Martins\",\n    \"phone\": \"1-222-222-2222\",\n    \"token\": \"<string>\"\n}"
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "144f27f3-63f6-4542-9ea3-afc97f1829ff",
+          "name": "Get summary info for an API user",
+          "request": {
+            "name": "Get summary info for an API user",
+            "description": {
+              "content": "Get all summarized information pertaining to the API user making the request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["api_users", "summary"],
+              "host": ["{{baseUrl}}"],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": true
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "64f6bbf8-f4ab-4251-9a4c-735042b2c12e",
+              "name": "API User",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "summary"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n \"api_user_id\": 23,\n \"organization_name\": \"Lever Card 3000\",\n \"email\": \"marissa@globex.com\",\n \"role\": \"SERVICING\",\n \"name_first\": \"Analise\",\n \"name_last\": \"Goldberg\",\n \"phone\": \"1-123-456-7890\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2ff2443-865f-410c-bcdf-29c5514a1e6e",
+              "name": "No API user found.",
+              "originalRequest": {
+                "url": {
+                  "path": ["api_users", "summary"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "572ef592-2724-4959-8f74-708cfa915212",
+      "name": "amortization_schedule",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "872ef364-3609-49c2-a499-9065d0614723",
+          "name": "Get the amortization schedule for a specific loan",
+          "request": {
+            "name": "Get the amortization schedule for a specific loan",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": ["accounts", ":account_id", "amortization_schedule"],
+              "host": ["{{baseUrl}}"],
+              "query": [
+                {
+                  "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
+                  "key": "offset",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The maximum number of line items to be returned. Defaults to 100.",
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "(Required) Account ID",
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f5851cb-42a1-4fb3-8c28-ed47ad873d87",
+              "name": "Amortization schedule for a loan",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "amortization_schedule"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "20"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n {\n  \"min_pay_due_at\": \"2018-07-20T09:10:14+00:00\",\n  \"am_min_pay_cents\": 160000,\n  \"amount_paid_cents\": 18325,\n  \"interest_allocation_cents\": 2415,\n  \"deferred_interest_allocation_cents\": 400,\n  \"principal_allocation_cents\": 15911,\n  \"end_balance_cents\": 136691\n },\n {\n  \"min_pay_due_at\": \"2018-07-20T09:10:14+00:00\",\n  \"am_min_pay_cents\": 160000,\n  \"amount_paid_cents\": 18325,\n  \"interest_allocation_cents\": 2415,\n  \"deferred_interest_allocation_cents\": 400,\n  \"principal_allocation_cents\": 15911,\n  \"end_balance_cents\": 136691\n }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82227cf7-f0c0-4b93-9a4a-d1080af7e5d6",
+              "name": "Amortization Schedule not found",
+              "originalRequest": {
+                "url": {
+                  "path": ["accounts", ":account_id", "amortization_schedule"],
+                  "host": ["{{baseUrl}}"],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "20"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "key": "account_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "id": "baseUrl",
+      "type": "string",
+      "value": "https://sandbox.canopyservicing.com"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": true
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "14403762-9c7c-4e76-8556-275d22e7302f",
+    "name": "Canopy Servicing Core API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**API Overview** \n Canopy allows you to easily manage credit, installment, or other more complex lending programs from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Canopy additionally surfaces information around all of your lending activity through its intuitive UI which provides a customer support interface as well as at-a-glance data needed for compliance and insights. \n \n Simply configure your product’s policies through our Create Product API endpoint, and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.\n\nContact Support:\n Email: devs@canopyservicing.com",
+      "type": "text/plain"
+    }
+  }
+}
