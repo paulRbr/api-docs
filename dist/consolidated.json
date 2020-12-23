@@ -3660,13 +3660,36 @@
                           "line_item_status": {
                             "type": "string",
                             "description": "the corresponding Status for a line item",
-                            "enum": ["VALID", "INVALID"],
+                            "enum": [
+                              "VALID",
+                              "INVALID",
+                              "OFFSET",
+                              "SPLIT_VALID",
+                              "SPLIT_INVALID",
+                              "PENDING",
+                              "REVERSED"
+                            ],
                             "example": "VALID"
                           },
                           "line_item_type": {
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": ["CHARGE", "PAYMENT", "LATE_FEE", "PAYMENT_REVERSAL_FEE"],
+                            "enum": [
+                              "CHARGE",
+                              "DEBIT_OFFSET",
+                              "INTEREST",
+                              "PAYMENT",
+                              "CREDIT_OFFSET",
+                              "STATEMENT",
+                              "MIN_DUE",
+                              "FEE",
+                              "PRODUCT_INTEREST",
+                              "PAYMENT_SPLIT",
+                              "LATE_FEE",
+                              "RETURN_CHECK_FEE",
+                              "PROMO_END",
+                              "PURCHASE_WINDOW_END"
+                            ],
                             "example": "CHARGE"
                           },
                           "description": {
@@ -3835,13 +3858,36 @@
                           "line_item_status": {
                             "type": "string",
                             "description": "the corresponding Status for a line item",
-                            "enum": ["VALID", "INVALID"],
+                            "enum": [
+                              "VALID",
+                              "INVALID",
+                              "OFFSET",
+                              "SPLIT_VALID",
+                              "SPLIT_INVALID",
+                              "PENDING",
+                              "REVERSED"
+                            ],
                             "example": "VALID"
                           },
                           "line_item_type": {
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": ["CHARGE", "PAYMENT", "LATE_FEE", "PAYMENT_REVERSAL_FEE"],
+                            "enum": [
+                              "CHARGE",
+                              "DEBIT_OFFSET",
+                              "INTEREST",
+                              "PAYMENT",
+                              "CREDIT_OFFSET",
+                              "STATEMENT",
+                              "MIN_DUE",
+                              "FEE",
+                              "PRODUCT_INTEREST",
+                              "PAYMENT_SPLIT",
+                              "LATE_FEE",
+                              "RETURN_CHECK_FEE",
+                              "PROMO_END",
+                              "PURCHASE_WINDOW_END"
+                            ],
                             "example": "CHARGE"
                           },
                           "description": {
@@ -7109,13 +7155,28 @@
               "line_item_status": {
                 "type": "string",
                 "description": "the corresponding Status for a line item",
-                "enum": ["VALID", "INVALID"],
+                "enum": ["VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
                 "example": "VALID"
               },
               "line_item_type": {
                 "type": "string",
                 "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                "enum": ["CHARGE", "PAYMENT", "LATE_FEE", "PAYMENT_REVERSAL_FEE"],
+                "enum": [
+                  "CHARGE",
+                  "DEBIT_OFFSET",
+                  "INTEREST",
+                  "PAYMENT",
+                  "CREDIT_OFFSET",
+                  "STATEMENT",
+                  "MIN_DUE",
+                  "FEE",
+                  "PRODUCT_INTEREST",
+                  "PAYMENT_SPLIT",
+                  "LATE_FEE",
+                  "RETURN_CHECK_FEE",
+                  "PROMO_END",
+                  "PURCHASE_WINDOW_END"
+                ],
                 "example": "CHARGE"
               },
               "description": {
@@ -12202,13 +12263,28 @@
                     "line_item_status": {
                       "type": "string",
                       "description": "the corresponding Status for a line item",
-                      "enum": ["VALID", "INVALID"],
+                      "enum": ["VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
                       "example": "VALID"
                     },
                     "line_item_type": {
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": ["CHARGE", "PAYMENT", "LATE_FEE", "PAYMENT_REVERSAL_FEE"],
+                      "enum": [
+                        "CHARGE",
+                        "DEBIT_OFFSET",
+                        "INTEREST",
+                        "PAYMENT",
+                        "CREDIT_OFFSET",
+                        "STATEMENT",
+                        "MIN_DUE",
+                        "FEE",
+                        "PRODUCT_INTEREST",
+                        "PAYMENT_SPLIT",
+                        "LATE_FEE",
+                        "RETURN_CHECK_FEE",
+                        "PROMO_END",
+                        "PURCHASE_WINDOW_END"
+                      ],
                       "example": "CHARGE"
                     },
                     "description": {
@@ -12337,13 +12413,28 @@
                       "line_item_status": {
                         "type": "string",
                         "description": "the corresponding Status for a line item",
-                        "enum": ["VALID", "INVALID"],
+                        "enum": ["VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
                         "example": "VALID"
                       },
                       "line_item_type": {
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                        "enum": ["CHARGE", "PAYMENT", "LATE_FEE", "PAYMENT_REVERSAL_FEE"],
+                        "enum": [
+                          "CHARGE",
+                          "DEBIT_OFFSET",
+                          "INTEREST",
+                          "PAYMENT",
+                          "CREDIT_OFFSET",
+                          "STATEMENT",
+                          "MIN_DUE",
+                          "FEE",
+                          "PRODUCT_INTEREST",
+                          "PAYMENT_SPLIT",
+                          "LATE_FEE",
+                          "RETURN_CHECK_FEE",
+                          "PROMO_END",
+                          "PURCHASE_WINDOW_END"
+                        ],
                         "example": "CHARGE"
                       },
                       "description": {
@@ -12473,13 +12564,28 @@
                       "line_item_status": {
                         "type": "string",
                         "description": "the corresponding Status for a line item",
-                        "enum": ["VALID", "INVALID"],
+                        "enum": ["VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
                         "example": "VALID"
                       },
                       "line_item_type": {
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                        "enum": ["CHARGE", "PAYMENT", "LATE_FEE", "PAYMENT_REVERSAL_FEE"],
+                        "enum": [
+                          "CHARGE",
+                          "DEBIT_OFFSET",
+                          "INTEREST",
+                          "PAYMENT",
+                          "CREDIT_OFFSET",
+                          "STATEMENT",
+                          "MIN_DUE",
+                          "FEE",
+                          "PRODUCT_INTEREST",
+                          "PAYMENT_SPLIT",
+                          "LATE_FEE",
+                          "RETURN_CHECK_FEE",
+                          "PROMO_END",
+                          "PURCHASE_WINDOW_END"
+                        ],
                         "example": "CHARGE"
                       },
                       "description": {
