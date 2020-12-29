@@ -9,11 +9,12 @@
   "author": "CanopyServicing",
   "license": "ISC",
   "scripts": {
-    "bundle": "rm -rf dist/* && swagger-cli bundle -r -o dist/consolidated.json openapi.json",
-    "validate": "swagger-cli validate dist/consolidated.json",
-    "flight-check": "yarn bundle && yarn validate",
     "preview": "bundle exec bump preview dist/consolidated.json",
-    "postman": "openapi2postmanv2 -s dist/consolidated.json -o Canopy_UAT_Postman_2.json -p -O folderStrategy=Tags includeAuthInfoInExample=false requestParametersResolution=Example"
+    "build": "yarn bundle && yarn validate",
+    "bundle": "swagger-cli bundle -r -o dist/consolidated.json openapi.json",
+    "validate": "swagger-cli validate dist/consolidated.json",
+    "postman": "openapi2postmanv2 -s dist/consolidated.json -o Canopy_UAT_Postman_2.json -p -O folderStrategy=Tags includeAuthInfoInExample=false requestParametersResolution=Example",
+    "typegen": "node scripts/generate_types.js"
   },
   "husky": {
     "hooks": {
@@ -22,11 +23,13 @@
   },
   "lint-staged": {
     "*": [
-      "yarn flight-check",
+      "yarn build",
       "pretty-quick"
     ]
   },
   "dependencies": {
+    "quicktype": "15.0.258",
+    "quicktype-core": "6.0.69",
     "swagger-cli": "4.0.4"
   },
   "devDependencies": {

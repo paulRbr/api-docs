@@ -23,11 +23,8 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Bundle into one file
-        run: yarn bundle
-
-      - name: Validate
-        run: yarn validate
+      - name: Bundle and validate OpenAPI spec
+        run: yarn build
 
       - name: Deploy to internal documentation
         uses: bump-sh/github-action@0.1
