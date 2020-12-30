@@ -56,12 +56,12 @@
       "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
       "properties": {
         "late_fee_impl_cents": {
-          "type": "number",
+          "type": "integer",
           "description": "The fee charged for late payments on the account.",
           "example": 2900
         },
         "payment_reversal_fee_impl_cents": {
-          "type": "number",
+          "type": "integer",
           "description": "The fee charged for payment reversals on the account.",
           "example": 2900
         },
@@ -143,7 +143,7 @@
           "example": 6
         },
         "promo_purchase_window_len": {
-          "type": "number",
+          "type": "integer",
           "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
           "example": 5
         }

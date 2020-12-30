@@ -752,7 +752,7 @@
                         "example": "PERCENT_PRINCIPAL"
                       },
                       "promo_purchase_window_len": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                         "example": 5
                       },
@@ -792,12 +792,12 @@
                         "example": 48
                       },
                       "post_promo_am_len_range_inclusive_lower": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "Optional lower bound for amortization length in billing cycles for the product.",
                         "example": 2
                       },
                       "post_promo_am_len_range_inclusive_upper": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "Optional upper bound for amortization length in billing cycles for the product.",
                         "example": 5
                       },
@@ -1036,7 +1036,7 @@
                           "example": "PERCENT_PRINCIPAL"
                         },
                         "promo_purchase_window_len": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                           "example": 5
                         },
@@ -1076,12 +1076,12 @@
                           "example": 48
                         },
                         "post_promo_am_len_range_inclusive_lower": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "Optional lower bound for amortization length in billing cycles for the product.",
                           "example": 2
                         },
                         "post_promo_am_len_range_inclusive_upper": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "Optional upper bound for amortization length in billing cycles for the product.",
                           "example": 5
                         },
@@ -1385,7 +1385,7 @@
                             "example": "PERCENT_PRINCIPAL"
                           },
                           "promo_purchase_window_len": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                             "example": 5
                           },
@@ -1425,12 +1425,12 @@
                             "example": 48
                           },
                           "post_promo_am_len_range_inclusive_lower": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "Optional lower bound for amortization length in billing cycles for the product.",
                             "example": 2
                           },
                           "post_promo_am_len_range_inclusive_upper": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "Optional upper bound for amortization length in billing cycles for the product.",
                             "example": 5
                           },
@@ -1730,12 +1730,12 @@
                                         "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                                         "properties": {
                                           "late_fee_impl_cents": {
-                                            "type": "number",
+                                            "type": "integer",
                                             "description": "The fee charged for late payments on the account.",
                                             "example": 2900
                                           },
                                           "payment_reversal_fee_impl_cents": {
-                                            "type": "number",
+                                            "type": "integer",
                                             "description": "The fee charged for payment reversals on the account.",
                                             "example": 2900
                                           },
@@ -1817,7 +1817,7 @@
                                             "example": 6
                                           },
                                           "promo_purchase_window_len": {
-                                            "type": "number",
+                                            "type": "integer",
                                             "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                                             "example": 5
                                           }
@@ -1914,32 +1914,32 @@
                                     ],
                                     "properties": {
                                       "total_balance_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The total balance (in cents) associated with the account.",
                                         "example": 300000
                                       },
                                       "principal_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The total balance (in cents) associated with the account.",
                                         "example": 200000
                                       },
                                       "interest_balance_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The total interest balance (in cents) associated with the account.",
                                         "example": 60000
                                       },
                                       "deferred_interest_balance_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The total deferred interest balance (in cents) associated with the account.",
                                         "example": 40000
                                       },
                                       "total_paid_to_date_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The total sum of payments made to date (in cents) associated with the account.",
                                         "example": 40000
                                       },
                                       "total_interest_paid_to_date_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                                         "example": 10000
                                       },
@@ -1959,7 +1959,7 @@
                                         "example": 3
                                       },
                                       "available_credit_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The total available credit balance (in cents) for the account.",
                                         "example": 100000
                                       },
@@ -2304,17 +2304,17 @@
                             "example": 400000
                           },
                           "late_fee_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The fee charged for late payments on the account.",
                             "example": 2900
                           },
                           "payment_reversal_fee_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The fee charged for payment reversals on the account.",
                             "example": 2900
                           },
                           "initial_principal_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The initial principal balance (in cents) for the account.",
                             "example": 400000
                           }
@@ -2495,12 +2495,12 @@
                               "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                               "properties": {
                                 "late_fee_impl_cents": {
-                                  "type": "number",
+                                  "type": "integer",
                                   "description": "The fee charged for late payments on the account.",
                                   "example": 2900
                                 },
                                 "payment_reversal_fee_impl_cents": {
-                                  "type": "number",
+                                  "type": "integer",
                                   "description": "The fee charged for payment reversals on the account.",
                                   "example": 2900
                                 },
@@ -2582,7 +2582,7 @@
                                   "example": 6
                                 },
                                 "promo_purchase_window_len": {
-                                  "type": "number",
+                                  "type": "integer",
                                   "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                                   "example": 5
                                 }
@@ -2679,32 +2679,32 @@
                           ],
                           "properties": {
                             "total_balance_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total balance (in cents) associated with the account.",
                               "example": 300000
                             },
                             "principal_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total balance (in cents) associated with the account.",
                               "example": 200000
                             },
                             "interest_balance_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total interest balance (in cents) associated with the account.",
                               "example": 60000
                             },
                             "deferred_interest_balance_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total deferred interest balance (in cents) associated with the account.",
                               "example": 40000
                             },
                             "total_paid_to_date_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total sum of payments made to date (in cents) associated with the account.",
                               "example": 40000
                             },
                             "total_interest_paid_to_date_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                               "example": 10000
                             },
@@ -2724,7 +2724,7 @@
                               "example": 3
                             },
                             "available_credit_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total available credit balance (in cents) for the account.",
                               "example": 100000
                             },
@@ -2979,12 +2979,12 @@
                               "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                               "properties": {
                                 "late_fee_impl_cents": {
-                                  "type": "number",
+                                  "type": "integer",
                                   "description": "The fee charged for late payments on the account.",
                                   "example": 2900
                                 },
                                 "payment_reversal_fee_impl_cents": {
-                                  "type": "number",
+                                  "type": "integer",
                                   "description": "The fee charged for payment reversals on the account.",
                                   "example": 2900
                                 },
@@ -3066,7 +3066,7 @@
                                   "example": 6
                                 },
                                 "promo_purchase_window_len": {
-                                  "type": "number",
+                                  "type": "integer",
                                   "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                                   "example": 5
                                 }
@@ -3163,32 +3163,32 @@
                           ],
                           "properties": {
                             "total_balance_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total balance (in cents) associated with the account.",
                               "example": 300000
                             },
                             "principal_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total balance (in cents) associated with the account.",
                               "example": 200000
                             },
                             "interest_balance_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total interest balance (in cents) associated with the account.",
                               "example": 60000
                             },
                             "deferred_interest_balance_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total deferred interest balance (in cents) associated with the account.",
                               "example": 40000
                             },
                             "total_paid_to_date_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total sum of payments made to date (in cents) associated with the account.",
                               "example": 40000
                             },
                             "total_interest_paid_to_date_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                               "example": 10000
                             },
@@ -3208,7 +3208,7 @@
                               "example": 3
                             },
                             "available_credit_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The total available credit balance (in cents) for the account.",
                               "example": 100000
                             },
@@ -5092,12 +5092,12 @@
                 "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                 "properties": {
                   "late_fee_impl_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The fee charged for late payments on the account.",
                     "example": 2900
                   },
                   "payment_reversal_fee_impl_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The fee charged for payment reversals on the account.",
                     "example": 2900
                   },
@@ -5179,7 +5179,7 @@
                     "example": 6
                   },
                   "promo_purchase_window_len": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                     "example": 5
                   }
@@ -5276,32 +5276,32 @@
             ],
             "properties": {
               "total_balance_cents": {
-                "type": "number",
+                "type": "integer",
                 "description": "The total balance (in cents) associated with the account.",
                 "example": 300000
               },
               "principal_cents": {
-                "type": "number",
+                "type": "integer",
                 "description": "The total balance (in cents) associated with the account.",
                 "example": 200000
               },
               "interest_balance_cents": {
-                "type": "number",
+                "type": "integer",
                 "description": "The total interest balance (in cents) associated with the account.",
                 "example": 60000
               },
               "deferred_interest_balance_cents": {
-                "type": "number",
+                "type": "integer",
                 "description": "The total deferred interest balance (in cents) associated with the account.",
                 "example": 40000
               },
               "total_paid_to_date_cents": {
-                "type": "number",
+                "type": "integer",
                 "description": "The total sum of payments made to date (in cents) associated with the account.",
                 "example": 40000
               },
               "total_interest_paid_to_date_cents": {
-                "type": "number",
+                "type": "integer",
                 "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                 "example": 10000
               },
@@ -5321,7 +5321,7 @@
                 "example": 3
               },
               "available_credit_cents": {
-                "type": "number",
+                "type": "integer",
                 "description": "The total available credit balance (in cents) for the account.",
                 "example": 100000
               },
@@ -5446,12 +5446,12 @@
                     "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                     "properties": {
                       "late_fee_impl_cents": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "The fee charged for late payments on the account.",
                         "example": 2900
                       },
                       "payment_reversal_fee_impl_cents": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "The fee charged for payment reversals on the account.",
                         "example": 2900
                       },
@@ -5533,7 +5533,7 @@
                         "example": 6
                       },
                       "promo_purchase_window_len": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                         "example": 5
                       }
@@ -5630,32 +5630,32 @@
                 ],
                 "properties": {
                   "total_balance_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The total balance (in cents) associated with the account.",
                     "example": 300000
                   },
                   "principal_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The total balance (in cents) associated with the account.",
                     "example": 200000
                   },
                   "interest_balance_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The total interest balance (in cents) associated with the account.",
                     "example": 60000
                   },
                   "deferred_interest_balance_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The total deferred interest balance (in cents) associated with the account.",
                     "example": 40000
                   },
                   "total_paid_to_date_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The total sum of payments made to date (in cents) associated with the account.",
                     "example": 40000
                   },
                   "total_interest_paid_to_date_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                     "example": 10000
                   },
@@ -5675,7 +5675,7 @@
                     "example": 3
                   },
                   "available_credit_cents": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The total available credit balance (in cents) for the account.",
                     "example": 100000
                   },
@@ -6069,12 +6069,12 @@
                           "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                           "properties": {
                             "late_fee_impl_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The fee charged for late payments on the account.",
                               "example": 2900
                             },
                             "payment_reversal_fee_impl_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The fee charged for payment reversals on the account.",
                               "example": 2900
                             },
@@ -6156,7 +6156,7 @@
                               "example": 6
                             },
                             "promo_purchase_window_len": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                               "example": 5
                             }
@@ -6253,32 +6253,32 @@
                       ],
                       "properties": {
                         "total_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total balance (in cents) associated with the account.",
                           "example": 300000
                         },
                         "principal_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total balance (in cents) associated with the account.",
                           "example": 200000
                         },
                         "interest_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total interest balance (in cents) associated with the account.",
                           "example": 60000
                         },
                         "deferred_interest_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total deferred interest balance (in cents) associated with the account.",
                           "example": 40000
                         },
                         "total_paid_to_date_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total sum of payments made to date (in cents) associated with the account.",
                           "example": 40000
                         },
                         "total_interest_paid_to_date_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                           "example": 10000
                         },
@@ -6298,7 +6298,7 @@
                           "example": 3
                         },
                         "available_credit_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total available credit balance (in cents) for the account.",
                           "example": 100000
                         },
@@ -6857,7 +6857,7 @@
                 "example": "PERCENT_PRINCIPAL"
               },
               "promo_purchase_window_len": {
-                "type": "number",
+                "type": "integer",
                 "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                 "example": 5
               },
@@ -6897,12 +6897,12 @@
                 "example": 48
               },
               "post_promo_am_len_range_inclusive_lower": {
-                "type": "number",
+                "type": "integer",
                 "description": "Optional lower bound for amortization length in billing cycles for the product.",
                 "example": 2
               },
               "post_promo_am_len_range_inclusive_upper": {
-                "type": "number",
+                "type": "integer",
                 "description": "Optional upper bound for amortization length in billing cycles for the product.",
                 "example": 5
               },
@@ -7515,7 +7515,7 @@
                       "example": "PERCENT_PRINCIPAL"
                     },
                     "promo_purchase_window_len": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                       "example": 5
                     },
@@ -7555,12 +7555,12 @@
                       "example": 48
                     },
                     "post_promo_am_len_range_inclusive_lower": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Optional lower bound for amortization length in billing cycles for the product.",
                       "example": 2
                     },
                     "post_promo_am_len_range_inclusive_upper": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Optional upper bound for amortization length in billing cycles for the product.",
                       "example": 5
                     },
@@ -7889,17 +7889,17 @@
                           "example": 400000
                         },
                         "late_fee_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The fee charged for late payments on the account.",
                           "example": 2900
                         },
                         "payment_reversal_fee_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The fee charged for payment reversals on the account.",
                           "example": 2900
                         },
                         "initial_principal_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The initial principal balance (in cents) for the account.",
                           "example": 400000
                         }
@@ -8599,7 +8599,7 @@
                       "example": "PERCENT_PRINCIPAL"
                     },
                     "promo_purchase_window_len": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                       "example": 5
                     },
@@ -8639,12 +8639,12 @@
                       "example": 48
                     },
                     "post_promo_am_len_range_inclusive_lower": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Optional lower bound for amortization length in billing cycles for the product.",
                       "example": 2
                     },
                     "post_promo_am_len_range_inclusive_upper": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Optional upper bound for amortization length in billing cycles for the product.",
                       "example": 5
                     },
@@ -8896,7 +8896,7 @@
                       "example": "PERCENT_PRINCIPAL"
                     },
                     "promo_purchase_window_len": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                       "example": 5
                     },
@@ -8936,12 +8936,12 @@
                       "example": 48
                     },
                     "post_promo_am_len_range_inclusive_lower": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Optional lower bound for amortization length in billing cycles for the product.",
                       "example": 2
                     },
                     "post_promo_am_len_range_inclusive_upper": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Optional upper bound for amortization length in billing cycles for the product.",
                       "example": 5
                     },
@@ -9196,7 +9196,7 @@
                         "example": "PERCENT_PRINCIPAL"
                       },
                       "promo_purchase_window_len": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                         "example": 5
                       },
@@ -9236,12 +9236,12 @@
                         "example": 48
                       },
                       "post_promo_am_len_range_inclusive_lower": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "Optional lower bound for amortization length in billing cycles for the product.",
                         "example": 2
                       },
                       "post_promo_am_len_range_inclusive_upper": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "Optional upper bound for amortization length in billing cycles for the product.",
                         "example": 5
                       },
@@ -9502,12 +9502,12 @@
                                     "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                                     "properties": {
                                       "late_fee_impl_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The fee charged for late payments on the account.",
                                         "example": 2900
                                       },
                                       "payment_reversal_fee_impl_cents": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "The fee charged for payment reversals on the account.",
                                         "example": 2900
                                       },
@@ -9589,7 +9589,7 @@
                                         "example": 6
                                       },
                                       "promo_purchase_window_len": {
-                                        "type": "number",
+                                        "type": "integer",
                                         "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                                         "example": 5
                                       }
@@ -9686,32 +9686,32 @@
                                 ],
                                 "properties": {
                                   "total_balance_cents": {
-                                    "type": "number",
+                                    "type": "integer",
                                     "description": "The total balance (in cents) associated with the account.",
                                     "example": 300000
                                   },
                                   "principal_cents": {
-                                    "type": "number",
+                                    "type": "integer",
                                     "description": "The total balance (in cents) associated with the account.",
                                     "example": 200000
                                   },
                                   "interest_balance_cents": {
-                                    "type": "number",
+                                    "type": "integer",
                                     "description": "The total interest balance (in cents) associated with the account.",
                                     "example": 60000
                                   },
                                   "deferred_interest_balance_cents": {
-                                    "type": "number",
+                                    "type": "integer",
                                     "description": "The total deferred interest balance (in cents) associated with the account.",
                                     "example": 40000
                                   },
                                   "total_paid_to_date_cents": {
-                                    "type": "number",
+                                    "type": "integer",
                                     "description": "The total sum of payments made to date (in cents) associated with the account.",
                                     "example": 40000
                                   },
                                   "total_interest_paid_to_date_cents": {
-                                    "type": "number",
+                                    "type": "integer",
                                     "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                                     "example": 10000
                                   },
@@ -9731,7 +9731,7 @@
                                     "example": 3
                                   },
                                   "available_credit_cents": {
-                                    "type": "number",
+                                    "type": "integer",
                                     "description": "The total available credit balance (in cents) for the account.",
                                     "example": 100000
                                   },
@@ -10244,12 +10244,12 @@
                           "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                           "properties": {
                             "late_fee_impl_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The fee charged for late payments on the account.",
                               "example": 2900
                             },
                             "payment_reversal_fee_impl_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The fee charged for payment reversals on the account.",
                               "example": 2900
                             },
@@ -10331,7 +10331,7 @@
                               "example": 6
                             },
                             "promo_purchase_window_len": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                               "example": 5
                             }
@@ -10428,32 +10428,32 @@
                       ],
                       "properties": {
                         "total_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total balance (in cents) associated with the account.",
                           "example": 300000
                         },
                         "principal_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total balance (in cents) associated with the account.",
                           "example": 200000
                         },
                         "interest_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total interest balance (in cents) associated with the account.",
                           "example": 60000
                         },
                         "deferred_interest_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total deferred interest balance (in cents) associated with the account.",
                           "example": 40000
                         },
                         "total_paid_to_date_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total sum of payments made to date (in cents) associated with the account.",
                           "example": 40000
                         },
                         "total_interest_paid_to_date_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                           "example": 10000
                         },
@@ -10473,7 +10473,7 @@
                           "example": 3
                         },
                         "available_credit_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total available credit balance (in cents) for the account.",
                           "example": 100000
                         },
@@ -10707,12 +10707,12 @@
                             "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                             "properties": {
                               "late_fee_impl_cents": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The fee charged for late payments on the account.",
                                 "example": 2900
                               },
                               "payment_reversal_fee_impl_cents": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The fee charged for payment reversals on the account.",
                                 "example": 2900
                               },
@@ -10794,7 +10794,7 @@
                                 "example": 6
                               },
                               "promo_purchase_window_len": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                                 "example": 5
                               }
@@ -10891,32 +10891,32 @@
                         ],
                         "properties": {
                           "total_balance_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The total balance (in cents) associated with the account.",
                             "example": 300000
                           },
                           "principal_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The total balance (in cents) associated with the account.",
                             "example": 200000
                           },
                           "interest_balance_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The total interest balance (in cents) associated with the account.",
                             "example": 60000
                           },
                           "deferred_interest_balance_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The total deferred interest balance (in cents) associated with the account.",
                             "example": 40000
                           },
                           "total_paid_to_date_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The total sum of payments made to date (in cents) associated with the account.",
                             "example": 40000
                           },
                           "total_interest_paid_to_date_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                             "example": 10000
                           },
@@ -10936,7 +10936,7 @@
                             "example": 3
                           },
                           "available_credit_cents": {
-                            "type": "number",
+                            "type": "integer",
                             "description": "The total available credit balance (in cents) for the account.",
                             "example": 100000
                           },
@@ -11550,12 +11550,12 @@
                           "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
                           "properties": {
                             "late_fee_impl_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The fee charged for late payments on the account.",
                               "example": 2900
                             },
                             "payment_reversal_fee_impl_cents": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "The fee charged for payment reversals on the account.",
                               "example": 2900
                             },
@@ -11637,7 +11637,7 @@
                               "example": 6
                             },
                             "promo_purchase_window_len": {
-                              "type": "number",
+                              "type": "integer",
                               "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
                               "example": 5
                             }
@@ -11734,32 +11734,32 @@
                       ],
                       "properties": {
                         "total_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total balance (in cents) associated with the account.",
                           "example": 300000
                         },
                         "principal_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total balance (in cents) associated with the account.",
                           "example": 200000
                         },
                         "interest_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total interest balance (in cents) associated with the account.",
                           "example": 60000
                         },
                         "deferred_interest_balance_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total deferred interest balance (in cents) associated with the account.",
                           "example": 40000
                         },
                         "total_paid_to_date_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total sum of payments made to date (in cents) associated with the account.",
                           "example": 40000
                         },
                         "total_interest_paid_to_date_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
                           "example": 10000
                         },
@@ -11779,7 +11779,7 @@
                           "example": 3
                         },
                         "available_credit_cents": {
-                          "type": "number",
+                          "type": "integer",
                           "description": "The total available credit balance (in cents) for the account.",
                           "example": 100000
                         },

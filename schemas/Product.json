@@ -142,7 +142,7 @@
           "example": "PERCENT_PRINCIPAL"
         },
         "promo_purchase_window_len": {
-          "type": "number",
+          "type": "integer",
           "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
           "example": 5
         },
@@ -182,12 +182,12 @@
           "example": 48
         },
         "post_promo_am_len_range_inclusive_lower": {
-          "type": "number",
+          "type": "integer",
           "description": "Optional lower bound for amortization length in billing cycles for the product.",
           "example": 2
         },
         "post_promo_am_len_range_inclusive_upper": {
-          "type": "number",
+          "type": "integer",
           "description": "Optional upper bound for amortization length in billing cycles for the product.",
           "example": 5
         },
