@@ -4,9 +4,10 @@
   "properties": {
     "interest_calc_time": {
       "type": "string",
-      "description": "Defaults to EST midnight. Interest for this policy is calculated at this time every X interval.",
+      "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
       "format": "time",
-      "example": "11:21:04-08:00"
+      "example": "11:21:04-08:00",
+      "default": "01:00:00-05:00"
     }
   },
   "description": "The Interest Policy Object"

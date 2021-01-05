@@ -4,7 +4,8 @@
     "late_fee_grace": {
       "type": "string",
       "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
-      "example": "5 days"
+      "example": "5 days",
+      "default": "0 days"
     }
   },
   "description": "The set of policies governing fees for the product. "

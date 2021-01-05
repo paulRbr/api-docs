@@ -25,7 +25,9 @@
         "product_color": {
           "type": "string",
           "description": "A color to be associated with the product for UI purposes.",
-          "example": "#0000FF"
+          "example": "#0000FF",
+          "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
+          "default": "#4867FF"
         },
         "product_short_description": {
           "type": "string",
@@ -58,12 +60,14 @@
         "late_fee_impl_cents": {
           "type": "integer",
           "description": "The fee charged for late payments on the account.",
-          "example": 2900
+          "example": 2900,
+          "default": 0
         },
         "payment_reversal_fee_impl_cents": {
           "type": "integer",
           "description": "The fee charged for payment reversals on the account.",
-          "example": 2900
+          "example": 2900,
+          "default": 0
         },
         "loan_end_date": {
           "type": "string",
@@ -103,7 +107,8 @@
         "promo_impl_interest_rate_percent": {
           "type": "number",
           "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
-          "example": 6.2
+          "example": 6.2,
+          "default": 0
         }
       }
     },
@@ -125,12 +130,14 @@
         "post_promo_impl_interest_rate_percent": {
           "type": "number",
           "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
-          "example": 6.2
+          "example": 6.2,
+          "default": 0
         },
         "post_promo_impl_am_len": {
           "type": "integer",
           "description": "If applicable, post-promotional amortization length in cycles.",
-          "example": 48
+          "example": 48,
+          "default": 1
         }
       }
     },
@@ -140,12 +147,14 @@
         "promo_len": {
           "type": "integer",
           "description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
-          "example": 6
+          "example": 6,
+          "default": 0
         },
         "promo_purchase_window_len": {
           "type": "integer",
           "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
-          "example": 5
+          "example": 5,
+          "default": 0
         }
       }
     }

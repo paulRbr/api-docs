@@ -106,7 +106,8 @@
                   "type": "string",
                   "enum": ["PRIMARY", "SECONDARY"],
                   "description": "The role of the customer for the account",
-                  "example": "PRIMARY"
+                  "example": "PRIMARY",
+                  "default": "PRIMARY"
                 },
                 "customer_account_external_id": {
                   "type": "string",

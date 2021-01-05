@@ -49,12 +49,14 @@
         "account_status": {
           "type": "string",
           "description": "The Status of the Account. Active upon account creation.",
-          "example": "suspended"
+          "example": "suspended",
+          "default": "active"
         },
         "account_status_subtype": {
           "type": "string",
           "description": "The subtype of the Status of the Account. Null upon account creation.",
-          "example": "suspended-bankruptcy"
+          "example": "suspended-bankruptcy",
+          "default": ""
         }
       }
     },
@@ -64,21 +66,26 @@
         "credit_limit_cents": {
           "type": "integer",
           "description": "Total Amount (in cents) that this account can borrow.",
-          "example": 400000
+          "example": 400000,
+          "default": 0
         },
         "total_charges_cents": {
           "type": "integer",
           "description": "Sum of all charges that occurred on the account since account origination.",
-          "example": 800000
+          "example": 800000,
+          "default": 0
         },
         "available_credit_cents": {
           "type": "integer",
           "description": "The total available credit balance (in cents) for the account.",
-          "example": 600000
+          "example": 600000,
+          "default": 0
         },
         "open_to_buy_cents": {
           "type": "integer",
-          "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase."
+          "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
+          "example": 600000,
+          "default": 0
         }
       }
     },
@@ -98,62 +105,74 @@
         "cycle_charges_cents": {
           "type": "integer",
           "description": "Sum of all charges that occurred on the account during the billing cycle.",
-          "example": 700000
+          "example": 700000,
+          "default": 0
         },
         "cycle_loans_cents": {
           "type": "integer",
           "description": "Sum of all loans amounts that were initiated on the account during the billing cycle.",
-          "example": 700000
+          "example": 700000,
+          "default": 0
         },
         "cycle_charge_returns_cents": {
           "type": "integer",
           "description": "Sum of all returns that occurred on the account during the billing cycle.",
-          "example": 100000
+          "example": 100000,
+          "default": 0
         },
         "cycle_payments_cents": {
           "type": "integer",
           "description": "Sum of all payments that occurred on the account during the billing cycle.",
-          "example": 200000
+          "example": 200000,
+          "default": 0
         },
         "cycle_payment_reversals_cents": {
           "type": "integer",
           "description": "Sum of all payment reversal amounts that occurred on the account during the billing cycle.",
-          "example": 200000
+          "example": 200000,
+          "default": 0
         },
         "cycle_debit_adjustments_cents": {
           "type": "integer",
           "description": "Sum of all debit adjustment amounts that occurred on the account during the billing cycle.",
-          "example": 40000
+          "example": 40000,
+          "default": 0
         },
         "cycle_credit_adjustments_cents": {
           "type": "integer",
           "description": "Sum of all credit adjustment amounts that occurred on the account during the billing cycle.",
-          "example": 53000
+          "example": 53000,
+          "default": 0
         },
         "cycle_interest_cents": {
           "type": "integer",
           "description": "Total interest accrued during the billing cycle.",
-          "example": 110000
+          "example": 110000,
+          "default": 0
         },
         "cycle_deferred_interest_cents": {
           "type": "integer",
           "description": "Total interest accrued during the billing cycle.",
-          "example": 300000
+          "example": 300000,
+          "default": 0
         },
         "cycle_late_fees_cents": {
           "type": "integer",
           "description": "Total late fees incurred during the billing cycle.",
-          "example": 300000
+          "example": 300000,
+          "default": 0
         },
         "cycle_payment_reversals_fees_cents": {
           "type": "integer",
           "description": "Total payment reversal fees incurred during the billing cycle.",
-          "example": 300000
+          "example": 300000,
+          "default": 0
         },
         "cycle_forgiven_deferred_interest_cents": {
           "type": "integer",
           "description": "Total deferred interest that was forgiven on the account during the billing cycle.",
-          "example": 40000
+          "example": 40000,
+          "default": 0
         }
       }
     },
@@ -217,32 +236,38 @@
         "charges_principal_cents": {
           "type": "integer",
           "description": "Total principal balance for the account.",
-          "example": 900000
+          "example": 900000,
+          "default": 0
         },
         "loans_principal_cents": {
           "type": "integer",
           "description": "Total principal balance for loans for the account.",
-          "example": 900000
+          "example": 900000,
+          "default": 0
         },
         "interest_balance_cents": {
           "type": "integer",
           "description": "Total interest balance for the account.",
-          "example": 100000
+          "example": 100000,
+          "default": 0
         },
         "deferred_interest_balance_cents": {
           "type": "integer",
           "description": "Total deferred interest balance for the account.",
-          "example": 700000
+          "example": 700000,
+          "default": 0
         },
         "fees_balance_cents": {
           "type": "integer",
           "description": "Total fee balance for the account.",
-          "example": 700000
+          "example": 700000,
+          "default": 0
         },
         "total_balance_cents": {
           "type": "integer",
           "description": "The total balance (in cents) associated with the account.",
-          "example": 400000
+          "example": 400000,
+          "default": 0
         }
       }
     },
@@ -252,7 +277,8 @@
         "total_payoff_cents": {
           "type": "integer",
           "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
-          "example": 1100000
+          "example": 1100000,
+          "default": 0
         }
       }
     }

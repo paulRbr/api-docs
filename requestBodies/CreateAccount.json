@@ -69,7 +69,8 @@
                   "initial_principal_cents": {
                     "type": "integer",
                     "description": "The initial principal balance (in cents) for the account.",
-                    "example": 400000
+                    "example": 400000,
+                    "default": 0
                   }
                 }
               },

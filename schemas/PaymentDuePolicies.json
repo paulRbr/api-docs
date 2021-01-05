@@ -1,14 +1,15 @@
 {
   "type": "object",
-  "required": ["delinquent_on_n_consecutive_late_fees", "charge_off_on_n_consecutive_late_fees"],
   "properties": {
     "delinquent_on_n_consecutive_late_fees": {
       "type": "integer",
-      "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`"
+      "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
+      "default": "1"
     },
     "charge_off_on_n_consecutive_late_fees": {
       "type": "integer",
-      "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`"
+      "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
+      "default": "2"
     }
   },
   "description": "The set of policies governing payment due information for the product."

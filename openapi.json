@@ -35,7 +35,7 @@
   ],
   "security": [
     {
-      "api_key": []
+      "oAuth2": []
     }
   ],
   "tags": [
@@ -66,6 +66,10 @@
     {
       "name": "statements",
       "description": "Generate per billing cycle statements for your accounts in Canopy."
+    },
+    {
+      "name": "amortization_schedule",
+      "description": "Get Amortization information for installment loans."
     }
   ],
   "paths": {
@@ -82,15 +86,27 @@
           "200": {
             "$ref": "#/components/responses/CreateApiUser"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "422": {
             "description": "Invalid input."
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       },
       "get": {
         "security": [
           {
-            "api_key": []
+            "oAuth2": []
           }
         ],
         "tags": ["authentication"],
@@ -102,8 +118,20 @@
           "200": {
             "$ref": "#/components/responses/ApiUsers"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "No Api Users found"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -121,8 +149,20 @@
           "200": {
             "$ref": "#/components/responses/LogInApiUser"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Not found."
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -140,8 +180,20 @@
           "200": {
             "$ref": "#/components/responses/UpdateApiUserPassword"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Not found."
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -159,8 +211,20 @@
           "200": {
             "$ref": "#/components/responses/RegisterApiUser"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Not found."
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -169,7 +233,7 @@
       "get": {
         "security": [
           {
-            "api_key": []
+            "oAuth2": []
           }
         ],
         "tags": ["authentication"],
@@ -181,8 +245,20 @@
           "200": {
             "$ref": "#/components/responses/ApiUser"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "No API user found."
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -191,7 +267,7 @@
       "post": {
         "security": [
           {
-            "api_key": []
+            "oAuth2": []
           }
         ],
         "tags": ["products"],
@@ -205,15 +281,27 @@
           "200": {
             "$ref": "#/components/responses/CreateProduct"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "422": {
             "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       },
       "get": {
         "security": [
           {
-            "api_key": []
+            "oAuth2": []
           }
         ],
         "tags": ["products"],
@@ -254,8 +342,20 @@
           "200": {
             "$ref": "#/components/responses/Products"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Unable to get products"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -296,8 +396,20 @@
           "200": {
             "$ref": "#/components/responses/CustomerAccounts"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Unable to get customers"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -306,7 +418,7 @@
       "post": {
         "security": [
           {
-            "api_key": []
+            "oAuth2": []
           }
         ],
         "tags": ["customers"],
@@ -320,8 +432,20 @@
           "200": {
             "$ref": "#/components/responses/CreateCustomer"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "422": {
             "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -330,7 +454,7 @@
       "post": {
         "security": [
           {
-            "api_key": []
+            "oAuth2": []
           }
         ],
         "tags": ["accounts"],
@@ -344,8 +468,20 @@
           "200": {
             "$ref": "#/components/responses/CreateAccount"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "422": {
             "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -374,8 +510,20 @@
           "200": {
             "$ref": "#/components/responses/Account"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Account not found"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -407,8 +555,20 @@
           "200": {
             "$ref": "#/components/responses/CreateNote"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "422": {
             "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       },
@@ -435,8 +595,20 @@
           "200": {
             "$ref": "#/components/responses/Notes"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Note not found"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -489,8 +661,20 @@
           "200": {
             "$ref": "#/components/responses/LineItems"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
-            "description": "Line Items not found"
+            "description": "Line Items not found."
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -531,8 +715,20 @@
           "200": {
             "$ref": "#/components/responses/LineItemWithChildren"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Line Items not found"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -564,8 +760,20 @@
           "200": {
             "$ref": "#/components/responses/CreateCharge"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "422": {
             "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -597,8 +805,20 @@
           "200": {
             "$ref": "#/components/responses/CreatePayment"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "422": {
             "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -661,8 +881,20 @@
               }
             }
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Statements not found"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -703,8 +935,20 @@
           "200": {
             "$ref": "#/components/responses/AccountStatement"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Statement not found"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -757,8 +1001,20 @@
           "200": {
             "$ref": "#/components/responses/AmortizationSchedule"
           },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
           "404": {
             "description": "Amortization Schedule not found"
+          },
+          "429": {
+            "description": "Too many requests."
           }
         }
       }
@@ -766,10 +1022,19 @@
   },
   "components": {
     "securitySchemes": {
-      "api_key": {
-        "type": "apiKey",
-        "name": "x-api-key",
-        "in": "header"
+      "oAuth2": {
+        "type": "oauth2",
+        "description": "This API uses OAuth 2 with the Resource Owner Password grant flow for human access and the Client Credentials grant flow for programmatic access.",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://dev-fi8iwkk1.us.auth0.com/oauth/token",
+            "scopes": {}
+          },
+          "password": {
+            "tokenUrl": "https://dev-fi8iwkk1.us.auth0.com/oauth/token",
+            "scopes": {}
+          }
+        }
       }
     },
     "schemas": {

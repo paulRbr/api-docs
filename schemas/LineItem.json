@@ -31,13 +31,14 @@
     },
     "line_item_overview": {
       "type": "object",
-      "required": ["line_item_status", "line_item_type"],
+      "required": ["line_item_type"],
       "properties": {
         "line_item_status": {
           "type": "string",
           "description": "the corresponding Status for a line item",
           "enum": ["VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
-          "example": "VALID"
+          "example": "VALID",
+          "default": "VALID"
         },
         "line_item_type": {
           "type": "string",

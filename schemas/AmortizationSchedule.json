@@ -9,7 +9,6 @@
       "am_min_pay_cents",
       "amount_paid_cents",
       "interest_allocation_cents",
-      "deferred_interest_allocation_cents",
       "principal_allocation_cents",
       "end_balance_cents"
     ],
@@ -38,7 +37,8 @@
       "deferred_interest_allocation_cents": {
         "type": "number",
         "description": "The amount in cents allocated to deferred interest from this payment",
-        "example": 400
+        "example": 400,
+        "default": 0
       },
       "principal_allocation_cents": {
         "type": "number",

@@ -26,12 +26,14 @@
         "account_status": {
           "type": "string",
           "description": "The Status of the Account. Active upon account creation.",
-          "example": "suspended"
+          "example": "suspended",
+          "default": "active"
         },
         "account_status_subtype": {
           "type": "string",
           "description": "The subtype of the Status of the Account. Null upon account creation.",
-          "example": "suspended-bankruptcy"
+          "example": "suspended-bankruptcy",
+          "default": ""
         }
       }
     },
@@ -66,7 +68,8 @@
         "min_pay_cents": {
           "type": "integer",
           "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
-          "example": 160000
+          "example": 160000,
+          "default": 0
         },
         "min_pay_due_at": {
           "type": "string",
@@ -89,27 +92,32 @@
         "min_pay_charges_principal_cents": {
           "type": "integer",
           "description": "Total principal due for the billing cycle.",
-          "example": 100000
+          "example": 100000,
+          "default": 0
         },
         "min_pay_interest_cents": {
           "type": "integer",
           "description": "Total interest due for the billing cycle.",
-          "example": 30000
+          "example": 30000,
+          "default": 0
         },
         "min_pay_deferred_cents": {
           "type": "integer",
           "description": "Total deferred interest due for the billing cycle.",
-          "example": 10000
+          "example": 10000,
+          "default": 0
         },
         "min_pay_fees_cents": {
           "type": "integer",
           "description": "Total fees due for the billing cycle.",
-          "example": 20000
+          "example": 20000,
+          "default": 0
         },
         "previous_min_pay_cents": {
           "type": "integer",
           "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
-          "example": 400000
+          "example": 400000,
+          "default": 0
         }
       }
     },
@@ -119,12 +127,10 @@
         "total_balance_cents",
         "principal_cents",
         "interest_balance_cents",
-        "deferred_interest_balance_cents",
         "total_paid_to_date_cents",
         "total_interest_paid_to_date_cents",
         "credit_limit_cents",
-        "interest_rate_percent",
-        "available_credit_cents"
+        "interest_rate_percent"
       ],
       "properties": {
         "total_balance_cents": {
@@ -145,7 +151,8 @@
         "deferred_interest_balance_cents": {
           "type": "integer",
           "description": "The total deferred interest balance (in cents) associated with the account.",
-          "example": 40000
+          "example": 40000,
+          "default": 0
         },
         "total_paid_to_date_cents": {
           "type": "integer",
@@ -165,7 +172,8 @@
         "max_approved_credit_limit_cents": {
           "type": "integer",
           "description": "Total Amount (in cents) that this account can borrow.",
-          "example": 400000
+          "example": 400000,
+          "default": 0
         },
         "interest_rate_percent": {
           "type": "number",
@@ -175,12 +183,14 @@
         "available_credit_cents": {
           "type": "integer",
           "description": "The total available credit balance (in cents) for the account.",
-          "example": 100000
+          "example": 100000,
+          "default": 0
         },
         "open_to_buy_cents": {
           "type": "integer",
           "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
-          "example": 5000
+          "example": 5000,
+          "default": 0
         }
       }
     },

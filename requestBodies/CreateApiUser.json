@@ -10,7 +10,8 @@
           "role": {
             "type": "number",
             "description": "A role to be made accessible for the user. [Contact our team](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
-            "example": 3
+            "example": 3,
+            "default": 1
           },
           "email": {
             "type": "string",

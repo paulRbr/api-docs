@@ -11,7 +11,8 @@
           "original_amount_cents": {
             "type": "integer",
             "description": "The Integer Amount of the Payment in Cents",
-            "example": 200
+            "example": 200,
+            "default": 0
           },
           "effective_at": {
             "type": "string",
