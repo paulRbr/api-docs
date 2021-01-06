@@ -35,7 +35,8 @@
     "phone_number": {
       "type": "string",
       "description": "Phone number of the customer",
-      "example": "555-555-5555"
+      "example": "555-555-5555",
+      "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
     },
     "address_line_one": {
       "type": "string",
@@ -60,18 +61,21 @@
     "address_zip": {
       "type": "string",
       "description": "Address zip code",
-      "example": "99999-1000"
+      "example": "99999-1000",
+      "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
     },
     "ssn": {
       "type": "string",
       "description": "Social security number of the customer",
-      "example": "888-88-8888"
+      "example": "888-88-8888",
+      "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
     },
     "email": {
       "type": "string",
       "format": "email",
-      "description": "The email address of this customer",
-      "example": "marissa@protonmail.com"
+      "description": "The email address of this Customer",
+      "example": "marissa@protonmail.com",
+      "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
     },
     "date_of_birth": {
       "type": "string",

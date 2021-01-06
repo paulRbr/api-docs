@@ -79,7 +79,8 @@
             "properties": {
               "key": {
                 "type": "string",
-                "example": "client_product_id"
+                "example": "client_product_id",
+                "pattern": "^.{0,100}$"
               },
               "value": {
                 "type": "string",

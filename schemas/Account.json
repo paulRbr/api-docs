@@ -51,7 +51,8 @@
           "key": {
             "type": "string",
             "description": "key: i.e. Name of the External Party",
-            "example": "Umbrella Corporation"
+            "example": "Umbrella Corporation",
+            "pattern": "^.{0,100}$"
           },
           "value": {
             "type": "string",
@@ -200,12 +201,14 @@
         "merchant_name": {
           "type": "string",
           "description": "A merchant name associated with the account",
-          "example": "Acme Corporation"
+          "example": "Acme Corporation",
+          "pattern": "^.{0,100}$"
         },
         "lender_name": {
           "type": "string",
           "description": "A lender name associated with the account",
-          "example": "Globex Lending Corp"
+          "example": "Globex Lending Corp",
+          "pattern": "^.{0,100}$"
         }
       }
     }

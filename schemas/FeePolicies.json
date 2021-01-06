@@ -3,6 +3,7 @@
   "properties": {
     "late_fee_grace": {
       "type": "string",
+      "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
       "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
       "example": "5 days",
       "default": "0 days"

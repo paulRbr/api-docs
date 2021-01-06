@@ -9,7 +9,8 @@
           "message": {
             "type": "string",
             "description": "The contents of the note.",
-            "example": "Attempted to call back customer, but no response."
+            "example": "Attempted to call back customer, but no response.",
+            "pattern": "^.{0,4000}$"
           }
         }
       }
