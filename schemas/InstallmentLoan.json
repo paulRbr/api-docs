@@ -119,8 +119,7 @@
           "name": {
             "type": "string",
             "description": "Name of the External Party",
-            "example": "Globex Loans Processing",
-            "pattern": "^.{0,100}$"
+            "example": "Globex Loans Processing"
           },
           "id": {
             "type": "string",

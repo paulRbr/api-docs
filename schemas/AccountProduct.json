@@ -26,7 +26,6 @@
           "type": "string",
           "description": "A color to be associated with the product for UI purposes.",
           "example": "#0000FF",
-          "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
           "default": "#4867FF"
         },
         "product_short_description": {

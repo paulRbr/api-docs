@@ -49,20 +49,17 @@
               "product_short_description": {
                 "type": "string",
                 "description": "A short description of the product ranging from 0 - 60 characters.",
-                "example": "12mm3apr.",
-                "pattern": "^.{0,100}$"
+                "example": "12mm3apr."
               },
               "product_long_description": {
                 "type": "string",
                 "description": "Description of the Product ranging from 0 - 1000.",
-                "example": "Student credit card.",
-                "pattern": "^.{0,2000}$"
+                "example": "Student credit card."
               },
               "product_color": {
                 "type": "string",
                 "description": "A color to be associated with the product for UI purposes.",
                 "example": "#0000FF",
-                "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                 "default": "#4867FF"
               }
             }
