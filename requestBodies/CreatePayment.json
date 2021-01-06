@@ -30,8 +30,7 @@
                 "key": {
                   "type": "string",
                   "description": "Key - i.e. Name of the External Party",
-                  "example": "Globex Card Processing Account ID",
-                  "pattern": "^.{0,100}$"
+                  "example": "Globex Card Processing Account ID"
                 },
                 "value": {
                   "type": "string",

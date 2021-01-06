@@ -35,8 +35,7 @@
                 "type": "number"
               },
               "phone_number": {
-                "type": "string",
-                "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                "type": "string"
               }
             }
           },
@@ -50,8 +49,7 @@
                 "key": {
                   "type": "string",
                   "description": "Key - i.e. Name of the External Party",
-                  "example": "Globex Card Processing Account ID",
-                  "pattern": "^.{0,100}$"
+                  "example": "Globex Card Processing Account ID"
                 },
                 "value": {
                   "type": "string",
