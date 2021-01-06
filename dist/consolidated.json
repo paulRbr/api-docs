@@ -98,8 +98,7 @@
                     "type": "string",
                     "format": "email",
                     "description": "The email address of this API User",
-                    "example": "marissa@globex.com",
-                    "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                    "example": "marissa@globex.com"
                   }
                 }
               }
@@ -202,14 +201,12 @@
                         "type": "string",
                         "format": "email",
                         "description": "The email address of this API User",
-                        "example": "marissa@globex.com",
-                        "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                        "example": "marissa@globex.com"
                       },
                       "phone": {
                         "type": "string",
                         "description": "Phone number of the API user",
-                        "example": "1-123-456-7890",
-                        "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                        "example": "1-123-456-7890"
                       },
                       "role": {
                         "type": "string",
@@ -260,8 +257,7 @@
                     "type": "string",
                     "format": "email",
                     "description": "The email address of the API User logging in.",
-                    "example": "marissa@globex.com",
-                    "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                    "example": "marissa@globex.com"
                   },
                   "password": {
                     "type": "string",
@@ -472,8 +468,7 @@
                     "type": "string",
                     "format": "email",
                     "description": "The email address of the user being updated.",
-                    "example": "harriet@acmecorporation.com",
-                    "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                    "example": "harriet@acmecorporation.com"
                   },
                   "new_password": {
                     "type": "string",
@@ -493,8 +488,7 @@
                   "phone": {
                     "type": "string",
                     "description": "The phone number to add to the API User's information.",
-                    "example": "1-222-222-2222",
-                    "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                    "example": "1-222-222-2222"
                   },
                   "token": {
                     "type": "string",
@@ -538,14 +532,12 @@
                       "type": "string",
                       "format": "email",
                       "description": "The email address of this API User",
-                      "example": "marissa@globex.com",
-                      "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                      "example": "marissa@globex.com"
                     },
                     "phone": {
                       "type": "string",
                       "description": "Phone number of the API user",
-                      "example": "1-123-456-7890",
-                      "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                      "example": "1-123-456-7890"
                     },
                     "role": {
                       "type": "string",
@@ -621,14 +613,12 @@
                       "type": "string",
                       "format": "email",
                       "description": "The email address of this API User",
-                      "example": "marissa@globex.com",
-                      "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                      "example": "marissa@globex.com"
                     },
                     "phone": {
                       "type": "string",
                       "description": "Phone number of the API user",
-                      "example": "1-123-456-7890",
-                      "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                      "example": "1-123-456-7890"
                     },
                     "role": {
                       "type": "string",
@@ -726,20 +716,17 @@
                       "product_short_description": {
                         "type": "string",
                         "description": "A short description of the product ranging from 0 - 60 characters.",
-                        "example": "12mm3apr.",
-                        "pattern": "^.{0,100}$"
+                        "example": "12mm3apr."
                       },
                       "product_long_description": {
                         "type": "string",
                         "description": "Description of the Product ranging from 0 - 1000.",
-                        "example": "Student credit card.",
-                        "pattern": "^.{0,2000}$"
+                        "example": "Student credit card."
                       },
                       "product_color": {
                         "type": "string",
                         "description": "A color to be associated with the product for UI purposes.",
                         "example": "#0000FF",
-                        "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                         "default": "#4867FF"
                       }
                     }
@@ -768,7 +755,6 @@
                         "properties": {
                           "late_fee_grace": {
                             "type": "string",
-                            "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                             "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                             "example": "5 days",
                             "default": "0 days"
@@ -783,8 +769,7 @@
                           "cycle_interval": {
                             "type": "string",
                             "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                            "example": "1 month",
-                            "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                            "example": "1 month"
                           },
                           "cycle_due_interval": {
                             "type": "string",
@@ -796,15 +781,13 @@
                             "type": "string",
                             "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                             "example": "25 days",
-                            "default": "0 days",
-                            "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                            "default": "0 days"
                           },
                           "close_of_business_timetz": {
                             "type": "string",
                             "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                             "format": "time",
                             "example": "17:00:00-05:00",
-                            "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                             "default": "23:59:59-05:00"
                           }
                         },
@@ -819,7 +802,6 @@
                             "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                             "format": "time",
                             "example": "11:21:04-08:00",
-                            "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                             "default": "01:00:00-05:00"
                           }
                         },
@@ -1022,7 +1004,6 @@
                           "type": "string",
                           "description": "A color to be associated with the product for UI purposes.",
                           "example": "#0000FF",
-                          "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                           "default": "#4867FF"
                         },
                         "external_fields": {
@@ -1033,8 +1014,7 @@
                             "properties": {
                               "key": {
                                 "type": "string",
-                                "example": "client_product_id",
-                                "pattern": "^.{0,100}$"
+                                "example": "client_product_id"
                               },
                               "value": {
                                 "type": "string",
@@ -1069,7 +1049,6 @@
                           "properties": {
                             "late_fee_grace": {
                               "type": "string",
-                              "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                               "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                               "example": "5 days",
                               "default": "0 days"
@@ -1084,8 +1063,7 @@
                             "cycle_interval": {
                               "type": "string",
                               "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                              "example": "1 month",
-                              "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                              "example": "1 month"
                             },
                             "cycle_due_interval": {
                               "type": "string",
@@ -1097,15 +1075,13 @@
                               "type": "string",
                               "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                               "example": "25 days",
-                              "default": "0 days",
-                              "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                              "default": "0 days"
                             },
                             "close_of_business_timetz": {
                               "type": "string",
                               "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                               "format": "time",
                               "example": "17:00:00-05:00",
-                              "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                               "default": "23:59:59-05:00"
                             }
                           },
@@ -1120,7 +1096,6 @@
                               "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                               "format": "time",
                               "example": "11:21:04-08:00",
-                              "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                               "default": "01:00:00-05:00"
                             }
                           },
@@ -1412,7 +1387,6 @@
                             "type": "string",
                             "description": "A color to be associated with the product for UI purposes.",
                             "example": "#0000FF",
-                            "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                             "default": "#4867FF"
                           },
                           "external_fields": {
@@ -1423,8 +1397,7 @@
                               "properties": {
                                 "key": {
                                   "type": "string",
-                                  "example": "client_product_id",
-                                  "pattern": "^.{0,100}$"
+                                  "example": "client_product_id"
                                 },
                                 "value": {
                                   "type": "string",
@@ -1459,7 +1432,6 @@
                             "properties": {
                               "late_fee_grace": {
                                 "type": "string",
-                                "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                                 "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                                 "example": "5 days",
                                 "default": "0 days"
@@ -1474,8 +1446,7 @@
                               "cycle_interval": {
                                 "type": "string",
                                 "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                                "example": "1 month",
-                                "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                                "example": "1 month"
                               },
                               "cycle_due_interval": {
                                 "type": "string",
@@ -1487,15 +1458,13 @@
                                 "type": "string",
                                 "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                                 "example": "25 days",
-                                "default": "0 days",
-                                "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                                "default": "0 days"
                               },
                               "close_of_business_timetz": {
                                 "type": "string",
                                 "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                                 "format": "time",
                                 "example": "17:00:00-05:00",
-                                "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                                 "default": "23:59:59-05:00"
                               }
                             },
@@ -1510,7 +1479,6 @@
                                 "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                                 "format": "time",
                                 "example": "11:21:04-08:00",
-                                "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                                 "default": "01:00:00-05:00"
                               }
                             },
@@ -1770,8 +1738,7 @@
                               "phone_number": {
                                 "type": "string",
                                 "description": "Phone number of the customer",
-                                "example": "555-555-5555",
-                                "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                                "example": "555-555-5555"
                               },
                               "address_line_one": {
                                 "type": "string",
@@ -1796,21 +1763,18 @@
                               "address_zip": {
                                 "type": "string",
                                 "description": "Address zip code",
-                                "example": "99999-1000",
-                                "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                                "example": "99999-1000"
                               },
                               "ssn": {
                                 "type": "string",
                                 "description": "Social security number of the customer",
-                                "example": "888-88-8888",
-                                "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                                "example": "888-88-8888"
                               },
                               "email": {
                                 "type": "string",
                                 "format": "email",
                                 "description": "The email address of this Customer",
-                                "example": "marissa@protonmail.com",
-                                "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                                "example": "marissa@protonmail.com"
                               },
                               "date_of_birth": {
                                 "type": "string",
@@ -1907,7 +1871,6 @@
                                             "type": "string",
                                             "description": "A color to be associated with the product for UI purposes.",
                                             "example": "#0000FF",
-                                            "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                                             "default": "#4867FF"
                                           },
                                           "product_short_description": {
@@ -2051,8 +2014,7 @@
                                         "key": {
                                           "type": "string",
                                           "description": "key: i.e. Name of the External Party",
-                                          "example": "Umbrella Corporation",
-                                          "pattern": "^.{0,100}$"
+                                          "example": "Umbrella Corporation"
                                         },
                                         "value": {
                                           "type": "string",
@@ -2201,14 +2163,12 @@
                                       "merchant_name": {
                                         "type": "string",
                                         "description": "A merchant name associated with the account",
-                                        "example": "Acme Corporation",
-                                        "pattern": "^.{0,100}$"
+                                        "example": "Acme Corporation"
                                       },
                                       "lender_name": {
                                         "type": "string",
                                         "description": "A lender name associated with the account",
-                                        "example": "Globex Lending Corp",
-                                        "pattern": "^.{0,100}$"
+                                        "example": "Globex Lending Corp"
                                       }
                                     }
                                   }
@@ -2301,8 +2261,7 @@
                   "phone_number": {
                     "type": "string",
                     "description": "Phone number of the customer",
-                    "example": "555-555-5555",
-                    "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                    "example": "555-555-5555"
                   },
                   "address_line_one": {
                     "type": "string",
@@ -2327,21 +2286,18 @@
                   "address_zip": {
                     "type": "string",
                     "description": "Address zip code",
-                    "example": "99999-1000",
-                    "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                    "example": "99999-1000"
                   },
                   "ssn": {
                     "type": "string",
                     "description": "Social security number of the customer",
-                    "example": "888-88-8888",
-                    "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                    "example": "888-88-8888"
                   },
                   "email": {
                     "type": "string",
                     "format": "email",
                     "description": "The email address of this Customer",
-                    "example": "marissa@protonmail.com",
-                    "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                    "example": "marissa@protonmail.com"
                   },
                   "date_of_birth": {
                     "type": "string",
@@ -2423,8 +2379,7 @@
                     "phone_number": {
                       "type": "string",
                       "description": "Phone number of the customer",
-                      "example": "555-555-5555",
-                      "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                      "example": "555-555-5555"
                     },
                     "address_line_one": {
                       "type": "string",
@@ -2449,21 +2404,18 @@
                     "address_zip": {
                       "type": "string",
                       "description": "Address zip code",
-                      "example": "99999-1000",
-                      "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                      "example": "99999-1000"
                     },
                     "ssn": {
                       "type": "string",
                       "description": "Social security number of the customer",
-                      "example": "888-88-8888",
-                      "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                      "example": "888-88-8888"
                     },
                     "email": {
                       "type": "string",
                       "format": "email",
                       "description": "The email address of this Customer",
-                      "example": "marissa@protonmail.com",
-                      "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                      "example": "marissa@protonmail.com"
                     },
                     "date_of_birth": {
                       "type": "string",
@@ -2540,8 +2492,7 @@
                             "key": {
                               "type": "string",
                               "description": "key: i.e. Name of the External Party",
-                              "example": "Umbrella Corporation",
-                              "pattern": "^.{0,100}$"
+                              "example": "Umbrella Corporation"
                             },
                             "value": {
                               "type": "string",
@@ -2613,14 +2564,12 @@
                           "merchant_name": {
                             "type": "string",
                             "description": "A merchant name associated with the account",
-                            "example": "Acme Corporation",
-                            "pattern": "^.{0,100}$"
+                            "example": "Acme Corporation"
                           },
                           "lender_name": {
                             "type": "string",
                             "description": "A lender name associated with the account",
-                            "example": "Globex Lending Corp",
-                            "pattern": "^.{0,100}$"
+                            "example": "Globex Lending Corp"
                           }
                         }
                       }
@@ -2731,7 +2680,6 @@
                                   "type": "string",
                                   "description": "A color to be associated with the product for UI purposes.",
                                   "example": "#0000FF",
-                                  "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                                   "default": "#4867FF"
                                 },
                                 "product_short_description": {
@@ -2875,8 +2823,7 @@
                               "key": {
                                 "type": "string",
                                 "description": "key: i.e. Name of the External Party",
-                                "example": "Umbrella Corporation",
-                                "pattern": "^.{0,100}$"
+                                "example": "Umbrella Corporation"
                               },
                               "value": {
                                 "type": "string",
@@ -3025,14 +2972,12 @@
                             "merchant_name": {
                               "type": "string",
                               "description": "A merchant name associated with the account",
-                              "example": "Acme Corporation",
-                              "pattern": "^.{0,100}$"
+                              "example": "Acme Corporation"
                             },
                             "lender_name": {
                               "type": "string",
                               "description": "A lender name associated with the account",
-                              "example": "Globex Lending Corp",
-                              "pattern": "^.{0,100}$"
+                              "example": "Globex Lending Corp"
                             }
                           }
                         }
@@ -3083,8 +3028,7 @@
                               "phone_number": {
                                 "type": "string",
                                 "description": "Phone number of the customer",
-                                "example": "555-555-5555",
-                                "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                                "example": "555-555-5555"
                               },
                               "address_line_one": {
                                 "type": "string",
@@ -3109,21 +3053,18 @@
                               "address_zip": {
                                 "type": "string",
                                 "description": "Address zip code",
-                                "example": "99999-1000",
-                                "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                                "example": "99999-1000"
                               },
                               "ssn": {
                                 "type": "string",
                                 "description": "Social security number of the customer",
-                                "example": "888-88-8888",
-                                "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                                "example": "888-88-8888"
                               },
                               "email": {
                                 "type": "string",
                                 "format": "email",
                                 "description": "The email address of this Customer",
-                                "example": "marissa@protonmail.com",
-                                "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                                "example": "marissa@protonmail.com"
                               },
                               "date_of_birth": {
                                 "type": "string",
@@ -3253,7 +3194,6 @@
                                   "type": "string",
                                   "description": "A color to be associated with the product for UI purposes.",
                                   "example": "#0000FF",
-                                  "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                                   "default": "#4867FF"
                                 },
                                 "product_short_description": {
@@ -3397,8 +3337,7 @@
                               "key": {
                                 "type": "string",
                                 "description": "key: i.e. Name of the External Party",
-                                "example": "Umbrella Corporation",
-                                "pattern": "^.{0,100}$"
+                                "example": "Umbrella Corporation"
                               },
                               "value": {
                                 "type": "string",
@@ -3547,14 +3486,12 @@
                             "merchant_name": {
                               "type": "string",
                               "description": "A merchant name associated with the account",
-                              "example": "Acme Corporation",
-                              "pattern": "^.{0,100}$"
+                              "example": "Acme Corporation"
                             },
                             "lender_name": {
                               "type": "string",
                               "description": "A lender name associated with the account",
-                              "example": "Globex Lending Corp",
-                              "pattern": "^.{0,100}$"
+                              "example": "Globex Lending Corp"
                             }
                           }
                         }
@@ -3605,8 +3542,7 @@
                               "phone_number": {
                                 "type": "string",
                                 "description": "Phone number of the customer",
-                                "example": "555-555-5555",
-                                "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                                "example": "555-555-5555"
                               },
                               "address_line_one": {
                                 "type": "string",
@@ -3631,21 +3567,18 @@
                               "address_zip": {
                                 "type": "string",
                                 "description": "Address zip code",
-                                "example": "99999-1000",
-                                "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                                "example": "99999-1000"
                               },
                               "ssn": {
                                 "type": "string",
                                 "description": "Social security number of the customer",
-                                "example": "888-88-8888",
-                                "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                                "example": "888-88-8888"
                               },
                               "email": {
                                 "type": "string",
                                 "format": "email",
                                 "description": "The email address of this Customer",
-                                "example": "marissa@protonmail.com",
-                                "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                                "example": "marissa@protonmail.com"
                               },
                               "date_of_birth": {
                                 "type": "string",
@@ -3712,8 +3645,7 @@
                   "message": {
                     "type": "string",
                     "description": "The contents of the note.",
-                    "example": "Attempted to call back customer, but no response.",
-                    "pattern": "^.{0,4000}$"
+                    "example": "Attempted to call back customer, but no response."
                   }
                 }
               }
@@ -3768,14 +3700,12 @@
                           "type": "string",
                           "format": "email",
                           "description": "The email address of this API User",
-                          "example": "marissa@globex.com",
-                          "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                          "example": "marissa@globex.com"
                         },
                         "phone": {
                           "type": "string",
                           "description": "Phone number of the API user",
-                          "example": "1-123-456-7890",
-                          "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                          "example": "1-123-456-7890"
                         },
                         "role": {
                           "type": "string",
@@ -3788,8 +3718,7 @@
                     "message": {
                       "type": "string",
                       "description": "The contents of the note.",
-                      "example": "Attempted to call back customer, but no response.",
-                      "pattern": "^.{0,4000}$"
+                      "example": "Attempted to call back customer, but no response."
                     },
                     "created_date": {
                       "type": "string",
@@ -3889,14 +3818,12 @@
                             "type": "string",
                             "format": "email",
                             "description": "The email address of this API User",
-                            "example": "marissa@globex.com",
-                            "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                            "example": "marissa@globex.com"
                           },
                           "phone": {
                             "type": "string",
                             "description": "Phone number of the API user",
-                            "example": "1-123-456-7890",
-                            "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                            "example": "1-123-456-7890"
                           },
                           "role": {
                             "type": "string",
@@ -3909,8 +3836,7 @@
                       "message": {
                         "type": "string",
                         "description": "The contents of the note.",
-                        "example": "Attempted to call back customer, but no response.",
-                        "pattern": "^.{0,4000}$"
+                        "example": "Attempted to call back customer, but no response."
                       },
                       "created_date": {
                         "type": "string",
@@ -4130,8 +4056,7 @@
                             "key": {
                               "type": "string",
                               "description": "Key - i.e. Name of the External Party",
-                              "example": "Globex Card Processing Account ID",
-                              "pattern": "^.{0,100}$"
+                              "example": "Globex Card Processing Account ID"
                             },
                             "value": {
                               "type": "string",
@@ -4342,8 +4267,7 @@
                             "key": {
                               "type": "string",
                               "description": "Key - i.e. Name of the External Party",
-                              "example": "Globex Card Processing Account ID",
-                              "pattern": "^.{0,100}$"
+                              "example": "Globex Card Processing Account ID"
                             },
                             "value": {
                               "type": "string",
@@ -4434,8 +4358,7 @@
                         "type": "number"
                       },
                       "phone_number": {
-                        "type": "string",
-                        "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                        "type": "string"
                       }
                     }
                   },
@@ -4449,8 +4372,7 @@
                         "key": {
                           "type": "string",
                           "description": "Key - i.e. Name of the External Party",
-                          "example": "Globex Card Processing Account ID",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Card Processing Account ID"
                         },
                         "value": {
                           "type": "string",
@@ -4578,8 +4500,7 @@
                           "key": {
                             "type": "string",
                             "description": "Key - i.e. Name of the External Party",
-                            "example": "Globex Card Processing Account ID",
-                            "pattern": "^.{0,100}$"
+                            "example": "Globex Card Processing Account ID"
                           },
                           "value": {
                             "type": "string",
@@ -4664,8 +4585,7 @@
                         "key": {
                           "type": "string",
                           "description": "Key - i.e. Name of the External Party",
-                          "example": "Globex Card Processing Account ID",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Card Processing Account ID"
                         },
                         "value": {
                           "type": "string",
@@ -4793,8 +4713,7 @@
                           "key": {
                             "type": "string",
                             "description": "Key - i.e. Name of the External Party",
-                            "example": "Globex Card Processing Account ID",
-                            "pattern": "^.{0,100}$"
+                            "example": "Globex Card Processing Account ID"
                           },
                           "value": {
                             "type": "string",
@@ -5483,14 +5402,12 @@
             "type": "string",
             "format": "email",
             "description": "The email address of this API User",
-            "example": "marissa@globex.com",
-            "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+            "example": "marissa@globex.com"
           },
           "phone": {
             "type": "string",
             "description": "Phone number of the API user",
-            "example": "1-123-456-7890",
-            "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+            "example": "1-123-456-7890"
           },
           "role": {
             "type": "string",
@@ -5567,7 +5484,6 @@
                     "type": "string",
                     "description": "A color to be associated with the product for UI purposes.",
                     "example": "#0000FF",
-                    "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                     "default": "#4867FF"
                   },
                   "product_short_description": {
@@ -5711,8 +5627,7 @@
                 "key": {
                   "type": "string",
                   "description": "key: i.e. Name of the External Party",
-                  "example": "Umbrella Corporation",
-                  "pattern": "^.{0,100}$"
+                  "example": "Umbrella Corporation"
                 },
                 "value": {
                   "type": "string",
@@ -5861,14 +5776,12 @@
               "merchant_name": {
                 "type": "string",
                 "description": "A merchant name associated with the account",
-                "example": "Acme Corporation",
-                "pattern": "^.{0,100}$"
+                "example": "Acme Corporation"
               },
               "lender_name": {
                 "type": "string",
                 "description": "A lender name associated with the account",
-                "example": "Globex Lending Corp",
-                "pattern": "^.{0,100}$"
+                "example": "Globex Lending Corp"
               }
             }
           }
@@ -5943,7 +5856,6 @@
                         "type": "string",
                         "description": "A color to be associated with the product for UI purposes.",
                         "example": "#0000FF",
-                        "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                         "default": "#4867FF"
                       },
                       "product_short_description": {
@@ -6087,8 +5999,7 @@
                     "key": {
                       "type": "string",
                       "description": "key: i.e. Name of the External Party",
-                      "example": "Umbrella Corporation",
-                      "pattern": "^.{0,100}$"
+                      "example": "Umbrella Corporation"
                     },
                     "value": {
                       "type": "string",
@@ -6237,14 +6148,12 @@
                   "merchant_name": {
                     "type": "string",
                     "description": "A merchant name associated with the account",
-                    "example": "Acme Corporation",
-                    "pattern": "^.{0,100}$"
+                    "example": "Acme Corporation"
                   },
                   "lender_name": {
                     "type": "string",
                     "description": "A lender name associated with the account",
-                    "example": "Globex Lending Corp",
-                    "pattern": "^.{0,100}$"
+                    "example": "Globex Lending Corp"
                   }
                 }
               }
@@ -6295,8 +6204,7 @@
                     "phone_number": {
                       "type": "string",
                       "description": "Phone number of the customer",
-                      "example": "555-555-5555",
-                      "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                      "example": "555-555-5555"
                     },
                     "address_line_one": {
                       "type": "string",
@@ -6321,21 +6229,18 @@
                     "address_zip": {
                       "type": "string",
                       "description": "Address zip code",
-                      "example": "99999-1000",
-                      "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                      "example": "99999-1000"
                     },
                     "ssn": {
                       "type": "string",
                       "description": "Social security number of the customer",
-                      "example": "888-88-8888",
-                      "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                      "example": "888-88-8888"
                     },
                     "email": {
                       "type": "string",
                       "format": "email",
                       "description": "The email address of this Customer",
-                      "example": "marissa@protonmail.com",
-                      "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                      "example": "marissa@protonmail.com"
                     },
                     "date_of_birth": {
                       "type": "string",
@@ -6387,8 +6292,7 @@
           "phone_number": {
             "type": "string",
             "description": "Phone number of the customer",
-            "example": "555-555-5555",
-            "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+            "example": "555-555-5555"
           },
           "address_line_one": {
             "type": "string",
@@ -6413,21 +6317,18 @@
           "address_zip": {
             "type": "string",
             "description": "Address zip code",
-            "example": "99999-1000",
-            "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+            "example": "99999-1000"
           },
           "ssn": {
             "type": "string",
             "description": "Social security number of the customer",
-            "example": "888-88-8888",
-            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+            "example": "888-88-8888"
           },
           "email": {
             "type": "string",
             "format": "email",
             "description": "The email address of this Customer",
-            "example": "marissa@protonmail.com",
-            "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+            "example": "marissa@protonmail.com"
           },
           "date_of_birth": {
             "type": "string",
@@ -6476,8 +6377,7 @@
               "phone_number": {
                 "type": "string",
                 "description": "Phone number of the customer",
-                "example": "555-555-5555",
-                "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                "example": "555-555-5555"
               },
               "address_line_one": {
                 "type": "string",
@@ -6502,21 +6402,18 @@
               "address_zip": {
                 "type": "string",
                 "description": "Address zip code",
-                "example": "99999-1000",
-                "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                "example": "99999-1000"
               },
               "ssn": {
                 "type": "string",
                 "description": "Social security number of the customer",
-                "example": "888-88-8888",
-                "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                "example": "888-88-8888"
               },
               "email": {
                 "type": "string",
                 "format": "email",
                 "description": "The email address of this Customer",
-                "example": "marissa@protonmail.com",
-                "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                "example": "marissa@protonmail.com"
               },
               "date_of_birth": {
                 "type": "string",
@@ -6600,7 +6497,6 @@
                               "type": "string",
                               "description": "A color to be associated with the product for UI purposes.",
                               "example": "#0000FF",
-                              "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                               "default": "#4867FF"
                             },
                             "product_short_description": {
@@ -6744,8 +6640,7 @@
                           "key": {
                             "type": "string",
                             "description": "key: i.e. Name of the External Party",
-                            "example": "Umbrella Corporation",
-                            "pattern": "^.{0,100}$"
+                            "example": "Umbrella Corporation"
                           },
                           "value": {
                             "type": "string",
@@ -6894,14 +6789,12 @@
                         "merchant_name": {
                           "type": "string",
                           "description": "A merchant name associated with the account",
-                          "example": "Acme Corporation",
-                          "pattern": "^.{0,100}$"
+                          "example": "Acme Corporation"
                         },
                         "lender_name": {
                           "type": "string",
                           "description": "A lender name associated with the account",
-                          "example": "Globex Lending Corp",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Lending Corp"
                         }
                       }
                     }
@@ -7335,7 +7228,6 @@
                 "type": "string",
                 "description": "A color to be associated with the product for UI purposes.",
                 "example": "#0000FF",
-                "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                 "default": "#4867FF"
               },
               "external_fields": {
@@ -7346,8 +7238,7 @@
                   "properties": {
                     "key": {
                       "type": "string",
-                      "example": "client_product_id",
-                      "pattern": "^.{0,100}$"
+                      "example": "client_product_id"
                     },
                     "value": {
                       "type": "string",
@@ -7382,7 +7273,6 @@
                 "properties": {
                   "late_fee_grace": {
                     "type": "string",
-                    "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                     "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                     "example": "5 days",
                     "default": "0 days"
@@ -7397,8 +7287,7 @@
                   "cycle_interval": {
                     "type": "string",
                     "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                    "example": "1 month",
-                    "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                    "example": "1 month"
                   },
                   "cycle_due_interval": {
                     "type": "string",
@@ -7410,15 +7299,13 @@
                     "type": "string",
                     "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                     "example": "25 days",
-                    "default": "0 days",
-                    "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                    "default": "0 days"
                   },
                   "close_of_business_timetz": {
                     "type": "string",
                     "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                     "format": "time",
                     "example": "17:00:00-05:00",
-                    "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                     "default": "23:59:59-05:00"
                   }
                 },
@@ -7433,7 +7320,6 @@
                     "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                     "format": "time",
                     "example": "11:21:04-08:00",
-                    "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                     "default": "01:00:00-05:00"
                   }
                 },
@@ -7647,7 +7533,6 @@
             "properties": {
               "late_fee_grace": {
                 "type": "string",
-                "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                 "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                 "example": "5 days",
                 "default": "0 days"
@@ -7662,8 +7547,7 @@
               "cycle_interval": {
                 "type": "string",
                 "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                "example": "1 month",
-                "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                "example": "1 month"
               },
               "cycle_due_interval": {
                 "type": "string",
@@ -7675,15 +7559,13 @@
                 "type": "string",
                 "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                 "example": "25 days",
-                "default": "0 days",
-                "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                "default": "0 days"
               },
               "close_of_business_timetz": {
                 "type": "string",
                 "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                 "format": "time",
                 "example": "17:00:00-05:00",
-                "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                 "default": "23:59:59-05:00"
               }
             },
@@ -7698,7 +7580,6 @@
                 "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                 "format": "time",
                 "example": "11:21:04-08:00",
-                "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                 "default": "01:00:00-05:00"
               }
             },
@@ -7893,8 +7774,7 @@
                 "key": {
                   "type": "string",
                   "description": "Key - i.e. Name of the External Party",
-                  "example": "Globex Card Processing Account ID",
-                  "pattern": "^.{0,100}$"
+                  "example": "Globex Card Processing Account ID"
                 },
                 "value": {
                   "type": "string",
@@ -7921,8 +7801,7 @@
                   "type": "string",
                   "format": "email",
                   "description": "The email address of the API User logging in.",
-                  "example": "marissa@globex.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@globex.com"
                 },
                 "password": {
                   "type": "string",
@@ -7975,8 +7854,7 @@
                   "type": "string",
                   "format": "email",
                   "description": "The email address of the user being updated.",
-                  "example": "harriet@acmecorporation.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "harriet@acmecorporation.com"
                 },
                 "new_password": {
                   "type": "string",
@@ -7996,8 +7874,7 @@
                 "phone": {
                   "type": "string",
                   "description": "The phone number to add to the API User's information.",
-                  "example": "1-222-222-2222",
-                  "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                  "example": "1-222-222-2222"
                 },
                 "token": {
                   "type": "string",
@@ -8059,20 +7936,17 @@
                     "product_short_description": {
                       "type": "string",
                       "description": "A short description of the product ranging from 0 - 60 characters.",
-                      "example": "12mm3apr.",
-                      "pattern": "^.{0,100}$"
+                      "example": "12mm3apr."
                     },
                     "product_long_description": {
                       "type": "string",
                       "description": "Description of the Product ranging from 0 - 1000.",
-                      "example": "Student credit card.",
-                      "pattern": "^.{0,2000}$"
+                      "example": "Student credit card."
                     },
                     "product_color": {
                       "type": "string",
                       "description": "A color to be associated with the product for UI purposes.",
                       "example": "#0000FF",
-                      "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                       "default": "#4867FF"
                     }
                   }
@@ -8101,7 +7975,6 @@
                       "properties": {
                         "late_fee_grace": {
                           "type": "string",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
@@ -8116,8 +7989,7 @@
                         "cycle_interval": {
                           "type": "string",
                           "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                          "example": "1 month",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                          "example": "1 month"
                         },
                         "cycle_due_interval": {
                           "type": "string",
@@ -8129,15 +8001,13 @@
                           "type": "string",
                           "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                           "example": "25 days",
-                          "default": "0 days",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                          "default": "0 days"
                         },
                         "close_of_business_timetz": {
                           "type": "string",
                           "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                           "format": "time",
                           "example": "17:00:00-05:00",
-                          "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                           "default": "23:59:59-05:00"
                         }
                       },
@@ -8152,7 +8022,6 @@
                           "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                           "format": "time",
                           "example": "11:21:04-08:00",
-                          "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                           "default": "01:00:00-05:00"
                         }
                       },
@@ -8328,8 +8197,7 @@
                 "phone_number": {
                   "type": "string",
                   "description": "Phone number of the customer",
-                  "example": "555-555-5555",
-                  "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                  "example": "555-555-5555"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -8354,21 +8222,18 @@
                 "address_zip": {
                   "type": "string",
                   "description": "Address zip code",
-                  "example": "99999-1000",
-                  "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                  "example": "99999-1000"
                 },
                 "ssn": {
                   "type": "string",
                   "description": "Social security number of the customer",
-                  "example": "888-88-8888",
-                  "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                  "example": "888-88-8888"
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
                   "description": "The email address of this Customer",
-                  "example": "marissa@protonmail.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@protonmail.com"
                 },
                 "date_of_birth": {
                   "type": "string",
@@ -8558,8 +8423,7 @@
                           "key": {
                             "type": "string",
                             "description": "key: i.e. Name of the External Party",
-                            "example": "Umbrella Corporation",
-                            "pattern": "^.{0,100}$"
+                            "example": "Umbrella Corporation"
                           },
                           "value": {
                             "type": "string",
@@ -8631,14 +8495,12 @@
                         "merchant_name": {
                           "type": "string",
                           "description": "A merchant name associated with the account",
-                          "example": "Acme Corporation",
-                          "pattern": "^.{0,100}$"
+                          "example": "Acme Corporation"
                         },
                         "lender_name": {
                           "type": "string",
                           "description": "A lender name associated with the account",
-                          "example": "Globex Lending Corp",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Lending Corp"
                         }
                       }
                     }
@@ -8686,8 +8548,7 @@
                 "message": {
                   "type": "string",
                   "description": "The contents of the note.",
-                  "example": "Attempted to call back customer, but no response.",
-                  "pattern": "^.{0,4000}$"
+                  "example": "Attempted to call back customer, but no response."
                 }
               }
             }
@@ -8713,8 +8574,7 @@
                   "type": "string",
                   "format": "email",
                   "description": "The email address of this API User",
-                  "example": "marissa@globex.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@globex.com"
                 }
               }
             }
@@ -8758,8 +8618,7 @@
                       "type": "number"
                     },
                     "phone_number": {
-                      "type": "string",
-                      "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                      "type": "string"
                     }
                   }
                 },
@@ -8773,8 +8632,7 @@
                       "key": {
                         "type": "string",
                         "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID",
-                        "pattern": "^.{0,100}$"
+                        "example": "Globex Card Processing Account ID"
                       },
                       "value": {
                         "type": "string",
@@ -8821,8 +8679,7 @@
                       "key": {
                         "type": "string",
                         "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID",
-                        "pattern": "^.{0,100}$"
+                        "example": "Globex Card Processing Account ID"
                       },
                       "value": {
                         "type": "string",
@@ -8871,14 +8728,12 @@
                   "type": "string",
                   "format": "email",
                   "description": "The email address of this API User",
-                  "example": "marissa@globex.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@globex.com"
                 },
                 "phone": {
                   "type": "string",
                   "description": "Phone number of the API user",
-                  "example": "1-123-456-7890",
-                  "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                  "example": "1-123-456-7890"
                 },
                 "role": {
                   "type": "string",
@@ -8926,14 +8781,12 @@
                     "type": "string",
                     "format": "email",
                     "description": "The email address of this API User",
-                    "example": "marissa@globex.com",
-                    "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                    "example": "marissa@globex.com"
                   },
                   "phone": {
                     "type": "string",
                     "description": "Phone number of the API user",
-                    "example": "1-123-456-7890",
-                    "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                    "example": "1-123-456-7890"
                   },
                   "role": {
                     "type": "string",
@@ -9087,14 +8940,12 @@
                   "type": "string",
                   "format": "email",
                   "description": "The email address of this API User",
-                  "example": "marissa@globex.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@globex.com"
                 },
                 "phone": {
                   "type": "string",
                   "description": "Phone number of the API user",
-                  "example": "1-123-456-7890",
-                  "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                  "example": "1-123-456-7890"
                 },
                 "role": {
                   "type": "string",
@@ -9181,7 +9032,6 @@
                       "type": "string",
                       "description": "A color to be associated with the product for UI purposes.",
                       "example": "#0000FF",
-                      "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                       "default": "#4867FF"
                     },
                     "external_fields": {
@@ -9192,8 +9042,7 @@
                         "properties": {
                           "key": {
                             "type": "string",
-                            "example": "client_product_id",
-                            "pattern": "^.{0,100}$"
+                            "example": "client_product_id"
                           },
                           "value": {
                             "type": "string",
@@ -9228,7 +9077,6 @@
                       "properties": {
                         "late_fee_grace": {
                           "type": "string",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
@@ -9243,8 +9091,7 @@
                         "cycle_interval": {
                           "type": "string",
                           "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                          "example": "1 month",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                          "example": "1 month"
                         },
                         "cycle_due_interval": {
                           "type": "string",
@@ -9256,15 +9103,13 @@
                           "type": "string",
                           "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                           "example": "25 days",
-                          "default": "0 days",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                          "default": "0 days"
                         },
                         "close_of_business_timetz": {
                           "type": "string",
                           "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                           "format": "time",
                           "example": "17:00:00-05:00",
-                          "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                           "default": "23:59:59-05:00"
                         }
                       },
@@ -9279,7 +9124,6 @@
                           "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                           "format": "time",
                           "example": "11:21:04-08:00",
-                          "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                           "default": "01:00:00-05:00"
                         }
                       },
@@ -9510,7 +9354,6 @@
                       "type": "string",
                       "description": "A color to be associated with the product for UI purposes.",
                       "example": "#0000FF",
-                      "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                       "default": "#4867FF"
                     },
                     "external_fields": {
@@ -9521,8 +9364,7 @@
                         "properties": {
                           "key": {
                             "type": "string",
-                            "example": "client_product_id",
-                            "pattern": "^.{0,100}$"
+                            "example": "client_product_id"
                           },
                           "value": {
                             "type": "string",
@@ -9557,7 +9399,6 @@
                       "properties": {
                         "late_fee_grace": {
                           "type": "string",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
@@ -9572,8 +9413,7 @@
                         "cycle_interval": {
                           "type": "string",
                           "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                          "example": "1 month",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                          "example": "1 month"
                         },
                         "cycle_due_interval": {
                           "type": "string",
@@ -9585,15 +9425,13 @@
                           "type": "string",
                           "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                           "example": "25 days",
-                          "default": "0 days",
-                          "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                          "default": "0 days"
                         },
                         "close_of_business_timetz": {
                           "type": "string",
                           "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                           "format": "time",
                           "example": "17:00:00-05:00",
-                          "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                           "default": "23:59:59-05:00"
                         }
                       },
@@ -9608,7 +9446,6 @@
                           "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                           "format": "time",
                           "example": "11:21:04-08:00",
-                          "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                           "default": "01:00:00-05:00"
                         }
                       },
@@ -9842,7 +9679,6 @@
                         "type": "string",
                         "description": "A color to be associated with the product for UI purposes.",
                         "example": "#0000FF",
-                        "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                         "default": "#4867FF"
                       },
                       "external_fields": {
@@ -9853,8 +9689,7 @@
                           "properties": {
                             "key": {
                               "type": "string",
-                              "example": "client_product_id",
-                              "pattern": "^.{0,100}$"
+                              "example": "client_product_id"
                             },
                             "value": {
                               "type": "string",
@@ -9889,7 +9724,6 @@
                         "properties": {
                           "late_fee_grace": {
                             "type": "string",
-                            "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g",
                             "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                             "example": "5 days",
                             "default": "0 days"
@@ -9904,8 +9738,7 @@
                           "cycle_interval": {
                             "type": "string",
                             "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                            "example": "1 month",
-                            "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                            "example": "1 month"
                           },
                           "cycle_due_interval": {
                             "type": "string",
@@ -9917,15 +9750,13 @@
                             "type": "string",
                             "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
                             "example": "25 days",
-                            "default": "0 days",
-                            "pattern": "/^\\d{1,3}\\s(day|month|week|year)s?$/g"
+                            "default": "0 days"
                           },
                           "close_of_business_timetz": {
                             "type": "string",
                             "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                             "format": "time",
                             "example": "17:00:00-05:00",
-                            "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                             "default": "23:59:59-05:00"
                           }
                         },
@@ -9940,7 +9771,6 @@
                             "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
                             "format": "time",
                             "example": "11:21:04-08:00",
-                            "pattern": "/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]([-+](([0-1][0-9])|(2[0-3])):[0-5][0-9])?$/g",
                             "default": "01:00:00-05:00"
                           }
                         },
@@ -10149,8 +9979,7 @@
                           "phone_number": {
                             "type": "string",
                             "description": "Phone number of the customer",
-                            "example": "555-555-5555",
-                            "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                            "example": "555-555-5555"
                           },
                           "address_line_one": {
                             "type": "string",
@@ -10175,21 +10004,18 @@
                           "address_zip": {
                             "type": "string",
                             "description": "Address zip code",
-                            "example": "99999-1000",
-                            "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                            "example": "99999-1000"
                           },
                           "ssn": {
                             "type": "string",
                             "description": "Social security number of the customer",
-                            "example": "888-88-8888",
-                            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                            "example": "888-88-8888"
                           },
                           "email": {
                             "type": "string",
                             "format": "email",
                             "description": "The email address of this Customer",
-                            "example": "marissa@protonmail.com",
-                            "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                            "example": "marissa@protonmail.com"
                           },
                           "date_of_birth": {
                             "type": "string",
@@ -10286,7 +10112,6 @@
                                         "type": "string",
                                         "description": "A color to be associated with the product for UI purposes.",
                                         "example": "#0000FF",
-                                        "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                                         "default": "#4867FF"
                                       },
                                       "product_short_description": {
@@ -10430,8 +10255,7 @@
                                     "key": {
                                       "type": "string",
                                       "description": "key: i.e. Name of the External Party",
-                                      "example": "Umbrella Corporation",
-                                      "pattern": "^.{0,100}$"
+                                      "example": "Umbrella Corporation"
                                     },
                                     "value": {
                                       "type": "string",
@@ -10580,14 +10404,12 @@
                                   "merchant_name": {
                                     "type": "string",
                                     "description": "A merchant name associated with the account",
-                                    "example": "Acme Corporation",
-                                    "pattern": "^.{0,100}$"
+                                    "example": "Acme Corporation"
                                   },
                                   "lender_name": {
                                     "type": "string",
                                     "description": "A lender name associated with the account",
-                                    "example": "Globex Lending Corp",
-                                    "pattern": "^.{0,100}$"
+                                    "example": "Globex Lending Corp"
                                   }
                                 }
                               }
@@ -10644,8 +10466,7 @@
                 "phone_number": {
                   "type": "string",
                   "description": "Phone number of the customer",
-                  "example": "555-555-5555",
-                  "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                  "example": "555-555-5555"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -10670,21 +10491,18 @@
                 "address_zip": {
                   "type": "string",
                   "description": "Address zip code",
-                  "example": "99999-1000",
-                  "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                  "example": "99999-1000"
                 },
                 "ssn": {
                   "type": "string",
                   "description": "Social security number of the customer",
-                  "example": "888-88-8888",
-                  "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                  "example": "888-88-8888"
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
                   "description": "The email address of this Customer",
-                  "example": "marissa@protonmail.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@protonmail.com"
                 },
                 "date_of_birth": {
                   "type": "string",
@@ -10738,8 +10556,7 @@
                 "phone_number": {
                   "type": "string",
                   "description": "Phone number of the customer",
-                  "example": "555-555-5555",
-                  "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                  "example": "555-555-5555"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -10764,21 +10581,18 @@
                 "address_zip": {
                   "type": "string",
                   "description": "Address zip code",
-                  "example": "99999-1000",
-                  "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                  "example": "99999-1000"
                 },
                 "ssn": {
                   "type": "string",
                   "description": "Social security number of the customer",
-                  "example": "888-88-8888",
-                  "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                  "example": "888-88-8888"
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
                   "description": "The email address of this Customer",
-                  "example": "marissa@protonmail.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@protonmail.com"
                 },
                 "date_of_birth": {
                   "type": "string",
@@ -10832,8 +10646,7 @@
                 "phone_number": {
                   "type": "string",
                   "description": "Phone number of the customer",
-                  "example": "555-555-5555",
-                  "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                  "example": "555-555-5555"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -10858,21 +10671,18 @@
                 "address_zip": {
                   "type": "string",
                   "description": "Address zip code",
-                  "example": "99999-1000",
-                  "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                  "example": "99999-1000"
                 },
                 "ssn": {
                   "type": "string",
                   "description": "Social security number of the customer",
-                  "example": "888-88-8888",
-                  "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                  "example": "888-88-8888"
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
                   "description": "The email address of this Customer",
-                  "example": "marissa@protonmail.com",
-                  "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                  "example": "marissa@protonmail.com"
                 },
                 "date_of_birth": {
                   "type": "string",
@@ -10933,8 +10743,7 @@
                       "phone_number": {
                         "type": "string",
                         "description": "Phone number of the customer",
-                        "example": "555-555-5555",
-                        "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                        "example": "555-555-5555"
                       },
                       "address_line_one": {
                         "type": "string",
@@ -10959,21 +10768,18 @@
                       "address_zip": {
                         "type": "string",
                         "description": "Address zip code",
-                        "example": "99999-1000",
-                        "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                        "example": "99999-1000"
                       },
                       "ssn": {
                         "type": "string",
                         "description": "Social security number of the customer",
-                        "example": "888-88-8888",
-                        "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                        "example": "888-88-8888"
                       },
                       "email": {
                         "type": "string",
                         "format": "email",
                         "description": "The email address of this Customer",
-                        "example": "marissa@protonmail.com",
-                        "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                        "example": "marissa@protonmail.com"
                       },
                       "date_of_birth": {
                         "type": "string",
@@ -11066,7 +10872,6 @@
                               "type": "string",
                               "description": "A color to be associated with the product for UI purposes.",
                               "example": "#0000FF",
-                              "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                               "default": "#4867FF"
                             },
                             "product_short_description": {
@@ -11210,8 +11015,7 @@
                           "key": {
                             "type": "string",
                             "description": "key: i.e. Name of the External Party",
-                            "example": "Umbrella Corporation",
-                            "pattern": "^.{0,100}$"
+                            "example": "Umbrella Corporation"
                           },
                           "value": {
                             "type": "string",
@@ -11360,14 +11164,12 @@
                         "merchant_name": {
                           "type": "string",
                           "description": "A merchant name associated with the account",
-                          "example": "Acme Corporation",
-                          "pattern": "^.{0,100}$"
+                          "example": "Acme Corporation"
                         },
                         "lender_name": {
                           "type": "string",
                           "description": "A lender name associated with the account",
-                          "example": "Globex Lending Corp",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Lending Corp"
                         }
                       }
                     }
@@ -11418,8 +11220,7 @@
                           "phone_number": {
                             "type": "string",
                             "description": "Phone number of the customer",
-                            "example": "555-555-5555",
-                            "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                            "example": "555-555-5555"
                           },
                           "address_line_one": {
                             "type": "string",
@@ -11444,21 +11245,18 @@
                           "address_zip": {
                             "type": "string",
                             "description": "Address zip code",
-                            "example": "99999-1000",
-                            "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                            "example": "99999-1000"
                           },
                           "ssn": {
                             "type": "string",
                             "description": "Social security number of the customer",
-                            "example": "888-88-8888",
-                            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                            "example": "888-88-8888"
                           },
                           "email": {
                             "type": "string",
                             "format": "email",
                             "description": "The email address of this Customer",
-                            "example": "marissa@protonmail.com",
-                            "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                            "example": "marissa@protonmail.com"
                           },
                           "date_of_birth": {
                             "type": "string",
@@ -11555,7 +11353,6 @@
                                 "type": "string",
                                 "description": "A color to be associated with the product for UI purposes.",
                                 "example": "#0000FF",
-                                "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                                 "default": "#4867FF"
                               },
                               "product_short_description": {
@@ -11699,8 +11496,7 @@
                             "key": {
                               "type": "string",
                               "description": "key: i.e. Name of the External Party",
-                              "example": "Umbrella Corporation",
-                              "pattern": "^.{0,100}$"
+                              "example": "Umbrella Corporation"
                             },
                             "value": {
                               "type": "string",
@@ -11849,14 +11645,12 @@
                           "merchant_name": {
                             "type": "string",
                             "description": "A merchant name associated with the account",
-                            "example": "Acme Corporation",
-                            "pattern": "^.{0,100}$"
+                            "example": "Acme Corporation"
                           },
                           "lender_name": {
                             "type": "string",
                             "description": "A lender name associated with the account",
-                            "example": "Globex Lending Corp",
-                            "pattern": "^.{0,100}$"
+                            "example": "Globex Lending Corp"
                           }
                         }
                       }
@@ -11981,14 +11775,12 @@
                       "type": "string",
                       "format": "email",
                       "description": "The email address of this API User",
-                      "example": "marissa@globex.com",
-                      "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                      "example": "marissa@globex.com"
                     },
                     "phone": {
                       "type": "string",
                       "description": "Phone number of the API user",
-                      "example": "1-123-456-7890",
-                      "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                      "example": "1-123-456-7890"
                     },
                     "role": {
                       "type": "string",
@@ -12001,8 +11793,7 @@
                 "message": {
                   "type": "string",
                   "description": "The contents of the note.",
-                  "example": "Attempted to call back customer, but no response.",
-                  "pattern": "^.{0,4000}$"
+                  "example": "Attempted to call back customer, but no response."
                 },
                 "created_date": {
                   "type": "string",
@@ -12065,14 +11856,12 @@
                         "type": "string",
                         "format": "email",
                         "description": "The email address of this API User",
-                        "example": "marissa@globex.com",
-                        "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                        "example": "marissa@globex.com"
                       },
                       "phone": {
                         "type": "string",
                         "description": "Phone number of the API user",
-                        "example": "1-123-456-7890",
-                        "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                        "example": "1-123-456-7890"
                       },
                       "role": {
                         "type": "string",
@@ -12085,8 +11874,7 @@
                   "message": {
                     "type": "string",
                     "description": "The contents of the note.",
-                    "example": "Attempted to call back customer, but no response.",
-                    "pattern": "^.{0,4000}$"
+                    "example": "Attempted to call back customer, but no response."
                   },
                   "created_date": {
                     "type": "string",
@@ -12211,8 +11999,7 @@
                       "key": {
                         "type": "string",
                         "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID",
-                        "pattern": "^.{0,100}$"
+                        "example": "Globex Card Processing Account ID"
                       },
                       "value": {
                         "type": "string",
@@ -12339,8 +12126,7 @@
                       "key": {
                         "type": "string",
                         "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID",
-                        "pattern": "^.{0,100}$"
+                        "example": "Globex Card Processing Account ID"
                       },
                       "value": {
                         "type": "string",
@@ -12428,7 +12214,6 @@
                               "type": "string",
                               "description": "A color to be associated with the product for UI purposes.",
                               "example": "#0000FF",
-                              "pattern": "/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/",
                               "default": "#4867FF"
                             },
                             "product_short_description": {
@@ -12572,8 +12357,7 @@
                           "key": {
                             "type": "string",
                             "description": "key: i.e. Name of the External Party",
-                            "example": "Umbrella Corporation",
-                            "pattern": "^.{0,100}$"
+                            "example": "Umbrella Corporation"
                           },
                           "value": {
                             "type": "string",
@@ -12722,14 +12506,12 @@
                         "merchant_name": {
                           "type": "string",
                           "description": "A merchant name associated with the account",
-                          "example": "Acme Corporation",
-                          "pattern": "^.{0,100}$"
+                          "example": "Acme Corporation"
                         },
                         "lender_name": {
                           "type": "string",
                           "description": "A lender name associated with the account",
-                          "example": "Globex Lending Corp",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Lending Corp"
                         }
                       }
                     }
@@ -12780,8 +12562,7 @@
                           "phone_number": {
                             "type": "string",
                             "description": "Phone number of the customer",
-                            "example": "555-555-5555",
-                            "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+                            "example": "555-555-5555"
                           },
                           "address_line_one": {
                             "type": "string",
@@ -12806,21 +12587,18 @@
                           "address_zip": {
                             "type": "string",
                             "description": "Address zip code",
-                            "example": "99999-1000",
-                            "pattern": "^\\d{5}([-]|\\s*)?(\\d{4})?$"
+                            "example": "99999-1000"
                           },
                           "ssn": {
                             "type": "string",
                             "description": "Social security number of the customer",
-                            "example": "888-88-8888",
-                            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+                            "example": "888-88-8888"
                           },
                           "email": {
                             "type": "string",
                             "format": "email",
                             "description": "The email address of this Customer",
-                            "example": "marissa@protonmail.com",
-                            "pattern": "^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+                            "example": "marissa@protonmail.com"
                           },
                           "date_of_birth": {
                             "type": "string",
@@ -13312,8 +13090,7 @@
                       "key": {
                         "type": "string",
                         "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID",
-                        "pattern": "^.{0,100}$"
+                        "example": "Globex Card Processing Account ID"
                       },
                       "value": {
                         "type": "string",
@@ -13464,8 +13241,7 @@
                         "key": {
                           "type": "string",
                           "description": "Key - i.e. Name of the External Party",
-                          "example": "Globex Card Processing Account ID",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Card Processing Account ID"
                         },
                         "value": {
                           "type": "string",
@@ -13617,8 +13393,7 @@
                         "key": {
                           "type": "string",
                           "description": "Key - i.e. Name of the External Party",
-                          "example": "Globex Card Processing Account ID",
-                          "pattern": "^.{0,100}$"
+                          "example": "Globex Card Processing Account ID"
                         },
                         "value": {
                           "type": "string",
