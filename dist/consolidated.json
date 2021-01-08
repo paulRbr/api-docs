@@ -718,6 +718,12 @@
                         "description": "A short description of the product ranging from 0 - 60 characters.",
                         "example": "12mm3apr."
                       },
+                      "product_time_zone": {
+                        "type": "string",
+                        "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                        "example": "-5:00:00",
+                        "default": "-05:00:00"
+                      },
                       "product_long_description": {
                         "type": "string",
                         "description": "Description of the Product ranging from 0 - 1000.",
@@ -783,9 +789,9 @@
                             "example": "25 days",
                             "default": "0 days"
                           },
-                          "close_of_business_timetz": {
+                          "close_of_business_time": {
                             "type": "string",
-                            "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                            "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                             "format": "time",
                             "example": "17:00:00-05:00",
                             "default": "23:59:59-05:00"
@@ -1000,6 +1006,11 @@
                           "description": "Description of the Product ranging from 0 - 1000.",
                           "example": "Student credit card."
                         },
+                        "product_time_zone": {
+                          "type": "string",
+                          "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                          "example": "-5:00:00"
+                        },
                         "product_color": {
                           "type": "string",
                           "description": "A color to be associated with the product for UI purposes.",
@@ -1077,9 +1088,9 @@
                               "example": "25 days",
                               "default": "0 days"
                             },
-                            "close_of_business_timetz": {
+                            "close_of_business_time": {
                               "type": "string",
-                              "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                              "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                               "format": "time",
                               "example": "17:00:00-05:00",
                               "default": "23:59:59-05:00"
@@ -1383,6 +1394,11 @@
                             "description": "Description of the Product ranging from 0 - 1000.",
                             "example": "Student credit card."
                           },
+                          "product_time_zone": {
+                            "type": "string",
+                            "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                            "example": "-5:00:00"
+                          },
                           "product_color": {
                             "type": "string",
                             "description": "A color to be associated with the product for UI purposes.",
@@ -1460,9 +1476,9 @@
                                 "example": "25 days",
                                 "default": "0 days"
                               },
-                              "close_of_business_timetz": {
+                              "close_of_business_time": {
                                 "type": "string",
-                                "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                                "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                                 "format": "time",
                                 "example": "17:00:00-05:00",
                                 "default": "23:59:59-05:00"
@@ -1882,6 +1898,11 @@
                                             "type": "string",
                                             "description": "Description of the Product.",
                                             "example": "Student credit card."
+                                          },
+                                          "product_time_zone": {
+                                            "type": "string",
+                                            "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                                            "example": "-5:00:00"
                                           },
                                           "product_type": {
                                             "type": "string",
@@ -2692,6 +2713,11 @@
                                   "description": "Description of the Product.",
                                   "example": "Student credit card."
                                 },
+                                "product_time_zone": {
+                                  "type": "string",
+                                  "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                                  "example": "-5:00:00"
+                                },
                                 "product_type": {
                                   "type": "string",
                                   "description": "The Type of Product. If not included, defaults to `REVOLVING`",
@@ -3205,6 +3231,11 @@
                                   "type": "string",
                                   "description": "Description of the Product.",
                                   "example": "Student credit card."
+                                },
+                                "product_time_zone": {
+                                  "type": "string",
+                                  "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                                  "example": "-5:00:00"
                                 },
                                 "product_type": {
                                   "type": "string",
@@ -5496,6 +5527,11 @@
                     "description": "Description of the Product.",
                     "example": "Student credit card."
                   },
+                  "product_time_zone": {
+                    "type": "string",
+                    "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                    "example": "-5:00:00"
+                  },
                   "product_type": {
                     "type": "string",
                     "description": "The Type of Product. If not included, defaults to `REVOLVING`",
@@ -5867,6 +5903,11 @@
                         "type": "string",
                         "description": "Description of the Product.",
                         "example": "Student credit card."
+                      },
+                      "product_time_zone": {
+                        "type": "string",
+                        "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                        "example": "-5:00:00"
                       },
                       "product_type": {
                         "type": "string",
@@ -6508,6 +6549,11 @@
                               "type": "string",
                               "description": "Description of the Product.",
                               "example": "Student credit card."
+                            },
+                            "product_time_zone": {
+                              "type": "string",
+                              "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                              "example": "-5:00:00"
                             },
                             "product_type": {
                               "type": "string",
@@ -7224,6 +7270,11 @@
                 "description": "Description of the Product ranging from 0 - 1000.",
                 "example": "Student credit card."
               },
+              "product_time_zone": {
+                "type": "string",
+                "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                "example": "-5:00:00"
+              },
               "product_color": {
                 "type": "string",
                 "description": "A color to be associated with the product for UI purposes.",
@@ -7301,9 +7352,9 @@
                     "example": "25 days",
                     "default": "0 days"
                   },
-                  "close_of_business_timetz": {
+                  "close_of_business_time": {
                     "type": "string",
-                    "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                    "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                     "format": "time",
                     "example": "17:00:00-05:00",
                     "default": "23:59:59-05:00"
@@ -7561,9 +7612,9 @@
                 "example": "25 days",
                 "default": "0 days"
               },
-              "close_of_business_timetz": {
+              "close_of_business_time": {
                 "type": "string",
-                "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                 "format": "time",
                 "example": "17:00:00-05:00",
                 "default": "23:59:59-05:00"
@@ -7938,6 +7989,12 @@
                       "description": "A short description of the product ranging from 0 - 60 characters.",
                       "example": "12mm3apr."
                     },
+                    "product_time_zone": {
+                      "type": "string",
+                      "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                      "example": "-5:00:00",
+                      "default": "-05:00:00"
+                    },
                     "product_long_description": {
                       "type": "string",
                       "description": "Description of the Product ranging from 0 - 1000.",
@@ -8003,9 +8060,9 @@
                           "example": "25 days",
                           "default": "0 days"
                         },
-                        "close_of_business_timetz": {
+                        "close_of_business_time": {
                           "type": "string",
-                          "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                          "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                           "format": "time",
                           "example": "17:00:00-05:00",
                           "default": "23:59:59-05:00"
@@ -9028,6 +9085,11 @@
                       "description": "Description of the Product ranging from 0 - 1000.",
                       "example": "Student credit card."
                     },
+                    "product_time_zone": {
+                      "type": "string",
+                      "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                      "example": "-5:00:00"
+                    },
                     "product_color": {
                       "type": "string",
                       "description": "A color to be associated with the product for UI purposes.",
@@ -9105,9 +9167,9 @@
                           "example": "25 days",
                           "default": "0 days"
                         },
-                        "close_of_business_timetz": {
+                        "close_of_business_time": {
                           "type": "string",
-                          "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                          "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                           "format": "time",
                           "example": "17:00:00-05:00",
                           "default": "23:59:59-05:00"
@@ -9350,6 +9412,11 @@
                       "description": "Description of the Product ranging from 0 - 1000.",
                       "example": "Student credit card."
                     },
+                    "product_time_zone": {
+                      "type": "string",
+                      "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                      "example": "-5:00:00"
+                    },
                     "product_color": {
                       "type": "string",
                       "description": "A color to be associated with the product for UI purposes.",
@@ -9427,9 +9494,9 @@
                           "example": "25 days",
                           "default": "0 days"
                         },
-                        "close_of_business_timetz": {
+                        "close_of_business_time": {
                           "type": "string",
-                          "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                          "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                           "format": "time",
                           "example": "17:00:00-05:00",
                           "default": "23:59:59-05:00"
@@ -9675,6 +9742,11 @@
                         "description": "Description of the Product ranging from 0 - 1000.",
                         "example": "Student credit card."
                       },
+                      "product_time_zone": {
+                        "type": "string",
+                        "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                        "example": "-5:00:00"
+                      },
                       "product_color": {
                         "type": "string",
                         "description": "A color to be associated with the product for UI purposes.",
@@ -9752,9 +9824,9 @@
                             "example": "25 days",
                             "default": "0 days"
                           },
-                          "close_of_business_timetz": {
+                          "close_of_business_time": {
                             "type": "string",
-                            "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                            "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
                             "format": "time",
                             "example": "17:00:00-05:00",
                             "default": "23:59:59-05:00"
@@ -10123,6 +10195,11 @@
                                         "type": "string",
                                         "description": "Description of the Product.",
                                         "example": "Student credit card."
+                                      },
+                                      "product_time_zone": {
+                                        "type": "string",
+                                        "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                                        "example": "-5:00:00"
                                       },
                                       "product_type": {
                                         "type": "string",
@@ -10884,6 +10961,11 @@
                               "description": "Description of the Product.",
                               "example": "Student credit card."
                             },
+                            "product_time_zone": {
+                              "type": "string",
+                              "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                              "example": "-5:00:00"
+                            },
                             "product_type": {
                               "type": "string",
                               "description": "The Type of Product. If not included, defaults to `REVOLVING`",
@@ -11364,6 +11446,11 @@
                                 "type": "string",
                                 "description": "Description of the Product.",
                                 "example": "Student credit card."
+                              },
+                              "product_time_zone": {
+                                "type": "string",
+                                "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                                "example": "-5:00:00"
                               },
                               "product_type": {
                                 "type": "string",
@@ -12225,6 +12312,11 @@
                               "type": "string",
                               "description": "Description of the Product.",
                               "example": "Student credit card."
+                            },
+                            "product_time_zone": {
+                              "type": "string",
+                              "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                              "example": "-5:00:00"
                             },
                             "product_type": {
                               "type": "string",

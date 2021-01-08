@@ -51,6 +51,12 @@
                 "description": "A short description of the product ranging from 0 - 60 characters.",
                 "example": "12mm3apr."
               },
+              "product_time_zone": {
+                "type": "string",
+                "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
+                "example": "-5:00:00",
+                "default": "-05:00:00"
+              },
               "product_long_description": {
                 "type": "string",
                 "description": "Description of the Product ranging from 0 - 1000.",

@@ -19,9 +19,9 @@
       "example": "25 days",
       "default": "0 days"
     },
-    "close_of_business_timetz": {
+    "close_of_business_time": {
       "type": "string",
-      "description": "Defaults to EST Midnight. Time and timezone of the close of business. This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+      "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
       "format": "time",
       "example": "17:00:00-05:00",
       "default": "23:59:59-05:00"
