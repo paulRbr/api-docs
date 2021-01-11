@@ -5322,7 +5322,7 @@
                       "amount_paid_cents",
                       "interest_allocation_cents",
                       "principal_allocation_cents",
-                      "end_balance_cents"
+                      "am_end_balance_cents"
                     ],
                     "properties": {
                       "min_pay_due_at": {
@@ -11769,7 +11769,7 @@
                   "amount_paid_cents",
                   "interest_allocation_cents",
                   "principal_allocation_cents",
-                  "end_balance_cents"
+                  "am_end_balance_cents"
                 ],
                 "properties": {
                   "min_pay_due_at": {
