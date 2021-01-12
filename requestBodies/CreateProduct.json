@@ -53,9 +53,9 @@
               },
               "product_time_zone": {
                 "type": "string",
-                "description": "Timezone denoted as a UTC offset defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone.",
-                "example": "-5:00:00",
-                "default": "-05:00:00"
+                "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                "example": "America/Chicago",
+                "default": "America/New_York"
               },
               "product_long_description": {
                 "type": "string",
