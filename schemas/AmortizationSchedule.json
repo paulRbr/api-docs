@@ -5,50 +5,81 @@
   "items": {
     "type": "object",
     "required": [
+      "line_item_id",
+      "cycle_exclusive_end",
       "min_pay_due_at",
-      "am_min_pay_cents",
-      "amount_paid_cents",
-      "interest_allocation_cents",
-      "principal_allocation_cents",
-      "am_end_balance_cents"
+      "min_pay_cents",
+      "min_pay_no_fee_cents",
+      "min_pay_fees_cents",
+      "cycle_payments_cents",
+      "min_pay_interest_cents",
+      "min_pay_deferred_cents",
+      "min_pay_loans_principal_cents",
+      "total_balance_cents"
     ],
     "properties": {
+      "line_item_id": {
+        "type": "integer",
+        "description": "The ID of this generated amortization schedule.",
+        "example": 160000
+      },
+      "cycle_exclusive_end": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The date-time the am cycle ends.",
+        "example": "2018-07-20T09:10:14+00:00"
+      },
       "min_pay_due_at": {
         "type": "string",
         "format": "date-time",
-        "description": "The date of the scheduled payment",
+        "description": "The date the minimum payment for the am schedule is due.",
         "example": "2018-07-20T09:10:14+00:00"
       },
-      "am_min_pay_cents": {
-        "type": "integer",
-        "description": "Total amount due from the amortization schedule.",
-        "example": 160000
+      "min_pay_cents": {
+        "type": "number",
+        "description": "The total amount due for the entire cycle, beyond what is due for the am schedule, as this value accounts for fees.",
+        "example": 88000
       },
-      "amount_paid_cents": {
+      "min_pay_no_fee_cents": {
+        "type": "number",
+        "description": "The amount due just for the am schedule. This accounts for principal, interest, and deferred interest balance but does not include fees.",
+        "example": 84000
+      },
+      "min_pay_fees_cents": {
+        "type": "number",
+        "description": "The fees portion of the cycle payment in cents. This does not go towards amortized.",
+        "example": 4000
+      },
+      "cycle_payments_cents": {
         "type": "number",
         "description": "The amount in cents that was actually paid for the billing cycle",
         "example": 18325
       },
-      "interest_allocation_cents": {
+      "min_pay_interest_cents": {
         "type": "number",
-        "description": "The amount in cents allocated to interest from this payment",
-        "example": 2415
+        "description": "The amount in cents allocated to interest from this am payment",
+        "example": 10000
       },
-      "deferred_interest_allocation_cents": {
+      "min_pay_deferred_cents": {
         "type": "number",
-        "description": "The amount in cents allocated to deferred interest from this payment",
-        "example": 400,
+        "description": "The amount in cents allocated to deferred interest from this am payment",
+        "example": 4000,
         "default": 0
       },
-      "principal_allocation_cents": {
+      "min_pay_loans_principal_cents": {
         "type": "number",
-        "description": "The amount in cents allocated to principal from this payment",
-        "example": 15911
+        "description": "The amount in cents allocated to principal from this am payment",
+        "example": 70000
       },
-      "am_end_balance_cents": {
+      "total_balance_cents": {
         "type": "number",
         "description": "The ending balance on the loan after this payment",
         "example": 136691
+      },
+      "paid_on_time": {
+        "type": "boolean",
+        "description": "Indicates whether the amount for this am payment was paid on time; only present if the date scheduled for the am payment has passed as of the time of the request.",
+        "example": false
       }
     }
   }
