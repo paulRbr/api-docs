@@ -718,12 +718,6 @@
                         "description": "A short description of the product ranging from 0 - 60 characters.",
                         "example": "12mm3apr."
                       },
-                      "product_time_zone": {
-                        "type": "string",
-                        "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                        "example": "America/Chicago",
-                        "default": "America/New_York"
-                      },
                       "product_long_description": {
                         "type": "string",
                         "description": "Description of the Product ranging from 0 - 1000.",
@@ -795,6 +789,11 @@
                             "format": "time",
                             "example": "17:00:00-05:00",
                             "default": "23:59:59-05:00"
+                          },
+                          "product_time_zone": {
+                            "type": "string",
+                            "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                            "example": "America/Chicago"
                           }
                         },
                         "description": "The set of policies governing the billing cycle for the product. "
@@ -1006,11 +1005,6 @@
                           "description": "Description of the Product ranging from 0 - 1000.",
                           "example": "Student credit card."
                         },
-                        "product_time_zone": {
-                          "type": "string",
-                          "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                          "example": "America/Chicago"
-                        },
                         "product_color": {
                           "type": "string",
                           "description": "A color to be associated with the product for UI purposes.",
@@ -1094,6 +1088,11 @@
                               "format": "time",
                               "example": "17:00:00-05:00",
                               "default": "23:59:59-05:00"
+                            },
+                            "product_time_zone": {
+                              "type": "string",
+                              "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                              "example": "America/Chicago"
                             }
                           },
                           "description": "The set of policies governing the billing cycle for the product. "
@@ -1394,11 +1393,6 @@
                             "description": "Description of the Product ranging from 0 - 1000.",
                             "example": "Student credit card."
                           },
-                          "product_time_zone": {
-                            "type": "string",
-                            "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                            "example": "America/Chicago"
-                          },
                           "product_color": {
                             "type": "string",
                             "description": "A color to be associated with the product for UI purposes.",
@@ -1482,6 +1476,11 @@
                                 "format": "time",
                                 "example": "17:00:00-05:00",
                                 "default": "23:59:59-05:00"
+                              },
+                              "product_time_zone": {
+                                "type": "string",
+                                "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                                "example": "America/Chicago"
                               }
                             },
                             "description": "The set of policies governing the billing cycle for the product. "
@@ -5320,20 +5319,19 @@
                       "line_item_id",
                       "cycle_exclusive_end",
                       "min_pay_due_at",
-                      "min_pay_cents",
-                      "min_pay_no_fee_cents",
-                      "min_pay_fees_cents",
-                      "cycle_payments_cents",
-                      "min_pay_interest_cents",
-                      "min_pay_deferred_cents",
-                      "min_pay_loans_principal_cents",
-                      "total_balance_cents"
+                      "am_min_pay_cents",
+                      "am_cycle_payment_cents",
+                      "am_interest_cents",
+                      "am_deferred_cents",
+                      "am_principal_cents",
+                      "am_start_total_balance_cents",
+                      "am_end_total_balance_cents"
                     ],
                     "properties": {
                       "line_item_id": {
                         "type": "integer",
                         "description": "The ID of this generated amortization schedule.",
-                        "example": 160000
+                        "example": 400
                       },
                       "cycle_exclusive_end": {
                         "type": "string",
@@ -5347,43 +5345,38 @@
                         "description": "The date the minimum payment for the am schedule is due.",
                         "example": "2018-07-20T09:10:14+00:00"
                       },
-                      "min_pay_cents": {
-                        "type": "number",
-                        "description": "The total amount due for the entire cycle, beyond what is due for the am schedule, as this value accounts for fees.",
-                        "example": 88000
-                      },
-                      "min_pay_no_fee_cents": {
+                      "am_min_pay_cents": {
                         "type": "number",
                         "description": "The amount due just for the am schedule. This accounts for principal, interest, and deferred interest balance but does not include fees.",
                         "example": 84000
                       },
-                      "min_pay_fees_cents": {
+                      "am_cycle_payment_cents": {
                         "type": "number",
-                        "description": "The fees portion of the cycle payment in cents. This does not go towards amortized.",
-                        "example": 4000
-                      },
-                      "cycle_payments_cents": {
-                        "type": "number",
-                        "description": "The amount in cents that was actually paid for the billing cycle",
+                        "description": "The amount in cents that was actually paid towards the loan during the billing cycle",
                         "example": 18325
                       },
-                      "min_pay_interest_cents": {
+                      "am_interest_cents": {
                         "type": "number",
                         "description": "The amount in cents allocated to interest from this am payment",
                         "example": 10000
                       },
-                      "min_pay_deferred_cents": {
+                      "am_deferred_cents": {
                         "type": "number",
                         "description": "The amount in cents allocated to deferred interest from this am payment",
                         "example": 4000,
                         "default": 0
                       },
-                      "min_pay_loans_principal_cents": {
+                      "am_principal_cents": {
                         "type": "number",
                         "description": "The amount in cents allocated to principal from this am payment",
                         "example": 70000
                       },
-                      "total_balance_cents": {
+                      "am_start_total_balance_cents": {
+                        "type": "number",
+                        "description": "The starting balance on the loan before this payment",
+                        "example": 136691
+                      },
+                      "am_end_total_balance_cents": {
                         "type": "number",
                         "description": "The ending balance on the loan after this payment",
                         "example": 136691
@@ -7301,11 +7294,6 @@
                 "description": "Description of the Product ranging from 0 - 1000.",
                 "example": "Student credit card."
               },
-              "product_time_zone": {
-                "type": "string",
-                "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                "example": "America/Chicago"
-              },
               "product_color": {
                 "type": "string",
                 "description": "A color to be associated with the product for UI purposes.",
@@ -7389,6 +7377,11 @@
                     "format": "time",
                     "example": "17:00:00-05:00",
                     "default": "23:59:59-05:00"
+                  },
+                  "product_time_zone": {
+                    "type": "string",
+                    "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                    "example": "America/Chicago"
                   }
                 },
                 "description": "The set of policies governing the billing cycle for the product. "
@@ -7649,6 +7642,11 @@
                 "format": "time",
                 "example": "17:00:00-05:00",
                 "default": "23:59:59-05:00"
+              },
+              "product_time_zone": {
+                "type": "string",
+                "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                "example": "America/Chicago"
               }
             },
             "description": "The set of policies governing the billing cycle for the product. "
@@ -8020,12 +8018,6 @@
                       "description": "A short description of the product ranging from 0 - 60 characters.",
                       "example": "12mm3apr."
                     },
-                    "product_time_zone": {
-                      "type": "string",
-                      "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                      "example": "America/Chicago",
-                      "default": "America/New_York"
-                    },
                     "product_long_description": {
                       "type": "string",
                       "description": "Description of the Product ranging from 0 - 1000.",
@@ -8097,6 +8089,11 @@
                           "format": "time",
                           "example": "17:00:00-05:00",
                           "default": "23:59:59-05:00"
+                        },
+                        "product_time_zone": {
+                          "type": "string",
+                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                          "example": "America/Chicago"
                         }
                       },
                       "description": "The set of policies governing the billing cycle for the product. "
@@ -9116,11 +9113,6 @@
                       "description": "Description of the Product ranging from 0 - 1000.",
                       "example": "Student credit card."
                     },
-                    "product_time_zone": {
-                      "type": "string",
-                      "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                      "example": "America/Chicago"
-                    },
                     "product_color": {
                       "type": "string",
                       "description": "A color to be associated with the product for UI purposes.",
@@ -9204,6 +9196,11 @@
                           "format": "time",
                           "example": "17:00:00-05:00",
                           "default": "23:59:59-05:00"
+                        },
+                        "product_time_zone": {
+                          "type": "string",
+                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                          "example": "America/Chicago"
                         }
                       },
                       "description": "The set of policies governing the billing cycle for the product. "
@@ -9443,11 +9440,6 @@
                       "description": "Description of the Product ranging from 0 - 1000.",
                       "example": "Student credit card."
                     },
-                    "product_time_zone": {
-                      "type": "string",
-                      "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                      "example": "America/Chicago"
-                    },
                     "product_color": {
                       "type": "string",
                       "description": "A color to be associated with the product for UI purposes.",
@@ -9531,6 +9523,11 @@
                           "format": "time",
                           "example": "17:00:00-05:00",
                           "default": "23:59:59-05:00"
+                        },
+                        "product_time_zone": {
+                          "type": "string",
+                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                          "example": "America/Chicago"
                         }
                       },
                       "description": "The set of policies governing the billing cycle for the product. "
@@ -9773,11 +9770,6 @@
                         "description": "Description of the Product ranging from 0 - 1000.",
                         "example": "Student credit card."
                       },
-                      "product_time_zone": {
-                        "type": "string",
-                        "description": "Timezone denoted as an Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                        "example": "America/Chicago"
-                      },
                       "product_color": {
                         "type": "string",
                         "description": "A color to be associated with the product for UI purposes.",
@@ -9861,6 +9853,11 @@
                             "format": "time",
                             "example": "17:00:00-05:00",
                             "default": "23:59:59-05:00"
+                          },
+                          "product_time_zone": {
+                            "type": "string",
+                            "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                            "example": "America/Chicago"
                           }
                         },
                         "description": "The set of policies governing the billing cycle for the product. "
@@ -11798,20 +11795,19 @@
                   "line_item_id",
                   "cycle_exclusive_end",
                   "min_pay_due_at",
-                  "min_pay_cents",
-                  "min_pay_no_fee_cents",
-                  "min_pay_fees_cents",
-                  "cycle_payments_cents",
-                  "min_pay_interest_cents",
-                  "min_pay_deferred_cents",
-                  "min_pay_loans_principal_cents",
-                  "total_balance_cents"
+                  "am_min_pay_cents",
+                  "am_cycle_payment_cents",
+                  "am_interest_cents",
+                  "am_deferred_cents",
+                  "am_principal_cents",
+                  "am_start_total_balance_cents",
+                  "am_end_total_balance_cents"
                 ],
                 "properties": {
                   "line_item_id": {
                     "type": "integer",
                     "description": "The ID of this generated amortization schedule.",
-                    "example": 160000
+                    "example": 400
                   },
                   "cycle_exclusive_end": {
                     "type": "string",
@@ -11825,43 +11821,38 @@
                     "description": "The date the minimum payment for the am schedule is due.",
                     "example": "2018-07-20T09:10:14+00:00"
                   },
-                  "min_pay_cents": {
-                    "type": "number",
-                    "description": "The total amount due for the entire cycle, beyond what is due for the am schedule, as this value accounts for fees.",
-                    "example": 88000
-                  },
-                  "min_pay_no_fee_cents": {
+                  "am_min_pay_cents": {
                     "type": "number",
                     "description": "The amount due just for the am schedule. This accounts for principal, interest, and deferred interest balance but does not include fees.",
                     "example": 84000
                   },
-                  "min_pay_fees_cents": {
+                  "am_cycle_payment_cents": {
                     "type": "number",
-                    "description": "The fees portion of the cycle payment in cents. This does not go towards amortized.",
-                    "example": 4000
-                  },
-                  "cycle_payments_cents": {
-                    "type": "number",
-                    "description": "The amount in cents that was actually paid for the billing cycle",
+                    "description": "The amount in cents that was actually paid towards the loan during the billing cycle",
                     "example": 18325
                   },
-                  "min_pay_interest_cents": {
+                  "am_interest_cents": {
                     "type": "number",
                     "description": "The amount in cents allocated to interest from this am payment",
                     "example": 10000
                   },
-                  "min_pay_deferred_cents": {
+                  "am_deferred_cents": {
                     "type": "number",
                     "description": "The amount in cents allocated to deferred interest from this am payment",
                     "example": 4000,
                     "default": 0
                   },
-                  "min_pay_loans_principal_cents": {
+                  "am_principal_cents": {
                     "type": "number",
                     "description": "The amount in cents allocated to principal from this am payment",
                     "example": 70000
                   },
-                  "total_balance_cents": {
+                  "am_start_total_balance_cents": {
+                    "type": "number",
+                    "description": "The starting balance on the loan before this payment",
+                    "example": 136691
+                  },
+                  "am_end_total_balance_cents": {
                     "type": "number",
                     "description": "The ending balance on the loan after this payment",
                     "example": 136691
