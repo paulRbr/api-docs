@@ -47,6 +47,7 @@
             "CHARGE",
             "DEBIT_OFFSET",
             "INTEREST",
+            "DEFERRED_INTEREST",
             "PAYMENT",
             "CREDIT_OFFSET",
             "STATEMENT",
