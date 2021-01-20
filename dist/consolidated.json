@@ -211,7 +211,7 @@
                       "role": {
                         "type": "integer",
                         "description": "The role of this user in the API",
-                        "example": "1"
+                        "example": 1
                       }
                     }
                   }
@@ -541,7 +541,7 @@
                     "role": {
                       "type": "integer",
                       "description": "The role of this user in the API",
-                      "example": "1"
+                      "example": 1
                     }
                   }
                 }
@@ -621,7 +621,7 @@
                     "role": {
                       "type": "integer",
                       "description": "The role of this user in the API",
-                      "example": "1"
+                      "example": 1
                     }
                   }
                 }
@@ -3738,7 +3738,7 @@
                         "role": {
                           "type": "integer",
                           "description": "The role of this user in the API",
-                          "example": "1"
+                          "example": 1
                         }
                       }
                     },
@@ -3855,7 +3855,7 @@
                           "role": {
                             "type": "integer",
                             "description": "The role of this user in the API",
-                            "example": "1"
+                            "example": 1
                           }
                         }
                       },
@@ -5438,7 +5438,7 @@
           "role": {
             "type": "integer",
             "description": "The role of this user in the API",
-            "example": "1"
+            "example": 1
           }
         }
       },
@@ -8789,7 +8789,7 @@
                 "role": {
                   "type": "integer",
                   "description": "The role of this user in the API",
-                  "example": "1"
+                  "example": 1
                 }
               }
             }
@@ -8841,7 +8841,7 @@
                   "role": {
                     "type": "integer",
                     "description": "The role of this user in the API",
-                    "example": "1"
+                    "example": 1
                   }
                 }
               }
@@ -8999,7 +8999,7 @@
                 "role": {
                   "type": "integer",
                   "description": "The role of this user in the API",
-                  "example": "1"
+                  "example": 1
                 }
               }
             }
@@ -11863,7 +11863,7 @@
                     "role": {
                       "type": "integer",
                       "description": "The role of this user in the API",
-                      "example": "1"
+                      "example": 1
                     }
                   }
                 },
@@ -11943,7 +11943,7 @@
                       "role": {
                         "type": "integer",
                         "description": "The role of this user in the API",
-                        "example": "1"
+                        "example": 1
                       }
                     }
                   },
