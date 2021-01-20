@@ -3,9 +3,9 @@
   "required": ["api_user_id", "organization_name", "email", "role"],
   "properties": {
     "api_user_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The unique ID in Canopy for this API user",
-      "example": 23
+      "example": "dc3d83c5-b31e-48eb-80e7-38f12ac1a6e5"
     },
     "organization_name": {
       "type": "string",
@@ -34,10 +34,9 @@
       "example": "1-123-456-7890"
     },
     "role": {
-      "type": "string",
-      "enum": ["SERVICING", "OPERATIONS", "ADMIN"],
+      "type": "integer",
       "description": "The role of this user in the API",
-      "example": "SERVICING"
+      "example": 1
     }
   }
 }
