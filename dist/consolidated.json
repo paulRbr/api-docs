@@ -75,7 +75,7 @@
   "paths": {
     "/api_users": {
       "post": {
-        "tags": ["authentication"],
+        "tags": ["api_users"],
         "summary": "Invite a new API user to Canopy",
         "operationId": "createApiUser",
         "description": "When you create a new API user via this `POST` request, an email invite will be sent for the new user to join your organization. The email invite includes a link with a unique token that will allow the new user to register to join your team in Canopy.",
@@ -160,7 +160,7 @@
             "oAuth2": []
           }
         ],
-        "tags": ["authentication"],
+        "tags": ["api_users"],
         "summary": "Get all API users in your organization",
         "description": "Returns a list of all API users in your organization.",
         "operationId": "getApiUsers",
@@ -239,7 +239,7 @@
     },
     "/api_users/login": {
       "post": {
-        "tags": ["authentication"],
+        "tags": ["api_users"],
         "summary": "Log in as an API user",
         "operationId": "logInApiUser",
         "description": "When provided appropriate credentials, this route signs in an API user.",
@@ -343,7 +343,7 @@
     },
     "/api_users/password": {
       "put": {
-        "tags": ["authentication"],
+        "tags": ["api_users"],
         "summary": "Update the password for an API User",
         "operationId": "updateApiUserPassword",
         "description": "When provided appropriate credentials, this route changes an API User's password.",
@@ -450,7 +450,7 @@
     },
     "/api_users/register": {
       "put": {
-        "tags": ["authentication"],
+        "tags": ["api_users"],
         "summary": "Complete registration for an invited API user",
         "operationId": "registerApiUserPassword",
         "description": "When provided appropriate credentials, this route updates an API user's information for registration.",
@@ -573,7 +573,7 @@
             "oAuth2": []
           }
         ],
-        "tags": ["authentication"],
+        "tags": ["api_users"],
         "summary": "Get summary info for an API user",
         "description": "Get all summarized information pertaining to the API user making the request.",
         "operationId": "getApiUser",
