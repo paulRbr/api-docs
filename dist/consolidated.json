@@ -2043,7 +2043,7 @@
                                   },
                                   "min_pay_due_cents": {
                                     "type": "object",
-                                    "required": ["min_pay_cents", "min_pay_due_at"],
+                                    "required": ["min_pay_cents"],
                                     "properties": {
                                       "min_pay_cents": {
                                         "type": "integer",
@@ -2857,7 +2857,7 @@
                         },
                         "min_pay_due_cents": {
                           "type": "object",
-                          "required": ["min_pay_cents", "min_pay_due_at"],
+                          "required": ["min_pay_cents"],
                           "properties": {
                             "min_pay_cents": {
                               "type": "integer",
@@ -3376,7 +3376,7 @@
                         },
                         "min_pay_due_cents": {
                           "type": "object",
-                          "required": ["min_pay_cents", "min_pay_due_at"],
+                          "required": ["min_pay_cents"],
                           "properties": {
                             "min_pay_cents": {
                               "type": "integer",
@@ -5701,7 +5701,7 @@
           },
           "min_pay_due_cents": {
             "type": "object",
-            "required": ["min_pay_cents", "min_pay_due_at"],
+            "required": ["min_pay_cents"],
             "properties": {
               "min_pay_cents": {
                 "type": "integer",
@@ -6078,7 +6078,7 @@
               },
               "min_pay_due_cents": {
                 "type": "object",
-                "required": ["min_pay_cents", "min_pay_due_at"],
+                "required": ["min_pay_cents"],
                 "properties": {
                   "min_pay_cents": {
                     "type": "integer",
@@ -6724,7 +6724,7 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": ["min_pay_cents", "min_pay_due_at"],
+                      "required": ["min_pay_cents"],
                       "properties": {
                         "min_pay_cents": {
                           "type": "integer",
@@ -10373,7 +10373,7 @@
                               },
                               "min_pay_due_cents": {
                                 "type": "object",
-                                "required": ["min_pay_cents", "min_pay_due_at"],
+                                "required": ["min_pay_cents"],
                                 "properties": {
                                   "min_pay_cents": {
                                     "type": "integer",
@@ -11138,7 +11138,7 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": ["min_pay_cents", "min_pay_due_at"],
+                      "required": ["min_pay_cents"],
                       "properties": {
                         "min_pay_cents": {
                           "type": "integer",
@@ -11624,7 +11624,7 @@
                       },
                       "min_pay_due_cents": {
                         "type": "object",
-                        "required": ["min_pay_cents", "min_pay_due_at"],
+                        "required": ["min_pay_cents"],
                         "properties": {
                           "min_pay_cents": {
                             "type": "integer",
@@ -12517,7 +12517,7 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": ["min_pay_cents", "min_pay_due_at"],
+                      "required": ["min_pay_cents"],
                       "properties": {
                         "min_pay_cents": {
                           "type": "integer",
