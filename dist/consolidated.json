@@ -3998,6 +3998,7 @@
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                             "enum": [
+                              "LOAN",
                               "CHARGE",
                               "DEBIT_OFFSET",
                               "INTEREST",
@@ -4210,6 +4211,7 @@
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                             "enum": [
+                              "LOAN",
                               "CHARGE",
                               "DEBIT_OFFSET",
                               "INTEREST",
@@ -4464,6 +4466,7 @@
                           "type": "string",
                           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                           "enum": [
+                            "LOAN",
                             "CHARGE",
                             "DEBIT_OFFSET",
                             "INTEREST",
@@ -4678,6 +4681,7 @@
                           "type": "string",
                           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                           "enum": [
+                            "LOAN",
                             "CHARGE",
                             "DEBIT_OFFSET",
                             "INTEREST",
@@ -7774,6 +7778,7 @@
                 "type": "string",
                 "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                 "enum": [
+                  "LOAN",
                   "CHARGE",
                   "DEBIT_OFFSET",
                   "INTEREST",
@@ -12070,6 +12075,7 @@
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                       "enum": [
+                        "LOAN",
                         "CHARGE",
                         "DEBIT_OFFSET",
                         "INTEREST",
@@ -12198,6 +12204,7 @@
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                       "enum": [
+                        "LOAN",
                         "CHARGE",
                         "DEBIT_OFFSET",
                         "INTEREST",
@@ -13148,6 +13155,7 @@
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                       "enum": [
+                        "LOAN",
                         "CHARGE",
                         "DEBIT_OFFSET",
                         "INTEREST",
@@ -13300,6 +13308,7 @@
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                         "enum": [
+                          "LOAN",
                           "CHARGE",
                           "DEBIT_OFFSET",
                           "INTEREST",
@@ -13453,6 +13462,7 @@
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                         "enum": [
+                          "LOAN",
                           "CHARGE",
                           "DEBIT_OFFSET",
                           "INTEREST",
