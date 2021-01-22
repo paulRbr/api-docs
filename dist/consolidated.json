@@ -3998,6 +3998,7 @@
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                             "enum": [
+                              "ROLLED",
                               "LOAN",
                               "CHARGE",
                               "DEBIT_OFFSET",
@@ -4221,6 +4222,7 @@
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                             "enum": [
+                              "ROLLED",
                               "LOAN",
                               "CHARGE",
                               "DEBIT_OFFSET",
@@ -4486,6 +4488,7 @@
                           "type": "string",
                           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                           "enum": [
+                            "ROLLED",
                             "LOAN",
                             "CHARGE",
                             "DEBIT_OFFSET",
@@ -4701,6 +4704,7 @@
                           "type": "string",
                           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                           "enum": [
+                            "ROLLED",
                             "LOAN",
                             "CHARGE",
                             "DEBIT_OFFSET",
@@ -7798,6 +7802,7 @@
                 "type": "string",
                 "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                 "enum": [
+                  "ROLLED",
                   "LOAN",
                   "CHARGE",
                   "DEBIT_OFFSET",
@@ -12105,6 +12110,7 @@
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                       "enum": [
+                        "ROLLED",
                         "LOAN",
                         "CHARGE",
                         "DEBIT_OFFSET",
@@ -12234,6 +12240,7 @@
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                       "enum": [
+                        "ROLLED",
                         "LOAN",
                         "CHARGE",
                         "DEBIT_OFFSET",
@@ -13185,6 +13192,7 @@
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                       "enum": [
+                        "ROLLED",
                         "LOAN",
                         "CHARGE",
                         "DEBIT_OFFSET",
@@ -13348,6 +13356,7 @@
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                         "enum": [
+                          "ROLLED",
                           "LOAN",
                           "CHARGE",
                           "DEBIT_OFFSET",
@@ -13512,6 +13521,7 @@
                         "type": "string",
                         "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
                         "enum": [
+                          "ROLLED",
                           "LOAN",
                           "CHARGE",
                           "DEBIT_OFFSET",
