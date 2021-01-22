@@ -2612,6 +2612,11 @@
                               "enum": ["PRIMARY", "SECONDARY"],
                               "description": "The role of the customer for the account.",
                               "example": "SECONDARY"
+                            },
+                            "customer_account_external_id": {
+                              "type": "string",
+                              "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
+                              "example": "4465220133024156"
                             }
                           }
                         }
@@ -8650,6 +8655,11 @@
                             "enum": ["PRIMARY", "SECONDARY"],
                             "description": "The role of the customer for the account.",
                             "example": "SECONDARY"
+                          },
+                          "customer_account_external_id": {
+                            "type": "string",
+                            "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
+                            "example": "4465220133024156"
                           }
                         }
                       }
