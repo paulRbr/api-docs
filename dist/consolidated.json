@@ -4036,7 +4036,9 @@
                           "original_amount_cents",
                           "balance_cents",
                           "principal_cents",
-                          "total_interest_accrued_cents"
+                          "interest_balance_cents",
+                          "deferred_interest_balance_cents",
+                          "total_interest_paid_to_date_cents"
                         ],
                         "properties": {
                           "original_amount_cents": {
@@ -4260,7 +4262,9 @@
                           "original_amount_cents",
                           "balance_cents",
                           "principal_cents",
-                          "total_interest_accrued_cents"
+                          "interest_balance_cents",
+                          "deferred_interest_balance_cents",
+                          "total_interest_paid_to_date_cents"
                         ],
                         "properties": {
                           "original_amount_cents": {
@@ -7836,7 +7840,14 @@
           },
           "line_item_summary": {
             "type": "object",
-            "required": ["original_amount_cents", "balance_cents", "principal_cents", "total_interest_accrued_cents"],
+            "required": [
+              "original_amount_cents",
+              "balance_cents",
+              "principal_cents",
+              "interest_balance_cents",
+              "deferred_interest_balance_cents",
+              "total_interest_paid_to_date_cents"
+            ],
             "properties": {
               "original_amount_cents": {
                 "type": "integer",
@@ -13235,7 +13246,9 @@
                     "original_amount_cents",
                     "balance_cents",
                     "principal_cents",
-                    "total_interest_accrued_cents"
+                    "interest_balance_cents",
+                    "deferred_interest_balance_cents",
+                    "total_interest_paid_to_date_cents"
                   ],
                   "properties": {
                     "original_amount_cents": {
@@ -13399,7 +13412,9 @@
                       "original_amount_cents",
                       "balance_cents",
                       "principal_cents",
-                      "total_interest_accrued_cents"
+                      "interest_balance_cents",
+                      "deferred_interest_balance_cents",
+                      "total_interest_paid_to_date_cents"
                     ],
                     "properties": {
                       "original_amount_cents": {
@@ -13564,7 +13579,9 @@
                       "original_amount_cents",
                       "balance_cents",
                       "principal_cents",
-                      "total_interest_accrued_cents"
+                      "interest_balance_cents",
+                      "deferred_interest_balance_cents",
+                      "total_interest_paid_to_date_cents"
                     ],
                     "properties": {
                       "original_amount_cents": {
