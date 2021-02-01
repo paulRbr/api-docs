@@ -5280,6 +5280,11 @@
                           "description": "Total deferred interest due for the billing cycle.",
                           "example": 10000
                         },
+                        "min_pay_am_deferred_interest_cents": {
+                          "type": "integer",
+                          "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                          "example": 200
+                        },
                         "min_pay_fees_cents": {
                           "type": "integer",
                           "description": "Total fees due for the billing cycle.",
@@ -5317,6 +5322,12 @@
                           "type": "integer",
                           "description": "Total deferred interest balance for the account.",
                           "example": 700000,
+                          "default": 0
+                        },
+                        "am_deferred_interest_balance_cents": {
+                          "type": "integer",
+                          "description": "The total deferred interest balance (in cents) associated with the account.",
+                          "example": 40000,
                           "default": 0
                         },
                         "fees_balance_cents": {
@@ -7267,6 +7278,11 @@
                 "description": "Total deferred interest due for the billing cycle.",
                 "example": 10000
               },
+              "min_pay_am_deferred_interest_cents": {
+                "type": "integer",
+                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                "example": 200
+              },
               "min_pay_fees_cents": {
                 "type": "integer",
                 "description": "Total fees due for the billing cycle.",
@@ -7304,6 +7320,12 @@
                 "type": "integer",
                 "description": "Total deferred interest balance for the account.",
                 "example": 700000,
+                "default": 0
+              },
+              "am_deferred_interest_balance_cents": {
+                "type": "integer",
+                "description": "The total deferred interest balance (in cents) associated with the account.",
+                "example": 40000,
                 "default": 0
               },
               "fees_balance_cents": {
@@ -13273,6 +13295,11 @@
                       "description": "Total deferred interest due for the billing cycle.",
                       "example": 10000
                     },
+                    "min_pay_am_deferred_interest_cents": {
+                      "type": "integer",
+                      "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                      "example": 200
+                    },
                     "min_pay_fees_cents": {
                       "type": "integer",
                       "description": "Total fees due for the billing cycle.",
@@ -13310,6 +13337,12 @@
                       "type": "integer",
                       "description": "Total deferred interest balance for the account.",
                       "example": 700000,
+                      "default": 0
+                    },
+                    "am_deferred_interest_balance_cents": {
+                      "type": "integer",
+                      "description": "The total deferred interest balance (in cents) associated with the account.",
+                      "example": 40000,
                       "default": 0
                     },
                     "fees_balance_cents": {
