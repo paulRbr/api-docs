@@ -156,6 +156,12 @@
           "example": 300000,
           "default": 0
         },
+        "cycle_am_deferred_interest_cents": {
+          "type": "integer",
+          "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+          "example": 300000,
+          "default": 0
+        },
         "cycle_late_fees_cents": {
           "type": "integer",
           "description": "Total late fees incurred during the billing cycle.",
@@ -168,7 +174,7 @@
           "example": 300000,
           "default": 0
         },
-        "cycle_forgiven_deferred_interest_cents": {
+        "cycle_waived_deferred_interest_cents": {
           "type": "integer",
           "description": "Total deferred interest that was forgiven on the account during the billing cycle.",
           "example": 40000,
@@ -275,6 +281,12 @@
       "type": "object",
       "properties": {
         "total_payoff_cents": {
+          "type": "integer",
+          "description": "The total amount needed to pay off the loan at this exact moment.",
+          "example": 900000,
+          "default": 0
+        },
+        "expected_remaining_payment_amount_cents": {
           "type": "integer",
           "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
           "example": 1100000,

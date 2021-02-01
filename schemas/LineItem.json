@@ -107,9 +107,14 @@
           "description": "he current deferred interest balance of the line item.",
           "example": 200
         },
+        "am_deferred_interest_balance_cents": {
+          "type": "integer",
+          "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+          "example": 200
+        },
         "total_interest_paid_to_date_cents": {
           "type": "integer",
-          "description": "The sum (in cents) of all interest charges, if any, applied to this line item to date",
+          "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
           "example": -16
         }
       }
