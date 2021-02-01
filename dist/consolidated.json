@@ -2535,18 +2535,19 @@
                           "late_fee_cents": {
                             "type": "integer",
                             "description": "The fee charged for late payments on the account.",
+                            "default": 0,
                             "example": 2900
                           },
                           "payment_reversal_fee_cents": {
                             "type": "integer",
                             "description": "The fee charged for payment reversals on the account.",
+                            "default": 0,
                             "example": 2900
                           },
                           "initial_principal_cents": {
                             "type": "integer",
                             "description": "The initial principal balance (in cents) for the account.",
-                            "example": 400000,
-                            "default": 0
+                            "example": 400000
                           }
                         }
                       },
@@ -8589,18 +8590,19 @@
                         "late_fee_cents": {
                           "type": "integer",
                           "description": "The fee charged for late payments on the account.",
+                          "default": 0,
                           "example": 2900
                         },
                         "payment_reversal_fee_cents": {
                           "type": "integer",
                           "description": "The fee charged for payment reversals on the account.",
+                          "default": 0,
                           "example": 2900
                         },
                         "initial_principal_cents": {
                           "type": "integer",
                           "description": "The initial principal balance (in cents) for the account.",
-                          "example": 400000,
-                          "default": 0
+                          "example": 400000
                         }
                       }
                     },
