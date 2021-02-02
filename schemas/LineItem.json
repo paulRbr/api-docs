@@ -36,7 +36,7 @@
         "line_item_status": {
           "type": "string",
           "description": "the corresponding Status for a line item",
-          "enum": ["VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
+          "enum": ["ROLLED", "VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
           "example": "VALID",
           "default": "VALID"
         },
@@ -44,7 +44,6 @@
           "type": "string",
           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
           "enum": [
-            "ROLLED",
             "LOAN",
             "CHARGE",
             "DEBIT_OFFSET",
