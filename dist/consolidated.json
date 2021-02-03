@@ -2043,9 +2043,9 @@
                                   },
                                   "min_pay_due_cents": {
                                     "type": "object",
-                                    "required": ["min_pay_cents"],
+                                    "required": ["statement_min_pay_cents"],
                                     "properties": {
-                                      "min_pay_cents": {
+                                      "statement_min_pay_cents": {
                                         "type": "integer",
                                         "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                                         "example": 160000,
@@ -2059,49 +2059,49 @@
                                       }
                                     }
                                   },
-                                  "additional_min_pay_details": {
+                                  "additional_statement_min_pay_details": {
                                     "type": "object",
                                     "required": [
-                                      "min_pay_charges_principal_cents",
-                                      "min_pay_interest_cents",
-                                      "min_pay_deferred_cents",
-                                      "min_pay_am_deferred_interest_cents",
-                                      "min_pay_fees_cents",
-                                      "previous_min_pay_cents"
+                                      "statement_min_pay_charges_principal_cents",
+                                      "statement_min_pay_interest_cents",
+                                      "statement_min_pay_deferred_cents",
+                                      "statement_min_pay_am_deferred_interest_cents",
+                                      "statement_min_pay_fees_cents",
+                                      "previous_statement_min_pay_cents"
                                     ],
                                     "properties": {
-                                      "min_pay_charges_principal_cents": {
+                                      "statement_min_pay_charges_principal_cents": {
                                         "type": "integer",
                                         "description": "Total principal due for the billing cycle.",
                                         "example": 100000,
                                         "default": 0
                                       },
-                                      "min_pay_interest_cents": {
+                                      "statement_min_pay_interest_cents": {
                                         "type": "integer",
                                         "description": "Total interest due for the billing cycle.",
                                         "example": 30000,
                                         "default": 0
                                       },
-                                      "min_pay_deferred_cents": {
+                                      "statement_min_pay_deferred_cents": {
                                         "type": "integer",
                                         "description": "Total deferred interest due for the billing cycle.",
                                         "example": 10000,
                                         "default": 0
                                       },
-                                      "min_pay_am_deferred_interest_cents": {
+                                      "statement_min_pay_am_deferred_interest_cents": {
                                         "type": "integer",
                                         "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                                         "example": 200
                                       },
-                                      "min_pay_fees_cents": {
+                                      "statement_min_pay_fees_cents": {
                                         "type": "integer",
                                         "description": "Total fees due for the billing cycle.",
                                         "example": 20000,
                                         "default": 0
                                       },
-                                      "previous_min_pay_cents": {
+                                      "previous_statement_min_pay_cents": {
                                         "type": "integer",
-                                        "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                                        "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                                         "example": 400000,
                                         "default": 0
                                       }
@@ -2881,9 +2881,9 @@
                         },
                         "min_pay_due_cents": {
                           "type": "object",
-                          "required": ["min_pay_cents"],
+                          "required": ["statement_min_pay_cents"],
                           "properties": {
-                            "min_pay_cents": {
+                            "statement_min_pay_cents": {
                               "type": "integer",
                               "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                               "example": 160000,
@@ -2897,49 +2897,49 @@
                             }
                           }
                         },
-                        "additional_min_pay_details": {
+                        "additional_statement_min_pay_details": {
                           "type": "object",
                           "required": [
-                            "min_pay_charges_principal_cents",
-                            "min_pay_interest_cents",
-                            "min_pay_deferred_cents",
-                            "min_pay_am_deferred_interest_cents",
-                            "min_pay_fees_cents",
-                            "previous_min_pay_cents"
+                            "statement_min_pay_charges_principal_cents",
+                            "statement_min_pay_interest_cents",
+                            "statement_min_pay_deferred_cents",
+                            "statement_min_pay_am_deferred_interest_cents",
+                            "statement_min_pay_fees_cents",
+                            "previous_statement_min_pay_cents"
                           ],
                           "properties": {
-                            "min_pay_charges_principal_cents": {
+                            "statement_min_pay_charges_principal_cents": {
                               "type": "integer",
                               "description": "Total principal due for the billing cycle.",
                               "example": 100000,
                               "default": 0
                             },
-                            "min_pay_interest_cents": {
+                            "statement_min_pay_interest_cents": {
                               "type": "integer",
                               "description": "Total interest due for the billing cycle.",
                               "example": 30000,
                               "default": 0
                             },
-                            "min_pay_deferred_cents": {
+                            "statement_min_pay_deferred_cents": {
                               "type": "integer",
                               "description": "Total deferred interest due for the billing cycle.",
                               "example": 10000,
                               "default": 0
                             },
-                            "min_pay_am_deferred_interest_cents": {
+                            "statement_min_pay_am_deferred_interest_cents": {
                               "type": "integer",
                               "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                               "example": 200
                             },
-                            "min_pay_fees_cents": {
+                            "statement_min_pay_fees_cents": {
                               "type": "integer",
                               "description": "Total fees due for the billing cycle.",
                               "example": 20000,
                               "default": 0
                             },
-                            "previous_min_pay_cents": {
+                            "previous_statement_min_pay_cents": {
                               "type": "integer",
-                              "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                              "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                               "example": 400000,
                               "default": 0
                             }
@@ -3418,9 +3418,9 @@
                         },
                         "min_pay_due_cents": {
                           "type": "object",
-                          "required": ["min_pay_cents"],
+                          "required": ["statement_min_pay_cents"],
                           "properties": {
-                            "min_pay_cents": {
+                            "statement_min_pay_cents": {
                               "type": "integer",
                               "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                               "example": 160000,
@@ -3434,49 +3434,49 @@
                             }
                           }
                         },
-                        "additional_min_pay_details": {
+                        "additional_statement_min_pay_details": {
                           "type": "object",
                           "required": [
-                            "min_pay_charges_principal_cents",
-                            "min_pay_interest_cents",
-                            "min_pay_deferred_cents",
-                            "min_pay_am_deferred_interest_cents",
-                            "min_pay_fees_cents",
-                            "previous_min_pay_cents"
+                            "statement_min_pay_charges_principal_cents",
+                            "statement_min_pay_interest_cents",
+                            "statement_min_pay_deferred_cents",
+                            "statement_min_pay_am_deferred_interest_cents",
+                            "statement_min_pay_fees_cents",
+                            "previous_statement_min_pay_cents"
                           ],
                           "properties": {
-                            "min_pay_charges_principal_cents": {
+                            "statement_min_pay_charges_principal_cents": {
                               "type": "integer",
                               "description": "Total principal due for the billing cycle.",
                               "example": 100000,
                               "default": 0
                             },
-                            "min_pay_interest_cents": {
+                            "statement_min_pay_interest_cents": {
                               "type": "integer",
                               "description": "Total interest due for the billing cycle.",
                               "example": 30000,
                               "default": 0
                             },
-                            "min_pay_deferred_cents": {
+                            "statement_min_pay_deferred_cents": {
                               "type": "integer",
                               "description": "Total deferred interest due for the billing cycle.",
                               "example": 10000,
                               "default": 0
                             },
-                            "min_pay_am_deferred_interest_cents": {
+                            "statement_min_pay_am_deferred_interest_cents": {
                               "type": "integer",
                               "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                               "example": 200
                             },
-                            "min_pay_fees_cents": {
+                            "statement_min_pay_fees_cents": {
                               "type": "integer",
                               "description": "Total fees due for the billing cycle.",
                               "example": 20000,
                               "default": 0
                             },
-                            "previous_min_pay_cents": {
+                            "previous_statement_min_pay_cents": {
                               "type": "integer",
-                              "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                              "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                               "example": 400000,
                               "default": 0
                             }
@@ -5511,6 +5511,16 @@
                         "description": "The amount in cents allocated to principal from this am payment",
                         "example": 70000
                       },
+                      "am_start_principal_balance_cents": {
+                        "type": "number",
+                        "description": "The starting principal balance on the loan before this payment",
+                        "example": 136691
+                      },
+                      "am_end_principal_balance_cents": {
+                        "type": "number",
+                        "description": "The ending principal balance on the loan after this payment",
+                        "example": 136691
+                      },
                       "am_start_total_balance_cents": {
                         "type": "number",
                         "description": "The starting balance on the loan before this payment",
@@ -5838,9 +5848,9 @@
           },
           "min_pay_due_cents": {
             "type": "object",
-            "required": ["min_pay_cents"],
+            "required": ["statement_min_pay_cents"],
             "properties": {
-              "min_pay_cents": {
+              "statement_min_pay_cents": {
                 "type": "integer",
                 "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                 "example": 160000,
@@ -5854,49 +5864,49 @@
               }
             }
           },
-          "additional_min_pay_details": {
+          "additional_statement_min_pay_details": {
             "type": "object",
             "required": [
-              "min_pay_charges_principal_cents",
-              "min_pay_interest_cents",
-              "min_pay_deferred_cents",
-              "min_pay_am_deferred_interest_cents",
-              "min_pay_fees_cents",
-              "previous_min_pay_cents"
+              "statement_min_pay_charges_principal_cents",
+              "statement_min_pay_interest_cents",
+              "statement_min_pay_deferred_cents",
+              "statement_min_pay_am_deferred_interest_cents",
+              "statement_min_pay_fees_cents",
+              "previous_statement_min_pay_cents"
             ],
             "properties": {
-              "min_pay_charges_principal_cents": {
+              "statement_min_pay_charges_principal_cents": {
                 "type": "integer",
                 "description": "Total principal due for the billing cycle.",
                 "example": 100000,
                 "default": 0
               },
-              "min_pay_interest_cents": {
+              "statement_min_pay_interest_cents": {
                 "type": "integer",
                 "description": "Total interest due for the billing cycle.",
                 "example": 30000,
                 "default": 0
               },
-              "min_pay_deferred_cents": {
+              "statement_min_pay_deferred_cents": {
                 "type": "integer",
                 "description": "Total deferred interest due for the billing cycle.",
                 "example": 10000,
                 "default": 0
               },
-              "min_pay_am_deferred_interest_cents": {
+              "statement_min_pay_am_deferred_interest_cents": {
                 "type": "integer",
                 "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                 "example": 200
               },
-              "min_pay_fees_cents": {
+              "statement_min_pay_fees_cents": {
                 "type": "integer",
                 "description": "Total fees due for the billing cycle.",
                 "example": 20000,
                 "default": 0
               },
-              "previous_min_pay_cents": {
+              "previous_statement_min_pay_cents": {
                 "type": "integer",
-                "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                 "example": 400000,
                 "default": 0
               }
@@ -6233,9 +6243,9 @@
               },
               "min_pay_due_cents": {
                 "type": "object",
-                "required": ["min_pay_cents"],
+                "required": ["statement_min_pay_cents"],
                 "properties": {
-                  "min_pay_cents": {
+                  "statement_min_pay_cents": {
                     "type": "integer",
                     "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                     "example": 160000,
@@ -6249,49 +6259,49 @@
                   }
                 }
               },
-              "additional_min_pay_details": {
+              "additional_statement_min_pay_details": {
                 "type": "object",
                 "required": [
-                  "min_pay_charges_principal_cents",
-                  "min_pay_interest_cents",
-                  "min_pay_deferred_cents",
-                  "min_pay_am_deferred_interest_cents",
-                  "min_pay_fees_cents",
-                  "previous_min_pay_cents"
+                  "statement_min_pay_charges_principal_cents",
+                  "statement_min_pay_interest_cents",
+                  "statement_min_pay_deferred_cents",
+                  "statement_min_pay_am_deferred_interest_cents",
+                  "statement_min_pay_fees_cents",
+                  "previous_statement_min_pay_cents"
                 ],
                 "properties": {
-                  "min_pay_charges_principal_cents": {
+                  "statement_min_pay_charges_principal_cents": {
                     "type": "integer",
                     "description": "Total principal due for the billing cycle.",
                     "example": 100000,
                     "default": 0
                   },
-                  "min_pay_interest_cents": {
+                  "statement_min_pay_interest_cents": {
                     "type": "integer",
                     "description": "Total interest due for the billing cycle.",
                     "example": 30000,
                     "default": 0
                   },
-                  "min_pay_deferred_cents": {
+                  "statement_min_pay_deferred_cents": {
                     "type": "integer",
                     "description": "Total deferred interest due for the billing cycle.",
                     "example": 10000,
                     "default": 0
                   },
-                  "min_pay_am_deferred_interest_cents": {
+                  "statement_min_pay_am_deferred_interest_cents": {
                     "type": "integer",
                     "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                     "example": 200
                   },
-                  "min_pay_fees_cents": {
+                  "statement_min_pay_fees_cents": {
                     "type": "integer",
                     "description": "Total fees due for the billing cycle.",
                     "example": 20000,
                     "default": 0
                   },
-                  "previous_min_pay_cents": {
+                  "previous_statement_min_pay_cents": {
                     "type": "integer",
-                    "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                    "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                     "example": 400000,
                     "default": 0
                   }
@@ -6897,9 +6907,9 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": ["min_pay_cents"],
+                      "required": ["statement_min_pay_cents"],
                       "properties": {
-                        "min_pay_cents": {
+                        "statement_min_pay_cents": {
                           "type": "integer",
                           "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                           "example": 160000,
@@ -6913,49 +6923,49 @@
                         }
                       }
                     },
-                    "additional_min_pay_details": {
+                    "additional_statement_min_pay_details": {
                       "type": "object",
                       "required": [
-                        "min_pay_charges_principal_cents",
-                        "min_pay_interest_cents",
-                        "min_pay_deferred_cents",
-                        "min_pay_am_deferred_interest_cents",
-                        "min_pay_fees_cents",
-                        "previous_min_pay_cents"
+                        "statement_min_pay_charges_principal_cents",
+                        "statement_min_pay_interest_cents",
+                        "statement_min_pay_deferred_cents",
+                        "statement_min_pay_am_deferred_interest_cents",
+                        "statement_min_pay_fees_cents",
+                        "previous_statement_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_charges_principal_cents": {
+                        "statement_min_pay_charges_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000,
                           "default": 0
                         },
-                        "min_pay_interest_cents": {
+                        "statement_min_pay_interest_cents": {
                           "type": "integer",
                           "description": "Total interest due for the billing cycle.",
                           "example": 30000,
                           "default": 0
                         },
-                        "min_pay_deferred_cents": {
+                        "statement_min_pay_deferred_cents": {
                           "type": "integer",
                           "description": "Total deferred interest due for the billing cycle.",
                           "example": 10000,
                           "default": 0
                         },
-                        "min_pay_am_deferred_interest_cents": {
+                        "statement_min_pay_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                           "example": 200
                         },
-                        "min_pay_fees_cents": {
+                        "statement_min_pay_fees_cents": {
                           "type": "integer",
                           "description": "Total fees due for the billing cycle.",
                           "example": 20000,
                           "default": 0
                         },
-                        "previous_min_pay_cents": {
+                        "previous_statement_min_pay_cents": {
                           "type": "integer",
-                          "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                          "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                           "example": 400000,
                           "default": 0
                         }
@@ -10615,9 +10625,9 @@
                               },
                               "min_pay_due_cents": {
                                 "type": "object",
-                                "required": ["min_pay_cents"],
+                                "required": ["statement_min_pay_cents"],
                                 "properties": {
-                                  "min_pay_cents": {
+                                  "statement_min_pay_cents": {
                                     "type": "integer",
                                     "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                                     "example": 160000,
@@ -10631,49 +10641,49 @@
                                   }
                                 }
                               },
-                              "additional_min_pay_details": {
+                              "additional_statement_min_pay_details": {
                                 "type": "object",
                                 "required": [
-                                  "min_pay_charges_principal_cents",
-                                  "min_pay_interest_cents",
-                                  "min_pay_deferred_cents",
-                                  "min_pay_am_deferred_interest_cents",
-                                  "min_pay_fees_cents",
-                                  "previous_min_pay_cents"
+                                  "statement_min_pay_charges_principal_cents",
+                                  "statement_min_pay_interest_cents",
+                                  "statement_min_pay_deferred_cents",
+                                  "statement_min_pay_am_deferred_interest_cents",
+                                  "statement_min_pay_fees_cents",
+                                  "previous_statement_min_pay_cents"
                                 ],
                                 "properties": {
-                                  "min_pay_charges_principal_cents": {
+                                  "statement_min_pay_charges_principal_cents": {
                                     "type": "integer",
                                     "description": "Total principal due for the billing cycle.",
                                     "example": 100000,
                                     "default": 0
                                   },
-                                  "min_pay_interest_cents": {
+                                  "statement_min_pay_interest_cents": {
                                     "type": "integer",
                                     "description": "Total interest due for the billing cycle.",
                                     "example": 30000,
                                     "default": 0
                                   },
-                                  "min_pay_deferred_cents": {
+                                  "statement_min_pay_deferred_cents": {
                                     "type": "integer",
                                     "description": "Total deferred interest due for the billing cycle.",
                                     "example": 10000,
                                     "default": 0
                                   },
-                                  "min_pay_am_deferred_interest_cents": {
+                                  "statement_min_pay_am_deferred_interest_cents": {
                                     "type": "integer",
                                     "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                                     "example": 200
                                   },
-                                  "min_pay_fees_cents": {
+                                  "statement_min_pay_fees_cents": {
                                     "type": "integer",
                                     "description": "Total fees due for the billing cycle.",
                                     "example": 20000,
                                     "default": 0
                                   },
-                                  "previous_min_pay_cents": {
+                                  "previous_statement_min_pay_cents": {
                                     "type": "integer",
-                                    "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                                    "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                                     "example": 400000,
                                     "default": 0
                                   }
@@ -11398,9 +11408,9 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": ["min_pay_cents"],
+                      "required": ["statement_min_pay_cents"],
                       "properties": {
-                        "min_pay_cents": {
+                        "statement_min_pay_cents": {
                           "type": "integer",
                           "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                           "example": 160000,
@@ -11414,49 +11424,49 @@
                         }
                       }
                     },
-                    "additional_min_pay_details": {
+                    "additional_statement_min_pay_details": {
                       "type": "object",
                       "required": [
-                        "min_pay_charges_principal_cents",
-                        "min_pay_interest_cents",
-                        "min_pay_deferred_cents",
-                        "min_pay_am_deferred_interest_cents",
-                        "min_pay_fees_cents",
-                        "previous_min_pay_cents"
+                        "statement_min_pay_charges_principal_cents",
+                        "statement_min_pay_interest_cents",
+                        "statement_min_pay_deferred_cents",
+                        "statement_min_pay_am_deferred_interest_cents",
+                        "statement_min_pay_fees_cents",
+                        "previous_statement_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_charges_principal_cents": {
+                        "statement_min_pay_charges_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000,
                           "default": 0
                         },
-                        "min_pay_interest_cents": {
+                        "statement_min_pay_interest_cents": {
                           "type": "integer",
                           "description": "Total interest due for the billing cycle.",
                           "example": 30000,
                           "default": 0
                         },
-                        "min_pay_deferred_cents": {
+                        "statement_min_pay_deferred_cents": {
                           "type": "integer",
                           "description": "Total deferred interest due for the billing cycle.",
                           "example": 10000,
                           "default": 0
                         },
-                        "min_pay_am_deferred_interest_cents": {
+                        "statement_min_pay_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                           "example": 200
                         },
-                        "min_pay_fees_cents": {
+                        "statement_min_pay_fees_cents": {
                           "type": "integer",
                           "description": "Total fees due for the billing cycle.",
                           "example": 20000,
                           "default": 0
                         },
-                        "previous_min_pay_cents": {
+                        "previous_statement_min_pay_cents": {
                           "type": "integer",
-                          "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                          "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                           "example": 400000,
                           "default": 0
                         }
@@ -11902,9 +11912,9 @@
                       },
                       "min_pay_due_cents": {
                         "type": "object",
-                        "required": ["min_pay_cents"],
+                        "required": ["statement_min_pay_cents"],
                         "properties": {
-                          "min_pay_cents": {
+                          "statement_min_pay_cents": {
                             "type": "integer",
                             "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                             "example": 160000,
@@ -11918,49 +11928,49 @@
                           }
                         }
                       },
-                      "additional_min_pay_details": {
+                      "additional_statement_min_pay_details": {
                         "type": "object",
                         "required": [
-                          "min_pay_charges_principal_cents",
-                          "min_pay_interest_cents",
-                          "min_pay_deferred_cents",
-                          "min_pay_am_deferred_interest_cents",
-                          "min_pay_fees_cents",
-                          "previous_min_pay_cents"
+                          "statement_min_pay_charges_principal_cents",
+                          "statement_min_pay_interest_cents",
+                          "statement_min_pay_deferred_cents",
+                          "statement_min_pay_am_deferred_interest_cents",
+                          "statement_min_pay_fees_cents",
+                          "previous_statement_min_pay_cents"
                         ],
                         "properties": {
-                          "min_pay_charges_principal_cents": {
+                          "statement_min_pay_charges_principal_cents": {
                             "type": "integer",
                             "description": "Total principal due for the billing cycle.",
                             "example": 100000,
                             "default": 0
                           },
-                          "min_pay_interest_cents": {
+                          "statement_min_pay_interest_cents": {
                             "type": "integer",
                             "description": "Total interest due for the billing cycle.",
                             "example": 30000,
                             "default": 0
                           },
-                          "min_pay_deferred_cents": {
+                          "statement_min_pay_deferred_cents": {
                             "type": "integer",
                             "description": "Total deferred interest due for the billing cycle.",
                             "example": 10000,
                             "default": 0
                           },
-                          "min_pay_am_deferred_interest_cents": {
+                          "statement_min_pay_am_deferred_interest_cents": {
                             "type": "integer",
                             "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                             "example": 200
                           },
-                          "min_pay_fees_cents": {
+                          "statement_min_pay_fees_cents": {
                             "type": "integer",
                             "description": "Total fees due for the billing cycle.",
                             "example": 20000,
                             "default": 0
                           },
-                          "previous_min_pay_cents": {
+                          "previous_statement_min_pay_cents": {
                             "type": "integer",
-                            "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                            "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                             "example": 400000,
                             "default": 0
                           }
@@ -12143,6 +12153,16 @@
                     "type": "number",
                     "description": "The amount in cents allocated to principal from this am payment",
                     "example": 70000
+                  },
+                  "am_start_principal_balance_cents": {
+                    "type": "number",
+                    "description": "The starting principal balance on the loan before this payment",
+                    "example": 136691
+                  },
+                  "am_end_principal_balance_cents": {
+                    "type": "number",
+                    "description": "The ending principal balance on the loan after this payment",
+                    "example": 136691
                   },
                   "am_start_total_balance_cents": {
                     "type": "number",
@@ -12831,9 +12851,9 @@
                     },
                     "min_pay_due_cents": {
                       "type": "object",
-                      "required": ["min_pay_cents"],
+                      "required": ["statement_min_pay_cents"],
                       "properties": {
-                        "min_pay_cents": {
+                        "statement_min_pay_cents": {
                           "type": "integer",
                           "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
                           "example": 160000,
@@ -12847,49 +12867,49 @@
                         }
                       }
                     },
-                    "additional_min_pay_details": {
+                    "additional_statement_min_pay_details": {
                       "type": "object",
                       "required": [
-                        "min_pay_charges_principal_cents",
-                        "min_pay_interest_cents",
-                        "min_pay_deferred_cents",
-                        "min_pay_am_deferred_interest_cents",
-                        "min_pay_fees_cents",
-                        "previous_min_pay_cents"
+                        "statement_min_pay_charges_principal_cents",
+                        "statement_min_pay_interest_cents",
+                        "statement_min_pay_deferred_cents",
+                        "statement_min_pay_am_deferred_interest_cents",
+                        "statement_min_pay_fees_cents",
+                        "previous_statement_min_pay_cents"
                       ],
                       "properties": {
-                        "min_pay_charges_principal_cents": {
+                        "statement_min_pay_charges_principal_cents": {
                           "type": "integer",
                           "description": "Total principal due for the billing cycle.",
                           "example": 100000,
                           "default": 0
                         },
-                        "min_pay_interest_cents": {
+                        "statement_min_pay_interest_cents": {
                           "type": "integer",
                           "description": "Total interest due for the billing cycle.",
                           "example": 30000,
                           "default": 0
                         },
-                        "min_pay_deferred_cents": {
+                        "statement_min_pay_deferred_cents": {
                           "type": "integer",
                           "description": "Total deferred interest due for the billing cycle.",
                           "example": 10000,
                           "default": 0
                         },
-                        "min_pay_am_deferred_interest_cents": {
+                        "statement_min_pay_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                           "example": 200
                         },
-                        "min_pay_fees_cents": {
+                        "statement_min_pay_fees_cents": {
                           "type": "integer",
                           "description": "Total fees due for the billing cycle.",
                           "example": 20000,
                           "default": 0
                         },
-                        "previous_min_pay_cents": {
+                        "previous_statement_min_pay_cents": {
                           "type": "integer",
-                          "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                          "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
                           "example": 400000,
                           "default": 0
                         }

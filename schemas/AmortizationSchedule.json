@@ -60,6 +60,16 @@
         "description": "The amount in cents allocated to principal from this am payment",
         "example": 70000
       },
+      "am_start_principal_balance_cents": {
+        "type": "number",
+        "description": "The starting principal balance on the loan before this payment",
+        "example": 136691
+      },
+      "am_end_principal_balance_cents": {
+        "type": "number",
+        "description": "The ending principal balance on the loan after this payment",
+        "example": 136691
+      },
       "am_start_total_balance_cents": {
         "type": "number",
         "description": "The starting balance on the loan before this payment",
