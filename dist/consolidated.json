@@ -2091,7 +2091,8 @@
                                       "statement_min_pay_am_deferred_interest_cents": {
                                         "type": "integer",
                                         "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                                        "example": 200
+                                        "example": 200,
+                                        "default": 0
                                       },
                                       "statement_min_pay_fees_cents": {
                                         "type": "integer",
@@ -2929,7 +2930,8 @@
                             "statement_min_pay_am_deferred_interest_cents": {
                               "type": "integer",
                               "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                              "example": 200
+                              "example": 200,
+                              "default": 0
                             },
                             "statement_min_pay_fees_cents": {
                               "type": "integer",
@@ -3466,7 +3468,8 @@
                             "statement_min_pay_am_deferred_interest_cents": {
                               "type": "integer",
                               "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                              "example": 200
+                              "example": 200,
+                              "default": 0
                             },
                             "statement_min_pay_fees_cents": {
                               "type": "integer",
@@ -5299,7 +5302,8 @@
                         "min_pay_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                          "example": 200
+                          "example": 200,
+                          "default": 0
                         },
                         "min_pay_fees_cents": {
                           "type": "integer",
@@ -5896,7 +5900,8 @@
               "statement_min_pay_am_deferred_interest_cents": {
                 "type": "integer",
                 "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                "example": 200
+                "example": 200,
+                "default": 0
               },
               "statement_min_pay_fees_cents": {
                 "type": "integer",
@@ -6291,7 +6296,8 @@
                   "statement_min_pay_am_deferred_interest_cents": {
                     "type": "integer",
                     "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                    "example": 200
+                    "example": 200,
+                    "default": 0
                   },
                   "statement_min_pay_fees_cents": {
                     "type": "integer",
@@ -6955,7 +6961,8 @@
                         "statement_min_pay_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                          "example": 200
+                          "example": 200,
+                          "default": 0
                         },
                         "statement_min_pay_fees_cents": {
                           "type": "integer",
@@ -7307,7 +7314,8 @@
               "min_pay_am_deferred_interest_cents": {
                 "type": "integer",
                 "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                "example": 200
+                "example": 200,
+                "default": 0
               },
               "min_pay_fees_cents": {
                 "type": "integer",
@@ -10673,7 +10681,8 @@
                                   "statement_min_pay_am_deferred_interest_cents": {
                                     "type": "integer",
                                     "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                                    "example": 200
+                                    "example": 200,
+                                    "default": 0
                                   },
                                   "statement_min_pay_fees_cents": {
                                     "type": "integer",
@@ -11456,7 +11465,8 @@
                         "statement_min_pay_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                          "example": 200
+                          "example": 200,
+                          "default": 0
                         },
                         "statement_min_pay_fees_cents": {
                           "type": "integer",
@@ -11960,7 +11970,8 @@
                           "statement_min_pay_am_deferred_interest_cents": {
                             "type": "integer",
                             "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                            "example": 200
+                            "example": 200,
+                            "default": 0
                           },
                           "statement_min_pay_fees_cents": {
                             "type": "integer",
@@ -12899,7 +12910,8 @@
                         "statement_min_pay_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                          "example": 200
+                          "example": 200,
+                          "default": 0
                         },
                         "statement_min_pay_fees_cents": {
                           "type": "integer",
@@ -13349,7 +13361,8 @@
                     "min_pay_am_deferred_interest_cents": {
                       "type": "integer",
                       "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                      "example": 200
+                      "example": 200,
+                      "default": 0
                     },
                     "min_pay_fees_cents": {
                       "type": "integer",
