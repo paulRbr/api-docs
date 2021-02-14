@@ -9,7 +9,7 @@ export interface BasePolicyConfigBillingCycle {
    */
   billing_due_date_interval: string;
   /**
-   * The length of the billing cycle. after which a statement is generated, and a due date
+   * The length of the billing cycle, after which a statement is generated, and a due date
    * assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)
    */
   period: string;

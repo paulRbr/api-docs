@@ -28,7 +28,7 @@ export interface Customer {
    */
   date_of_birth?: Date;
   /**
-   * The email address of this customer
+   * The email address of this Customer
    */
   email?: string;
   /**

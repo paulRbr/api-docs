@@ -1,6 +1,6 @@
 {
   "name": "canopy-docs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "OpenAPI v3.0.3 Spec for CanopyAPI",
   "private": true,
   "repository": {
@@ -11,7 +11,7 @@
   "license": "ISC",
   "scripts": {
     "preview": "bundle exec bump preview dist/consolidated.json",
-    "build": "yarn bundle && yarn validate",
+    "build": "yarn bundle && yarn validate && yarn typegen",
     "bundle": "swagger-cli bundle -r -o dist/consolidated.json openapi.json",
     "validate": "swagger-cli validate dist/consolidated.json",
     "postman": "openapi2postmanv2 -s dist/consolidated.json -o Canopy_UAT_Postman_2.json -p -O folderStrategy=Tags includeAuthInfoInExample=false requestParametersResolution=Example",

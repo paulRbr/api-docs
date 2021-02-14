@@ -1,21 +1,19 @@
-// APIUser.java
-
 package io.quicktype;
 
 public class APIUser {
-    private long apiUserID;
+    private String apiUserID;
     private String email;
     private String nameFirst;
     private String nameLast;
     private String organizationName;
     private String phone;
-    private Role role;
+    private long role;
 
     /**
      * The unique ID in Canopy for this API user
      */
-    public long getAPIUserID() { return apiUserID; }
-    public void setAPIUserID(long value) { this.apiUserID = value; }
+    public String getAPIUserID() { return apiUserID; }
+    public void setAPIUserID(String value) { this.apiUserID = value; }
 
     /**
      * The email address of this API User
@@ -50,35 +48,6 @@ public class APIUser {
     /**
      * The role of this user in the API
      */
-    public Role getRole() { return role; }
-    public void setRole(Role value) { this.role = value; }
-}
-
-// Role.java
-
-package io.quicktype;
-
-import java.io.IOException;
-
-/**
- * The role of this user in the API
- */
-public enum Role {
-    ADMIN, OPERATIONS, SERVICING;
-
-    public String toValue() {
-        switch (this) {
-            case ADMIN: return "ADMIN";
-            case OPERATIONS: return "OPERATIONS";
-            case SERVICING: return "SERVICING";
-        }
-        return null;
-    }
-
-    public static Role forValue(String value) throws IOException {
-        if (value.equals("ADMIN")) return ADMIN;
-        if (value.equals("OPERATIONS")) return OPERATIONS;
-        if (value.equals("SERVICING")) return SERVICING;
-        throw new IOException("Cannot deserialize Role");
-    }
+    public long getRole() { return role; }
+    public void setRole(long value) { this.role = value; }
 }

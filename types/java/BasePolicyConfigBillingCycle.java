@@ -16,7 +16,7 @@ public class BasePolicyConfigBillingCycle {
     public void setBillingDueDateInterval(String value) { this.billingDueDateInterval = value; }
 
     /**
-     * The length of the billing cycle. after which a statement is generated, and a due date
+     * The length of the billing cycle, after which a statement is generated, and a due date
      * assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)
      */
     public String getPeriod() { return period; }

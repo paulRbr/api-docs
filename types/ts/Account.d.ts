@@ -8,7 +8,7 @@ export interface Account {
    * The product associated with the account
    */
   account_product?: AccountProduct;
-  additional_min_pay_details?: AdditionalMinPayDetails;
+  additional_statement_min_pay_details?: AdditionalStatementMinPayDetails;
   associated_entities?: AssociatedEntities;
   /**
    * The `Date-Time` which the account was created in the API.
@@ -123,6 +123,15 @@ export interface ProductOverview {
    */
   product_short_description?: string;
   /**
+   * Timezone denoted as an [Olson-style
+   * timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the
+   * timezone for the product. All times in any response data for accounts using this product
+   * will be denominated in this timezone. Shifts due to daylight savings will be accounted
+   * for where relevant, and all output timestamps will be denoted as UTC offsets normalized
+   * based on this value.
+   */
+  product_time_zone?: string;
+  /**
    * The Type of Product. If not included, defaults to `REVOLVING`
    */
   product_type: ProductType;
@@ -162,27 +171,33 @@ export interface PromoOverview {
   promo_purchase_window_inclusive_start?: Date;
 }
 
-export interface AdditionalMinPayDetails {
+export interface AdditionalStatementMinPayDetails {
+  /**
+   * Previous amounts due, including fees. This is a subset of statement_min_pay_cents.
+   */
+  previous_statement_min_pay_cents: number;
+  /**
+   * The current AM deferred interest balance of the line item. Canopy tracks deferred
+   * interest during an amortization period separately from deferred interest accrued during a
+   * revolving period.
+   */
+  statement_min_pay_am_deferred_interest_cents: number;
   /**
    * Total principal due for the billing cycle.
    */
-  min_pay_charges_principal_cents: number;
+  statement_min_pay_charges_principal_cents: number;
   /**
    * Total deferred interest due for the billing cycle.
    */
-  min_pay_deferred_cents: number;
+  statement_min_pay_deferred_cents: number;
   /**
    * Total fees due for the billing cycle.
    */
-  min_pay_fees_cents: number;
+  statement_min_pay_fees_cents: number;
   /**
    * Total interest due for the billing cycle.
    */
-  min_pay_interest_cents: number;
-  /**
-   * Previous amounts due, including fees. This is a subset of min_pay_cents.
-   */
-  previous_min_pay_cents: number;
+  statement_min_pay_interest_cents: number;
 }
 
 export interface AssociatedEntities {
@@ -209,21 +224,25 @@ export interface ExternalField {
 
 export interface MinPayDueCents {
   /**
+   * The `Date-Time` the payment for this billing cycle is due.
+   */
+  min_pay_due_at?: Date;
+  /**
    * Total amount due for the billing cycle, summing cycle principal, interest, deferred
    * interest, and fees outstanding.
    */
-  min_pay_cents: number;
-  /**
-   * The `Date-Time` the payment for this billing cycle is due.
-   */
-  min_pay_due_at: Date;
+  statement_min_pay_cents: number;
 }
 
 export interface Summary {
   /**
+   * The total deferred interest balance (in cents) associated with the account.
+   */
+  am_deferred_interest_balance_cents?: number;
+  /**
    * The total available credit balance (in cents) for the account.
    */
-  available_credit_cents: number;
+  available_credit_cents?: number;
   /**
    * Total Amount (in cents) that this account can borrow.
    */
@@ -231,7 +250,7 @@ export interface Summary {
   /**
    * The total deferred interest balance (in cents) associated with the account.
    */
-  deferred_interest_balance_cents: number;
+  deferred_interest_balance_cents?: number;
   /**
    * The total interest balance (in cents) associated with the account.
    */
@@ -267,4 +286,8 @@ export interface Summary {
    * The total sum of payments made to date (in cents) associated with the account.
    */
   total_paid_to_date_cents: number;
+  /**
+   * The total amount needed to pay off the loan at this exact moment.
+   */
+  total_payoff_cents?: number;
 }

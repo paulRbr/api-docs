@@ -50,7 +50,7 @@ export interface LineItemOverview {
   /**
    * the corresponding Status for a line item
    */
-  line_item_status: LineItemStatus;
+  line_item_status?: LineItemStatus;
   /**
    * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
    */
@@ -62,6 +62,12 @@ export interface LineItemOverview {
  */
 export enum LineItemStatus {
   Invalid = "INVALID",
+  Offset = "OFFSET",
+  Pending = "PENDING",
+  Reversed = "REVERSED",
+  Rolled = "ROLLED",
+  SplitInvalid = "SPLIT_INVALID",
+  SplitValid = "SPLIT_VALID",
   Valid = "VALID",
 }
 
@@ -70,17 +76,43 @@ export enum LineItemStatus {
  */
 export enum LineItemType {
   Charge = "CHARGE",
+  CreditOffset = "CREDIT_OFFSET",
+  DebitOffset = "DEBIT_OFFSET",
+  DeferredInterest = "DEFERRED_INTEREST",
+  Fee = "FEE",
+  Interest = "INTEREST",
   LateFee = "LATE_FEE",
+  Loan = "LOAN",
+  MinDue = "MIN_DUE",
   Payment = "PAYMENT",
-  PaymentReversalFee = "PAYMENT_REVERSAL_FEE",
+  PaymentSplit = "PAYMENT_SPLIT",
+  ProductInterest = "PRODUCT_INTEREST",
+  PromoEnd = "PROMO_END",
+  PurchaseWindowEnd = "PURCHASE_WINDOW_END",
+  ReturnCheckFee = "RETURN_CHECK_FEE",
+  Statement = "STATEMENT",
 }
 
 export interface LineItemSummary {
+  /**
+   * The current AM deferred interest balance of the line item. Canopy tracks deferred
+   * interest during an amortization period separately from deferred interest accrued during a
+   * revolving period.
+   */
+  am_deferred_interest_balance_cents?: number;
   /**
    * The current balance of the line item, which accounts for interest accrued per the
    * `product's` interest policy and the `account's` interest rate attribute.
    */
   balance_cents: number;
+  /**
+   * he current deferred interest balance of the line item.
+   */
+  deferred_interest_balance_cents: number;
+  /**
+   * The current interest balance of the line item.
+   */
+  interest_balance_cents: number;
   /**
    * The originating amount of money (in cents) relating to this line item.
    */
@@ -90,9 +122,10 @@ export interface LineItemSummary {
    */
   principal_cents: number;
   /**
-   * The sum (in cents) of all interest charges, if any, applied to this line item
+   * The sum (in cents) of all payments towards interest charges, if any, applied to this line
+   * item to date
    */
-  total_interest_accrued_cents: number;
+  total_interest_paid_to_date_cents: number;
 }
 
 /**

@@ -123,11 +123,17 @@ import java.io.IOException;
  * the corresponding Status for a line item
  */
 public enum LineItemStatus {
-    INVALID, VALID;
+    INVALID, OFFSET, PENDING, REVERSED, ROLLED, SPLIT_INVALID, SPLIT_VALID, VALID;
 
     public String toValue() {
         switch (this) {
             case INVALID: return "INVALID";
+            case OFFSET: return "OFFSET";
+            case PENDING: return "PENDING";
+            case REVERSED: return "REVERSED";
+            case ROLLED: return "ROLLED";
+            case SPLIT_INVALID: return "SPLIT_INVALID";
+            case SPLIT_VALID: return "SPLIT_VALID";
             case VALID: return "VALID";
         }
         return null;
@@ -135,6 +141,12 @@ public enum LineItemStatus {
 
     public static LineItemStatus forValue(String value) throws IOException {
         if (value.equals("INVALID")) return INVALID;
+        if (value.equals("OFFSET")) return OFFSET;
+        if (value.equals("PENDING")) return PENDING;
+        if (value.equals("REVERSED")) return REVERSED;
+        if (value.equals("ROLLED")) return ROLLED;
+        if (value.equals("SPLIT_INVALID")) return SPLIT_INVALID;
+        if (value.equals("SPLIT_VALID")) return SPLIT_VALID;
         if (value.equals("VALID")) return VALID;
         throw new IOException("Cannot deserialize LineItemStatus");
     }
@@ -150,23 +162,47 @@ import java.io.IOException;
  * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
  */
 public enum LineItemType {
-    CHARGE, LATE_FEE, PAYMENT, PAYMENT_REVERSAL_FEE;
+    CHARGE, CREDIT_OFFSET, DEBIT_OFFSET, DEFERRED_INTEREST, FEE, INTEREST, LATE_FEE, LOAN, MIN_DUE, PAYMENT, PAYMENT_SPLIT, PRODUCT_INTEREST, PROMO_END, PURCHASE_WINDOW_END, RETURN_CHECK_FEE, STATEMENT;
 
     public String toValue() {
         switch (this) {
             case CHARGE: return "CHARGE";
+            case CREDIT_OFFSET: return "CREDIT_OFFSET";
+            case DEBIT_OFFSET: return "DEBIT_OFFSET";
+            case DEFERRED_INTEREST: return "DEFERRED_INTEREST";
+            case FEE: return "FEE";
+            case INTEREST: return "INTEREST";
             case LATE_FEE: return "LATE_FEE";
+            case LOAN: return "LOAN";
+            case MIN_DUE: return "MIN_DUE";
             case PAYMENT: return "PAYMENT";
-            case PAYMENT_REVERSAL_FEE: return "PAYMENT_REVERSAL_FEE";
+            case PAYMENT_SPLIT: return "PAYMENT_SPLIT";
+            case PRODUCT_INTEREST: return "PRODUCT_INTEREST";
+            case PROMO_END: return "PROMO_END";
+            case PURCHASE_WINDOW_END: return "PURCHASE_WINDOW_END";
+            case RETURN_CHECK_FEE: return "RETURN_CHECK_FEE";
+            case STATEMENT: return "STATEMENT";
         }
         return null;
     }
 
     public static LineItemType forValue(String value) throws IOException {
         if (value.equals("CHARGE")) return CHARGE;
+        if (value.equals("CREDIT_OFFSET")) return CREDIT_OFFSET;
+        if (value.equals("DEBIT_OFFSET")) return DEBIT_OFFSET;
+        if (value.equals("DEFERRED_INTEREST")) return DEFERRED_INTEREST;
+        if (value.equals("FEE")) return FEE;
+        if (value.equals("INTEREST")) return INTEREST;
         if (value.equals("LATE_FEE")) return LATE_FEE;
+        if (value.equals("LOAN")) return LOAN;
+        if (value.equals("MIN_DUE")) return MIN_DUE;
         if (value.equals("PAYMENT")) return PAYMENT;
-        if (value.equals("PAYMENT_REVERSAL_FEE")) return PAYMENT_REVERSAL_FEE;
+        if (value.equals("PAYMENT_SPLIT")) return PAYMENT_SPLIT;
+        if (value.equals("PRODUCT_INTEREST")) return PRODUCT_INTEREST;
+        if (value.equals("PROMO_END")) return PROMO_END;
+        if (value.equals("PURCHASE_WINDOW_END")) return PURCHASE_WINDOW_END;
+        if (value.equals("RETURN_CHECK_FEE")) return RETURN_CHECK_FEE;
+        if (value.equals("STATEMENT")) return STATEMENT;
         throw new IOException("Cannot deserialize LineItemType");
     }
 }
@@ -176,10 +212,21 @@ public enum LineItemType {
 package io.quicktype;
 
 public class LineItemSummary {
+    private Long amDeferredInterestBalanceCents;
     private long balanceCents;
+    private long deferredInterestBalanceCents;
+    private long interestBalanceCents;
     private long originalAmountCents;
     private long principalCents;
-    private long totalInterestAccruedCents;
+    private long totalInterestPaidToDateCents;
+
+    /**
+     * The current AM deferred interest balance of the line item. Canopy tracks deferred
+     * interest during an amortization period separately from deferred interest accrued during a
+     * revolving period.
+     */
+    public Long getAmDeferredInterestBalanceCents() { return amDeferredInterestBalanceCents; }
+    public void setAmDeferredInterestBalanceCents(Long value) { this.amDeferredInterestBalanceCents = value; }
 
     /**
      * The current balance of the line item, which accounts for interest accrued per the
@@ -187,6 +234,18 @@ public class LineItemSummary {
      */
     public long getBalanceCents() { return balanceCents; }
     public void setBalanceCents(long value) { this.balanceCents = value; }
+
+    /**
+     * he current deferred interest balance of the line item.
+     */
+    public long getDeferredInterestBalanceCents() { return deferredInterestBalanceCents; }
+    public void setDeferredInterestBalanceCents(long value) { this.deferredInterestBalanceCents = value; }
+
+    /**
+     * The current interest balance of the line item.
+     */
+    public long getInterestBalanceCents() { return interestBalanceCents; }
+    public void setInterestBalanceCents(long value) { this.interestBalanceCents = value; }
 
     /**
      * The originating amount of money (in cents) relating to this line item.
@@ -201,10 +260,11 @@ public class LineItemSummary {
     public void setPrincipalCents(long value) { this.principalCents = value; }
 
     /**
-     * The sum (in cents) of all interest charges, if any, applied to this line item
+     * The sum (in cents) of all payments towards interest charges, if any, applied to this line
+     * item to date
      */
-    public long getTotalInterestAccruedCents() { return totalInterestAccruedCents; }
-    public void setTotalInterestAccruedCents(long value) { this.totalInterestAccruedCents = value; }
+    public long getTotalInterestPaidToDateCents() { return totalInterestPaidToDateCents; }
+    public void setTotalInterestPaidToDateCents(long value) { this.totalInterestPaidToDateCents = value; }
 }
 
 // MerchantData.java

@@ -100,10 +100,11 @@ export interface ProductLifecyclePolicies {
  */
 export interface BillingCyclePolicies {
   /**
-   * Defaults to EST Midnight. Time and timezone of the close of business. This is used for
-   * statement cuts and partner-level and issuing bank-level reconciliation
+   * Defaults to EST Midnight. Time of the close of business. Note* this value will be
+   * converted into the `product_time_zone` This is used for statement cuts and partner-level
+   * and issuing bank-level reconciliation
    */
-  close_of_business_timetz?: string;
+  close_of_business_time?: string;
   /**
    * Defaults to 0 days. The amount of time before statement cut that the payment should be
    * due for the billing cycle. If positive, it will count days from the start of the cycle.
@@ -125,6 +126,13 @@ export interface BillingCyclePolicies {
    * request, or set its value to the same as `billing_cycle_period`
    */
   first_cycle_interval?: string;
+  /**
+   * Timezone denoted as an Olson-style timezone defining the timezone for the product. All
+   * times in any response data for accounts using this product will be denominated in this
+   * timezone. Shifts due to daylight savings will be accounted for where relevant, and all
+   * output timestamps will be denoted as UTC offsets normalized based on this value.
+   */
+  product_time_zone?: string;
 }
 
 export interface DefaultAttributes {
@@ -167,8 +175,7 @@ export interface FeePolicies {
  */
 export interface InterestPolicies {
   /**
-   * Defaults to EST midnight. Interest for this policy is calculated at this time every X
-   * interval.
+   * Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.
    */
   interest_calc_time?: string;
 }
@@ -181,12 +188,12 @@ export interface PaymentDuePolicies {
    * After this number of consecutive late events, the account status shifts to `suspended`
    * with a status subtype of `charged_off`
    */
-  charge_off_on_n_consecutive_late_fees: number;
+  charge_off_on_n_consecutive_late_fees?: number;
   /**
    * After this number of consecutive late events, the account status shifts to `suspended`
    * with a status subtype of `delinquent`
    */
-  delinquent_on_n_consecutive_late_fees: number;
+  delinquent_on_n_consecutive_late_fees?: number;
 }
 
 /**

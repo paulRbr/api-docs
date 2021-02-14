@@ -117,11 +117,20 @@ public class AccountOverview {
 package io.quicktype;
 
 public class AdditionalMinPayDetails {
+    private Long minPayAmDeferredInterestCents;
     private long minPayChargesPrincipalCents;
     private long minPayDeferredCents;
     private long minPayFeesCents;
     private long minPayInterestCents;
     private long previousMinPayCents;
+
+    /**
+     * The current AM deferred interest balance of the line item. Canopy tracks deferred
+     * interest during an amortization period separately from deferred interest accrued during a
+     * revolving period.
+     */
+    public Long getMinPayAmDeferredInterestCents() { return minPayAmDeferredInterestCents; }
+    public void setMinPayAmDeferredInterestCents(Long value) { this.minPayAmDeferredInterestCents = value; }
 
     /**
      * Total principal due for the billing cycle.
@@ -159,12 +168,19 @@ public class AdditionalMinPayDetails {
 package io.quicktype;
 
 public class BalanceSummary {
+    private Long amDeferredInterestBalanceCents;
     private Long chargesPrincipalCents;
     private Long deferredInterestBalanceCents;
     private Long feesBalanceCents;
     private Long interestBalanceCents;
     private Long loansPrincipalCents;
     private Long totalBalanceCents;
+
+    /**
+     * The total deferred interest balance (in cents) associated with the account.
+     */
+    public Long getAmDeferredInterestBalanceCents() { return amDeferredInterestBalanceCents; }
+    public void setAmDeferredInterestBalanceCents(Long value) { this.amDeferredInterestBalanceCents = value; }
 
     /**
      * Total principal balance for the account.
@@ -210,13 +226,13 @@ package io.quicktype;
 import java.time.OffsetDateTime;
 
 public class CycleSummary {
+    private Long cycleAmDeferredInterestCents;
     private Long cycleChargeReturnsCents;
     private Long cycleChargesCents;
     private Long cycleCreditAdjustmentsCents;
     private Long cycleDebitAdjustmentsCents;
     private Long cycleDeferredInterestCents;
     private OffsetDateTime cycleExclusiveEnd;
-    private Long cycleForgivenDeferredInterestCents;
     private OffsetDateTime cycleInclusiveStart;
     private Long cycleInterestCents;
     private Long cycleLateFeesCents;
@@ -224,6 +240,15 @@ public class CycleSummary {
     private Long cyclePaymentReversalsCents;
     private Long cyclePaymentReversalsFeesCents;
     private Long cyclePaymentsCents;
+    private Long cycleWaivedDeferredInterestCents;
+
+    /**
+     * Total interest accrued during the billing cycle. Canopy tracks deferred interest during
+     * an amortization period separately from deferred interest accrued during a revolving
+     * period.
+     */
+    public Long getCycleAmDeferredInterestCents() { return cycleAmDeferredInterestCents; }
+    public void setCycleAmDeferredInterestCents(Long value) { this.cycleAmDeferredInterestCents = value; }
 
     /**
      * Sum of all returns that occurred on the account during the billing cycle.
@@ -262,12 +287,6 @@ public class CycleSummary {
      */
     public OffsetDateTime getCycleExclusiveEnd() { return cycleExclusiveEnd; }
     public void setCycleExclusiveEnd(OffsetDateTime value) { this.cycleExclusiveEnd = value; }
-
-    /**
-     * Total deferred interest that was forgiven on the account during the billing cycle.
-     */
-    public Long getCycleForgivenDeferredInterestCents() { return cycleForgivenDeferredInterestCents; }
-    public void setCycleForgivenDeferredInterestCents(Long value) { this.cycleForgivenDeferredInterestCents = value; }
 
     /**
      * The inclusive starting `Date-Time` that defines which transations are part of this
@@ -311,6 +330,12 @@ public class CycleSummary {
      */
     public Long getCyclePaymentsCents() { return cyclePaymentsCents; }
     public void setCyclePaymentsCents(Long value) { this.cyclePaymentsCents = value; }
+
+    /**
+     * Total deferred interest that was forgiven on the account during the billing cycle.
+     */
+    public Long getCycleWaivedDeferredInterestCents() { return cycleWaivedDeferredInterestCents; }
+    public void setCycleWaivedDeferredInterestCents(Long value) { this.cycleWaivedDeferredInterestCents = value; }
 }
 
 // MinPayDue.java
@@ -379,10 +404,17 @@ public class OpenToBuy {
 package io.quicktype;
 
 public class Payoff {
+    private Long expectedRemainingPaymentAmountCents;
     private Long totalPayoffCents;
 
     /**
      * The total amount slated to pay off the account over the lifecycle of the loan.
+     */
+    public Long getExpectedRemainingPaymentAmountCents() { return expectedRemainingPaymentAmountCents; }
+    public void setExpectedRemainingPaymentAmountCents(Long value) { this.expectedRemainingPaymentAmountCents = value; }
+
+    /**
+     * The total amount needed to pay off the loan at this exact moment.
      */
     public Long getTotalPayoffCents() { return totalPayoffCents; }
     public void setTotalPayoffCents(Long value) { this.totalPayoffCents = value; }

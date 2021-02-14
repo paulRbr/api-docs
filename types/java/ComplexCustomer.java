@@ -65,7 +65,7 @@ public class ComplexCustomer {
     public void setDateOfBirth(OffsetDateTime value) { this.dateOfBirth = value; }
 
     /**
-     * The email address of this customer
+     * The email address of this Customer
      */
     public String getEmail() { return email; }
     public void setEmail(String value) { this.email = value; }
@@ -129,7 +129,7 @@ public class Account {
     private long accountID;
     private AccountOverview accountOverview;
     private AccountProduct accountProduct;
-    private AdditionalMinPayDetails additionalMinPayDetails;
+    private AdditionalStatementMinPayDetails additionalStatementMinPayDetails;
     private AssociatedEntities associatedEntities;
     private OffsetDateTime createdAt;
     private OffsetDateTime effectiveAt;
@@ -152,8 +152,8 @@ public class Account {
     public AccountProduct getAccountProduct() { return accountProduct; }
     public void setAccountProduct(AccountProduct value) { this.accountProduct = value; }
 
-    public AdditionalMinPayDetails getAdditionalMinPayDetails() { return additionalMinPayDetails; }
-    public void setAdditionalMinPayDetails(AdditionalMinPayDetails value) { this.additionalMinPayDetails = value; }
+    public AdditionalStatementMinPayDetails getAdditionalStatementMinPayDetails() { return additionalStatementMinPayDetails; }
+    public void setAdditionalStatementMinPayDetails(AdditionalStatementMinPayDetails value) { this.additionalStatementMinPayDetails = value; }
 
     public AssociatedEntities getAssociatedEntities() { return associatedEntities; }
     public void setAssociatedEntities(AssociatedEntities value) { this.associatedEntities = value; }
@@ -293,7 +293,7 @@ package io.quicktype;
 
 public class ProductDurationInformation {
     private Long promoLen;
-    private Double promoPurchaseWindowLen;
+    private Long promoPurchaseWindowLen;
 
     /**
      * The number of billing cycles from account origination during which accounts on this
@@ -306,8 +306,8 @@ public class ProductDurationInformation {
      * If applicable, the number of billing cycles from account origination under which this
      * product falls under a purchas window period.
      */
-    public Double getPromoPurchaseWindowLen() { return promoPurchaseWindowLen; }
-    public void setPromoPurchaseWindowLen(Double value) { this.promoPurchaseWindowLen = value; }
+    public Long getPromoPurchaseWindowLen() { return promoPurchaseWindowLen; }
+    public void setPromoPurchaseWindowLen(Long value) { this.promoPurchaseWindowLen = value; }
 }
 
 // ProductLifecycle.java
@@ -317,15 +317,15 @@ package io.quicktype;
 import java.time.OffsetDateTime;
 
 public class ProductLifecycle {
-    private double lateFeeImplCents;
+    private long lateFeeImplCents;
     private OffsetDateTime loanEndDate;
-    private double paymentReversalFeeImplCents;
+    private long paymentReversalFeeImplCents;
 
     /**
      * The fee charged for late payments on the account.
      */
-    public double getLateFeeImplCents() { return lateFeeImplCents; }
-    public void setLateFeeImplCents(double value) { this.lateFeeImplCents = value; }
+    public long getLateFeeImplCents() { return lateFeeImplCents; }
+    public void setLateFeeImplCents(long value) { this.lateFeeImplCents = value; }
 
     /**
      * If applicable, the account's loan repayment date.
@@ -336,8 +336,8 @@ public class ProductLifecycle {
     /**
      * The fee charged for payment reversals on the account.
      */
-    public double getPaymentReversalFeeImplCents() { return paymentReversalFeeImplCents; }
-    public void setPaymentReversalFeeImplCents(double value) { this.paymentReversalFeeImplCents = value; }
+    public long getPaymentReversalFeeImplCents() { return paymentReversalFeeImplCents; }
+    public void setPaymentReversalFeeImplCents(long value) { this.paymentReversalFeeImplCents = value; }
 }
 
 // ProductOverview.java
@@ -349,6 +349,7 @@ public class ProductOverview {
     private String productLongDescription;
     private String productName;
     private String productShortDescription;
+    private String productTimeZone;
     private ProductType productType;
 
     /**
@@ -374,6 +375,17 @@ public class ProductOverview {
      */
     public String getProductShortDescription() { return productShortDescription; }
     public void setProductShortDescription(String value) { this.productShortDescription = value; }
+
+    /**
+     * Timezone denoted as an [Olson-style
+     * timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the
+     * timezone for the product. All times in any response data for accounts using this product
+     * will be denominated in this timezone. Shifts due to daylight savings will be accounted
+     * for where relevant, and all output timestamps will be denoted as UTC offsets normalized
+     * based on this value.
+     */
+    public String getProductTimeZone() { return productTimeZone; }
+    public void setProductTimeZone(String value) { this.productTimeZone = value; }
 
     /**
      * The Type of Product. If not included, defaults to `REVOLVING`
@@ -459,46 +471,55 @@ public class PromoOverview {
     public void setPromoPurchaseWindowInclusiveStart(OffsetDateTime value) { this.promoPurchaseWindowInclusiveStart = value; }
 }
 
-// AdditionalMinPayDetails.java
+// AdditionalStatementMinPayDetails.java
 
 package io.quicktype;
 
-public class AdditionalMinPayDetails {
-    private long minPayChargesPrincipalCents;
-    private long minPayDeferredCents;
-    private long minPayFeesCents;
-    private long minPayInterestCents;
-    private long previousMinPayCents;
+public class AdditionalStatementMinPayDetails {
+    private long previousStatementMinPayCents;
+    private long statementMinPayAmDeferredInterestCents;
+    private long statementMinPayChargesPrincipalCents;
+    private long statementMinPayDeferredCents;
+    private long statementMinPayFeesCents;
+    private long statementMinPayInterestCents;
+
+    /**
+     * Previous amounts due, including fees. This is a subset of statement_min_pay_cents.
+     */
+    public long getPreviousStatementMinPayCents() { return previousStatementMinPayCents; }
+    public void setPreviousStatementMinPayCents(long value) { this.previousStatementMinPayCents = value; }
+
+    /**
+     * The current AM deferred interest balance of the line item. Canopy tracks deferred
+     * interest during an amortization period separately from deferred interest accrued during a
+     * revolving period.
+     */
+    public long getStatementMinPayAmDeferredInterestCents() { return statementMinPayAmDeferredInterestCents; }
+    public void setStatementMinPayAmDeferredInterestCents(long value) { this.statementMinPayAmDeferredInterestCents = value; }
 
     /**
      * Total principal due for the billing cycle.
      */
-    public long getMinPayChargesPrincipalCents() { return minPayChargesPrincipalCents; }
-    public void setMinPayChargesPrincipalCents(long value) { this.minPayChargesPrincipalCents = value; }
+    public long getStatementMinPayChargesPrincipalCents() { return statementMinPayChargesPrincipalCents; }
+    public void setStatementMinPayChargesPrincipalCents(long value) { this.statementMinPayChargesPrincipalCents = value; }
 
     /**
      * Total deferred interest due for the billing cycle.
      */
-    public long getMinPayDeferredCents() { return minPayDeferredCents; }
-    public void setMinPayDeferredCents(long value) { this.minPayDeferredCents = value; }
+    public long getStatementMinPayDeferredCents() { return statementMinPayDeferredCents; }
+    public void setStatementMinPayDeferredCents(long value) { this.statementMinPayDeferredCents = value; }
 
     /**
      * Total fees due for the billing cycle.
      */
-    public long getMinPayFeesCents() { return minPayFeesCents; }
-    public void setMinPayFeesCents(long value) { this.minPayFeesCents = value; }
+    public long getStatementMinPayFeesCents() { return statementMinPayFeesCents; }
+    public void setStatementMinPayFeesCents(long value) { this.statementMinPayFeesCents = value; }
 
     /**
      * Total interest due for the billing cycle.
      */
-    public long getMinPayInterestCents() { return minPayInterestCents; }
-    public void setMinPayInterestCents(long value) { this.minPayInterestCents = value; }
-
-    /**
-     * Previous amounts due, including fees. This is a subset of min_pay_cents.
-     */
-    public long getPreviousMinPayCents() { return previousMinPayCents; }
-    public void setPreviousMinPayCents(long value) { this.previousMinPayCents = value; }
+    public long getStatementMinPayInterestCents() { return statementMinPayInterestCents; }
+    public void setStatementMinPayInterestCents(long value) { this.statementMinPayInterestCents = value; }
 }
 
 // AssociatedEntities.java
@@ -550,21 +571,21 @@ package io.quicktype;
 import java.time.OffsetDateTime;
 
 public class MinPayDueCents {
-    private long minPayCents;
     private OffsetDateTime minPayDueAt;
-
-    /**
-     * Total amount due for the billing cycle, summing cycle principal, interest, deferred
-     * interest, and fees outstanding.
-     */
-    public long getMinPayCents() { return minPayCents; }
-    public void setMinPayCents(long value) { this.minPayCents = value; }
+    private long statementMinPayCents;
 
     /**
      * The `Date-Time` the payment for this billing cycle is due.
      */
     public OffsetDateTime getMinPayDueAt() { return minPayDueAt; }
     public void setMinPayDueAt(OffsetDateTime value) { this.minPayDueAt = value; }
+
+    /**
+     * Total amount due for the billing cycle, summing cycle principal, interest, deferred
+     * interest, and fees outstanding.
+     */
+    public long getStatementMinPayCents() { return statementMinPayCents; }
+    public void setStatementMinPayCents(long value) { this.statementMinPayCents = value; }
 }
 
 // Summary.java
@@ -572,23 +593,31 @@ public class MinPayDueCents {
 package io.quicktype;
 
 public class Summary {
-    private double availableCreditCents;
+    private Long amDeferredInterestBalanceCents;
+    private Long availableCreditCents;
     private long creditLimitCents;
-    private double deferredInterestBalanceCents;
-    private double interestBalanceCents;
+    private Long deferredInterestBalanceCents;
+    private long interestBalanceCents;
     private double interestRatePercent;
     private Long maxApprovedCreditLimitCents;
     private Long openToBuyCents;
-    private double principalCents;
-    private double totalBalanceCents;
-    private double totalInterestPaidToDateCents;
-    private double totalPaidToDateCents;
+    private long principalCents;
+    private long totalBalanceCents;
+    private long totalInterestPaidToDateCents;
+    private long totalPaidToDateCents;
+    private Long totalPayoffCents;
+
+    /**
+     * The total deferred interest balance (in cents) associated with the account.
+     */
+    public Long getAmDeferredInterestBalanceCents() { return amDeferredInterestBalanceCents; }
+    public void setAmDeferredInterestBalanceCents(Long value) { this.amDeferredInterestBalanceCents = value; }
 
     /**
      * The total available credit balance (in cents) for the account.
      */
-    public double getAvailableCreditCents() { return availableCreditCents; }
-    public void setAvailableCreditCents(double value) { this.availableCreditCents = value; }
+    public Long getAvailableCreditCents() { return availableCreditCents; }
+    public void setAvailableCreditCents(Long value) { this.availableCreditCents = value; }
 
     /**
      * Total Amount (in cents) that this account can borrow.
@@ -599,14 +628,14 @@ public class Summary {
     /**
      * The total deferred interest balance (in cents) associated with the account.
      */
-    public double getDeferredInterestBalanceCents() { return deferredInterestBalanceCents; }
-    public void setDeferredInterestBalanceCents(double value) { this.deferredInterestBalanceCents = value; }
+    public Long getDeferredInterestBalanceCents() { return deferredInterestBalanceCents; }
+    public void setDeferredInterestBalanceCents(Long value) { this.deferredInterestBalanceCents = value; }
 
     /**
      * The total interest balance (in cents) associated with the account.
      */
-    public double getInterestBalanceCents() { return interestBalanceCents; }
-    public void setInterestBalanceCents(double value) { this.interestBalanceCents = value; }
+    public long getInterestBalanceCents() { return interestBalanceCents; }
+    public void setInterestBalanceCents(long value) { this.interestBalanceCents = value; }
 
     /**
      * The percentage interest applied to the account (i.e. 6.2 means 6.2%)
@@ -631,25 +660,31 @@ public class Summary {
     /**
      * The total balance (in cents) associated with the account.
      */
-    public double getPrincipalCents() { return principalCents; }
-    public void setPrincipalCents(double value) { this.principalCents = value; }
+    public long getPrincipalCents() { return principalCents; }
+    public void setPrincipalCents(long value) { this.principalCents = value; }
 
     /**
      * The total balance (in cents) associated with the account.
      */
-    public double getTotalBalanceCents() { return totalBalanceCents; }
-    public void setTotalBalanceCents(double value) { this.totalBalanceCents = value; }
+    public long getTotalBalanceCents() { return totalBalanceCents; }
+    public void setTotalBalanceCents(long value) { this.totalBalanceCents = value; }
 
     /**
      * The total sum of interest allocations for payments made to date (in cents) associated
      * with the account.
      */
-    public double getTotalInterestPaidToDateCents() { return totalInterestPaidToDateCents; }
-    public void setTotalInterestPaidToDateCents(double value) { this.totalInterestPaidToDateCents = value; }
+    public long getTotalInterestPaidToDateCents() { return totalInterestPaidToDateCents; }
+    public void setTotalInterestPaidToDateCents(long value) { this.totalInterestPaidToDateCents = value; }
 
     /**
      * The total sum of payments made to date (in cents) associated with the account.
      */
-    public double getTotalPaidToDateCents() { return totalPaidToDateCents; }
-    public void setTotalPaidToDateCents(double value) { this.totalPaidToDateCents = value; }
+    public long getTotalPaidToDateCents() { return totalPaidToDateCents; }
+    public void setTotalPaidToDateCents(long value) { this.totalPaidToDateCents = value; }
+
+    /**
+     * The total amount needed to pay off the loan at this exact moment.
+     */
+    public Long getTotalPayoffCents() { return totalPayoffCents; }
+    public void setTotalPayoffCents(Long value) { this.totalPayoffCents = value; }
 }

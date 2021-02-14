@@ -69,8 +69,8 @@ public class Product {
 package io.quicktype;
 
 public class PostPromotionalPolicies {
-    private Double postPromoAmLenRangeInclusiveLower;
-    private Double postPromoAmLenRangeInclusiveUpper;
+    private Long postPromoAmLenRangeInclusiveLower;
+    private Long postPromoAmLenRangeInclusiveUpper;
     private Double postPromoAPRRangeInclusiveLower;
     private Double postPromoAPRRangeInclusiveUpper;
     private Long postPromoDefaultAmLen;
@@ -80,14 +80,14 @@ public class PostPromotionalPolicies {
     /**
      * Optional lower bound for amortization length in billing cycles for the product.
      */
-    public Double getPostPromoAmLenRangeInclusiveLower() { return postPromoAmLenRangeInclusiveLower; }
-    public void setPostPromoAmLenRangeInclusiveLower(Double value) { this.postPromoAmLenRangeInclusiveLower = value; }
+    public Long getPostPromoAmLenRangeInclusiveLower() { return postPromoAmLenRangeInclusiveLower; }
+    public void setPostPromoAmLenRangeInclusiveLower(Long value) { this.postPromoAmLenRangeInclusiveLower = value; }
 
     /**
      * Optional upper bound for amortization length in billing cycles for the product.
      */
-    public Double getPostPromoAmLenRangeInclusiveUpper() { return postPromoAmLenRangeInclusiveUpper; }
-    public void setPostPromoAmLenRangeInclusiveUpper(Double value) { this.postPromoAmLenRangeInclusiveUpper = value; }
+    public Long getPostPromoAmLenRangeInclusiveUpper() { return postPromoAmLenRangeInclusiveUpper; }
+    public void setPostPromoAmLenRangeInclusiveUpper(Long value) { this.postPromoAmLenRangeInclusiveUpper = value; }
 
     /**
      * Optional lower bound for APR Range for the product (i.e. 2 = 2%).
@@ -203,17 +203,19 @@ import java.time.OffsetTime;
  * The set of policies governing the billing cycle for the product.
  */
 public class BillingCyclePolicies {
-    private OffsetTime closeOfBusinessTimetz;
+    private OffsetTime closeOfBusinessTime;
     private String cycleDueInterval;
     private String cycleInterval;
     private String firstCycleInterval;
+    private String productTimeZone;
 
     /**
-     * Defaults to EST Midnight. Time and timezone of the close of business. This is used for
-     * statement cuts and partner-level and issuing bank-level reconciliation
+     * Defaults to EST Midnight. Time of the close of business. Note* this value will be
+     * converted into the `product_time_zone` This is used for statement cuts and partner-level
+     * and issuing bank-level reconciliation
      */
-    public OffsetTime getCloseOfBusinessTimetz() { return closeOfBusinessTimetz; }
-    public void setCloseOfBusinessTimetz(OffsetTime value) { this.closeOfBusinessTimetz = value; }
+    public OffsetTime getCloseOfBusinessTime() { return closeOfBusinessTime; }
+    public void setCloseOfBusinessTime(OffsetTime value) { this.closeOfBusinessTime = value; }
 
     /**
      * Defaults to 0 days. The amount of time before statement cut that the payment should be
@@ -241,6 +243,15 @@ public class BillingCyclePolicies {
      */
     public String getFirstCycleInterval() { return firstCycleInterval; }
     public void setFirstCycleInterval(String value) { this.firstCycleInterval = value; }
+
+    /**
+     * Timezone denoted as an Olson-style timezone defining the timezone for the product. All
+     * times in any response data for accounts using this product will be denominated in this
+     * timezone. Shifts due to daylight savings will be accounted for where relevant, and all
+     * output timestamps will be denoted as UTC offsets normalized based on this value.
+     */
+    public String getProductTimeZone() { return productTimeZone; }
+    public void setProductTimeZone(String value) { this.productTimeZone = value; }
 }
 
 // DefaultAttributes.java
@@ -311,8 +322,7 @@ public class InterestPolicies {
     private OffsetTime interestCalcTime;
 
     /**
-     * Defaults to EST midnight. Interest for this policy is calculated at this time every X
-     * interval.
+     * Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.
      */
     public OffsetTime getInterestCalcTime() { return interestCalcTime; }
     public void setInterestCalcTime(OffsetTime value) { this.interestCalcTime = value; }
@@ -326,22 +336,22 @@ package io.quicktype;
  * The set of policies governing payment due information for the product.
  */
 public class PaymentDuePolicies {
-    private long chargeOffOnNConsecutiveLateFees;
-    private long delinquentOnNConsecutiveLateFees;
+    private Long chargeOffOnNConsecutiveLateFees;
+    private Long delinquentOnNConsecutiveLateFees;
 
     /**
      * After this number of consecutive late events, the account status shifts to `suspended`
      * with a status subtype of `charged_off`
      */
-    public long getChargeOffOnNConsecutiveLateFees() { return chargeOffOnNConsecutiveLateFees; }
-    public void setChargeOffOnNConsecutiveLateFees(long value) { this.chargeOffOnNConsecutiveLateFees = value; }
+    public Long getChargeOffOnNConsecutiveLateFees() { return chargeOffOnNConsecutiveLateFees; }
+    public void setChargeOffOnNConsecutiveLateFees(Long value) { this.chargeOffOnNConsecutiveLateFees = value; }
 
     /**
      * After this number of consecutive late events, the account status shifts to `suspended`
      * with a status subtype of `delinquent`
      */
-    public long getDelinquentOnNConsecutiveLateFees() { return delinquentOnNConsecutiveLateFees; }
-    public void setDelinquentOnNConsecutiveLateFees(long value) { this.delinquentOnNConsecutiveLateFees = value; }
+    public Long getDelinquentOnNConsecutiveLateFees() { return delinquentOnNConsecutiveLateFees; }
+    public void setDelinquentOnNConsecutiveLateFees(Long value) { this.delinquentOnNConsecutiveLateFees = value; }
 }
 
 // ProductOverview.java
@@ -484,7 +494,7 @@ public class PromotionalPolicies {
     private Long promoLen;
     private Double promoMinPayPercent;
     private PromoMinPayType promoMinPayType;
-    private Double promoPurchaseWindowLen;
+    private Long promoPurchaseWindowLen;
 
     /**
      * Optional lower bound for APR Range for the product (i.e. 2 = 2%).
@@ -535,6 +545,6 @@ public class PromotionalPolicies {
      * If applicable, the number of billing cycles from account origination under which this
      * product falls under a purchas window period.
      */
-    public Double getPromoPurchaseWindowLen() { return promoPurchaseWindowLen; }
-    public void setPromoPurchaseWindowLen(Double value) { this.promoPurchaseWindowLen = value; }
+    public Long getPromoPurchaseWindowLen() { return promoPurchaseWindowLen; }
+    public void setPromoPurchaseWindowLen(Long value) { this.promoPurchaseWindowLen = value; }
 }

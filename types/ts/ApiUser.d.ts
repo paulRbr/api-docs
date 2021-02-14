@@ -2,7 +2,7 @@ export interface APIUser {
   /**
    * The unique ID in Canopy for this API user
    */
-  api_user_id: number;
+  api_user_id: string;
   /**
    * The email address of this API User
    */
@@ -26,14 +26,5 @@ export interface APIUser {
   /**
    * The role of this user in the API
    */
-  role: Role;
-}
-
-/**
- * The role of this user in the API
- */
-export enum Role {
-  Admin = "ADMIN",
-  Operations = "OPERATIONS",
-  Servicing = "SERVICING",
+  role: number;
 }

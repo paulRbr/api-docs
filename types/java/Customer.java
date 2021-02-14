@@ -62,7 +62,7 @@ public class Customer {
     public void setDateOfBirth(OffsetDateTime value) { this.dateOfBirth = value; }
 
     /**
-     * The email address of this customer
+     * The email address of this Customer
      */
     public String getEmail() { return email; }
     public void setEmail(String value) { this.email = value; }

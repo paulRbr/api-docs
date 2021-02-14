@@ -54,6 +54,12 @@ export interface AccountOverview {
 
 export interface AdditionalMinPayDetails {
   /**
+   * The current AM deferred interest balance of the line item. Canopy tracks deferred
+   * interest during an amortization period separately from deferred interest accrued during a
+   * revolving period.
+   */
+  min_pay_am_deferred_interest_cents?: number;
+  /**
    * Total principal due for the billing cycle.
    */
   min_pay_charges_principal_cents: number;
@@ -76,6 +82,10 @@ export interface AdditionalMinPayDetails {
 }
 
 export interface BalanceSummary {
+  /**
+   * The total deferred interest balance (in cents) associated with the account.
+   */
+  am_deferred_interest_balance_cents?: number;
   /**
    * Total principal balance for the account.
    */
@@ -104,6 +114,12 @@ export interface BalanceSummary {
 
 export interface CycleSummary {
   /**
+   * Total interest accrued during the billing cycle. Canopy tracks deferred interest during
+   * an amortization period separately from deferred interest accrued during a revolving
+   * period.
+   */
+  cycle_am_deferred_interest_cents?: number;
+  /**
    * Sum of all returns that occurred on the account during the billing cycle.
    */
   cycle_charge_returns_cents?: number;
@@ -129,10 +145,6 @@ export interface CycleSummary {
    * statement.
    */
   cycle_exclusive_end?: Date;
-  /**
-   * Total deferred interest that was forgiven on the account during the billing cycle.
-   */
-  cycle_forgiven_deferred_interest_cents?: number;
   /**
    * The inclusive starting `Date-Time` that defines which transations are part of this
    * statement.
@@ -162,6 +174,10 @@ export interface CycleSummary {
    * Sum of all payments that occurred on the account during the billing cycle.
    */
   cycle_payments_cents?: number;
+  /**
+   * Total deferred interest that was forgiven on the account during the billing cycle.
+   */
+  cycle_waived_deferred_interest_cents?: number;
 }
 
 export interface MinPayDue {
@@ -200,6 +216,10 @@ export interface OpenToBuy {
 export interface Payoff {
   /**
    * The total amount slated to pay off the account over the lifecycle of the loan.
+   */
+  expected_remaining_payment_amount_cents?: number;
+  /**
+   * The total amount needed to pay off the loan at this exact moment.
    */
   total_payoff_cents?: number;
 }
