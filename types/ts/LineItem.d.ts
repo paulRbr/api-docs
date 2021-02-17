@@ -101,6 +101,11 @@ export interface LineItemSummary {
    */
   am_deferred_interest_balance_cents?: number;
   /**
+   * The current AM interest balance of the line item. Canopy tracks interest during an
+   * amortization period separately from deferred interest accrued during a revolving period.
+   */
+  am_interest_balance_cents?: number;
+  /**
    * The current balance of the line item, which accounts for interest accrued per the
    * `product's` interest policy and the `account's` interest rate attribute.
    */

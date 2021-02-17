@@ -213,6 +213,7 @@ package io.quicktype;
 
 public class LineItemSummary {
     private Long amDeferredInterestBalanceCents;
+    private Long amInterestBalanceCents;
     private long balanceCents;
     private long deferredInterestBalanceCents;
     private long interestBalanceCents;
@@ -227,6 +228,13 @@ public class LineItemSummary {
      */
     public Long getAmDeferredInterestBalanceCents() { return amDeferredInterestBalanceCents; }
     public void setAmDeferredInterestBalanceCents(Long value) { this.amDeferredInterestBalanceCents = value; }
+
+    /**
+     * The current AM interest balance of the line item. Canopy tracks interest during an
+     * amortization period separately from deferred interest accrued during a revolving period.
+     */
+    public Long getAmInterestBalanceCents() { return amInterestBalanceCents; }
+    public void setAmInterestBalanceCents(Long value) { this.amInterestBalanceCents = value; }
 
     /**
      * The current balance of the line item, which accounts for interest accrued per the

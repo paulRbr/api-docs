@@ -250,6 +250,11 @@ export interface AdditionalStatementMinPayDetails {
    */
   statement_min_pay_am_deferred_interest_cents: number;
   /**
+   * The current AM interest balance of the line item. Canopy tracks interest during an
+   * amortization period separately from deferred interest accrued during a revolving period.
+   */
+  statement_min_pay_am_interest_cents: number;
+  /**
    * Total principal due for the billing cycle.
    */
   statement_min_pay_charges_principal_cents: number;
@@ -303,9 +308,13 @@ export interface MinPayDueCents {
 
 export interface Summary {
   /**
-   * The total deferred interest balance (in cents) associated with the account.
+   * The total AM deferred interest balance (in cents) associated with the account.
    */
   am_deferred_interest_balance_cents?: number;
+  /**
+   * The total AM interest balance (in cents) associated with the account.
+   */
+  am_interest_balance_cents?: number;
   /**
    * The total available credit balance (in cents) for the account.
    */

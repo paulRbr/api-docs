@@ -478,6 +478,7 @@ package io.quicktype;
 public class AdditionalStatementMinPayDetails {
     private long previousStatementMinPayCents;
     private long statementMinPayAmDeferredInterestCents;
+    private long statementMinPayAmInterestCents;
     private long statementMinPayChargesPrincipalCents;
     private long statementMinPayDeferredCents;
     private long statementMinPayFeesCents;
@@ -496,6 +497,13 @@ public class AdditionalStatementMinPayDetails {
      */
     public long getStatementMinPayAmDeferredInterestCents() { return statementMinPayAmDeferredInterestCents; }
     public void setStatementMinPayAmDeferredInterestCents(long value) { this.statementMinPayAmDeferredInterestCents = value; }
+
+    /**
+     * The current AM interest balance of the line item. Canopy tracks interest during an
+     * amortization period separately from deferred interest accrued during a revolving period.
+     */
+    public long getStatementMinPayAmInterestCents() { return statementMinPayAmInterestCents; }
+    public void setStatementMinPayAmInterestCents(long value) { this.statementMinPayAmInterestCents = value; }
 
     /**
      * Total principal due for the billing cycle.
@@ -594,6 +602,7 @@ package io.quicktype;
 
 public class Summary {
     private Long amDeferredInterestBalanceCents;
+    private Long amInterestBalanceCents;
     private Long availableCreditCents;
     private long creditLimitCents;
     private Long deferredInterestBalanceCents;
@@ -608,10 +617,16 @@ public class Summary {
     private Long totalPayoffCents;
 
     /**
-     * The total deferred interest balance (in cents) associated with the account.
+     * The total AM deferred interest balance (in cents) associated with the account.
      */
     public Long getAmDeferredInterestBalanceCents() { return amDeferredInterestBalanceCents; }
     public void setAmDeferredInterestBalanceCents(Long value) { this.amDeferredInterestBalanceCents = value; }
+
+    /**
+     * The total AM interest balance (in cents) associated with the account.
+     */
+    public Long getAmInterestBalanceCents() { return amInterestBalanceCents; }
+    public void setAmInterestBalanceCents(Long value) { this.amInterestBalanceCents = value; }
 
     /**
      * The total available credit balance (in cents) for the account.

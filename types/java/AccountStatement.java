@@ -118,6 +118,7 @@ package io.quicktype;
 
 public class AdditionalMinPayDetails {
     private Long minPayAmDeferredInterestCents;
+    private Long minPayAmInterestCents;
     private long minPayChargesPrincipalCents;
     private long minPayDeferredCents;
     private long minPayFeesCents;
@@ -131,6 +132,12 @@ public class AdditionalMinPayDetails {
      */
     public Long getMinPayAmDeferredInterestCents() { return minPayAmDeferredInterestCents; }
     public void setMinPayAmDeferredInterestCents(Long value) { this.minPayAmDeferredInterestCents = value; }
+
+    /**
+     * Total am interest due for the billing cycle.
+     */
+    public Long getMinPayAmInterestCents() { return minPayAmInterestCents; }
+    public void setMinPayAmInterestCents(Long value) { this.minPayAmInterestCents = value; }
 
     /**
      * Total principal due for the billing cycle.
@@ -169,6 +176,7 @@ package io.quicktype;
 
 public class BalanceSummary {
     private Long amDeferredInterestBalanceCents;
+    private Long amInterestBalanceCents;
     private Long chargesPrincipalCents;
     private Long deferredInterestBalanceCents;
     private Long feesBalanceCents;
@@ -181,6 +189,12 @@ public class BalanceSummary {
      */
     public Long getAmDeferredInterestBalanceCents() { return amDeferredInterestBalanceCents; }
     public void setAmDeferredInterestBalanceCents(Long value) { this.amDeferredInterestBalanceCents = value; }
+
+    /**
+     * Total AM interest balance for the account.
+     */
+    public Long getAmInterestBalanceCents() { return amInterestBalanceCents; }
+    public void setAmInterestBalanceCents(Long value) { this.amInterestBalanceCents = value; }
 
     /**
      * Total principal balance for the account.
@@ -227,6 +241,7 @@ import java.time.OffsetDateTime;
 
 public class CycleSummary {
     private Long cycleAmDeferredInterestCents;
+    private Long cycleAmInterestCents;
     private Long cycleChargeReturnsCents;
     private Long cycleChargesCents;
     private Long cycleCreditAdjustmentsCents;
@@ -249,6 +264,13 @@ public class CycleSummary {
      */
     public Long getCycleAmDeferredInterestCents() { return cycleAmDeferredInterestCents; }
     public void setCycleAmDeferredInterestCents(Long value) { this.cycleAmDeferredInterestCents = value; }
+
+    /**
+     * The current AM interest balance of the line item. Canopy tracks interest during an
+     * amortization period separately from deferred interest accrued during a revolving period.
+     */
+    public Long getCycleAmInterestCents() { return cycleAmInterestCents; }
+    public void setCycleAmInterestCents(Long value) { this.cycleAmInterestCents = value; }
 
     /**
      * Sum of all returns that occurred on the account during the billing cycle.

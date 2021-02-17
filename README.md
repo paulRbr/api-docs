@@ -16,6 +16,10 @@ We consolidate these modules and dereference them into one unified json file tha
 
 Changes made to the `master` branch are deployed via GitHub Actions to internal docs [here](https://bump.sh/hub/internal-docs-hub/doc/artis_api_interface_updates).
 
+```
+When committing `master`, a pre-commit hook will build and validate the `dist/consolidated.json` file to ensure a valid API specification can be generated. In order for this commit to be successful, ensure that you are running Node 14 or later.
+```
+
 Changes made to the `production` branch are deployed via GitHub Actions to the [live documentation site](https://docs.canopyservicing.com).
 
 ## Validation

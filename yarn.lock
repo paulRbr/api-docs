@@ -1719,7 +1719,7 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-quicktype-core@^6.0.69:
+quicktype-core@6.0.69:
   version "6.0.69"
   resolved "https://registry.yarnpkg.com/quicktype-core/-/quicktype-core-6.0.69.tgz#955347b64e8a7b6a37af49fe12f5772abc153b8e"
   integrity sha512-wKQ+/fwgdtFOcbeRiZkIBLA2ajvrFvmtTmexdv7PlO1dyp3C7Irbn2/HjwzalD1dYFrtMEYWohB/4rr3Mg75Xw==
