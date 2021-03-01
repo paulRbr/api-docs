@@ -5,7 +5,7 @@ export interface Account {
   account_id: number;
   account_overview?: AccountOverview;
   /**
-   * The product associated with the account
+   * The product associated with the account.
    */
   account_product?: AccountProduct;
   additional_statement_min_pay_details?: AdditionalStatementMinPayDetails;
@@ -39,7 +39,7 @@ export interface AccountOverview {
 }
 
 /**
- * The product associated with the account
+ * The product associated with the account.
  */
 export interface AccountProduct {
   /**

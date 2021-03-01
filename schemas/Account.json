@@ -39,7 +39,7 @@
     },
     "account_product": {
       "$ref": "./AccountProduct.json",
-      "description": "The product associated with the account"
+      "description": "The product associated with the account."
     },
     "external_fields": {
       "type": "array",

@@ -1744,13 +1744,13 @@
                               },
                               "name_suffix": {
                                 "type": "string",
-                                "description": "Prefix to the customer's name",
+                                "description": "Suffix to the customer's name",
                                 "example": "Jr"
                               },
                               "phone_number": {
                                 "type": "string",
-                                "description": "Phone number of the customer",
-                                "example": "555-555-5555"
+                                "description": "Customer's phone number in E.164 format",
+                                "example": "+14105556789"
                               },
                               "address_line_one": {
                                 "type": "string",
@@ -1774,7 +1774,7 @@
                               },
                               "address_zip": {
                                 "type": "string",
-                                "description": "Address zip code",
+                                "description": "Five digit zipcode or nine digit 'ZIP+4'",
                                 "example": "99999-1000"
                               },
                               "ssn": {
@@ -1790,9 +1790,9 @@
                               },
                               "date_of_birth": {
                                 "type": "string",
-                                "format": "date-time",
-                                "description": "Customer's date of birth",
-                                "example": "2018-06-20T09:12:30+00:00"
+                                "format": "date",
+                                "description": "Customer's date of birth in ISO 8601 format",
+                                "example": "1985-06-20"
                               }
                             }
                           },
@@ -1856,7 +1856,7 @@
                                     }
                                   },
                                   "account_product": {
-                                    "description": "The product associated with the account",
+                                    "description": "The product associated with the account.",
                                     "type": "object",
                                     "required": ["product_id"],
                                     "properties": {
@@ -2304,13 +2304,13 @@
                   },
                   "name_suffix": {
                     "type": "string",
-                    "description": "Prefix to the customer's name",
+                    "description": "Suffix to the customer's name",
                     "example": "Jr"
                   },
                   "phone_number": {
                     "type": "string",
-                    "description": "Phone number of the customer",
-                    "example": "555-555-5555"
+                    "description": "Customer's phone number in E.164 format",
+                    "example": "+14105556789"
                   },
                   "address_line_one": {
                     "type": "string",
@@ -2334,7 +2334,7 @@
                   },
                   "address_zip": {
                     "type": "string",
-                    "description": "Address zip code",
+                    "description": "Five digit zipcode or nine digit 'ZIP+4'",
                     "example": "99999-1000"
                   },
                   "ssn": {
@@ -2345,14 +2345,14 @@
                   "email": {
                     "type": "string",
                     "format": "email",
-                    "description": "The email address of this Customer",
+                    "description": "The email address of the Customer",
                     "example": "marissa@protonmail.com"
                   },
                   "date_of_birth": {
                     "type": "string",
-                    "format": "date-time",
-                    "description": "Customer's date of birth",
-                    "example": "2018-06-20T09:12:30+00:00"
+                    "format": "date",
+                    "description": "Customer's date of birth in ISO 8601 format",
+                    "example": "1985-06-20"
                   },
                   "assign_to_accounts": {
                     "type": "array",
@@ -2422,13 +2422,13 @@
                     },
                     "name_suffix": {
                       "type": "string",
-                      "description": "Prefix to the customer's name",
+                      "description": "Suffix to the customer's name",
                       "example": "Jr"
                     },
                     "phone_number": {
                       "type": "string",
-                      "description": "Phone number of the customer",
-                      "example": "555-555-5555"
+                      "description": "Customer's phone number in E.164 format",
+                      "example": "+14105556789"
                     },
                     "address_line_one": {
                       "type": "string",
@@ -2452,7 +2452,7 @@
                     },
                     "address_zip": {
                       "type": "string",
-                      "description": "Address zip code",
+                      "description": "Five digit zipcode or nine digit 'ZIP+4'",
                       "example": "99999-1000"
                     },
                     "ssn": {
@@ -2468,9 +2468,9 @@
                     },
                     "date_of_birth": {
                       "type": "string",
-                      "format": "date-time",
-                      "description": "Customer's date of birth",
-                      "example": "2018-06-20T09:12:30+00:00"
+                      "format": "date",
+                      "description": "Customer's date of birth in ISO 8601 format",
+                      "example": "1985-06-20"
                     }
                   }
                 }
@@ -2708,7 +2708,7 @@
                           }
                         },
                         "account_product": {
-                          "description": "The product associated with the account",
+                          "description": "The product associated with the account.",
                           "type": "object",
                           "required": ["product_id"],
                           "properties": {
@@ -3114,13 +3114,13 @@
                               },
                               "name_suffix": {
                                 "type": "string",
-                                "description": "Prefix to the customer's name",
+                                "description": "Suffix to the customer's name",
                                 "example": "Jr"
                               },
                               "phone_number": {
                                 "type": "string",
-                                "description": "Phone number of the customer",
-                                "example": "555-555-5555"
+                                "description": "Customer's phone number in E.164 format",
+                                "example": "+14105556789"
                               },
                               "address_line_one": {
                                 "type": "string",
@@ -3144,7 +3144,7 @@
                               },
                               "address_zip": {
                                 "type": "string",
-                                "description": "Address zip code",
+                                "description": "Five digit zipcode or nine digit 'ZIP+4'",
                                 "example": "99999-1000"
                               },
                               "ssn": {
@@ -3160,9 +3160,9 @@
                               },
                               "date_of_birth": {
                                 "type": "string",
-                                "format": "date-time",
-                                "description": "Customer's date of birth",
-                                "example": "2018-06-20T09:12:30+00:00"
+                                "format": "date",
+                                "description": "Customer's date of birth in ISO 8601 format",
+                                "example": "1985-06-20"
                               }
                             }
                           }
@@ -3259,7 +3259,7 @@
                           }
                         },
                         "account_product": {
-                          "description": "The product associated with the account",
+                          "description": "The product associated with the account.",
                           "type": "object",
                           "required": ["product_id"],
                           "properties": {
@@ -3665,13 +3665,13 @@
                               },
                               "name_suffix": {
                                 "type": "string",
-                                "description": "Prefix to the customer's name",
+                                "description": "Suffix to the customer's name",
                                 "example": "Jr"
                               },
                               "phone_number": {
                                 "type": "string",
-                                "description": "Phone number of the customer",
-                                "example": "555-555-5555"
+                                "description": "Customer's phone number in E.164 format",
+                                "example": "+14105556789"
                               },
                               "address_line_one": {
                                 "type": "string",
@@ -3695,7 +3695,7 @@
                               },
                               "address_zip": {
                                 "type": "string",
-                                "description": "Address zip code",
+                                "description": "Five digit zipcode or nine digit 'ZIP+4'",
                                 "example": "99999-1000"
                               },
                               "ssn": {
@@ -3711,9 +3711,9 @@
                               },
                               "date_of_birth": {
                                 "type": "string",
-                                "format": "date-time",
-                                "description": "Customer's date of birth",
-                                "example": "2018-06-20T09:12:30+00:00"
+                                "format": "date",
+                                "description": "Customer's date of birth in ISO 8601 format",
+                                "example": "1985-06-20"
                               }
                             }
                           }
@@ -5731,7 +5731,7 @@
             }
           },
           "account_product": {
-            "description": "The product associated with the account",
+            "description": "The product associated with the account.",
             "type": "object",
             "required": ["product_id"],
             "properties": {
@@ -6140,7 +6140,7 @@
                 }
               },
               "account_product": {
-                "description": "The product associated with the account",
+                "description": "The product associated with the account.",
                 "type": "object",
                 "required": ["product_id"],
                 "properties": {
@@ -6546,13 +6546,13 @@
                     },
                     "name_suffix": {
                       "type": "string",
-                      "description": "Prefix to the customer's name",
+                      "description": "Suffix to the customer's name",
                       "example": "Jr"
                     },
                     "phone_number": {
                       "type": "string",
-                      "description": "Phone number of the customer",
-                      "example": "555-555-5555"
+                      "description": "Customer's phone number in E.164 format",
+                      "example": "+14105556789"
                     },
                     "address_line_one": {
                       "type": "string",
@@ -6576,7 +6576,7 @@
                     },
                     "address_zip": {
                       "type": "string",
-                      "description": "Address zip code",
+                      "description": "Five digit zipcode or nine digit 'ZIP+4'",
                       "example": "99999-1000"
                     },
                     "ssn": {
@@ -6592,9 +6592,9 @@
                     },
                     "date_of_birth": {
                       "type": "string",
-                      "format": "date-time",
-                      "description": "Customer's date of birth",
-                      "example": "2018-06-20T09:12:30+00:00"
+                      "format": "date",
+                      "description": "Customer's date of birth in ISO 8601 format",
+                      "example": "1985-06-20"
                     }
                   }
                 }
@@ -6634,13 +6634,13 @@
           },
           "name_suffix": {
             "type": "string",
-            "description": "Prefix to the customer's name",
+            "description": "Suffix to the customer's name",
             "example": "Jr"
           },
           "phone_number": {
             "type": "string",
-            "description": "Phone number of the customer",
-            "example": "555-555-5555"
+            "description": "Customer's phone number in E.164 format",
+            "example": "+14105556789"
           },
           "address_line_one": {
             "type": "string",
@@ -6664,7 +6664,7 @@
           },
           "address_zip": {
             "type": "string",
-            "description": "Address zip code",
+            "description": "Five digit zipcode or nine digit 'ZIP+4'",
             "example": "99999-1000"
           },
           "ssn": {
@@ -6680,9 +6680,9 @@
           },
           "date_of_birth": {
             "type": "string",
-            "format": "date-time",
-            "description": "Customer's date of birth",
-            "example": "2018-06-20T09:12:30+00:00"
+            "format": "date",
+            "description": "Customer's date of birth in ISO 8601 format",
+            "example": "1985-06-20"
           }
         }
       },
@@ -6719,13 +6719,13 @@
               },
               "name_suffix": {
                 "type": "string",
-                "description": "Prefix to the customer's name",
+                "description": "Suffix to the customer's name",
                 "example": "Jr"
               },
               "phone_number": {
                 "type": "string",
-                "description": "Phone number of the customer",
-                "example": "555-555-5555"
+                "description": "Customer's phone number in E.164 format",
+                "example": "+14105556789"
               },
               "address_line_one": {
                 "type": "string",
@@ -6749,7 +6749,7 @@
               },
               "address_zip": {
                 "type": "string",
-                "description": "Address zip code",
+                "description": "Five digit zipcode or nine digit 'ZIP+4'",
                 "example": "99999-1000"
               },
               "ssn": {
@@ -6765,9 +6765,9 @@
               },
               "date_of_birth": {
                 "type": "string",
-                "format": "date-time",
-                "description": "Customer's date of birth",
-                "example": "2018-06-20T09:12:30+00:00"
+                "format": "date",
+                "description": "Customer's date of birth in ISO 8601 format",
+                "example": "1985-06-20"
               }
             }
           },
@@ -6818,7 +6818,7 @@
                       }
                     },
                     "account_product": {
-                      "description": "The product associated with the account",
+                      "description": "The product associated with the account.",
                       "type": "object",
                       "required": ["product_id"],
                       "properties": {
@@ -8661,13 +8661,13 @@
                 },
                 "name_suffix": {
                   "type": "string",
-                  "description": "Prefix to the customer's name",
+                  "description": "Suffix to the customer's name",
                   "example": "Jr"
                 },
                 "phone_number": {
                   "type": "string",
-                  "description": "Phone number of the customer",
-                  "example": "555-555-5555"
+                  "description": "Customer's phone number in E.164 format",
+                  "example": "+14105556789"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -8691,7 +8691,7 @@
                 },
                 "address_zip": {
                   "type": "string",
-                  "description": "Address zip code",
+                  "description": "Five digit zipcode or nine digit 'ZIP+4'",
                   "example": "99999-1000"
                 },
                 "ssn": {
@@ -8702,14 +8702,14 @@
                 "email": {
                   "type": "string",
                   "format": "email",
-                  "description": "The email address of this Customer",
+                  "description": "The email address of the Customer",
                   "example": "marissa@protonmail.com"
                 },
                 "date_of_birth": {
                   "type": "string",
-                  "format": "date-time",
-                  "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30+00:00"
+                  "format": "date",
+                  "description": "Customer's date of birth in ISO 8601 format",
+                  "example": "1985-06-20"
                 },
                 "assign_to_accounts": {
                   "type": "array",
@@ -10461,13 +10461,13 @@
                           },
                           "name_suffix": {
                             "type": "string",
-                            "description": "Prefix to the customer's name",
+                            "description": "Suffix to the customer's name",
                             "example": "Jr"
                           },
                           "phone_number": {
                             "type": "string",
-                            "description": "Phone number of the customer",
-                            "example": "555-555-5555"
+                            "description": "Customer's phone number in E.164 format",
+                            "example": "+14105556789"
                           },
                           "address_line_one": {
                             "type": "string",
@@ -10491,7 +10491,7 @@
                           },
                           "address_zip": {
                             "type": "string",
-                            "description": "Address zip code",
+                            "description": "Five digit zipcode or nine digit 'ZIP+4'",
                             "example": "99999-1000"
                           },
                           "ssn": {
@@ -10507,9 +10507,9 @@
                           },
                           "date_of_birth": {
                             "type": "string",
-                            "format": "date-time",
-                            "description": "Customer's date of birth",
-                            "example": "2018-06-20T09:12:30+00:00"
+                            "format": "date",
+                            "description": "Customer's date of birth in ISO 8601 format",
+                            "example": "1985-06-20"
                           }
                         }
                       },
@@ -10573,7 +10573,7 @@
                                 }
                               },
                               "account_product": {
-                                "description": "The product associated with the account",
+                                "description": "The product associated with the account.",
                                 "type": "object",
                                 "required": ["product_id"],
                                 "properties": {
@@ -10985,13 +10985,13 @@
                 },
                 "name_suffix": {
                   "type": "string",
-                  "description": "Prefix to the customer's name",
+                  "description": "Suffix to the customer's name",
                   "example": "Jr"
                 },
                 "phone_number": {
                   "type": "string",
-                  "description": "Phone number of the customer",
-                  "example": "555-555-5555"
+                  "description": "Customer's phone number in E.164 format",
+                  "example": "+14105556789"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -11015,7 +11015,7 @@
                 },
                 "address_zip": {
                   "type": "string",
-                  "description": "Address zip code",
+                  "description": "Five digit zipcode or nine digit 'ZIP+4'",
                   "example": "99999-1000"
                 },
                 "ssn": {
@@ -11031,9 +11031,9 @@
                 },
                 "date_of_birth": {
                   "type": "string",
-                  "format": "date-time",
-                  "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30+00:00"
+                  "format": "date",
+                  "description": "Customer's date of birth in ISO 8601 format",
+                  "example": "1985-06-20"
                 }
               }
             }
@@ -11075,13 +11075,13 @@
                 },
                 "name_suffix": {
                   "type": "string",
-                  "description": "Prefix to the customer's name",
+                  "description": "Suffix to the customer's name",
                   "example": "Jr"
                 },
                 "phone_number": {
                   "type": "string",
-                  "description": "Phone number of the customer",
-                  "example": "555-555-5555"
+                  "description": "Customer's phone number in E.164 format",
+                  "example": "+14105556789"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -11105,7 +11105,7 @@
                 },
                 "address_zip": {
                   "type": "string",
-                  "description": "Address zip code",
+                  "description": "Five digit zipcode or nine digit 'ZIP+4'",
                   "example": "99999-1000"
                 },
                 "ssn": {
@@ -11121,9 +11121,9 @@
                 },
                 "date_of_birth": {
                   "type": "string",
-                  "format": "date-time",
-                  "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30+00:00"
+                  "format": "date",
+                  "description": "Customer's date of birth in ISO 8601 format",
+                  "example": "1985-06-20"
                 }
               }
             }
@@ -11165,13 +11165,13 @@
                 },
                 "name_suffix": {
                   "type": "string",
-                  "description": "Prefix to the customer's name",
+                  "description": "Suffix to the customer's name",
                   "example": "Jr"
                 },
                 "phone_number": {
                   "type": "string",
-                  "description": "Phone number of the customer",
-                  "example": "555-555-5555"
+                  "description": "Customer's phone number in E.164 format",
+                  "example": "+14105556789"
                 },
                 "address_line_one": {
                   "type": "string",
@@ -11195,7 +11195,7 @@
                 },
                 "address_zip": {
                   "type": "string",
-                  "description": "Address zip code",
+                  "description": "Five digit zipcode or nine digit 'ZIP+4'",
                   "example": "99999-1000"
                 },
                 "ssn": {
@@ -11211,9 +11211,9 @@
                 },
                 "date_of_birth": {
                   "type": "string",
-                  "format": "date-time",
-                  "description": "Customer's date of birth",
-                  "example": "2018-06-20T09:12:30+00:00"
+                  "format": "date",
+                  "description": "Customer's date of birth in ISO 8601 format",
+                  "example": "1985-06-20"
                 }
               }
             }
@@ -11262,13 +11262,13 @@
                       },
                       "name_suffix": {
                         "type": "string",
-                        "description": "Prefix to the customer's name",
+                        "description": "Suffix to the customer's name",
                         "example": "Jr"
                       },
                       "phone_number": {
                         "type": "string",
-                        "description": "Phone number of the customer",
-                        "example": "555-555-5555"
+                        "description": "Customer's phone number in E.164 format",
+                        "example": "+14105556789"
                       },
                       "address_line_one": {
                         "type": "string",
@@ -11292,7 +11292,7 @@
                       },
                       "address_zip": {
                         "type": "string",
-                        "description": "Address zip code",
+                        "description": "Five digit zipcode or nine digit 'ZIP+4'",
                         "example": "99999-1000"
                       },
                       "ssn": {
@@ -11308,9 +11308,9 @@
                       },
                       "date_of_birth": {
                         "type": "string",
-                        "format": "date-time",
-                        "description": "Customer's date of birth",
-                        "example": "2018-06-20T09:12:30+00:00"
+                        "format": "date",
+                        "description": "Customer's date of birth in ISO 8601 format",
+                        "example": "1985-06-20"
                       }
                     }
                   }
@@ -11370,7 +11370,7 @@
                       }
                     },
                     "account_product": {
-                      "description": "The product associated with the account",
+                      "description": "The product associated with the account.",
                       "type": "object",
                       "required": ["product_id"],
                       "properties": {
@@ -11776,13 +11776,13 @@
                           },
                           "name_suffix": {
                             "type": "string",
-                            "description": "Prefix to the customer's name",
+                            "description": "Suffix to the customer's name",
                             "example": "Jr"
                           },
                           "phone_number": {
                             "type": "string",
-                            "description": "Phone number of the customer",
-                            "example": "555-555-5555"
+                            "description": "Customer's phone number in E.164 format",
+                            "example": "+14105556789"
                           },
                           "address_line_one": {
                             "type": "string",
@@ -11806,7 +11806,7 @@
                           },
                           "address_zip": {
                             "type": "string",
-                            "description": "Address zip code",
+                            "description": "Five digit zipcode or nine digit 'ZIP+4'",
                             "example": "99999-1000"
                           },
                           "ssn": {
@@ -11822,9 +11822,9 @@
                           },
                           "date_of_birth": {
                             "type": "string",
-                            "format": "date-time",
-                            "description": "Customer's date of birth",
-                            "example": "2018-06-20T09:12:30+00:00"
+                            "format": "date",
+                            "description": "Customer's date of birth in ISO 8601 format",
+                            "example": "1985-06-20"
                           }
                         }
                       }
@@ -11888,7 +11888,7 @@
                         }
                       },
                       "account_product": {
-                        "description": "The product associated with the account",
+                        "description": "The product associated with the account.",
                         "type": "object",
                         "required": ["product_id"],
                         "properties": {
@@ -12841,7 +12841,7 @@
                       }
                     },
                     "account_product": {
-                      "description": "The product associated with the account",
+                      "description": "The product associated with the account.",
                       "type": "object",
                       "required": ["product_id"],
                       "properties": {
@@ -13247,13 +13247,13 @@
                           },
                           "name_suffix": {
                             "type": "string",
-                            "description": "Prefix to the customer's name",
+                            "description": "Suffix to the customer's name",
                             "example": "Jr"
                           },
                           "phone_number": {
                             "type": "string",
-                            "description": "Phone number of the customer",
-                            "example": "555-555-5555"
+                            "description": "Customer's phone number in E.164 format",
+                            "example": "+14105556789"
                           },
                           "address_line_one": {
                             "type": "string",
@@ -13277,7 +13277,7 @@
                           },
                           "address_zip": {
                             "type": "string",
-                            "description": "Address zip code",
+                            "description": "Five digit zipcode or nine digit 'ZIP+4'",
                             "example": "99999-1000"
                           },
                           "ssn": {
@@ -13293,9 +13293,9 @@
                           },
                           "date_of_birth": {
                             "type": "string",
-                            "format": "date-time",
-                            "description": "Customer's date of birth",
-                            "example": "2018-06-20T09:12:30+00:00"
+                            "format": "date",
+                            "description": "Customer's date of birth in ISO 8601 format",
+                            "example": "1985-06-20"
                           }
                         }
                       }

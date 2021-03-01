@@ -16,7 +16,7 @@ export interface ComplexCustomer {
    */
   address_state?: string;
   /**
-   * Address zip code
+   * Five digit zipcode or nine digit 'ZIP+4'
    */
   address_zip?: string;
   /**
@@ -24,7 +24,7 @@ export interface ComplexCustomer {
    */
   customer_id: number;
   /**
-   * Customer's date of birth
+   * Customer's date of birth in ISO 8601 format
    */
   date_of_birth?: Date;
   /**
@@ -48,11 +48,11 @@ export interface ComplexCustomer {
    */
   name_prefix?: string;
   /**
-   * Prefix to the customer's name
+   * Suffix to the customer's name
    */
   name_suffix?: string;
   /**
-   * Phone number of the customer
+   * Customer's phone number in E.164 format
    */
   phone_number?: string;
   /**
@@ -72,7 +72,7 @@ export interface Account {
   account_id: number;
   account_overview?: AccountOverview;
   /**
-   * The product associated with the account
+   * The product associated with the account.
    */
   account_product?: AccountProduct;
   additional_statement_min_pay_details?: AdditionalStatementMinPayDetails;
@@ -106,7 +106,7 @@ export interface AccountOverview {
 }
 
 /**
- * The product associated with the account
+ * The product associated with the account.
  */
 export interface AccountProduct {
   /**

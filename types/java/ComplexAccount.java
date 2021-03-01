@@ -27,7 +27,7 @@ public class ComplexAccount {
     public void setAccountOverview(AccountOverview value) { this.accountOverview = value; }
 
     /**
-     * The product associated with the account
+     * The product associated with the account.
      */
     public AccountProduct getAccountProduct() { return accountProduct; }
     public void setAccountProduct(AccountProduct value) { this.accountProduct = value; }
@@ -96,7 +96,7 @@ public class AccountOverview {
 package io.quicktype;
 
 /**
- * The product associated with the account
+ * The product associated with the account.
  */
 public class AccountProduct {
     private String externalProductID;
@@ -441,7 +441,7 @@ public class AssociatedEntities {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 public class Customer {
     private String addressCity;
@@ -450,7 +450,7 @@ public class Customer {
     private String addressState;
     private String addressZip;
     private long customerID;
-    private OffsetDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
     private String email;
     private String nameFirst;
     private String nameLast;
@@ -485,7 +485,7 @@ public class Customer {
     public void setAddressState(String value) { this.addressState = value; }
 
     /**
-     * Address zip code
+     * Five digit zipcode or nine digit 'ZIP+4'
      */
     public String getAddressZip() { return addressZip; }
     public void setAddressZip(String value) { this.addressZip = value; }
@@ -497,10 +497,10 @@ public class Customer {
     public void setCustomerID(long value) { this.customerID = value; }
 
     /**
-     * Customer's date of birth
+     * Customer's date of birth in ISO 8601 format
      */
-    public OffsetDateTime getDateOfBirth() { return dateOfBirth; }
-    public void setDateOfBirth(OffsetDateTime value) { this.dateOfBirth = value; }
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
+    public void setDateOfBirth(LocalDate value) { this.dateOfBirth = value; }
 
     /**
      * The email address of this Customer
@@ -533,13 +533,13 @@ public class Customer {
     public void setNamePrefix(String value) { this.namePrefix = value; }
 
     /**
-     * Prefix to the customer's name
+     * Suffix to the customer's name
      */
     public String getNameSuffix() { return nameSuffix; }
     public void setNameSuffix(String value) { this.nameSuffix = value; }
 
     /**
-     * Phone number of the customer
+     * Customer's phone number in E.164 format
      */
     public String getPhoneNumber() { return phoneNumber; }
     public void setPhoneNumber(String value) { this.phoneNumber = value; }

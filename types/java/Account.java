@@ -26,7 +26,7 @@ public class Account {
     public void setAccountOverview(AccountOverview value) { this.accountOverview = value; }
 
     /**
-     * The product associated with the account
+     * The product associated with the account.
      */
     public AccountProduct getAccountProduct() { return accountProduct; }
     public void setAccountProduct(AccountProduct value) { this.accountProduct = value; }
@@ -89,7 +89,7 @@ public class AccountOverview {
 package io.quicktype;
 
 /**
- * The product associated with the account
+ * The product associated with the account.
  */
 public class AccountProduct {
     private String externalProductID;
