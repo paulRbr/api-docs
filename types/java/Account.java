@@ -485,14 +485,14 @@ public class Summary {
     private Long availableCreditCents;
     private long creditLimitCents;
     private Long deferredInterestBalanceCents;
-    private long interestBalanceCents;
-    private double interestRatePercent;
+    private Long interestBalanceCents;
+    private Double interestRatePercent;
     private Long maxApprovedCreditLimitCents;
     private Long openToBuyCents;
-    private long principalCents;
-    private long totalBalanceCents;
-    private long totalInterestPaidToDateCents;
-    private long totalPaidToDateCents;
+    private Long principalCents;
+    private Long totalBalanceCents;
+    private Long totalInterestPaidToDateCents;
+    private Long totalPaidToDateCents;
     private Long totalPayoffCents;
 
     /**
@@ -528,14 +528,14 @@ public class Summary {
     /**
      * The total interest balance (in cents) associated with the account.
      */
-    public long getInterestBalanceCents() { return interestBalanceCents; }
-    public void setInterestBalanceCents(long value) { this.interestBalanceCents = value; }
+    public Long getInterestBalanceCents() { return interestBalanceCents; }
+    public void setInterestBalanceCents(Long value) { this.interestBalanceCents = value; }
 
     /**
      * The percentage interest applied to the account (i.e. 6.2 means 6.2%)
      */
-    public double getInterestRatePercent() { return interestRatePercent; }
-    public void setInterestRatePercent(double value) { this.interestRatePercent = value; }
+    public Double getInterestRatePercent() { return interestRatePercent; }
+    public void setInterestRatePercent(Double value) { this.interestRatePercent = value; }
 
     /**
      * Total Amount (in cents) that this account can borrow.
@@ -554,27 +554,27 @@ public class Summary {
     /**
      * The total balance (in cents) associated with the account.
      */
-    public long getPrincipalCents() { return principalCents; }
-    public void setPrincipalCents(long value) { this.principalCents = value; }
+    public Long getPrincipalCents() { return principalCents; }
+    public void setPrincipalCents(Long value) { this.principalCents = value; }
 
     /**
      * The total balance (in cents) associated with the account.
      */
-    public long getTotalBalanceCents() { return totalBalanceCents; }
-    public void setTotalBalanceCents(long value) { this.totalBalanceCents = value; }
+    public Long getTotalBalanceCents() { return totalBalanceCents; }
+    public void setTotalBalanceCents(Long value) { this.totalBalanceCents = value; }
 
     /**
      * The total sum of interest allocations for payments made to date (in cents) associated
      * with the account.
      */
-    public long getTotalInterestPaidToDateCents() { return totalInterestPaidToDateCents; }
-    public void setTotalInterestPaidToDateCents(long value) { this.totalInterestPaidToDateCents = value; }
+    public Long getTotalInterestPaidToDateCents() { return totalInterestPaidToDateCents; }
+    public void setTotalInterestPaidToDateCents(Long value) { this.totalInterestPaidToDateCents = value; }
 
     /**
      * The total sum of payments made to date (in cents) associated with the account.
      */
-    public long getTotalPaidToDateCents() { return totalPaidToDateCents; }
-    public void setTotalPaidToDateCents(long value) { this.totalPaidToDateCents = value; }
+    public Long getTotalPaidToDateCents() { return totalPaidToDateCents; }
+    public void setTotalPaidToDateCents(Long value) { this.totalPaidToDateCents = value; }
 
     /**
      * The total amount needed to pay off the loan at this exact moment.

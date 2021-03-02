@@ -678,6 +678,11 @@
                     "description": "The `Date-Time` as of which this product is effective on the server.",
                     "example": "2016-11-27T13:19:56+00:00"
                   },
+                  "external_product_id": {
+                    "type": "string",
+                    "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+                    "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                  },
                   "product_overview": {
                     "type": "object",
                     "required": [
@@ -688,11 +693,6 @@
                     ],
                     "description": "A series of static fields about the product.",
                     "properties": {
-                      "external_product_id": {
-                        "type": "string",
-                        "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                        "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
-                      },
                       "product_name": {
                         "type": "string",
                         "description": "Name of Product, i.e. BNPL 24 Month Standard.",
@@ -939,7 +939,6 @@
                 "schema": {
                   "required": [
                     "product_id",
-                    "created_at",
                     "product_overview",
                     "product_lifecycle_policies",
                     "promotional_policies",
@@ -1327,7 +1326,6 @@
                   "items": {
                     "required": [
                       "product_id",
-                      "created_at",
                       "product_overview",
                       "product_lifecycle_policies",
                       "promotional_policies",
@@ -1818,7 +1816,7 @@
                             "properties": {
                               "account": {
                                 "type": "object",
-                                "required": ["account_id", "created_at", "effective_at"],
+                                "required": ["account_id"],
                                 "properties": {
                                   "account_id": {
                                     "type": "integer",
@@ -2117,15 +2115,7 @@
                                   },
                                   "summary": {
                                     "type": "object",
-                                    "required": [
-                                      "total_balance_cents",
-                                      "principal_cents",
-                                      "interest_balance_cents",
-                                      "total_paid_to_date_cents",
-                                      "total_interest_paid_to_date_cents",
-                                      "credit_limit_cents",
-                                      "interest_rate_percent"
-                                    ],
+                                    "required": ["credit_limit_cents"],
                                     "properties": {
                                       "total_balance_cents": {
                                         "type": "integer",
@@ -2670,7 +2660,7 @@
                   "allOf": [
                     {
                       "type": "object",
-                      "required": ["account_id", "created_at", "effective_at"],
+                      "required": ["account_id"],
                       "properties": {
                         "account_id": {
                           "type": "integer",
@@ -2969,15 +2959,7 @@
                         },
                         "summary": {
                           "type": "object",
-                          "required": [
-                            "total_balance_cents",
-                            "principal_cents",
-                            "interest_balance_cents",
-                            "total_paid_to_date_cents",
-                            "total_interest_paid_to_date_cents",
-                            "credit_limit_cents",
-                            "interest_rate_percent"
-                          ],
+                          "required": ["credit_limit_cents"],
                           "properties": {
                             "total_balance_cents": {
                               "type": "integer",
@@ -3221,7 +3203,7 @@
                   "allOf": [
                     {
                       "type": "object",
-                      "required": ["account_id", "created_at", "effective_at"],
+                      "required": ["account_id"],
                       "properties": {
                         "account_id": {
                           "type": "integer",
@@ -3520,15 +3502,7 @@
                         },
                         "summary": {
                           "type": "object",
-                          "required": [
-                            "total_balance_cents",
-                            "principal_cents",
-                            "interest_balance_cents",
-                            "total_paid_to_date_cents",
-                            "total_interest_paid_to_date_cents",
-                            "credit_limit_cents",
-                            "interest_rate_percent"
-                          ],
+                          "required": ["credit_limit_cents"],
                           "properties": {
                             "total_balance_cents": {
                               "type": "integer",
@@ -4048,7 +4022,7 @@
                   "maxItems": 1000,
                   "items": {
                     "type": "object",
-                    "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
+                    "required": ["account_id", "line_item_id", "product_id"],
                     "properties": {
                       "account_id": {
                         "type": "integer",
@@ -4284,7 +4258,7 @@
                   "maxItems": 1000,
                   "items": {
                     "type": "object",
-                    "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
+                    "required": ["account_id", "line_item_id", "product_id"],
                     "properties": {
                       "account_id": {
                         "type": "integer",
@@ -5693,7 +5667,7 @@
       },
       "Account": {
         "type": "object",
-        "required": ["account_id", "created_at", "effective_at"],
+        "required": ["account_id"],
         "properties": {
           "account_id": {
             "type": "integer",
@@ -5992,15 +5966,7 @@
           },
           "summary": {
             "type": "object",
-            "required": [
-              "total_balance_cents",
-              "principal_cents",
-              "interest_balance_cents",
-              "total_paid_to_date_cents",
-              "total_interest_paid_to_date_cents",
-              "credit_limit_cents",
-              "interest_rate_percent"
-            ],
+            "required": ["credit_limit_cents"],
             "properties": {
               "total_balance_cents": {
                 "type": "integer",
@@ -6102,7 +6068,7 @@
         "allOf": [
           {
             "type": "object",
-            "required": ["account_id", "created_at", "effective_at"],
+            "required": ["account_id"],
             "properties": {
               "account_id": {
                 "type": "integer",
@@ -6401,15 +6367,7 @@
               },
               "summary": {
                 "type": "object",
-                "required": [
-                  "total_balance_cents",
-                  "principal_cents",
-                  "interest_balance_cents",
-                  "total_paid_to_date_cents",
-                  "total_interest_paid_to_date_cents",
-                  "credit_limit_cents",
-                  "interest_rate_percent"
-                ],
+                "required": ["credit_limit_cents"],
                 "properties": {
                   "total_balance_cents": {
                     "type": "integer",
@@ -6780,7 +6738,7 @@
                 "description": "An array of Accounts this Customer is assigned to.",
                 "items": {
                   "type": "object",
-                  "required": ["account_id", "created_at", "effective_at"],
+                  "required": ["account_id"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -7079,15 +7037,7 @@
                     },
                     "summary": {
                       "type": "object",
-                      "required": [
-                        "total_balance_cents",
-                        "principal_cents",
-                        "interest_balance_cents",
-                        "total_paid_to_date_cents",
-                        "total_interest_paid_to_date_cents",
-                        "credit_limit_cents",
-                        "interest_rate_percent"
-                      ],
+                      "required": ["credit_limit_cents"],
                       "properties": {
                         "total_balance_cents": {
                           "type": "integer",
@@ -7587,7 +7537,6 @@
       "Product": {
         "required": [
           "product_id",
-          "created_at",
           "product_overview",
           "product_lifecycle_policies",
           "promotional_policies",
@@ -8088,7 +8037,7 @@
       },
       "LineItem": {
         "type": "object",
-        "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
+        "required": ["account_id", "line_item_id", "product_id"],
         "properties": {
           "account_id": {
             "type": "integer",
@@ -8371,16 +8320,16 @@
                   "description": "The `Date-Time` as of which this product is effective on the server.",
                   "example": "2016-11-27T13:19:56+00:00"
                 },
+                "external_product_id": {
+                  "type": "string",
+                  "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+                  "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                },
                 "product_overview": {
                   "type": "object",
                   "required": ["product_name", "product_type", "product_short_description", "product_long_description"],
                   "description": "A series of static fields about the product.",
                   "properties": {
-                    "external_product_id": {
-                      "type": "string",
-                      "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
-                    },
                     "product_name": {
                       "type": "string",
                       "description": "Name of Product, i.e. BNPL 24 Month Standard.",
@@ -9438,7 +9387,6 @@
             "schema": {
               "required": [
                 "product_id",
-                "created_at",
                 "product_overview",
                 "product_lifecycle_policies",
                 "promotional_policies",
@@ -9765,7 +9713,6 @@
             "schema": {
               "required": [
                 "product_id",
-                "created_at",
                 "product_overview",
                 "product_lifecycle_policies",
                 "promotional_policies",
@@ -10095,7 +10042,6 @@
               "items": {
                 "required": [
                   "product_id",
-                  "created_at",
                   "product_overview",
                   "product_lifecycle_policies",
                   "promotional_policies",
@@ -10535,7 +10481,7 @@
                         "properties": {
                           "account": {
                             "type": "object",
-                            "required": ["account_id", "created_at", "effective_at"],
+                            "required": ["account_id"],
                             "properties": {
                               "account_id": {
                                 "type": "integer",
@@ -10834,15 +10780,7 @@
                               },
                               "summary": {
                                 "type": "object",
-                                "required": [
-                                  "total_balance_cents",
-                                  "principal_cents",
-                                  "interest_balance_cents",
-                                  "total_paid_to_date_cents",
-                                  "total_interest_paid_to_date_cents",
-                                  "credit_limit_cents",
-                                  "interest_rate_percent"
-                                ],
+                                "required": ["credit_limit_cents"],
                                 "properties": {
                                   "total_balance_cents": {
                                     "type": "integer",
@@ -11332,7 +11270,7 @@
               "allOf": [
                 {
                   "type": "object",
-                  "required": ["account_id", "created_at", "effective_at"],
+                  "required": ["account_id"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -11631,15 +11569,7 @@
                     },
                     "summary": {
                       "type": "object",
-                      "required": [
-                        "total_balance_cents",
-                        "principal_cents",
-                        "interest_balance_cents",
-                        "total_paid_to_date_cents",
-                        "total_interest_paid_to_date_cents",
-                        "credit_limit_cents",
-                        "interest_rate_percent"
-                      ],
+                      "required": ["credit_limit_cents"],
                       "properties": {
                         "total_balance_cents": {
                           "type": "integer",
@@ -11850,7 +11780,7 @@
                   "description": "An array of accounts within the requested range.",
                   "items": {
                     "type": "object",
-                    "required": ["account_id", "created_at", "effective_at"],
+                    "required": ["account_id"],
                     "properties": {
                       "account_id": {
                         "type": "integer",
@@ -12149,15 +12079,7 @@
                       },
                       "summary": {
                         "type": "object",
-                        "required": [
-                          "total_balance_cents",
-                          "principal_cents",
-                          "interest_balance_cents",
-                          "total_paid_to_date_cents",
-                          "total_interest_paid_to_date_cents",
-                          "credit_limit_cents",
-                          "interest_rate_percent"
-                        ],
+                        "required": ["credit_limit_cents"],
                         "properties": {
                           "total_balance_cents": {
                             "type": "integer",
@@ -12803,7 +12725,7 @@
               "allOf": [
                 {
                   "type": "object",
-                  "required": ["account_id", "created_at", "effective_at"],
+                  "required": ["account_id"],
                   "properties": {
                     "account_id": {
                       "type": "integer",
@@ -13102,15 +13024,7 @@
                     },
                     "summary": {
                       "type": "object",
-                      "required": [
-                        "total_balance_cents",
-                        "principal_cents",
-                        "interest_balance_cents",
-                        "total_paid_to_date_cents",
-                        "total_interest_paid_to_date_cents",
-                        "credit_limit_cents",
-                        "interest_rate_percent"
-                      ],
+                      "required": ["credit_limit_cents"],
                       "properties": {
                         "total_balance_cents": {
                           "type": "integer",
@@ -13695,7 +13609,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
+              "required": ["account_id", "line_item_id", "product_id"],
               "properties": {
                 "account_id": {
                   "type": "integer",
@@ -13879,7 +13793,7 @@
               "maxItems": 1000,
               "items": {
                 "type": "object",
-                "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
+                "required": ["account_id", "line_item_id", "product_id"],
                 "properties": {
                   "account_id": {
                     "type": "integer",
@@ -14064,7 +13978,7 @@
               "maxItems": 1000,
               "items": {
                 "type": "object",
-                "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
+                "required": ["account_id", "line_item_id", "product_id"],
                 "properties": {
                   "account_id": {
                     "type": "integer",

@@ -19,16 +19,16 @@
             "description": "The `Date-Time` as of which this product is effective on the server.",
             "example": "2016-11-27T13:19:56+00:00"
           },
+          "external_product_id": {
+            "type": "string",
+            "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+            "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+          },
           "product_overview": {
             "type": "object",
             "required": ["product_name", "product_type", "product_short_description", "product_long_description"],
             "description": "A series of static fields about the product.",
             "properties": {
-              "external_product_id": {
-                "type": "string",
-                "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
-              },
               "product_name": {
                 "type": "string",
                 "description": "Name of Product, i.e. BNPL 24 Month Standard.",

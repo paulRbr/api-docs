@@ -6,11 +6,11 @@ export interface LineItem {
   /**
    * The `Date-Time` which the line item was created.
    */
-  created_at: Date;
+  created_at?: Date;
   /**
    * The `Date-Time` that this line item became/becomes active
    */
-  effective_at: Date;
+  effective_at?: Date;
   /**
    * An array of static references to fields in a third party system.
    */

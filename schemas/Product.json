@@ -1,7 +1,6 @@
 {
   "required": [
     "product_id",
-    "created_at",
     "product_overview",
     "product_lifecycle_policies",
     "promotional_policies",

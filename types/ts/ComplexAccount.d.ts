@@ -13,11 +13,11 @@ export interface ComplexAccount {
   /**
    * The `Date-Time` which the account was created in the API.
    */
-  created_at: Date;
+  created_at?: Date;
   /**
    * The `Date-Time` that this account became/becomes active.
    */
-  effective_at: Date;
+  effective_at?: Date;
   /**
    * An Array of External Fields. These should be used to connect accounts created in Canopy
    * to Users in your system and any connected external systems.
@@ -330,11 +330,11 @@ export interface Summary {
   /**
    * The total interest balance (in cents) associated with the account.
    */
-  interest_balance_cents: number;
+  interest_balance_cents?: number;
   /**
    * The percentage interest applied to the account (i.e. 6.2 means 6.2%)
    */
-  interest_rate_percent: number;
+  interest_rate_percent?: number;
   /**
    * Total Amount (in cents) that this account can borrow.
    */
@@ -348,20 +348,20 @@ export interface Summary {
   /**
    * The total balance (in cents) associated with the account.
    */
-  principal_cents: number;
+  principal_cents?: number;
   /**
    * The total balance (in cents) associated with the account.
    */
-  total_balance_cents: number;
+  total_balance_cents?: number;
   /**
    * The total sum of interest allocations for payments made to date (in cents) associated
    * with the account.
    */
-  total_interest_paid_to_date_cents: number;
+  total_interest_paid_to_date_cents?: number;
   /**
    * The total sum of payments made to date (in cents) associated with the account.
    */
-  total_paid_to_date_cents: number;
+  total_paid_to_date_cents?: number;
   /**
    * The total amount needed to pay off the loan at this exact moment.
    */

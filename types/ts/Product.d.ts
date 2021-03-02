@@ -2,7 +2,7 @@ export interface Product {
   /**
    * The `Date-Time` that this product was created on the server.
    */
-  created_at: Date;
+  created_at?: Date;
   /**
    * The `Date-Time` as of which this product is effective on the server.
    */

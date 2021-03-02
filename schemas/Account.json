@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "required": ["account_id", "created_at", "effective_at"],
+  "required": ["account_id"],
   "properties": {
     "account_id": {
       "type": "integer",
@@ -137,15 +137,7 @@
     },
     "summary": {
       "type": "object",
-      "required": [
-        "total_balance_cents",
-        "principal_cents",
-        "interest_balance_cents",
-        "total_paid_to_date_cents",
-        "total_interest_paid_to_date_cents",
-        "credit_limit_cents",
-        "interest_rate_percent"
-      ],
+      "required": ["credit_limit_cents"],
       "properties": {
         "total_balance_cents": {
           "type": "integer",
