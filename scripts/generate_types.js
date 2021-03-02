@@ -58,5 +58,6 @@ async function quicktypeJSONSchema(targetLanguage, typeName, jsonSchemaString) {
     rendererOptions: {
       "just-types": true,
     },
+    inferDateTimes: false,
   });
 }

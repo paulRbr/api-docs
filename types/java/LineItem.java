@@ -2,12 +2,10 @@
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class LineItem {
     private long accountID;
-    private OffsetDateTime createdAt;
-    private OffsetDateTime effectiveAt;
+    private String createdAt;
+    private String effectiveAt;
     private ExternalField[] externalFields;
     private long lineItemID;
     private LineItemOverview lineItemOverview;
@@ -24,14 +22,14 @@ public class LineItem {
     /**
      * The `Date-Time` which the line item was created.
      */
-    public OffsetDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(OffsetDateTime value) { this.createdAt = value; }
+    public String getCreatedAt() { return createdAt; }
+    public void setCreatedAt(String value) { this.createdAt = value; }
 
     /**
      * The `Date-Time` that this line item became/becomes active
      */
-    public OffsetDateTime getEffectiveAt() { return effectiveAt; }
-    public void setEffectiveAt(OffsetDateTime value) { this.effectiveAt = value; }
+    public String getEffectiveAt() { return effectiveAt; }
+    public void setEffectiveAt(String value) { this.effectiveAt = value; }
 
     /**
      * An array of static references to fields in a third party system.

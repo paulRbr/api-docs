@@ -2,8 +2,6 @@
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 /**
  * Statement for an account for a given billing cycle
  */
@@ -13,7 +11,7 @@ public class AccountStatement {
     private AdditionalMinPayDetails additionalMinPayDetails;
     private BalanceSummary balanceSummary;
     private CycleSummary cycleSummary;
-    private OffsetDateTime effectiveAsOfDate;
+    private String effectiveAsOfDate;
     private MinPayDue minPayDue;
     private OpenToBuy openToBuy;
     private Payoff payoff;
@@ -42,8 +40,8 @@ public class AccountStatement {
      * account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it
      * defaults to current time.
      */
-    public OffsetDateTime getEffectiveAsOfDate() { return effectiveAsOfDate; }
-    public void setEffectiveAsOfDate(OffsetDateTime value) { this.effectiveAsOfDate = value; }
+    public String getEffectiveAsOfDate() { return effectiveAsOfDate; }
+    public void setEffectiveAsOfDate(String value) { this.effectiveAsOfDate = value; }
 
     public MinPayDue getMinPayDue() { return minPayDue; }
     public void setMinPayDue(MinPayDue value) { this.minPayDue = value; }
@@ -65,15 +63,13 @@ public class AccountStatement {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class AccountOverview {
     private String accountStatus;
     private String accountStatusSubtype;
-    private OffsetDateTime promoExclusiveEnd;
-    private OffsetDateTime promoInclusiveStart;
-    private OffsetDateTime promoPurchaseWindowExclusiveEnd;
-    private OffsetDateTime promoPurchaseWindowInclusiveStart;
+    private String promoExclusiveEnd;
+    private String promoInclusiveStart;
+    private String promoPurchaseWindowExclusiveEnd;
+    private String promoPurchaseWindowInclusiveStart;
 
     /**
      * The Status of the Account. Active upon account creation.
@@ -90,26 +86,26 @@ public class AccountOverview {
     /**
      * If applicable, the `Date-Time` the promo period for the account ends.
      */
-    public OffsetDateTime getPromoExclusiveEnd() { return promoExclusiveEnd; }
-    public void setPromoExclusiveEnd(OffsetDateTime value) { this.promoExclusiveEnd = value; }
+    public String getPromoExclusiveEnd() { return promoExclusiveEnd; }
+    public void setPromoExclusiveEnd(String value) { this.promoExclusiveEnd = value; }
 
     /**
      * If applicable, the `Date-Time` the promo period for the account starts.
      */
-    public OffsetDateTime getPromoInclusiveStart() { return promoInclusiveStart; }
-    public void setPromoInclusiveStart(OffsetDateTime value) { this.promoInclusiveStart = value; }
+    public String getPromoInclusiveStart() { return promoInclusiveStart; }
+    public void setPromoInclusiveStart(String value) { this.promoInclusiveStart = value; }
 
     /**
      * If applicable, the `Date-Time` the purchase window for the account ends.
      */
-    public OffsetDateTime getPromoPurchaseWindowExclusiveEnd() { return promoPurchaseWindowExclusiveEnd; }
-    public void setPromoPurchaseWindowExclusiveEnd(OffsetDateTime value) { this.promoPurchaseWindowExclusiveEnd = value; }
+    public String getPromoPurchaseWindowExclusiveEnd() { return promoPurchaseWindowExclusiveEnd; }
+    public void setPromoPurchaseWindowExclusiveEnd(String value) { this.promoPurchaseWindowExclusiveEnd = value; }
 
     /**
      * If applicable, the `Date-Time` the purchase window for the account ends.
      */
-    public OffsetDateTime getPromoPurchaseWindowInclusiveStart() { return promoPurchaseWindowInclusiveStart; }
-    public void setPromoPurchaseWindowInclusiveStart(OffsetDateTime value) { this.promoPurchaseWindowInclusiveStart = value; }
+    public String getPromoPurchaseWindowInclusiveStart() { return promoPurchaseWindowInclusiveStart; }
+    public void setPromoPurchaseWindowInclusiveStart(String value) { this.promoPurchaseWindowInclusiveStart = value; }
 }
 
 // AdditionalMinPayDetails.java
@@ -237,8 +233,6 @@ public class BalanceSummary {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class CycleSummary {
     private Long cycleAmDeferredInterestCents;
     private Long cycleAmInterestCents;
@@ -247,8 +241,8 @@ public class CycleSummary {
     private Long cycleCreditAdjustmentsCents;
     private Long cycleDebitAdjustmentsCents;
     private Long cycleDeferredInterestCents;
-    private OffsetDateTime cycleExclusiveEnd;
-    private OffsetDateTime cycleInclusiveStart;
+    private String cycleExclusiveEnd;
+    private String cycleInclusiveStart;
     private Long cycleInterestCents;
     private Long cycleLateFeesCents;
     private Long cycleLoansCents;
@@ -307,15 +301,15 @@ public class CycleSummary {
      * The inclusive ending `Date-Time` that defines which transations are part of this
      * statement.
      */
-    public OffsetDateTime getCycleExclusiveEnd() { return cycleExclusiveEnd; }
-    public void setCycleExclusiveEnd(OffsetDateTime value) { this.cycleExclusiveEnd = value; }
+    public String getCycleExclusiveEnd() { return cycleExclusiveEnd; }
+    public void setCycleExclusiveEnd(String value) { this.cycleExclusiveEnd = value; }
 
     /**
      * The inclusive starting `Date-Time` that defines which transations are part of this
      * statement.
      */
-    public OffsetDateTime getCycleInclusiveStart() { return cycleInclusiveStart; }
-    public void setCycleInclusiveStart(OffsetDateTime value) { this.cycleInclusiveStart = value; }
+    public String getCycleInclusiveStart() { return cycleInclusiveStart; }
+    public void setCycleInclusiveStart(String value) { this.cycleInclusiveStart = value; }
 
     /**
      * Total interest accrued during the billing cycle.
@@ -364,11 +358,9 @@ public class CycleSummary {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class MinPayDue {
     private long minPayCents;
-    private OffsetDateTime minPayDueAt;
+    private String minPayDueAt;
 
     /**
      * Total amount due for the billing cycle, summing cycle principal, interest, deferred
@@ -380,8 +372,8 @@ public class MinPayDue {
     /**
      * The `Date-Time` the payment for this billing cycle is due.
      */
-    public OffsetDateTime getMinPayDueAt() { return minPayDueAt; }
-    public void setMinPayDueAt(OffsetDateTime value) { this.minPayDueAt = value; }
+    public String getMinPayDueAt() { return minPayDueAt; }
+    public void setMinPayDueAt(String value) { this.minPayDueAt = value; }
 }
 
 // OpenToBuy.java

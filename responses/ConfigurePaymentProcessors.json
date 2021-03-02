@@ -1,0 +1,10 @@
+{
+  "description": "Payment Processor configuration for your organization",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/OrgPaymentProcessorConfig.json"
+      }
+    }
+  }
+}

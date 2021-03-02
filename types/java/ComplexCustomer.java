@@ -123,18 +123,17 @@ public class ComplexCustomer {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class Account {
     private long accountID;
     private AccountOverview accountOverview;
     private AccountProduct accountProduct;
     private AdditionalStatementMinPayDetails additionalStatementMinPayDetails;
     private AssociatedEntities associatedEntities;
-    private OffsetDateTime createdAt;
-    private OffsetDateTime effectiveAt;
+    private String createdAt;
+    private String effectiveAt;
     private ExternalField[] externalFields;
     private MinPayDueCents minPayDueCents;
+    private PaymentProcessorConfig paymentProcessorConfig;
     private Summary summary;
 
     /**
@@ -161,14 +160,14 @@ public class Account {
     /**
      * The `Date-Time` which the account was created in the API.
      */
-    public OffsetDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(OffsetDateTime value) { this.createdAt = value; }
+    public String getCreatedAt() { return createdAt; }
+    public void setCreatedAt(String value) { this.createdAt = value; }
 
     /**
      * The `Date-Time` that this account became/becomes active.
      */
-    public OffsetDateTime getEffectiveAt() { return effectiveAt; }
-    public void setEffectiveAt(OffsetDateTime value) { this.effectiveAt = value; }
+    public String getEffectiveAt() { return effectiveAt; }
+    public void setEffectiveAt(String value) { this.effectiveAt = value; }
 
     /**
      * An Array of External Fields. These should be used to connect accounts created in Canopy
@@ -179,6 +178,9 @@ public class Account {
 
     public MinPayDueCents getMinPayDueCents() { return minPayDueCents; }
     public void setMinPayDueCents(MinPayDueCents value) { this.minPayDueCents = value; }
+
+    public PaymentProcessorConfig getPaymentProcessorConfig() { return paymentProcessorConfig; }
+    public void setPaymentProcessorConfig(PaymentProcessorConfig value) { this.paymentProcessorConfig = value; }
 
     public Summary getSummary() { return summary; }
     public void setSummary(Summary value) { this.summary = value; }
@@ -253,19 +255,17 @@ public class AccountProduct {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class PostPromoOverview {
-    private OffsetDateTime postPromoExclusiveEnd;
+    private String postPromoExclusiveEnd;
     private Long postPromoImplAmLen;
     private Double postPromoImplInterestRatePercent;
-    private OffsetDateTime postPromoInclusiveStart;
+    private String postPromoInclusiveStart;
 
     /**
      * If applicable, the start date for a promotional period for the account.
      */
-    public OffsetDateTime getPostPromoExclusiveEnd() { return postPromoExclusiveEnd; }
-    public void setPostPromoExclusiveEnd(OffsetDateTime value) { this.postPromoExclusiveEnd = value; }
+    public String getPostPromoExclusiveEnd() { return postPromoExclusiveEnd; }
+    public void setPostPromoExclusiveEnd(String value) { this.postPromoExclusiveEnd = value; }
 
     /**
      * If applicable, post-promotional amortization length in cycles.
@@ -283,8 +283,8 @@ public class PostPromoOverview {
     /**
      * If applicable, the start date for a promotional period for the account.
      */
-    public OffsetDateTime getPostPromoInclusiveStart() { return postPromoInclusiveStart; }
-    public void setPostPromoInclusiveStart(OffsetDateTime value) { this.postPromoInclusiveStart = value; }
+    public String getPostPromoInclusiveStart() { return postPromoInclusiveStart; }
+    public void setPostPromoInclusiveStart(String value) { this.postPromoInclusiveStart = value; }
 }
 
 // ProductDurationInformation.java
@@ -314,11 +314,9 @@ public class ProductDurationInformation {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class ProductLifecycle {
     private long lateFeeImplCents;
-    private OffsetDateTime loanEndDate;
+    private String loanEndDate;
     private long paymentReversalFeeImplCents;
 
     /**
@@ -330,8 +328,8 @@ public class ProductLifecycle {
     /**
      * If applicable, the account's loan repayment date.
      */
-    public OffsetDateTime getLoanEndDate() { return loanEndDate; }
-    public void setLoanEndDate(OffsetDateTime value) { this.loanEndDate = value; }
+    public String getLoanEndDate() { return loanEndDate; }
+    public void setLoanEndDate(String value) { this.loanEndDate = value; }
 
     /**
      * The fee charged for payment reversals on the account.
@@ -431,20 +429,18 @@ public enum ProductType {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class PromoOverview {
-    private OffsetDateTime promoExclusiveEnd;
+    private String promoExclusiveEnd;
     private Double promoImplInterestRatePercent;
-    private OffsetDateTime promoInclusiveStart;
-    private OffsetDateTime promoPurchaseWindowExclusiveEnd;
-    private OffsetDateTime promoPurchaseWindowInclusiveStart;
+    private String promoInclusiveStart;
+    private String promoPurchaseWindowExclusiveEnd;
+    private String promoPurchaseWindowInclusiveStart;
 
     /**
      * If applicable, the start date for a promotional period for the account.
      */
-    public OffsetDateTime getPromoExclusiveEnd() { return promoExclusiveEnd; }
-    public void setPromoExclusiveEnd(OffsetDateTime value) { this.promoExclusiveEnd = value; }
+    public String getPromoExclusiveEnd() { return promoExclusiveEnd; }
+    public void setPromoExclusiveEnd(String value) { this.promoExclusiveEnd = value; }
 
     /**
      * The percentage interest applied to the account during the promotional period (i.e. 6.2%)
@@ -455,20 +451,20 @@ public class PromoOverview {
     /**
      * If applicable, the start date for a promotional period for the account.
      */
-    public OffsetDateTime getPromoInclusiveStart() { return promoInclusiveStart; }
-    public void setPromoInclusiveStart(OffsetDateTime value) { this.promoInclusiveStart = value; }
+    public String getPromoInclusiveStart() { return promoInclusiveStart; }
+    public void setPromoInclusiveStart(String value) { this.promoInclusiveStart = value; }
 
     /**
      * If applicable, the end date for a purchase window for the account
      */
-    public OffsetDateTime getPromoPurchaseWindowExclusiveEnd() { return promoPurchaseWindowExclusiveEnd; }
-    public void setPromoPurchaseWindowExclusiveEnd(OffsetDateTime value) { this.promoPurchaseWindowExclusiveEnd = value; }
+    public String getPromoPurchaseWindowExclusiveEnd() { return promoPurchaseWindowExclusiveEnd; }
+    public void setPromoPurchaseWindowExclusiveEnd(String value) { this.promoPurchaseWindowExclusiveEnd = value; }
 
     /**
      * If applicable, the start date for a purchase window for the account
      */
-    public OffsetDateTime getPromoPurchaseWindowInclusiveStart() { return promoPurchaseWindowInclusiveStart; }
-    public void setPromoPurchaseWindowInclusiveStart(OffsetDateTime value) { this.promoPurchaseWindowInclusiveStart = value; }
+    public String getPromoPurchaseWindowInclusiveStart() { return promoPurchaseWindowInclusiveStart; }
+    public void setPromoPurchaseWindowInclusiveStart(String value) { this.promoPurchaseWindowInclusiveStart = value; }
 }
 
 // AdditionalStatementMinPayDetails.java
@@ -576,17 +572,15 @@ public class ExternalField {
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class MinPayDueCents {
-    private OffsetDateTime minPayDueAt;
+    private String minPayDueAt;
     private long statementMinPayCents;
 
     /**
      * The `Date-Time` the payment for this billing cycle is due.
      */
-    public OffsetDateTime getMinPayDueAt() { return minPayDueAt; }
-    public void setMinPayDueAt(OffsetDateTime value) { this.minPayDueAt = value; }
+    public String getMinPayDueAt() { return minPayDueAt; }
+    public void setMinPayDueAt(String value) { this.minPayDueAt = value; }
 
     /**
      * Total amount due for the billing cycle, summing cycle principal, interest, deferred
@@ -594,6 +588,80 @@ public class MinPayDueCents {
      */
     public long getStatementMinPayCents() { return statementMinPayCents; }
     public void setStatementMinPayCents(long value) { this.statementMinPayCents = value; }
+}
+
+// PaymentProcessorConfig.java
+
+package io.quicktype;
+
+public class PaymentProcessorConfig {
+    private Boolean autopayEnabled;
+    private PaymentProcessorName paymentProcessorName;
+    private RepayConfig repayConfig;
+
+    /**
+     * Indicates whether autopay is enabled for this account. Currently, autopay is triggered
+     * two days prior to a payment due date.
+     */
+    public Boolean getAutopayEnabled() { return autopayEnabled; }
+    public void setAutopayEnabled(Boolean value) { this.autopayEnabled = value; }
+
+    /**
+     * Indicates the active payment processor whose configuration will be used for payments made
+     * from the account. If `NONE`, Canopy will not trigger payments to an external payment
+     * processor when they occur.
+     */
+    public PaymentProcessorName getPaymentProcessorName() { return paymentProcessorName; }
+    public void setPaymentProcessorName(PaymentProcessorName value) { this.paymentProcessorName = value; }
+
+    public RepayConfig getRepayConfig() { return repayConfig; }
+    public void setRepayConfig(RepayConfig value) { this.repayConfig = value; }
+}
+
+// PaymentProcessorName.java
+
+package io.quicktype;
+
+import java.io.IOException;
+
+/**
+ * Indicates the active payment processor whose configuration will be used for payments made
+ * from the account. If `NONE`, Canopy will not trigger payments to an external payment
+ * processor when they occur.
+ */
+public enum PaymentProcessorName {
+    NONE, REPAY;
+
+    public String toValue() {
+        switch (this) {
+            case NONE: return "NONE";
+            case REPAY: return "REPAY";
+        }
+        return null;
+    }
+
+    public static PaymentProcessorName forValue(String value) throws IOException {
+        if (value.equals("NONE")) return NONE;
+        if (value.equals("REPAY")) return REPAY;
+        throw new IOException("Cannot deserialize PaymentProcessorName");
+    }
+}
+
+// RepayConfig.java
+
+package io.quicktype;
+
+public class RepayConfig {
+    private boolean validConfig;
+
+    /**
+     * Indicates whether Canopy has a valid configuration stored for this payment processor for
+     * this account. For example, if Canopy needs an ACH token on behalf of the account to call
+     * the processor, this field will indicate that Canopy has successfully stored the necessary
+     * token.
+     */
+    public boolean getValidConfig() { return validConfig; }
+    public void setValidConfig(boolean value) { this.validConfig = value; }
 }
 
 // Summary.java

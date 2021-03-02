@@ -1018,6 +1018,37 @@
           }
         }
       }
+    },
+    "/organization/payment_processors": {
+      "put": {
+        "tags": ["organization"],
+        "summary": "Configure payment processor information for your organization",
+        "description": "",
+        "operationId": "configurePaymentProcessors",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ConfigurePaymentProcessors"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ConfigurePaymentProcessors"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1082,6 +1113,9 @@
       },
       "LineItem": {
         "$ref": "./schemas/LineItem.json"
+      },
+      "OrgPaymentProcessorConfig": {
+        "$ref": "./schemas/OrgPaymentProcessorConfig.json"
       }
     },
     "requestBodies": {
@@ -1117,6 +1151,9 @@
       },
       "CreatePayment": {
         "$ref": "./requestBodies/CreatePayment.json"
+      },
+      "ConfigurePaymentProcessors": {
+        "$ref": "./requestBodies/ConfigurePaymentProcessors.json"
       }
     },
     "responses": {
@@ -1206,6 +1243,9 @@
       },
       "CreateApiUser": {
         "$ref": "./responses/CreateApiUser.json"
+      },
+      "ConfigurePaymentProcessors": {
+        "$ref": "./responses/ConfigurePaymentProcessors.json"
       }
     }
   }

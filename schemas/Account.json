@@ -135,6 +135,35 @@
         }
       }
     },
+    "payment_processor_config": {
+      "type": "object",
+      "properties": {
+        "payment_processor_name": {
+          "type": "string",
+          "enum": ["NONE", "REPAY"],
+          "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+          "example": "REPAY",
+          "default": "NONE"
+        },
+        "autopay_enabled": {
+          "type": "boolean",
+          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+          "example": true,
+          "default": false
+        },
+        "repay_config": {
+          "type": "object",
+          "required": ["valid_config"],
+          "properties": {
+            "valid_config": {
+              "type": "boolean",
+              "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+              "example": true
+            }
+          }
+        }
+      }
+    },
     "summary": {
       "type": "object",
       "required": ["credit_limit_cents"],

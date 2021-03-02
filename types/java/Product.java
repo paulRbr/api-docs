@@ -2,11 +2,9 @@
 
 package io.quicktype;
 
-import java.time.OffsetDateTime;
-
 public class Product {
-    private OffsetDateTime createdAt;
-    private OffsetDateTime effectiveAt;
+    private String createdAt;
+    private String effectiveAt;
     private String externalProductID;
     private PostPromotionalPolicies postPromotionalPolicies;
     private long productID;
@@ -18,14 +16,14 @@ public class Product {
     /**
      * The `Date-Time` that this product was created on the server.
      */
-    public OffsetDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(OffsetDateTime value) { this.createdAt = value; }
+    public String getCreatedAt() { return createdAt; }
+    public void setCreatedAt(String value) { this.createdAt = value; }
 
     /**
      * The `Date-Time` as of which this product is effective on the server.
      */
-    public OffsetDateTime getEffectiveAt() { return effectiveAt; }
-    public void setEffectiveAt(OffsetDateTime value) { this.effectiveAt = value; }
+    public String getEffectiveAt() { return effectiveAt; }
+    public void setEffectiveAt(String value) { this.effectiveAt = value; }
 
     /**
      * A unique external ID that may be used interchangeably with the Canopy-generated product ID
