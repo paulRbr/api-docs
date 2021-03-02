@@ -14,7 +14,8 @@ export interface LineItem {
     /**
      * An array of static references to fields in a third party system.
      */
-    external_fields?: ExternalField[];
+    external_fields?:           ExternalField[];
+    issuer_processor_metadata?: IssuerProcessorMetadata;
     /**
      * The ID associated with the line item
      */
@@ -40,6 +41,17 @@ export interface ExternalField {
      * Value - i.e. External Account ID
      */
     value?: string;
+}
+
+export interface IssuerProcessorMetadata {
+    privacy?: Privacy;
+}
+
+export interface Privacy {
+    /**
+     * Last four digits of the card against which the spend was made.
+     */
+    last_four?: number;
 }
 
 export interface LineItemOverview {

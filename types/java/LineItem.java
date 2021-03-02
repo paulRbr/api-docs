@@ -7,6 +7,7 @@ public class LineItem {
     private String createdAt;
     private String effectiveAt;
     private ExternalField[] externalFields;
+    private IssuerProcessorMetadata issuerProcessorMetadata;
     private long lineItemID;
     private LineItemOverview lineItemOverview;
     private LineItemSummary lineItemSummary;
@@ -36,6 +37,9 @@ public class LineItem {
      */
     public ExternalField[] getExternalFields() { return externalFields; }
     public void setExternalFields(ExternalField[] value) { this.externalFields = value; }
+
+    public IssuerProcessorMetadata getIssuerProcessorMetadata() { return issuerProcessorMetadata; }
+    public void setIssuerProcessorMetadata(IssuerProcessorMetadata value) { this.issuerProcessorMetadata = value; }
 
     /**
      * The ID associated with the line item
@@ -81,6 +85,31 @@ public class ExternalField {
      */
     public String getValue() { return value; }
     public void setValue(String value) { this.value = value; }
+}
+
+// IssuerProcessorMetadata.java
+
+package io.quicktype;
+
+public class IssuerProcessorMetadata {
+    private Privacy privacy;
+
+    public Privacy getPrivacy() { return privacy; }
+    public void setPrivacy(Privacy value) { this.privacy = value; }
+}
+
+// Privacy.java
+
+package io.quicktype;
+
+public class Privacy {
+    private Long lastFour;
+
+    /**
+     * Last four digits of the card against which the spend was made.
+     */
+    public Long getLastFour() { return lastFour; }
+    public void setLastFour(Long value) { this.lastFour = value; }
 }
 
 // LineItemOverview.java
