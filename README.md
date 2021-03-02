@@ -30,3 +30,8 @@ The CI workflow validates the consolidated OpenAPI file before deploying it. Ple
 2. Open up the [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode with `dist/consolidated.json` in the editor and run a security audit by either clicking on the purple icon in the top right corner of the editor or opening up the launcher via Cmd-Option-P and entering "security". First option should be `OpenAPI: perform security audit`.
 
    See [docs](https://github.com/42Crunch/vscode-openapi#use-the-extension-to-audit-the-security-of-your-api) for more info.
+
+## Type Generation
+
+1. To consider a schema for generation, include it as a part of `openapi.json["schemas"]`.
+2. Run `yarn build`.

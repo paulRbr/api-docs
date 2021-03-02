@@ -1075,6 +1075,15 @@
       "Account": {
         "$ref": "./schemas/Account.json"
       },
+      "AccountStatement": {
+        "$ref": "./schemas/AccountStatement.json"
+      },
+      "AccountStatementSummary": {
+        "$ref": "./schemas/AccountStatementSummary.json"
+      },
+      "AmortizationSchedule": {
+        "$ref": "./schemas/AmortizationSchedule.json"
+      },
       "ComplexAccount": {
         "$ref": "./schemas/ComplexAccount.json"
       },
@@ -1084,11 +1093,11 @@
       "ComplexCustomer": {
         "$ref": "./schemas/ComplexCustomer.json"
       },
-      "AccountStatement": {
-        "$ref": "./schemas/AccountStatement.json"
+      "CustomerAccount": {
+        "$ref": "./schemas/CustomerAccount.json"
       },
-      "AccountStatementSummary": {
-        "$ref": "./schemas/AccountStatementSummary.json"
+      "Note": {
+        "$ref": "./schemas/Note.json"
       },
       "Product": {
         "$ref": "./schemas/Product.json"
@@ -1113,6 +1122,9 @@
       },
       "LineItem": {
         "$ref": "./schemas/LineItem.json"
+      },
+      "SimpleLineItem": {
+        "$ref": "./schemas/SimpleLineItem.json"
       },
       "OrgPaymentProcessorConfig": {
         "$ref": "./schemas/OrgPaymentProcessorConfig.json"

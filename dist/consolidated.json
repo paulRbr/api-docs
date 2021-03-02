@@ -6466,6 +6466,490 @@
           }
         }
       },
+      "AccountStatement": {
+        "type": "object",
+        "description": "Statement for an account for a given billing cycle",
+        "required": ["account_id", "statement_id", "effective_as_of_date"],
+        "properties": {
+          "account_id": {
+            "type": "integer",
+            "description": "The Canopy-generated ID for the account",
+            "example": 6
+          },
+          "statement_id": {
+            "type": "integer",
+            "description": "The Canopy-generated ID for the statement",
+            "example": 8
+          },
+          "effective_as_of_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "example": "2018-07-20T09:10:14+00:00"
+          },
+          "account_overview": {
+            "type": "object",
+            "properties": {
+              "promo_purchase_window_inclusive_start": {
+                "type": "string",
+                "format": "date-time",
+                "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
+                "example": "2015-08-31T10:49:44.461+00:00"
+              },
+              "promo_purchase_window_exclusive_end": {
+                "type": "string",
+                "format": "date-time",
+                "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
+                "example": "2015-08-31T10:49:44.461+00:00"
+              },
+              "promo_inclusive_start": {
+                "type": "string",
+                "format": "date-time",
+                "description": "If applicable, the `Date-Time` the promo period for the account starts.",
+                "example": "2015-08-31T10:49:44.461+00:00"
+              },
+              "promo_exclusive_end": {
+                "type": "string",
+                "format": "date-time",
+                "description": "If applicable, the `Date-Time` the promo period for the account ends.",
+                "example": "2015-08-31T10:49:44.461+00:00"
+              },
+              "account_status": {
+                "type": "string",
+                "description": "The Status of the Account. Active upon account creation.",
+                "example": "suspended",
+                "default": "active"
+              },
+              "account_status_subtype": {
+                "type": "string",
+                "description": "The subtype of the Status of the Account. Null upon account creation.",
+                "example": "suspended-bankruptcy",
+                "default": ""
+              }
+            }
+          },
+          "open_to_buy": {
+            "type": "object",
+            "properties": {
+              "credit_limit_cents": {
+                "type": "integer",
+                "description": "Total Amount (in cents) that this account can borrow.",
+                "example": 400000,
+                "default": 0
+              },
+              "total_charges_cents": {
+                "type": "integer",
+                "description": "Sum of all charges that occurred on the account since account origination.",
+                "example": 800000,
+                "default": 0
+              },
+              "available_credit_cents": {
+                "type": "integer",
+                "description": "The total available credit balance (in cents) for the account.",
+                "example": 600000,
+                "default": 0
+              },
+              "open_to_buy_cents": {
+                "type": "integer",
+                "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
+                "example": 600000,
+                "default": 0
+              }
+            }
+          },
+          "cycle_summary": {
+            "type": "object",
+            "properties": {
+              "cycle_inclusive_start": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+              },
+              "cycle_exclusive_end": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+              },
+              "cycle_charges_cents": {
+                "type": "integer",
+                "description": "Sum of all charges that occurred on the account during the billing cycle.",
+                "example": 700000,
+                "default": 0
+              },
+              "cycle_loans_cents": {
+                "type": "integer",
+                "description": "Sum of all loans amounts that were initiated on the account during the billing cycle.",
+                "example": 700000,
+                "default": 0
+              },
+              "cycle_charge_returns_cents": {
+                "type": "integer",
+                "description": "Sum of all returns that occurred on the account during the billing cycle.",
+                "example": 100000,
+                "default": 0
+              },
+              "cycle_payments_cents": {
+                "type": "integer",
+                "description": "Sum of all payments that occurred on the account during the billing cycle.",
+                "example": 200000,
+                "default": 0
+              },
+              "cycle_payment_reversals_cents": {
+                "type": "integer",
+                "description": "Sum of all payment reversal amounts that occurred on the account during the billing cycle.",
+                "example": 200000,
+                "default": 0
+              },
+              "cycle_debit_adjustments_cents": {
+                "type": "integer",
+                "description": "Sum of all debit adjustment amounts that occurred on the account during the billing cycle.",
+                "example": 40000,
+                "default": 0
+              },
+              "cycle_credit_adjustments_cents": {
+                "type": "integer",
+                "description": "Sum of all credit adjustment amounts that occurred on the account during the billing cycle.",
+                "example": 53000,
+                "default": 0
+              },
+              "cycle_interest_cents": {
+                "type": "integer",
+                "description": "Total interest accrued during the billing cycle.",
+                "example": 110000,
+                "default": 0
+              },
+              "cycle_am_interest_cents": {
+                "type": "integer",
+                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                "example": 0,
+                "default": 0
+              },
+              "cycle_deferred_interest_cents": {
+                "type": "integer",
+                "description": "Total interest accrued during the billing cycle.",
+                "example": 300000,
+                "default": 0
+              },
+              "cycle_am_deferred_interest_cents": {
+                "type": "integer",
+                "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                "example": 300000,
+                "default": 0
+              },
+              "cycle_late_fees_cents": {
+                "type": "integer",
+                "description": "Total late fees incurred during the billing cycle.",
+                "example": 300000,
+                "default": 0
+              },
+              "cycle_payment_reversals_fees_cents": {
+                "type": "integer",
+                "description": "Total payment reversal fees incurred during the billing cycle.",
+                "example": 300000,
+                "default": 0
+              },
+              "cycle_waived_deferred_interest_cents": {
+                "type": "integer",
+                "description": "Total deferred interest that was forgiven on the account during the billing cycle.",
+                "example": 40000,
+                "default": 0
+              }
+            }
+          },
+          "min_pay_due": {
+            "type": "object",
+            "required": ["min_pay_cents", "min_pay_due_at"],
+            "properties": {
+              "min_pay_cents": {
+                "type": "integer",
+                "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
+                "example": 160000
+              },
+              "min_pay_due_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The `Date-Time` the payment for this billing cycle is due.",
+                "example": "2019-10-18T23:04:48.321+00:00"
+              }
+            }
+          },
+          "additional_min_pay_details": {
+            "type": "object",
+            "required": [
+              "min_pay_charges_principal_cents",
+              "min_pay_interest_cents",
+              "min_pay_deferred_cents",
+              "min_pay_fees_cents",
+              "previous_min_pay_cents"
+            ],
+            "properties": {
+              "min_pay_charges_principal_cents": {
+                "type": "integer",
+                "description": "Total principal due for the billing cycle.",
+                "example": 100000
+              },
+              "min_pay_interest_cents": {
+                "type": "integer",
+                "description": "Total interest due for the billing cycle.",
+                "example": 30000
+              },
+              "min_pay_am_interest_cents": {
+                "type": "integer",
+                "description": "Total am interest due for the billing cycle.",
+                "example": 0
+              },
+              "min_pay_deferred_cents": {
+                "type": "integer",
+                "description": "Total deferred interest due for the billing cycle.",
+                "example": 10000
+              },
+              "min_pay_am_deferred_interest_cents": {
+                "type": "integer",
+                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                "example": 200,
+                "default": 0
+              },
+              "min_pay_fees_cents": {
+                "type": "integer",
+                "description": "Total fees due for the billing cycle.",
+                "example": 20000
+              },
+              "previous_min_pay_cents": {
+                "type": "integer",
+                "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                "example": 400000
+              }
+            }
+          },
+          "balance_summary": {
+            "type": "object",
+            "properties": {
+              "charges_principal_cents": {
+                "type": "integer",
+                "description": "Total principal balance for the account.",
+                "example": 900000,
+                "default": 0
+              },
+              "loans_principal_cents": {
+                "type": "integer",
+                "description": "Total principal balance for loans for the account.",
+                "example": 900000,
+                "default": 0
+              },
+              "interest_balance_cents": {
+                "type": "integer",
+                "description": "Total interest balance for the account.",
+                "example": 100000,
+                "default": 0
+              },
+              "am_interest_balance_cents": {
+                "type": "integer",
+                "description": "Total AM interest balance for the account.",
+                "example": 100000,
+                "default": 0
+              },
+              "deferred_interest_balance_cents": {
+                "type": "integer",
+                "description": "Total deferred interest balance for the account.",
+                "example": 700000,
+                "default": 0
+              },
+              "am_deferred_interest_balance_cents": {
+                "type": "integer",
+                "description": "The total deferred interest balance (in cents) associated with the account.",
+                "example": 40000,
+                "default": 0
+              },
+              "fees_balance_cents": {
+                "type": "integer",
+                "description": "Total fee balance for the account.",
+                "example": 700000,
+                "default": 0
+              },
+              "total_balance_cents": {
+                "type": "integer",
+                "description": "The total balance (in cents) associated with the account.",
+                "example": 400000,
+                "default": 0
+              }
+            }
+          },
+          "payoff": {
+            "type": "object",
+            "properties": {
+              "total_payoff_cents": {
+                "type": "integer",
+                "description": "The total amount needed to pay off the loan at this exact moment.",
+                "example": 900000,
+                "default": 0
+              },
+              "expected_remaining_payment_amount_cents": {
+                "type": "integer",
+                "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
+                "example": 1100000,
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "AccountStatementSummary": {
+        "type": "object",
+        "description": "Statement for an account for a given billing cycle",
+        "required": ["account_id", "statement_id", "effective_as_of_date"],
+        "properties": {
+          "account_id": {
+            "type": "integer",
+            "description": "The Canopy-generated ID for the account",
+            "example": 6
+          },
+          "statement_id": {
+            "type": "integer",
+            "description": "The Canopy-generated ID for the statement",
+            "example": 8
+          },
+          "effective_as_of_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
+            "example": "2018-07-20T09:10:14+00:00"
+          },
+          "cycle_summary": {
+            "type": "object",
+            "required": ["cycle_inclusive_start", "cycle_exclusive_end"],
+            "properties": {
+              "cycle_inclusive_start": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+              },
+              "cycle_exclusive_end": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+              }
+            }
+          },
+          "min_pay_due_cents": {
+            "type": "object",
+            "required": ["min_pay_cents", "min_pay_due_at"],
+            "properties": {
+              "min_pay_cents": {
+                "type": "integer",
+                "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
+                "example": 160000
+              },
+              "min_pay_due_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The `Date-Time` the payment for this billing cycle is due.",
+                "example": "2019-10-18T23:04:48.321+00:00"
+              }
+            }
+          },
+          "balance_summary": {
+            "type": "object",
+            "required": ["total_balance_cents"],
+            "properties": {
+              "total_balance_cents": {
+                "type": "integer",
+                "description": "The total balance (in cents) associated with the account.",
+                "example": 400000
+              }
+            }
+          }
+        }
+      },
+      "AmortizationSchedule": {
+        "type": "array",
+        "maxItems": 1000,
+        "description": "Amortization schedule",
+        "items": {
+          "type": "object",
+          "required": [
+            "line_item_id",
+            "cycle_exclusive_end",
+            "min_pay_due_at",
+            "am_min_pay_cents",
+            "am_cycle_payment_cents",
+            "am_interest_cents",
+            "am_deferred_cents",
+            "am_principal_cents",
+            "am_start_total_balance_cents",
+            "am_end_total_balance_cents"
+          ],
+          "properties": {
+            "line_item_id": {
+              "type": "integer",
+              "description": "The ID of this generated amortization schedule.",
+              "example": 400
+            },
+            "cycle_exclusive_end": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date-time the am cycle ends.",
+              "example": "2018-07-20T09:10:14+00:00"
+            },
+            "min_pay_due_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date the minimum payment for the am schedule is due.",
+              "example": "2018-07-20T09:10:14+00:00"
+            },
+            "am_min_pay_cents": {
+              "type": "number",
+              "description": "The amount due just for the am schedule. This accounts for principal, interest, and deferred interest balance but does not include fees.",
+              "example": 84000
+            },
+            "am_cycle_payment_cents": {
+              "type": "number",
+              "description": "The amount in cents that was actually paid towards the loan during the billing cycle",
+              "example": 18325
+            },
+            "am_interest_cents": {
+              "type": "number",
+              "description": "The amount in cents allocated to interest from this am payment",
+              "example": 10000
+            },
+            "am_deferred_cents": {
+              "type": "number",
+              "description": "The amount in cents allocated to deferred interest from this am payment",
+              "example": 4000,
+              "default": 0
+            },
+            "am_principal_cents": {
+              "type": "number",
+              "description": "The amount in cents allocated to principal from this am payment",
+              "example": 70000
+            },
+            "am_start_principal_balance_cents": {
+              "type": "number",
+              "description": "The starting principal balance on the loan before this payment",
+              "example": 136691
+            },
+            "am_end_principal_balance_cents": {
+              "type": "number",
+              "description": "The ending principal balance on the loan after this payment",
+              "example": 136691
+            },
+            "am_start_total_balance_cents": {
+              "type": "number",
+              "description": "The starting balance on the loan before this payment",
+              "example": 136691
+            },
+            "am_end_total_balance_cents": {
+              "type": "number",
+              "description": "The ending balance on the loan after this payment",
+              "example": 136691
+            },
+            "paid_on_time": {
+              "type": "boolean",
+              "description": "Indicates whether the amount for this am payment was paid on time; only present if the date scheduled for the am payment has passed as of the time of the request.",
+              "example": false
+            }
+          }
+        }
+      },
       "ComplexAccount": {
         "allOf": [
           {
@@ -7600,397 +8084,640 @@
           }
         ]
       },
-      "AccountStatement": {
-        "type": "object",
-        "description": "Statement for an account for a given billing cycle",
-        "required": ["account_id", "statement_id", "effective_as_of_date"],
-        "properties": {
-          "account_id": {
-            "type": "integer",
-            "description": "The Canopy-generated ID for the account",
-            "example": 6
-          },
-          "statement_id": {
-            "type": "integer",
-            "description": "The Canopy-generated ID for the statement",
-            "example": 8
-          },
-          "effective_as_of_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "example": "2018-07-20T09:10:14+00:00"
-          },
-          "account_overview": {
+      "CustomerAccount": {
+        "allOf": [
+          {
             "type": "object",
+            "required": ["customer_id"],
             "properties": {
-              "promo_purchase_window_inclusive_start": {
-                "type": "string",
-                "format": "date-time",
-                "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+              "customer_id": {
+                "type": "integer",
+                "description": "A Canopy-generated unique ID for the customer",
+                "example": 8
               },
-              "promo_purchase_window_exclusive_end": {
+              "name_prefix": {
                 "type": "string",
-                "format": "date-time",
-                "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+                "description": "Prefix to the customer's name",
+                "example": "Dr."
               },
-              "promo_inclusive_start": {
+              "name_first": {
                 "type": "string",
-                "format": "date-time",
-                "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+                "description": "Customer's first name",
+                "example": "Miriam"
               },
-              "promo_exclusive_end": {
+              "name_middle": {
                 "type": "string",
-                "format": "date-time",
-                "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+                "description": "Customer's middle name",
+                "example": "Louise"
               },
-              "account_status": {
+              "name_last": {
                 "type": "string",
-                "description": "The Status of the Account. Active upon account creation.",
-                "example": "suspended",
-                "default": "active"
+                "description": "Customer's last name",
+                "example": "Trevino"
               },
-              "account_status_subtype": {
+              "name_suffix": {
                 "type": "string",
-                "description": "The subtype of the Status of the Account. Null upon account creation.",
-                "example": "suspended-bankruptcy",
-                "default": ""
+                "description": "Suffix to the customer's name",
+                "example": "Jr"
+              },
+              "phone_number": {
+                "type": "string",
+                "description": "Customer's phone number in E.164 format",
+                "example": "+14105556789"
+              },
+              "address_line_one": {
+                "type": "string",
+                "description": "Address line one",
+                "example": "12 Strawberry Road"
+              },
+              "address_line_two": {
+                "type": "string",
+                "description": "Address line two",
+                "example": "Suite 101"
+              },
+              "address_city": {
+                "type": "string",
+                "description": "Address city",
+                "example": "Atlanta"
+              },
+              "address_state": {
+                "type": "string",
+                "description": "Address state",
+                "example": "GA"
+              },
+              "address_zip": {
+                "type": "string",
+                "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                "example": "99999-1000"
+              },
+              "ssn": {
+                "type": "string",
+                "description": "Social security number of the customer",
+                "example": "888-88-8888"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "description": "The email address of this Customer",
+                "example": "marissa@protonmail.com"
+              },
+              "date_of_birth": {
+                "type": "string",
+                "format": "date",
+                "description": "Customer's date of birth in ISO 8601 format",
+                "example": "1985-06-20"
               }
             }
           },
-          "open_to_buy": {
+          {
             "type": "object",
             "properties": {
-              "credit_limit_cents": {
-                "type": "integer",
-                "description": "Total Amount (in cents) that this account can borrow.",
-                "example": 400000,
-                "default": 0
-              },
-              "total_charges_cents": {
-                "type": "integer",
-                "description": "Sum of all charges that occurred on the account since account origination.",
-                "example": 800000,
-                "default": 0
-              },
-              "available_credit_cents": {
-                "type": "integer",
-                "description": "The total available credit balance (in cents) for the account.",
-                "example": 600000,
-                "default": 0
-              },
-              "open_to_buy_cents": {
-                "type": "integer",
-                "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
-                "example": 600000,
-                "default": 0
-              }
-            }
-          },
-          "cycle_summary": {
-            "type": "object",
-            "properties": {
-              "cycle_inclusive_start": {
+              "customer_account_role": {
                 "type": "string",
-                "format": "date-time",
-                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                "description": "The role of the customer for the account.",
+                "enum": ["PRIMARY", "SECONDARY"],
+                "example": "PRIMARY",
+                "default": "PRIMARY"
               },
-              "cycle_exclusive_end": {
+              "customer_account_external_id": {
                 "type": "string",
-                "format": "date-time",
-                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
+                "example": "4465220133024156"
               },
-              "cycle_charges_cents": {
-                "type": "integer",
-                "description": "Sum of all charges that occurred on the account during the billing cycle.",
-                "example": 700000,
-                "default": 0
-              },
-              "cycle_loans_cents": {
-                "type": "integer",
-                "description": "Sum of all loans amounts that were initiated on the account during the billing cycle.",
-                "example": 700000,
-                "default": 0
-              },
-              "cycle_charge_returns_cents": {
-                "type": "integer",
-                "description": "Sum of all returns that occurred on the account during the billing cycle.",
-                "example": 100000,
-                "default": 0
-              },
-              "cycle_payments_cents": {
-                "type": "integer",
-                "description": "Sum of all payments that occurred on the account during the billing cycle.",
-                "example": 200000,
-                "default": 0
-              },
-              "cycle_payment_reversals_cents": {
-                "type": "integer",
-                "description": "Sum of all payment reversal amounts that occurred on the account during the billing cycle.",
-                "example": 200000,
-                "default": 0
-              },
-              "cycle_debit_adjustments_cents": {
-                "type": "integer",
-                "description": "Sum of all debit adjustment amounts that occurred on the account during the billing cycle.",
-                "example": 40000,
-                "default": 0
-              },
-              "cycle_credit_adjustments_cents": {
-                "type": "integer",
-                "description": "Sum of all credit adjustment amounts that occurred on the account during the billing cycle.",
-                "example": 53000,
-                "default": 0
-              },
-              "cycle_interest_cents": {
-                "type": "integer",
-                "description": "Total interest accrued during the billing cycle.",
-                "example": 110000,
-                "default": 0
-              },
-              "cycle_am_interest_cents": {
-                "type": "integer",
-                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                "example": 0,
-                "default": 0
-              },
-              "cycle_deferred_interest_cents": {
-                "type": "integer",
-                "description": "Total interest accrued during the billing cycle.",
-                "example": 300000,
-                "default": 0
-              },
-              "cycle_am_deferred_interest_cents": {
-                "type": "integer",
-                "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                "example": 300000,
-                "default": 0
-              },
-              "cycle_late_fees_cents": {
-                "type": "integer",
-                "description": "Total late fees incurred during the billing cycle.",
-                "example": 300000,
-                "default": 0
-              },
-              "cycle_payment_reversals_fees_cents": {
-                "type": "integer",
-                "description": "Total payment reversal fees incurred during the billing cycle.",
-                "example": 300000,
-                "default": 0
-              },
-              "cycle_waived_deferred_interest_cents": {
-                "type": "integer",
-                "description": "Total deferred interest that was forgiven on the account during the billing cycle.",
-                "example": 40000,
-                "default": 0
+              "customer_account_issuer_processor_config": {
+                "type": "object",
+                "properties": {
+                  "privacy": {
+                    "type": "object",
+                    "properties": {
+                      "privacy_card": {
+                        "type": "object",
+                        "properties": {
+                          "last_four": {
+                            "type": "string",
+                            "description": "Last four digits of the card number",
+                            "example": "1234"
+                          },
+                          "memo": {
+                            "type": "string",
+                            "description": "Friendly name to identify the card",
+                            "example": "Primary College Card"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": ["SINGLE_USE", "MERCHANT_LOCKED", "UNLOCKED"],
+                            "description": "The type of card created by privacy.com",
+                            "example": "MERCHANT_LOCKED"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           },
-          "min_pay_due": {
-            "type": "object",
-            "required": ["min_pay_cents", "min_pay_due_at"],
-            "properties": {
-              "min_pay_cents": {
-                "type": "integer",
-                "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
-                "example": 160000
-              },
-              "min_pay_due_at": {
-                "type": "string",
-                "format": "date-time",
-                "description": "The `Date-Time` the payment for this billing cycle is due.",
-                "example": "2019-10-18T23:04:48.321+00:00"
-              }
-            }
-          },
-          "additional_min_pay_details": {
-            "type": "object",
-            "required": [
-              "min_pay_charges_principal_cents",
-              "min_pay_interest_cents",
-              "min_pay_deferred_cents",
-              "min_pay_fees_cents",
-              "previous_min_pay_cents"
-            ],
-            "properties": {
-              "min_pay_charges_principal_cents": {
-                "type": "integer",
-                "description": "Total principal due for the billing cycle.",
-                "example": 100000
-              },
-              "min_pay_interest_cents": {
-                "type": "integer",
-                "description": "Total interest due for the billing cycle.",
-                "example": 30000
-              },
-              "min_pay_am_interest_cents": {
-                "type": "integer",
-                "description": "Total am interest due for the billing cycle.",
-                "example": 0
-              },
-              "min_pay_deferred_cents": {
-                "type": "integer",
-                "description": "Total deferred interest due for the billing cycle.",
-                "example": 10000
-              },
-              "min_pay_am_deferred_interest_cents": {
-                "type": "integer",
-                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                "example": 200,
-                "default": 0
-              },
-              "min_pay_fees_cents": {
-                "type": "integer",
-                "description": "Total fees due for the billing cycle.",
-                "example": 20000
-              },
-              "previous_min_pay_cents": {
-                "type": "integer",
-                "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
-                "example": 400000
-              }
-            }
-          },
-          "balance_summary": {
+          {
             "type": "object",
             "properties": {
-              "charges_principal_cents": {
-                "type": "integer",
-                "description": "Total principal balance for the account.",
-                "example": 900000,
-                "default": 0
-              },
-              "loans_principal_cents": {
-                "type": "integer",
-                "description": "Total principal balance for loans for the account.",
-                "example": 900000,
-                "default": 0
-              },
-              "interest_balance_cents": {
-                "type": "integer",
-                "description": "Total interest balance for the account.",
-                "example": 100000,
-                "default": 0
-              },
-              "am_interest_balance_cents": {
-                "type": "integer",
-                "description": "Total AM interest balance for the account.",
-                "example": 100000,
-                "default": 0
-              },
-              "deferred_interest_balance_cents": {
-                "type": "integer",
-                "description": "Total deferred interest balance for the account.",
-                "example": 700000,
-                "default": 0
-              },
-              "am_deferred_interest_balance_cents": {
-                "type": "integer",
-                "description": "The total deferred interest balance (in cents) associated with the account.",
-                "example": 40000,
-                "default": 0
-              },
-              "fees_balance_cents": {
-                "type": "integer",
-                "description": "Total fee balance for the account.",
-                "example": 700000,
-                "default": 0
-              },
-              "total_balance_cents": {
-                "type": "integer",
-                "description": "The total balance (in cents) associated with the account.",
-                "example": 400000,
-                "default": 0
-              }
-            }
-          },
-          "payoff": {
-            "type": "object",
-            "properties": {
-              "total_payoff_cents": {
-                "type": "integer",
-                "description": "The total amount needed to pay off the loan at this exact moment.",
-                "example": 900000,
-                "default": 0
-              },
-              "expected_remaining_payment_amount_cents": {
-                "type": "integer",
-                "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
-                "example": 1100000,
-                "default": 0
+              "account": {
+                "type": "object",
+                "required": ["account_id"],
+                "properties": {
+                  "account_id": {
+                    "type": "integer",
+                    "description": "This is generated by Canopy. A unique ID for the account.",
+                    "example": 9
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "description": "The `Date-Time` which the account was created in the API.",
+                    "format": "date-time",
+                    "example": "2017-06-20T09:12:14+00:00"
+                  },
+                  "effective_at": {
+                    "type": "string",
+                    "description": "The `Date-Time` that this account became/becomes active.",
+                    "format": "date-time",
+                    "example": "2018-03-20T09:12:28+00:00"
+                  },
+                  "account_overview": {
+                    "type": "object",
+                    "required": ["account_status"],
+                    "properties": {
+                      "account_status": {
+                        "type": "string",
+                        "description": "The Status of the Account. Active upon account creation.",
+                        "example": "suspended",
+                        "default": "active"
+                      },
+                      "account_status_subtype": {
+                        "type": "string",
+                        "description": "The subtype of the Status of the Account. Null upon account creation.",
+                        "example": "suspended-bankruptcy",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "account_product": {
+                    "description": "The product associated with the account.",
+                    "type": "object",
+                    "required": ["product_id"],
+                    "properties": {
+                      "product_id": {
+                        "type": "integer",
+                        "description": "The Canopy-generated ID for the product.",
+                        "example": 4
+                      },
+                      "external_product_id": {
+                        "type": "string",
+                        "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+                        "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                      },
+                      "product_overview": {
+                        "type": "object",
+                        "required": ["product_name", "product_type", "product_long_description"],
+                        "properties": {
+                          "product_name": {
+                            "type": "string",
+                            "description": "Name of Product, i.e. Express Card.",
+                            "example": "Blue Cash Express"
+                          },
+                          "product_color": {
+                            "type": "string",
+                            "description": "A color to be associated with the product for UI purposes.",
+                            "example": "#0000FF",
+                            "default": "#4867FF"
+                          },
+                          "product_short_description": {
+                            "type": "string",
+                            "description": "Short description of the Product - max of 30 characters.",
+                            "example": "Consumer credit card"
+                          },
+                          "product_long_description": {
+                            "type": "string",
+                            "description": "Description of the Product.",
+                            "example": "Student credit card."
+                          },
+                          "product_time_zone": {
+                            "type": "string",
+                            "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
+                            "example": "America/Chicago"
+                          },
+                          "product_type": {
+                            "type": "string",
+                            "description": "The Type of Product. If not included, defaults to `REVOLVING`",
+                            "enum": [
+                              "REVOLVING",
+                              "INSTALLMENT",
+                              "MIXED_RATE_INSTALLMENT",
+                              "DEFERRED_INSTALLMENT",
+                              "FIXED_RATE_INSTALLMENT"
+                            ],
+                            "example": "REVOLVING"
+                          }
+                        }
+                      },
+                      "product_lifecycle": {
+                        "type": "object",
+                        "required": ["late_fee_impl_cents", "payment_reversal_fee_impl_cents"],
+                        "properties": {
+                          "late_fee_impl_cents": {
+                            "type": "integer",
+                            "description": "The fee charged for late payments on the account.",
+                            "example": 2900,
+                            "default": 0
+                          },
+                          "payment_reversal_fee_impl_cents": {
+                            "type": "integer",
+                            "description": "The fee charged for payment reversals on the account.",
+                            "example": 2900,
+                            "default": 0
+                          },
+                          "loan_end_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "If applicable, the account's loan repayment date.",
+                            "example": "2013-01-13T05:25:13.813+00:00"
+                          }
+                        }
+                      },
+                      "promo_overview": {
+                        "type": "object",
+                        "properties": {
+                          "promo_purchase_window_inclusive_start": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "If applicable, the start date for a purchase window for the account",
+                            "example": "2013-01-13T05:25:13.813+00:00"
+                          },
+                          "promo_purchase_window_exclusive_end": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "If applicable, the end date for a purchase window for the account",
+                            "example": "2013-01-13T05:25:13.813+00:00"
+                          },
+                          "promo_inclusive_start": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "If applicable, the start date for a promotional period for the account.",
+                            "example": "2013-01-13T05:25:13.813+00:00"
+                          },
+                          "promo_exclusive_end": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "If applicable, the start date for a promotional period for the account.",
+                            "example": "2013-01-13T05:25:13.813+00:00"
+                          },
+                          "promo_impl_interest_rate_percent": {
+                            "type": "number",
+                            "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+                            "example": 6.2,
+                            "default": 0
+                          }
+                        }
+                      },
+                      "post_promo_overview": {
+                        "type": "object",
+                        "properties": {
+                          "post_promo_inclusive_start": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "If applicable, the start date for a promotional period for the account.",
+                            "example": "2013-01-13T05:25:13.813+00:00"
+                          },
+                          "post_promo_exclusive_end": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "If applicable, the start date for a promotional period for the account.",
+                            "example": "2013-01-13T05:25:13.813+00:00"
+                          },
+                          "post_promo_impl_interest_rate_percent": {
+                            "type": "number",
+                            "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+                            "example": 6.2,
+                            "default": 0
+                          },
+                          "post_promo_impl_am_len": {
+                            "type": "integer",
+                            "description": "If applicable, post-promotional amortization length in cycles.",
+                            "example": 48,
+                            "default": 1
+                          }
+                        }
+                      },
+                      "product_duration_information": {
+                        "type": "object",
+                        "properties": {
+                          "promo_len": {
+                            "type": "integer",
+                            "description": "The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                            "example": 6,
+                            "default": 0
+                          },
+                          "promo_purchase_window_len": {
+                            "type": "integer",
+                            "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
+                            "example": 5,
+                            "default": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "external_fields": {
+                    "type": "array",
+                    "maxItems": 1000,
+                    "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "description": "key: i.e. Name of the External Party",
+                          "example": "Umbrella Corporation"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "value: i.e. External Account ID",
+                          "example": "22445702-a389-431f-927d-07b8d0750787"
+                        }
+                      }
+                    }
+                  },
+                  "min_pay_due_cents": {
+                    "type": "object",
+                    "required": ["statement_min_pay_cents"],
+                    "properties": {
+                      "statement_min_pay_cents": {
+                        "type": "integer",
+                        "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
+                        "example": 160000,
+                        "default": 0
+                      },
+                      "min_pay_due_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The `Date-Time` the payment for this billing cycle is due.",
+                        "example": "2019-10-18T23:04:48.321+00:00"
+                      }
+                    }
+                  },
+                  "additional_statement_min_pay_details": {
+                    "type": "object",
+                    "required": [
+                      "statement_min_pay_charges_principal_cents",
+                      "statement_min_pay_interest_cents",
+                      "statement_min_pay_deferred_cents",
+                      "statement_min_pay_am_deferred_interest_cents",
+                      "statement_min_pay_am_interest_cents",
+                      "statement_min_pay_fees_cents",
+                      "previous_statement_min_pay_cents"
+                    ],
+                    "properties": {
+                      "statement_min_pay_charges_principal_cents": {
+                        "type": "integer",
+                        "description": "Total principal due for the billing cycle.",
+                        "example": 100000,
+                        "default": 0
+                      },
+                      "statement_min_pay_interest_cents": {
+                        "type": "integer",
+                        "description": "Total interest due for the billing cycle.",
+                        "example": 30000,
+                        "default": 0
+                      },
+                      "statement_min_pay_am_interest_cents": {
+                        "type": "integer",
+                        "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                        "example": 200,
+                        "default": 0
+                      },
+                      "statement_min_pay_deferred_cents": {
+                        "type": "integer",
+                        "description": "Total deferred interest due for the billing cycle.",
+                        "example": 10000,
+                        "default": 0
+                      },
+                      "statement_min_pay_am_deferred_interest_cents": {
+                        "type": "integer",
+                        "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                        "example": 200,
+                        "default": 0
+                      },
+                      "statement_min_pay_fees_cents": {
+                        "type": "integer",
+                        "description": "Total fees due for the billing cycle.",
+                        "example": 20000,
+                        "default": 0
+                      },
+                      "previous_statement_min_pay_cents": {
+                        "type": "integer",
+                        "description": "Previous amounts due, including fees. This is a subset of statement_min_pay_cents.",
+                        "example": 400000,
+                        "default": 0
+                      }
+                    }
+                  },
+                  "payment_processor_config": {
+                    "type": "object",
+                    "properties": {
+                      "payment_processor_name": {
+                        "type": "string",
+                        "enum": ["NONE", "REPAY"],
+                        "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                        "example": "REPAY",
+                        "default": "NONE"
+                      },
+                      "autopay_enabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                        "example": true,
+                        "default": false
+                      },
+                      "repay_config": {
+                        "type": "object",
+                        "required": ["valid_config"],
+                        "properties": {
+                          "valid_config": {
+                            "type": "boolean",
+                            "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                            "example": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "summary": {
+                    "type": "object",
+                    "required": ["credit_limit_cents"],
+                    "properties": {
+                      "total_balance_cents": {
+                        "type": "integer",
+                        "description": "The total balance (in cents) associated with the account.",
+                        "example": 300000
+                      },
+                      "principal_cents": {
+                        "type": "integer",
+                        "description": "The total balance (in cents) associated with the account.",
+                        "example": 200000
+                      },
+                      "interest_balance_cents": {
+                        "type": "integer",
+                        "description": "The total interest balance (in cents) associated with the account.",
+                        "example": 60000
+                      },
+                      "am_interest_balance_cents": {
+                        "type": "integer",
+                        "description": "The total AM interest balance (in cents) associated with the account.",
+                        "example": 0,
+                        "default": 0
+                      },
+                      "deferred_interest_balance_cents": {
+                        "type": "integer",
+                        "description": "The total deferred interest balance (in cents) associated with the account.",
+                        "example": 40000,
+                        "default": 0
+                      },
+                      "am_deferred_interest_balance_cents": {
+                        "type": "integer",
+                        "description": "The total AM deferred interest balance (in cents) associated with the account.",
+                        "example": 0,
+                        "default": 0
+                      },
+                      "total_paid_to_date_cents": {
+                        "type": "integer",
+                        "description": "The total sum of payments made to date (in cents) associated with the account.",
+                        "example": 40000
+                      },
+                      "total_interest_paid_to_date_cents": {
+                        "type": "integer",
+                        "description": "The total sum of interest allocations for payments made to date (in cents) associated with the account.",
+                        "example": 10000
+                      },
+                      "credit_limit_cents": {
+                        "type": "integer",
+                        "description": "Total Amount (in cents) that this account can borrow.",
+                        "example": 400000
+                      },
+                      "max_approved_credit_limit_cents": {
+                        "type": "integer",
+                        "description": "Total Amount (in cents) that this account can borrow.",
+                        "example": 400000,
+                        "default": 0
+                      },
+                      "interest_rate_percent": {
+                        "type": "number",
+                        "description": "The percentage interest applied to the account (i.e. 6.2 means 6.2%)",
+                        "example": 3
+                      },
+                      "available_credit_cents": {
+                        "type": "integer",
+                        "description": "The total available credit balance (in cents) for the account.",
+                        "example": 100000,
+                        "default": 0
+                      },
+                      "open_to_buy_cents": {
+                        "type": "integer",
+                        "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
+                        "example": 5000,
+                        "default": 0
+                      },
+                      "total_payoff_cents": {
+                        "type": "integer",
+                        "description": "The total amount needed to pay off the loan at this exact moment.",
+                        "example": 900000,
+                        "default": 0
+                      }
+                    }
+                  },
+                  "associated_entities": {
+                    "type": "object",
+                    "properties": {
+                      "merchant_name": {
+                        "type": "string",
+                        "description": "A merchant name associated with the account",
+                        "example": "Acme Corporation"
+                      },
+                      "lender_name": {
+                        "type": "string",
+                        "description": "A lender name associated with the account",
+                        "example": "Globex Lending Corp"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
-        }
+        ]
       },
-      "AccountStatementSummary": {
+      "Note": {
         "type": "object",
-        "description": "Statement for an account for a given billing cycle",
-        "required": ["account_id", "statement_id", "effective_as_of_date"],
+        "required": ["note_id", "account_id", "author", "message", "created_date"],
         "properties": {
+          "note_id": {
+            "type": "integer",
+            "description": "A Canopy-generated unique ID for the note",
+            "example": 1
+          },
           "account_id": {
             "type": "integer",
-            "description": "The Canopy-generated ID for the account",
-            "example": 6
+            "description": "The ID of the account to which the Note is assigned",
+            "example": 1
           },
-          "statement_id": {
-            "type": "integer",
-            "description": "The Canopy-generated ID for the statement",
-            "example": 8
+          "author": {
+            "description": "The API User who authored the note",
+            "type": "object",
+            "required": ["api_user_id", "organization_name", "email", "role"],
+            "properties": {
+              "api_user_id": {
+                "type": "string",
+                "description": "The unique ID in Canopy for this API user",
+                "example": "dc3d83c5-b31e-48eb-80e7-38f12ac1a6e5"
+              },
+              "organization_name": {
+                "type": "string",
+                "description": "The organization to which the API user belongs.",
+                "example": "Lever Card 3000"
+              },
+              "name_first": {
+                "type": "string",
+                "description": "The first name of the API user.",
+                "example": "Analise"
+              },
+              "name_last": {
+                "type": "string",
+                "description": "The last name of the API user.",
+                "example": "Goldberg"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "description": "The email address of this API User",
+                "example": "marissa@globex.com"
+              },
+              "phone": {
+                "type": "string",
+                "description": "Phone number of the API user",
+                "example": "1-123-456-7890"
+              },
+              "role": {
+                "type": "integer",
+                "description": "The role of this user in the API",
+                "example": 1
+              }
+            }
           },
-          "effective_as_of_date": {
+          "message": {
+            "type": "string",
+            "description": "The contents of the note.",
+            "example": "Attempted to call back customer, but no response."
+          },
+          "created_date": {
             "type": "string",
             "format": "date-time",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "example": "2018-07-20T09:10:14+00:00"
-          },
-          "cycle_summary": {
-            "type": "object",
-            "required": ["cycle_inclusive_start", "cycle_exclusive_end"],
-            "properties": {
-              "cycle_inclusive_start": {
-                "type": "string",
-                "format": "date-time",
-                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
-              },
-              "cycle_exclusive_end": {
-                "type": "string",
-                "format": "date-time",
-                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
-              }
-            }
-          },
-          "min_pay_due_cents": {
-            "type": "object",
-            "required": ["min_pay_cents", "min_pay_due_at"],
-            "properties": {
-              "min_pay_cents": {
-                "type": "integer",
-                "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
-                "example": 160000
-              },
-              "min_pay_due_at": {
-                "type": "string",
-                "format": "date-time",
-                "description": "The `Date-Time` the payment for this billing cycle is due.",
-                "example": "2019-10-18T23:04:48.321+00:00"
-              }
-            }
-          },
-          "balance_summary": {
-            "type": "object",
-            "required": ["total_balance_cents"],
-            "properties": {
-              "total_balance_cents": {
-                "type": "integer",
-                "description": "The total balance (in cents) associated with the account.",
-                "example": 400000
-              }
-            }
+            "description": "The date and time the note was created."
           }
         }
       },
@@ -8617,6 +9344,142 @@
                 "type": "integer",
                 "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
                 "example": -16
+              }
+            }
+          },
+          "merchant_data": {
+            "type": "object",
+            "description": "Merchant information if applicable.",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "mcc_code": {
+                "type": "number"
+              },
+              "phone_number": {
+                "type": "string"
+              }
+            }
+          },
+          "issuer_processor_metadata": {
+            "type": "object",
+            "properties": {
+              "privacy": {
+                "type": "object",
+                "properties": {
+                  "last_four": {
+                    "type": "integer",
+                    "description": "Last four digits of the card against which the spend was made."
+                  }
+                }
+              }
+            }
+          },
+          "external_fields": {
+            "type": "array",
+            "maxItems": 1000,
+            "description": "An array of static references to fields in a third party system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "description": "Key - i.e. Name of the External Party",
+                  "example": "Globex Card Processing Account ID"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value - i.e. External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        }
+      },
+      "SimpleLineItem": {
+        "type": "object",
+        "required": ["account_id", "line_item_id", "effective_at", "created_at", "product_id"],
+        "properties": {
+          "account_id": {
+            "type": "integer",
+            "description": "The account associated with the line item",
+            "example": 4
+          },
+          "line_item_id": {
+            "type": "integer",
+            "description": "The ID associated with the line item",
+            "example": 2
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that this line item became/becomes active",
+            "format": "date-time",
+            "example": "2018-07-20T09:12:30+00:00"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The `Date-Time` which the line item was created.",
+            "format": "date-time",
+            "example": "2018-06-20T09:12:30+00:00"
+          },
+          "product_id": {
+            "type": "integer",
+            "description": "the Product ID of the account",
+            "example": 158
+          },
+          "line_item_overview": {
+            "type": "object",
+            "required": ["line_item_status", "line_item_type"],
+            "properties": {
+              "line_item_status": {
+                "type": "string",
+                "description": "the corresponding Status for a line item",
+                "enum": ["ROLLED", "VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
+                "example": "VALID"
+              },
+              "line_item_type": {
+                "type": "string",
+                "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                "enum": [
+                  "LOAN",
+                  "CHARGE",
+                  "DEBIT_OFFSET",
+                  "INTEREST",
+                  "DEFERRED_INTEREST",
+                  "PAYMENT",
+                  "CREDIT_OFFSET",
+                  "STATEMENT",
+                  "MIN_DUE",
+                  "FEE",
+                  "PRODUCT_INTEREST",
+                  "PAYMENT_SPLIT",
+                  "LATE_FEE",
+                  "RETURN_CHECK_FEE",
+                  "PROMO_END",
+                  "PURCHASE_WINDOW_END"
+                ],
+                "example": "CHARGE"
+              },
+              "description": {
+                "type": "string",
+                "description": "A description of this particular line item if any. More common for adjustments.",
+                "example": "Refund for invalid purchase"
+              }
+            }
+          },
+          "line_item_summary": {
+            "type": "object",
+            "required": ["original_amount_cents"],
+            "properties": {
+              "original_amount_cents": {
+                "type": "integer",
+                "description": "The originating amount of money (in cents) relating to this line item.",
+                "example": 2484
               }
             }
           },

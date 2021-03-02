@@ -7,65 +7,7 @@
       "maxItems": 1000,
       "description": "An array of information for all customer-account correspondences within the requested range.",
       "items": {
-        "allOf": [
-          { "$ref": "./Customer.json" },
-          {
-            "type": "object",
-            "properties": {
-              "customer_account_role": {
-                "type": "string",
-                "description": "The role of the customer for the account.",
-                "enum": ["PRIMARY", "SECONDARY"],
-                "example": "PRIMARY",
-                "default": "PRIMARY"
-              },
-              "customer_account_external_id": {
-                "type": "string",
-                "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
-                "example": "4465220133024156"
-              },
-              "customer_account_issuer_processor_config": {
-                "type": "object",
-                "properties": {
-                  "privacy": {
-                    "type": "object",
-                    "properties": {
-                      "privacy_card": {
-                        "type": "object",
-                        "properties": {
-                          "last_four": {
-                            "type": "string",
-                            "description": "Last four digits of the card number",
-                            "example": "1234"
-                          },
-                          "memo": {
-                            "type": "string",
-                            "description": "Friendly name to identify the card",
-                            "example": "Primary College Card"
-                          },
-                          "type": {
-                            "type": "string",
-                            "enum": ["SINGLE_USE", "MERCHANT_LOCKED", "UNLOCKED"],
-                            "description": "The type of card created by privacy.com",
-                            "example": "MERCHANT_LOCKED"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "type": "object",
-            "properties": {
-              "account": {
-                "$ref": "./Account.json"
-              }
-            }
-          }
-        ]
+        "$ref": "./CustomerAccount.json"
       }
     }
   }
