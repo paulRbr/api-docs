@@ -11,7 +11,7 @@ async function main() {
     {
       // Types for the frontend and api layer
       lang: "ts",
-      extension: "d.ts",
+      extension: "type.ts",
     },
     {
       // Types for the canopy test framework
