@@ -7,7 +7,7 @@ public class Product {
     private String effectiveAt;
     private String externalProductID;
     private PostPromotionalPolicies postPromotionalPolicies;
-    private long productID;
+    private String productID;
     private ProductLifecyclePolicies productLifecyclePolicies;
     private ProductOverview productOverview;
     private ProductSummary productSummary;
@@ -37,8 +37,8 @@ public class Product {
     /**
      * The Canopy-generated ID for the product.
      */
-    public long getProductID() { return productID; }
-    public void setProductID(long value) { this.productID = value; }
+    public String getProductID() { return productID; }
+    public void setProductID(String value) { this.productID = value; }
 
     public ProductLifecyclePolicies getProductLifecyclePolicies() { return productLifecyclePolicies; }
     public void setProductLifecyclePolicies(ProductLifecyclePolicies value) { this.productLifecyclePolicies = value; }
