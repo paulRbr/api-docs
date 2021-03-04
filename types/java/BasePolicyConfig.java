@@ -105,7 +105,15 @@ package io.quicktype;
  * The set of policies governing fees for the product.
  */
 public class FeePolicies {
+    private DefaultSurchargeFeeStructure[] defaultSurchargeFeeStructure;
     private String lateFeeGrace;
+    private SurchargeFeeInterval surchargeFeeInterval;
+
+    /**
+     * The transaction volume structure that dictates a transaction fee.
+     */
+    public DefaultSurchargeFeeStructure[] getDefaultSurchargeFeeStructure() { return defaultSurchargeFeeStructure; }
+    public void setDefaultSurchargeFeeStructure(DefaultSurchargeFeeStructure[] value) { this.defaultSurchargeFeeStructure = value; }
 
     /**
      * Defaults to 0 days. The amount of time after a payment is late after which you would like
@@ -113,6 +121,70 @@ public class FeePolicies {
      */
     public String getLateFeeGrace() { return lateFeeGrace; }
     public void setLateFeeGrace(String value) { this.lateFeeGrace = value; }
+
+    /**
+     * The interval at which a surcharge fee is assessed.
+     */
+    public SurchargeFeeInterval getSurchargeFeeInterval() { return surchargeFeeInterval; }
+    public void setSurchargeFeeInterval(SurchargeFeeInterval value) { this.surchargeFeeInterval = value; }
+}
+
+// DefaultSurchargeFeeStructure.java
+
+package io.quicktype;
+
+public class DefaultSurchargeFeeStructure {
+    private double percentSurcharge;
+    private Long surchargeEndExclusiveCents;
+    private long surchargeStartInclusiveCents;
+
+    /**
+     * Indicates the surcharge fee as a percent of total transaction volume that will be applied
+     * to the account if the total transaction volume during the surcharge interval falls within
+     * the provided start and end range.
+     */
+    public double getPercentSurcharge() { return percentSurcharge; }
+    public void setPercentSurcharge(double value) { this.percentSurcharge = value; }
+
+    /**
+     * Indicates the ending transaction volume at which this fee will apply. If not provided,
+     * the surcharge will apply to any transaction volume above the defined start.
+     */
+    public Long getSurchargeEndExclusiveCents() { return surchargeEndExclusiveCents; }
+    public void setSurchargeEndExclusiveCents(Long value) { this.surchargeEndExclusiveCents = value; }
+
+    /**
+     * Indicates the starting transaction volume at which this fee will apply.
+     */
+    public long getSurchargeStartInclusiveCents() { return surchargeStartInclusiveCents; }
+    public void setSurchargeStartInclusiveCents(long value) { this.surchargeStartInclusiveCents = value; }
+}
+
+// SurchargeFeeInterval.java
+
+package io.quicktype;
+
+import java.io.IOException;
+
+/**
+ * The interval at which a surcharge fee is assessed.
+ */
+public enum SurchargeFeeInterval {
+    MONTHLY, NONE;
+
+    public String toValue() {
+        switch (this) {
+            case MONTHLY: return "MONTHLY";
+            case NONE: return "NONE";
+        }
+        return null;
+    }
+
+    public static SurchargeFeeInterval forValue(String value) throws IOException {
+        if (value.equals("MONTHLY")) return MONTHLY;
+        if (value.equals("NONE")) return NONE;
+        throw new IOException("Cannot deserialize SurchargeFeeInterval");
+    }
 }
 
 // InterestPolicies.java

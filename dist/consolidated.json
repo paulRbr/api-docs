@@ -755,6 +755,38 @@
                             "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                             "example": "5 days",
                             "default": "0 days"
+                          },
+                          "surcharge_fee_interval": {
+                            "type": "string",
+                            "enum": ["NONE", "MONTHLY"],
+                            "description": "The interval at which a surcharge fee is assessed.",
+                            "example": "MONTHLY",
+                            "default": []
+                          },
+                          "default_surcharge_fee_structure": {
+                            "type": "array",
+                            "description": "The transaction volume structure that dictates a transaction fee.",
+                            "items": {
+                              "type": "object",
+                              "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                              "properties": {
+                                "surcharge_start_inclusive_cents": {
+                                  "type": "integer",
+                                  "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                  "example": 0
+                                },
+                                "surcharge_end_exclusive_cents": {
+                                  "type": "integer",
+                                  "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                  "example": 0
+                                },
+                                "percent_surcharge": {
+                                  "type": "number",
+                                  "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                  "example": 0
+                                }
+                              }
+                            }
                           }
                         },
                         "description": "The set of policies governing fees for the product. "
@@ -1053,6 +1085,38 @@
                               "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                               "example": "5 days",
                               "default": "0 days"
+                            },
+                            "surcharge_fee_interval": {
+                              "type": "string",
+                              "enum": ["NONE", "MONTHLY"],
+                              "description": "The interval at which a surcharge fee is assessed.",
+                              "example": "MONTHLY",
+                              "default": []
+                            },
+                            "default_surcharge_fee_structure": {
+                              "type": "array",
+                              "description": "The transaction volume structure that dictates a transaction fee.",
+                              "items": {
+                                "type": "object",
+                                "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                                "properties": {
+                                  "surcharge_start_inclusive_cents": {
+                                    "type": "integer",
+                                    "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                    "example": 0
+                                  },
+                                  "surcharge_end_exclusive_cents": {
+                                    "type": "integer",
+                                    "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                    "example": 0
+                                  },
+                                  "percent_surcharge": {
+                                    "type": "number",
+                                    "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                    "example": 0
+                                  }
+                                }
+                              }
                             }
                           },
                           "description": "The set of policies governing fees for the product. "
@@ -1440,6 +1504,38 @@
                                 "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                                 "example": "5 days",
                                 "default": "0 days"
+                              },
+                              "surcharge_fee_interval": {
+                                "type": "string",
+                                "enum": ["NONE", "MONTHLY"],
+                                "description": "The interval at which a surcharge fee is assessed.",
+                                "example": "MONTHLY",
+                                "default": []
+                              },
+                              "default_surcharge_fee_structure": {
+                                "type": "array",
+                                "description": "The transaction volume structure that dictates a transaction fee.",
+                                "items": {
+                                  "type": "object",
+                                  "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                                  "properties": {
+                                    "surcharge_start_inclusive_cents": {
+                                      "type": "integer",
+                                      "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                      "example": 0
+                                    },
+                                    "surcharge_end_exclusive_cents": {
+                                      "type": "integer",
+                                      "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                      "example": 0
+                                    },
+                                    "percent_surcharge": {
+                                      "type": "number",
+                                      "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                      "example": 0
+                                    }
+                                  }
+                                }
                               }
                             },
                             "description": "The set of policies governing fees for the product. "
@@ -8838,6 +8934,38 @@
                     "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                     "example": "5 days",
                     "default": "0 days"
+                  },
+                  "surcharge_fee_interval": {
+                    "type": "string",
+                    "enum": ["NONE", "MONTHLY"],
+                    "description": "The interval at which a surcharge fee is assessed.",
+                    "example": "MONTHLY",
+                    "default": []
+                  },
+                  "default_surcharge_fee_structure": {
+                    "type": "array",
+                    "description": "The transaction volume structure that dictates a transaction fee.",
+                    "items": {
+                      "type": "object",
+                      "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                      "properties": {
+                        "surcharge_start_inclusive_cents": {
+                          "type": "integer",
+                          "description": "Indicates the starting transaction volume at which this fee will apply.",
+                          "example": 0
+                        },
+                        "surcharge_end_exclusive_cents": {
+                          "type": "integer",
+                          "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                          "example": 0
+                        },
+                        "percent_surcharge": {
+                          "type": "number",
+                          "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                          "example": 0
+                        }
+                      }
+                    }
                   }
                 },
                 "description": "The set of policies governing fees for the product. "
@@ -9103,6 +9231,38 @@
                 "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                 "example": "5 days",
                 "default": "0 days"
+              },
+              "surcharge_fee_interval": {
+                "type": "string",
+                "enum": ["NONE", "MONTHLY"],
+                "description": "The interval at which a surcharge fee is assessed.",
+                "example": "MONTHLY",
+                "default": []
+              },
+              "default_surcharge_fee_structure": {
+                "type": "array",
+                "description": "The transaction volume structure that dictates a transaction fee.",
+                "items": {
+                  "type": "object",
+                  "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                  "properties": {
+                    "surcharge_start_inclusive_cents": {
+                      "type": "integer",
+                      "description": "Indicates the starting transaction volume at which this fee will apply.",
+                      "example": 0
+                    },
+                    "surcharge_end_exclusive_cents": {
+                      "type": "integer",
+                      "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                      "example": 0
+                    },
+                    "percent_surcharge": {
+                      "type": "number",
+                      "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                      "example": 0
+                    }
+                  }
+                }
               }
             },
             "description": "The set of policies governing fees for the product. "
@@ -9743,6 +9903,38 @@
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
+                        },
+                        "surcharge_fee_interval": {
+                          "type": "string",
+                          "enum": ["NONE", "MONTHLY"],
+                          "description": "The interval at which a surcharge fee is assessed.",
+                          "example": "MONTHLY",
+                          "default": []
+                        },
+                        "default_surcharge_fee_structure": {
+                          "type": "array",
+                          "description": "The transaction volume structure that dictates a transaction fee.",
+                          "items": {
+                            "type": "object",
+                            "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                            "properties": {
+                              "surcharge_start_inclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                "example": 0
+                              },
+                              "surcharge_end_exclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                "example": 0
+                              },
+                              "percent_surcharge": {
+                                "type": "number",
+                                "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                "example": 0
+                              }
+                            }
+                          }
                         }
                       },
                       "description": "The set of policies governing fees for the product. "
@@ -11005,6 +11197,38 @@
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
+                        },
+                        "surcharge_fee_interval": {
+                          "type": "string",
+                          "enum": ["NONE", "MONTHLY"],
+                          "description": "The interval at which a surcharge fee is assessed.",
+                          "example": "MONTHLY",
+                          "default": []
+                        },
+                        "default_surcharge_fee_structure": {
+                          "type": "array",
+                          "description": "The transaction volume structure that dictates a transaction fee.",
+                          "items": {
+                            "type": "object",
+                            "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                            "properties": {
+                              "surcharge_start_inclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                "example": 0
+                              },
+                              "surcharge_end_exclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                "example": 0
+                              },
+                              "percent_surcharge": {
+                                "type": "number",
+                                "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                "example": 0
+                              }
+                            }
+                          }
                         }
                       },
                       "description": "The set of policies governing fees for the product. "
@@ -11331,6 +11555,38 @@
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
+                        },
+                        "surcharge_fee_interval": {
+                          "type": "string",
+                          "enum": ["NONE", "MONTHLY"],
+                          "description": "The interval at which a surcharge fee is assessed.",
+                          "example": "MONTHLY",
+                          "default": []
+                        },
+                        "default_surcharge_fee_structure": {
+                          "type": "array",
+                          "description": "The transaction volume structure that dictates a transaction fee.",
+                          "items": {
+                            "type": "object",
+                            "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                            "properties": {
+                              "surcharge_start_inclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                "example": 0
+                              },
+                              "surcharge_end_exclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                "example": 0
+                              },
+                              "percent_surcharge": {
+                                "type": "number",
+                                "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                "example": 0
+                              }
+                            }
+                          }
                         }
                       },
                       "description": "The set of policies governing fees for the product. "
@@ -11660,6 +11916,38 @@
                             "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                             "example": "5 days",
                             "default": "0 days"
+                          },
+                          "surcharge_fee_interval": {
+                            "type": "string",
+                            "enum": ["NONE", "MONTHLY"],
+                            "description": "The interval at which a surcharge fee is assessed.",
+                            "example": "MONTHLY",
+                            "default": []
+                          },
+                          "default_surcharge_fee_structure": {
+                            "type": "array",
+                            "description": "The transaction volume structure that dictates a transaction fee.",
+                            "items": {
+                              "type": "object",
+                              "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],
+                              "properties": {
+                                "surcharge_start_inclusive_cents": {
+                                  "type": "integer",
+                                  "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                  "example": 0
+                                },
+                                "surcharge_end_exclusive_cents": {
+                                  "type": "integer",
+                                  "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                  "example": 0
+                                },
+                                "percent_surcharge": {
+                                  "type": "number",
+                                  "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                  "example": 0
+                                }
+                              }
+                            }
                           }
                         },
                         "description": "The set of policies governing fees for the product. "

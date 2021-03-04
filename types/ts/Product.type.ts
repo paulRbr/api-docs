@@ -164,10 +164,44 @@ export interface DefaultAttributes {
  */
 export interface FeePolicies {
     /**
+     * The transaction volume structure that dictates a transaction fee.
+     */
+    default_surcharge_fee_structure?: DefaultSurchargeFeeStructure[];
+    /**
      * Defaults to 0 days. The amount of time after a payment is late after which you would like
      * for a late fee to be incurred.
      */
     late_fee_grace?: string;
+    /**
+     * The interval at which a surcharge fee is assessed.
+     */
+    surcharge_fee_interval?: SurchargeFeeInterval;
+}
+
+export interface DefaultSurchargeFeeStructure {
+    /**
+     * Indicates the surcharge fee as a percent of total transaction volume that will be applied
+     * to the account if the total transaction volume during the surcharge interval falls within
+     * the provided start and end range.
+     */
+    percent_surcharge: number;
+    /**
+     * Indicates the ending transaction volume at which this fee will apply. If not provided,
+     * the surcharge will apply to any transaction volume above the defined start.
+     */
+    surcharge_end_exclusive_cents?: number;
+    /**
+     * Indicates the starting transaction volume at which this fee will apply.
+     */
+    surcharge_start_inclusive_cents: number;
+}
+
+/**
+ * The interval at which a surcharge fee is assessed.
+ */
+export enum SurchargeFeeInterval {
+    Monthly = "MONTHLY",
+    None = "NONE",
 }
 
 /**
