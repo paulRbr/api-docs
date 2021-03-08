@@ -73,6 +73,24 @@
           "example": 2900,
           "default": 0
         },
+        "origination_fee_impl_cents": {
+          "type": "integer",
+          "description": "The fee charged at the time of account origination",
+          "default": 0,
+          "example": 2000
+        },
+        "annual_fee_impl_cents": {
+          "type": "integer",
+          "description": "An annual fee to be charged yearly from the date of account creation. It will reflect on the subsequent statement once incurred.",
+          "default": 0,
+          "example": 1000
+        },
+        "monthly_fee_impl_cents": {
+          "type": "integer",
+          "description": "A monthly fee to be charged monthly from the date of account creation. It will reflect on the subsequent statement once incurred.",
+          "default": 0,
+          "example": 500
+        },
         "loan_end_date": {
           "type": "string",
           "format": "date-time",

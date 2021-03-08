@@ -160,6 +160,11 @@ export interface ProductDurationInformation {
 
 export interface ProductLifecycle {
     /**
+     * An annual fee to be charged yearly from the date of account creation. It will reflect on
+     * the subsequent statement once incurred.
+     */
+    annual_fee_impl_cents?: number;
+    /**
      * The fee charged for late payments on the account.
      */
     late_fee_impl_cents: number;
@@ -167,6 +172,15 @@ export interface ProductLifecycle {
      * If applicable, the account's loan repayment date.
      */
     loan_end_date?: string;
+    /**
+     * A monthly fee to be charged monthly from the date of account creation. It will reflect on
+     * the subsequent statement once incurred.
+     */
+    monthly_fee_impl_cents?: number;
+    /**
+     * The fee charged at the time of account origination
+     */
+    origination_fee_impl_cents?: number;
     /**
      * The fee charged for payment reversals on the account.
      */
