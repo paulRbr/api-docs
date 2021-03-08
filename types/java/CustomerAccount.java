@@ -331,9 +331,19 @@ public class ProductDurationInformation {
 package io.quicktype;
 
 public class ProductLifecycle {
+    private Long annualFeeImplCents;
     private long lateFeeImplCents;
     private String loanEndDate;
+    private Long monthlyFeeImplCents;
+    private Long originationFeeImplCents;
     private long paymentReversalFeeImplCents;
+
+    /**
+     * An annual fee to be charged yearly from the date of account creation. It will reflect on
+     * the subsequent statement once incurred.
+     */
+    public Long getAnnualFeeImplCents() { return annualFeeImplCents; }
+    public void setAnnualFeeImplCents(Long value) { this.annualFeeImplCents = value; }
 
     /**
      * The fee charged for late payments on the account.
@@ -346,6 +356,19 @@ public class ProductLifecycle {
      */
     public String getLoanEndDate() { return loanEndDate; }
     public void setLoanEndDate(String value) { this.loanEndDate = value; }
+
+    /**
+     * A monthly fee to be charged monthly from the date of account creation. It will reflect on
+     * the subsequent statement once incurred.
+     */
+    public Long getMonthlyFeeImplCents() { return monthlyFeeImplCents; }
+    public void setMonthlyFeeImplCents(Long value) { this.monthlyFeeImplCents = value; }
+
+    /**
+     * The fee charged at the time of account origination
+     */
+    public Long getOriginationFeeImplCents() { return originationFeeImplCents; }
+    public void setOriginationFeeImplCents(Long value) { this.originationFeeImplCents = value; }
 
     /**
      * The fee charged for payment reversals on the account.
