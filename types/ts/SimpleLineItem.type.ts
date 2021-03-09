@@ -1,8 +1,8 @@
 export interface SimpleLineItem {
     /**
-     * The account associated with the line item
+     * A Canopy-generated ID for the account.
      */
-    account_id: number;
+    account_id: string;
     /**
      * The `Date-Time` which the line item was created.
      */
@@ -17,9 +17,9 @@ export interface SimpleLineItem {
     external_fields?:           ExternalField[];
     issuer_processor_metadata?: IssuerProcessorMetadata;
     /**
-     * The ID associated with the line item
+     * A Canopy-generated ID for the line item.
      */
-    line_item_id:        number;
+    line_item_id:        string;
     line_item_overview?: LineItemOverview;
     line_item_summary?:  LineItemSummary;
     /**
@@ -27,9 +27,9 @@ export interface SimpleLineItem {
      */
     merchant_data?: MerchantData;
     /**
-     * the Product ID of the account
+     * A Canopy-generated ID for the product.
      */
-    product_id: number;
+    product_id: string;
 }
 
 export interface ExternalField {

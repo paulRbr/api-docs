@@ -3,14 +3,14 @@
   "required": ["note_id", "account_id", "author", "message", "created_date"],
   "properties": {
     "note_id": {
-      "type": "integer",
-      "description": "A Canopy-generated unique ID for the note",
-      "example": 1
+      "type": "string",
+      "description": "A Canopy-generated ID for the note.",
+      "example": "xtaA7d"
     },
     "account_id": {
-      "type": "integer",
-      "description": "The ID of the account to which the Note is assigned",
-      "example": 1
+      "type": "string",
+      "description": "A Canopy-generated ID for the account.",
+      "example": "xtaA7d"
     },
     "author": {
       "description": "The API User who authored the note",
