@@ -9,22 +9,22 @@
     },
     "name_prefix": {
       "type": "string",
-      "description": "Prefix to the customer's name",
+      "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
       "example": "Dr."
     },
     "name_first": {
       "type": "string",
-      "description": "Customer's first name",
+      "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
       "example": "Miriam"
     },
     "name_middle": {
       "type": "string",
-      "description": "Customer's middle name",
+      "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
       "example": "Louise"
     },
     "name_last": {
       "type": "string",
-      "description": "Customer's last name",
+      "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
       "example": "Trevino"
     },
     "name_suffix": {
@@ -39,22 +39,22 @@
     },
     "address_line_one": {
       "type": "string",
-      "description": "Address line one",
+      "description": "Address line one.",
       "example": "12 Strawberry Road"
     },
     "address_line_two": {
       "type": "string",
-      "description": "Address line two",
+      "description": "Address line two.",
       "example": "Suite 101"
     },
     "address_city": {
       "type": "string",
-      "description": "Address city",
+      "description": "Address city.",
       "example": "Atlanta"
     },
     "address_state": {
       "type": "string",
-      "description": "Address state",
+      "description": "Address state.",
       "example": "GA"
     },
     "address_zip": {
@@ -78,6 +78,26 @@
       "format": "date",
       "description": "Customer's date of birth in ISO 8601 format",
       "example": "1985-06-20"
+    },
+    "business_details": {
+      "type": "object",
+      "properties": {
+        "business_legal_name": {
+          "type": "string",
+          "description": "The legal name of the Business",
+          "example": "Umbrella Corporation"
+        },
+        "doing_business_as": {
+          "type": "string",
+          "description": "The DBA name of the Business",
+          "example": "Umbrella"
+        },
+        "business_ein": {
+          "type": "string",
+          "description": "EIN of the business",
+          "example": "888-88-8888"
+        }
+      }
     }
   }
 }
