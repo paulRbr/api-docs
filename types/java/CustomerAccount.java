@@ -10,6 +10,7 @@ public class CustomerAccount {
     private String addressLineTwo;
     private String addressState;
     private String addressZip;
+    private BusinessDetails businessDetails;
     private long customerID;
     private LocalDate dateOfBirth;
     private String email;
@@ -26,25 +27,25 @@ public class CustomerAccount {
     private Account account;
 
     /**
-     * Address city
+     * Address city.
      */
     public String getAddressCity() { return addressCity; }
     public void setAddressCity(String value) { this.addressCity = value; }
 
     /**
-     * Address line one
+     * Address line one.
      */
     public String getAddressLineOne() { return addressLineOne; }
     public void setAddressLineOne(String value) { this.addressLineOne = value; }
 
     /**
-     * Address line two
+     * Address line two.
      */
     public String getAddressLineTwo() { return addressLineTwo; }
     public void setAddressLineTwo(String value) { this.addressLineTwo = value; }
 
     /**
-     * Address state
+     * Address state.
      */
     public String getAddressState() { return addressState; }
     public void setAddressState(String value) { this.addressState = value; }
@@ -54,6 +55,9 @@ public class CustomerAccount {
      */
     public String getAddressZip() { return addressZip; }
     public void setAddressZip(String value) { this.addressZip = value; }
+
+    public BusinessDetails getBusinessDetails() { return businessDetails; }
+    public void setBusinessDetails(BusinessDetails value) { this.businessDetails = value; }
 
     /**
      * A Canopy-generated unique ID for the customer
@@ -74,25 +78,29 @@ public class CustomerAccount {
     public void setEmail(String value) { this.email = value; }
 
     /**
-     * Customer's first name
+     * Customer's first name. Primary account holder or controlling officer name for Business
+     * customers.
      */
     public String getNameFirst() { return nameFirst; }
     public void setNameFirst(String value) { this.nameFirst = value; }
 
     /**
-     * Customer's last name
+     * Customer's last name. Primary account holder or controlling officer name for Business
+     * customers.
      */
     public String getNameLast() { return nameLast; }
     public void setNameLast(String value) { this.nameLast = value; }
 
     /**
-     * Customer's middle name
+     * Customer's middle name. Primary account holder or controlling officer name for Business
+     * customers.
      */
     public String getNameMiddle() { return nameMiddle; }
     public void setNameMiddle(String value) { this.nameMiddle = value; }
 
     /**
-     * Prefix to the customer's name
+     * Prefix to the customer's name. Primary account holder or controlling officer name for
+     * Business customers.
      */
     public String getNamePrefix() { return namePrefix; }
     public void setNamePrefix(String value) { this.namePrefix = value; }
@@ -809,6 +817,34 @@ public class Summary {
      */
     public Long getTotalPayoffCents() { return totalPayoffCents; }
     public void setTotalPayoffCents(Long value) { this.totalPayoffCents = value; }
+}
+
+// BusinessDetails.java
+
+package io.quicktype;
+
+public class BusinessDetails {
+    private String businessEin;
+    private String businessLegalName;
+    private String doingBusinessAs;
+
+    /**
+     * EIN of the business
+     */
+    public String getBusinessEin() { return businessEin; }
+    public void setBusinessEin(String value) { this.businessEin = value; }
+
+    /**
+     * The legal name of the Business
+     */
+    public String getBusinessLegalName() { return businessLegalName; }
+    public void setBusinessLegalName(String value) { this.businessLegalName = value; }
+
+    /**
+     * The DBA name of the Business
+     */
+    public String getDoingBusinessAs() { return doingBusinessAs; }
+    public void setDoingBusinessAs(String value) { this.doingBusinessAs = value; }
 }
 
 // CustomerAccountIssuerProcessorConfig.java
