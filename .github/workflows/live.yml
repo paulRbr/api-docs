@@ -26,8 +26,8 @@ jobs:
       - name: Bundle and validate OpenAPI spec
         run: yarn build
 
-      - name: Deploy to internal documentation
-        uses: bump-sh/github-action@0.1
+      - name: Deploy to docs.canopyservicing.com
+        uses: bump-sh/github-action@0.2
         with:
           id: ${{ secrets.BUMP_DOC_ID_LIVE }}
           token: ${{ secrets.BUMP_TOKEN_LIVE }}
