@@ -90,6 +90,27 @@
             "description": "Customer's date of birth in ISO 8601 format",
             "example": "1985-06-20"
           },
+          "business_details": {
+            "type": "object",
+            "required": ["business_legal_name", "doing_business_as", "business_ein"],
+            "properties": {
+              "business_legal_name": {
+                "type": "string",
+                "description": "The legal name of the Business",
+                "example": "Umbrella Corporation"
+              },
+              "doing_business_as": {
+                "type": "string",
+                "description": "The DBA name of the Business",
+                "example": "Umbrella"
+              },
+              "business_ein": {
+                "type": "string",
+                "description": "EIN of the business",
+                "example": "888-88-8888"
+              }
+            }
+          },
           "assign_to_accounts": {
             "type": "array",
             "maxItems": 10,
