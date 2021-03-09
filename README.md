@@ -1,14 +1,25 @@
-# Canopy OpenAPI spec
+# Canopy OpenAPI Schema
 
-This specification serves as the one and only source of truth for the Canopy Servicing API.
+![Library](https://user-images.githubusercontent.com/5934549/110534507-274e9d00-80ed-11eb-987a-6ffca3f3a490.png)
+
+This specification serves as the one and only source of truth throughout Canopy's stack.
 
 We use the v3.0.3 version of the [OpenAPI spec](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md).
+
+## Initial setup
+
+1. Ensure you're on Node 14 or later: `nvm install lts`
+2. `yarn`
+3. `gem install bump-cli --version "~> 0.7"`
+4. The pre-commit hook will bundle, validate, generate TS and Go types, and format the code before pushing.
+   You can run either of those individually by referring to `scripts` in `package.json`.
+5. Optional: install [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode.
 
 ## Structure of the live documentation
 
 The `openapi.json` file is the entrypoint to the modular spec that we use for development.
 
-Paths defined within the Open Api specification all contain local references to the `requestBodies`, `responses`, and `schemas` sections. However, these sections themselves all contain remote references, so that each request body, response, and schema definition is contained within its own file in its respective directory within this documentation.
+Paths defined within the OpenAPI specification all contain local references to the `requestBodies`, `responses`, and `schemas` sections. However, these sections themselves all contain remote references, so that each request body, response, and schema definition is contained within its own file in its respective directory within this documentation.
 
 We consolidate these modules and dereference them into one unified json file that is used for validation and deployment.
 
@@ -33,5 +44,5 @@ The CI workflow validates the consolidated OpenAPI file before deploying it. Ple
 
 ## Type Generation
 
-1. To consider a schema for generation, include it as a part of `openapi.json["schemas"]`.
+1. To include a schema for type generation, include it as a part of `openapi.json["schemas"]`.
 2. Run `yarn build`.
