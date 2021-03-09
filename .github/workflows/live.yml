@@ -29,6 +29,6 @@ jobs:
       - name: Deploy to docs.canopyservicing.com
         uses: bump-sh/github-action@0.2
         with:
-          id: ${{ secrets.BUMP_DOC_ID_LIVE }}
+          doc: ${{ secrets.BUMP_DOC_ID_LIVE }}
           token: ${{ secrets.BUMP_TOKEN_LIVE }}
           file: dist/consolidated.json
