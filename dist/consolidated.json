@@ -4806,7 +4806,10 @@
                               "SPLIT_VALID",
                               "SPLIT_INVALID",
                               "PENDING",
-                              "REVERSED"
+                              "REVERSED",
+                              "AUTHORIZED",
+                              "VOID",
+                              "POSTED"
                             ],
                             "example": "VALID",
                             "default": "VALID"
@@ -5066,7 +5069,10 @@
                               "SPLIT_VALID",
                               "SPLIT_INVALID",
                               "PENDING",
-                              "REVERSED"
+                              "REVERSED",
+                              "AUTHORIZED",
+                              "VOID",
+                              "POSTED"
                             ],
                             "example": "VALID",
                             "default": "VALID"
@@ -5230,6 +5236,230 @@
             "description": "Unexpected Error."
           }
         }
+      },
+      "put": {
+        "tags": [
+          "line_items"
+        ],
+        "summary": "Change the status of an existing line item",
+        "description": "",
+        "operationId": "editLineItemStatus",
+        "requestBody": {
+          "description": "Edit a specific line item.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "line_item_status": {
+                    "type": "string",
+                    "description": "The new status which you would like to set for the line item",
+                    "enum": [
+                      "ROLLED",
+                      "VALID",
+                      "INVALID",
+                      "OFFSET",
+                      "SPLIT_VALID",
+                      "SPLIT_INVALID",
+                      "PENDING",
+                      "REVERSED",
+                      "AUTHORIZED",
+                      "VOID",
+                      "POSTED"
+                    ],
+                    "example": "VALID",
+                    "default": "VALID"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Line Item Edited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "account_id",
+                    "line_item_id",
+                    "effective_at",
+                    "created_at",
+                    "product_id"
+                  ],
+                  "properties": {
+                    "account_id": {
+                      "type": "integer",
+                      "description": "The account associated with the line item",
+                      "example": 4
+                    },
+                    "line_item_id": {
+                      "type": "integer",
+                      "description": "The ID associated with the line item",
+                      "example": 2
+                    },
+                    "effective_at": {
+                      "type": "string",
+                      "description": "The `Date-Time` that this line item became/becomes active",
+                      "format": "date-time",
+                      "example": "2018-07-20T09:12:30+00:00"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "description": "The `Date-Time` which the line item was created.",
+                      "format": "date-time",
+                      "example": "2018-06-20T09:12:30+00:00"
+                    },
+                    "product_id": {
+                      "type": "integer",
+                      "description": "the Product ID of the account",
+                      "example": 158
+                    },
+                    "line_item_overview": {
+                      "type": "object",
+                      "required": [
+                        "line_item_status",
+                        "line_item_type"
+                      ],
+                      "properties": {
+                        "line_item_status": {
+                          "type": "string",
+                          "description": "the corresponding Status for a line item",
+                          "enum": [
+                            "ROLLED",
+                            "VALID",
+                            "INVALID",
+                            "OFFSET",
+                            "SPLIT_VALID",
+                            "SPLIT_INVALID",
+                            "PENDING",
+                            "REVERSED",
+                            "AUTHORIZED",
+                            "VOID",
+                            "POSTED"
+                          ],
+                          "example": "VALID"
+                        },
+                        "line_item_type": {
+                          "type": "string",
+                          "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                          "enum": [
+                            "LOAN",
+                            "CHARGE",
+                            "DEBIT_OFFSET",
+                            "INTEREST",
+                            "DEFERRED_INTEREST",
+                            "PAYMENT",
+                            "CREDIT_OFFSET",
+                            "STATEMENT",
+                            "MIN_DUE",
+                            "FEE",
+                            "PRODUCT_INTEREST",
+                            "PAYMENT_SPLIT",
+                            "LATE_FEE",
+                            "RETURN_CHECK_FEE",
+                            "PROMO_END",
+                            "PURCHASE_WINDOW_END",
+                            "MONTH_FEE",
+                            "YEAR_FEE"
+                          ],
+                          "example": "CHARGE"
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "A description of this particular line item if any. More common for adjustments.",
+                          "example": "Refund for invalid purchase"
+                        }
+                      }
+                    },
+                    "line_item_summary": {
+                      "type": "object",
+                      "required": [
+                        "original_amount_cents"
+                      ],
+                      "properties": {
+                        "original_amount_cents": {
+                          "type": "integer",
+                          "description": "The originating amount of money (in cents) relating to this line item.",
+                          "example": 2484
+                        }
+                      }
+                    },
+                    "merchant_data": {
+                      "type": "object",
+                      "description": "Merchant information if applicable.",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "mcc_code": {
+                          "type": "number"
+                        },
+                        "phone_number": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "issuer_processor_metadata": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "last_four": {
+                              "type": "integer",
+                              "description": "Last four digits of the card against which the spend was made."
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "external_fields": {
+                      "type": "array",
+                      "maxItems": 1000,
+                      "description": "An array of static references to fields in a third party system.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "description": "Key - i.e. Name of the External Party",
+                            "example": "Globex Card Processing Account ID"
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "Value - i.e. External Account ID",
+                            "example": "22445702-a389-431f-927d-07b8d0750787"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
       }
     },
     "/accounts/{account_id}/line_items/charges": {
@@ -5267,6 +5497,25 @@
                   "merchant_data"
                 ],
                 "properties": {
+                  "line_item_status": {
+                    "type": "string",
+                    "description": "the corresponding Status for a line item",
+                    "enum": [
+                      "ROLLED",
+                      "VALID",
+                      "INVALID",
+                      "OFFSET",
+                      "SPLIT_VALID",
+                      "SPLIT_INVALID",
+                      "PENDING",
+                      "REVERSED",
+                      "AUTHORIZED",
+                      "VOID",
+                      "POSTED"
+                    ],
+                    "example": "VALID",
+                    "default": "VALID"
+                  },
                   "original_amount_cents": {
                     "type": "integer",
                     "description": "The Integer Amount of the Charge in Cents",
@@ -5399,7 +5648,10 @@
                             "SPLIT_VALID",
                             "SPLIT_INVALID",
                             "PENDING",
-                            "REVERSED"
+                            "REVERSED",
+                            "AUTHORIZED",
+                            "VOID",
+                            "POSTED"
                           ],
                           "example": "VALID"
                         },
@@ -5654,7 +5906,10 @@
                             "SPLIT_VALID",
                             "SPLIT_INVALID",
                             "PENDING",
-                            "REVERSED"
+                            "REVERSED",
+                            "AUTHORIZED",
+                            "VOID",
+                            "POSTED"
                           ],
                           "example": "VALID"
                         },
@@ -10233,7 +10488,10 @@
                   "SPLIT_VALID",
                   "SPLIT_INVALID",
                   "PENDING",
-                  "REVERSED"
+                  "REVERSED",
+                  "AUTHORIZED",
+                  "VOID",
+                  "POSTED"
                 ],
                 "example": "VALID",
                 "default": "VALID"
@@ -10432,7 +10690,10 @@
                   "SPLIT_VALID",
                   "SPLIT_INVALID",
                   "PENDING",
-                  "REVERSED"
+                  "REVERSED",
+                  "AUTHORIZED",
+                  "VOID",
+                  "POSTED"
                 ],
                 "example": "VALID"
               },
@@ -11610,6 +11871,25 @@
                 "merchant_data"
               ],
               "properties": {
+                "line_item_status": {
+                  "type": "string",
+                  "description": "the corresponding Status for a line item",
+                  "enum": [
+                    "ROLLED",
+                    "VALID",
+                    "INVALID",
+                    "OFFSET",
+                    "SPLIT_VALID",
+                    "SPLIT_INVALID",
+                    "PENDING",
+                    "REVERSED",
+                    "AUTHORIZED",
+                    "VOID",
+                    "POSTED"
+                  ],
+                  "example": "VALID",
+                  "default": "VALID"
+                },
                 "original_amount_cents": {
                   "type": "integer",
                   "description": "The Integer Amount of the Charge in Cents",
@@ -11746,6 +12026,37 @@
                       "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      },
+      "EditLineItem": {
+        "description": "Edit a specific line item.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "line_item_status": {
+                  "type": "string",
+                  "description": "The new status which you would like to set for the line item",
+                  "enum": [
+                    "ROLLED",
+                    "VALID",
+                    "INVALID",
+                    "OFFSET",
+                    "SPLIT_VALID",
+                    "SPLIT_INVALID",
+                    "PENDING",
+                    "REVERSED",
+                    "AUTHORIZED",
+                    "VOID",
+                    "POSTED"
+                  ],
+                  "example": "VALID",
+                  "default": "VALID"
                 }
               }
             }
@@ -15664,7 +15975,10 @@
                         "SPLIT_VALID",
                         "SPLIT_INVALID",
                         "PENDING",
-                        "REVERSED"
+                        "REVERSED",
+                        "AUTHORIZED",
+                        "VOID",
+                        "POSTED"
                       ],
                       "example": "VALID"
                     },
@@ -15829,7 +16143,10 @@
                         "SPLIT_VALID",
                         "SPLIT_INVALID",
                         "PENDING",
-                        "REVERSED"
+                        "REVERSED",
+                        "AUTHORIZED",
+                        "VOID",
+                        "POSTED"
                       ],
                       "example": "VALID"
                     },
@@ -16991,7 +17308,10 @@
                         "SPLIT_VALID",
                         "SPLIT_INVALID",
                         "PENDING",
-                        "REVERSED"
+                        "REVERSED",
+                        "AUTHORIZED",
+                        "VOID",
+                        "POSTED"
                       ],
                       "example": "VALID",
                       "default": "VALID"
@@ -17197,7 +17517,10 @@
                           "SPLIT_VALID",
                           "SPLIT_INVALID",
                           "PENDING",
-                          "REVERSED"
+                          "REVERSED",
+                          "AUTHORIZED",
+                          "VOID",
+                          "POSTED"
                         ],
                         "example": "VALID",
                         "default": "VALID"
@@ -17404,7 +17727,10 @@
                           "SPLIT_VALID",
                           "SPLIT_INVALID",
                           "PENDING",
-                          "REVERSED"
+                          "REVERSED",
+                          "AUTHORIZED",
+                          "VOID",
+                          "POSTED"
                         ],
                         "example": "VALID",
                         "default": "VALID"
@@ -17668,6 +17994,174 @@
                     "merchant_id": {
                       "type": "string",
                       "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "EditLineItem": {
+        "description": "Line Item Edited",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "account_id",
+                "line_item_id",
+                "effective_at",
+                "created_at",
+                "product_id"
+              ],
+              "properties": {
+                "account_id": {
+                  "type": "integer",
+                  "description": "The account associated with the line item",
+                  "example": 4
+                },
+                "line_item_id": {
+                  "type": "integer",
+                  "description": "The ID associated with the line item",
+                  "example": 2
+                },
+                "effective_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` that this line item became/becomes active",
+                  "format": "date-time",
+                  "example": "2018-07-20T09:12:30+00:00"
+                },
+                "created_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` which the line item was created.",
+                  "format": "date-time",
+                  "example": "2018-06-20T09:12:30+00:00"
+                },
+                "product_id": {
+                  "type": "integer",
+                  "description": "the Product ID of the account",
+                  "example": 158
+                },
+                "line_item_overview": {
+                  "type": "object",
+                  "required": [
+                    "line_item_status",
+                    "line_item_type"
+                  ],
+                  "properties": {
+                    "line_item_status": {
+                      "type": "string",
+                      "description": "the corresponding Status for a line item",
+                      "enum": [
+                        "ROLLED",
+                        "VALID",
+                        "INVALID",
+                        "OFFSET",
+                        "SPLIT_VALID",
+                        "SPLIT_INVALID",
+                        "PENDING",
+                        "REVERSED",
+                        "AUTHORIZED",
+                        "VOID",
+                        "POSTED"
+                      ],
+                      "example": "VALID"
+                    },
+                    "line_item_type": {
+                      "type": "string",
+                      "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                      "enum": [
+                        "LOAN",
+                        "CHARGE",
+                        "DEBIT_OFFSET",
+                        "INTEREST",
+                        "DEFERRED_INTEREST",
+                        "PAYMENT",
+                        "CREDIT_OFFSET",
+                        "STATEMENT",
+                        "MIN_DUE",
+                        "FEE",
+                        "PRODUCT_INTEREST",
+                        "PAYMENT_SPLIT",
+                        "LATE_FEE",
+                        "RETURN_CHECK_FEE",
+                        "PROMO_END",
+                        "PURCHASE_WINDOW_END",
+                        "MONTH_FEE",
+                        "YEAR_FEE"
+                      ],
+                      "example": "CHARGE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "A description of this particular line item if any. More common for adjustments.",
+                      "example": "Refund for invalid purchase"
+                    }
+                  }
+                },
+                "line_item_summary": {
+                  "type": "object",
+                  "required": [
+                    "original_amount_cents"
+                  ],
+                  "properties": {
+                    "original_amount_cents": {
+                      "type": "integer",
+                      "description": "The originating amount of money (in cents) relating to this line item.",
+                      "example": 2484
+                    }
+                  }
+                },
+                "merchant_data": {
+                  "type": "object",
+                  "description": "Merchant information if applicable.",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "mcc_code": {
+                      "type": "number"
+                    },
+                    "phone_number": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "issuer_processor_metadata": {
+                  "type": "object",
+                  "properties": {
+                    "privacy": {
+                      "type": "object",
+                      "properties": {
+                        "last_four": {
+                          "type": "integer",
+                          "description": "Last four digits of the card against which the spend was made."
+                        }
+                      }
+                    }
+                  }
+                },
+                "external_fields": {
+                  "type": "array",
+                  "maxItems": 1000,
+                  "description": "An array of static references to fields in a third party system.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "description": "Key - i.e. Name of the External Party",
+                        "example": "Globex Card Processing Account ID"
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "Value - i.e. External Account ID",
+                        "example": "22445702-a389-431f-927d-07b8d0750787"
+                      }
                     }
                   }
                 }

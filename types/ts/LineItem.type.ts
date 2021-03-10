@@ -73,14 +73,17 @@ export interface LineItemOverview {
  * the corresponding Status for a line item
  */
 export enum LineItemStatus {
+    Authorized = "AUTHORIZED",
     Invalid = "INVALID",
     Offset = "OFFSET",
     Pending = "PENDING",
+    Posted = "POSTED",
     Reversed = "REVERSED",
     Rolled = "ROLLED",
     SplitInvalid = "SPLIT_INVALID",
     SplitValid = "SPLIT_VALID",
     Valid = "VALID",
+    Void = "VOID",
 }
 
 /**
