@@ -58,7 +58,9 @@
             "LATE_FEE",
             "RETURN_CHECK_FEE",
             "PROMO_END",
-            "PURCHASE_WINDOW_END"
+            "PURCHASE_WINDOW_END",
+            "MONTH_FEE",
+            "YEAR_FEE"
           ],
           "example": "CHARGE"
         },

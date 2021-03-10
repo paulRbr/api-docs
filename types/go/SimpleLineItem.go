@@ -67,6 +67,7 @@ const (
 	LateFee LineItemType = "LATE_FEE"
 	Loan LineItemType = "LOAN"
 	MinDue LineItemType = "MIN_DUE"
+	MonthFee LineItemType = "MONTH_FEE"
 	Payment LineItemType = "PAYMENT"
 	PaymentSplit LineItemType = "PAYMENT_SPLIT"
 	ProductInterest LineItemType = "PRODUCT_INTEREST"
@@ -74,4 +75,5 @@ const (
 	PurchaseWindowEnd LineItemType = "PURCHASE_WINDOW_END"
 	ReturnCheckFee LineItemType = "RETURN_CHECK_FEE"
 	Statement LineItemType = "STATEMENT"
+	YearFee LineItemType = "YEAR_FEE"
 )

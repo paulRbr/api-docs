@@ -96,6 +96,7 @@ export enum LineItemType {
     LateFee = "LATE_FEE",
     Loan = "LOAN",
     MinDue = "MIN_DUE",
+    MonthFee = "MONTH_FEE",
     Payment = "PAYMENT",
     PaymentSplit = "PAYMENT_SPLIT",
     ProductInterest = "PRODUCT_INTEREST",
@@ -103,6 +104,7 @@ export enum LineItemType {
     PurchaseWindowEnd = "PURCHASE_WINDOW_END",
     ReturnCheckFee = "RETURN_CHECK_FEE",
     Statement = "STATEMENT",
+    YearFee = "YEAR_FEE",
 }
 
 export interface LineItemSummary {
