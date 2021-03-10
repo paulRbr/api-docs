@@ -164,6 +164,16 @@
         }
       }
     },
+    "cycle_type": {
+      "type": "object",
+      "properties": {
+        "first_cycle_interval": {
+          "type": "string",
+          "description": "Interval for a first cycle for this account.",
+          "example": "11 days"
+        }
+      }
+    },
     "summary": {
       "type": "object",
       "required": ["credit_limit_cents"],

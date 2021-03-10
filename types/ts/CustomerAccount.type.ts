@@ -93,6 +93,7 @@ export interface Account {
      * The `Date-Time` which the account was created in the API.
      */
     created_at?: string;
+    cycle_type?: CycleType;
     /**
      * The `Date-Time` that this account became/becomes active.
      */
@@ -308,6 +309,13 @@ export interface AssociatedEntities {
      * A merchant name associated with the account
      */
     merchant_name?: string;
+}
+
+export interface CycleType {
+    /**
+     * Interval for a first cycle for this account.
+     */
+    first_cycle_interval?: string;
 }
 
 export interface ExternalField {

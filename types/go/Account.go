@@ -5,6 +5,7 @@ type Account struct {
 	AdditionalStatementMinPayDetails *AdditionalStatementMinPayDetails `json:"additional_statement_min_pay_details,omitempty"`
 	AssociatedEntities               *AssociatedEntities               `json:"associated_entities,omitempty"`                 
 	CreatedAt                        *string                           `json:"created_at,omitempty"`                          // The `Date-Time` which the account was created in the API.
+	CycleType                        *CycleType                        `json:"cycle_type,omitempty"`                          
 	EffectiveAt                      *string                           `json:"effective_at,omitempty"`                        // The `Date-Time` that this account became/becomes active.
 	ExternalFields                   []ExternalField                   `json:"external_fields,omitempty"`                     // An Array of External Fields. These should be used to connect accounts created in Canopy; to Users in your system and any connected external systems.
 	MinPayDueCents                   *MinPayDueCents                   `json:"min_pay_due_cents,omitempty"`                   
@@ -79,6 +80,10 @@ type AdditionalStatementMinPayDetails struct {
 type AssociatedEntities struct {
 	LenderName   *string `json:"lender_name,omitempty"`  // A lender name associated with the account
 	MerchantName *string `json:"merchant_name,omitempty"`// A merchant name associated with the account
+}
+
+type CycleType struct {
+	FirstCycleInterval *string `json:"first_cycle_interval,omitempty"`// Interval for a first cycle for this account.
 }
 
 type ExternalField struct {

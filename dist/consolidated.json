@@ -2369,6 +2369,16 @@
                                       }
                                     }
                                   },
+                                  "cycle_type": {
+                                    "type": "object",
+                                    "properties": {
+                                      "first_cycle_interval": {
+                                        "type": "string",
+                                        "description": "Interval for a first cycle for this account.",
+                                        "example": "11 days"
+                                      }
+                                    }
+                                  },
                                   "summary": {
                                     "type": "object",
                                     "required": [
@@ -2962,6 +2972,16 @@
                           }
                         }
                       },
+                      "cycle_type": {
+                        "type": "object",
+                        "properties": {
+                          "first_cycle_interval": {
+                            "type": "string",
+                            "description": "Interval for a first cycle for this account.",
+                            "example": "11 days"
+                          }
+                        }
+                      },
                       "summary": {
                         "type": "object",
                         "properties": {
@@ -3497,6 +3517,16 @@
                                   "example": true
                                 }
                               }
+                            }
+                          }
+                        },
+                        "cycle_type": {
+                          "type": "object",
+                          "properties": {
+                            "first_cycle_interval": {
+                              "type": "string",
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
                             }
                           }
                         },
@@ -4135,6 +4165,16 @@
                                   "example": true
                                 }
                               }
+                            }
+                          }
+                        },
+                        "cycle_type": {
+                          "type": "object",
+                          "properties": {
+                            "first_cycle_interval": {
+                              "type": "string",
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
                             }
                           }
                         },
@@ -6949,6 +6989,16 @@
               }
             }
           },
+          "cycle_type": {
+            "type": "object",
+            "properties": {
+              "first_cycle_interval": {
+                "type": "string",
+                "description": "Interval for a first cycle for this account.",
+                "example": "11 days"
+              }
+            }
+          },
           "summary": {
             "type": "object",
             "required": [
@@ -7922,6 +7972,16 @@
                   }
                 }
               },
+              "cycle_type": {
+                "type": "object",
+                "properties": {
+                  "first_cycle_interval": {
+                    "type": "string",
+                    "description": "Interval for a first cycle for this account.",
+                    "example": "11 days"
+                  }
+                }
+              },
               "summary": {
                 "type": "object",
                 "required": [
@@ -8729,6 +8789,16 @@
                         }
                       }
                     },
+                    "cycle_type": {
+                      "type": "object",
+                      "properties": {
+                        "first_cycle_interval": {
+                          "type": "string",
+                          "description": "Interval for a first cycle for this account.",
+                          "example": "11 days"
+                        }
+                      }
+                    },
                     "summary": {
                       "type": "object",
                       "required": [
@@ -9364,6 +9434,16 @@
                             "example": true
                           }
                         }
+                      }
+                    }
+                  },
+                  "cycle_type": {
+                    "type": "object",
+                    "properties": {
+                      "first_cycle_interval": {
+                        "type": "string",
+                        "description": "Interval for a first cycle for this account.",
+                        "example": "11 days"
                       }
                     }
                   },
@@ -11290,6 +11370,16 @@
                               "example": "Lucille Bluth"
                             }
                           }
+                        }
+                      }
+                    },
+                    "cycle_type": {
+                      "type": "object",
+                      "properties": {
+                        "first_cycle_interval": {
+                          "type": "string",
+                          "description": "Interval for a first cycle for this account.",
+                          "example": "11 days"
                         }
                       }
                     },
@@ -13545,6 +13635,16 @@
                                   }
                                 }
                               },
+                              "cycle_type": {
+                                "type": "object",
+                                "properties": {
+                                  "first_cycle_interval": {
+                                    "type": "string",
+                                    "description": "Interval for a first cycle for this account.",
+                                    "example": "11 days"
+                                  }
+                                }
+                              },
                               "summary": {
                                 "type": "object",
                                 "required": [
@@ -14491,6 +14591,16 @@
                         }
                       }
                     },
+                    "cycle_type": {
+                      "type": "object",
+                      "properties": {
+                        "first_cycle_interval": {
+                          "type": "string",
+                          "description": "Interval for a first cycle for this account.",
+                          "example": "11 days"
+                        }
+                      }
+                    },
                     "summary": {
                       "type": "object",
                       "required": [
@@ -15094,6 +15204,16 @@
                                 "example": true
                               }
                             }
+                          }
+                        }
+                      },
+                      "cycle_type": {
+                        "type": "object",
+                        "properties": {
+                          "first_cycle_interval": {
+                            "type": "string",
+                            "description": "Interval for a first cycle for this account.",
+                            "example": "11 days"
                           }
                         }
                       },
@@ -16184,6 +16304,16 @@
                               "example": true
                             }
                           }
+                        }
+                      }
+                    },
+                    "cycle_type": {
+                      "type": "object",
+                      "properties": {
+                        "first_cycle_interval": {
+                          "type": "string",
+                          "description": "Interval for a first cycle for this account.",
+                          "example": "11 days"
                         }
                       }
                     },
