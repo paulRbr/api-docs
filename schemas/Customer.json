@@ -5,7 +5,7 @@
     "customer_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the customer.",
-      "example": "xtaA7d"
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "name_prefix": {
       "type": "string",

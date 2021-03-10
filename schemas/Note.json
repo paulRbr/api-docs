@@ -5,12 +5,12 @@
     "note_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the note.",
-      "example": "xtaA7d"
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "account_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the account.",
-      "example": "xtaA7d"
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "author": {
       "description": "The API User who authored the note",

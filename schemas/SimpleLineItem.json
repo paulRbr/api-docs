@@ -5,12 +5,12 @@
     "account_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the account.",
-      "example": "xtaA7d"
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "line_item_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the line item.",
-      "example": "xtaA7d"
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "effective_at": {
       "type": "string",
@@ -27,7 +27,7 @@
     "product_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the product.",
-      "example": "xtaA7d"
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "line_item_overview": {
       "type": "object",

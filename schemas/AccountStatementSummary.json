@@ -4,14 +4,14 @@
   "required": ["account_id", "statement_id", "effective_as_of_date"],
   "properties": {
     "account_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The Canopy-generated ID for the account",
-      "example": 6
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "statement_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The Canopy-generated ID for the statement",
-      "example": 8
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "effective_as_of_date": {
       "type": "string",
