@@ -5,7 +5,7 @@ export interface AccountStatement {
     /**
      * The Canopy-generated ID for the account
      */
-    account_id:                  number;
+    account_id:                  string;
     account_overview?:           AccountOverview;
     additional_min_pay_details?: AdditionalMinPayDetails;
     balance_summary?:            BalanceSummary;
@@ -22,7 +22,7 @@ export interface AccountStatement {
     /**
      * The Canopy-generated ID for the statement
      */
-    statement_id: number;
+    statement_id: string;
 }
 
 export interface AccountOverview {

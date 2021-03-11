@@ -3,7 +3,7 @@ type Product struct {
 	EffectiveAt              *string                  `json:"effective_at,omitempty"`       // The `Date-Time` as of which this product is effective on the server.
 	ExternalProductID        *string                  `json:"external_product_id,omitempty"`// A unique external ID that may be used interchangeably with the Canopy-generated product ID
 	PostPromotionalPolicies  PostPromotionalPolicies  `json:"post_promotional_policies"`    
-	ProductID                int64                    `json:"product_id"`                   // The Canopy-generated ID for the product.
+	ProductID                string                   `json:"product_id"`                   // The Canopy-generated ID for the product.
 	ProductLifecyclePolicies ProductLifecyclePolicies `json:"product_lifecycle_policies"`   
 	ProductOverview          ProductOverview          `json:"product_overview"`             // A series of static fields about the product.
 	ProductSummary           *ProductSummary          `json:"product_summary,omitempty"`    // Summary of product information

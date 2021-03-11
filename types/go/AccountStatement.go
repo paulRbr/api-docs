@@ -1,6 +1,6 @@
 // Statement for an account for a given billing cycle
 type AccountStatement struct {
-	AccountID               int64                    `json:"account_id"`                          // The Canopy-generated ID for the account
+	AccountID               string                   `json:"account_id"`                          // The Canopy-generated ID for the account
 	AccountOverview         *AccountOverview         `json:"account_overview,omitempty"`          
 	AdditionalMinPayDetails *AdditionalMinPayDetails `json:"additional_min_pay_details,omitempty"`
 	BalanceSummary          *BalanceSummary          `json:"balance_summary,omitempty"`           
@@ -9,7 +9,7 @@ type AccountStatement struct {
 	MinPayDue               *MinPayDue               `json:"min_pay_due,omitempty"`               
 	OpenToBuy               *OpenToBuy               `json:"open_to_buy,omitempty"`               
 	Payoff                  *Payoff                  `json:"payoff,omitempty"`                    
-	StatementID             int64                    `json:"statement_id"`                        // The Canopy-generated ID for the statement
+	StatementID             string                   `json:"statement_id"`                        // The Canopy-generated ID for the statement
 }
 
 type AccountOverview struct {
