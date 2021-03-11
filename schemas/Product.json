@@ -12,7 +12,7 @@
     "product_id": {
       "type": "string",
       "description": "The Canopy-generated ID for the product.",
-      "example": "xfaJYz"
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "created_at": {
       "type": "string",
