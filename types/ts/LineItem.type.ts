@@ -73,14 +73,17 @@ export interface LineItemOverview {
  * the corresponding Status for a line item
  */
 export enum LineItemStatus {
+    Authorized = "AUTHORIZED",
     Invalid = "INVALID",
     Offset = "OFFSET",
     Pending = "PENDING",
+    Posted = "POSTED",
     Reversed = "REVERSED",
     Rolled = "ROLLED",
     SplitInvalid = "SPLIT_INVALID",
     SplitValid = "SPLIT_VALID",
     Valid = "VALID",
+    Void = "VOID",
 }
 
 /**
@@ -96,6 +99,7 @@ export enum LineItemType {
     LateFee = "LATE_FEE",
     Loan = "LOAN",
     MinDue = "MIN_DUE",
+    MonthFee = "MONTH_FEE",
     Payment = "PAYMENT",
     PaymentSplit = "PAYMENT_SPLIT",
     ProductInterest = "PRODUCT_INTEREST",
@@ -103,6 +107,7 @@ export enum LineItemType {
     PurchaseWindowEnd = "PURCHASE_WINDOW_END",
     ReturnCheckFee = "RETURN_CHECK_FEE",
     Statement = "STATEMENT",
+    YearFee = "YEAR_FEE",
 }
 
 export interface LineItemSummary {

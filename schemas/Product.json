@@ -10,9 +10,9 @@
   "additionalProperties": false,
   "properties": {
     "product_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The Canopy-generated ID for the product.",
-      "example": 6
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "created_at": {
       "type": "string",

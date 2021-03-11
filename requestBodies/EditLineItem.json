@@ -1,0 +1,31 @@
+{
+  "description": "Edit a specific line item.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "line_item_status": {
+            "type": "string",
+            "description": "The new status which you would like to set for the line item",
+            "enum": [
+              "ROLLED",
+              "VALID",
+              "INVALID",
+              "OFFSET",
+              "SPLIT_VALID",
+              "SPLIT_INVALID",
+              "PENDING",
+              "REVERSED",
+              "AUTHORIZED",
+              "VOID",
+              "POSTED"
+            ],
+            "example": "VALID",
+            "default": "VALID"
+          }
+        }
+      }
+    }
+  }
+}

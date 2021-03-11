@@ -3,9 +3,9 @@
   "required": ["customer_id"],
   "properties": {
     "customer_id": {
-      "type": "integer",
-      "description": "A Canopy-generated unique ID for the customer",
-      "example": 8
+      "type": "string",
+      "description": "A Canopy-generated ID for the customer.",
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "name_prefix": {
       "type": "string",

@@ -15,7 +15,7 @@ export interface Product {
     /**
      * The Canopy-generated ID for the product.
      */
-    product_id:                 number;
+    product_id:                 string;
     product_lifecycle_policies: ProductLifecyclePolicies;
     /**
      * A series of static fields about the product.

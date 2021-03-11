@@ -21,9 +21,9 @@ export interface Customer {
     address_zip?:      string;
     business_details?: BusinessDetails;
     /**
-     * A Canopy-generated unique ID for the customer
+     * A Canopy-generated ID for the customer.
      */
-    customer_id: number;
+    customer_id: string;
     /**
      * Customer's date of birth in ISO 8601 format
      */

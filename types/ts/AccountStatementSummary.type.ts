@@ -5,7 +5,7 @@ export interface AccountStatementSummary {
     /**
      * The Canopy-generated ID for the account
      */
-    account_id:       number;
+    account_id:       string;
     balance_summary?: BalanceSummary;
     cycle_summary?:   CycleSummary;
     /**
@@ -18,7 +18,7 @@ export interface AccountStatementSummary {
     /**
      * The Canopy-generated ID for the statement
      */
-    statement_id: number;
+    statement_id: string;
 }
 
 export interface BalanceSummary {
