@@ -52,14 +52,17 @@ type MerchantData struct {
 // the corresponding Status for a line item
 type LineItemStatus string
 const (
+	Authorized LineItemStatus = "AUTHORIZED"
 	Invalid LineItemStatus = "INVALID"
 	Offset LineItemStatus = "OFFSET"
 	Pending LineItemStatus = "PENDING"
+	Posted LineItemStatus = "POSTED"
 	Reversed LineItemStatus = "REVERSED"
 	Rolled LineItemStatus = "ROLLED"
 	SplitInvalid LineItemStatus = "SPLIT_INVALID"
 	SplitValid LineItemStatus = "SPLIT_VALID"
 	Valid LineItemStatus = "VALID"
+	Void LineItemStatus = "VOID"
 )
 
 // The Line Item Type. i.e. `CHARGE`, `PAYMENT`.

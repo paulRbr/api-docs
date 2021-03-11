@@ -1,0 +1,10 @@
+{
+  "description": "Line Item Edited",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/SimpleLineItem.json"
+      }
+    }
+  }
+}

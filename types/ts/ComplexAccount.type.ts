@@ -14,6 +14,7 @@ export interface ComplexAccount {
      * The `Date-Time` which the account was created in the API.
      */
     created_at?: string;
+    cycle_type?: CycleType;
     /**
      * The `Date-Time` that this account became/becomes active.
      */
@@ -316,6 +317,13 @@ export interface BusinessDetails {
      * The DBA name of the Business
      */
     doing_business_as?: string;
+}
+
+export interface CycleType {
+    /**
+     * Interval for a first cycle for this account.
+     */
+    first_cycle_interval?: string;
 }
 
 export interface ExternalField {
