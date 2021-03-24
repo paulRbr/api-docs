@@ -322,6 +322,14 @@
           "default": 0
         }
       }
+    },
+    "line_items": {
+      "type": "array",
+      "description": "A snapshot of all line items that occurred during the cycle and were `VALID` at the time of Statement cut.",
+      "maxItems": 1000,
+      "items": {
+        "$ref": "./LineItem.json"
+      }
     }
   }
 }
