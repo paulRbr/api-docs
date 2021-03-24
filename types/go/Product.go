@@ -15,8 +15,8 @@ type PostPromotionalPolicies struct {
 	PostPromoAmLenRangeInclusiveUpper   *int64           `json:"post_promo_am_len_range_inclusive_upper,omitempty"` // Optional upper bound for amortization length in billing cycles for the product.
 	PostPromoAPRRangeInclusiveLower     *float64         `json:"post_promo_apr_range_inclusive_lower,omitempty"`    // Optional lower bound for APR Range for the product (i.e. 2 = 2%).
 	PostPromoAPRRangeInclusiveUpper     *float64         `json:"post_promo_apr_range_inclusive_upper,omitempty"`    // Optional upper bound for APR Range for the product (i.e. 5 = 5%).
-	PostPromoDefaultAmLen               *int64           `json:"post_promo_default_am_len,omitempty"`               // Default duration for the amortization period during post-promotion
 	PostPromoDefaultInterestRatePercent *float64         `json:"post_promo_default_interest_rate_percent,omitempty"`// The rate that serves as the active interest rate for accounts during the post-promotional; period.
+	PostPromoLen                        *int64           `json:"post_promo_len,omitempty"`                          // Default duration for the amortization period during post-promotion
 	PostPromoMinPayType                 *PromoMinPayType `json:"post_promo_min_pay_type,omitempty"`                 // Current due calculation method for the post-promotional period.
 }
 

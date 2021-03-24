@@ -962,7 +962,7 @@
                   "post_promotional_policies": {
                     "type": "object",
                     "properties": {
-                      "post_promo_default_am_len": {
+                      "post_promo_len": {
                         "type": "integer",
                         "description": "Default duration for any amortization period during post-promotion",
                         "example": 48,
@@ -1291,7 +1291,7 @@
                     "post_promotional_policies": {
                       "type": "object",
                       "properties": {
-                        "post_promo_default_am_len": {
+                        "post_promo_len": {
                           "type": "integer",
                           "description": "Default duration for the amortization period during post-promotion",
                           "example": 48,
@@ -1702,7 +1702,7 @@
                       "post_promotional_policies": {
                         "type": "object",
                         "properties": {
-                          "post_promo_default_am_len": {
+                          "post_promo_len": {
                             "type": "integer",
                             "description": "Default duration for the amortization period during post-promotion",
                             "example": 48,
@@ -2194,6 +2194,11 @@
                                             "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                             "example": 6.2,
                                             "default": 0
+                                          },
+                                          "promo_len": {
+                                            "type": "integer",
+                                            "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                            "example": 6
                                           }
                                         }
                                       },
@@ -2218,7 +2223,7 @@
                                             "example": 6.2,
                                             "default": 0
                                           },
-                                          "post_promo_impl_am_len": {
+                                          "post_promo_len": {
                                             "type": "integer",
                                             "description": "If applicable, post-promotional amortization length in cycles.",
                                             "example": 48,
@@ -3056,7 +3061,7 @@
                             "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
                             "example": 6.2
                           },
-                          "post_promo_impl_am_len": {
+                          "post_promo_len": {
                             "type": "integer",
                             "description": "If applicable, post-promotional amortization length in cycles.",
                             "example": 48
@@ -3349,6 +3354,11 @@
                                   "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                   "example": 6.2,
                                   "default": 0
+                                },
+                                "promo_len": {
+                                  "type": "integer",
+                                  "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                  "example": 6
                                 }
                               }
                             },
@@ -3373,7 +3383,7 @@
                                   "example": 6.2,
                                   "default": 0
                                 },
-                                "post_promo_impl_am_len": {
+                                "post_promo_len": {
                                   "type": "integer",
                                   "description": "If applicable, post-promotional amortization length in cycles.",
                                   "example": 48,
@@ -3997,6 +4007,11 @@
                                   "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                   "example": 6.2,
                                   "default": 0
+                                },
+                                "promo_len": {
+                                  "type": "integer",
+                                  "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                  "example": 6
                                 }
                               }
                             },
@@ -4021,7 +4036,7 @@
                                   "example": 6.2,
                                   "default": 0
                                 },
-                                "post_promo_impl_am_len": {
+                                "post_promo_len": {
                                   "type": "integer",
                                   "description": "If applicable, post-promotional amortization length in cycles.",
                                   "example": 48,
@@ -7277,6 +7292,11 @@
                     "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                     "example": 6.2,
                     "default": 0
+                  },
+                  "promo_len": {
+                    "type": "integer",
+                    "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                    "example": 6
                   }
                 }
               },
@@ -7301,7 +7321,7 @@
                     "example": 6.2,
                     "default": 0
                   },
-                  "post_promo_impl_am_len": {
+                  "post_promo_len": {
                     "type": "integer",
                     "description": "If applicable, post-promotional amortization length in cycles.",
                     "example": 48,
@@ -8464,6 +8484,11 @@
                         "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                         "example": 6.2,
                         "default": 0
+                      },
+                      "promo_len": {
+                        "type": "integer",
+                        "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                        "example": 6
                       }
                     }
                   },
@@ -8488,7 +8513,7 @@
                         "example": 6.2,
                         "default": 0
                       },
-                      "post_promo_impl_am_len": {
+                      "post_promo_len": {
                         "type": "integer",
                         "description": "If applicable, post-promotional amortization length in cycles.",
                         "example": 48,
@@ -9281,6 +9306,11 @@
                               "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                               "example": 6.2,
                               "default": 0
+                            },
+                            "promo_len": {
+                              "type": "integer",
+                              "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                              "example": 6
                             }
                           }
                         },
@@ -9305,7 +9335,7 @@
                               "example": 6.2,
                               "default": 0
                             },
-                            "post_promo_impl_am_len": {
+                            "post_promo_len": {
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
@@ -9929,6 +9959,11 @@
                             "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                             "example": 6.2,
                             "default": 0
+                          },
+                          "promo_len": {
+                            "type": "integer",
+                            "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                            "example": 6
                           }
                         }
                       },
@@ -9953,7 +9988,7 @@
                             "example": 6.2,
                             "default": 0
                           },
-                          "post_promo_impl_am_len": {
+                          "post_promo_len": {
                             "type": "integer",
                             "description": "If applicable, post-promotional amortization length in cycles.",
                             "example": 48,
@@ -10576,7 +10611,7 @@
           "post_promotional_policies": {
             "type": "object",
             "properties": {
-              "post_promo_default_am_len": {
+              "post_promo_len": {
                 "type": "integer",
                 "description": "Default duration for the amortization period during post-promotion",
                 "example": 48,
@@ -11580,7 +11615,7 @@
                 "post_promotional_policies": {
                   "type": "object",
                   "properties": {
-                    "post_promo_default_am_len": {
+                    "post_promo_len": {
                       "type": "integer",
                       "description": "Default duration for any amortization period during post-promotion",
                       "example": 48,
@@ -12136,7 +12171,7 @@
                           "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
                           "example": 6.2
                         },
-                        "post_promo_impl_am_len": {
+                        "post_promo_len": {
                           "type": "integer",
                           "description": "If applicable, post-promotional amortization length in cycles.",
                           "example": 48
@@ -13061,7 +13096,7 @@
                 "post_promotional_policies": {
                   "type": "object",
                   "properties": {
-                    "post_promo_default_am_len": {
+                    "post_promo_len": {
                       "type": "integer",
                       "description": "Default duration for the amortization period during post-promotion",
                       "example": 48,
@@ -13409,7 +13444,7 @@
                 "post_promotional_policies": {
                   "type": "object",
                   "properties": {
-                    "post_promo_default_am_len": {
+                    "post_promo_len": {
                       "type": "integer",
                       "description": "Default duration for the amortization period during post-promotion",
                       "example": 48,
@@ -13760,7 +13795,7 @@
                   "post_promotional_policies": {
                     "type": "object",
                     "properties": {
-                      "post_promo_default_am_len": {
+                      "post_promo_len": {
                         "type": "integer",
                         "description": "Default duration for the amortization period during post-promotion",
                         "example": 48,
@@ -14199,6 +14234,11 @@
                                         "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                         "example": 6.2,
                                         "default": 0
+                                      },
+                                      "promo_len": {
+                                        "type": "integer",
+                                        "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                        "example": 6
                                       }
                                     }
                                   },
@@ -14223,7 +14263,7 @@
                                         "example": 6.2,
                                         "default": 0
                                       },
-                                      "post_promo_impl_am_len": {
+                                      "post_promo_len": {
                                         "type": "integer",
                                         "description": "If applicable, post-promotional amortization length in cycles.",
                                         "example": 48,
@@ -15155,6 +15195,11 @@
                               "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                               "example": 6.2,
                               "default": 0
+                            },
+                            "promo_len": {
+                              "type": "integer",
+                              "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                              "example": 6
                             }
                           }
                         },
@@ -15179,7 +15224,7 @@
                               "example": 6.2,
                               "default": 0
                             },
-                            "post_promo_impl_am_len": {
+                            "post_promo_len": {
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
@@ -15771,6 +15816,11 @@
                                 "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                 "example": 6.2,
                                 "default": 0
+                              },
+                              "promo_len": {
+                                "type": "integer",
+                                "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                "example": 6
                               }
                             }
                           },
@@ -15795,7 +15845,7 @@
                                 "example": 6.2,
                                 "default": 0
                               },
-                              "post_promo_impl_am_len": {
+                              "post_promo_len": {
                                 "type": "integer",
                                 "description": "If applicable, post-promotional amortization length in cycles.",
                                 "example": 48,
@@ -16877,6 +16927,11 @@
                               "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                               "example": 6.2,
                               "default": 0
+                            },
+                            "promo_len": {
+                              "type": "integer",
+                              "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                              "example": 6
                             }
                           }
                         },
@@ -16901,7 +16956,7 @@
                               "example": 6.2,
                               "default": 0
                             },
-                            "post_promo_impl_am_len": {
+                            "post_promo_len": {
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
