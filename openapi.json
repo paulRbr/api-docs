@@ -1079,8 +1079,8 @@
     "/organization/subscribe": {
       "put": {
         "tags": ["organization"],
-        "summary": "Subscribe to event triggers from Canopy. For a breakdown of how Canopy will post to your webhook URL upon completion of events, review our [Webhook Events definition](https://www.notion.so/canopy1/External-Webhook-Events-d9e8bee140674b46a8eca6f426be3a86).",
-        "description": "As events occur in Canopy, your external system can be notified of them and handle them.",
+        "summary": "Subscribe to event triggers from Canopy. ",
+        "description": "As events occur in Canopy, your external system can be notified of them and handle them. For a breakdown of how Canopy will post to your webhook URL upon completion of events, review our [Webhook Events definition](https://www.notion.so/canopy1/External-Webhook-Events-d9e8bee140674b46a8eca6f426be3a86).",
         "operationId": "subscribeToEvents",
         "requestBody": {
           "$ref": "#/components/requestBodies/SubscribeToEvents"
