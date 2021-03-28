@@ -1,4 +1,25 @@
 {
+  "test_event": {
+    "{$request.body#/webhook_url}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./../schemas/TestCallback.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Your server returns this code if it accepts the webhook."
+          }
+        }
+      }
+    }
+  },
   "statement_generation": {
     "{$request.body#/webhook_url}": {
       "post": {

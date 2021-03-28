@@ -1,0 +1,9 @@
+{
+  "welcome": "Welcome to Canopy!",
+  "tutorials": "Check out our knowledge base at https://learn.canopyservicing.com",
+  "api_reference": "Check out our API docs at https://docs.canopyservicing.com",
+  "other_events": "See a full list of supported events at our [event definition page](https://www.notion.so/canopy1/External-Webhook-Events-d9e8bee140674b46a8eca6f426be3a86)",
+  "sample_statement": {
+    "$ref": "./AccountStatement"
+  }
+}
