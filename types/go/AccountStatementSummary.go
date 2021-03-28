@@ -1,11 +1,10 @@
 // Statement for an account for a given billing cycle
 type AccountStatementSummary struct {
-	AccountID         string          `json:"account_id"`                 // The Canopy-generated ID for the account
-	BalanceSummary    *BalanceSummary `json:"balance_summary,omitempty"`  
-	CycleSummary      *CycleSummary   `json:"cycle_summary,omitempty"`    
-	EffectiveAsOfDate string          `json:"effective_as_of_date"`       // The `Date-Time` you would like the system to return the data as of. IE tell me what the; account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it; defaults to current time.
-	MinPayDueCents    *MinPayDueCents `json:"min_pay_due_cents,omitempty"`
-	StatementID       string          `json:"statement_id"`               // The Canopy-generated ID for the statement
+	AccountID      string          `json:"account_id"`                 // The Canopy-generated ID for the account
+	BalanceSummary *BalanceSummary `json:"balance_summary,omitempty"`  
+	CycleSummary   *CycleSummary   `json:"cycle_summary,omitempty"`    
+	MinPayDueCents *MinPayDueCents `json:"min_pay_due_cents,omitempty"`
+	StatementID    string          `json:"statement_id"`               // The Canopy-generated ID for the statement
 }
 
 type BalanceSummary struct {

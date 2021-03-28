@@ -5,16 +5,10 @@ export interface AccountStatementSummary {
     /**
      * The Canopy-generated ID for the account
      */
-    account_id:       string;
-    balance_summary?: BalanceSummary;
-    cycle_summary?:   CycleSummary;
-    /**
-     * The `Date-Time` you would like the system to return the data as of. IE tell me what the
-     * account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it
-     * defaults to current time.
-     */
-    effective_as_of_date: string;
-    min_pay_due_cents?:   MinPayDueCents;
+    account_id:         string;
+    balance_summary?:   BalanceSummary;
+    cycle_summary?:     CycleSummary;
+    min_pay_due_cents?: MinPayDueCents;
     /**
      * The Canopy-generated ID for the statement
      */

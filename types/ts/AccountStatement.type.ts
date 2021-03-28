@@ -11,12 +11,6 @@ export interface AccountStatement {
     balance_summary?:            BalanceSummary;
     cycle_summary?:              CycleSummary;
     /**
-     * The `Date-Time` you would like the system to return the data as of. IE tell me what the
-     * account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it
-     * defaults to current time.
-     */
-    effective_as_of_date: string;
-    /**
      * A snapshot of all line items that occurred during the cycle and were `VALID` at the time
      * of Statement cut.
      */

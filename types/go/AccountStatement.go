@@ -5,7 +5,6 @@ type AccountStatement struct {
 	AdditionalMinPayDetails *AdditionalMinPayDetails `json:"additional_min_pay_details,omitempty"`
 	BalanceSummary          *BalanceSummary          `json:"balance_summary,omitempty"`           
 	CycleSummary            *CycleSummary            `json:"cycle_summary,omitempty"`             
-	EffectiveAsOfDate       string                   `json:"effective_as_of_date"`                // The `Date-Time` you would like the system to return the data as of. IE tell me what the; account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it; defaults to current time.
 	LineItems               []LineItem               `json:"line_items,omitempty"`                // A snapshot of all line items that occurred during the cycle and were `VALID` at the time; of Statement cut.
 	MinPayDue               *MinPayDue               `json:"min_pay_due,omitempty"`               
 	OpenToBuy               *OpenToBuy               `json:"open_to_buy,omitempty"`               
