@@ -187,7 +187,7 @@
     "post_promotional_policies": {
       "type": "object",
       "properties": {
-        "post_promo_default_am_len": {
+        "post_promo_len": {
           "type": "integer",
           "description": "Default duration for the amortization period during post-promotion",
           "example": 48,

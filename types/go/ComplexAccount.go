@@ -32,9 +32,9 @@ type AccountProduct struct {
 
 type PostPromoOverview struct {
 	PostPromoExclusiveEnd            *string  `json:"post_promo_exclusive_end,omitempty"`             // If applicable, the start date for a promotional period for the account.
-	PostPromoImplAmLen               *int64   `json:"post_promo_impl_am_len,omitempty"`               // If applicable, post-promotional amortization length in cycles.
 	PostPromoImplInterestRatePercent *float64 `json:"post_promo_impl_interest_rate_percent,omitempty"`// The percentage interest applied to the account during the post-promotional period (i.e.; 6.2%)
 	PostPromoInclusiveStart          *string  `json:"post_promo_inclusive_start,omitempty"`           // If applicable, the start date for a promotional period for the account.
+	PostPromoLen                     *int64   `json:"post_promo_len,omitempty"`                       // If applicable, post-promotional amortization length in cycles.
 }
 
 type ProductDurationInformation struct {
@@ -64,6 +64,7 @@ type PromoOverview struct {
 	PromoExclusiveEnd                 *string  `json:"promo_exclusive_end,omitempty"`                  // If applicable, the start date for a promotional period for the account.
 	PromoImplInterestRatePercent      *float64 `json:"promo_impl_interest_rate_percent,omitempty"`     // The percentage interest applied to the account during the promotional period (i.e. 6.2%)
 	PromoInclusiveStart               *string  `json:"promo_inclusive_start,omitempty"`                // If applicable, the start date for a promotional period for the account.
+	PromoLen                          *int64   `json:"promo_len,omitempty"`                            // Defaults to 0. The number of billing cycles from account origination during which; accounts on this product are on a promotional period.
 	PromoPurchaseWindowExclusiveEnd   *string  `json:"promo_purchase_window_exclusive_end,omitempty"`  // If applicable, the end date for a purchase window for the account
 	PromoPurchaseWindowInclusiveStart *string  `json:"promo_purchase_window_inclusive_start,omitempty"`// If applicable, the start date for a purchase window for the account
 }

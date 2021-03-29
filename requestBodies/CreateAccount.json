@@ -185,7 +185,7 @@
                     "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
                     "example": 6.2
                   },
-                  "post_promo_impl_am_len": {
+                  "post_promo_len": {
                     "type": "integer",
                     "description": "If applicable, post-promotional amortization length in cycles.",
                     "example": 48

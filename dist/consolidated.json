@@ -7,7 +7,7 @@
     "contact": {
       "email": "devs@canopyservicing.com"
     },
-    "version": "1.3"
+    "version": "1.4"
   },
   "x-topics": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "title": "Test it out",
-      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the button below to import our collection of endpoints. Be sure to define the required environment variables.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/cba43b768a8079911aac#?env%5BENV%3A%20Prod%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtdWF0LmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InByb2R1Y3RfaWQiLCJ2YWx1ZSI6IjEiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IjEiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiMSIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXBpX3VzZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IjEiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX1d)"
+      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the button below to import our collection of endpoints. Be sure to define the required environment variables.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BENV%3A%20Prod%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InBsYXkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhY2NvdW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhcGlfdXNlcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==)"
     }
   ],
   "servers": [
@@ -807,12 +807,14 @@
                           "delinquent_on_n_consecutive_late_fees": {
                             "type": "integer",
                             "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                            "default": "1"
+                            "example": 2,
+                            "default": 1
                           },
                           "charge_off_on_n_consecutive_late_fees": {
                             "type": "integer",
                             "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                            "default": "2"
+                            "example": 5,
+                            "default": 2
                           }
                         },
                         "description": "The set of policies governing payment due information for the product."
@@ -960,7 +962,7 @@
                   "post_promotional_policies": {
                     "type": "object",
                     "properties": {
-                      "post_promo_default_am_len": {
+                      "post_promo_len": {
                         "type": "integer",
                         "description": "Default duration for any amortization period during post-promotion",
                         "example": 48,
@@ -1122,12 +1124,14 @@
                             "delinquent_on_n_consecutive_late_fees": {
                               "type": "integer",
                               "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                              "default": "1"
+                              "example": 2,
+                              "default": 1
                             },
                             "charge_off_on_n_consecutive_late_fees": {
                               "type": "integer",
                               "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                              "default": "2"
+                              "example": 5,
+                              "default": 2
                             }
                           },
                           "description": "The set of policies governing payment due information for the product."
@@ -1287,7 +1291,7 @@
                     "post_promotional_policies": {
                       "type": "object",
                       "properties": {
-                        "post_promo_default_am_len": {
+                        "post_promo_len": {
                           "type": "integer",
                           "description": "Default duration for the amortization period during post-promotion",
                           "example": 48,
@@ -1531,12 +1535,14 @@
                               "delinquent_on_n_consecutive_late_fees": {
                                 "type": "integer",
                                 "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                                "default": "1"
+                                "example": 2,
+                                "default": 1
                               },
                               "charge_off_on_n_consecutive_late_fees": {
                                 "type": "integer",
                                 "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                                "default": "2"
+                                "example": 5,
+                                "default": 2
                               }
                             },
                             "description": "The set of policies governing payment due information for the product."
@@ -1696,7 +1702,7 @@
                       "post_promotional_policies": {
                         "type": "object",
                         "properties": {
-                          "post_promo_default_am_len": {
+                          "post_promo_len": {
                             "type": "integer",
                             "description": "Default duration for the amortization period during post-promotion",
                             "example": 48,
@@ -2188,6 +2194,11 @@
                                             "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                             "example": 6.2,
                                             "default": 0
+                                          },
+                                          "promo_len": {
+                                            "type": "integer",
+                                            "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                            "example": 6
                                           }
                                         }
                                       },
@@ -2212,7 +2223,7 @@
                                             "example": 6.2,
                                             "default": 0
                                           },
-                                          "post_promo_impl_am_len": {
+                                          "post_promo_len": {
                                             "type": "integer",
                                             "description": "If applicable, post-promotional amortization length in cycles.",
                                             "example": 48,
@@ -3050,7 +3061,7 @@
                             "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
                             "example": 6.2
                           },
-                          "post_promo_impl_am_len": {
+                          "post_promo_len": {
                             "type": "integer",
                             "description": "If applicable, post-promotional amortization length in cycles.",
                             "example": 48
@@ -3343,6 +3354,11 @@
                                   "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                   "example": 6.2,
                                   "default": 0
+                                },
+                                "promo_len": {
+                                  "type": "integer",
+                                  "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                  "example": 6
                                 }
                               }
                             },
@@ -3367,7 +3383,7 @@
                                   "example": 6.2,
                                   "default": 0
                                 },
-                                "post_promo_impl_am_len": {
+                                "post_promo_len": {
                                   "type": "integer",
                                   "description": "If applicable, post-promotional amortization length in cycles.",
                                   "example": 48,
@@ -3991,6 +4007,11 @@
                                   "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                   "example": 6.2,
                                   "default": 0
+                                },
+                                "promo_len": {
+                                  "type": "integer",
+                                  "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                  "example": 6
                                 }
                               }
                             },
@@ -4015,7 +4036,7 @@
                                   "example": 6.2,
                                   "default": 0
                                 },
-                                "post_promo_impl_am_len": {
+                                "post_promo_len": {
                                   "type": "integer",
                                   "description": "If applicable, post-promotional amortization length in cycles.",
                                   "example": 48,
@@ -6095,8 +6116,7 @@
                     "description": "Statement for an account for a given billing cycle",
                     "required": [
                       "account_id",
-                      "statement_id",
-                      "effective_as_of_date"
+                      "statement_id"
                     ],
                     "properties": {
                       "account_id": {
@@ -6108,12 +6128,6 @@
                         "type": "string",
                         "description": "The Canopy-generated ID for the statement",
                         "example": "31mNprzLd2bKl6koVna68ARM"
-                      },
-                      "effective_as_of_date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                        "example": "2018-07-20T09:10:14+00:00"
                       },
                       "cycle_summary": {
                         "type": "object",
@@ -6235,8 +6249,7 @@
                   "description": "Statement for an account for a given billing cycle",
                   "required": [
                     "account_id",
-                    "statement_id",
-                    "effective_as_of_date"
+                    "statement_id"
                   ],
                   "properties": {
                     "account_id": {
@@ -6248,12 +6261,6 @@
                       "type": "string",
                       "description": "The Canopy-generated ID for the statement",
                       "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "effective_as_of_date": {
-                      "type": "string",
-                      "format": "date-time",
-                      "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                      "example": "2018-07-20T09:10:14+00:00"
                     },
                     "account_overview": {
                       "type": "object",
@@ -6561,6 +6568,210 @@
                           "default": 0
                         }
                       }
+                    },
+                    "line_items": {
+                      "type": "array",
+                      "description": "A snapshot of all line items that occurred during the cycle and were `VALID` at the time of Statement cut.",
+                      "maxItems": 1000,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "account_id",
+                          "line_item_id",
+                          "product_id"
+                        ],
+                        "properties": {
+                          "account_id": {
+                            "type": "integer",
+                            "description": "The account associated with the line item",
+                            "example": 4
+                          },
+                          "line_item_id": {
+                            "type": "integer",
+                            "description": "The ID associated with the line item",
+                            "example": 2
+                          },
+                          "effective_at": {
+                            "type": "string",
+                            "description": "The `Date-Time` that this line item became/becomes active",
+                            "format": "date-time",
+                            "example": "2018-07-20T09:12:30+00:00"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "description": "The `Date-Time` which the line item was created.",
+                            "format": "date-time",
+                            "example": "2018-06-20T09:12:30+00:00"
+                          },
+                          "product_id": {
+                            "type": "integer",
+                            "description": "the Product ID of the account",
+                            "example": 1
+                          },
+                          "line_item_overview": {
+                            "type": "object",
+                            "required": [
+                              "line_item_type"
+                            ],
+                            "properties": {
+                              "line_item_status": {
+                                "type": "string",
+                                "description": "the corresponding Status for a line item",
+                                "enum": [
+                                  "ROLLED",
+                                  "VALID",
+                                  "INVALID",
+                                  "OFFSET",
+                                  "SPLIT_VALID",
+                                  "SPLIT_INVALID",
+                                  "PENDING",
+                                  "REVERSED",
+                                  "AUTHORIZED",
+                                  "VOID",
+                                  "POSTED"
+                                ],
+                                "example": "VALID",
+                                "default": "VALID"
+                              },
+                              "line_item_type": {
+                                "type": "string",
+                                "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                                "enum": [
+                                  "LOAN",
+                                  "CHARGE",
+                                  "DEBIT_OFFSET",
+                                  "INTEREST",
+                                  "DEFERRED_INTEREST",
+                                  "PAYMENT",
+                                  "CREDIT_OFFSET",
+                                  "STATEMENT",
+                                  "MIN_DUE",
+                                  "FEE",
+                                  "PRODUCT_INTEREST",
+                                  "PAYMENT_SPLIT",
+                                  "LATE_FEE",
+                                  "RETURN_CHECK_FEE",
+                                  "PROMO_END",
+                                  "PURCHASE_WINDOW_END",
+                                  "MONTH_FEE",
+                                  "YEAR_FEE"
+                                ],
+                                "example": "CHARGE"
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "A description of this particular line item if any. More common for adjustments.",
+                                "example": "Refund for invalid purchase"
+                              }
+                            }
+                          },
+                          "line_item_summary": {
+                            "type": "object",
+                            "required": [
+                              "original_amount_cents",
+                              "balance_cents",
+                              "principal_cents",
+                              "interest_balance_cents",
+                              "deferred_interest_balance_cents",
+                              "total_interest_paid_to_date_cents"
+                            ],
+                            "properties": {
+                              "original_amount_cents": {
+                                "type": "integer",
+                                "description": "The originating amount of money (in cents) relating to this line item.",
+                                "example": 2484
+                              },
+                              "balance_cents": {
+                                "type": "integer",
+                                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                                "example": 3600
+                              },
+                              "principal_cents": {
+                                "type": "integer",
+                                "description": "The principal balance of the line item.",
+                                "example": 2400
+                              },
+                              "interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current interest balance of the line item.",
+                                "example": 1100
+                              },
+                              "am_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 0
+                              },
+                              "deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "he current deferred interest balance of the line item.",
+                                "example": 200
+                              },
+                              "am_deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 0
+                              },
+                              "total_interest_paid_to_date_cents": {
+                                "type": "integer",
+                                "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                                "example": -16
+                              }
+                            }
+                          },
+                          "merchant_data": {
+                            "type": "object",
+                            "description": "Merchant information if applicable.",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "mcc_code": {
+                                "type": "number"
+                              },
+                              "phone_number": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "issuer_processor_metadata": {
+                            "type": "object",
+                            "properties": {
+                              "privacy": {
+                                "type": "object",
+                                "properties": {
+                                  "last_four": {
+                                    "type": "integer",
+                                    "description": "Last four digits of the card against which the spend was made."
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "external_fields": {
+                            "type": "array",
+                            "maxItems": 1000,
+                            "description": "An array of static references to fields in a third party system.",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "description": "Key - i.e. Name of the External Party",
+                                  "example": "Globex Card Processing Account ID"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "Value - i.e. External Account ID",
+                                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -6737,6 +6948,748 @@
           },
           "404": {
             "description": "Amortization Schedule not found"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
+    "/organization": {
+      "get": {
+        "tags": [
+          "organization"
+        ],
+        "summary": "Get organization configuration",
+        "description": "Get configured details for your organization",
+        "operationId": "getOrganization",
+        "responses": {
+          "200": {
+            "description": "Organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "organization_id",
+                    "created_at",
+                    "organization_overview"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "organization_id": {
+                      "type": "string",
+                      "description": "The Canopy-generated ID for the product.",
+                      "example": "31mNprzLd2bKl6koVna68ARM"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "description": "The `Date-Time` that this product was created on the server.",
+                      "format": "date-time",
+                      "example": "2019-03-20T09:12:28+00:00"
+                    },
+                    "organization_overview": {
+                      "type": "object",
+                      "description": "A series of static fields about the product.",
+                      "required": [
+                        "organization_name"
+                      ],
+                      "properties": {
+                        "organization_name": {
+                          "type": "string",
+                          "description": "Name of Organization, i.e. LeverCard 3000.",
+                          "example": "LeverCard 3000"
+                        },
+                        "webhook_url": {
+                          "type": "string",
+                          "description": "A URL to which events pertaining to your organization get posted",
+                          "example": "https://mycallbackurlhandler.com/canopy"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
+    "/organization/subscribe": {
+      "put": {
+        "tags": [
+          "organization"
+        ],
+        "summary": "Subscribe to event triggers from Canopy. ",
+        "description": "As events occur in Canopy, your external system can be notified of them and handle them. For a breakdown of how Canopy will post to your webhook URL upon completion of events, review our [Webhook Events definition](https://www.notion.so/canopy1/External-Webhook-Events-d9e8bee140674b46a8eca6f426be3a86).",
+        "operationId": "subscribeToEvents",
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "webhook_url"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "webhook_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "example": "https://myserver.com/send/webhook/canopy"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "callbacks": {
+          "statement_generation": {
+            "{$request.body#/webhook_url}": {
+              "post": {
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "description": "Statement for an account for a given billing cycle",
+                        "required": [
+                          "account_id",
+                          "statement_id"
+                        ],
+                        "properties": {
+                          "account_id": {
+                            "type": "string",
+                            "description": "The Canopy-generated ID for the account",
+                            "example": "31mNprzLd2bKl6koVna68ARM"
+                          },
+                          "statement_id": {
+                            "type": "string",
+                            "description": "The Canopy-generated ID for the statement",
+                            "example": "31mNprzLd2bKl6koVna68ARM"
+                          },
+                          "account_overview": {
+                            "type": "object",
+                            "properties": {
+                              "promo_purchase_window_inclusive_start": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
+                                "example": "2015-08-31T10:49:44.461+00:00"
+                              },
+                              "promo_purchase_window_exclusive_end": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
+                                "example": "2015-08-31T10:49:44.461+00:00"
+                              },
+                              "promo_inclusive_start": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "If applicable, the `Date-Time` the promo period for the account starts.",
+                                "example": "2015-08-31T10:49:44.461+00:00"
+                              },
+                              "promo_exclusive_end": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "If applicable, the `Date-Time` the promo period for the account ends.",
+                                "example": "2015-08-31T10:49:44.461+00:00"
+                              },
+                              "account_status": {
+                                "type": "string",
+                                "description": "The Status of the Account. Active upon account creation.",
+                                "example": "suspended",
+                                "default": "active"
+                              },
+                              "account_status_subtype": {
+                                "type": "string",
+                                "description": "The subtype of the Status of the Account. Null upon account creation.",
+                                "example": "suspended-bankruptcy",
+                                "default": ""
+                              }
+                            }
+                          },
+                          "open_to_buy": {
+                            "type": "object",
+                            "properties": {
+                              "credit_limit_cents": {
+                                "type": "integer",
+                                "description": "Total Amount (in cents) that this account can borrow.",
+                                "example": 400000,
+                                "default": 0
+                              },
+                              "total_charges_cents": {
+                                "type": "integer",
+                                "description": "Sum of all charges that occurred on the account since account origination.",
+                                "example": 800000,
+                                "default": 0
+                              },
+                              "available_credit_cents": {
+                                "type": "integer",
+                                "description": "The total available credit balance (in cents) for the account.",
+                                "example": 600000,
+                                "default": 0
+                              },
+                              "open_to_buy_cents": {
+                                "type": "integer",
+                                "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
+                                "example": 600000,
+                                "default": 0
+                              }
+                            }
+                          },
+                          "cycle_summary": {
+                            "type": "object",
+                            "properties": {
+                              "cycle_inclusive_start": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                              },
+                              "cycle_exclusive_end": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                              },
+                              "cycle_charges_cents": {
+                                "type": "integer",
+                                "description": "Sum of all charges that occurred on the account during the billing cycle.",
+                                "example": 700000,
+                                "default": 0
+                              },
+                              "cycle_loans_cents": {
+                                "type": "integer",
+                                "description": "Sum of all loans amounts that were initiated on the account during the billing cycle.",
+                                "example": 700000,
+                                "default": 0
+                              },
+                              "cycle_charge_returns_cents": {
+                                "type": "integer",
+                                "description": "Sum of all returns that occurred on the account during the billing cycle.",
+                                "example": 100000,
+                                "default": 0
+                              },
+                              "cycle_payments_cents": {
+                                "type": "integer",
+                                "description": "Sum of all payments that occurred on the account during the billing cycle.",
+                                "example": 200000,
+                                "default": 0
+                              },
+                              "cycle_payment_reversals_cents": {
+                                "type": "integer",
+                                "description": "Sum of all payment reversal amounts that occurred on the account during the billing cycle.",
+                                "example": 200000,
+                                "default": 0
+                              },
+                              "cycle_debit_adjustments_cents": {
+                                "type": "integer",
+                                "description": "Sum of all debit adjustment amounts that occurred on the account during the billing cycle.",
+                                "example": 40000,
+                                "default": 0
+                              },
+                              "cycle_credit_adjustments_cents": {
+                                "type": "integer",
+                                "description": "Sum of all credit adjustment amounts that occurred on the account during the billing cycle.",
+                                "example": 53000,
+                                "default": 0
+                              },
+                              "cycle_interest_cents": {
+                                "type": "integer",
+                                "description": "Total interest accrued during the billing cycle.",
+                                "example": 110000,
+                                "default": 0
+                              },
+                              "cycle_am_interest_cents": {
+                                "type": "integer",
+                                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 0,
+                                "default": 0
+                              },
+                              "cycle_deferred_interest_cents": {
+                                "type": "integer",
+                                "description": "Total interest accrued during the billing cycle.",
+                                "example": 300000,
+                                "default": 0
+                              },
+                              "cycle_am_deferred_interest_cents": {
+                                "type": "integer",
+                                "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 300000,
+                                "default": 0
+                              },
+                              "cycle_late_fees_cents": {
+                                "type": "integer",
+                                "description": "Total late fees incurred during the billing cycle.",
+                                "example": 300000,
+                                "default": 0
+                              },
+                              "cycle_payment_reversals_fees_cents": {
+                                "type": "integer",
+                                "description": "Total payment reversal fees incurred during the billing cycle.",
+                                "example": 300000,
+                                "default": 0
+                              },
+                              "cycle_waived_deferred_interest_cents": {
+                                "type": "integer",
+                                "description": "Total deferred interest that was forgiven on the account during the billing cycle.",
+                                "example": 40000,
+                                "default": 0
+                              }
+                            }
+                          },
+                          "min_pay_due": {
+                            "type": "object",
+                            "required": [
+                              "min_pay_cents",
+                              "min_pay_due_at"
+                            ],
+                            "properties": {
+                              "min_pay_cents": {
+                                "type": "integer",
+                                "description": "Total amount due for the billing cycle, summing cycle principal, interest, deferred interest, and fees outstanding.",
+                                "example": 160000
+                              },
+                              "min_pay_due_at": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The `Date-Time` the payment for this billing cycle is due.",
+                                "example": "2019-10-18T23:04:48.321+00:00"
+                              }
+                            }
+                          },
+                          "additional_min_pay_details": {
+                            "type": "object",
+                            "required": [
+                              "min_pay_charges_principal_cents",
+                              "min_pay_interest_cents",
+                              "min_pay_deferred_cents",
+                              "min_pay_fees_cents",
+                              "previous_min_pay_cents"
+                            ],
+                            "properties": {
+                              "min_pay_charges_principal_cents": {
+                                "type": "integer",
+                                "description": "Total principal due for the billing cycle.",
+                                "example": 100000
+                              },
+                              "min_pay_interest_cents": {
+                                "type": "integer",
+                                "description": "Total interest due for the billing cycle.",
+                                "example": 30000
+                              },
+                              "min_pay_am_interest_cents": {
+                                "type": "integer",
+                                "description": "Total am interest due for the billing cycle.",
+                                "example": 0
+                              },
+                              "min_pay_deferred_cents": {
+                                "type": "integer",
+                                "description": "Total deferred interest due for the billing cycle.",
+                                "example": 10000
+                              },
+                              "min_pay_am_deferred_interest_cents": {
+                                "type": "integer",
+                                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 200,
+                                "default": 0
+                              },
+                              "min_pay_fees_cents": {
+                                "type": "integer",
+                                "description": "Total fees due for the billing cycle.",
+                                "example": 20000
+                              },
+                              "previous_min_pay_cents": {
+                                "type": "integer",
+                                "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
+                                "example": 400000
+                              }
+                            }
+                          },
+                          "balance_summary": {
+                            "type": "object",
+                            "properties": {
+                              "charges_principal_cents": {
+                                "type": "integer",
+                                "description": "Total principal balance for the account.",
+                                "example": 900000,
+                                "default": 0
+                              },
+                              "loans_principal_cents": {
+                                "type": "integer",
+                                "description": "Total principal balance for loans for the account.",
+                                "example": 900000,
+                                "default": 0
+                              },
+                              "interest_balance_cents": {
+                                "type": "integer",
+                                "description": "Total interest balance for the account.",
+                                "example": 100000,
+                                "default": 0
+                              },
+                              "am_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "Total AM interest balance for the account.",
+                                "example": 100000,
+                                "default": 0
+                              },
+                              "deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "Total deferred interest balance for the account.",
+                                "example": 700000,
+                                "default": 0
+                              },
+                              "am_deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The total deferred interest balance (in cents) associated with the account.",
+                                "example": 40000,
+                                "default": 0
+                              },
+                              "fees_balance_cents": {
+                                "type": "integer",
+                                "description": "Total fee balance for the account.",
+                                "example": 700000,
+                                "default": 0
+                              },
+                              "total_balance_cents": {
+                                "type": "integer",
+                                "description": "The total balance (in cents) associated with the account.",
+                                "example": 400000,
+                                "default": 0
+                              }
+                            }
+                          },
+                          "payoff": {
+                            "type": "object",
+                            "properties": {
+                              "total_payoff_cents": {
+                                "type": "integer",
+                                "description": "The total amount needed to pay off the loan at this exact moment.",
+                                "example": 900000,
+                                "default": 0
+                              },
+                              "expected_remaining_payment_amount_cents": {
+                                "type": "integer",
+                                "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
+                                "example": 1100000,
+                                "default": 0
+                              }
+                            }
+                          },
+                          "line_items": {
+                            "type": "array",
+                            "description": "A snapshot of all line items that occurred during the cycle and were `VALID` at the time of Statement cut.",
+                            "maxItems": 1000,
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "account_id",
+                                "line_item_id",
+                                "product_id"
+                              ],
+                              "properties": {
+                                "account_id": {
+                                  "type": "integer",
+                                  "description": "The account associated with the line item",
+                                  "example": 4
+                                },
+                                "line_item_id": {
+                                  "type": "integer",
+                                  "description": "The ID associated with the line item",
+                                  "example": 2
+                                },
+                                "effective_at": {
+                                  "type": "string",
+                                  "description": "The `Date-Time` that this line item became/becomes active",
+                                  "format": "date-time",
+                                  "example": "2018-07-20T09:12:30+00:00"
+                                },
+                                "created_at": {
+                                  "type": "string",
+                                  "description": "The `Date-Time` which the line item was created.",
+                                  "format": "date-time",
+                                  "example": "2018-06-20T09:12:30+00:00"
+                                },
+                                "product_id": {
+                                  "type": "integer",
+                                  "description": "the Product ID of the account",
+                                  "example": 1
+                                },
+                                "line_item_overview": {
+                                  "type": "object",
+                                  "required": [
+                                    "line_item_type"
+                                  ],
+                                  "properties": {
+                                    "line_item_status": {
+                                      "type": "string",
+                                      "description": "the corresponding Status for a line item",
+                                      "enum": [
+                                        "ROLLED",
+                                        "VALID",
+                                        "INVALID",
+                                        "OFFSET",
+                                        "SPLIT_VALID",
+                                        "SPLIT_INVALID",
+                                        "PENDING",
+                                        "REVERSED",
+                                        "AUTHORIZED",
+                                        "VOID",
+                                        "POSTED"
+                                      ],
+                                      "example": "VALID",
+                                      "default": "VALID"
+                                    },
+                                    "line_item_type": {
+                                      "type": "string",
+                                      "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                                      "enum": [
+                                        "LOAN",
+                                        "CHARGE",
+                                        "DEBIT_OFFSET",
+                                        "INTEREST",
+                                        "DEFERRED_INTEREST",
+                                        "PAYMENT",
+                                        "CREDIT_OFFSET",
+                                        "STATEMENT",
+                                        "MIN_DUE",
+                                        "FEE",
+                                        "PRODUCT_INTEREST",
+                                        "PAYMENT_SPLIT",
+                                        "LATE_FEE",
+                                        "RETURN_CHECK_FEE",
+                                        "PROMO_END",
+                                        "PURCHASE_WINDOW_END",
+                                        "MONTH_FEE",
+                                        "YEAR_FEE"
+                                      ],
+                                      "example": "CHARGE"
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "description": "A description of this particular line item if any. More common for adjustments.",
+                                      "example": "Refund for invalid purchase"
+                                    }
+                                  }
+                                },
+                                "line_item_summary": {
+                                  "type": "object",
+                                  "required": [
+                                    "original_amount_cents",
+                                    "balance_cents",
+                                    "principal_cents",
+                                    "interest_balance_cents",
+                                    "deferred_interest_balance_cents",
+                                    "total_interest_paid_to_date_cents"
+                                  ],
+                                  "properties": {
+                                    "original_amount_cents": {
+                                      "type": "integer",
+                                      "description": "The originating amount of money (in cents) relating to this line item.",
+                                      "example": 2484
+                                    },
+                                    "balance_cents": {
+                                      "type": "integer",
+                                      "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                                      "example": 3600
+                                    },
+                                    "principal_cents": {
+                                      "type": "integer",
+                                      "description": "The principal balance of the line item.",
+                                      "example": 2400
+                                    },
+                                    "interest_balance_cents": {
+                                      "type": "integer",
+                                      "description": "The current interest balance of the line item.",
+                                      "example": 1100
+                                    },
+                                    "am_interest_balance_cents": {
+                                      "type": "integer",
+                                      "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                      "example": 0
+                                    },
+                                    "deferred_interest_balance_cents": {
+                                      "type": "integer",
+                                      "description": "he current deferred interest balance of the line item.",
+                                      "example": 200
+                                    },
+                                    "am_deferred_interest_balance_cents": {
+                                      "type": "integer",
+                                      "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                      "example": 0
+                                    },
+                                    "total_interest_paid_to_date_cents": {
+                                      "type": "integer",
+                                      "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                                      "example": -16
+                                    }
+                                  }
+                                },
+                                "merchant_data": {
+                                  "type": "object",
+                                  "description": "Merchant information if applicable.",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "mcc_code": {
+                                      "type": "number"
+                                    },
+                                    "phone_number": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "issuer_processor_metadata": {
+                                  "type": "object",
+                                  "properties": {
+                                    "privacy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "last_four": {
+                                          "type": "integer",
+                                          "description": "Last four digits of the card against which the spend was made."
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "external_fields": {
+                                  "type": "array",
+                                  "maxItems": 1000,
+                                  "description": "An array of static references to fields in a third party system.",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": "string",
+                                        "description": "Key - i.e. Name of the External Party",
+                                        "example": "Globex Card Processing Account ID"
+                                      },
+                                      "value": {
+                                        "type": "string",
+                                        "description": "Value - i.e. External Account ID",
+                                        "example": "22445702-a389-431f-927d-07b8d0750787"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "200": {
+                    "description": "Your server returns this code if it accepts the webhook."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Webhook created."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
+    "/organization/subscribe/test": {
+      "get": {
+        "tags": [
+          "organization"
+        ],
+        "summary": "Test your webhook URL.",
+        "description": "Test your webhook URL. You will receive a sample `test` event.",
+        "operationId": "subscribeToEventsTest",
+        "callbacks": {
+          "test_event": {
+            "{organization/webhook_url}": {
+              "post": {
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "event": {
+                            "type": "string",
+                            "description": "The type of event in the webhook response",
+                            "example": "test_event"
+                          },
+                          "data": {
+                            "type": "string",
+                            "description": "A Hello World test webhook",
+                            "example": "Hello World"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "200": {
+                    "description": "Your server returns this code if it accepts the webhook."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Event Triggered."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
           },
           "429": {
             "description": "Too many requests."
@@ -7067,6 +8020,11 @@
                     "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                     "example": 6.2,
                     "default": 0
+                  },
+                  "promo_len": {
+                    "type": "integer",
+                    "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                    "example": 6
                   }
                 }
               },
@@ -7091,7 +8049,7 @@
                     "example": 6.2,
                     "default": 0
                   },
-                  "post_promo_impl_am_len": {
+                  "post_promo_len": {
                     "type": "integer",
                     "description": "If applicable, post-promotional amortization length in cycles.",
                     "example": 48,
@@ -7365,8 +8323,7 @@
         "description": "Statement for an account for a given billing cycle",
         "required": [
           "account_id",
-          "statement_id",
-          "effective_as_of_date"
+          "statement_id"
         ],
         "properties": {
           "account_id": {
@@ -7378,12 +8335,6 @@
             "type": "string",
             "description": "The Canopy-generated ID for the statement",
             "example": "31mNprzLd2bKl6koVna68ARM"
-          },
-          "effective_as_of_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "example": "2018-07-20T09:10:14+00:00"
           },
           "account_overview": {
             "type": "object",
@@ -7691,6 +8642,210 @@
                 "default": 0
               }
             }
+          },
+          "line_items": {
+            "type": "array",
+            "description": "A snapshot of all line items that occurred during the cycle and were `VALID` at the time of Statement cut.",
+            "maxItems": 1000,
+            "items": {
+              "type": "object",
+              "required": [
+                "account_id",
+                "line_item_id",
+                "product_id"
+              ],
+              "properties": {
+                "account_id": {
+                  "type": "integer",
+                  "description": "The account associated with the line item",
+                  "example": 4
+                },
+                "line_item_id": {
+                  "type": "integer",
+                  "description": "The ID associated with the line item",
+                  "example": 2
+                },
+                "effective_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` that this line item became/becomes active",
+                  "format": "date-time",
+                  "example": "2018-07-20T09:12:30+00:00"
+                },
+                "created_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` which the line item was created.",
+                  "format": "date-time",
+                  "example": "2018-06-20T09:12:30+00:00"
+                },
+                "product_id": {
+                  "type": "integer",
+                  "description": "the Product ID of the account",
+                  "example": 1
+                },
+                "line_item_overview": {
+                  "type": "object",
+                  "required": [
+                    "line_item_type"
+                  ],
+                  "properties": {
+                    "line_item_status": {
+                      "type": "string",
+                      "description": "the corresponding Status for a line item",
+                      "enum": [
+                        "ROLLED",
+                        "VALID",
+                        "INVALID",
+                        "OFFSET",
+                        "SPLIT_VALID",
+                        "SPLIT_INVALID",
+                        "PENDING",
+                        "REVERSED",
+                        "AUTHORIZED",
+                        "VOID",
+                        "POSTED"
+                      ],
+                      "example": "VALID",
+                      "default": "VALID"
+                    },
+                    "line_item_type": {
+                      "type": "string",
+                      "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                      "enum": [
+                        "LOAN",
+                        "CHARGE",
+                        "DEBIT_OFFSET",
+                        "INTEREST",
+                        "DEFERRED_INTEREST",
+                        "PAYMENT",
+                        "CREDIT_OFFSET",
+                        "STATEMENT",
+                        "MIN_DUE",
+                        "FEE",
+                        "PRODUCT_INTEREST",
+                        "PAYMENT_SPLIT",
+                        "LATE_FEE",
+                        "RETURN_CHECK_FEE",
+                        "PROMO_END",
+                        "PURCHASE_WINDOW_END",
+                        "MONTH_FEE",
+                        "YEAR_FEE"
+                      ],
+                      "example": "CHARGE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "A description of this particular line item if any. More common for adjustments.",
+                      "example": "Refund for invalid purchase"
+                    }
+                  }
+                },
+                "line_item_summary": {
+                  "type": "object",
+                  "required": [
+                    "original_amount_cents",
+                    "balance_cents",
+                    "principal_cents",
+                    "interest_balance_cents",
+                    "deferred_interest_balance_cents",
+                    "total_interest_paid_to_date_cents"
+                  ],
+                  "properties": {
+                    "original_amount_cents": {
+                      "type": "integer",
+                      "description": "The originating amount of money (in cents) relating to this line item.",
+                      "example": 2484
+                    },
+                    "balance_cents": {
+                      "type": "integer",
+                      "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                      "example": 3600
+                    },
+                    "principal_cents": {
+                      "type": "integer",
+                      "description": "The principal balance of the line item.",
+                      "example": 2400
+                    },
+                    "interest_balance_cents": {
+                      "type": "integer",
+                      "description": "The current interest balance of the line item.",
+                      "example": 1100
+                    },
+                    "am_interest_balance_cents": {
+                      "type": "integer",
+                      "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                      "example": 0
+                    },
+                    "deferred_interest_balance_cents": {
+                      "type": "integer",
+                      "description": "he current deferred interest balance of the line item.",
+                      "example": 200
+                    },
+                    "am_deferred_interest_balance_cents": {
+                      "type": "integer",
+                      "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                      "example": 0
+                    },
+                    "total_interest_paid_to_date_cents": {
+                      "type": "integer",
+                      "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                      "example": -16
+                    }
+                  }
+                },
+                "merchant_data": {
+                  "type": "object",
+                  "description": "Merchant information if applicable.",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "mcc_code": {
+                      "type": "number"
+                    },
+                    "phone_number": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "issuer_processor_metadata": {
+                  "type": "object",
+                  "properties": {
+                    "privacy": {
+                      "type": "object",
+                      "properties": {
+                        "last_four": {
+                          "type": "integer",
+                          "description": "Last four digits of the card against which the spend was made."
+                        }
+                      }
+                    }
+                  }
+                },
+                "external_fields": {
+                  "type": "array",
+                  "maxItems": 1000,
+                  "description": "An array of static references to fields in a third party system.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "description": "Key - i.e. Name of the External Party",
+                        "example": "Globex Card Processing Account ID"
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "Value - i.e. External Account ID",
+                        "example": "22445702-a389-431f-927d-07b8d0750787"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -7699,8 +8854,7 @@
         "description": "Statement for an account for a given billing cycle",
         "required": [
           "account_id",
-          "statement_id",
-          "effective_as_of_date"
+          "statement_id"
         ],
         "properties": {
           "account_id": {
@@ -7712,12 +8866,6 @@
             "type": "string",
             "description": "The Canopy-generated ID for the statement",
             "example": "31mNprzLd2bKl6koVna68ARM"
-          },
-          "effective_as_of_date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-            "example": "2018-07-20T09:10:14+00:00"
           },
           "cycle_summary": {
             "type": "object",
@@ -8050,6 +9198,11 @@
                         "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                         "example": 6.2,
                         "default": 0
+                      },
+                      "promo_len": {
+                        "type": "integer",
+                        "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                        "example": 6
                       }
                     }
                   },
@@ -8074,7 +9227,7 @@
                         "example": 6.2,
                         "default": 0
                       },
-                      "post_promo_impl_am_len": {
+                      "post_promo_len": {
                         "type": "integer",
                         "description": "If applicable, post-promotional amortization length in cycles.",
                         "example": 48,
@@ -8867,6 +10020,11 @@
                               "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                               "example": 6.2,
                               "default": 0
+                            },
+                            "promo_len": {
+                              "type": "integer",
+                              "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                              "example": 6
                             }
                           }
                         },
@@ -8891,7 +10049,7 @@
                               "example": 6.2,
                               "default": 0
                             },
-                            "post_promo_impl_am_len": {
+                            "post_promo_len": {
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
@@ -9515,6 +10673,11 @@
                             "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                             "example": 6.2,
                             "default": 0
+                          },
+                          "promo_len": {
+                            "type": "integer",
+                            "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                            "example": 6
                           }
                         }
                       },
@@ -9539,7 +10702,7 @@
                             "example": 6.2,
                             "default": 0
                           },
-                          "post_promo_impl_am_len": {
+                          "post_promo_len": {
                             "type": "integer",
                             "description": "If applicable, post-promotional amortization length in cycles.",
                             "example": 48,
@@ -9995,12 +11158,14 @@
                   "delinquent_on_n_consecutive_late_fees": {
                     "type": "integer",
                     "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                    "default": "1"
+                    "example": 2,
+                    "default": 1
                   },
                   "charge_off_on_n_consecutive_late_fees": {
                     "type": "integer",
                     "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                    "default": "2"
+                    "example": 5,
+                    "default": 2
                   }
                 },
                 "description": "The set of policies governing payment due information for the product."
@@ -10160,7 +11325,7 @@
           "post_promotional_policies": {
             "type": "object",
             "properties": {
-              "post_promo_default_am_len": {
+              "post_promo_len": {
                 "type": "integer",
                 "description": "Default duration for the amortization period during post-promotion",
                 "example": 48,
@@ -10285,12 +11450,14 @@
               "delinquent_on_n_consecutive_late_fees": {
                 "type": "integer",
                 "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                "default": "1"
+                "example": 2,
+                "default": 1
               },
               "charge_off_on_n_consecutive_late_fees": {
                 "type": "integer",
                 "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                "default": "2"
+                "example": 5,
+                "default": 2
               }
             },
             "description": "The set of policies governing payment due information for the product."
@@ -11007,12 +12174,14 @@
                         "delinquent_on_n_consecutive_late_fees": {
                           "type": "integer",
                           "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                          "default": "1"
+                          "example": 2,
+                          "default": 1
                         },
                         "charge_off_on_n_consecutive_late_fees": {
                           "type": "integer",
                           "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                          "default": "2"
+                          "example": 5,
+                          "default": 2
                         }
                       },
                       "description": "The set of policies governing payment due information for the product."
@@ -11160,7 +12329,7 @@
                 "post_promotional_policies": {
                   "type": "object",
                   "properties": {
-                    "post_promo_default_am_len": {
+                    "post_promo_len": {
                       "type": "integer",
                       "description": "Default duration for any amortization period during post-promotion",
                       "example": 48,
@@ -11716,7 +12885,7 @@
                           "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
                           "example": 6.2
                         },
-                        "post_promo_impl_am_len": {
+                        "post_promo_len": {
                           "type": "integer",
                           "description": "If applicable, post-promotional amortization length in cycles.",
                           "example": 48
@@ -12065,6 +13234,28 @@
                   ],
                   "example": "VALID",
                   "default": "VALID"
+                }
+              }
+            }
+          }
+        }
+      },
+      "SubscribeToEvents": {
+        "description": "",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "webhook_url"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "webhook_url": {
+                  "type": "string",
+                  "format": "uri",
+                  "example": "https://myserver.com/send/webhook/canopy"
                 }
               }
             }
@@ -12474,12 +13665,14 @@
                         "delinquent_on_n_consecutive_late_fees": {
                           "type": "integer",
                           "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                          "default": "1"
+                          "example": 2,
+                          "default": 1
                         },
                         "charge_off_on_n_consecutive_late_fees": {
                           "type": "integer",
                           "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                          "default": "2"
+                          "example": 5,
+                          "default": 2
                         }
                       },
                       "description": "The set of policies governing payment due information for the product."
@@ -12639,7 +13832,7 @@
                 "post_promotional_policies": {
                   "type": "object",
                   "properties": {
-                    "post_promo_default_am_len": {
+                    "post_promo_len": {
                       "type": "integer",
                       "description": "Default duration for the amortization period during post-promotion",
                       "example": 48,
@@ -12820,12 +14013,14 @@
                         "delinquent_on_n_consecutive_late_fees": {
                           "type": "integer",
                           "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                          "default": "1"
+                          "example": 2,
+                          "default": 1
                         },
                         "charge_off_on_n_consecutive_late_fees": {
                           "type": "integer",
                           "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                          "default": "2"
+                          "example": 5,
+                          "default": 2
                         }
                       },
                       "description": "The set of policies governing payment due information for the product."
@@ -12985,7 +14180,7 @@
                 "post_promotional_policies": {
                   "type": "object",
                   "properties": {
-                    "post_promo_default_am_len": {
+                    "post_promo_len": {
                       "type": "integer",
                       "description": "Default duration for the amortization period during post-promotion",
                       "example": 48,
@@ -13169,12 +14364,14 @@
                           "delinquent_on_n_consecutive_late_fees": {
                             "type": "integer",
                             "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                            "default": "1"
+                            "example": 2,
+                            "default": 1
                           },
                           "charge_off_on_n_consecutive_late_fees": {
                             "type": "integer",
                             "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                            "default": "2"
+                            "example": 5,
+                            "default": 2
                           }
                         },
                         "description": "The set of policies governing payment due information for the product."
@@ -13334,7 +14531,7 @@
                   "post_promotional_policies": {
                     "type": "object",
                     "properties": {
-                      "post_promo_default_am_len": {
+                      "post_promo_len": {
                         "type": "integer",
                         "description": "Default duration for the amortization period during post-promotion",
                         "example": 48,
@@ -13773,6 +14970,11 @@
                                         "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                         "example": 6.2,
                                         "default": 0
+                                      },
+                                      "promo_len": {
+                                        "type": "integer",
+                                        "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                        "example": 6
                                       }
                                     }
                                   },
@@ -13797,7 +14999,7 @@
                                         "example": 6.2,
                                         "default": 0
                                       },
-                                      "post_promo_impl_am_len": {
+                                      "post_promo_len": {
                                         "type": "integer",
                                         "description": "If applicable, post-promotional amortization length in cycles.",
                                         "example": 48,
@@ -14729,6 +15931,11 @@
                               "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                               "example": 6.2,
                               "default": 0
+                            },
+                            "promo_len": {
+                              "type": "integer",
+                              "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                              "example": 6
                             }
                           }
                         },
@@ -14753,7 +15960,7 @@
                               "example": 6.2,
                               "default": 0
                             },
-                            "post_promo_impl_am_len": {
+                            "post_promo_len": {
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
@@ -15345,6 +16552,11 @@
                                 "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                                 "example": 6.2,
                                 "default": 0
+                              },
+                              "promo_len": {
+                                "type": "integer",
+                                "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                                "example": 6
                               }
                             }
                           },
@@ -15369,7 +16581,7 @@
                                 "example": 6.2,
                                 "default": 0
                               },
-                              "post_promo_impl_am_len": {
+                              "post_promo_len": {
                                 "type": "integer",
                                 "description": "If applicable, post-promotional amortization length in cycles.",
                                 "example": 48,
@@ -16451,6 +17663,11 @@
                               "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
                               "example": 6.2,
                               "default": 0
+                            },
+                            "promo_len": {
+                              "type": "integer",
+                              "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                              "example": 6
                             }
                           }
                         },
@@ -16475,7 +17692,7 @@
                               "example": 6.2,
                               "default": 0
                             },
-                            "post_promo_impl_am_len": {
+                            "post_promo_len": {
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
@@ -16876,8 +18093,7 @@
               "description": "Statement for an account for a given billing cycle",
               "required": [
                 "account_id",
-                "statement_id",
-                "effective_as_of_date"
+                "statement_id"
               ],
               "properties": {
                 "account_id": {
@@ -16889,12 +18105,6 @@
                   "type": "string",
                   "description": "The Canopy-generated ID for the statement",
                   "example": "31mNprzLd2bKl6koVna68ARM"
-                },
-                "effective_as_of_date": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                  "example": "2018-07-20T09:10:14+00:00"
                 },
                 "account_overview": {
                   "type": "object",
@@ -17200,6 +18410,210 @@
                       "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
                       "example": 1100000,
                       "default": 0
+                    }
+                  }
+                },
+                "line_items": {
+                  "type": "array",
+                  "description": "A snapshot of all line items that occurred during the cycle and were `VALID` at the time of Statement cut.",
+                  "maxItems": 1000,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "account_id",
+                      "line_item_id",
+                      "product_id"
+                    ],
+                    "properties": {
+                      "account_id": {
+                        "type": "integer",
+                        "description": "The account associated with the line item",
+                        "example": 4
+                      },
+                      "line_item_id": {
+                        "type": "integer",
+                        "description": "The ID associated with the line item",
+                        "example": 2
+                      },
+                      "effective_at": {
+                        "type": "string",
+                        "description": "The `Date-Time` that this line item became/becomes active",
+                        "format": "date-time",
+                        "example": "2018-07-20T09:12:30+00:00"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "description": "The `Date-Time` which the line item was created.",
+                        "format": "date-time",
+                        "example": "2018-06-20T09:12:30+00:00"
+                      },
+                      "product_id": {
+                        "type": "integer",
+                        "description": "the Product ID of the account",
+                        "example": 1
+                      },
+                      "line_item_overview": {
+                        "type": "object",
+                        "required": [
+                          "line_item_type"
+                        ],
+                        "properties": {
+                          "line_item_status": {
+                            "type": "string",
+                            "description": "the corresponding Status for a line item",
+                            "enum": [
+                              "ROLLED",
+                              "VALID",
+                              "INVALID",
+                              "OFFSET",
+                              "SPLIT_VALID",
+                              "SPLIT_INVALID",
+                              "PENDING",
+                              "REVERSED",
+                              "AUTHORIZED",
+                              "VOID",
+                              "POSTED"
+                            ],
+                            "example": "VALID",
+                            "default": "VALID"
+                          },
+                          "line_item_type": {
+                            "type": "string",
+                            "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                            "enum": [
+                              "LOAN",
+                              "CHARGE",
+                              "DEBIT_OFFSET",
+                              "INTEREST",
+                              "DEFERRED_INTEREST",
+                              "PAYMENT",
+                              "CREDIT_OFFSET",
+                              "STATEMENT",
+                              "MIN_DUE",
+                              "FEE",
+                              "PRODUCT_INTEREST",
+                              "PAYMENT_SPLIT",
+                              "LATE_FEE",
+                              "RETURN_CHECK_FEE",
+                              "PROMO_END",
+                              "PURCHASE_WINDOW_END",
+                              "MONTH_FEE",
+                              "YEAR_FEE"
+                            ],
+                            "example": "CHARGE"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "A description of this particular line item if any. More common for adjustments.",
+                            "example": "Refund for invalid purchase"
+                          }
+                        }
+                      },
+                      "line_item_summary": {
+                        "type": "object",
+                        "required": [
+                          "original_amount_cents",
+                          "balance_cents",
+                          "principal_cents",
+                          "interest_balance_cents",
+                          "deferred_interest_balance_cents",
+                          "total_interest_paid_to_date_cents"
+                        ],
+                        "properties": {
+                          "original_amount_cents": {
+                            "type": "integer",
+                            "description": "The originating amount of money (in cents) relating to this line item.",
+                            "example": 2484
+                          },
+                          "balance_cents": {
+                            "type": "integer",
+                            "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                            "example": 3600
+                          },
+                          "principal_cents": {
+                            "type": "integer",
+                            "description": "The principal balance of the line item.",
+                            "example": 2400
+                          },
+                          "interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current interest balance of the line item.",
+                            "example": 1100
+                          },
+                          "am_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                            "example": 0
+                          },
+                          "deferred_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "he current deferred interest balance of the line item.",
+                            "example": 200
+                          },
+                          "am_deferred_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                            "example": 0
+                          },
+                          "total_interest_paid_to_date_cents": {
+                            "type": "integer",
+                            "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                            "example": -16
+                          }
+                        }
+                      },
+                      "merchant_data": {
+                        "type": "object",
+                        "description": "Merchant information if applicable.",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "mcc_code": {
+                            "type": "number"
+                          },
+                          "phone_number": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "issuer_processor_metadata": {
+                        "type": "object",
+                        "properties": {
+                          "privacy": {
+                            "type": "object",
+                            "properties": {
+                              "last_four": {
+                                "type": "integer",
+                                "description": "Last four digits of the card against which the spend was made."
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "external_fields": {
+                        "type": "array",
+                        "maxItems": 1000,
+                        "description": "An array of static references to fields in a third party system.",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "description": "Key - i.e. Name of the External Party",
+                              "example": "Globex Card Processing Account ID"
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "Value - i.e. External Account ID",
+                              "example": "22445702-a389-431f-927d-07b8d0750787"
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -17899,12 +19313,6 @@
                   "description": "The Canopy-generated ID for the account",
                   "example": 1
                 },
-                "effective_as_of_date": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "The `Date-Time` you would like the system to return the data as of. IE tell me what the account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it defaults to current time.",
-                  "example": "2018-07-20T09:10:14+00:00"
-                },
                 "statements_list": {
                   "type": "array",
                   "maxItems": 1000,
@@ -18002,6 +19410,53 @@
                     "merchant_id": {
                       "type": "string",
                       "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Organization": {
+        "description": "Organization",
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "organization_id",
+                "created_at",
+                "organization_overview"
+              ],
+              "type": "object",
+              "properties": {
+                "organization_id": {
+                  "type": "string",
+                  "description": "The Canopy-generated ID for the product.",
+                  "example": "31mNprzLd2bKl6koVna68ARM"
+                },
+                "created_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` that this product was created on the server.",
+                  "format": "date-time",
+                  "example": "2019-03-20T09:12:28+00:00"
+                },
+                "organization_overview": {
+                  "type": "object",
+                  "description": "A series of static fields about the product.",
+                  "required": [
+                    "organization_name"
+                  ],
+                  "properties": {
+                    "organization_name": {
+                      "type": "string",
+                      "description": "Name of Organization, i.e. LeverCard 3000.",
+                      "example": "LeverCard 3000"
+                    },
+                    "webhook_url": {
+                      "type": "string",
+                      "description": "A URL to which events pertaining to your organization get posted",
+                      "example": "https://mycallbackurlhandler.com/canopy"
                     }
                   }
                 }

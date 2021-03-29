@@ -49,14 +49,14 @@ export interface PostPromotionalPolicies {
      */
     post_promo_apr_range_inclusive_upper?: number;
     /**
-     * Default duration for the amortization period during post-promotion
-     */
-    post_promo_default_am_len?: number;
-    /**
      * The rate that serves as the active interest rate for accounts during the post-promotional
      * period.
      */
     post_promo_default_interest_rate_percent?: number;
+    /**
+     * Default duration for the amortization period during post-promotion
+     */
+    post_promo_len?: number;
     /**
      * Current due calculation method for the post-promotional period.
      */

@@ -144,10 +144,6 @@ export interface PostPromoOverview {
      */
     post_promo_exclusive_end?: string;
     /**
-     * If applicable, post-promotional amortization length in cycles.
-     */
-    post_promo_impl_am_len?: number;
-    /**
      * The percentage interest applied to the account during the post-promotional period (i.e.
      * 6.2%)
      */
@@ -156,6 +152,10 @@ export interface PostPromoOverview {
      * If applicable, the start date for a promotional period for the account.
      */
     post_promo_inclusive_start?: string;
+    /**
+     * If applicable, post-promotional amortization length in cycles.
+     */
+    post_promo_len?: number;
 }
 
 export interface ProductDurationInformation {
@@ -256,6 +256,11 @@ export interface PromoOverview {
      * If applicable, the start date for a promotional period for the account.
      */
     promo_inclusive_start?: string;
+    /**
+     * Defaults to 0. The number of billing cycles from account origination during which
+     * accounts on this product are on a promotional period.
+     */
+    promo_len?: number;
     /**
      * If applicable, the end date for a purchase window for the account
      */

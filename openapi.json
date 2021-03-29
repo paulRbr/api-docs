@@ -7,7 +7,7 @@
     "contact": {
       "email": "devs@canopyservicing.com"
     },
-    "version": "1.3"
+    "version": "1.4"
   },
   "x-topics": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "title": "Test it out",
-      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the button below to import our collection of endpoints. Be sure to define the required environment variables.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/cba43b768a8079911aac#?env%5BENV%3A%20Prod%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtdWF0LmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InByb2R1Y3RfaWQiLCJ2YWx1ZSI6IjEiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IjEiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiMSIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXBpX3VzZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IjEiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX1d)"
+      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the button below to import our collection of endpoints. Be sure to define the required environment variables.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BENV%3A%20Prod%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InBsYXkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhY2NvdW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhcGlfdXNlcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==)"
     }
   ],
   "servers": [
@@ -1048,6 +1048,151 @@
         }
       }
     },
+    "/organization": {
+      "get": {
+        "tags": ["organization"],
+        "summary": "Get organization configuration",
+        "description": "Get configured details for your organization",
+        "operationId": "getOrganization",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Organization"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
+    "/organization/subscribe": {
+      "put": {
+        "tags": ["organization"],
+        "summary": "Subscribe to event triggers from Canopy. ",
+        "description": "As events occur in Canopy, your external system can be notified of them and handle them. For a breakdown of how Canopy will post to your webhook URL upon completion of events, review our [Webhook Events definition](https://www.notion.so/canopy1/External-Webhook-Events-d9e8bee140674b46a8eca6f426be3a86).",
+        "operationId": "subscribeToEvents",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/SubscribeToEvents"
+        },
+        "callbacks": {
+          "statement_generation": {
+            "{$request.body#/webhook_url}": {
+              "post": {
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/AccountStatement"
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "200": {
+                    "description": "Your server returns this code if it accepts the webhook."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Webhook created."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
+    "/organization/subscribe/test": {
+      "get": {
+        "tags": ["organization"],
+        "summary": "Test your webhook URL.",
+        "description": "Test your webhook URL. You will receive a sample `test` event.",
+        "operationId": "subscribeToEventsTest",
+        "callbacks": {
+          "test_event": {
+            "{organization/webhook_url}": {
+              "post": {
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "event": {
+                            "type": "string",
+                            "description": "The type of event in the webhook response",
+                            "example": "test_event"
+                          },
+                          "data": {
+                            "type": "string",
+                            "description": "A Hello World test webhook",
+                            "example": "Hello World"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "200": {
+                    "description": "Your server returns this code if it accepts the webhook."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Event Triggered."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
     "/organization/payment_processors": {
       "put": {
         "tags": ["organization"],
@@ -1198,6 +1343,9 @@
       },
       "EditLineItem": {
         "$ref": "./requestBodies/EditLineItem.json"
+      },
+      "SubscribeToEvents": {
+        "$ref": "./requestBodies/SubscribeToEvents.json"
       }
     },
     "responses": {
@@ -1290,6 +1438,9 @@
       },
       "ConfigurePaymentProcessors": {
         "$ref": "./responses/ConfigurePaymentProcessors.json"
+      },
+      "Organization": {
+        "$ref": "./responses/Organization.json"
       },
       "EditLineItem": {
         "$ref": "./responses/EditLineItem.json"
