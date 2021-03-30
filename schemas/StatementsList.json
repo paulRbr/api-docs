@@ -3,9 +3,9 @@
   "description": "Statements for the account.",
   "properties": {
     "account_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The Canopy-generated ID for the account",
-      "example": 1
+      "example": "31mNprzLd2bKl6koVna68ARM"
     },
     "statements_list": {
       "type": "array",
@@ -15,9 +15,9 @@
         "type": "object",
         "properties": {
           "statement_id": {
-            "type": "integer",
+            "type": "string",
             "description": "A Canopy-generated ID for the statement",
-            "example": 1
+            "example": "31mNprzLd2bKl6koVna68ARM"
           },
           "available_credit_balance": {
             "type": "number",
