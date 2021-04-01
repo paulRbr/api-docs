@@ -863,8 +863,9 @@
                           },
                           "product_time_zone": {
                             "type": "string",
-                            "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                            "example": "America/Chicago"
+                            "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                            "example": "America/Chicago",
+                            "default": "America/New_York"
                           }
                         },
                         "description": "The set of policies governing the billing cycle for the product. "
@@ -1180,8 +1181,9 @@
                             },
                             "product_time_zone": {
                               "type": "string",
-                              "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                              "example": "America/Chicago"
+                              "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                              "example": "America/Chicago",
+                              "default": "America/New_York"
                             }
                           },
                           "description": "The set of policies governing the billing cycle for the product. "
@@ -1591,8 +1593,9 @@
                               },
                               "product_time_zone": {
                                 "type": "string",
-                                "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                                "example": "America/Chicago"
+                                "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                                "example": "America/Chicago",
+                                "default": "America/New_York"
                               }
                             },
                             "description": "The set of policies governing the billing cycle for the product. "
@@ -11215,8 +11218,9 @@
                   },
                   "product_time_zone": {
                     "type": "string",
-                    "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                    "example": "America/Chicago"
+                    "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                    "example": "America/Chicago",
+                    "default": "America/New_York"
                   }
                 },
                 "description": "The set of policies governing the billing cycle for the product. "
@@ -11507,8 +11511,9 @@
               },
               "product_time_zone": {
                 "type": "string",
-                "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                "example": "America/Chicago"
+                "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                "example": "America/Chicago",
+                "default": "America/New_York"
               }
             },
             "description": "The set of policies governing the billing cycle for the product. "
@@ -12231,8 +12236,9 @@
                         },
                         "product_time_zone": {
                           "type": "string",
-                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                          "example": "America/Chicago"
+                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                          "example": "America/Chicago",
+                          "default": "America/New_York"
                         }
                       },
                       "description": "The set of policies governing the billing cycle for the product. "
@@ -13722,8 +13728,9 @@
                         },
                         "product_time_zone": {
                           "type": "string",
-                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                          "example": "America/Chicago"
+                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                          "example": "America/Chicago",
+                          "default": "America/New_York"
                         }
                       },
                       "description": "The set of policies governing the billing cycle for the product. "
@@ -14070,8 +14077,9 @@
                         },
                         "product_time_zone": {
                           "type": "string",
-                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                          "example": "America/Chicago"
+                          "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                          "example": "America/Chicago",
+                          "default": "America/New_York"
                         }
                       },
                       "description": "The set of policies governing the billing cycle for the product. "
@@ -14421,8 +14429,9 @@
                           },
                           "product_time_zone": {
                             "type": "string",
-                            "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                            "example": "America/Chicago"
+                            "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                            "example": "America/Chicago",
+                            "default": "America/New_York"
                           }
                         },
                         "description": "The set of policies governing the billing cycle for the product. "
@@ -19312,7 +19321,7 @@
                 "account_id": {
                   "type": "string",
                   "description": "The Canopy-generated ID for the account",
-                  "example": 1
+                  "example": "31mNprzLd2bKl6koVna68ARM"
                 },
                 "statements_list": {
                   "type": "array",
@@ -19324,7 +19333,7 @@
                       "statement_id": {
                         "type": "string",
                         "description": "A Canopy-generated ID for the statement",
-                        "example": 1
+                        "example": "31mNprzLd2bKl6koVna68ARM"
                       },
                       "available_credit_balance": {
                         "type": "number",
