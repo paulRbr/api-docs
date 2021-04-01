@@ -4836,6 +4836,7 @@
                               "PENDING",
                               "REVERSED",
                               "AUTHORIZED",
+                              "DECLINED",
                               "VOID",
                               "POSTED"
                             ],
@@ -5099,6 +5100,7 @@
                               "PENDING",
                               "REVERSED",
                               "AUTHORIZED",
+                              "DECLINED",
                               "VOID",
                               "POSTED"
                             ],
@@ -5292,6 +5294,7 @@
                       "PENDING",
                       "REVERSED",
                       "AUTHORIZED",
+                      "DECLINED",
                       "VOID",
                       "POSTED"
                     ],
@@ -5365,6 +5368,7 @@
                             "PENDING",
                             "REVERSED",
                             "AUTHORIZED",
+                            "DECLINED",
                             "VOID",
                             "POSTED"
                           ],
@@ -5538,6 +5542,7 @@
                       "PENDING",
                       "REVERSED",
                       "AUTHORIZED",
+                      "DECLINED",
                       "VOID",
                       "POSTED"
                     ],
@@ -5678,6 +5683,7 @@
                             "PENDING",
                             "REVERSED",
                             "AUTHORIZED",
+                            "DECLINED",
                             "VOID",
                             "POSTED"
                           ],
@@ -5936,6 +5942,7 @@
                             "PENDING",
                             "REVERSED",
                             "AUTHORIZED",
+                            "DECLINED",
                             "VOID",
                             "POSTED"
                           ],
@@ -6631,6 +6638,7 @@
                                   "PENDING",
                                   "REVERSED",
                                   "AUTHORIZED",
+                                  "DECLINED",
                                   "VOID",
                                   "POSTED"
                                 ],
@@ -7457,6 +7465,7 @@
                                         "PENDING",
                                         "REVERSED",
                                         "AUTHORIZED",
+                                        "DECLINED",
                                         "VOID",
                                         "POSTED"
                                       ],
@@ -8705,6 +8714,7 @@
                         "PENDING",
                         "REVERSED",
                         "AUTHORIZED",
+                        "DECLINED",
                         "VOID",
                         "POSTED"
                       ],
@@ -11667,6 +11677,7 @@
                   "PENDING",
                   "REVERSED",
                   "AUTHORIZED",
+                  "DECLINED",
                   "VOID",
                   "POSTED"
                 ],
@@ -11869,6 +11880,7 @@
                   "PENDING",
                   "REVERSED",
                   "AUTHORIZED",
+                  "DECLINED",
                   "VOID",
                   "POSTED"
                 ],
@@ -13068,6 +13080,7 @@
                     "PENDING",
                     "REVERSED",
                     "AUTHORIZED",
+                    "DECLINED",
                     "VOID",
                     "POSTED"
                   ],
@@ -13236,6 +13249,7 @@
                     "PENDING",
                     "REVERSED",
                     "AUTHORIZED",
+                    "DECLINED",
                     "VOID",
                     "POSTED"
                   ],
@@ -17207,6 +17221,7 @@
                         "PENDING",
                         "REVERSED",
                         "AUTHORIZED",
+                        "DECLINED",
                         "VOID",
                         "POSTED"
                       ],
@@ -17375,6 +17390,7 @@
                         "PENDING",
                         "REVERSED",
                         "AUTHORIZED",
+                        "DECLINED",
                         "VOID",
                         "POSTED"
                       ],
@@ -18481,6 +18497,7 @@
                               "PENDING",
                               "REVERSED",
                               "AUTHORIZED",
+                              "DECLINED",
                               "VOID",
                               "POSTED"
                             ],
@@ -18742,6 +18759,7 @@
                         "PENDING",
                         "REVERSED",
                         "AUTHORIZED",
+                        "DECLINED",
                         "VOID",
                         "POSTED"
                       ],
@@ -18951,6 +18969,7 @@
                           "PENDING",
                           "REVERSED",
                           "AUTHORIZED",
+                          "DECLINED",
                           "VOID",
                           "POSTED"
                         ],
@@ -19161,6 +19180,7 @@
                           "PENDING",
                           "REVERSED",
                           "AUTHORIZED",
+                          "DECLINED",
                           "VOID",
                           "POSTED"
                         ],
@@ -19536,6 +19556,7 @@
                         "PENDING",
                         "REVERSED",
                         "AUTHORIZED",
+                        "DECLINED",
                         "VOID",
                         "POSTED"
                       ],

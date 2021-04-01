@@ -46,6 +46,7 @@ type MerchantData struct {
 type LineItemStatus string
 const (
 	Authorized LineItemStatus = "AUTHORIZED"
+	Declined LineItemStatus = "DECLINED"
 	Invalid LineItemStatus = "INVALID"
 	Offset LineItemStatus = "OFFSET"
 	Pending LineItemStatus = "PENDING"
