@@ -25,6 +25,10 @@
     {
       "title": "Test it out",
       "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the button below to import our collection of endpoints. Be sure to define the required environment variables.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BENV%3A%20Prod%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InBsYXkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhY2NvdW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhcGlfdXNlcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==)"
+    },
+    {
+      "title": "Pagination",
+      "content": "Canopy uses a two-factor basis to drive the order of responses in `GET` requests with an array of results. They are first ordered by `effective_at` by when the entity is effective in the system, and second by an internal index to make sure the order is always universal. From the caller's perspective, if both of these attributes are not provided, we'll assume you're requesting the very first page of responses. In subsequent requests, to provide an `id` and an `effective_at` that helps us determine the appropriate starting point for the next wave of paginated responses, you can simply grab these values from the `paging` key in the response body from your previous request. If you're aiming to provide your users with a link to the previous page, set the direction as `ending_before` and use the `id` and `effective_at` from the `ending_before` section of the `paging` section of the response body. If going to the next page, do the same for the `starting_after` section of the `paging` section of the response body."
     }
   ],
   "servers": [
@@ -310,23 +314,9 @@
         "operationId": "getProducts",
         "parameters": [
           {
-            "name": "offset",
-            "in": "query",
-            "description": "The zero-indexed starting point for paginated product requests sorted by reverse product created date.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 10,
-              "example": 10
-            }
-          },
-          {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of products to be returned. Defaults to 100.",
+            "description": "The maximum number of products to be returned. Defaults to 10.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -334,7 +324,45 @@
               "type": "integer",
               "minimum": 0,
               "maximum": 100,
-              "example": 50
+              "example": 10
+            }
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "description": "Use `starting_after` for the next page of results. Use `ending_before` for the previous page of results.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "enum": ["starting_after", "ending_before"],
+              "example": "starting_after"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "effective_at",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2016-11-27T13:19:56+00:00"
             }
           }
         ],
