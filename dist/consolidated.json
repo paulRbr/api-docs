@@ -895,6 +895,18 @@
                             "description": "The default maximum principal credit (in cents) available for a customer account. For risk-based-pricing, this default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product in the `Create Account` call. Credit limits for an account can also be updated post-account creation.",
                             "example": 600000,
                             "default": 0
+                          },
+                          "default_late_fee_cents": {
+                            "type": "integer",
+                            "description": "The default late fee for accounts enrolled in this product. This will be used if no late fee is provided at account creation.",
+                            "example": 3000,
+                            "default": 0
+                          },
+                          "default_payment_reversal_fee_cents": {
+                            "type": "integer",
+                            "description": "The default payment reversa fee for accounts enrolled in this product. This will be used if no late fee is provided at account creation.",
+                            "example": 3000,
+                            "default": 0
                           }
                         }
                       }
@@ -12279,6 +12291,18 @@
                           "type": "integer",
                           "description": "The default maximum principal credit (in cents) available for a customer account. For risk-based-pricing, this default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product in the `Create Account` call. Credit limits for an account can also be updated post-account creation.",
                           "example": 600000,
+                          "default": 0
+                        },
+                        "default_late_fee_cents": {
+                          "type": "integer",
+                          "description": "The default late fee for accounts enrolled in this product. This will be used if no late fee is provided at account creation.",
+                          "example": 3000,
+                          "default": 0
+                        },
+                        "default_payment_reversal_fee_cents": {
+                          "type": "integer",
+                          "description": "The default payment reversa fee for accounts enrolled in this product. This will be used if no late fee is provided at account creation.",
+                          "example": 3000,
                           "default": 0
                         }
                       }
