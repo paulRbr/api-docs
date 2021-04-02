@@ -3,7 +3,11 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/Products.json"
+        "type": "array",
+        "maxItems": 1000,
+        "items": {
+          "$ref": "./../schemas/Product.json"
+        }
       }
     }
   }
