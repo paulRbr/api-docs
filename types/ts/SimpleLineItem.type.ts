@@ -74,6 +74,7 @@ export interface LineItemOverview {
  */
 export enum LineItemStatus {
     Authorized = "AUTHORIZED",
+    Declined = "DECLINED",
     Invalid = "INVALID",
     Offset = "OFFSET",
     Pending = "PENDING",

@@ -3,12 +3,12 @@
   "required": ["account_id", "line_item_id", "product_id"],
   "properties": {
     "account_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The account associated with the line item",
       "example": 4
     },
     "line_item_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The ID associated with the line item",
       "example": 2
     },
@@ -46,6 +46,7 @@
             "PENDING",
             "REVERSED",
             "AUTHORIZED",
+            "DECLINED",
             "VOID",
             "POSTED"
           ],

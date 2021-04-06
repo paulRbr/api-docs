@@ -21,6 +21,7 @@
               "PENDING",
               "REVERSED",
               "AUTHORIZED",
+              "DECLINED",
               "VOID",
               "POSTED"
             ],

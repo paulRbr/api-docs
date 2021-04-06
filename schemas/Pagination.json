@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "description": "Pagination Information.",
+  "properties": {
+    "starting_after": {
+      "type": "object",
+      "description": "Use this to drive your next request if you want the next page of results",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "This, combined with the effective_at, determines the starting point in the db responses for your next request",
+          "example": "31mNprzLd2bKl6koVna68ARM"
+        },
+        "effective_at": {
+          "type": "string",
+          "description": "This, combined with the effective_at, determines the starting point in the db responses for your next request",
+          "example": "2016-11-27T13:19:56+00:00"
+        }
+      }
+    },
+    "ending_before": {
+      "type": "object",
+      "description": "Use this to drive your next request if you want the previous page of results",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "This, combined with the effective_at, determines the starting point in the db responses for your next request",
+          "example": "31mNprzLd2bKl6koVna68ARM"
+        },
+        "effective_at": {
+          "type": "string",
+          "description": "This, combined with the effective_at, determines the starting point in the db responses for your next request",
+          "example": "2016-11-27T13:19:56+00:00"
+        }
+      }
+    },
+    "has_more": {
+      "type": "boolean",
+      "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
+      "example": false
+    }
+  }
+}

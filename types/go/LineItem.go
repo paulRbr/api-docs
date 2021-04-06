@@ -1,10 +1,10 @@
 type LineItem struct {
-	AccountID               int64                    `json:"account_id"`                         // The account associated with the line item
+	AccountID               string                   `json:"account_id"`                         // The account associated with the line item
 	CreatedAt               *string                  `json:"created_at,omitempty"`               // The `Date-Time` which the line item was created.
 	EffectiveAt             *string                  `json:"effective_at,omitempty"`             // The `Date-Time` that this line item became/becomes active
 	ExternalFields          []ExternalField          `json:"external_fields,omitempty"`          // An array of static references to fields in a third party system.
 	IssuerProcessorMetadata *IssuerProcessorMetadata `json:"issuer_processor_metadata,omitempty"`
-	LineItemID              int64                    `json:"line_item_id"`                       // The ID associated with the line item
+	LineItemID              string                   `json:"line_item_id"`                       // The ID associated with the line item
 	LineItemOverview        *LineItemOverview        `json:"line_item_overview,omitempty"`       
 	LineItemSummary         *LineItemSummary         `json:"line_item_summary,omitempty"`        
 	MerchantData            *MerchantData            `json:"merchant_data,omitempty"`            // Merchant information if applicable.
@@ -53,6 +53,7 @@ type MerchantData struct {
 type LineItemStatus string
 const (
 	Authorized LineItemStatus = "AUTHORIZED"
+	Declined LineItemStatus = "DECLINED"
 	Invalid LineItemStatus = "INVALID"
 	Offset LineItemStatus = "OFFSET"
 	Pending LineItemStatus = "PENDING"

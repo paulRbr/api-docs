@@ -196,7 +196,7 @@ export interface LineItem {
     /**
      * The account associated with the line item
      */
-    account_id: number;
+    account_id: string;
     /**
      * The `Date-Time` which the line item was created.
      */
@@ -213,7 +213,7 @@ export interface LineItem {
     /**
      * The ID associated with the line item
      */
-    line_item_id:        number;
+    line_item_id:        string;
     line_item_overview?: LineItemOverview;
     line_item_summary?:  LineItemSummary;
     /**
@@ -268,6 +268,7 @@ export interface LineItemOverview {
  */
 export enum LineItemStatus {
     Authorized = "AUTHORIZED",
+    Declined = "DECLINED",
     Invalid = "INVALID",
     Offset = "OFFSET",
     Pending = "PENDING",

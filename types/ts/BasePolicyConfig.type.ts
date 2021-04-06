@@ -55,7 +55,8 @@ export interface BillingCyclePolicies {
      * Timezone denoted as an Olson-style timezone defining the timezone for the product. All
      * times in any response data for accounts using this product will be denominated in this
      * timezone. Shifts due to daylight savings will be accounted for where relevant, and all
-     * output timestamps will be denoted as UTC offsets normalized based on this value.
+     * output timestamps will be denoted as UTC offsets normalized based on this value. Defaults
+     * to America/New_York if not provided.
      */
     product_time_zone?: string;
 }
