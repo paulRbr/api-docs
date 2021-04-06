@@ -5,18 +5,18 @@
     "description": "**API Overview** \n Canopy allows you to easily manage credit, installment, or other more complex lending programs from a servicing and compliance perspective - whether newly launched or migrated from existing systems. Using Canopy, you can track balances and transactions for each customer of your product, both in real-time and historically. You can see how various policy and product changes would impact your customers, and readily generate compliance reports and minimize your risk with all real-time information always on hand. \n \n Canopy additionally surfaces information around all of your lending activity through its intuitive UI which provides a customer support interface as well as at-a-glance data needed for compliance and insights. \n \n Simply configure your product’s policies through our Create Product API endpoint, and then you can immediately begin adding customer accounts and relying on Canopy for accurate servicing information.",
     "termsOfService": "https://canopyservicing.com/terms/",
     "contact": {
-      "email": "devs@canopyservicing.com"
+      "email": "support@canopyservicing.com"
     },
     "version": "1.4"
   },
   "x-topics": [
     {
       "title": "Getting Started",
-      "content": "*Get started in four easy steps.* \n \n 1) Review the [Authentication](https://docs.canopyservicing.com/#topic-authentication) section to connect and experiment with our Sandbox environment. \n \n 2) [Contact us](mailto:support@canopyservicing.com?subject=API%20Access%20Request) to request Production API Keys and learn more about our business. \n \n 3) Configure policies \n &nbsp; &nbsp; &nbsp; a) For most uses, we recommend using the [Policy Management Dashboard](https://admin.canopyservicing.com) \n &nbsp; &nbsp; &nbsp; b) If you will be configuring many credit products programmatically or require niche configurations, you can also configure products in Canopy directly through our Policy Management API. \n \n 4) Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
+      "content": "*Get started in three easy steps.* \n \n 1) Review the [Authentication](https://learn.canopyservicing.com/dev-setup) tutorial to connect and experiment with our Sandbox environment. \n \n 2) Create your own credentials in our [public sandbox](https://play.canopyservicing.com/register). \n \n 3) Follow the onboarding steps once you've logged into the public sandbox. \n \n Once your product is configured and launched in Canopy, you have access to the full power of the Servicing API! You can take advantage of sample workflows provided by our team, or construct your own using this API documentation."
     },
     {
       "title": "Authentication",
-      "content": "To create your organization within Canopy, [contact our team](mailto:support@canopyservicing.com?subject=API%20Access%20Request). Once created, review our API Users routes to handle all subsequent authentication-related activities, including inviting your team members to join your organization."
+      "content": "To create your organization within Canopy, register for our [public sandbox](https://play.canopyservicing.com/register). You can find a full guide to authenticating in Canopy in our [developer onboarding tutorial](https://learn.canopyservicing.com/dev-setup)."
     },
     {
       "title": "Troubleshooting",
@@ -24,7 +24,7 @@
     },
     {
       "title": "Test it out",
-      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the button below to import our collection of endpoints. Be sure to define the required environment variables.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BENV%3A%20Prod%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InBsYXkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhY2NvdW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhcGlfdXNlcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==)"
+      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the buttons below to import our collection, which points to the environment you want to build against and already has our API endpoints configured. Be sure to define the required environment variables. We recommend starting with our public sandbox. Once you've explored our public sandbox and formulated your business model, you can test in our protected UAT environment. \n\n**Public Sandbox:** [![Public Sandbox](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/63584501410577ccab6b#?env%5BPUBLIC%3A%20PLAY%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InByb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXV0aFRva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImN1cnJlbnRfdGltZXN0YW1wIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6IlBob25lX251bWJlciIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJTU04iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6bnVsbCwiZW5hYmxlZCI6dHJ1ZX1d) \n \n **Protected UAT:** [![Protected UAT](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/63584501410577ccab6b#?env%5BPROTECTED%3A%20UAT%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InVhdC1hcGkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhY2NvdW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VycmVudF90aW1lc3RhbXAiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiUGhvbmVfbnVtYmVyIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6IlNTTiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJldmVudF9pZCIsInZhbHVlIjpudWxsLCJlbmFibGVkIjp0cnVlfV0=)"
     },
     {
       "title": "Pagination",
@@ -33,8 +33,16 @@
   ],
   "servers": [
     {
-      "url": "https://sandbox.canopyservicing.com",
-      "description": "Sandbox"
+      "url": "https://sandbox-api.canopyservicing.com",
+      "description": "Public Sandbox"
+    },
+    {
+      "url": "https://uat-api.canopyservicing.com",
+      "description": "Protected UAT Sandbox"
+    },
+    {
+      "url": "https://api.canopyservicing.com",
+      "description": "Production"
     }
   ],
   "security": [
