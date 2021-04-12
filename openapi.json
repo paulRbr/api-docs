@@ -28,7 +28,7 @@
     },
     {
       "title": "Pagination",
-      "content": "Canopy uses a two-factor basis to drive the order of responses in `GET` requests with an array of results. They are first ordered by `effective_at` by when the entity is effective in the system, and second by an internal index to make sure the order is always universal. From the caller's perspective, if both of these attributes are not provided, we'll assume you're requesting the very first page of responses. In subsequent requests, to provide an `id` and an `effective_at` that helps us determine the appropriate starting point for the next wave of paginated responses, you can simply grab these values from the `paging` key in the response body from your previous request. If you're aiming to provide your users with a link to the previous page, set the direction as `ending_before` and use the `id` and `effective_at` from the `ending_before` section of the `paging` section of the response body. If going to the next page, do the same for the `starting_after` section of the `paging` section of the response body."
+      "content": "Canopy uses a two-factor basis to drive the order of responses in `GET` requests with an array of results. They are first ordered by `effective_at` by when the entity is effective in the system, and second by an internal index to make sure the order is always universal. From the caller's perspective, you can let Canopy know where to start its pagination response by providing a `starting_after` or `ending_before` string value. If neither a `starting_after` nor `ending_before` value is provided, we'll assume you're requesting the very first page of responses. In subsequent requests, you can simply grab these values from the `paging` key in the response body from your previous request. If you're aiming to provide your users with a link to the previous page, use the `ending_before` query parameter in your next request. If going to the next page, use the `starting_after` value instead."
     }
   ],
   "servers": [
@@ -336,22 +336,9 @@
             }
           },
           {
-            "name": "direction",
+            "name": "starting_after",
             "in": "query",
-            "description": "Use `starting_after` for the next page of results. Use `ending_before` for the previous page of results.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "enum": ["starting_after", "ending_before"],
-              "example": "starting_after"
-            }
-          },
-          {
-            "name": "id",
-            "in": "query",
-            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used.",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
             "required": false,
             "style": "form",
             "explode": true,
@@ -361,16 +348,15 @@
             }
           },
           {
-            "name": "effective_at",
+            "name": "ending_before",
             "in": "query",
-            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used.",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
             "required": false,
             "style": "form",
             "explode": true,
             "schema": {
               "type": "string",
-              "format": "date-time",
-              "example": "2016-11-27T13:19:56+00:00"
+              "example": "31mNprzLd2bKl6koVna68ARM"
             }
           }
         ],
@@ -404,27 +390,41 @@
         "operationId": "getCustomersAccounts",
         "parameters": [
           {
-            "name": "offset",
+            "name": "limit",
             "in": "query",
-            "description": "The zero-indexed starting point for paginated customer account requests sorted by account created date.",
+            "description": "The maximum number of customer accounts to be returned. Defaults to 30.",
             "required": false,
             "style": "form",
             "explode": true,
             "schema": {
               "type": "integer",
-              "example": 110
+              "minimum": 0,
+              "maximum": 100,
+              "example": 30
             }
           },
           {
-            "name": "limit",
+            "name": "starting_after",
             "in": "query",
-            "description": "The maximum number of customer accounts to be returned. Defaults to 100.",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
             "required": false,
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "integer",
-              "example": 50
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
             }
           }
         ],
