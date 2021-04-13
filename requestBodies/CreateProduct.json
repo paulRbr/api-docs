@@ -207,6 +207,40 @@
                 "default": 0
               }
             }
+          },
+          "product_event_subscriptions": {
+            "type": "object",
+            "properties": {
+              "event_types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "STATEMENTS",
+                    "CHARGES",
+                    "PAYMENTS",
+                    "ACCOUNT_CREATION",
+                    "ACCOUNT_STATUS_CHANGE",
+                    "PAYMENT_DUE"
+                  ],
+                  "description": "These are the product-level events to which accounts enrolled in this product will be subscribed."
+                }
+              },
+              "payment_due_event_config": {
+                "type": "object",
+                "properties": {
+                  "days_before_due": {
+                    "type": "array",
+                    "description": "Describes the days before the payment is due that this account is notified. Values must be passed in ascending order. For example [0, 1, 2] will result in events emmitted the day of, one day before, and two days before payments are due for each account enrolled in the product.",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 365
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

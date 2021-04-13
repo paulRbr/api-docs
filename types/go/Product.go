@@ -1,13 +1,14 @@
 type Product struct {
-	CreatedAt                *string                  `json:"created_at,omitempty"`         // The `Date-Time` that this product was created on the server.
-	EffectiveAt              *string                  `json:"effective_at,omitempty"`       // The `Date-Time` as of which this product is effective on the server.
-	ExternalProductID        *string                  `json:"external_product_id,omitempty"`// A unique external ID that may be used interchangeably with the Canopy-generated product ID
-	PostPromotionalPolicies  PostPromotionalPolicies  `json:"post_promotional_policies"`    
-	ProductID                string                   `json:"product_id"`                   // The Canopy-generated ID for the product.
-	ProductLifecyclePolicies ProductLifecyclePolicies `json:"product_lifecycle_policies"`   
-	ProductOverview          ProductOverview          `json:"product_overview"`             // A series of static fields about the product.
-	ProductSummary           *ProductSummary          `json:"product_summary,omitempty"`    // Summary of product information
-	PromotionalPolicies      PromotionalPolicies      `json:"promotional_policies"`         // If applicable, a promotional configuration for the product.
+	CreatedAt                 *string                    `json:"created_at,omitempty"`                 // The `Date-Time` that this product was created on the server.
+	EffectiveAt               *string                    `json:"effective_at,omitempty"`               // The `Date-Time` as of which this product is effective on the server.
+	ExternalProductID         *string                    `json:"external_product_id,omitempty"`        // A unique external ID that may be used interchangeably with the Canopy-generated product ID
+	PostPromotionalPolicies   PostPromotionalPolicies    `json:"post_promotional_policies"`            
+	ProductEventSubscriptions *ProductEventSubscriptions `json:"product_event_subscriptions,omitempty"`
+	ProductID                 string                     `json:"product_id"`                           // The Canopy-generated ID for the product.
+	ProductLifecyclePolicies  ProductLifecyclePolicies   `json:"product_lifecycle_policies"`           
+	ProductOverview           ProductOverview            `json:"product_overview"`                     // A series of static fields about the product.
+	ProductSummary            *ProductSummary            `json:"product_summary,omitempty"`            // Summary of product information
+	PromotionalPolicies       PromotionalPolicies        `json:"promotional_policies"`                 // If applicable, a promotional configuration for the product.
 }
 
 type PostPromotionalPolicies struct {
@@ -18,6 +19,19 @@ type PostPromotionalPolicies struct {
 	PostPromoDefaultInterestRatePercent *float64         `json:"post_promo_default_interest_rate_percent,omitempty"`// The rate that serves as the active interest rate for accounts during the post-promotional; period.
 	PostPromoLen                        *int64           `json:"post_promo_len,omitempty"`                          // Default duration for the amortization period during post-promotion
 	PostPromoMinPayType                 *PromoMinPayType `json:"post_promo_min_pay_type,omitempty"`                 // Current due calculation method for the post-promotional period.
+}
+
+type ProductEventSubscriptions struct {
+	EventTypes            []EventType            `json:"event_types,omitempty"`             
+	PaymentDueEventConfig *PaymentDueEventConfig `json:"payment_due_event_config,omitempty"`// Describes the days before the payment is due that this account is notified. Values must; be passed in ascending order. For example [0, 1, 2] will result in events emmitted the; day of, one day before, and two days before payments are due for each account enrolled in; the product.
+}
+
+// Describes the days before the payment is due that this account is notified. Values must
+// be passed in ascending order. For example [0, 1, 2] will result in events emmitted the
+// day of, one day before, and two days before payments are due for each account enrolled in
+// the product.
+type PaymentDueEventConfig struct {
+	DaysBeforeDue []int64 `json:"days_before_due,omitempty"`
 }
 
 type ProductLifecyclePolicies struct {
@@ -104,6 +118,18 @@ const (
 	None PromoMinPayType = "NONE"
 	PercentInterest PromoMinPayType = "PERCENT_INTEREST"
 	PercentPrincipal PromoMinPayType = "PERCENT_PRINCIPAL"
+)
+
+// These are the product-level events to which accounts enrolled in this product will be
+// subscribed.
+type EventType string
+const (
+	AccountCreation EventType = "ACCOUNT_CREATION"
+	AccountStatusChange EventType = "ACCOUNT_STATUS_CHANGE"
+	Charges EventType = "CHARGES"
+	PaymentDue EventType = "PAYMENT_DUE"
+	Payments EventType = "PAYMENTS"
+	Statements EventType = "STATEMENTS"
 )
 
 // The Type of Product

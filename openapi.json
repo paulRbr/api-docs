@@ -90,6 +90,10 @@
     {
       "name": "integrations",
       "description": "Configure third-party integrations with Canopy."
+    },
+    {
+      "name": "organization",
+      "description": "Manage your organization in Canopy."
     }
   ],
   "paths": {

@@ -10,8 +10,9 @@ export interface Product {
     /**
      * A unique external ID that may be used interchangeably with the Canopy-generated product ID
      */
-    external_product_id?:      string;
-    post_promotional_policies: PostPromotionalPolicies;
+    external_product_id?:         string;
+    post_promotional_policies:    PostPromotionalPolicies;
+    product_event_subscriptions?: ProductEventSubscriptions;
     /**
      * The Canopy-generated ID for the product.
      */
@@ -73,6 +74,40 @@ export enum PromoMinPayType {
     None = "NONE",
     PercentInterest = "PERCENT_INTEREST",
     PercentPrincipal = "PERCENT_PRINCIPAL",
+}
+
+export interface ProductEventSubscriptions {
+    event_types?: EventType[];
+    /**
+     * Describes the days before the payment is due that this account is notified. Values must
+     * be passed in ascending order. For example [0, 1, 2] will result in events emmitted the
+     * day of, one day before, and two days before payments are due for each account enrolled in
+     * the product.
+     */
+    payment_due_event_config?: PaymentDueEventConfig;
+}
+
+/**
+ * These are the product-level events to which accounts enrolled in this product will be
+ * subscribed.
+ */
+export enum EventType {
+    AccountCreation = "ACCOUNT_CREATION",
+    AccountStatusChange = "ACCOUNT_STATUS_CHANGE",
+    Charges = "CHARGES",
+    PaymentDue = "PAYMENT_DUE",
+    Payments = "PAYMENTS",
+    Statements = "STATEMENTS",
+}
+
+/**
+ * Describes the days before the payment is due that this account is notified. Values must
+ * be passed in ascending order. For example [0, 1, 2] will result in events emmitted the
+ * day of, one day before, and two days before payments are due for each account enrolled in
+ * the product.
+ */
+export interface PaymentDueEventConfig {
+    days_before_due?: number[];
 }
 
 export interface ProductLifecyclePolicies {
