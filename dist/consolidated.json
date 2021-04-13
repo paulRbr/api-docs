@@ -82,6 +82,14 @@
     {
       "name": "amortization_schedule",
       "description": "Get Amortization information for installment loans."
+    },
+    {
+      "name": "event_subscriptions",
+      "description": "Subscribe to events via webhooks from Canopy."
+    },
+    {
+      "name": "integrations",
+      "description": "Configure third-party integrations with Canopy."
     }
   ],
   "paths": {
@@ -7146,7 +7154,7 @@
     "/organization/subscribe": {
       "put": {
         "tags": [
-          "organization"
+          "event_subscriptions"
         ],
         "summary": "Subscribe to event triggers from Canopy. ",
         "description": "As events occur in Canopy, your external system can be notified of them and handle them. For a breakdown of how Canopy will post to your webhook URL upon completion of events, review our [Webhook Events definition](https://www.notion.so/canopy1/External-Webhook-Events-d9e8bee140674b46a8eca6f426be3a86).",
@@ -7815,7 +7823,7 @@
     "/organization/payment_processors": {
       "put": {
         "tags": [
-          "organization"
+          "integrations"
         ],
         "summary": "Configure payment processor information for your organization",
         "description": "",
