@@ -9,7 +9,6 @@
       "items": {
         "$ref": "./Product.json"
       }
-    },
-    "paging": { "$ref": "./Pagination.json" }
+    }
   }
 }
