@@ -1825,27 +1825,6 @@
                           }
                         }
                       }
-                    },
-                    "paging": {
-                      "type": "object",
-                      "description": "Pagination Information.",
-                      "properties": {
-                        "starting_after": {
-                          "type": "string",
-                          "description": "Use this to drive your next request if you want the next page of results",
-                          "example": "31mNprzLd2bKl6koVna68ARM"
-                        },
-                        "ending_before": {
-                          "type": "string",
-                          "description": "Use this to drive your next request if you want the previous page of results",
-                          "example": "31mNprzLd2bKl6koVna68ARM"
-                        },
-                        "has_more": {
-                          "type": "boolean",
-                          "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
-                          "example": false
-                        }
-                      }
                     }
                   }
                 }
@@ -1931,7 +1910,7 @@
                   "properties": {
                     "results": {
                       "type": "array",
-                      "maxItems": 100,
+                      "maxItems": 1000,
                       "description": "An array of information for all customer-account correspondences within the requested range.",
                       "items": {
                         "allOf": [
@@ -14752,27 +14731,6 @@
                       }
                     }
                   }
-                },
-                "paging": {
-                  "type": "object",
-                  "description": "Pagination Information.",
-                  "properties": {
-                    "starting_after": {
-                      "type": "string",
-                      "description": "Use this to drive your next request if you want the next page of results",
-                      "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "ending_before": {
-                      "type": "string",
-                      "description": "Use this to drive your next request if you want the previous page of results",
-                      "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "has_more": {
-                      "type": "boolean",
-                      "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
-                      "example": false
-                    }
-                  }
                 }
               }
             }
@@ -14791,7 +14749,7 @@
               "properties": {
                 "results": {
                   "type": "array",
-                  "maxItems": 100,
+                  "maxItems": 1000,
                   "description": "An array of information for all customer-account correspondences within the requested range.",
                   "items": {
                     "allOf": [
