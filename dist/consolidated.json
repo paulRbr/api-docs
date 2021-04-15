@@ -4969,7 +4969,9 @@
                                   "PROMO_END",
                                   "PURCHASE_WINDOW_END",
                                   "MONTH_FEE",
-                                  "YEAR_FEE"
+                                  "YEAR_FEE",
+                                  "ORIG_FEE",
+                                  "FEE_SURCHARGE"
                                 ],
                                 "example": "CHARGE"
                               },
@@ -5256,7 +5258,9 @@
                               "PROMO_END",
                               "PURCHASE_WINDOW_END",
                               "MONTH_FEE",
-                              "YEAR_FEE"
+                              "YEAR_FEE",
+                              "ORIG_FEE",
+                              "FEE_SURCHARGE"
                             ],
                             "example": "CHARGE"
                           },
@@ -5523,7 +5527,9 @@
                             "PROMO_END",
                             "PURCHASE_WINDOW_END",
                             "MONTH_FEE",
-                            "YEAR_FEE"
+                            "YEAR_FEE",
+                            "ORIG_FEE",
+                            "FEE_SURCHARGE"
                           ],
                           "example": "CHARGE"
                         },
@@ -5838,7 +5844,9 @@
                             "PROMO_END",
                             "PURCHASE_WINDOW_END",
                             "MONTH_FEE",
-                            "YEAR_FEE"
+                            "YEAR_FEE",
+                            "ORIG_FEE",
+                            "FEE_SURCHARGE"
                           ],
                           "example": "CHARGE"
                         },
@@ -6097,7 +6105,9 @@
                             "PROMO_END",
                             "PURCHASE_WINDOW_END",
                             "MONTH_FEE",
-                            "YEAR_FEE"
+                            "YEAR_FEE",
+                            "ORIG_FEE",
+                            "FEE_SURCHARGE"
                           ],
                           "example": "CHARGE"
                         },
@@ -6794,7 +6804,9 @@
                                   "PROMO_END",
                                   "PURCHASE_WINDOW_END",
                                   "MONTH_FEE",
-                                  "YEAR_FEE"
+                                  "YEAR_FEE",
+                                  "ORIG_FEE",
+                                  "FEE_SURCHARGE"
                                 ],
                                 "example": "CHARGE"
                               },
@@ -7621,7 +7633,9 @@
                                         "PROMO_END",
                                         "PURCHASE_WINDOW_END",
                                         "MONTH_FEE",
-                                        "YEAR_FEE"
+                                        "YEAR_FEE",
+                                        "ORIG_FEE",
+                                        "FEE_SURCHARGE"
                                       ],
                                       "example": "CHARGE"
                                     },
@@ -8870,7 +8884,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -11833,7 +11849,9 @@
                   "PROMO_END",
                   "PURCHASE_WINDOW_END",
                   "MONTH_FEE",
-                  "YEAR_FEE"
+                  "YEAR_FEE",
+                  "ORIG_FEE",
+                  "FEE_SURCHARGE"
                 ],
                 "example": "CHARGE"
               },
@@ -12035,7 +12053,9 @@
                   "PROMO_END",
                   "PURCHASE_WINDOW_END",
                   "MONTH_FEE",
-                  "YEAR_FEE"
+                  "YEAR_FEE",
+                  "ORIG_FEE",
+                  "FEE_SURCHARGE"
                 ],
                 "example": "CHARGE"
               },
@@ -17418,7 +17438,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -17587,7 +17609,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -18695,7 +18719,9 @@
                               "PROMO_END",
                               "PURCHASE_WINDOW_END",
                               "MONTH_FEE",
-                              "YEAR_FEE"
+                              "YEAR_FEE",
+                              "ORIG_FEE",
+                              "FEE_SURCHARGE"
                             ],
                             "example": "CHARGE"
                           },
@@ -18957,7 +18983,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -19167,7 +19195,9 @@
                           "PROMO_END",
                           "PURCHASE_WINDOW_END",
                           "MONTH_FEE",
-                          "YEAR_FEE"
+                          "YEAR_FEE",
+                          "ORIG_FEE",
+                          "FEE_SURCHARGE"
                         ],
                         "example": "CHARGE"
                       },
@@ -19385,7 +19415,9 @@
                               "PROMO_END",
                               "PURCHASE_WINDOW_END",
                               "MONTH_FEE",
-                              "YEAR_FEE"
+                              "YEAR_FEE",
+                              "ORIG_FEE",
+                              "FEE_SURCHARGE"
                             ],
                             "example": "CHARGE"
                           },
@@ -19783,7 +19815,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
