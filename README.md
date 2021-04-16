@@ -15,7 +15,7 @@ We use the v3.0.3 version of the [OpenAPI spec](https://github.com/OAI/OpenAPI-S
    You can run either of those individually by referring to `scripts` in `package.json`.
 5. Optional: install [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode.
 
-## Structure of the live documentation
+## Live documentation structure
 
 The `openapi.json` file is the entrypoint to the modular spec that we use for development.
 
