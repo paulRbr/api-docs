@@ -677,18 +677,6 @@
             }
           },
           {
-            "name": "offset",
-            "in": "query",
-            "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "example": 20
-            }
-          },
-          {
             "name": "limit",
             "in": "query",
             "description": "The maximum number of line items to be returned. Defaults to 100.",
@@ -698,6 +686,30 @@
             "schema": {
               "type": "integer",
               "example": 50
+            }
+          },
+          {
+            "name": "starting_after",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
             }
           }
         ],
@@ -749,6 +761,42 @@
             "required": true,
             "style": "simple",
             "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of line items to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 50
+            }
+          },
+          {
+            "name": "starting_after",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
             "schema": {
               "type": "string",
               "example": "31mNprzLd2bKl6koVna68ARM"
