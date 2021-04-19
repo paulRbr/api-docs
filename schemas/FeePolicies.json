@@ -29,7 +29,8 @@
           "surcharge_end_exclusive_cents": {
             "type": "integer",
             "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
-            "example": 0
+            "example": 0,
+            "default": 99999999999999999999
           },
           "percent_surcharge": {
             "type": "number",
