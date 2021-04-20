@@ -4,7 +4,7 @@
   "properties": {
     "results": {
       "type": "array",
-      "maxItems": 100,
+      "maxItems": 1000,
       "description": "An array of information for all customer-account correspondences within the requested range.",
       "items": {
         "$ref": "./CustomerAccount.json"

@@ -24,7 +24,7 @@
     },
     {
       "title": "Test it out",
-      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the buttons below to import our collection, which points to the environment you want to build against and already has our API endpoints configured. Be sure to define the required environment variables. \n \n If you'd just like to get set up with Canopy and send some requests with pre-populated sample data, we recommend using our Quickstart collection. \n \n When you'd like to start applying some business logic and try formulating what your actual implementation looks like, we recommend starting with our public sandbox. \n \n Once you've explored our public sandbox and formulated your business model, you can test in our protected UAT environment. \n \n**Quickstart:** [![Quickstart](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5c939be57d1af0629496#?env%5BPLAY%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImN1cnJlbnRfdGltZXN0YW1wIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiUGhvbmVfbnVtYmVyIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiU1NOIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6bnVsbCwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifV0=) \n\n**Public Sandbox:** [![Public Sandbox](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20Sandbox%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InByb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXBpX3VzZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXV0aFRva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV4dGVybmFsX3Byb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==) \n \n**Protected UAT:** [![Protected UAT](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20UAT%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InVhdC1hcGkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In1d) \n \n**Production:** [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Production%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6ImFwaS5jYW5vcHlzZXJ2aWNpbmcuY29tIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoibGluZV9pdGVtX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImN1c3RvbWVyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV2ZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfV0=)"
+      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the buttons below to import our collection, which points to the environment you want to build against and already has our API endpoints configured. Be sure to define the required environment variables. \n \n If you'd just like to get set up with Canopy and send some requests with pre-populated sample data, we recommend using our Quickstart collection. \n \n When you'd like to start applying some business logic and try formulating what your actual implementation looks like, we recommend starting with our public sandbox. \n \n Once you've explored our public sandbox and formulated your business model, you can test in our protected UAT environment. \n \n**Quickstart:** [![Quickstart](https://run.pstmn.io/button.svg)](https:/carpp.getpostman.com/run-collection/5c939be57d1af0629496#?env%5BPLAY%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImN1cnJlbnRfdGltZXN0YW1wIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiUGhvbmVfbnVtYmVyIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiU1NOIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6bnVsbCwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifV0=) \n\n**Public Sandbox:** [![Public Sandbox](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20Sandbox%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InByb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXBpX3VzZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXV0aFRva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV4dGVybmFsX3Byb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==) \n \n**Protected UAT:** [![Protected UAT](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20UAT%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InVhdC1hcGkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In1d) \n \n**Production:** [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Production%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6ImFwaS5jYW5vcHlzZXJ2aWNpbmcuY29tIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoibGluZV9pdGVtX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImN1c3RvbWVyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV2ZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfV0=)"
     },
     {
       "title": "Pagination",
@@ -1043,6 +1043,17 @@
                         "default": 0
                       }
                     }
+                  },
+                  "admin": {
+                    "type": "object",
+                    "properties": {
+                      "migration_mode": {
+                        "type": "boolean",
+                        "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                        "example": true,
+                        "default": false
+                      }
+                    }
                   }
                 }
               }
@@ -1063,7 +1074,7 @@
                     "post_promotional_policies"
                   ],
                   "type": "object",
-                  "additionalProperties": false,
+                  "additionalProperties": true,
                   "properties": {
                     "product_id": {
                       "type": "string",
@@ -1393,6 +1404,17 @@
                           }
                         }
                       }
+                    },
+                    "admin": {
+                      "type": "object",
+                      "properties": {
+                        "migration_mode": {
+                          "type": "boolean",
+                          "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                          "example": true,
+                          "default": false
+                        }
+                      }
                     }
                   }
                 }
@@ -1492,7 +1514,7 @@
                           "post_promotional_policies"
                         ],
                         "type": "object",
-                        "additionalProperties": false,
+                        "additionalProperties": true,
                         "properties": {
                           "product_id": {
                             "type": "string",
@@ -1822,28 +1844,18 @@
                                 }
                               }
                             }
+                          },
+                          "admin": {
+                            "type": "object",
+                            "properties": {
+                              "migration_mode": {
+                                "type": "boolean",
+                                "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                                "example": true,
+                                "default": false
+                              }
+                            }
                           }
-                        }
-                      }
-                    },
-                    "paging": {
-                      "type": "object",
-                      "description": "Pagination Information.",
-                      "properties": {
-                        "starting_after": {
-                          "type": "string",
-                          "description": "Use this to drive your next request if you want the next page of results",
-                          "example": "31mNprzLd2bKl6koVna68ARM"
-                        },
-                        "ending_before": {
-                          "type": "string",
-                          "description": "Use this to drive your next request if you want the previous page of results",
-                          "example": "31mNprzLd2bKl6koVna68ARM"
-                        },
-                        "has_more": {
-                          "type": "boolean",
-                          "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
-                          "example": false
                         }
                       }
                     }
@@ -1860,6 +1872,74 @@
           },
           "404": {
             "description": "Unable to get products"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
+    "/products/{product_id}/migration_mode": {
+      "put": {
+        "security": [
+          {
+            "oAuth2": []
+          }
+        ],
+        "tags": [
+          "data_migrations"
+        ],
+        "summary": "Create a new product",
+        "operationId": "createProduct",
+        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by sending an excel file detailing your preferred configurations to the [Canopy team](mailto:support@canopyservicing.com?subject=API%20Access%20Request); however, you can also configure and manage products programmatically using this API documentation. \n \n Request body for creating a new product.",
+        "requestBody": {
+          "description": "Update admin panel for a product.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "migration_mode": {
+                    "type": "boolean",
+                    "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                    "example": true,
+                    "default": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Migration Mode updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "description"
+                  ],
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
           },
           "429": {
             "description": "Too many requests."
@@ -1931,7 +2011,7 @@
                   "properties": {
                     "results": {
                       "type": "array",
-                      "maxItems": 100,
+                      "maxItems": 1000,
                       "description": "An array of information for all customer-account correspondences within the requested range.",
                       "items": {
                         "allOf": [
@@ -4857,18 +4937,6 @@
             }
           },
           {
-            "name": "offset",
-            "in": "query",
-            "description": "The zero-indexed starting point for paginated line item requests sorted by line item effective date.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "example": 20
-            }
-          },
-          {
             "name": "limit",
             "in": "query",
             "description": "The maximum number of line items to be returned. Defaults to 100.",
@@ -4879,6 +4947,30 @@
               "type": "integer",
               "example": 50
             }
+          },
+          {
+            "name": "starting_after",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
           }
         ],
         "responses": {
@@ -4887,204 +4979,236 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "maxItems": 1000,
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "account_id",
-                      "line_item_id",
-                      "product_id"
-                    ],
-                    "properties": {
-                      "account_id": {
-                        "type": "string",
-                        "description": "The account associated with the line item",
-                        "example": 4
-                      },
-                      "line_item_id": {
-                        "type": "string",
-                        "description": "The ID associated with the line item",
-                        "example": 2
-                      },
-                      "effective_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` that this line item became/becomes active",
-                        "format": "date-time",
-                        "example": "2018-07-20T09:12:30+00:00"
-                      },
-                      "created_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` which the line item was created.",
-                        "format": "date-time",
-                        "example": "2018-06-20T09:12:30+00:00"
-                      },
-                      "product_id": {
-                        "type": "integer",
-                        "description": "the Product ID of the account",
-                        "example": 1
-                      },
-                      "line_item_overview": {
+                  "type": "object",
+                  "required": [
+                    "results"
+                  ],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "An array of information for all line items within the requested range.",
+                      "maxItems": 1000,
+                      "items": {
                         "type": "object",
                         "required": [
-                          "line_item_type"
+                          "account_id",
+                          "line_item_id",
+                          "product_id"
                         ],
                         "properties": {
-                          "line_item_status": {
+                          "account_id": {
                             "type": "string",
-                            "description": "the corresponding Status for a line item",
-                            "enum": [
-                              "ROLLED",
-                              "VALID",
-                              "INVALID",
-                              "OFFSET",
-                              "SPLIT_VALID",
-                              "SPLIT_INVALID",
-                              "PENDING",
-                              "REVERSED",
-                              "AUTHORIZED",
-                              "DECLINED",
-                              "VOID",
-                              "POSTED"
+                            "description": "The account associated with the line item",
+                            "example": 4
+                          },
+                          "line_item_id": {
+                            "type": "string",
+                            "description": "The ID associated with the line item",
+                            "example": 2
+                          },
+                          "effective_at": {
+                            "type": "string",
+                            "description": "The `Date-Time` that this line item became/becomes active",
+                            "format": "date-time",
+                            "example": "2018-07-20T09:12:30+00:00"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "description": "The `Date-Time` which the line item was created.",
+                            "format": "date-time",
+                            "example": "2018-06-20T09:12:30+00:00"
+                          },
+                          "product_id": {
+                            "type": "integer",
+                            "description": "the Product ID of the account",
+                            "example": 1
+                          },
+                          "line_item_overview": {
+                            "type": "object",
+                            "required": [
+                              "line_item_type"
                             ],
-                            "example": "VALID",
-                            "default": "VALID"
+                            "properties": {
+                              "line_item_status": {
+                                "type": "string",
+                                "description": "the corresponding Status for a line item",
+                                "enum": [
+                                  "ROLLED",
+                                  "VALID",
+                                  "INVALID",
+                                  "OFFSET",
+                                  "SPLIT_VALID",
+                                  "SPLIT_INVALID",
+                                  "PENDING",
+                                  "REVERSED",
+                                  "AUTHORIZED",
+                                  "DECLINED",
+                                  "VOID",
+                                  "POSTED"
+                                ],
+                                "example": "VALID",
+                                "default": "VALID"
+                              },
+                              "line_item_type": {
+                                "type": "string",
+                                "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                                "enum": [
+                                  "LOAN",
+                                  "CHARGE",
+                                  "DEBIT_OFFSET",
+                                  "INTEREST",
+                                  "DEFERRED_INTEREST",
+                                  "PAYMENT",
+                                  "CREDIT_OFFSET",
+                                  "STATEMENT",
+                                  "MIN_DUE",
+                                  "FEE",
+                                  "PRODUCT_INTEREST",
+                                  "PAYMENT_SPLIT",
+                                  "LATE_FEE",
+                                  "RETURN_CHECK_FEE",
+                                  "PROMO_END",
+                                  "PURCHASE_WINDOW_END",
+                                  "MONTH_FEE",
+                                  "YEAR_FEE",
+                                  "ORIG_FEE",
+                                  "FEE_SURCHARGE"
+                                ],
+                                "example": "CHARGE"
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "A description of this particular line item if any. More common for adjustments.",
+                                "example": "Refund for invalid purchase"
+                              }
+                            }
                           },
-                          "line_item_type": {
-                            "type": "string",
-                            "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": [
-                              "LOAN",
-                              "CHARGE",
-                              "DEBIT_OFFSET",
-                              "INTEREST",
-                              "DEFERRED_INTEREST",
-                              "PAYMENT",
-                              "CREDIT_OFFSET",
-                              "STATEMENT",
-                              "MIN_DUE",
-                              "FEE",
-                              "PRODUCT_INTEREST",
-                              "PAYMENT_SPLIT",
-                              "LATE_FEE",
-                              "RETURN_CHECK_FEE",
-                              "PROMO_END",
-                              "PURCHASE_WINDOW_END",
-                              "MONTH_FEE",
-                              "YEAR_FEE"
+                          "line_item_summary": {
+                            "type": "object",
+                            "required": [
+                              "original_amount_cents",
+                              "balance_cents",
+                              "principal_cents",
+                              "interest_balance_cents",
+                              "deferred_interest_balance_cents",
+                              "total_interest_paid_to_date_cents"
                             ],
-                            "example": "CHARGE"
+                            "properties": {
+                              "original_amount_cents": {
+                                "type": "integer",
+                                "description": "The originating amount of money (in cents) relating to this line item.",
+                                "example": 2484
+                              },
+                              "balance_cents": {
+                                "type": "integer",
+                                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                                "example": 3600
+                              },
+                              "principal_cents": {
+                                "type": "integer",
+                                "description": "The principal balance of the line item.",
+                                "example": 2400
+                              },
+                              "interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current interest balance of the line item.",
+                                "example": 1100
+                              },
+                              "am_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 0
+                              },
+                              "deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "he current deferred interest balance of the line item.",
+                                "example": 200
+                              },
+                              "am_deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 0
+                              },
+                              "total_interest_paid_to_date_cents": {
+                                "type": "integer",
+                                "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                                "example": -16
+                              }
+                            }
                           },
-                          "description": {
-                            "type": "string",
-                            "description": "A description of this particular line item if any. More common for adjustments.",
-                            "example": "Refund for invalid purchase"
-                          }
-                        }
-                      },
-                      "line_item_summary": {
-                        "type": "object",
-                        "required": [
-                          "original_amount_cents",
-                          "balance_cents",
-                          "principal_cents",
-                          "interest_balance_cents",
-                          "deferred_interest_balance_cents",
-                          "total_interest_paid_to_date_cents"
-                        ],
-                        "properties": {
-                          "original_amount_cents": {
-                            "type": "integer",
-                            "description": "The originating amount of money (in cents) relating to this line item.",
-                            "example": 2484
+                          "merchant_data": {
+                            "type": "object",
+                            "description": "Merchant information if applicable.",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "mcc_code": {
+                                "type": "number"
+                              },
+                              "phone_number": {
+                                "type": "string"
+                              }
+                            }
                           },
-                          "balance_cents": {
-                            "type": "integer",
-                            "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                            "example": 3600
-                          },
-                          "principal_cents": {
-                            "type": "integer",
-                            "description": "The principal balance of the line item.",
-                            "example": 2400
-                          },
-                          "interest_balance_cents": {
-                            "type": "integer",
-                            "description": "The current interest balance of the line item.",
-                            "example": 1100
-                          },
-                          "am_interest_balance_cents": {
-                            "type": "integer",
-                            "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                            "example": 0
-                          },
-                          "deferred_interest_balance_cents": {
-                            "type": "integer",
-                            "description": "he current deferred interest balance of the line item.",
-                            "example": 200
-                          },
-                          "am_deferred_interest_balance_cents": {
-                            "type": "integer",
-                            "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                            "example": 0
-                          },
-                          "total_interest_paid_to_date_cents": {
-                            "type": "integer",
-                            "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
-                            "example": -16
-                          }
-                        }
-                      },
-                      "merchant_data": {
-                        "type": "object",
-                        "description": "Merchant information if applicable.",
-                        "properties": {
-                          "name": {
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "mcc_code": {
-                            "type": "number"
-                          },
-                          "phone_number": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "issuer_processor_metadata": {
-                        "type": "object",
-                        "properties": {
-                          "privacy": {
+                          "issuer_processor_metadata": {
                             "type": "object",
                             "properties": {
-                              "last_four": {
-                                "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                              "privacy": {
+                                "type": "object",
+                                "properties": {
+                                  "last_four": {
+                                    "type": "integer",
+                                    "description": "Last four digits of the card against which the spend was made."
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "external_fields": {
+                            "type": "array",
+                            "maxItems": 1000,
+                            "description": "An array of static references to fields in a third party system.",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "description": "Key - i.e. Name of the External Party",
+                                  "example": "Globex Card Processing Account ID"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "Value - i.e. External Account ID",
+                                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                                }
                               }
                             }
                           }
                         }
-                      },
-                      "external_fields": {
-                        "type": "array",
-                        "maxItems": 1000,
-                        "description": "An array of static references to fields in a third party system.",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "key": {
-                              "type": "string",
-                              "description": "Key - i.e. Name of the External Party",
-                              "example": "Globex Card Processing Account ID"
-                            },
-                            "value": {
-                              "type": "string",
-                              "description": "Value - i.e. External Account ID",
-                              "example": "22445702-a389-431f-927d-07b8d0750787"
-                            }
-                          }
+                      }
+                    },
+                    "paging": {
+                      "type": "object",
+                      "description": "Pagination Information.",
+                      "properties": {
+                        "starting_after": {
+                          "type": "string",
+                          "description": "Use this to drive your next request if you want the next page of results",
+                          "example": "31mNprzLd2bKl6koVna68ARM"
+                        },
+                        "ending_before": {
+                          "type": "string",
+                          "description": "Use this to drive your next request if you want the previous page of results",
+                          "example": "31mNprzLd2bKl6koVna68ARM"
+                        },
+                        "has_more": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
+                          "example": false
                         }
                       }
                     }
@@ -5143,6 +5267,42 @@
               "type": "string",
               "example": "31mNprzLd2bKl6koVna68ARM"
             }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of line items to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 50
+            }
+          },
+          {
+            "name": "starting_after",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "description": "Pass the value from the `paging` response body in your previous request. If not provided, the zero-indexed starting point will be used. Either starting_after or ending_before may be provided, but not both.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
           }
         ],
         "responses": {
@@ -5151,204 +5311,236 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "maxItems": 1000,
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "account_id",
-                      "line_item_id",
-                      "product_id"
-                    ],
-                    "properties": {
-                      "account_id": {
-                        "type": "string",
-                        "description": "The account associated with the line item",
-                        "example": 4
-                      },
-                      "line_item_id": {
-                        "type": "string",
-                        "description": "The ID associated with the line item",
-                        "example": 2
-                      },
-                      "effective_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` that this line item became/becomes active",
-                        "format": "date-time",
-                        "example": "2018-07-20T09:12:30+00:00"
-                      },
-                      "created_at": {
-                        "type": "string",
-                        "description": "The `Date-Time` which the line item was created.",
-                        "format": "date-time",
-                        "example": "2018-06-20T09:12:30+00:00"
-                      },
-                      "product_id": {
-                        "type": "integer",
-                        "description": "the Product ID of the account",
-                        "example": 1
-                      },
-                      "line_item_overview": {
+                  "type": "object",
+                  "required": [
+                    "results"
+                  ],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "An array of information for all line items within the requested range.",
+                      "maxItems": 1000,
+                      "items": {
                         "type": "object",
                         "required": [
-                          "line_item_type"
+                          "account_id",
+                          "line_item_id",
+                          "product_id"
                         ],
                         "properties": {
-                          "line_item_status": {
+                          "account_id": {
                             "type": "string",
-                            "description": "the corresponding Status for a line item",
-                            "enum": [
-                              "ROLLED",
-                              "VALID",
-                              "INVALID",
-                              "OFFSET",
-                              "SPLIT_VALID",
-                              "SPLIT_INVALID",
-                              "PENDING",
-                              "REVERSED",
-                              "AUTHORIZED",
-                              "DECLINED",
-                              "VOID",
-                              "POSTED"
+                            "description": "The account associated with the line item",
+                            "example": 4
+                          },
+                          "line_item_id": {
+                            "type": "string",
+                            "description": "The ID associated with the line item",
+                            "example": 2
+                          },
+                          "effective_at": {
+                            "type": "string",
+                            "description": "The `Date-Time` that this line item became/becomes active",
+                            "format": "date-time",
+                            "example": "2018-07-20T09:12:30+00:00"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "description": "The `Date-Time` which the line item was created.",
+                            "format": "date-time",
+                            "example": "2018-06-20T09:12:30+00:00"
+                          },
+                          "product_id": {
+                            "type": "integer",
+                            "description": "the Product ID of the account",
+                            "example": 1
+                          },
+                          "line_item_overview": {
+                            "type": "object",
+                            "required": [
+                              "line_item_type"
                             ],
-                            "example": "VALID",
-                            "default": "VALID"
+                            "properties": {
+                              "line_item_status": {
+                                "type": "string",
+                                "description": "the corresponding Status for a line item",
+                                "enum": [
+                                  "ROLLED",
+                                  "VALID",
+                                  "INVALID",
+                                  "OFFSET",
+                                  "SPLIT_VALID",
+                                  "SPLIT_INVALID",
+                                  "PENDING",
+                                  "REVERSED",
+                                  "AUTHORIZED",
+                                  "DECLINED",
+                                  "VOID",
+                                  "POSTED"
+                                ],
+                                "example": "VALID",
+                                "default": "VALID"
+                              },
+                              "line_item_type": {
+                                "type": "string",
+                                "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                                "enum": [
+                                  "LOAN",
+                                  "CHARGE",
+                                  "DEBIT_OFFSET",
+                                  "INTEREST",
+                                  "DEFERRED_INTEREST",
+                                  "PAYMENT",
+                                  "CREDIT_OFFSET",
+                                  "STATEMENT",
+                                  "MIN_DUE",
+                                  "FEE",
+                                  "PRODUCT_INTEREST",
+                                  "PAYMENT_SPLIT",
+                                  "LATE_FEE",
+                                  "RETURN_CHECK_FEE",
+                                  "PROMO_END",
+                                  "PURCHASE_WINDOW_END",
+                                  "MONTH_FEE",
+                                  "YEAR_FEE",
+                                  "ORIG_FEE",
+                                  "FEE_SURCHARGE"
+                                ],
+                                "example": "CHARGE"
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "A description of this particular line item if any. More common for adjustments.",
+                                "example": "Refund for invalid purchase"
+                              }
+                            }
                           },
-                          "line_item_type": {
-                            "type": "string",
-                            "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": [
-                              "LOAN",
-                              "CHARGE",
-                              "DEBIT_OFFSET",
-                              "INTEREST",
-                              "DEFERRED_INTEREST",
-                              "PAYMENT",
-                              "CREDIT_OFFSET",
-                              "STATEMENT",
-                              "MIN_DUE",
-                              "FEE",
-                              "PRODUCT_INTEREST",
-                              "PAYMENT_SPLIT",
-                              "LATE_FEE",
-                              "RETURN_CHECK_FEE",
-                              "PROMO_END",
-                              "PURCHASE_WINDOW_END",
-                              "MONTH_FEE",
-                              "YEAR_FEE"
+                          "line_item_summary": {
+                            "type": "object",
+                            "required": [
+                              "original_amount_cents",
+                              "balance_cents",
+                              "principal_cents",
+                              "interest_balance_cents",
+                              "deferred_interest_balance_cents",
+                              "total_interest_paid_to_date_cents"
                             ],
-                            "example": "CHARGE"
+                            "properties": {
+                              "original_amount_cents": {
+                                "type": "integer",
+                                "description": "The originating amount of money (in cents) relating to this line item.",
+                                "example": 2484
+                              },
+                              "balance_cents": {
+                                "type": "integer",
+                                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                                "example": 3600
+                              },
+                              "principal_cents": {
+                                "type": "integer",
+                                "description": "The principal balance of the line item.",
+                                "example": 2400
+                              },
+                              "interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current interest balance of the line item.",
+                                "example": 1100
+                              },
+                              "am_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 0
+                              },
+                              "deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "he current deferred interest balance of the line item.",
+                                "example": 200
+                              },
+                              "am_deferred_interest_balance_cents": {
+                                "type": "integer",
+                                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                                "example": 0
+                              },
+                              "total_interest_paid_to_date_cents": {
+                                "type": "integer",
+                                "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                                "example": -16
+                              }
+                            }
                           },
-                          "description": {
-                            "type": "string",
-                            "description": "A description of this particular line item if any. More common for adjustments.",
-                            "example": "Refund for invalid purchase"
-                          }
-                        }
-                      },
-                      "line_item_summary": {
-                        "type": "object",
-                        "required": [
-                          "original_amount_cents",
-                          "balance_cents",
-                          "principal_cents",
-                          "interest_balance_cents",
-                          "deferred_interest_balance_cents",
-                          "total_interest_paid_to_date_cents"
-                        ],
-                        "properties": {
-                          "original_amount_cents": {
-                            "type": "integer",
-                            "description": "The originating amount of money (in cents) relating to this line item.",
-                            "example": 2484
+                          "merchant_data": {
+                            "type": "object",
+                            "description": "Merchant information if applicable.",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "mcc_code": {
+                                "type": "number"
+                              },
+                              "phone_number": {
+                                "type": "string"
+                              }
+                            }
                           },
-                          "balance_cents": {
-                            "type": "integer",
-                            "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                            "example": 3600
-                          },
-                          "principal_cents": {
-                            "type": "integer",
-                            "description": "The principal balance of the line item.",
-                            "example": 2400
-                          },
-                          "interest_balance_cents": {
-                            "type": "integer",
-                            "description": "The current interest balance of the line item.",
-                            "example": 1100
-                          },
-                          "am_interest_balance_cents": {
-                            "type": "integer",
-                            "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                            "example": 0
-                          },
-                          "deferred_interest_balance_cents": {
-                            "type": "integer",
-                            "description": "he current deferred interest balance of the line item.",
-                            "example": 200
-                          },
-                          "am_deferred_interest_balance_cents": {
-                            "type": "integer",
-                            "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                            "example": 0
-                          },
-                          "total_interest_paid_to_date_cents": {
-                            "type": "integer",
-                            "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
-                            "example": -16
-                          }
-                        }
-                      },
-                      "merchant_data": {
-                        "type": "object",
-                        "description": "Merchant information if applicable.",
-                        "properties": {
-                          "name": {
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "mcc_code": {
-                            "type": "number"
-                          },
-                          "phone_number": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "issuer_processor_metadata": {
-                        "type": "object",
-                        "properties": {
-                          "privacy": {
+                          "issuer_processor_metadata": {
                             "type": "object",
                             "properties": {
-                              "last_four": {
-                                "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                              "privacy": {
+                                "type": "object",
+                                "properties": {
+                                  "last_four": {
+                                    "type": "integer",
+                                    "description": "Last four digits of the card against which the spend was made."
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "external_fields": {
+                            "type": "array",
+                            "maxItems": 1000,
+                            "description": "An array of static references to fields in a third party system.",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "description": "Key - i.e. Name of the External Party",
+                                  "example": "Globex Card Processing Account ID"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "Value - i.e. External Account ID",
+                                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                                }
                               }
                             }
                           }
                         }
-                      },
-                      "external_fields": {
-                        "type": "array",
-                        "maxItems": 1000,
-                        "description": "An array of static references to fields in a third party system.",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "key": {
-                              "type": "string",
-                              "description": "Key - i.e. Name of the External Party",
-                              "example": "Globex Card Processing Account ID"
-                            },
-                            "value": {
-                              "type": "string",
-                              "description": "Value - i.e. External Account ID",
-                              "example": "22445702-a389-431f-927d-07b8d0750787"
-                            }
-                          }
+                      }
+                    },
+                    "paging": {
+                      "type": "object",
+                      "description": "Pagination Information.",
+                      "properties": {
+                        "starting_after": {
+                          "type": "string",
+                          "description": "Use this to drive your next request if you want the next page of results",
+                          "example": "31mNprzLd2bKl6koVna68ARM"
+                        },
+                        "ending_before": {
+                          "type": "string",
+                          "description": "Use this to drive your next request if you want the previous page of results",
+                          "example": "31mNprzLd2bKl6koVna68ARM"
+                        },
+                        "has_more": {
+                          "type": "boolean",
+                          "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
+                          "example": false
                         }
                       }
                     }
@@ -5502,7 +5694,9 @@
                             "PROMO_END",
                             "PURCHASE_WINDOW_END",
                             "MONTH_FEE",
-                            "YEAR_FEE"
+                            "YEAR_FEE",
+                            "ORIG_FEE",
+                            "FEE_SURCHARGE"
                           ],
                           "example": "CHARGE"
                         },
@@ -5817,7 +6011,9 @@
                             "PROMO_END",
                             "PURCHASE_WINDOW_END",
                             "MONTH_FEE",
-                            "YEAR_FEE"
+                            "YEAR_FEE",
+                            "ORIG_FEE",
+                            "FEE_SURCHARGE"
                           ],
                           "example": "CHARGE"
                         },
@@ -6076,7 +6272,9 @@
                             "PROMO_END",
                             "PURCHASE_WINDOW_END",
                             "MONTH_FEE",
-                            "YEAR_FEE"
+                            "YEAR_FEE",
+                            "ORIG_FEE",
+                            "FEE_SURCHARGE"
                           ],
                           "example": "CHARGE"
                         },
@@ -6773,7 +6971,9 @@
                                   "PROMO_END",
                                   "PURCHASE_WINDOW_END",
                                   "MONTH_FEE",
-                                  "YEAR_FEE"
+                                  "YEAR_FEE",
+                                  "ORIG_FEE",
+                                  "FEE_SURCHARGE"
                                 ],
                                 "example": "CHARGE"
                               },
@@ -6905,6 +7105,104 @@
           },
           "404": {
             "description": "Statement not found"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/customers/{customer_id}/cards": {
+      "put": {
+        "tags": [
+          "customers"
+        ],
+        "summary": "Create a new card for an existing customer on an account",
+        "description": "",
+        "operationId": "createCustomerAccountCard",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Customer ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created a new card for the customer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "The type of card being returned",
+                        "enum": [
+                          "UNLOCKED"
+                        ],
+                        "example": "UNLOCKED"
+                      },
+                      "state": {
+                        "type": "string",
+                        "description": "The current state of the card",
+                        "enum": [
+                          "OPEN",
+                          "PAUSED",
+                          "CLOSED"
+                        ],
+                        "example": "OPEN"
+                      },
+                      "token": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique token for the card",
+                        "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                      },
+                      "last_four": {
+                        "type": "string",
+                        "description": "Last four digits of the card",
+                        "example": "0690"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
           },
           "429": {
             "description": "Too many requests."
@@ -7600,7 +7898,9 @@
                                         "PROMO_END",
                                         "PURCHASE_WINDOW_END",
                                         "MONTH_FEE",
-                                        "YEAR_FEE"
+                                        "YEAR_FEE",
+                                        "ORIG_FEE",
+                                        "FEE_SURCHARGE"
                                       ],
                                       "example": "CHARGE"
                                     },
@@ -8849,7 +9149,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -11185,7 +11487,7 @@
           "post_promotional_policies"
         ],
         "type": "object",
-        "additionalProperties": false,
+        "additionalProperties": true,
         "properties": {
           "product_id": {
             "type": "string",
@@ -11515,6 +11817,17 @@
                 }
               }
             }
+          },
+          "admin": {
+            "type": "object",
+            "properties": {
+              "migration_mode": {
+                "type": "boolean",
+                "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                "example": true,
+                "default": false
+              }
+            }
           }
         }
       },
@@ -11812,7 +12125,9 @@
                   "PROMO_END",
                   "PURCHASE_WINDOW_END",
                   "MONTH_FEE",
-                  "YEAR_FEE"
+                  "YEAR_FEE",
+                  "ORIG_FEE",
+                  "FEE_SURCHARGE"
                 ],
                 "example": "CHARGE"
               },
@@ -12014,7 +12329,9 @@
                   "PROMO_END",
                   "PURCHASE_WINDOW_END",
                   "MONTH_FEE",
-                  "YEAR_FEE"
+                  "YEAR_FEE",
+                  "ORIG_FEE",
+                  "FEE_SURCHARGE"
                 ],
                 "example": "CHARGE"
               },
@@ -12513,6 +12830,17 @@
                       "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
                       "example": 5,
                       "default": 0
+                    }
+                  }
+                },
+                "admin": {
+                  "type": "object",
+                  "properties": {
+                    "migration_mode": {
+                      "type": "boolean",
+                      "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                      "example": true,
+                      "default": false
                     }
                   }
                 }
@@ -13380,6 +13708,24 @@
           }
         }
       },
+      "UpdateProductMigrationMode": {
+        "description": "Update admin panel for a product.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "migration_mode": {
+                  "type": "boolean",
+                  "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                  "example": true,
+                  "default": false
+                }
+              }
+            }
+          }
+        }
+      },
       "SubscribeToEvents": {
         "description": "",
         "required": true,
@@ -13711,7 +14057,7 @@
                 "post_promotional_policies"
               ],
               "type": "object",
-              "additionalProperties": false,
+              "additionalProperties": true,
               "properties": {
                 "product_id": {
                   "type": "string",
@@ -14039,6 +14385,17 @@
                           "example": 10005
                         }
                       }
+                    }
+                  }
+                },
+                "admin": {
+                  "type": "object",
+                  "properties": {
+                    "migration_mode": {
+                      "type": "boolean",
+                      "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                      "example": true,
+                      "default": false
                     }
                   }
                 }
@@ -14060,7 +14417,7 @@
                 "post_promotional_policies"
               ],
               "type": "object",
-              "additionalProperties": false,
+              "additionalProperties": true,
               "properties": {
                 "product_id": {
                   "type": "string",
@@ -14388,6 +14745,17 @@
                           "example": 10005
                         }
                       }
+                    }
+                  }
+                },
+                "admin": {
+                  "type": "object",
+                  "properties": {
+                    "migration_mode": {
+                      "type": "boolean",
+                      "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                      "example": true,
+                      "default": false
                     }
                   }
                 }
@@ -14419,7 +14787,7 @@
                       "post_promotional_policies"
                     ],
                     "type": "object",
-                    "additionalProperties": false,
+                    "additionalProperties": true,
                     "properties": {
                       "product_id": {
                         "type": "string",
@@ -14749,28 +15117,18 @@
                             }
                           }
                         }
+                      },
+                      "admin": {
+                        "type": "object",
+                        "properties": {
+                          "migration_mode": {
+                            "type": "boolean",
+                            "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                            "example": true,
+                            "default": false
+                          }
+                        }
                       }
-                    }
-                  }
-                },
-                "paging": {
-                  "type": "object",
-                  "description": "Pagination Information.",
-                  "properties": {
-                    "starting_after": {
-                      "type": "string",
-                      "description": "Use this to drive your next request if you want the next page of results",
-                      "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "ending_before": {
-                      "type": "string",
-                      "description": "Use this to drive your next request if you want the previous page of results",
-                      "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "has_more": {
-                      "type": "boolean",
-                      "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
-                      "example": false
                     }
                   }
                 }
@@ -14791,7 +15149,7 @@
               "properties": {
                 "results": {
                   "type": "array",
-                  "maxItems": 100,
+                  "maxItems": 1000,
                   "description": "An array of information for all customer-account correspondences within the requested range.",
                   "items": {
                     "allOf": [
@@ -17418,7 +17776,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -17587,7 +17947,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -18695,7 +19057,9 @@
                               "PROMO_END",
                               "PURCHASE_WINDOW_END",
                               "MONTH_FEE",
-                              "YEAR_FEE"
+                              "YEAR_FEE",
+                              "ORIG_FEE",
+                              "FEE_SURCHARGE"
                             ],
                             "example": "CHARGE"
                           },
@@ -18957,7 +19321,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -19083,204 +19449,236 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "array",
-              "maxItems": 1000,
-              "items": {
-                "type": "object",
-                "required": [
-                  "account_id",
-                  "line_item_id",
-                  "product_id"
-                ],
-                "properties": {
-                  "account_id": {
-                    "type": "string",
-                    "description": "The account associated with the line item",
-                    "example": 4
-                  },
-                  "line_item_id": {
-                    "type": "string",
-                    "description": "The ID associated with the line item",
-                    "example": 2
-                  },
-                  "effective_at": {
-                    "type": "string",
-                    "description": "The `Date-Time` that this line item became/becomes active",
-                    "format": "date-time",
-                    "example": "2018-07-20T09:12:30+00:00"
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "description": "The `Date-Time` which the line item was created.",
-                    "format": "date-time",
-                    "example": "2018-06-20T09:12:30+00:00"
-                  },
-                  "product_id": {
-                    "type": "integer",
-                    "description": "the Product ID of the account",
-                    "example": 1
-                  },
-                  "line_item_overview": {
+              "type": "object",
+              "required": [
+                "results"
+              ],
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "description": "An array of information for all line items within the requested range.",
+                  "maxItems": 1000,
+                  "items": {
                     "type": "object",
                     "required": [
-                      "line_item_type"
+                      "account_id",
+                      "line_item_id",
+                      "product_id"
                     ],
                     "properties": {
-                      "line_item_status": {
+                      "account_id": {
                         "type": "string",
-                        "description": "the corresponding Status for a line item",
-                        "enum": [
-                          "ROLLED",
-                          "VALID",
-                          "INVALID",
-                          "OFFSET",
-                          "SPLIT_VALID",
-                          "SPLIT_INVALID",
-                          "PENDING",
-                          "REVERSED",
-                          "AUTHORIZED",
-                          "DECLINED",
-                          "VOID",
-                          "POSTED"
+                        "description": "The account associated with the line item",
+                        "example": 4
+                      },
+                      "line_item_id": {
+                        "type": "string",
+                        "description": "The ID associated with the line item",
+                        "example": 2
+                      },
+                      "effective_at": {
+                        "type": "string",
+                        "description": "The `Date-Time` that this line item became/becomes active",
+                        "format": "date-time",
+                        "example": "2018-07-20T09:12:30+00:00"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "description": "The `Date-Time` which the line item was created.",
+                        "format": "date-time",
+                        "example": "2018-06-20T09:12:30+00:00"
+                      },
+                      "product_id": {
+                        "type": "integer",
+                        "description": "the Product ID of the account",
+                        "example": 1
+                      },
+                      "line_item_overview": {
+                        "type": "object",
+                        "required": [
+                          "line_item_type"
                         ],
-                        "example": "VALID",
-                        "default": "VALID"
+                        "properties": {
+                          "line_item_status": {
+                            "type": "string",
+                            "description": "the corresponding Status for a line item",
+                            "enum": [
+                              "ROLLED",
+                              "VALID",
+                              "INVALID",
+                              "OFFSET",
+                              "SPLIT_VALID",
+                              "SPLIT_INVALID",
+                              "PENDING",
+                              "REVERSED",
+                              "AUTHORIZED",
+                              "DECLINED",
+                              "VOID",
+                              "POSTED"
+                            ],
+                            "example": "VALID",
+                            "default": "VALID"
+                          },
+                          "line_item_type": {
+                            "type": "string",
+                            "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                            "enum": [
+                              "LOAN",
+                              "CHARGE",
+                              "DEBIT_OFFSET",
+                              "INTEREST",
+                              "DEFERRED_INTEREST",
+                              "PAYMENT",
+                              "CREDIT_OFFSET",
+                              "STATEMENT",
+                              "MIN_DUE",
+                              "FEE",
+                              "PRODUCT_INTEREST",
+                              "PAYMENT_SPLIT",
+                              "LATE_FEE",
+                              "RETURN_CHECK_FEE",
+                              "PROMO_END",
+                              "PURCHASE_WINDOW_END",
+                              "MONTH_FEE",
+                              "YEAR_FEE",
+                              "ORIG_FEE",
+                              "FEE_SURCHARGE"
+                            ],
+                            "example": "CHARGE"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "A description of this particular line item if any. More common for adjustments.",
+                            "example": "Refund for invalid purchase"
+                          }
+                        }
                       },
-                      "line_item_type": {
-                        "type": "string",
-                        "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                        "enum": [
-                          "LOAN",
-                          "CHARGE",
-                          "DEBIT_OFFSET",
-                          "INTEREST",
-                          "DEFERRED_INTEREST",
-                          "PAYMENT",
-                          "CREDIT_OFFSET",
-                          "STATEMENT",
-                          "MIN_DUE",
-                          "FEE",
-                          "PRODUCT_INTEREST",
-                          "PAYMENT_SPLIT",
-                          "LATE_FEE",
-                          "RETURN_CHECK_FEE",
-                          "PROMO_END",
-                          "PURCHASE_WINDOW_END",
-                          "MONTH_FEE",
-                          "YEAR_FEE"
+                      "line_item_summary": {
+                        "type": "object",
+                        "required": [
+                          "original_amount_cents",
+                          "balance_cents",
+                          "principal_cents",
+                          "interest_balance_cents",
+                          "deferred_interest_balance_cents",
+                          "total_interest_paid_to_date_cents"
                         ],
-                        "example": "CHARGE"
+                        "properties": {
+                          "original_amount_cents": {
+                            "type": "integer",
+                            "description": "The originating amount of money (in cents) relating to this line item.",
+                            "example": 2484
+                          },
+                          "balance_cents": {
+                            "type": "integer",
+                            "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                            "example": 3600
+                          },
+                          "principal_cents": {
+                            "type": "integer",
+                            "description": "The principal balance of the line item.",
+                            "example": 2400
+                          },
+                          "interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current interest balance of the line item.",
+                            "example": 1100
+                          },
+                          "am_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                            "example": 0
+                          },
+                          "deferred_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "he current deferred interest balance of the line item.",
+                            "example": 200
+                          },
+                          "am_deferred_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                            "example": 0
+                          },
+                          "total_interest_paid_to_date_cents": {
+                            "type": "integer",
+                            "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                            "example": -16
+                          }
+                        }
                       },
-                      "description": {
-                        "type": "string",
-                        "description": "A description of this particular line item if any. More common for adjustments.",
-                        "example": "Refund for invalid purchase"
-                      }
-                    }
-                  },
-                  "line_item_summary": {
-                    "type": "object",
-                    "required": [
-                      "original_amount_cents",
-                      "balance_cents",
-                      "principal_cents",
-                      "interest_balance_cents",
-                      "deferred_interest_balance_cents",
-                      "total_interest_paid_to_date_cents"
-                    ],
-                    "properties": {
-                      "original_amount_cents": {
-                        "type": "integer",
-                        "description": "The originating amount of money (in cents) relating to this line item.",
-                        "example": 2484
+                      "merchant_data": {
+                        "type": "object",
+                        "description": "Merchant information if applicable.",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "mcc_code": {
+                            "type": "number"
+                          },
+                          "phone_number": {
+                            "type": "string"
+                          }
+                        }
                       },
-                      "balance_cents": {
-                        "type": "integer",
-                        "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                        "example": 3600
-                      },
-                      "principal_cents": {
-                        "type": "integer",
-                        "description": "The principal balance of the line item.",
-                        "example": 2400
-                      },
-                      "interest_balance_cents": {
-                        "type": "integer",
-                        "description": "The current interest balance of the line item.",
-                        "example": 1100
-                      },
-                      "am_interest_balance_cents": {
-                        "type": "integer",
-                        "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                        "example": 0
-                      },
-                      "deferred_interest_balance_cents": {
-                        "type": "integer",
-                        "description": "he current deferred interest balance of the line item.",
-                        "example": 200
-                      },
-                      "am_deferred_interest_balance_cents": {
-                        "type": "integer",
-                        "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                        "example": 0
-                      },
-                      "total_interest_paid_to_date_cents": {
-                        "type": "integer",
-                        "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
-                        "example": -16
-                      }
-                    }
-                  },
-                  "merchant_data": {
-                    "type": "object",
-                    "description": "Merchant information if applicable.",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "id": {
-                        "type": "string"
-                      },
-                      "mcc_code": {
-                        "type": "number"
-                      },
-                      "phone_number": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "issuer_processor_metadata": {
-                    "type": "object",
-                    "properties": {
-                      "privacy": {
+                      "issuer_processor_metadata": {
                         "type": "object",
                         "properties": {
-                          "last_four": {
-                            "type": "integer",
-                            "description": "Last four digits of the card against which the spend was made."
+                          "privacy": {
+                            "type": "object",
+                            "properties": {
+                              "last_four": {
+                                "type": "integer",
+                                "description": "Last four digits of the card against which the spend was made."
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "external_fields": {
+                        "type": "array",
+                        "maxItems": 1000,
+                        "description": "An array of static references to fields in a third party system.",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "description": "Key - i.e. Name of the External Party",
+                              "example": "Globex Card Processing Account ID"
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "Value - i.e. External Account ID",
+                              "example": "22445702-a389-431f-927d-07b8d0750787"
+                            }
                           }
                         }
                       }
                     }
-                  },
-                  "external_fields": {
-                    "type": "array",
-                    "maxItems": 1000,
-                    "description": "An array of static references to fields in a third party system.",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "key": {
-                          "type": "string",
-                          "description": "Key - i.e. Name of the External Party",
-                          "example": "Globex Card Processing Account ID"
-                        },
-                        "value": {
-                          "type": "string",
-                          "description": "Value - i.e. External Account ID",
-                          "example": "22445702-a389-431f-927d-07b8d0750787"
-                        }
-                      }
+                  }
+                },
+                "paging": {
+                  "type": "object",
+                  "description": "Pagination Information.",
+                  "properties": {
+                    "starting_after": {
+                      "type": "string",
+                      "description": "Use this to drive your next request if you want the next page of results",
+                      "example": "31mNprzLd2bKl6koVna68ARM"
+                    },
+                    "ending_before": {
+                      "type": "string",
+                      "description": "Use this to drive your next request if you want the previous page of results",
+                      "example": "31mNprzLd2bKl6koVna68ARM"
+                    },
+                    "has_more": {
+                      "type": "boolean",
+                      "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
+                      "example": false
                     }
                   }
                 }
@@ -19294,204 +19692,236 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "array",
-              "maxItems": 1000,
-              "items": {
-                "type": "object",
-                "required": [
-                  "account_id",
-                  "line_item_id",
-                  "product_id"
-                ],
-                "properties": {
-                  "account_id": {
-                    "type": "string",
-                    "description": "The account associated with the line item",
-                    "example": 4
-                  },
-                  "line_item_id": {
-                    "type": "string",
-                    "description": "The ID associated with the line item",
-                    "example": 2
-                  },
-                  "effective_at": {
-                    "type": "string",
-                    "description": "The `Date-Time` that this line item became/becomes active",
-                    "format": "date-time",
-                    "example": "2018-07-20T09:12:30+00:00"
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "description": "The `Date-Time` which the line item was created.",
-                    "format": "date-time",
-                    "example": "2018-06-20T09:12:30+00:00"
-                  },
-                  "product_id": {
-                    "type": "integer",
-                    "description": "the Product ID of the account",
-                    "example": 1
-                  },
-                  "line_item_overview": {
+              "type": "object",
+              "required": [
+                "results"
+              ],
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "description": "An array of information for all line items within the requested range.",
+                  "maxItems": 1000,
+                  "items": {
                     "type": "object",
                     "required": [
-                      "line_item_type"
+                      "account_id",
+                      "line_item_id",
+                      "product_id"
                     ],
                     "properties": {
-                      "line_item_status": {
+                      "account_id": {
                         "type": "string",
-                        "description": "the corresponding Status for a line item",
-                        "enum": [
-                          "ROLLED",
-                          "VALID",
-                          "INVALID",
-                          "OFFSET",
-                          "SPLIT_VALID",
-                          "SPLIT_INVALID",
-                          "PENDING",
-                          "REVERSED",
-                          "AUTHORIZED",
-                          "DECLINED",
-                          "VOID",
-                          "POSTED"
+                        "description": "The account associated with the line item",
+                        "example": 4
+                      },
+                      "line_item_id": {
+                        "type": "string",
+                        "description": "The ID associated with the line item",
+                        "example": 2
+                      },
+                      "effective_at": {
+                        "type": "string",
+                        "description": "The `Date-Time` that this line item became/becomes active",
+                        "format": "date-time",
+                        "example": "2018-07-20T09:12:30+00:00"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "description": "The `Date-Time` which the line item was created.",
+                        "format": "date-time",
+                        "example": "2018-06-20T09:12:30+00:00"
+                      },
+                      "product_id": {
+                        "type": "integer",
+                        "description": "the Product ID of the account",
+                        "example": 1
+                      },
+                      "line_item_overview": {
+                        "type": "object",
+                        "required": [
+                          "line_item_type"
                         ],
-                        "example": "VALID",
-                        "default": "VALID"
+                        "properties": {
+                          "line_item_status": {
+                            "type": "string",
+                            "description": "the corresponding Status for a line item",
+                            "enum": [
+                              "ROLLED",
+                              "VALID",
+                              "INVALID",
+                              "OFFSET",
+                              "SPLIT_VALID",
+                              "SPLIT_INVALID",
+                              "PENDING",
+                              "REVERSED",
+                              "AUTHORIZED",
+                              "DECLINED",
+                              "VOID",
+                              "POSTED"
+                            ],
+                            "example": "VALID",
+                            "default": "VALID"
+                          },
+                          "line_item_type": {
+                            "type": "string",
+                            "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                            "enum": [
+                              "LOAN",
+                              "CHARGE",
+                              "DEBIT_OFFSET",
+                              "INTEREST",
+                              "DEFERRED_INTEREST",
+                              "PAYMENT",
+                              "CREDIT_OFFSET",
+                              "STATEMENT",
+                              "MIN_DUE",
+                              "FEE",
+                              "PRODUCT_INTEREST",
+                              "PAYMENT_SPLIT",
+                              "LATE_FEE",
+                              "RETURN_CHECK_FEE",
+                              "PROMO_END",
+                              "PURCHASE_WINDOW_END",
+                              "MONTH_FEE",
+                              "YEAR_FEE",
+                              "ORIG_FEE",
+                              "FEE_SURCHARGE"
+                            ],
+                            "example": "CHARGE"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "A description of this particular line item if any. More common for adjustments.",
+                            "example": "Refund for invalid purchase"
+                          }
+                        }
                       },
-                      "line_item_type": {
-                        "type": "string",
-                        "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                        "enum": [
-                          "LOAN",
-                          "CHARGE",
-                          "DEBIT_OFFSET",
-                          "INTEREST",
-                          "DEFERRED_INTEREST",
-                          "PAYMENT",
-                          "CREDIT_OFFSET",
-                          "STATEMENT",
-                          "MIN_DUE",
-                          "FEE",
-                          "PRODUCT_INTEREST",
-                          "PAYMENT_SPLIT",
-                          "LATE_FEE",
-                          "RETURN_CHECK_FEE",
-                          "PROMO_END",
-                          "PURCHASE_WINDOW_END",
-                          "MONTH_FEE",
-                          "YEAR_FEE"
+                      "line_item_summary": {
+                        "type": "object",
+                        "required": [
+                          "original_amount_cents",
+                          "balance_cents",
+                          "principal_cents",
+                          "interest_balance_cents",
+                          "deferred_interest_balance_cents",
+                          "total_interest_paid_to_date_cents"
                         ],
-                        "example": "CHARGE"
+                        "properties": {
+                          "original_amount_cents": {
+                            "type": "integer",
+                            "description": "The originating amount of money (in cents) relating to this line item.",
+                            "example": 2484
+                          },
+                          "balance_cents": {
+                            "type": "integer",
+                            "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                            "example": 3600
+                          },
+                          "principal_cents": {
+                            "type": "integer",
+                            "description": "The principal balance of the line item.",
+                            "example": 2400
+                          },
+                          "interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current interest balance of the line item.",
+                            "example": 1100
+                          },
+                          "am_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                            "example": 0
+                          },
+                          "deferred_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "he current deferred interest balance of the line item.",
+                            "example": 200
+                          },
+                          "am_deferred_interest_balance_cents": {
+                            "type": "integer",
+                            "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                            "example": 0
+                          },
+                          "total_interest_paid_to_date_cents": {
+                            "type": "integer",
+                            "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                            "example": -16
+                          }
+                        }
                       },
-                      "description": {
-                        "type": "string",
-                        "description": "A description of this particular line item if any. More common for adjustments.",
-                        "example": "Refund for invalid purchase"
-                      }
-                    }
-                  },
-                  "line_item_summary": {
-                    "type": "object",
-                    "required": [
-                      "original_amount_cents",
-                      "balance_cents",
-                      "principal_cents",
-                      "interest_balance_cents",
-                      "deferred_interest_balance_cents",
-                      "total_interest_paid_to_date_cents"
-                    ],
-                    "properties": {
-                      "original_amount_cents": {
-                        "type": "integer",
-                        "description": "The originating amount of money (in cents) relating to this line item.",
-                        "example": 2484
+                      "merchant_data": {
+                        "type": "object",
+                        "description": "Merchant information if applicable.",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "mcc_code": {
+                            "type": "number"
+                          },
+                          "phone_number": {
+                            "type": "string"
+                          }
+                        }
                       },
-                      "balance_cents": {
-                        "type": "integer",
-                        "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                        "example": 3600
-                      },
-                      "principal_cents": {
-                        "type": "integer",
-                        "description": "The principal balance of the line item.",
-                        "example": 2400
-                      },
-                      "interest_balance_cents": {
-                        "type": "integer",
-                        "description": "The current interest balance of the line item.",
-                        "example": 1100
-                      },
-                      "am_interest_balance_cents": {
-                        "type": "integer",
-                        "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                        "example": 0
-                      },
-                      "deferred_interest_balance_cents": {
-                        "type": "integer",
-                        "description": "he current deferred interest balance of the line item.",
-                        "example": 200
-                      },
-                      "am_deferred_interest_balance_cents": {
-                        "type": "integer",
-                        "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                        "example": 0
-                      },
-                      "total_interest_paid_to_date_cents": {
-                        "type": "integer",
-                        "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
-                        "example": -16
-                      }
-                    }
-                  },
-                  "merchant_data": {
-                    "type": "object",
-                    "description": "Merchant information if applicable.",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "id": {
-                        "type": "string"
-                      },
-                      "mcc_code": {
-                        "type": "number"
-                      },
-                      "phone_number": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "issuer_processor_metadata": {
-                    "type": "object",
-                    "properties": {
-                      "privacy": {
+                      "issuer_processor_metadata": {
                         "type": "object",
                         "properties": {
-                          "last_four": {
-                            "type": "integer",
-                            "description": "Last four digits of the card against which the spend was made."
+                          "privacy": {
+                            "type": "object",
+                            "properties": {
+                              "last_four": {
+                                "type": "integer",
+                                "description": "Last four digits of the card against which the spend was made."
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "external_fields": {
+                        "type": "array",
+                        "maxItems": 1000,
+                        "description": "An array of static references to fields in a third party system.",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "description": "Key - i.e. Name of the External Party",
+                              "example": "Globex Card Processing Account ID"
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "Value - i.e. External Account ID",
+                              "example": "22445702-a389-431f-927d-07b8d0750787"
+                            }
                           }
                         }
                       }
                     }
-                  },
-                  "external_fields": {
-                    "type": "array",
-                    "maxItems": 1000,
-                    "description": "An array of static references to fields in a third party system.",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "key": {
-                          "type": "string",
-                          "description": "Key - i.e. Name of the External Party",
-                          "example": "Globex Card Processing Account ID"
-                        },
-                        "value": {
-                          "type": "string",
-                          "description": "Value - i.e. External Account ID",
-                          "example": "22445702-a389-431f-927d-07b8d0750787"
-                        }
-                      }
+                  }
+                },
+                "paging": {
+                  "type": "object",
+                  "description": "Pagination Information.",
+                  "properties": {
+                    "starting_after": {
+                      "type": "string",
+                      "description": "Use this to drive your next request if you want the next page of results",
+                      "example": "31mNprzLd2bKl6koVna68ARM"
+                    },
+                    "ending_before": {
+                      "type": "string",
+                      "description": "Use this to drive your next request if you want the previous page of results",
+                      "example": "31mNprzLd2bKl6koVna68ARM"
+                    },
+                    "has_more": {
+                      "type": "boolean",
+                      "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
+                      "example": false
                     }
                   }
                 }
@@ -19753,7 +20183,9 @@
                         "PROMO_END",
                         "PURCHASE_WINDOW_END",
                         "MONTH_FEE",
-                        "YEAR_FEE"
+                        "YEAR_FEE",
+                        "ORIG_FEE",
+                        "FEE_SURCHARGE"
                       ],
                       "example": "CHARGE"
                     },
@@ -19827,6 +20259,69 @@
                         "example": "22445702-a389-431f-927d-07b8d0750787"
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateProductMigrationMode": {
+        "description": "Migration Mode updated successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "description"
+              ],
+              "properties": {
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CustomerAccountCard": {
+        "description": "Successfully created a new card for the customer.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The type of card being returned",
+                    "enum": [
+                      "UNLOCKED"
+                    ],
+                    "example": "UNLOCKED"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "The current state of the card",
+                    "enum": [
+                      "OPEN",
+                      "PAUSED",
+                      "CLOSED"
+                    ],
+                    "example": "OPEN"
+                  },
+                  "token": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique token for the card",
+                    "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                  },
+                  "last_four": {
+                    "type": "string",
+                    "description": "Last four digits of the card",
+                    "example": "0690"
                   }
                 }
               }

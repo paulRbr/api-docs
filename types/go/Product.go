@@ -1,4 +1,5 @@
 type Product struct {
+	Admin                    *Admin                   `json:"admin,omitempty"`              
 	CreatedAt                *string                  `json:"created_at,omitempty"`         // The `Date-Time` that this product was created on the server.
 	EffectiveAt              *string                  `json:"effective_at,omitempty"`       // The `Date-Time` as of which this product is effective on the server.
 	ExternalProductID        *string                  `json:"external_product_id,omitempty"`// A unique external ID that may be used interchangeably with the Canopy-generated product ID
@@ -8,6 +9,10 @@ type Product struct {
 	ProductOverview          ProductOverview          `json:"product_overview"`             // A series of static fields about the product.
 	ProductSummary           *ProductSummary          `json:"product_summary,omitempty"`    // Summary of product information
 	PromotionalPolicies      PromotionalPolicies      `json:"promotional_policies"`         // If applicable, a promotional configuration for the product.
+}
+
+type Admin struct {
+	MigrationMode *bool `json:"migration_mode,omitempty"`// If migration mode is on, Canopy will stop auto-generating statements for this account.
 }
 
 type PostPromotionalPolicies struct {

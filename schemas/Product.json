@@ -7,7 +7,7 @@
     "post_promotional_policies"
   ],
   "type": "object",
-  "additionalProperties": false,
+  "additionalProperties": true,
   "properties": {
     "product_id": {
       "type": "string",
@@ -234,6 +234,17 @@
     },
     "product_summary": {
       "$ref": "./ProductSummary.json"
+    },
+    "admin": {
+      "type": "object",
+      "properties": {
+        "migration_mode": {
+          "type": "boolean",
+          "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+          "example": true,
+          "default": false
+        }
+      }
     }
   }
 }
