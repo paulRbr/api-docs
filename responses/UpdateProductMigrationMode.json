@@ -1,0 +1,16 @@
+{
+  "description": "Migration Mode updated successfully",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": ["description"],
+        "properties": {
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

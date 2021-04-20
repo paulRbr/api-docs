@@ -390,6 +390,42 @@
         }
       }
     },
+    "/products/{product_id}/migration_mode": {
+      "put": {
+        "security": [
+          {
+            "oAuth2": []
+          }
+        ],
+        "tags": ["data_migrations"],
+        "summary": "Create a new product",
+        "operationId": "createProduct",
+        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by sending an excel file detailing your preferred configurations to the [Canopy team](mailto:support@canopyservicing.com?subject=API%20Access%20Request); however, you can also configure and manage products programmatically using this API documentation. \n \n Request body for creating a new product.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UpdateProductMigrationMode"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UpdateProductMigrationMode"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
     "/customers/accounts": {
       "get": {
         "tags": ["customers"],
@@ -1491,6 +1527,9 @@
       "EditLineItem": {
         "$ref": "./requestBodies/EditLineItem.json"
       },
+      "UpdateProductMigrationMode": {
+        "$ref": "./requestBodies/UpdateProductMigrationMode.json"
+      },
       "SubscribeToEvents": {
         "$ref": "./requestBodies/SubscribeToEvents.json"
       }
@@ -1591,6 +1630,9 @@
       },
       "EditLineItem": {
         "$ref": "./responses/EditLineItem.json"
+      },
+      "UpdateProductMigrationMode": {
+        "$ref": "./responses/UpdateProductMigrationMode.json"
       },
       "CustomerAccountCard": {
         "$ref": "./responses/CustomerAccountCard.json"
