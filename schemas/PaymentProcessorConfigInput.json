@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "properties": {
+    "payment_processor_name": {
+      "type": "string",
+      "enum": ["NONE", "REPAY"],
+      "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+      "example": "REPAY",
+      "default": "NONE"
+    },
+    "autopay_enabled": {
+      "type": "boolean",
+      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+      "example": true,
+      "default": false
+    },
+    "repay_config": {
+      "type": "object",
+      "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
+      "required": [
+        "repay_payment_method",
+        "repay_check_type",
+        "repay_account_type",
+        "repay_transit_number",
+        "repay_account_number",
+        "repay_name_on_check"
+      ],
+      "properties": {
+        "repay_payment_method": {
+          "type": "string",
+          "enum": ["ACH"],
+          "description": "The payment method to use for this account"
+        },
+        "repay_check_type": {
+          "type": "string",
+          "enum": ["PERSONAL", "BUSINESS"],
+          "description": "Type of checking account: Personal or Business.",
+          "example": "PERSONAL"
+        },
+        "repay_account_type": {
+          "type": "string",
+          "enum": ["SAVINGS", "CHECKING"],
+          "description": "Type of account: Savings or Checking.",
+          "example": "CHECKING"
+        },
+        "repay_transit_number": {
+          "type": "integer",
+          "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+          "example": 999999992
+        },
+        "repay_account_number": {
+          "type": "integer",
+          "description": "Account number is an eight to ten digit number that identifies a specific account.",
+          "example": 987654321
+        },
+        "repay_name_on_check": {
+          "type": "string",
+          "description": "Account holder's name as it appears on the account.",
+          "example": "Lucille Bluth"
+        }
+      }
+    }
+  }
+}

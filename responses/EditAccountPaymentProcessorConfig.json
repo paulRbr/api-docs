@@ -1,0 +1,10 @@
+{
+  "description": "Payment Processor Configuration Updated",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/PaymentProcessorConfig.json"
+      }
+    }
+  }
+}
