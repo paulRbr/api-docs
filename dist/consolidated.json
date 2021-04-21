@@ -24,7 +24,7 @@
     },
     {
       "title": "Test it out",
-      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the buttons below to import our collection, which points to the environment you want to build against and already has our API endpoints configured. Be sure to define the required environment variables. \n \n If you'd just like to get set up with Canopy and send some requests with pre-populated sample data, we recommend using our Quickstart collection. \n \n When you'd like to start applying some business logic and try formulating what your actual implementation looks like, we recommend starting with our public sandbox. \n \n Once you've explored our public sandbox and formulated your business model, you can test in our protected UAT environment. \n \n**Quickstart:** [![Quickstart](https://run.pstmn.io/button.svg)](https:/carpp.getpostman.com/run-collection/5c939be57d1af0629496#?env%5BPLAY%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImN1cnJlbnRfdGltZXN0YW1wIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiUGhvbmVfbnVtYmVyIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiU1NOIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6bnVsbCwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifV0=) \n\n**Public Sandbox:** [![Public Sandbox](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20Sandbox%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InByb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXBpX3VzZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXV0aFRva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV4dGVybmFsX3Byb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==) \n \n**Protected UAT:** [![Protected UAT](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20UAT%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InVhdC1hcGkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In1d) \n \n**Production:** [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Production%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6ImFwaS5jYW5vcHlzZXJ2aWNpbmcuY29tIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoibGluZV9pdGVtX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImN1c3RvbWVyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV2ZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfV0=)"
+      "content": "To get going quickly, we recommend using an API collaboration tool called Postman. You can use the buttons below to import our collection, which points to the environment you want to build against and already has our API endpoints configured. Be sure to define the required environment variables. \n \n If you'd just like to get set up with Canopy and send some requests with pre-populated sample data, we recommend using our Quickstart collection. \n \n When you'd like to start applying some business logic and try formulating what your actual implementation looks like, we recommend starting with our public sandbox. \n \n Once you've explored our public sandbox and formulated your business model, you can test in our protected UAT environment. \n \n**Quickstart:** [![Quickstart](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5c939be57d1af0629496#?env%5BPLAY%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoicHJvZHVjdF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJjdXN0b21lcl9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImN1cnJlbnRfdGltZXN0YW1wIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiUGhvbmVfbnVtYmVyIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiU1NOIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6bnVsbCwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifV0=) \n\n**Public Sandbox:** [![Public Sandbox](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20Sandbox%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InNhbmRib3gtYXBpLmNhbm9weXNlcnZpY2luZy5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6InByb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJsaW5lX2l0ZW1faWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXBpX3VzZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYXV0aFRva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV4dGVybmFsX3Byb2R1Y3RfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==) \n \n**Protected UAT:** [![Protected UAT](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Public%20UAT%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY2xpZW50X3NlY3JldCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6InNjaGVtZSIsInZhbHVlIjoiaHR0cHMiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6InVhdC1hcGkuY2Fub3B5c2VydmljaW5nLmNvbSIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiYWNjb3VudF9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImxpbmVfaXRlbV9pZCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiY3VzdG9tZXJfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJhdXRoVG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiZXZlbnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJ0ZXh0In1d) \n \n**Production:** [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d0b9c971e4ab3bb1324f#?env%5BProtected%3A%20Production%5D=W3sia2V5IjoiY2xpZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImNsaWVudF9zZWNyZXQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5Ijoic2NoZW1lIiwidmFsdWUiOiJodHRwcyIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiaG9zdG5hbWUiLCJ2YWx1ZSI6ImFwaS5jYW5vcHlzZXJ2aWNpbmcuY29tIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJwcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFjY291bnRfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoibGluZV9pdGVtX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFwaV91c2VyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImN1c3RvbWVyX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImF1dGhUb2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJleHRlcm5hbF9wcm9kdWN0X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImV2ZW50X2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfV0=)"
     },
     {
       "title": "Pagination",
@@ -1872,74 +1872,6 @@
           },
           "404": {
             "description": "Unable to get products"
-          },
-          "429": {
-            "description": "Too many requests."
-          },
-          "default": {
-            "description": "Unexpected Error."
-          }
-        }
-      }
-    },
-    "/products/{product_id}/migration_mode": {
-      "put": {
-        "security": [
-          {
-            "oAuth2": []
-          }
-        ],
-        "tags": [
-          "data_migrations"
-        ],
-        "summary": "Create a new product",
-        "operationId": "createProduct",
-        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by sending an excel file detailing your preferred configurations to the [Canopy team](mailto:support@canopyservicing.com?subject=API%20Access%20Request); however, you can also configure and manage products programmatically using this API documentation. \n \n Request body for creating a new product.",
-        "requestBody": {
-          "description": "Update admin panel for a product.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "migration_mode": {
-                    "type": "boolean",
-                    "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
-                    "example": true,
-                    "default": false
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Migration Mode updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "description"
-                  ],
-                  "properties": {
-                    "description": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized."
-          },
-          "403": {
-            "description": "Forbidden."
-          },
-          "422": {
-            "description": "Invalid input"
           },
           "429": {
             "description": "Too many requests."
@@ -4636,6 +4568,161 @@
         }
       }
     },
+    "/accounts/{account_id}/payment_processor_config": {
+      "put": {
+        "security": [
+          {
+            "oAuth2": []
+          }
+        ],
+        "tags": [
+          "account"
+        ],
+        "summary": "Edit the payment processor config for an existing account",
+        "description": "Toggle autopay or change the payment processor / bank information for a given account.",
+        "operationId": "editAccountPaymentProcessorConfig",
+        "requestBody": {
+          "description": "Edit Payment Procesor Config",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "payment_processor_name": {
+                    "type": "string",
+                    "enum": [
+                      "NONE",
+                      "REPAY"
+                    ],
+                    "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                    "example": "REPAY",
+                    "default": "NONE"
+                  },
+                  "autopay_enabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                    "example": true,
+                    "default": false
+                  },
+                  "repay_config": {
+                    "type": "object",
+                    "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
+                    "required": [
+                      "repay_payment_method",
+                      "repay_check_type",
+                      "repay_account_type",
+                      "repay_transit_number",
+                      "repay_account_number",
+                      "repay_name_on_check"
+                    ],
+                    "properties": {
+                      "repay_payment_method": {
+                        "type": "string",
+                        "enum": [
+                          "ACH"
+                        ],
+                        "description": "The payment method to use for this account"
+                      },
+                      "repay_check_type": {
+                        "type": "string",
+                        "enum": [
+                          "PERSONAL",
+                          "BUSINESS"
+                        ],
+                        "description": "Type of checking account: Personal or Business.",
+                        "example": "PERSONAL"
+                      },
+                      "repay_account_type": {
+                        "type": "string",
+                        "enum": [
+                          "SAVINGS",
+                          "CHECKING"
+                        ],
+                        "description": "Type of account: Savings or Checking.",
+                        "example": "CHECKING"
+                      },
+                      "repay_transit_number": {
+                        "type": "integer",
+                        "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+                        "example": 999999992
+                      },
+                      "repay_account_number": {
+                        "type": "integer",
+                        "description": "Account number is an eight to ten digit number that identifies a specific account.",
+                        "example": 987654321
+                      },
+                      "repay_name_on_check": {
+                        "type": "string",
+                        "description": "Account holder's name as it appears on the account.",
+                        "example": "Lucille Bluth"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Payment Processor Configuration Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment_processor_name": {
+                      "type": "string",
+                      "enum": [
+                        "NONE",
+                        "REPAY"
+                      ],
+                      "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                      "example": "REPAY",
+                      "default": "NONE"
+                    },
+                    "autopay_enabled": {
+                      "type": "boolean",
+                      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                      "example": true,
+                      "default": false
+                    },
+                    "repay_config": {
+                      "type": "object",
+                      "required": [
+                        "valid_config"
+                      ],
+                      "properties": {
+                        "valid_config": {
+                          "type": "boolean",
+                          "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/notes": {
       "post": {
         "tags": [
@@ -7105,104 +7192,6 @@
           },
           "404": {
             "description": "Statement not found"
-          },
-          "429": {
-            "description": "Too many requests."
-          },
-          "default": {
-            "description": "Unexpected Error."
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/customers/{customer_id}/cards": {
-      "put": {
-        "tags": [
-          "customers"
-        ],
-        "summary": "Create a new card for an existing customer on an account",
-        "description": "",
-        "operationId": "createCustomerAccountCard",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "Account ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "example": "31mNprzLd2bKl6koVna68ARM"
-            }
-          },
-          {
-            "name": "customer_id",
-            "in": "path",
-            "description": "Customer ID",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string",
-              "example": "31mNprzLd2bKl6koVna68ARM"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully created a new card for the customer.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": true,
-                    "properties": {
-                      "type": {
-                        "type": "string",
-                        "description": "The type of card being returned",
-                        "enum": [
-                          "UNLOCKED"
-                        ],
-                        "example": "UNLOCKED"
-                      },
-                      "state": {
-                        "type": "string",
-                        "description": "The current state of the card",
-                        "enum": [
-                          "OPEN",
-                          "PAUSED",
-                          "CLOSED"
-                        ],
-                        "example": "OPEN"
-                      },
-                      "token": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "Unique token for the card",
-                        "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                      },
-                      "last_four": {
-                        "type": "string",
-                        "description": "Last four digits of the card",
-                        "example": "0690"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized."
-          },
-          "403": {
-            "description": "Forbidden."
-          },
-          "422": {
-            "description": "Invalid input"
           },
           "429": {
             "description": "Too many requests."
@@ -13452,6 +13441,88 @@
           }
         }
       },
+      "EditAccountPaymentProcessorConfig": {
+        "description": "Edit Payment Procesor Config",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY"
+                  ],
+                  "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "autopay_enabled": {
+                  "type": "boolean",
+                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                  "example": true,
+                  "default": false
+                },
+                "repay_config": {
+                  "type": "object",
+                  "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
+                  "required": [
+                    "repay_payment_method",
+                    "repay_check_type",
+                    "repay_account_type",
+                    "repay_transit_number",
+                    "repay_account_number",
+                    "repay_name_on_check"
+                  ],
+                  "properties": {
+                    "repay_payment_method": {
+                      "type": "string",
+                      "enum": [
+                        "ACH"
+                      ],
+                      "description": "The payment method to use for this account"
+                    },
+                    "repay_check_type": {
+                      "type": "string",
+                      "enum": [
+                        "PERSONAL",
+                        "BUSINESS"
+                      ],
+                      "description": "Type of checking account: Personal or Business.",
+                      "example": "PERSONAL"
+                    },
+                    "repay_account_type": {
+                      "type": "string",
+                      "enum": [
+                        "SAVINGS",
+                        "CHECKING"
+                      ],
+                      "description": "Type of account: Savings or Checking.",
+                      "example": "CHECKING"
+                    },
+                    "repay_transit_number": {
+                      "type": "integer",
+                      "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+                      "example": 999999992
+                    },
+                    "repay_account_number": {
+                      "type": "integer",
+                      "description": "Account number is an eight to ten digit number that identifies a specific account.",
+                      "example": 987654321
+                    },
+                    "repay_name_on_check": {
+                      "type": "string",
+                      "description": "Account holder's name as it appears on the account.",
+                      "example": "Lucille Bluth"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "CreateNote": {
         "description": "Add a Note to an account",
         "content": {
@@ -13702,24 +13773,6 @@
                   ],
                   "example": "VALID",
                   "default": "VALID"
-                }
-              }
-            }
-          }
-        }
-      },
-      "UpdateProductMigrationMode": {
-        "description": "Update admin panel for a product.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "migration_mode": {
-                  "type": "boolean",
-                  "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
-                  "example": true,
-                  "default": false
                 }
               }
             }
@@ -16900,6 +16953,47 @@
                   }
                 }
               ]
+            }
+          }
+        }
+      },
+      "EditAccountPaymentProcessorConfig": {
+        "description": "Payment Processor Configuration Updated",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY"
+                  ],
+                  "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "autopay_enabled": {
+                  "type": "boolean",
+                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                  "example": true,
+                  "default": false
+                },
+                "repay_config": {
+                  "type": "object",
+                  "required": [
+                    "valid_config"
+                  ],
+                  "properties": {
+                    "valid_config": {
+                      "type": "boolean",
+                      "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                      "example": true
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -20259,69 +20353,6 @@
                         "example": "22445702-a389-431f-927d-07b8d0750787"
                       }
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "UpdateProductMigrationMode": {
-        "description": "Migration Mode updated successfully",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "description"
-              ],
-              "properties": {
-                "description": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "CustomerAccountCard": {
-        "description": "Successfully created a new card for the customer.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "additionalProperties": true,
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "description": "The type of card being returned",
-                    "enum": [
-                      "UNLOCKED"
-                    ],
-                    "example": "UNLOCKED"
-                  },
-                  "state": {
-                    "type": "string",
-                    "description": "The current state of the card",
-                    "enum": [
-                      "OPEN",
-                      "PAUSED",
-                      "CLOSED"
-                    ],
-                    "example": "OPEN"
-                  },
-                  "token": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Unique token for the card",
-                    "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                  },
-                  "last_four": {
-                    "type": "string",
-                    "description": "Last four digits of the card",
-                    "example": "0690"
                   }
                 }
               }
