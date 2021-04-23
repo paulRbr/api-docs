@@ -1,5 +1,6 @@
 {
   "type": "array",
+  "nullable": true,
   "items": {
     "type": "object",
     "additionalProperties": true,

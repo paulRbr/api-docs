@@ -20,25 +20,29 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-          "example": "2015-08-31T10:49:44.461+00:00"
+          "example": "2015-08-31T10:49:44.461+00:00",
+          "nullable": true
         },
         "promo_purchase_window_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-          "example": "2015-08-31T10:49:44.461+00:00"
+          "example": "2015-08-31T10:49:44.461+00:00",
+          "nullable": true
         },
         "promo_inclusive_start": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-          "example": "2015-08-31T10:49:44.461+00:00"
+          "example": "2015-08-31T10:49:44.461+00:00",
+          "nullable": true
         },
         "promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-          "example": "2015-08-31T10:49:44.461+00:00"
+          "example": "2015-08-31T10:49:44.461+00:00",
+          "nullable": true
         },
         "account_status": {
           "type": "string",
@@ -61,25 +65,29 @@
           "type": "integer",
           "description": "Total Amount (in cents) that this account can borrow.",
           "example": 400000,
-          "default": 0
+          "default": 0,
+          "nullable": true
         },
         "total_charges_cents": {
           "type": "integer",
           "description": "Sum of all charges that occurred on the account since account origination.",
           "example": 800000,
-          "default": 0
+          "default": 0,
+          "nullable": true
         },
         "available_credit_cents": {
           "type": "integer",
           "description": "The total available credit balance (in cents) for the account.",
           "example": 600000,
-          "default": 0
+          "default": 0,
+          "nullable": true
         },
         "open_to_buy_cents": {
           "type": "integer",
           "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
           "example": 600000,
-          "default": 0
+          "default": 0,
+          "nullable": true
         }
       }
     },
@@ -89,12 +97,14 @@
         "cycle_inclusive_start": {
           "type": "string",
           "format": "date-time",
-          "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+          "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement.",
+          "nullable": true
         },
         "cycle_exclusive_end": {
           "type": "string",
           "format": "date-time",
-          "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+          "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement.",
+          "nullable": true
         },
         "cycle_charges_cents": {
           "type": "integer",
@@ -154,13 +164,15 @@
           "type": "integer",
           "description": "Total interest accrued during the billing cycle.",
           "example": 300000,
-          "default": 0
+          "default": 0,
+          "nullable": true
         },
         "cycle_am_deferred_interest_cents": {
           "type": "integer",
           "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
           "example": 300000,
-          "default": 0
+          "default": 0,
+          "nullable": true
         },
         "cycle_late_fees_cents": {
           "type": "integer",
@@ -195,7 +207,8 @@
           "type": "string",
           "format": "date-time",
           "description": "The `Date-Time` the payment for this billing cycle is due.",
-          "example": "2019-10-18T23:04:48.321+00:00"
+          "example": "2019-10-18T23:04:48.321+00:00",
+          "nullable": true
         }
       }
     },
@@ -243,7 +256,8 @@
         "previous_min_pay_cents": {
           "type": "integer",
           "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
-          "example": 400000
+          "example": 400000,
+          "nullable": true
         }
       }
     },
@@ -313,7 +327,8 @@
           "type": "integer",
           "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
           "example": 1100000,
-          "default": 0
+          "default": 0,
+          "nullable": true
         }
       }
     },

@@ -50,8 +50,8 @@ type CycleSummary struct {
 	CycleCreditAdjustmentsCents      *int64  `json:"cycle_credit_adjustments_cents,omitempty"`      // Sum of all credit adjustment amounts that occurred on the account during the billing; cycle.
 	CycleDebitAdjustmentsCents       *int64  `json:"cycle_debit_adjustments_cents,omitempty"`       // Sum of all debit adjustment amounts that occurred on the account during the billing cycle.
 	CycleDeferredInterestCents       *int64  `json:"cycle_deferred_interest_cents,omitempty"`       // Total interest accrued during the billing cycle.
-	CycleExclusiveEnd                *string `json:"cycle_exclusive_end,omitempty"`                 // The inclusive ending `Date-Time` that defines which transations are part of this; statement.
-	CycleInclusiveStart              *string `json:"cycle_inclusive_start,omitempty"`               // The inclusive starting `Date-Time` that defines which transations are part of this; statement.
+	CycleExclusiveEnd                *string `json:"cycle_exclusive_end,omitempty"`                 // The inclusive ending `Date-Time` that defines which transactions are part of this; statement.
+	CycleInclusiveStart              *string `json:"cycle_inclusive_start,omitempty"`               // The inclusive starting `Date-Time` that defines which transactions are part of this; statement.
 	CycleInterestCents               *int64  `json:"cycle_interest_cents,omitempty"`                // Total interest accrued during the billing cycle.
 	CycleLateFeesCents               *int64  `json:"cycle_late_fees_cents,omitempty"`               // Total late fees incurred during the billing cycle.
 	CycleLoansCents                  *int64  `json:"cycle_loans_cents,omitempty"`                   // Sum of all loans amounts that were initiated on the account during the billing cycle.

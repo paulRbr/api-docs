@@ -203,6 +203,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 10,
                   "items": {
                     "type": "object",
@@ -242,7 +243,8 @@
                       "phone": {
                         "type": "string",
                         "description": "Phone number of the API user",
-                        "example": "1-123-456-7890"
+                        "example": "1-123-456-7890",
+                        "nullable": true
                       },
                       "role": {
                         "type": "integer",
@@ -617,7 +619,8 @@
                     "phone": {
                       "type": "string",
                       "description": "Phone number of the API user",
-                      "example": "1-123-456-7890"
+                      "example": "1-123-456-7890",
+                      "nullable": true
                     },
                     "role": {
                       "type": "integer",
@@ -704,7 +707,8 @@
                     "phone": {
                       "type": "string",
                       "description": "Phone number of the API user",
-                      "example": "1-123-456-7890"
+                      "example": "1-123-456-7890",
+                      "nullable": true
                     },
                     "role": {
                       "type": "integer",
@@ -999,7 +1003,7 @@
                         "type": "integer",
                         "description": "Default duration for any amortization period during post-promotion",
                         "example": 48,
-                        "default": 1
+                        "default": 0
                       },
                       "post_promo_am_len_range_inclusive_lower": {
                         "type": "integer",
@@ -1096,7 +1100,8 @@
                     "external_product_id": {
                       "type": "string",
                       "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45",
+                      "nullable": true
                     },
                     "product_overview": {
                       "type": "object",
@@ -1127,12 +1132,14 @@
                         "product_short_description": {
                           "type": "string",
                           "description": "A short description of the product ranging from 0 - 60 characters.",
-                          "example": "12mm3apr."
+                          "example": "12mm3apr.",
+                          "nullable": true
                         },
                         "product_long_description": {
                           "type": "string",
                           "description": "Description of the Product ranging from 0 - 1000.",
-                          "example": "Student credit card."
+                          "example": "Student credit card.",
+                          "nullable": true
                         },
                         "product_color": {
                           "type": "string",
@@ -1142,6 +1149,7 @@
                         },
                         "external_fields": {
                           "type": "array",
+                          "nullable": true,
                           "maxItems": 1000,
                           "items": {
                             "type": "object",
@@ -1340,7 +1348,7 @@
                           "type": "integer",
                           "description": "Default duration for the amortization period during post-promotion",
                           "example": 48,
-                          "default": 1
+                          "default": 0
                         },
                         "post_promo_am_len_range_inclusive_lower": {
                           "type": "integer",
@@ -1503,6 +1511,7 @@
                   "properties": {
                     "results": {
                       "type": "array",
+                      "nullable": true,
                       "description": "An array of information for all products within the requested range.",
                       "maxItems": 100,
                       "items": {
@@ -1536,7 +1545,8 @@
                           "external_product_id": {
                             "type": "string",
                             "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                            "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                            "example": "95fea111-d121-40f8-9e8e-a6c335e48a45",
+                            "nullable": true
                           },
                           "product_overview": {
                             "type": "object",
@@ -1567,12 +1577,14 @@
                               "product_short_description": {
                                 "type": "string",
                                 "description": "A short description of the product ranging from 0 - 60 characters.",
-                                "example": "12mm3apr."
+                                "example": "12mm3apr.",
+                                "nullable": true
                               },
                               "product_long_description": {
                                 "type": "string",
                                 "description": "Description of the Product ranging from 0 - 1000.",
-                                "example": "Student credit card."
+                                "example": "Student credit card.",
+                                "nullable": true
                               },
                               "product_color": {
                                 "type": "string",
@@ -1582,6 +1594,7 @@
                               },
                               "external_fields": {
                                 "type": "array",
+                                "nullable": true,
                                 "maxItems": 1000,
                                 "items": {
                                   "type": "object",
@@ -1780,7 +1793,7 @@
                                 "type": "integer",
                                 "description": "Default duration for the amortization period during post-promotion",
                                 "example": 48,
-                                "default": 1
+                                "default": 0
                               },
                               "post_promo_am_len_range_inclusive_lower": {
                                 "type": "integer",
@@ -2260,17 +2273,20 @@
                                           "product_short_description": {
                                             "type": "string",
                                             "description": "Short description of the Product - max of 30 characters.",
-                                            "example": "Consumer credit card"
+                                            "example": "Consumer credit card",
+                                            "nullable": true
                                           },
                                           "product_long_description": {
                                             "type": "string",
                                             "description": "Description of the Product.",
-                                            "example": "Student credit card."
+                                            "example": "Student credit card.",
+                                            "nullable": true
                                           },
                                           "product_time_zone": {
                                             "type": "string",
                                             "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                                            "example": "America/Chicago"
+                                            "example": "America/Chicago",
+                                            "default": "America/New_York"
                                           },
                                           "product_type": {
                                             "type": "string",
@@ -2327,7 +2343,8 @@
                                             "type": "string",
                                             "format": "date-time",
                                             "description": "If applicable, the account's loan repayment date.",
-                                            "example": "2013-01-13T05:25:13.813+00:00"
+                                            "example": "2013-01-13T05:25:13.813+00:00",
+                                            "nullable": true
                                           }
                                         }
                                       },
@@ -2338,25 +2355,29 @@
                                             "type": "string",
                                             "format": "date-time",
                                             "description": "If applicable, the start date for a purchase window for the account",
-                                            "example": "2013-01-13T05:25:13.813+00:00"
+                                            "example": "2013-01-13T05:25:13.813+00:00",
+                                            "nullable": true
                                           },
                                           "promo_purchase_window_exclusive_end": {
                                             "type": "string",
                                             "format": "date-time",
                                             "description": "If applicable, the end date for a purchase window for the account",
-                                            "example": "2013-01-13T05:25:13.813+00:00"
+                                            "example": "2013-01-13T05:25:13.813+00:00",
+                                            "nullable": true
                                           },
                                           "promo_inclusive_start": {
                                             "type": "string",
                                             "format": "date-time",
                                             "description": "If applicable, the start date for a promotional period for the account.",
-                                            "example": "2013-01-13T05:25:13.813+00:00"
+                                            "example": "2013-01-13T05:25:13.813+00:00",
+                                            "nullable": true
                                           },
                                           "promo_exclusive_end": {
                                             "type": "string",
                                             "format": "date-time",
                                             "description": "If applicable, the start date for a promotional period for the account.",
-                                            "example": "2013-01-13T05:25:13.813+00:00"
+                                            "example": "2013-01-13T05:25:13.813+00:00",
+                                            "nullable": true
                                           },
                                           "promo_impl_interest_rate_percent": {
                                             "type": "number",
@@ -2378,13 +2399,15 @@
                                             "type": "string",
                                             "format": "date-time",
                                             "description": "If applicable, the start date for a promotional period for the account.",
-                                            "example": "2013-01-13T05:25:13.813+00:00"
+                                            "example": "2013-01-13T05:25:13.813+00:00",
+                                            "nullable": true
                                           },
                                           "post_promo_exclusive_end": {
                                             "type": "string",
                                             "format": "date-time",
                                             "description": "If applicable, the start date for a promotional period for the account.",
-                                            "example": "2013-01-13T05:25:13.813+00:00"
+                                            "example": "2013-01-13T05:25:13.813+00:00",
+                                            "nullable": true
                                           },
                                           "post_promo_impl_interest_rate_percent": {
                                             "type": "number",
@@ -2396,7 +2419,7 @@
                                             "type": "integer",
                                             "description": "If applicable, post-promotional amortization length in cycles.",
                                             "example": 48,
-                                            "default": 1
+                                            "default": 0
                                           }
                                         }
                                       },
@@ -2646,6 +2669,7 @@
                                   },
                                   "associated_entities": {
                                     "type": "object",
+                                    "nullable": true,
                                     "properties": {
                                       "merchant_name": {
                                         "type": "string",
@@ -2842,6 +2866,7 @@
                   },
                   "assign_to_accounts": {
                     "type": "array",
+                    "nullable": true,
                     "maxItems": 10,
                     "description": "An array of existing accounts to which this Customer should be assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
                     "items": {
@@ -3080,6 +3105,7 @@
                       },
                       "external_fields": {
                         "type": "array",
+                        "nullable": true,
                         "maxItems": 10,
                         "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                         "items": {
@@ -3178,6 +3204,7 @@
                         "properties": {
                           "first_cycle_interval": {
                             "type": "string",
+                            "nullable": true,
                             "description": "Interval for a first cycle for this account.",
                             "example": "11 days"
                           }
@@ -3229,7 +3256,8 @@
                           "initial_principal_cents": {
                             "type": "integer",
                             "description": "The initial principal balance (in cents) for the account.",
-                            "example": 400000
+                            "example": 400000,
+                            "nullable": true
                           }
                         }
                       },
@@ -3281,6 +3309,7 @@
                       "assign_customers": {
                         "type": "array",
                         "maxItems": 10,
+                        "nullable": true,
                         "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
                         "items": {
                           "type": "object",
@@ -3441,17 +3470,20 @@
                                 "product_short_description": {
                                   "type": "string",
                                   "description": "Short description of the Product - max of 30 characters.",
-                                  "example": "Consumer credit card"
+                                  "example": "Consumer credit card",
+                                  "nullable": true
                                 },
                                 "product_long_description": {
                                   "type": "string",
                                   "description": "Description of the Product.",
-                                  "example": "Student credit card."
+                                  "example": "Student credit card.",
+                                  "nullable": true
                                 },
                                 "product_time_zone": {
                                   "type": "string",
                                   "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                                  "example": "America/Chicago"
+                                  "example": "America/Chicago",
+                                  "default": "America/New_York"
                                 },
                                 "product_type": {
                                   "type": "string",
@@ -3508,7 +3540,8 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the account's loan repayment date.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 }
                               }
                             },
@@ -3519,25 +3552,29 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_purchase_window_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the end date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_inclusive_start": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -3559,13 +3596,15 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "post_promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "post_promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -3577,7 +3616,7 @@
                                   "type": "integer",
                                   "description": "If applicable, post-promotional amortization length in cycles.",
                                   "example": 48,
-                                  "default": 1
+                                  "default": 0
                                 }
                               }
                             },
@@ -3827,6 +3866,7 @@
                         },
                         "associated_entities": {
                           "type": "object",
+                          "nullable": true,
                           "properties": {
                             "merchant_name": {
                               "type": "string",
@@ -3850,6 +3890,7 @@
                       "properties": {
                         "customers": {
                           "type": "array",
+                          "nullable": true,
                           "maxItems": 1000,
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
@@ -4094,17 +4135,20 @@
                                 "product_short_description": {
                                   "type": "string",
                                   "description": "Short description of the Product - max of 30 characters.",
-                                  "example": "Consumer credit card"
+                                  "example": "Consumer credit card",
+                                  "nullable": true
                                 },
                                 "product_long_description": {
                                   "type": "string",
                                   "description": "Description of the Product.",
-                                  "example": "Student credit card."
+                                  "example": "Student credit card.",
+                                  "nullable": true
                                 },
                                 "product_time_zone": {
                                   "type": "string",
                                   "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                                  "example": "America/Chicago"
+                                  "example": "America/Chicago",
+                                  "default": "America/New_York"
                                 },
                                 "product_type": {
                                   "type": "string",
@@ -4161,7 +4205,8 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the account's loan repayment date.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 }
                               }
                             },
@@ -4172,25 +4217,29 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_purchase_window_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the end date for a purchase window for the account",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_inclusive_start": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -4212,13 +4261,15 @@
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "post_promo_exclusive_end": {
                                   "type": "string",
                                   "format": "date-time",
                                   "description": "If applicable, the start date for a promotional period for the account.",
-                                  "example": "2013-01-13T05:25:13.813+00:00"
+                                  "example": "2013-01-13T05:25:13.813+00:00",
+                                  "nullable": true
                                 },
                                 "post_promo_impl_interest_rate_percent": {
                                   "type": "number",
@@ -4230,7 +4281,7 @@
                                   "type": "integer",
                                   "description": "If applicable, post-promotional amortization length in cycles.",
                                   "example": 48,
-                                  "default": 1
+                                  "default": 0
                                 }
                               }
                             },
@@ -4480,6 +4531,7 @@
                         },
                         "associated_entities": {
                           "type": "object",
+                          "nullable": true,
                           "properties": {
                             "merchant_name": {
                               "type": "string",
@@ -4503,6 +4555,7 @@
                       "properties": {
                         "customers": {
                           "type": "array",
+                          "nullable": true,
                           "maxItems": 1000,
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
@@ -4742,7 +4795,8 @@
                         "phone": {
                           "type": "string",
                           "description": "Phone number of the API user",
-                          "example": "1-123-456-7890"
+                          "example": "1-123-456-7890",
+                          "nullable": true
                         },
                         "role": {
                           "type": "integer",
@@ -4812,6 +4866,7 @@
                 "schema": {
                   "type": "array",
                   "maxItems": 1000,
+                  "nullable": true,
                   "description": "A history of all notes on an account.",
                   "items": {
                     "type": "object",
@@ -4872,7 +4927,8 @@
                           "phone": {
                             "type": "string",
                             "description": "Phone number of the API user",
-                            "example": "1-123-456-7890"
+                            "example": "1-123-456-7890",
+                            "nullable": true
                           },
                           "role": {
                             "type": "integer",
@@ -4986,6 +5042,7 @@
                   "properties": {
                     "results": {
                       "type": "array",
+                      "nullable": true,
                       "description": "An array of information for all line items within the requested range.",
                       "maxItems": 1000,
                       "items": {
@@ -5079,7 +5136,8 @@
                               "description": {
                                 "type": "string",
                                 "description": "A description of this particular line item if any. More common for adjustments.",
-                                "example": "Refund for invalid purchase"
+                                "example": "Refund for invalid purchase",
+                                "nullable": true
                               }
                             }
                           },
@@ -5139,6 +5197,7 @@
                           "merchant_data": {
                             "type": "object",
                             "description": "Merchant information if applicable.",
+                            "nullable": true,
                             "properties": {
                               "name": {
                                 "type": "string"
@@ -5156,6 +5215,7 @@
                           },
                           "issuer_processor_metadata": {
                             "type": "object",
+                            "nullable": true,
                             "properties": {
                               "privacy": {
                                 "type": "object",
@@ -5170,6 +5230,7 @@
                           },
                           "external_fields": {
                             "type": "array",
+                            "nullable": true,
                             "maxItems": 1000,
                             "description": "An array of static references to fields in a third party system.",
                             "items": {
@@ -5318,6 +5379,7 @@
                   "properties": {
                     "results": {
                       "type": "array",
+                      "nullable": true,
                       "description": "An array of information for all line items within the requested range.",
                       "maxItems": 1000,
                       "items": {
@@ -5411,7 +5473,8 @@
                               "description": {
                                 "type": "string",
                                 "description": "A description of this particular line item if any. More common for adjustments.",
-                                "example": "Refund for invalid purchase"
+                                "example": "Refund for invalid purchase",
+                                "nullable": true
                               }
                             }
                           },
@@ -5471,6 +5534,7 @@
                           "merchant_data": {
                             "type": "object",
                             "description": "Merchant information if applicable.",
+                            "nullable": true,
                             "properties": {
                               "name": {
                                 "type": "string"
@@ -5488,6 +5552,7 @@
                           },
                           "issuer_processor_metadata": {
                             "type": "object",
+                            "nullable": true,
                             "properties": {
                               "privacy": {
                                 "type": "object",
@@ -5502,6 +5567,7 @@
                           },
                           "external_fields": {
                             "type": "array",
+                            "nullable": true,
                             "maxItems": 1000,
                             "description": "An array of static references to fields in a third party system.",
                             "items": {
@@ -5703,7 +5769,8 @@
                         "description": {
                           "type": "string",
                           "description": "A description of this particular line item if any. More common for adjustments.",
-                          "example": "Refund for invalid purchase"
+                          "example": "Refund for invalid purchase",
+                          "nullable": true
                         }
                       }
                     },
@@ -5722,6 +5789,7 @@
                     },
                     "merchant_data": {
                       "type": "object",
+                      "nullable": true,
                       "description": "Merchant information if applicable.",
                       "properties": {
                         "name": {
@@ -5754,6 +5822,7 @@
                     },
                     "external_fields": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 1000,
                       "description": "An array of static references to fields in a third party system.",
                       "items": {
@@ -5864,10 +5933,8 @@
                   },
                   "merchant_data": {
                     "type": "object",
+                    "nullable": true,
                     "description": "",
-                    "required": [
-                      "mcc_code"
-                    ],
                     "properties": {
                       "name": {
                         "type": "string"
@@ -5900,6 +5967,7 @@
                   "external_fields": {
                     "type": "array",
                     "maxItems": 10,
+                    "nullable": true,
                     "description": "An array of static references to fields in a third party system.",
                     "items": {
                       "type": "object",
@@ -6020,7 +6088,8 @@
                         "description": {
                           "type": "string",
                           "description": "A description of this particular line item if any. More common for adjustments.",
-                          "example": "Refund for invalid purchase"
+                          "example": "Refund for invalid purchase",
+                          "nullable": true
                         }
                       }
                     },
@@ -6039,6 +6108,7 @@
                     },
                     "merchant_data": {
                       "type": "object",
+                      "nullable": true,
                       "description": "Merchant information if applicable.",
                       "properties": {
                         "name": {
@@ -6071,6 +6141,7 @@
                     },
                     "external_fields": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 1000,
                       "description": "An array of static references to fields in a third party system.",
                       "items": {
@@ -6160,6 +6231,7 @@
                   },
                   "external_fields": {
                     "type": "array",
+                    "nullable": true,
                     "maxItems": 10,
                     "description": "An array of static references to fields in a third party system.",
                     "items": {
@@ -6281,7 +6353,8 @@
                         "description": {
                           "type": "string",
                           "description": "A description of this particular line item if any. More common for adjustments.",
-                          "example": "Refund for invalid purchase"
+                          "example": "Refund for invalid purchase",
+                          "nullable": true
                         }
                       }
                     },
@@ -6300,6 +6373,7 @@
                     },
                     "merchant_data": {
                       "type": "object",
+                      "nullable": true,
                       "description": "Merchant information if applicable.",
                       "properties": {
                         "name": {
@@ -6332,6 +6406,7 @@
                     },
                     "external_fields": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 1000,
                       "description": "An array of static references to fields in a third party system.",
                       "items": {
@@ -6455,12 +6530,14 @@
                           "cycle_inclusive_start": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                            "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement.",
+                            "nullable": true
                           },
                           "cycle_exclusive_end": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                            "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement.",
+                            "nullable": true
                           }
                         }
                       },
@@ -6585,25 +6662,29 @@
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                          "example": "2015-08-31T10:49:44.461+00:00"
+                          "example": "2015-08-31T10:49:44.461+00:00",
+                          "nullable": true
                         },
                         "promo_purchase_window_exclusive_end": {
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                          "example": "2015-08-31T10:49:44.461+00:00"
+                          "example": "2015-08-31T10:49:44.461+00:00",
+                          "nullable": true
                         },
                         "promo_inclusive_start": {
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                          "example": "2015-08-31T10:49:44.461+00:00"
+                          "example": "2015-08-31T10:49:44.461+00:00",
+                          "nullable": true
                         },
                         "promo_exclusive_end": {
                           "type": "string",
                           "format": "date-time",
                           "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                          "example": "2015-08-31T10:49:44.461+00:00"
+                          "example": "2015-08-31T10:49:44.461+00:00",
+                          "nullable": true
                         },
                         "account_status": {
                           "type": "string",
@@ -6626,25 +6707,29 @@
                           "type": "integer",
                           "description": "Total Amount (in cents) that this account can borrow.",
                           "example": 400000,
-                          "default": 0
+                          "default": 0,
+                          "nullable": true
                         },
                         "total_charges_cents": {
                           "type": "integer",
                           "description": "Sum of all charges that occurred on the account since account origination.",
                           "example": 800000,
-                          "default": 0
+                          "default": 0,
+                          "nullable": true
                         },
                         "available_credit_cents": {
                           "type": "integer",
                           "description": "The total available credit balance (in cents) for the account.",
                           "example": 600000,
-                          "default": 0
+                          "default": 0,
+                          "nullable": true
                         },
                         "open_to_buy_cents": {
                           "type": "integer",
                           "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
                           "example": 600000,
-                          "default": 0
+                          "default": 0,
+                          "nullable": true
                         }
                       }
                     },
@@ -6654,12 +6739,14 @@
                         "cycle_inclusive_start": {
                           "type": "string",
                           "format": "date-time",
-                          "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                          "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement.",
+                          "nullable": true
                         },
                         "cycle_exclusive_end": {
                           "type": "string",
                           "format": "date-time",
-                          "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                          "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement.",
+                          "nullable": true
                         },
                         "cycle_charges_cents": {
                           "type": "integer",
@@ -6719,13 +6806,15 @@
                           "type": "integer",
                           "description": "Total interest accrued during the billing cycle.",
                           "example": 300000,
-                          "default": 0
+                          "default": 0,
+                          "nullable": true
                         },
                         "cycle_am_deferred_interest_cents": {
                           "type": "integer",
                           "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                           "example": 300000,
-                          "default": 0
+                          "default": 0,
+                          "nullable": true
                         },
                         "cycle_late_fees_cents": {
                           "type": "integer",
@@ -6763,7 +6852,8 @@
                           "type": "string",
                           "format": "date-time",
                           "description": "The `Date-Time` the payment for this billing cycle is due.",
-                          "example": "2019-10-18T23:04:48.321+00:00"
+                          "example": "2019-10-18T23:04:48.321+00:00",
+                          "nullable": true
                         }
                       }
                     },
@@ -6811,7 +6901,8 @@
                         "previous_min_pay_cents": {
                           "type": "integer",
                           "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
-                          "example": 400000
+                          "example": 400000,
+                          "nullable": true
                         }
                       }
                     },
@@ -6881,7 +6972,8 @@
                           "type": "integer",
                           "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
                           "example": 1100000,
-                          "default": 0
+                          "default": 0,
+                          "nullable": true
                         }
                       }
                     },
@@ -6980,7 +7072,8 @@
                               "description": {
                                 "type": "string",
                                 "description": "A description of this particular line item if any. More common for adjustments.",
-                                "example": "Refund for invalid purchase"
+                                "example": "Refund for invalid purchase",
+                                "nullable": true
                               }
                             }
                           },
@@ -7040,6 +7133,7 @@
                           "merchant_data": {
                             "type": "object",
                             "description": "Merchant information if applicable.",
+                            "nullable": true,
                             "properties": {
                               "name": {
                                 "type": "string"
@@ -7057,6 +7151,7 @@
                           },
                           "issuer_processor_metadata": {
                             "type": "object",
+                            "nullable": true,
                             "properties": {
                               "privacy": {
                                 "type": "object",
@@ -7071,6 +7166,7 @@
                           },
                           "external_fields": {
                             "type": "array",
+                            "nullable": true,
                             "maxItems": 1000,
                             "description": "An array of static references to fields in a third party system.",
                             "items": {
@@ -7156,6 +7252,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
+                  "nullable": true,
                   "items": {
                     "type": "object",
                     "additionalProperties": true,
@@ -7292,13 +7389,15 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "The date-time the am cycle ends.",
-                        "example": "2018-07-20T09:10:14+00:00"
+                        "example": "2018-07-20T09:10:14+00:00",
+                        "nullable": true
                       },
                       "min_pay_due_at": {
                         "type": "string",
                         "format": "date-time",
                         "description": "The date the minimum payment for the am schedule is due.",
-                        "example": "2018-07-20T09:10:14+00:00"
+                        "example": "2018-07-20T09:10:14+00:00",
+                        "nullable": true
                       },
                       "am_min_pay_cents": {
                         "type": "number",
@@ -7512,25 +7611,29 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                                "example": "2015-08-31T10:49:44.461+00:00"
+                                "example": "2015-08-31T10:49:44.461+00:00",
+                                "nullable": true
                               },
                               "promo_purchase_window_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                                "example": "2015-08-31T10:49:44.461+00:00"
+                                "example": "2015-08-31T10:49:44.461+00:00",
+                                "nullable": true
                               },
                               "promo_inclusive_start": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                                "example": "2015-08-31T10:49:44.461+00:00"
+                                "example": "2015-08-31T10:49:44.461+00:00",
+                                "nullable": true
                               },
                               "promo_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                                "example": "2015-08-31T10:49:44.461+00:00"
+                                "example": "2015-08-31T10:49:44.461+00:00",
+                                "nullable": true
                               },
                               "account_status": {
                                 "type": "string",
@@ -7553,25 +7656,29 @@
                                 "type": "integer",
                                 "description": "Total Amount (in cents) that this account can borrow.",
                                 "example": 400000,
-                                "default": 0
+                                "default": 0,
+                                "nullable": true
                               },
                               "total_charges_cents": {
                                 "type": "integer",
                                 "description": "Sum of all charges that occurred on the account since account origination.",
                                 "example": 800000,
-                                "default": 0
+                                "default": 0,
+                                "nullable": true
                               },
                               "available_credit_cents": {
                                 "type": "integer",
                                 "description": "The total available credit balance (in cents) for the account.",
                                 "example": 600000,
-                                "default": 0
+                                "default": 0,
+                                "nullable": true
                               },
                               "open_to_buy_cents": {
                                 "type": "integer",
                                 "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
                                 "example": 600000,
-                                "default": 0
+                                "default": 0,
+                                "nullable": true
                               }
                             }
                           },
@@ -7581,12 +7688,14 @@
                               "cycle_inclusive_start": {
                                 "type": "string",
                                 "format": "date-time",
-                                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                                "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement.",
+                                "nullable": true
                               },
                               "cycle_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
-                                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                                "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement.",
+                                "nullable": true
                               },
                               "cycle_charges_cents": {
                                 "type": "integer",
@@ -7646,13 +7755,15 @@
                                 "type": "integer",
                                 "description": "Total interest accrued during the billing cycle.",
                                 "example": 300000,
-                                "default": 0
+                                "default": 0,
+                                "nullable": true
                               },
                               "cycle_am_deferred_interest_cents": {
                                 "type": "integer",
                                 "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                                 "example": 300000,
-                                "default": 0
+                                "default": 0,
+                                "nullable": true
                               },
                               "cycle_late_fees_cents": {
                                 "type": "integer",
@@ -7690,7 +7801,8 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "The `Date-Time` the payment for this billing cycle is due.",
-                                "example": "2019-10-18T23:04:48.321+00:00"
+                                "example": "2019-10-18T23:04:48.321+00:00",
+                                "nullable": true
                               }
                             }
                           },
@@ -7738,7 +7850,8 @@
                               "previous_min_pay_cents": {
                                 "type": "integer",
                                 "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
-                                "example": 400000
+                                "example": 400000,
+                                "nullable": true
                               }
                             }
                           },
@@ -7808,7 +7921,8 @@
                                 "type": "integer",
                                 "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
                                 "example": 1100000,
-                                "default": 0
+                                "default": 0,
+                                "nullable": true
                               }
                             }
                           },
@@ -7907,7 +8021,8 @@
                                     "description": {
                                       "type": "string",
                                       "description": "A description of this particular line item if any. More common for adjustments.",
-                                      "example": "Refund for invalid purchase"
+                                      "example": "Refund for invalid purchase",
+                                      "nullable": true
                                     }
                                   }
                                 },
@@ -7967,6 +8082,7 @@
                                 "merchant_data": {
                                   "type": "object",
                                   "description": "Merchant information if applicable.",
+                                  "nullable": true,
                                   "properties": {
                                     "name": {
                                       "type": "string"
@@ -7984,6 +8100,7 @@
                                 },
                                 "issuer_processor_metadata": {
                                   "type": "object",
+                                  "nullable": true,
                                   "properties": {
                                     "privacy": {
                                       "type": "object",
@@ -7998,6 +8115,7 @@
                                 },
                                 "external_fields": {
                                   "type": "array",
+                                  "nullable": true,
                                   "maxItems": 1000,
                                   "description": "An array of static references to fields in a third party system.",
                                   "items": {
@@ -8246,7 +8364,8 @@
           "phone": {
             "type": "string",
             "description": "Phone number of the API user",
-            "example": "1-123-456-7890"
+            "example": "1-123-456-7890",
+            "nullable": true
           },
           "role": {
             "type": "integer",
@@ -8337,17 +8456,20 @@
                   "product_short_description": {
                     "type": "string",
                     "description": "Short description of the Product - max of 30 characters.",
-                    "example": "Consumer credit card"
+                    "example": "Consumer credit card",
+                    "nullable": true
                   },
                   "product_long_description": {
                     "type": "string",
                     "description": "Description of the Product.",
-                    "example": "Student credit card."
+                    "example": "Student credit card.",
+                    "nullable": true
                   },
                   "product_time_zone": {
                     "type": "string",
                     "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                    "example": "America/Chicago"
+                    "example": "America/Chicago",
+                    "default": "America/New_York"
                   },
                   "product_type": {
                     "type": "string",
@@ -8404,7 +8526,8 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the account's loan repayment date.",
-                    "example": "2013-01-13T05:25:13.813+00:00"
+                    "example": "2013-01-13T05:25:13.813+00:00",
+                    "nullable": true
                   }
                 }
               },
@@ -8415,25 +8538,29 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a purchase window for the account",
-                    "example": "2013-01-13T05:25:13.813+00:00"
+                    "example": "2013-01-13T05:25:13.813+00:00",
+                    "nullable": true
                   },
                   "promo_purchase_window_exclusive_end": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the end date for a purchase window for the account",
-                    "example": "2013-01-13T05:25:13.813+00:00"
+                    "example": "2013-01-13T05:25:13.813+00:00",
+                    "nullable": true
                   },
                   "promo_inclusive_start": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813+00:00"
+                    "example": "2013-01-13T05:25:13.813+00:00",
+                    "nullable": true
                   },
                   "promo_exclusive_end": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813+00:00"
+                    "example": "2013-01-13T05:25:13.813+00:00",
+                    "nullable": true
                   },
                   "promo_impl_interest_rate_percent": {
                     "type": "number",
@@ -8455,13 +8582,15 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813+00:00"
+                    "example": "2013-01-13T05:25:13.813+00:00",
+                    "nullable": true
                   },
                   "post_promo_exclusive_end": {
                     "type": "string",
                     "format": "date-time",
                     "description": "If applicable, the start date for a promotional period for the account.",
-                    "example": "2013-01-13T05:25:13.813+00:00"
+                    "example": "2013-01-13T05:25:13.813+00:00",
+                    "nullable": true
                   },
                   "post_promo_impl_interest_rate_percent": {
                     "type": "number",
@@ -8473,7 +8602,7 @@
                     "type": "integer",
                     "description": "If applicable, post-promotional amortization length in cycles.",
                     "example": 48,
-                    "default": 1
+                    "default": 0
                   }
                 }
               },
@@ -8723,6 +8852,7 @@
           },
           "associated_entities": {
             "type": "object",
+            "nullable": true,
             "properties": {
               "merchant_name": {
                 "type": "string",
@@ -8763,25 +8893,29 @@
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+                "example": "2015-08-31T10:49:44.461+00:00",
+                "nullable": true
               },
               "promo_purchase_window_exclusive_end": {
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+                "example": "2015-08-31T10:49:44.461+00:00",
+                "nullable": true
               },
               "promo_inclusive_start": {
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+                "example": "2015-08-31T10:49:44.461+00:00",
+                "nullable": true
               },
               "promo_exclusive_end": {
                 "type": "string",
                 "format": "date-time",
                 "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                "example": "2015-08-31T10:49:44.461+00:00"
+                "example": "2015-08-31T10:49:44.461+00:00",
+                "nullable": true
               },
               "account_status": {
                 "type": "string",
@@ -8804,25 +8938,29 @@
                 "type": "integer",
                 "description": "Total Amount (in cents) that this account can borrow.",
                 "example": 400000,
-                "default": 0
+                "default": 0,
+                "nullable": true
               },
               "total_charges_cents": {
                 "type": "integer",
                 "description": "Sum of all charges that occurred on the account since account origination.",
                 "example": 800000,
-                "default": 0
+                "default": 0,
+                "nullable": true
               },
               "available_credit_cents": {
                 "type": "integer",
                 "description": "The total available credit balance (in cents) for the account.",
                 "example": 600000,
-                "default": 0
+                "default": 0,
+                "nullable": true
               },
               "open_to_buy_cents": {
                 "type": "integer",
                 "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
                 "example": 600000,
-                "default": 0
+                "default": 0,
+                "nullable": true
               }
             }
           },
@@ -8832,12 +8970,14 @@
               "cycle_inclusive_start": {
                 "type": "string",
                 "format": "date-time",
-                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement.",
+                "nullable": true
               },
               "cycle_exclusive_end": {
                 "type": "string",
                 "format": "date-time",
-                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement.",
+                "nullable": true
               },
               "cycle_charges_cents": {
                 "type": "integer",
@@ -8897,13 +9037,15 @@
                 "type": "integer",
                 "description": "Total interest accrued during the billing cycle.",
                 "example": 300000,
-                "default": 0
+                "default": 0,
+                "nullable": true
               },
               "cycle_am_deferred_interest_cents": {
                 "type": "integer",
                 "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                 "example": 300000,
-                "default": 0
+                "default": 0,
+                "nullable": true
               },
               "cycle_late_fees_cents": {
                 "type": "integer",
@@ -8941,7 +9083,8 @@
                 "type": "string",
                 "format": "date-time",
                 "description": "The `Date-Time` the payment for this billing cycle is due.",
-                "example": "2019-10-18T23:04:48.321+00:00"
+                "example": "2019-10-18T23:04:48.321+00:00",
+                "nullable": true
               }
             }
           },
@@ -8989,7 +9132,8 @@
               "previous_min_pay_cents": {
                 "type": "integer",
                 "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
-                "example": 400000
+                "example": 400000,
+                "nullable": true
               }
             }
           },
@@ -9059,7 +9203,8 @@
                 "type": "integer",
                 "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
                 "example": 1100000,
-                "default": 0
+                "default": 0,
+                "nullable": true
               }
             }
           },
@@ -9158,7 +9303,8 @@
                     "description": {
                       "type": "string",
                       "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase"
+                      "example": "Refund for invalid purchase",
+                      "nullable": true
                     }
                   }
                 },
@@ -9218,6 +9364,7 @@
                 "merchant_data": {
                   "type": "object",
                   "description": "Merchant information if applicable.",
+                  "nullable": true,
                   "properties": {
                     "name": {
                       "type": "string"
@@ -9235,6 +9382,7 @@
                 },
                 "issuer_processor_metadata": {
                   "type": "object",
+                  "nullable": true,
                   "properties": {
                     "privacy": {
                       "type": "object",
@@ -9249,6 +9397,7 @@
                 },
                 "external_fields": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
@@ -9300,12 +9449,14 @@
               "cycle_inclusive_start": {
                 "type": "string",
                 "format": "date-time",
-                "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement.",
+                "nullable": true
               },
               "cycle_exclusive_end": {
                 "type": "string",
                 "format": "date-time",
-                "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement.",
+                "nullable": true
               }
             }
           },
@@ -9372,13 +9523,15 @@
               "type": "string",
               "format": "date-time",
               "description": "The date-time the am cycle ends.",
-              "example": "2018-07-20T09:10:14+00:00"
+              "example": "2018-07-20T09:10:14+00:00",
+              "nullable": true
             },
             "min_pay_due_at": {
               "type": "string",
               "format": "date-time",
               "description": "The date the minimum payment for the am schedule is due.",
-              "example": "2018-07-20T09:10:14+00:00"
+              "example": "2018-07-20T09:10:14+00:00",
+              "nullable": true
             },
             "am_min_pay_cents": {
               "type": "number",
@@ -9518,17 +9671,20 @@
                       "product_short_description": {
                         "type": "string",
                         "description": "Short description of the Product - max of 30 characters.",
-                        "example": "Consumer credit card"
+                        "example": "Consumer credit card",
+                        "nullable": true
                       },
                       "product_long_description": {
                         "type": "string",
                         "description": "Description of the Product.",
-                        "example": "Student credit card."
+                        "example": "Student credit card.",
+                        "nullable": true
                       },
                       "product_time_zone": {
                         "type": "string",
                         "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                        "example": "America/Chicago"
+                        "example": "America/Chicago",
+                        "default": "America/New_York"
                       },
                       "product_type": {
                         "type": "string",
@@ -9585,7 +9741,8 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the account's loan repayment date.",
-                        "example": "2013-01-13T05:25:13.813+00:00"
+                        "example": "2013-01-13T05:25:13.813+00:00",
+                        "nullable": true
                       }
                     }
                   },
@@ -9596,25 +9753,29 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a purchase window for the account",
-                        "example": "2013-01-13T05:25:13.813+00:00"
+                        "example": "2013-01-13T05:25:13.813+00:00",
+                        "nullable": true
                       },
                       "promo_purchase_window_exclusive_end": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the end date for a purchase window for the account",
-                        "example": "2013-01-13T05:25:13.813+00:00"
+                        "example": "2013-01-13T05:25:13.813+00:00",
+                        "nullable": true
                       },
                       "promo_inclusive_start": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813+00:00"
+                        "example": "2013-01-13T05:25:13.813+00:00",
+                        "nullable": true
                       },
                       "promo_exclusive_end": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813+00:00"
+                        "example": "2013-01-13T05:25:13.813+00:00",
+                        "nullable": true
                       },
                       "promo_impl_interest_rate_percent": {
                         "type": "number",
@@ -9636,13 +9797,15 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813+00:00"
+                        "example": "2013-01-13T05:25:13.813+00:00",
+                        "nullable": true
                       },
                       "post_promo_exclusive_end": {
                         "type": "string",
                         "format": "date-time",
                         "description": "If applicable, the start date for a promotional period for the account.",
-                        "example": "2013-01-13T05:25:13.813+00:00"
+                        "example": "2013-01-13T05:25:13.813+00:00",
+                        "nullable": true
                       },
                       "post_promo_impl_interest_rate_percent": {
                         "type": "number",
@@ -9654,7 +9817,7 @@
                         "type": "integer",
                         "description": "If applicable, post-promotional amortization length in cycles.",
                         "example": 48,
-                        "default": 1
+                        "default": 0
                       }
                     }
                   },
@@ -9904,6 +10067,7 @@
               },
               "associated_entities": {
                 "type": "object",
+                "nullable": true,
                 "properties": {
                   "merchant_name": {
                     "type": "string",
@@ -9927,6 +10091,7 @@
             "properties": {
               "customers": {
                 "type": "array",
+                "nullable": true,
                 "maxItems": 1000,
                 "description": "An array of customers who have been assigned to the account",
                 "items": {
@@ -10256,6 +10421,7 @@
             "properties": {
               "accounts": {
                 "type": "array",
+                "nullable": true,
                 "maxItems": 1000,
                 "description": "An array of Accounts this Customer is assigned to.",
                 "items": {
@@ -10340,17 +10506,20 @@
                             "product_short_description": {
                               "type": "string",
                               "description": "Short description of the Product - max of 30 characters.",
-                              "example": "Consumer credit card"
+                              "example": "Consumer credit card",
+                              "nullable": true
                             },
                             "product_long_description": {
                               "type": "string",
                               "description": "Description of the Product.",
-                              "example": "Student credit card."
+                              "example": "Student credit card.",
+                              "nullable": true
                             },
                             "product_time_zone": {
                               "type": "string",
                               "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                              "example": "America/Chicago"
+                              "example": "America/Chicago",
+                              "default": "America/New_York"
                             },
                             "product_type": {
                               "type": "string",
@@ -10407,7 +10576,8 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the account's loan repayment date.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             }
                           }
                         },
@@ -10418,25 +10588,29 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_purchase_window_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the end date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_inclusive_start": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -10458,13 +10632,15 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "post_promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "post_promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -10476,7 +10652,7 @@
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
-                              "default": 1
+                              "default": 0
                             }
                           }
                         },
@@ -10726,6 +10902,7 @@
                     },
                     "associated_entities": {
                       "type": "object",
+                      "nullable": true,
                       "properties": {
                         "merchant_name": {
                           "type": "string",
@@ -10993,17 +11170,20 @@
                           "product_short_description": {
                             "type": "string",
                             "description": "Short description of the Product - max of 30 characters.",
-                            "example": "Consumer credit card"
+                            "example": "Consumer credit card",
+                            "nullable": true
                           },
                           "product_long_description": {
                             "type": "string",
                             "description": "Description of the Product.",
-                            "example": "Student credit card."
+                            "example": "Student credit card.",
+                            "nullable": true
                           },
                           "product_time_zone": {
                             "type": "string",
                             "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                            "example": "America/Chicago"
+                            "example": "America/Chicago",
+                            "default": "America/New_York"
                           },
                           "product_type": {
                             "type": "string",
@@ -11060,7 +11240,8 @@
                             "type": "string",
                             "format": "date-time",
                             "description": "If applicable, the account's loan repayment date.",
-                            "example": "2013-01-13T05:25:13.813+00:00"
+                            "example": "2013-01-13T05:25:13.813+00:00",
+                            "nullable": true
                           }
                         }
                       },
@@ -11071,25 +11252,29 @@
                             "type": "string",
                             "format": "date-time",
                             "description": "If applicable, the start date for a purchase window for the account",
-                            "example": "2013-01-13T05:25:13.813+00:00"
+                            "example": "2013-01-13T05:25:13.813+00:00",
+                            "nullable": true
                           },
                           "promo_purchase_window_exclusive_end": {
                             "type": "string",
                             "format": "date-time",
                             "description": "If applicable, the end date for a purchase window for the account",
-                            "example": "2013-01-13T05:25:13.813+00:00"
+                            "example": "2013-01-13T05:25:13.813+00:00",
+                            "nullable": true
                           },
                           "promo_inclusive_start": {
                             "type": "string",
                             "format": "date-time",
                             "description": "If applicable, the start date for a promotional period for the account.",
-                            "example": "2013-01-13T05:25:13.813+00:00"
+                            "example": "2013-01-13T05:25:13.813+00:00",
+                            "nullable": true
                           },
                           "promo_exclusive_end": {
                             "type": "string",
                             "format": "date-time",
                             "description": "If applicable, the start date for a promotional period for the account.",
-                            "example": "2013-01-13T05:25:13.813+00:00"
+                            "example": "2013-01-13T05:25:13.813+00:00",
+                            "nullable": true
                           },
                           "promo_impl_interest_rate_percent": {
                             "type": "number",
@@ -11111,13 +11296,15 @@
                             "type": "string",
                             "format": "date-time",
                             "description": "If applicable, the start date for a promotional period for the account.",
-                            "example": "2013-01-13T05:25:13.813+00:00"
+                            "example": "2013-01-13T05:25:13.813+00:00",
+                            "nullable": true
                           },
                           "post_promo_exclusive_end": {
                             "type": "string",
                             "format": "date-time",
                             "description": "If applicable, the start date for a promotional period for the account.",
-                            "example": "2013-01-13T05:25:13.813+00:00"
+                            "example": "2013-01-13T05:25:13.813+00:00",
+                            "nullable": true
                           },
                           "post_promo_impl_interest_rate_percent": {
                             "type": "number",
@@ -11129,7 +11316,7 @@
                             "type": "integer",
                             "description": "If applicable, post-promotional amortization length in cycles.",
                             "example": 48,
-                            "default": 1
+                            "default": 0
                           }
                         }
                       },
@@ -11379,6 +11566,7 @@
                   },
                   "associated_entities": {
                     "type": "object",
+                    "nullable": true,
                     "properties": {
                       "merchant_name": {
                         "type": "string",
@@ -11457,7 +11645,8 @@
               "phone": {
                 "type": "string",
                 "description": "Phone number of the API user",
-                "example": "1-123-456-7890"
+                "example": "1-123-456-7890",
+                "nullable": true
               },
               "role": {
                 "type": "integer",
@@ -11509,7 +11698,8 @@
           "external_product_id": {
             "type": "string",
             "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-            "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+            "example": "95fea111-d121-40f8-9e8e-a6c335e48a45",
+            "nullable": true
           },
           "product_overview": {
             "type": "object",
@@ -11540,12 +11730,14 @@
               "product_short_description": {
                 "type": "string",
                 "description": "A short description of the product ranging from 0 - 60 characters.",
-                "example": "12mm3apr."
+                "example": "12mm3apr.",
+                "nullable": true
               },
               "product_long_description": {
                 "type": "string",
                 "description": "Description of the Product ranging from 0 - 1000.",
-                "example": "Student credit card."
+                "example": "Student credit card.",
+                "nullable": true
               },
               "product_color": {
                 "type": "string",
@@ -11555,6 +11747,7 @@
               },
               "external_fields": {
                 "type": "array",
+                "nullable": true,
                 "maxItems": 1000,
                 "items": {
                   "type": "object",
@@ -11753,7 +11946,7 @@
                 "type": "integer",
                 "description": "Default duration for the amortization period during post-promotion",
                 "example": 48,
-                "default": 1
+                "default": 0
               },
               "post_promo_am_len_range_inclusive_lower": {
                 "type": "integer",
@@ -11859,6 +12052,7 @@
         "properties": {
           "current_accounts": {
             "type": "array",
+            "nullable": true,
             "maxItems": 1000,
             "description": "Array of Accounts that are currently using this Product",
             "items": {
@@ -12134,7 +12328,8 @@
               "description": {
                 "type": "string",
                 "description": "A description of this particular line item if any. More common for adjustments.",
-                "example": "Refund for invalid purchase"
+                "example": "Refund for invalid purchase",
+                "nullable": true
               }
             }
           },
@@ -12194,6 +12389,7 @@
           "merchant_data": {
             "type": "object",
             "description": "Merchant information if applicable.",
+            "nullable": true,
             "properties": {
               "name": {
                 "type": "string"
@@ -12211,6 +12407,7 @@
           },
           "issuer_processor_metadata": {
             "type": "object",
+            "nullable": true,
             "properties": {
               "privacy": {
                 "type": "object",
@@ -12225,6 +12422,7 @@
           },
           "external_fields": {
             "type": "array",
+            "nullable": true,
             "maxItems": 1000,
             "description": "An array of static references to fields in a third party system.",
             "items": {
@@ -12338,7 +12536,8 @@
               "description": {
                 "type": "string",
                 "description": "A description of this particular line item if any. More common for adjustments.",
-                "example": "Refund for invalid purchase"
+                "example": "Refund for invalid purchase",
+                "nullable": true
               }
             }
           },
@@ -12357,6 +12556,7 @@
           },
           "merchant_data": {
             "type": "object",
+            "nullable": true,
             "description": "Merchant information if applicable.",
             "properties": {
               "name": {
@@ -12389,6 +12589,7 @@
           },
           "external_fields": {
             "type": "array",
+            "nullable": true,
             "maxItems": 1000,
             "description": "An array of static references to fields in a third party system.",
             "items": {
@@ -12788,7 +12989,7 @@
                       "type": "integer",
                       "description": "Default duration for any amortization period during post-promotion",
                       "example": 48,
-                      "default": 1
+                      "default": 0
                     },
                     "post_promo_am_len_range_inclusive_lower": {
                       "type": "integer",
@@ -12968,6 +13169,7 @@
                 },
                 "assign_to_accounts": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 10,
                   "description": "An array of existing accounts to which this Customer should be assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
                   "items": {
@@ -13180,6 +13382,7 @@
                     },
                     "external_fields": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 10,
                       "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                       "items": {
@@ -13278,6 +13481,7 @@
                       "properties": {
                         "first_cycle_interval": {
                           "type": "string",
+                          "nullable": true,
                           "description": "Interval for a first cycle for this account.",
                           "example": "11 days"
                         }
@@ -13329,7 +13533,8 @@
                         "initial_principal_cents": {
                           "type": "integer",
                           "description": "The initial principal balance (in cents) for the account.",
-                          "example": 400000
+                          "example": 400000,
+                          "nullable": true
                         }
                       }
                     },
@@ -13381,6 +13586,7 @@
                     "assign_customers": {
                       "type": "array",
                       "maxItems": 10,
+                      "nullable": true,
                       "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
                       "items": {
                         "type": "object",
@@ -13548,10 +13754,8 @@
                 },
                 "merchant_data": {
                   "type": "object",
+                  "nullable": true,
                   "description": "",
-                  "required": [
-                    "mcc_code"
-                  ],
                   "properties": {
                     "name": {
                       "type": "string"
@@ -13584,6 +13788,7 @@
                 "external_fields": {
                   "type": "array",
                   "maxItems": 10,
+                  "nullable": true,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
                     "type": "object",
@@ -13632,6 +13837,7 @@
                 },
                 "external_fields": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 10,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
@@ -13792,7 +13998,8 @@
                 "phone": {
                   "type": "string",
                   "description": "Phone number of the API user",
-                  "example": "1-123-456-7890"
+                  "example": "1-123-456-7890",
+                  "nullable": true
                 },
                 "role": {
                   "type": "integer",
@@ -13810,6 +14017,7 @@
           "application/json": {
             "schema": {
               "type": "array",
+              "nullable": true,
               "maxItems": 10,
               "items": {
                 "type": "object",
@@ -13849,7 +14057,8 @@
                   "phone": {
                     "type": "string",
                     "description": "Phone number of the API user",
-                    "example": "1-123-456-7890"
+                    "example": "1-123-456-7890",
+                    "nullable": true
                   },
                   "role": {
                     "type": "integer",
@@ -14032,7 +14241,8 @@
                 "phone": {
                   "type": "string",
                   "description": "Phone number of the API user",
-                  "example": "1-123-456-7890"
+                  "example": "1-123-456-7890",
+                  "nullable": true
                 },
                 "role": {
                   "type": "integer",
@@ -14079,7 +14289,8 @@
                 "external_product_id": {
                   "type": "string",
                   "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                  "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                  "example": "95fea111-d121-40f8-9e8e-a6c335e48a45",
+                  "nullable": true
                 },
                 "product_overview": {
                   "type": "object",
@@ -14110,12 +14321,14 @@
                     "product_short_description": {
                       "type": "string",
                       "description": "A short description of the product ranging from 0 - 60 characters.",
-                      "example": "12mm3apr."
+                      "example": "12mm3apr.",
+                      "nullable": true
                     },
                     "product_long_description": {
                       "type": "string",
                       "description": "Description of the Product ranging from 0 - 1000.",
-                      "example": "Student credit card."
+                      "example": "Student credit card.",
+                      "nullable": true
                     },
                     "product_color": {
                       "type": "string",
@@ -14125,6 +14338,7 @@
                     },
                     "external_fields": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 1000,
                       "items": {
                         "type": "object",
@@ -14323,7 +14537,7 @@
                       "type": "integer",
                       "description": "Default duration for the amortization period during post-promotion",
                       "example": 48,
-                      "default": 1
+                      "default": 0
                     },
                     "post_promo_am_len_range_inclusive_lower": {
                       "type": "integer",
@@ -14439,7 +14653,8 @@
                 "external_product_id": {
                   "type": "string",
                   "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                  "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                  "example": "95fea111-d121-40f8-9e8e-a6c335e48a45",
+                  "nullable": true
                 },
                 "product_overview": {
                   "type": "object",
@@ -14470,12 +14685,14 @@
                     "product_short_description": {
                       "type": "string",
                       "description": "A short description of the product ranging from 0 - 60 characters.",
-                      "example": "12mm3apr."
+                      "example": "12mm3apr.",
+                      "nullable": true
                     },
                     "product_long_description": {
                       "type": "string",
                       "description": "Description of the Product ranging from 0 - 1000.",
-                      "example": "Student credit card."
+                      "example": "Student credit card.",
+                      "nullable": true
                     },
                     "product_color": {
                       "type": "string",
@@ -14485,6 +14702,7 @@
                     },
                     "external_fields": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 1000,
                       "items": {
                         "type": "object",
@@ -14683,7 +14901,7 @@
                       "type": "integer",
                       "description": "Default duration for the amortization period during post-promotion",
                       "example": 48,
-                      "default": 1
+                      "default": 0
                     },
                     "post_promo_am_len_range_inclusive_lower": {
                       "type": "integer",
@@ -14776,6 +14994,7 @@
               "properties": {
                 "results": {
                   "type": "array",
+                  "nullable": true,
                   "description": "An array of information for all products within the requested range.",
                   "maxItems": 100,
                   "items": {
@@ -14809,7 +15028,8 @@
                       "external_product_id": {
                         "type": "string",
                         "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-                        "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                        "example": "95fea111-d121-40f8-9e8e-a6c335e48a45",
+                        "nullable": true
                       },
                       "product_overview": {
                         "type": "object",
@@ -14840,12 +15060,14 @@
                           "product_short_description": {
                             "type": "string",
                             "description": "A short description of the product ranging from 0 - 60 characters.",
-                            "example": "12mm3apr."
+                            "example": "12mm3apr.",
+                            "nullable": true
                           },
                           "product_long_description": {
                             "type": "string",
                             "description": "Description of the Product ranging from 0 - 1000.",
-                            "example": "Student credit card."
+                            "example": "Student credit card.",
+                            "nullable": true
                           },
                           "product_color": {
                             "type": "string",
@@ -14855,6 +15077,7 @@
                           },
                           "external_fields": {
                             "type": "array",
+                            "nullable": true,
                             "maxItems": 1000,
                             "items": {
                               "type": "object",
@@ -15053,7 +15276,7 @@
                             "type": "integer",
                             "description": "Default duration for the amortization period during post-promotion",
                             "example": 48,
-                            "default": 1
+                            "default": 0
                           },
                           "post_promo_am_len_range_inclusive_lower": {
                             "type": "integer",
@@ -15398,17 +15621,20 @@
                                       "product_short_description": {
                                         "type": "string",
                                         "description": "Short description of the Product - max of 30 characters.",
-                                        "example": "Consumer credit card"
+                                        "example": "Consumer credit card",
+                                        "nullable": true
                                       },
                                       "product_long_description": {
                                         "type": "string",
                                         "description": "Description of the Product.",
-                                        "example": "Student credit card."
+                                        "example": "Student credit card.",
+                                        "nullable": true
                                       },
                                       "product_time_zone": {
                                         "type": "string",
                                         "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                                        "example": "America/Chicago"
+                                        "example": "America/Chicago",
+                                        "default": "America/New_York"
                                       },
                                       "product_type": {
                                         "type": "string",
@@ -15465,7 +15691,8 @@
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the account's loan repayment date.",
-                                        "example": "2013-01-13T05:25:13.813+00:00"
+                                        "example": "2013-01-13T05:25:13.813+00:00",
+                                        "nullable": true
                                       }
                                     }
                                   },
@@ -15476,25 +15703,29 @@
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a purchase window for the account",
-                                        "example": "2013-01-13T05:25:13.813+00:00"
+                                        "example": "2013-01-13T05:25:13.813+00:00",
+                                        "nullable": true
                                       },
                                       "promo_purchase_window_exclusive_end": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the end date for a purchase window for the account",
-                                        "example": "2013-01-13T05:25:13.813+00:00"
+                                        "example": "2013-01-13T05:25:13.813+00:00",
+                                        "nullable": true
                                       },
                                       "promo_inclusive_start": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813+00:00"
+                                        "example": "2013-01-13T05:25:13.813+00:00",
+                                        "nullable": true
                                       },
                                       "promo_exclusive_end": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813+00:00"
+                                        "example": "2013-01-13T05:25:13.813+00:00",
+                                        "nullable": true
                                       },
                                       "promo_impl_interest_rate_percent": {
                                         "type": "number",
@@ -15516,13 +15747,15 @@
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813+00:00"
+                                        "example": "2013-01-13T05:25:13.813+00:00",
+                                        "nullable": true
                                       },
                                       "post_promo_exclusive_end": {
                                         "type": "string",
                                         "format": "date-time",
                                         "description": "If applicable, the start date for a promotional period for the account.",
-                                        "example": "2013-01-13T05:25:13.813+00:00"
+                                        "example": "2013-01-13T05:25:13.813+00:00",
+                                        "nullable": true
                                       },
                                       "post_promo_impl_interest_rate_percent": {
                                         "type": "number",
@@ -15534,7 +15767,7 @@
                                         "type": "integer",
                                         "description": "If applicable, post-promotional amortization length in cycles.",
                                         "example": 48,
-                                        "default": 1
+                                        "default": 0
                                       }
                                     }
                                   },
@@ -15784,6 +16017,7 @@
                               },
                               "associated_entities": {
                                 "type": "object",
+                                "nullable": true,
                                 "properties": {
                                   "merchant_name": {
                                     "type": "string",
@@ -16175,6 +16409,7 @@
               "properties": {
                 "customers": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of customers within the requested range.",
                   "items": {
@@ -16380,17 +16615,20 @@
                             "product_short_description": {
                               "type": "string",
                               "description": "Short description of the Product - max of 30 characters.",
-                              "example": "Consumer credit card"
+                              "example": "Consumer credit card",
+                              "nullable": true
                             },
                             "product_long_description": {
                               "type": "string",
                               "description": "Description of the Product.",
-                              "example": "Student credit card."
+                              "example": "Student credit card.",
+                              "nullable": true
                             },
                             "product_time_zone": {
                               "type": "string",
                               "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                              "example": "America/Chicago"
+                              "example": "America/Chicago",
+                              "default": "America/New_York"
                             },
                             "product_type": {
                               "type": "string",
@@ -16447,7 +16685,8 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the account's loan repayment date.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             }
                           }
                         },
@@ -16458,25 +16697,29 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_purchase_window_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the end date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_inclusive_start": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -16498,13 +16741,15 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "post_promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "post_promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -16516,7 +16761,7 @@
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
-                              "default": 1
+                              "default": 0
                             }
                           }
                         },
@@ -16766,6 +17011,7 @@
                     },
                     "associated_entities": {
                       "type": "object",
+                      "nullable": true,
                       "properties": {
                         "merchant_name": {
                           "type": "string",
@@ -16789,6 +17035,7 @@
                   "properties": {
                     "customers": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 1000,
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
@@ -16917,6 +17164,7 @@
               "properties": {
                 "accounts": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of accounts within the requested range.",
                   "items": {
@@ -17001,17 +17249,20 @@
                               "product_short_description": {
                                 "type": "string",
                                 "description": "Short description of the Product - max of 30 characters.",
-                                "example": "Consumer credit card"
+                                "example": "Consumer credit card",
+                                "nullable": true
                               },
                               "product_long_description": {
                                 "type": "string",
                                 "description": "Description of the Product.",
-                                "example": "Student credit card."
+                                "example": "Student credit card.",
+                                "nullable": true
                               },
                               "product_time_zone": {
                                 "type": "string",
                                 "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                                "example": "America/Chicago"
+                                "example": "America/Chicago",
+                                "default": "America/New_York"
                               },
                               "product_type": {
                                 "type": "string",
@@ -17068,7 +17319,8 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the account's loan repayment date.",
-                                "example": "2013-01-13T05:25:13.813+00:00"
+                                "example": "2013-01-13T05:25:13.813+00:00",
+                                "nullable": true
                               }
                             }
                           },
@@ -17079,25 +17331,29 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a purchase window for the account",
-                                "example": "2013-01-13T05:25:13.813+00:00"
+                                "example": "2013-01-13T05:25:13.813+00:00",
+                                "nullable": true
                               },
                               "promo_purchase_window_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the end date for a purchase window for the account",
-                                "example": "2013-01-13T05:25:13.813+00:00"
+                                "example": "2013-01-13T05:25:13.813+00:00",
+                                "nullable": true
                               },
                               "promo_inclusive_start": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813+00:00"
+                                "example": "2013-01-13T05:25:13.813+00:00",
+                                "nullable": true
                               },
                               "promo_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813+00:00"
+                                "example": "2013-01-13T05:25:13.813+00:00",
+                                "nullable": true
                               },
                               "promo_impl_interest_rate_percent": {
                                 "type": "number",
@@ -17119,13 +17375,15 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813+00:00"
+                                "example": "2013-01-13T05:25:13.813+00:00",
+                                "nullable": true
                               },
                               "post_promo_exclusive_end": {
                                 "type": "string",
                                 "format": "date-time",
                                 "description": "If applicable, the start date for a promotional period for the account.",
-                                "example": "2013-01-13T05:25:13.813+00:00"
+                                "example": "2013-01-13T05:25:13.813+00:00",
+                                "nullable": true
                               },
                               "post_promo_impl_interest_rate_percent": {
                                 "type": "number",
@@ -17137,7 +17395,7 @@
                                 "type": "integer",
                                 "description": "If applicable, post-promotional amortization length in cycles.",
                                 "example": 48,
-                                "default": 1
+                                "default": 0
                               }
                             }
                           },
@@ -17387,6 +17645,7 @@
                       },
                       "associated_entities": {
                         "type": "object",
+                        "nullable": true,
                         "properties": {
                           "merchant_name": {
                             "type": "string",
@@ -17444,13 +17703,15 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "The date-time the am cycle ends.",
-                    "example": "2018-07-20T09:10:14+00:00"
+                    "example": "2018-07-20T09:10:14+00:00",
+                    "nullable": true
                   },
                   "min_pay_due_at": {
                     "type": "string",
                     "format": "date-time",
                     "description": "The date the minimum payment for the am schedule is due.",
-                    "example": "2018-07-20T09:10:14+00:00"
+                    "example": "2018-07-20T09:10:14+00:00",
+                    "nullable": true
                   },
                   "am_min_pay_cents": {
                     "type": "number",
@@ -17572,7 +17833,8 @@
                     "phone": {
                       "type": "string",
                       "description": "Phone number of the API user",
-                      "example": "1-123-456-7890"
+                      "example": "1-123-456-7890",
+                      "nullable": true
                     },
                     "role": {
                       "type": "integer",
@@ -17603,6 +17865,7 @@
             "schema": {
               "type": "array",
               "maxItems": 1000,
+              "nullable": true,
               "description": "A history of all notes on an account.",
               "items": {
                 "type": "object",
@@ -17663,7 +17926,8 @@
                       "phone": {
                         "type": "string",
                         "description": "Phone number of the API user",
-                        "example": "1-123-456-7890"
+                        "example": "1-123-456-7890",
+                        "nullable": true
                       },
                       "role": {
                         "type": "integer",
@@ -17785,7 +18049,8 @@
                     "description": {
                       "type": "string",
                       "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase"
+                      "example": "Refund for invalid purchase",
+                      "nullable": true
                     }
                   }
                 },
@@ -17804,6 +18069,7 @@
                 },
                 "merchant_data": {
                   "type": "object",
+                  "nullable": true,
                   "description": "Merchant information if applicable.",
                   "properties": {
                     "name": {
@@ -17836,6 +18102,7 @@
                 },
                 "external_fields": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
@@ -17956,7 +18223,8 @@
                     "description": {
                       "type": "string",
                       "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase"
+                      "example": "Refund for invalid purchase",
+                      "nullable": true
                     }
                   }
                 },
@@ -17975,6 +18243,7 @@
                 },
                 "merchant_data": {
                   "type": "object",
+                  "nullable": true,
                   "description": "Merchant information if applicable.",
                   "properties": {
                     "name": {
@@ -18007,6 +18276,7 @@
                 },
                 "external_fields": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
@@ -18118,17 +18388,20 @@
                             "product_short_description": {
                               "type": "string",
                               "description": "Short description of the Product - max of 30 characters.",
-                              "example": "Consumer credit card"
+                              "example": "Consumer credit card",
+                              "nullable": true
                             },
                             "product_long_description": {
                               "type": "string",
                               "description": "Description of the Product.",
-                              "example": "Student credit card."
+                              "example": "Student credit card.",
+                              "nullable": true
                             },
                             "product_time_zone": {
                               "type": "string",
                               "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-                              "example": "America/Chicago"
+                              "example": "America/Chicago",
+                              "default": "America/New_York"
                             },
                             "product_type": {
                               "type": "string",
@@ -18185,7 +18458,8 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the account's loan repayment date.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             }
                           }
                         },
@@ -18196,25 +18470,29 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_purchase_window_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the end date for a purchase window for the account",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_inclusive_start": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -18236,13 +18514,15 @@
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "post_promo_exclusive_end": {
                               "type": "string",
                               "format": "date-time",
                               "description": "If applicable, the start date for a promotional period for the account.",
-                              "example": "2013-01-13T05:25:13.813+00:00"
+                              "example": "2013-01-13T05:25:13.813+00:00",
+                              "nullable": true
                             },
                             "post_promo_impl_interest_rate_percent": {
                               "type": "number",
@@ -18254,7 +18534,7 @@
                               "type": "integer",
                               "description": "If applicable, post-promotional amortization length in cycles.",
                               "example": 48,
-                              "default": 1
+                              "default": 0
                             }
                           }
                         },
@@ -18504,6 +18784,7 @@
                     },
                     "associated_entities": {
                       "type": "object",
+                      "nullable": true,
                       "properties": {
                         "merchant_name": {
                           "type": "string",
@@ -18527,6 +18808,7 @@
                   "properties": {
                     "customers": {
                       "type": "array",
+                      "nullable": true,
                       "maxItems": 1000,
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
@@ -18671,25 +18953,29 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                      "example": "2015-08-31T10:49:44.461+00:00"
+                      "example": "2015-08-31T10:49:44.461+00:00",
+                      "nullable": true
                     },
                     "promo_purchase_window_exclusive_end": {
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the purchase window for the account ends.",
-                      "example": "2015-08-31T10:49:44.461+00:00"
+                      "example": "2015-08-31T10:49:44.461+00:00",
+                      "nullable": true
                     },
                     "promo_inclusive_start": {
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the promo period for the account starts.",
-                      "example": "2015-08-31T10:49:44.461+00:00"
+                      "example": "2015-08-31T10:49:44.461+00:00",
+                      "nullable": true
                     },
                     "promo_exclusive_end": {
                       "type": "string",
                       "format": "date-time",
                       "description": "If applicable, the `Date-Time` the promo period for the account ends.",
-                      "example": "2015-08-31T10:49:44.461+00:00"
+                      "example": "2015-08-31T10:49:44.461+00:00",
+                      "nullable": true
                     },
                     "account_status": {
                       "type": "string",
@@ -18712,25 +18998,29 @@
                       "type": "integer",
                       "description": "Total Amount (in cents) that this account can borrow.",
                       "example": 400000,
-                      "default": 0
+                      "default": 0,
+                      "nullable": true
                     },
                     "total_charges_cents": {
                       "type": "integer",
                       "description": "Sum of all charges that occurred on the account since account origination.",
                       "example": 800000,
-                      "default": 0
+                      "default": 0,
+                      "nullable": true
                     },
                     "available_credit_cents": {
                       "type": "integer",
                       "description": "The total available credit balance (in cents) for the account.",
                       "example": 600000,
-                      "default": 0
+                      "default": 0,
+                      "nullable": true
                     },
                     "open_to_buy_cents": {
                       "type": "integer",
                       "description": "If applicable, the total amount of available funds for continued purchase following a purchase window pattern, where payments made do not replenish amount available for purchase.",
                       "example": 600000,
-                      "default": 0
+                      "default": 0,
+                      "nullable": true
                     }
                   }
                 },
@@ -18740,12 +19030,14 @@
                     "cycle_inclusive_start": {
                       "type": "string",
                       "format": "date-time",
-                      "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                      "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement.",
+                      "nullable": true
                     },
                     "cycle_exclusive_end": {
                       "type": "string",
                       "format": "date-time",
-                      "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                      "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement.",
+                      "nullable": true
                     },
                     "cycle_charges_cents": {
                       "type": "integer",
@@ -18805,13 +19097,15 @@
                       "type": "integer",
                       "description": "Total interest accrued during the billing cycle.",
                       "example": 300000,
-                      "default": 0
+                      "default": 0,
+                      "nullable": true
                     },
                     "cycle_am_deferred_interest_cents": {
                       "type": "integer",
                       "description": "Total interest accrued during the billing cycle. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
                       "example": 300000,
-                      "default": 0
+                      "default": 0,
+                      "nullable": true
                     },
                     "cycle_late_fees_cents": {
                       "type": "integer",
@@ -18849,7 +19143,8 @@
                       "type": "string",
                       "format": "date-time",
                       "description": "The `Date-Time` the payment for this billing cycle is due.",
-                      "example": "2019-10-18T23:04:48.321+00:00"
+                      "example": "2019-10-18T23:04:48.321+00:00",
+                      "nullable": true
                     }
                   }
                 },
@@ -18897,7 +19192,8 @@
                     "previous_min_pay_cents": {
                       "type": "integer",
                       "description": "Previous amounts due, including fees. This is a subset of min_pay_cents.",
-                      "example": 400000
+                      "example": 400000,
+                      "nullable": true
                     }
                   }
                 },
@@ -18967,7 +19263,8 @@
                       "type": "integer",
                       "description": "The total amount slated to pay off the account over the lifecycle of the loan.",
                       "example": 1100000,
-                      "default": 0
+                      "default": 0,
+                      "nullable": true
                     }
                   }
                 },
@@ -19066,7 +19363,8 @@
                           "description": {
                             "type": "string",
                             "description": "A description of this particular line item if any. More common for adjustments.",
-                            "example": "Refund for invalid purchase"
+                            "example": "Refund for invalid purchase",
+                            "nullable": true
                           }
                         }
                       },
@@ -19126,6 +19424,7 @@
                       "merchant_data": {
                         "type": "object",
                         "description": "Merchant information if applicable.",
+                        "nullable": true,
                         "properties": {
                           "name": {
                             "type": "string"
@@ -19143,6 +19442,7 @@
                       },
                       "issuer_processor_metadata": {
                         "type": "object",
+                        "nullable": true,
                         "properties": {
                           "privacy": {
                             "type": "object",
@@ -19157,6 +19457,7 @@
                       },
                       "external_fields": {
                         "type": "array",
+                        "nullable": true,
                         "maxItems": 1000,
                         "description": "An array of static references to fields in a third party system.",
                         "items": {
@@ -19196,6 +19497,7 @@
               "properties": {
                 "current_accounts": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "Array of Accounts that are currently using this Product",
                   "items": {
@@ -19330,7 +19632,8 @@
                     "description": {
                       "type": "string",
                       "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase"
+                      "example": "Refund for invalid purchase",
+                      "nullable": true
                     }
                   }
                 },
@@ -19390,6 +19693,7 @@
                 "merchant_data": {
                   "type": "object",
                   "description": "Merchant information if applicable.",
+                  "nullable": true,
                   "properties": {
                     "name": {
                       "type": "string"
@@ -19407,6 +19711,7 @@
                 },
                 "issuer_processor_metadata": {
                   "type": "object",
+                  "nullable": true,
                   "properties": {
                     "privacy": {
                       "type": "object",
@@ -19421,6 +19726,7 @@
                 },
                 "external_fields": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
@@ -19456,6 +19762,7 @@
               "properties": {
                 "results": {
                   "type": "array",
+                  "nullable": true,
                   "description": "An array of information for all line items within the requested range.",
                   "maxItems": 1000,
                   "items": {
@@ -19549,7 +19856,8 @@
                           "description": {
                             "type": "string",
                             "description": "A description of this particular line item if any. More common for adjustments.",
-                            "example": "Refund for invalid purchase"
+                            "example": "Refund for invalid purchase",
+                            "nullable": true
                           }
                         }
                       },
@@ -19609,6 +19917,7 @@
                       "merchant_data": {
                         "type": "object",
                         "description": "Merchant information if applicable.",
+                        "nullable": true,
                         "properties": {
                           "name": {
                             "type": "string"
@@ -19626,6 +19935,7 @@
                       },
                       "issuer_processor_metadata": {
                         "type": "object",
+                        "nullable": true,
                         "properties": {
                           "privacy": {
                             "type": "object",
@@ -19640,6 +19950,7 @@
                       },
                       "external_fields": {
                         "type": "array",
+                        "nullable": true,
                         "maxItems": 1000,
                         "description": "An array of static references to fields in a third party system.",
                         "items": {
@@ -19699,6 +20010,7 @@
               "properties": {
                 "results": {
                   "type": "array",
+                  "nullable": true,
                   "description": "An array of information for all line items within the requested range.",
                   "maxItems": 1000,
                   "items": {
@@ -19792,7 +20104,8 @@
                           "description": {
                             "type": "string",
                             "description": "A description of this particular line item if any. More common for adjustments.",
-                            "example": "Refund for invalid purchase"
+                            "example": "Refund for invalid purchase",
+                            "nullable": true
                           }
                         }
                       },
@@ -19852,6 +20165,7 @@
                       "merchant_data": {
                         "type": "object",
                         "description": "Merchant information if applicable.",
+                        "nullable": true,
                         "properties": {
                           "name": {
                             "type": "string"
@@ -19869,6 +20183,7 @@
                       },
                       "issuer_processor_metadata": {
                         "type": "object",
+                        "nullable": true,
                         "properties": {
                           "privacy": {
                             "type": "object",
@@ -19883,6 +20198,7 @@
                       },
                       "external_fields": {
                         "type": "array",
+                        "nullable": true,
                         "maxItems": 1000,
                         "description": "An array of static references to fields in a third party system.",
                         "items": {
@@ -19945,6 +20261,7 @@
                 },
                 "statements_list": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of statements included in the billing cycle.",
                   "items": {
@@ -19977,12 +20294,12 @@
                       "billing_cycle_start_date": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+                        "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement."
                       },
                       "billing_cycle_end_date": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+                        "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement."
                       }
                     }
                   }
@@ -20192,7 +20509,8 @@
                     "description": {
                       "type": "string",
                       "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase"
+                      "example": "Refund for invalid purchase",
+                      "nullable": true
                     }
                   }
                 },
@@ -20211,6 +20529,7 @@
                 },
                 "merchant_data": {
                   "type": "object",
+                  "nullable": true,
                   "description": "Merchant information if applicable.",
                   "properties": {
                     "name": {
@@ -20243,6 +20562,7 @@
                 },
                 "external_fields": {
                   "type": "array",
+                  "nullable": true,
                   "maxItems": 1000,
                   "description": "An array of static references to fields in a third party system.",
                   "items": {
@@ -20290,6 +20610,7 @@
           "application/json": {
             "schema": {
               "type": "array",
+              "nullable": true,
               "items": {
                 "type": "object",
                 "additionalProperties": true,

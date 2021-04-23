@@ -29,7 +29,8 @@
     "external_product_id": {
       "type": "string",
       "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
-      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45",
+      "nullable": true
     },
     "product_overview": {
       "type": "object",
@@ -56,12 +57,14 @@
         "product_short_description": {
           "type": "string",
           "description": "A short description of the product ranging from 0 - 60 characters.",
-          "example": "12mm3apr."
+          "example": "12mm3apr.",
+          "nullable": true
         },
         "product_long_description": {
           "type": "string",
           "description": "Description of the Product ranging from 0 - 1000.",
-          "example": "Student credit card."
+          "example": "Student credit card.",
+          "nullable": true
         },
         "product_color": {
           "type": "string",
@@ -71,6 +74,7 @@
         },
         "external_fields": {
           "type": "array",
+          "nullable": true,
           "maxItems": 1000,
           "items": {
             "type": "object",
@@ -191,7 +195,7 @@
           "type": "integer",
           "description": "Default duration for the amortization period during post-promotion",
           "example": 48,
-          "default": 1
+          "default": 0
         },
         "post_promo_am_len_range_inclusive_lower": {
           "type": "integer",

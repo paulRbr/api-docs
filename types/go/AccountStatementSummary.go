@@ -12,8 +12,8 @@ type BalanceSummary struct {
 }
 
 type CycleSummary struct {
-	CycleExclusiveEnd   string `json:"cycle_exclusive_end"`  // The inclusive ending `Date-Time` that defines which transations are part of this; statement.
-	CycleInclusiveStart string `json:"cycle_inclusive_start"`// The inclusive starting `Date-Time` that defines which transations are part of this; statement.
+	CycleExclusiveEnd   string `json:"cycle_exclusive_end"`  // The inclusive ending `Date-Time` that defines which transactions are part of this; statement.
+	CycleInclusiveStart string `json:"cycle_inclusive_start"`// The inclusive starting `Date-Time` that defines which transactions are part of this; statement.
 }
 
 type MinPayDueCents struct {

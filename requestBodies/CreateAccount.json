@@ -25,6 +25,7 @@
               },
               "external_fields": {
                 "type": "array",
+                "nullable": true,
                 "maxItems": 10,
                 "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
                 "items": {
@@ -112,6 +113,7 @@
                 "properties": {
                   "first_cycle_interval": {
                     "type": "string",
+                    "nullable": true,
                     "description": "Interval for a first cycle for this account.",
                     "example": "11 days"
                   }
@@ -163,7 +165,8 @@
                   "initial_principal_cents": {
                     "type": "integer",
                     "description": "The initial principal balance (in cents) for the account.",
-                    "example": 400000
+                    "example": 400000,
+                    "nullable": true
                   }
                 }
               },
@@ -215,6 +218,7 @@
               "assign_customers": {
                 "type": "array",
                 "maxItems": 10,
+                "nullable": true,
                 "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
                 "items": {
                   "type": "object",

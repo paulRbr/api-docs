@@ -31,17 +31,20 @@
         "product_short_description": {
           "type": "string",
           "description": "Short description of the Product - max of 30 characters.",
-          "example": "Consumer credit card"
+          "example": "Consumer credit card",
+          "nullable": true
         },
         "product_long_description": {
           "type": "string",
           "description": "Description of the Product.",
-          "example": "Student credit card."
+          "example": "Student credit card.",
+          "nullable": true
         },
         "product_time_zone": {
           "type": "string",
           "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-          "example": "America/Chicago"
+          "example": "America/Chicago",
+          "default": "America/New_York"
         },
         "product_type": {
           "type": "string",
@@ -95,7 +98,8 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the account's loan repayment date.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         }
       }
     },
@@ -106,25 +110,29 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_purchase_window_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the end date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_inclusive_start": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_impl_interest_rate_percent": {
           "type": "number",
@@ -146,13 +154,15 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "post_promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "post_promo_impl_interest_rate_percent": {
           "type": "number",
@@ -164,7 +174,7 @@
           "type": "integer",
           "description": "If applicable, post-promotional amortization length in cycles.",
           "example": 48,
-          "default": 1
+          "default": 0
         }
       }
     },

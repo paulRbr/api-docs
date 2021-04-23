@@ -167,7 +167,7 @@
                 "type": "integer",
                 "description": "Default duration for any amortization period during post-promotion",
                 "example": 48,
-                "default": 1
+                "default": 0
               },
               "post_promo_am_len_range_inclusive_lower": {
                 "type": "integer",

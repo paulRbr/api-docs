@@ -24,12 +24,12 @@ export interface BalanceSummary {
 
 export interface CycleSummary {
     /**
-     * The inclusive ending `Date-Time` that defines which transations are part of this
+     * The inclusive ending `Date-Time` that defines which transactions are part of this
      * statement.
      */
     cycle_exclusive_end: string;
     /**
-     * The inclusive starting `Date-Time` that defines which transations are part of this
+     * The inclusive starting `Date-Time` that defines which transactions are part of this
      * statement.
      */
     cycle_inclusive_start: string;
