@@ -2,7 +2,7 @@ export interface LineItem {
     /**
      * The account associated with the line item
      */
-    account_id: number;
+    account_id: string;
     /**
      * The `Date-Time` which the line item was created.
      */
@@ -19,7 +19,7 @@ export interface LineItem {
     /**
      * The ID associated with the line item
      */
-    line_item_id:        number;
+    line_item_id:        string;
     line_item_overview?: LineItemOverview;
     line_item_summary?:  LineItemSummary;
     /**
@@ -73,14 +73,18 @@ export interface LineItemOverview {
  * the corresponding Status for a line item
  */
 export enum LineItemStatus {
+    Authorized = "AUTHORIZED",
+    Declined = "DECLINED",
     Invalid = "INVALID",
     Offset = "OFFSET",
     Pending = "PENDING",
+    Posted = "POSTED",
     Reversed = "REVERSED",
     Rolled = "ROLLED",
     SplitInvalid = "SPLIT_INVALID",
     SplitValid = "SPLIT_VALID",
     Valid = "VALID",
+    Void = "VOID",
 }
 
 /**
@@ -92,10 +96,13 @@ export enum LineItemType {
     DebitOffset = "DEBIT_OFFSET",
     DeferredInterest = "DEFERRED_INTEREST",
     Fee = "FEE",
+    FeeSurcharge = "FEE_SURCHARGE",
     Interest = "INTEREST",
     LateFee = "LATE_FEE",
     Loan = "LOAN",
     MinDue = "MIN_DUE",
+    MonthFee = "MONTH_FEE",
+    OrigFee = "ORIG_FEE",
     Payment = "PAYMENT",
     PaymentSplit = "PAYMENT_SPLIT",
     ProductInterest = "PRODUCT_INTEREST",
@@ -103,6 +110,7 @@ export enum LineItemType {
     PurchaseWindowEnd = "PURCHASE_WINDOW_END",
     ReturnCheckFee = "RETURN_CHECK_FEE",
     Statement = "STATEMENT",
+    YearFee = "YEAR_FEE",
 }
 
 export interface LineItemSummary {

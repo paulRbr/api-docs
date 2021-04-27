@@ -31,17 +31,20 @@
         "product_short_description": {
           "type": "string",
           "description": "Short description of the Product - max of 30 characters.",
-          "example": "Consumer credit card"
+          "example": "Consumer credit card",
+          "nullable": true
         },
         "product_long_description": {
           "type": "string",
           "description": "Description of the Product.",
-          "example": "Student credit card."
+          "example": "Student credit card.",
+          "nullable": true
         },
         "product_time_zone": {
           "type": "string",
           "description": "Timezone denoted as an [Olson-style timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value.",
-          "example": "America/Chicago"
+          "example": "America/Chicago",
+          "default": "America/New_York"
         },
         "product_type": {
           "type": "string",
@@ -73,11 +76,30 @@
           "example": 2900,
           "default": 0
         },
+        "origination_fee_impl_cents": {
+          "type": "integer",
+          "description": "The fee charged at the time of account origination",
+          "default": 0,
+          "example": 2000
+        },
+        "annual_fee_impl_cents": {
+          "type": "integer",
+          "description": "An annual fee to be charged yearly from the date of account creation. It will reflect on the subsequent statement once incurred.",
+          "default": 0,
+          "example": 1000
+        },
+        "monthly_fee_impl_cents": {
+          "type": "integer",
+          "description": "A monthly fee to be charged monthly from the date of account creation. It will reflect on the subsequent statement once incurred.",
+          "default": 0,
+          "example": 500
+        },
         "loan_end_date": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the account's loan repayment date.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         }
       }
     },
@@ -88,31 +110,40 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_purchase_window_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the end date for a purchase window for the account",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_inclusive_start": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "promo_impl_interest_rate_percent": {
           "type": "number",
           "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
           "example": 6.2,
           "default": 0
+        },
+        "promo_len": {
+          "type": "integer",
+          "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+          "example": 6
         }
       }
     },
@@ -123,13 +154,15 @@
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "post_promo_exclusive_end": {
           "type": "string",
           "format": "date-time",
           "description": "If applicable, the start date for a promotional period for the account.",
-          "example": "2013-01-13T05:25:13.813+00:00"
+          "example": "2013-01-13T05:25:13.813+00:00",
+          "nullable": true
         },
         "post_promo_impl_interest_rate_percent": {
           "type": "number",
@@ -137,11 +170,11 @@
           "example": 6.2,
           "default": 0
         },
-        "post_promo_impl_am_len": {
+        "post_promo_len": {
           "type": "integer",
           "description": "If applicable, post-promotional amortization length in cycles.",
           "example": 48,
-          "default": 1
+          "default": 0
         }
       }
     },

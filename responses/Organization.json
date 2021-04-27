@@ -1,0 +1,10 @@
+{
+  "description": "Organization",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/Organization.json"
+      }
+    }
+  }
+}

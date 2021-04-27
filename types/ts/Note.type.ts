@@ -1,8 +1,8 @@
 export interface Note {
     /**
-     * The ID of the account to which the Note is assigned
+     * A Canopy-generated ID for the account.
      */
-    account_id: number;
+    account_id: string;
     /**
      * The API User who authored the note
      */
@@ -16,9 +16,9 @@ export interface Note {
      */
     message: string;
     /**
-     * A Canopy-generated unique ID for the note
+     * A Canopy-generated ID for the note.
      */
-    note_id: number;
+    note_id: string;
 }
 
 /**

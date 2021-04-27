@@ -1,4 +1,5 @@
 export interface Product {
+    admin?: Admin;
     /**
      * The `Date-Time` that this product was created on the server.
      */
@@ -15,7 +16,7 @@ export interface Product {
     /**
      * The Canopy-generated ID for the product.
      */
-    product_id:                 number;
+    product_id:                 string;
     product_lifecycle_policies: ProductLifecyclePolicies;
     /**
      * A series of static fields about the product.
@@ -29,6 +30,13 @@ export interface Product {
      * If applicable, a promotional configuration for the product.
      */
     promotional_policies: PromotionalPolicies;
+}
+
+export interface Admin {
+    /**
+     * If migration mode is on, Canopy will stop auto-generating statements for this account.
+     */
+    migration_mode?: boolean;
 }
 
 export interface PostPromotionalPolicies {
@@ -49,14 +57,14 @@ export interface PostPromotionalPolicies {
      */
     post_promo_apr_range_inclusive_upper?: number;
     /**
-     * Default duration for the amortization period during post-promotion
-     */
-    post_promo_default_am_len?: number;
-    /**
      * The rate that serves as the active interest rate for accounts during the post-promotional
      * period.
      */
     post_promo_default_interest_rate_percent?: number;
+    /**
+     * Default duration for the amortization period during post-promotion
+     */
+    post_promo_len?: number;
     /**
      * Current due calculation method for the post-promotional period.
      */
@@ -130,7 +138,8 @@ export interface BillingCyclePolicies {
      * Timezone denoted as an Olson-style timezone defining the timezone for the product. All
      * times in any response data for accounts using this product will be denominated in this
      * timezone. Shifts due to daylight savings will be accounted for where relevant, and all
-     * output timestamps will be denoted as UTC offsets normalized based on this value.
+     * output timestamps will be denoted as UTC offsets normalized based on this value. Defaults
+     * to America/New_York if not provided.
      */
     product_time_zone?: string;
 }

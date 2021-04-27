@@ -1,0 +1,34 @@
+{
+  "required": ["organization_id", "created_at", "organization_overview"],
+  "type": "object",
+  "properties": {
+    "organization_id": {
+      "type": "string",
+      "description": "The Canopy-generated ID for the product.",
+      "example": "31mNprzLd2bKl6koVna68ARM"
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The `Date-Time` that this product was created on the server.",
+      "format": "date-time",
+      "example": "2019-03-20T09:12:28+00:00"
+    },
+    "organization_overview": {
+      "type": "object",
+      "description": "A series of static fields about the product.",
+      "required": ["organization_name"],
+      "properties": {
+        "organization_name": {
+          "type": "string",
+          "description": "Name of Organization, i.e. LeverCard 3000.",
+          "example": "LeverCard 3000"
+        },
+        "webhook_url": {
+          "type": "string",
+          "description": "A URL to which events pertaining to your organization get posted",
+          "example": "https://mycallbackurlhandler.com/canopy"
+        }
+      }
+    }
+  }
+}

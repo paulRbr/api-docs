@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "required": ["results"],
+  "properties": {
+    "results": {
+      "type": "array",
+      "nullable": true,
+      "description": "An array of information for all products within the requested range.",
+      "maxItems": 100,
+      "items": {
+        "$ref": "./Product.json"
+      }
+    }
+  }
+}

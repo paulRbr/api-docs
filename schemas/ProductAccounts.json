@@ -5,6 +5,7 @@
   "properties": {
     "current_accounts": {
       "type": "array",
+      "nullable": true,
       "maxItems": 1000,
       "description": "Array of Accounts that are currently using this Product",
       "items": {

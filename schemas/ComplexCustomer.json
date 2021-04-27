@@ -6,6 +6,7 @@
       "properties": {
         "accounts": {
           "type": "array",
+          "nullable": true,
           "maxItems": 1000,
           "description": "An array of Accounts this Customer is assigned to.",
           "items": {

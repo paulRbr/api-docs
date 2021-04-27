@@ -27,8 +27,8 @@ jobs:
         run: yarn build
 
       - name: Deploy to internal documentation
-        uses: bump-sh/github-action@0.1
+        uses: bump-sh/github-action@0.2
         with:
-          id: ${{ secrets.BUMP_DOC_ID_INTERNAL }}
+          doc: ${{ secrets.BUMP_DOC_ID_INTERNAL }}
           token: ${{ secrets.BUMP_TOKEN_INTERNAL }}
           file: dist/consolidated.json

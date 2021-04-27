@@ -3,12 +3,12 @@
   "required": ["account_id", "line_item_id", "product_id"],
   "properties": {
     "account_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The account associated with the line item",
       "example": 4
     },
     "line_item_id": {
-      "type": "integer",
+      "type": "string",
       "description": "The ID associated with the line item",
       "example": 2
     },
@@ -36,7 +36,20 @@
         "line_item_status": {
           "type": "string",
           "description": "the corresponding Status for a line item",
-          "enum": ["ROLLED", "VALID", "INVALID", "OFFSET", "SPLIT_VALID", "SPLIT_INVALID", "PENDING", "REVERSED"],
+          "enum": [
+            "ROLLED",
+            "VALID",
+            "INVALID",
+            "OFFSET",
+            "SPLIT_VALID",
+            "SPLIT_INVALID",
+            "PENDING",
+            "REVERSED",
+            "AUTHORIZED",
+            "DECLINED",
+            "VOID",
+            "POSTED"
+          ],
           "example": "VALID",
           "default": "VALID"
         },
@@ -59,14 +72,19 @@
             "LATE_FEE",
             "RETURN_CHECK_FEE",
             "PROMO_END",
-            "PURCHASE_WINDOW_END"
+            "PURCHASE_WINDOW_END",
+            "MONTH_FEE",
+            "YEAR_FEE",
+            "ORIG_FEE",
+            "FEE_SURCHARGE"
           ],
           "example": "CHARGE"
         },
         "description": {
           "type": "string",
           "description": "A description of this particular line item if any. More common for adjustments.",
-          "example": "Refund for invalid purchase"
+          "example": "Refund for invalid purchase",
+          "nullable": true
         }
       }
     },
@@ -126,6 +144,7 @@
     "merchant_data": {
       "type": "object",
       "description": "Merchant information if applicable.",
+      "nullable": true,
       "properties": {
         "name": {
           "type": "string"
@@ -143,6 +162,7 @@
     },
     "issuer_processor_metadata": {
       "type": "object",
+      "nullable": true,
       "properties": {
         "privacy": {
           "type": "object",
@@ -157,6 +177,7 @@
     },
     "external_fields": {
       "type": "array",
+      "nullable": true,
       "maxItems": 1000,
       "description": "An array of static references to fields in a third party system.",
       "items": {

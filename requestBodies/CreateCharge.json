@@ -8,6 +8,26 @@
         "additionalProperties": false,
         "required": ["original_amount_cents", "merchant_data"],
         "properties": {
+          "line_item_status": {
+            "type": "string",
+            "description": "the corresponding Status for a line item",
+            "enum": [
+              "ROLLED",
+              "VALID",
+              "INVALID",
+              "OFFSET",
+              "SPLIT_VALID",
+              "SPLIT_INVALID",
+              "PENDING",
+              "REVERSED",
+              "AUTHORIZED",
+              "DECLINED",
+              "VOID",
+              "POSTED"
+            ],
+            "example": "VALID",
+            "default": "VALID"
+          },
           "original_amount_cents": {
             "type": "integer",
             "description": "The Integer Amount of the Charge in Cents",
@@ -22,8 +42,8 @@
           },
           "merchant_data": {
             "type": "object",
+            "nullable": true,
             "description": "",
-            "required": ["mcc_code"],
             "properties": {
               "name": {
                 "type": "string"
@@ -56,6 +76,7 @@
           "external_fields": {
             "type": "array",
             "maxItems": 10,
+            "nullable": true,
             "description": "An array of static references to fields in a third party system.",
             "items": {
               "type": "object",

@@ -1,5 +1,5 @@
 // Generate the type definitions of our internal models from Canopy component schemas.
-// We select the component schemas from the deferenced api spec, and generate TS and Java types.
+// We select the component schemas from the dereferenced API spec, and generate TS and Go types.
 
 const fs = require("fs/promises");
 const path = require("path");
@@ -14,9 +14,9 @@ async function main() {
       extension: "type.ts",
     },
     {
-      // Types for the canopy test framework
-      lang: "java",
-      extension: "java",
+      // Types for the Go SDK
+      lang: "go",
+      extension: "go",
     },
   ];
 

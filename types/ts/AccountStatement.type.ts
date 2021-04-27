@@ -5,24 +5,23 @@ export interface AccountStatement {
     /**
      * The Canopy-generated ID for the account
      */
-    account_id:                  number;
+    account_id:                  string;
     account_overview?:           AccountOverview;
     additional_min_pay_details?: AdditionalMinPayDetails;
     balance_summary?:            BalanceSummary;
     cycle_summary?:              CycleSummary;
     /**
-     * The `Date-Time` you would like the system to return the data as of. IE tell me what the
-     * account information was as if I had asked on `2020-10-20 00:00:00 EST`. If empty it
-     * defaults to current time.
+     * A snapshot of all line items that occurred during the cycle and were `VALID` at the time
+     * of Statement cut.
      */
-    effective_as_of_date: string;
-    min_pay_due?:         MinPayDue;
-    open_to_buy?:         OpenToBuy;
-    payoff?:              Payoff;
+    line_items?:  LineItem[];
+    min_pay_due?: MinPayDue;
+    open_to_buy?: OpenToBuy;
+    payoff?:      Payoff;
     /**
      * The Canopy-generated ID for the statement
      */
-    statement_id: number;
+    statement_id: string;
 }
 
 export interface AccountOverview {
@@ -154,12 +153,12 @@ export interface CycleSummary {
      */
     cycle_deferred_interest_cents?: number;
     /**
-     * The inclusive ending `Date-Time` that defines which transations are part of this
+     * The inclusive ending `Date-Time` that defines which transactions are part of this
      * statement.
      */
     cycle_exclusive_end?: string;
     /**
-     * The inclusive starting `Date-Time` that defines which transations are part of this
+     * The inclusive starting `Date-Time` that defines which transactions are part of this
      * statement.
      */
     cycle_inclusive_start?: string;
@@ -191,6 +190,171 @@ export interface CycleSummary {
      * Total deferred interest that was forgiven on the account during the billing cycle.
      */
     cycle_waived_deferred_interest_cents?: number;
+}
+
+export interface LineItem {
+    /**
+     * The account associated with the line item
+     */
+    account_id: string;
+    /**
+     * The `Date-Time` which the line item was created.
+     */
+    created_at?: string;
+    /**
+     * The `Date-Time` that this line item became/becomes active
+     */
+    effective_at?: string;
+    /**
+     * An array of static references to fields in a third party system.
+     */
+    external_fields?:           ExternalField[];
+    issuer_processor_metadata?: IssuerProcessorMetadata;
+    /**
+     * The ID associated with the line item
+     */
+    line_item_id:        string;
+    line_item_overview?: LineItemOverview;
+    line_item_summary?:  LineItemSummary;
+    /**
+     * Merchant information if applicable.
+     */
+    merchant_data?: MerchantData;
+    /**
+     * the Product ID of the account
+     */
+    product_id: number;
+}
+
+export interface ExternalField {
+    /**
+     * Key - i.e. Name of the External Party
+     */
+    key?: string;
+    /**
+     * Value - i.e. External Account ID
+     */
+    value?: string;
+}
+
+export interface IssuerProcessorMetadata {
+    privacy?: Privacy;
+}
+
+export interface Privacy {
+    /**
+     * Last four digits of the card against which the spend was made.
+     */
+    last_four?: number;
+}
+
+export interface LineItemOverview {
+    /**
+     * A description of this particular line item if any. More common for adjustments.
+     */
+    description?: string;
+    /**
+     * the corresponding Status for a line item
+     */
+    line_item_status?: LineItemStatus;
+    /**
+     * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
+     */
+    line_item_type: LineItemType;
+}
+
+/**
+ * the corresponding Status for a line item
+ */
+export enum LineItemStatus {
+    Authorized = "AUTHORIZED",
+    Declined = "DECLINED",
+    Invalid = "INVALID",
+    Offset = "OFFSET",
+    Pending = "PENDING",
+    Posted = "POSTED",
+    Reversed = "REVERSED",
+    Rolled = "ROLLED",
+    SplitInvalid = "SPLIT_INVALID",
+    SplitValid = "SPLIT_VALID",
+    Valid = "VALID",
+    Void = "VOID",
+}
+
+/**
+ * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
+ */
+export enum LineItemType {
+    Charge = "CHARGE",
+    CreditOffset = "CREDIT_OFFSET",
+    DebitOffset = "DEBIT_OFFSET",
+    DeferredInterest = "DEFERRED_INTEREST",
+    Fee = "FEE",
+    FeeSurcharge = "FEE_SURCHARGE",
+    Interest = "INTEREST",
+    LateFee = "LATE_FEE",
+    Loan = "LOAN",
+    MinDue = "MIN_DUE",
+    MonthFee = "MONTH_FEE",
+    OrigFee = "ORIG_FEE",
+    Payment = "PAYMENT",
+    PaymentSplit = "PAYMENT_SPLIT",
+    ProductInterest = "PRODUCT_INTEREST",
+    PromoEnd = "PROMO_END",
+    PurchaseWindowEnd = "PURCHASE_WINDOW_END",
+    ReturnCheckFee = "RETURN_CHECK_FEE",
+    Statement = "STATEMENT",
+    YearFee = "YEAR_FEE",
+}
+
+export interface LineItemSummary {
+    /**
+     * The current AM deferred interest balance of the line item. Canopy tracks deferred
+     * interest during an amortization period separately from deferred interest accrued during a
+     * revolving period.
+     */
+    am_deferred_interest_balance_cents?: number;
+    /**
+     * The current AM interest balance of the line item. Canopy tracks interest during an
+     * amortization period separately from deferred interest accrued during a revolving period.
+     */
+    am_interest_balance_cents?: number;
+    /**
+     * The current balance of the line item, which accounts for interest accrued per the
+     * `product's` interest policy and the `account's` interest rate attribute.
+     */
+    balance_cents: number;
+    /**
+     * he current deferred interest balance of the line item.
+     */
+    deferred_interest_balance_cents: number;
+    /**
+     * The current interest balance of the line item.
+     */
+    interest_balance_cents: number;
+    /**
+     * The originating amount of money (in cents) relating to this line item.
+     */
+    original_amount_cents: number;
+    /**
+     * The principal balance of the line item.
+     */
+    principal_cents: number;
+    /**
+     * The sum (in cents) of all payments towards interest charges, if any, applied to this line
+     * item to date
+     */
+    total_interest_paid_to_date_cents: number;
+}
+
+/**
+ * Merchant information if applicable.
+ */
+export interface MerchantData {
+    id?:           string;
+    mcc_code?:     number;
+    name?:         string;
+    phone_number?: string;
 }
 
 export interface MinPayDue {
