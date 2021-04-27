@@ -3894,109 +3894,157 @@
                           "maxItems": 1000,
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
-                            "type": "object",
-                            "required": [
-                              "customer_id"
-                            ],
-                            "properties": {
-                              "customer_id": {
-                                "type": "string",
-                                "description": "A Canopy-generated ID for the customer.",
-                                "example": "31mNprzLd2bKl6koVna68ARM"
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "required": [
+                                  "customer_id"
+                                ],
+                                "properties": {
+                                  "customer_id": {
+                                    "type": "string",
+                                    "description": "A Canopy-generated ID for the customer.",
+                                    "example": "31mNprzLd2bKl6koVna68ARM"
+                                  },
+                                  "name_prefix": {
+                                    "type": "string",
+                                    "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Dr."
+                                  },
+                                  "name_first": {
+                                    "type": "string",
+                                    "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Miriam"
+                                  },
+                                  "name_middle": {
+                                    "type": "string",
+                                    "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Louise"
+                                  },
+                                  "name_last": {
+                                    "type": "string",
+                                    "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Trevino"
+                                  },
+                                  "name_suffix": {
+                                    "type": "string",
+                                    "description": "Suffix to the customer's name",
+                                    "example": "Jr"
+                                  },
+                                  "phone_number": {
+                                    "type": "string",
+                                    "description": "Customer's phone number in E.164 format",
+                                    "example": "+14105556789"
+                                  },
+                                  "address_line_one": {
+                                    "type": "string",
+                                    "description": "Address line one.",
+                                    "example": "12 Strawberry Road"
+                                  },
+                                  "address_line_two": {
+                                    "type": "string",
+                                    "description": "Address line two.",
+                                    "example": "Suite 101"
+                                  },
+                                  "address_city": {
+                                    "type": "string",
+                                    "description": "Address city.",
+                                    "example": "Atlanta"
+                                  },
+                                  "address_state": {
+                                    "type": "string",
+                                    "description": "Address state.",
+                                    "example": "GA"
+                                  },
+                                  "address_zip": {
+                                    "type": "string",
+                                    "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                                    "example": "99999-1000"
+                                  },
+                                  "ssn": {
+                                    "type": "string",
+                                    "description": "Social security number of the customer",
+                                    "example": "888-88-8888"
+                                  },
+                                  "email": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "description": "The email address of this Customer",
+                                    "example": "marissa@protonmail.com"
+                                  },
+                                  "date_of_birth": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Customer's date of birth in ISO 8601 format",
+                                    "example": "1985-06-20"
+                                  },
+                                  "business_details": {
+                                    "type": "object",
+                                    "properties": {
+                                      "business_legal_name": {
+                                        "type": "string",
+                                        "description": "The legal name of the Business",
+                                        "example": "Umbrella Corporation"
+                                      },
+                                      "doing_business_as": {
+                                        "type": "string",
+                                        "description": "The DBA name of the Business",
+                                        "example": "Umbrella"
+                                      },
+                                      "business_ein": {
+                                        "type": "string",
+                                        "description": "EIN of the business",
+                                        "example": "888-88-8888"
+                                      }
+                                    }
+                                  }
+                                }
                               },
-                              "name_prefix": {
-                                "type": "string",
-                                "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Dr."
-                              },
-                              "name_first": {
-                                "type": "string",
-                                "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Miriam"
-                              },
-                              "name_middle": {
-                                "type": "string",
-                                "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Louise"
-                              },
-                              "name_last": {
-                                "type": "string",
-                                "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Trevino"
-                              },
-                              "name_suffix": {
-                                "type": "string",
-                                "description": "Suffix to the customer's name",
-                                "example": "Jr"
-                              },
-                              "phone_number": {
-                                "type": "string",
-                                "description": "Customer's phone number in E.164 format",
-                                "example": "+14105556789"
-                              },
-                              "address_line_one": {
-                                "type": "string",
-                                "description": "Address line one.",
-                                "example": "12 Strawberry Road"
-                              },
-                              "address_line_two": {
-                                "type": "string",
-                                "description": "Address line two.",
-                                "example": "Suite 101"
-                              },
-                              "address_city": {
-                                "type": "string",
-                                "description": "Address city.",
-                                "example": "Atlanta"
-                              },
-                              "address_state": {
-                                "type": "string",
-                                "description": "Address state.",
-                                "example": "GA"
-                              },
-                              "address_zip": {
-                                "type": "string",
-                                "description": "Five digit zipcode or nine digit 'ZIP+4'",
-                                "example": "99999-1000"
-                              },
-                              "ssn": {
-                                "type": "string",
-                                "description": "Social security number of the customer",
-                                "example": "888-88-8888"
-                              },
-                              "email": {
-                                "type": "string",
-                                "format": "email",
-                                "description": "The email address of this Customer",
-                                "example": "marissa@protonmail.com"
-                              },
-                              "date_of_birth": {
-                                "type": "string",
-                                "format": "date",
-                                "description": "Customer's date of birth in ISO 8601 format",
-                                "example": "1985-06-20"
-                              },
-                              "business_details": {
+                              {
                                 "type": "object",
                                 "properties": {
-                                  "business_legal_name": {
-                                    "type": "string",
-                                    "description": "The legal name of the Business",
-                                    "example": "Umbrella Corporation"
-                                  },
-                                  "doing_business_as": {
-                                    "type": "string",
-                                    "description": "The DBA name of the Business",
-                                    "example": "Umbrella"
-                                  },
-                                  "business_ein": {
-                                    "type": "string",
-                                    "description": "EIN of the business",
-                                    "example": "888-88-8888"
+                                  "card_details": {
+                                    "type": "array",
+                                    "nullable": true,
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": true,
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "description": "The type of card being returned",
+                                          "enum": [
+                                            "UNLOCKED"
+                                          ],
+                                          "example": "UNLOCKED"
+                                        },
+                                        "state": {
+                                          "type": "string",
+                                          "description": "The current state of the card",
+                                          "enum": [
+                                            "OPEN",
+                                            "PAUSED",
+                                            "CLOSED"
+                                          ],
+                                          "example": "OPEN"
+                                        },
+                                        "token": {
+                                          "type": "string",
+                                          "format": "uuid",
+                                          "description": "Unique token for the card",
+                                          "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                        },
+                                        "last_four": {
+                                          "type": "string",
+                                          "description": "Last four digits of the card",
+                                          "example": "0690"
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               }
-                            }
+                            ]
                           }
                         }
                       }
@@ -4559,109 +4607,157 @@
                           "maxItems": 1000,
                           "description": "An array of customers who have been assigned to the account",
                           "items": {
-                            "type": "object",
-                            "required": [
-                              "customer_id"
-                            ],
-                            "properties": {
-                              "customer_id": {
-                                "type": "string",
-                                "description": "A Canopy-generated ID for the customer.",
-                                "example": "31mNprzLd2bKl6koVna68ARM"
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "required": [
+                                  "customer_id"
+                                ],
+                                "properties": {
+                                  "customer_id": {
+                                    "type": "string",
+                                    "description": "A Canopy-generated ID for the customer.",
+                                    "example": "31mNprzLd2bKl6koVna68ARM"
+                                  },
+                                  "name_prefix": {
+                                    "type": "string",
+                                    "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Dr."
+                                  },
+                                  "name_first": {
+                                    "type": "string",
+                                    "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Miriam"
+                                  },
+                                  "name_middle": {
+                                    "type": "string",
+                                    "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Louise"
+                                  },
+                                  "name_last": {
+                                    "type": "string",
+                                    "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
+                                    "example": "Trevino"
+                                  },
+                                  "name_suffix": {
+                                    "type": "string",
+                                    "description": "Suffix to the customer's name",
+                                    "example": "Jr"
+                                  },
+                                  "phone_number": {
+                                    "type": "string",
+                                    "description": "Customer's phone number in E.164 format",
+                                    "example": "+14105556789"
+                                  },
+                                  "address_line_one": {
+                                    "type": "string",
+                                    "description": "Address line one.",
+                                    "example": "12 Strawberry Road"
+                                  },
+                                  "address_line_two": {
+                                    "type": "string",
+                                    "description": "Address line two.",
+                                    "example": "Suite 101"
+                                  },
+                                  "address_city": {
+                                    "type": "string",
+                                    "description": "Address city.",
+                                    "example": "Atlanta"
+                                  },
+                                  "address_state": {
+                                    "type": "string",
+                                    "description": "Address state.",
+                                    "example": "GA"
+                                  },
+                                  "address_zip": {
+                                    "type": "string",
+                                    "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                                    "example": "99999-1000"
+                                  },
+                                  "ssn": {
+                                    "type": "string",
+                                    "description": "Social security number of the customer",
+                                    "example": "888-88-8888"
+                                  },
+                                  "email": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "description": "The email address of this Customer",
+                                    "example": "marissa@protonmail.com"
+                                  },
+                                  "date_of_birth": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Customer's date of birth in ISO 8601 format",
+                                    "example": "1985-06-20"
+                                  },
+                                  "business_details": {
+                                    "type": "object",
+                                    "properties": {
+                                      "business_legal_name": {
+                                        "type": "string",
+                                        "description": "The legal name of the Business",
+                                        "example": "Umbrella Corporation"
+                                      },
+                                      "doing_business_as": {
+                                        "type": "string",
+                                        "description": "The DBA name of the Business",
+                                        "example": "Umbrella"
+                                      },
+                                      "business_ein": {
+                                        "type": "string",
+                                        "description": "EIN of the business",
+                                        "example": "888-88-8888"
+                                      }
+                                    }
+                                  }
+                                }
                               },
-                              "name_prefix": {
-                                "type": "string",
-                                "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Dr."
-                              },
-                              "name_first": {
-                                "type": "string",
-                                "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Miriam"
-                              },
-                              "name_middle": {
-                                "type": "string",
-                                "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Louise"
-                              },
-                              "name_last": {
-                                "type": "string",
-                                "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
-                                "example": "Trevino"
-                              },
-                              "name_suffix": {
-                                "type": "string",
-                                "description": "Suffix to the customer's name",
-                                "example": "Jr"
-                              },
-                              "phone_number": {
-                                "type": "string",
-                                "description": "Customer's phone number in E.164 format",
-                                "example": "+14105556789"
-                              },
-                              "address_line_one": {
-                                "type": "string",
-                                "description": "Address line one.",
-                                "example": "12 Strawberry Road"
-                              },
-                              "address_line_two": {
-                                "type": "string",
-                                "description": "Address line two.",
-                                "example": "Suite 101"
-                              },
-                              "address_city": {
-                                "type": "string",
-                                "description": "Address city.",
-                                "example": "Atlanta"
-                              },
-                              "address_state": {
-                                "type": "string",
-                                "description": "Address state.",
-                                "example": "GA"
-                              },
-                              "address_zip": {
-                                "type": "string",
-                                "description": "Five digit zipcode or nine digit 'ZIP+4'",
-                                "example": "99999-1000"
-                              },
-                              "ssn": {
-                                "type": "string",
-                                "description": "Social security number of the customer",
-                                "example": "888-88-8888"
-                              },
-                              "email": {
-                                "type": "string",
-                                "format": "email",
-                                "description": "The email address of this Customer",
-                                "example": "marissa@protonmail.com"
-                              },
-                              "date_of_birth": {
-                                "type": "string",
-                                "format": "date",
-                                "description": "Customer's date of birth in ISO 8601 format",
-                                "example": "1985-06-20"
-                              },
-                              "business_details": {
+                              {
                                 "type": "object",
                                 "properties": {
-                                  "business_legal_name": {
-                                    "type": "string",
-                                    "description": "The legal name of the Business",
-                                    "example": "Umbrella Corporation"
-                                  },
-                                  "doing_business_as": {
-                                    "type": "string",
-                                    "description": "The DBA name of the Business",
-                                    "example": "Umbrella"
-                                  },
-                                  "business_ein": {
-                                    "type": "string",
-                                    "description": "EIN of the business",
-                                    "example": "888-88-8888"
+                                  "card_details": {
+                                    "type": "array",
+                                    "nullable": true,
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": true,
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "description": "The type of card being returned",
+                                          "enum": [
+                                            "UNLOCKED"
+                                          ],
+                                          "example": "UNLOCKED"
+                                        },
+                                        "state": {
+                                          "type": "string",
+                                          "description": "The current state of the card",
+                                          "enum": [
+                                            "OPEN",
+                                            "PAUSED",
+                                            "CLOSED"
+                                          ],
+                                          "example": "OPEN"
+                                        },
+                                        "token": {
+                                          "type": "string",
+                                          "format": "uuid",
+                                          "description": "Unique token for the card",
+                                          "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                        },
+                                        "last_four": {
+                                          "type": "string",
+                                          "description": "Last four digits of the card",
+                                          "example": "0690"
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               }
-                            }
+                            ]
                           }
                         }
                       }
@@ -10095,109 +10191,157 @@
                 "maxItems": 1000,
                 "description": "An array of customers who have been assigned to the account",
                 "items": {
-                  "type": "object",
-                  "required": [
-                    "customer_id"
-                  ],
-                  "properties": {
-                    "customer_id": {
-                      "type": "string",
-                      "description": "A Canopy-generated ID for the customer.",
-                      "example": "31mNprzLd2bKl6koVna68ARM"
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "customer_id"
+                      ],
+                      "properties": {
+                        "customer_id": {
+                          "type": "string",
+                          "description": "A Canopy-generated ID for the customer.",
+                          "example": "31mNprzLd2bKl6koVna68ARM"
+                        },
+                        "name_prefix": {
+                          "type": "string",
+                          "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
+                          "example": "Dr."
+                        },
+                        "name_first": {
+                          "type": "string",
+                          "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
+                          "example": "Miriam"
+                        },
+                        "name_middle": {
+                          "type": "string",
+                          "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
+                          "example": "Louise"
+                        },
+                        "name_last": {
+                          "type": "string",
+                          "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
+                          "example": "Trevino"
+                        },
+                        "name_suffix": {
+                          "type": "string",
+                          "description": "Suffix to the customer's name",
+                          "example": "Jr"
+                        },
+                        "phone_number": {
+                          "type": "string",
+                          "description": "Customer's phone number in E.164 format",
+                          "example": "+14105556789"
+                        },
+                        "address_line_one": {
+                          "type": "string",
+                          "description": "Address line one.",
+                          "example": "12 Strawberry Road"
+                        },
+                        "address_line_two": {
+                          "type": "string",
+                          "description": "Address line two.",
+                          "example": "Suite 101"
+                        },
+                        "address_city": {
+                          "type": "string",
+                          "description": "Address city.",
+                          "example": "Atlanta"
+                        },
+                        "address_state": {
+                          "type": "string",
+                          "description": "Address state.",
+                          "example": "GA"
+                        },
+                        "address_zip": {
+                          "type": "string",
+                          "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                          "example": "99999-1000"
+                        },
+                        "ssn": {
+                          "type": "string",
+                          "description": "Social security number of the customer",
+                          "example": "888-88-8888"
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email",
+                          "description": "The email address of this Customer",
+                          "example": "marissa@protonmail.com"
+                        },
+                        "date_of_birth": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "Customer's date of birth in ISO 8601 format",
+                          "example": "1985-06-20"
+                        },
+                        "business_details": {
+                          "type": "object",
+                          "properties": {
+                            "business_legal_name": {
+                              "type": "string",
+                              "description": "The legal name of the Business",
+                              "example": "Umbrella Corporation"
+                            },
+                            "doing_business_as": {
+                              "type": "string",
+                              "description": "The DBA name of the Business",
+                              "example": "Umbrella"
+                            },
+                            "business_ein": {
+                              "type": "string",
+                              "description": "EIN of the business",
+                              "example": "888-88-8888"
+                            }
+                          }
+                        }
+                      }
                     },
-                    "name_prefix": {
-                      "type": "string",
-                      "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
-                      "example": "Dr."
-                    },
-                    "name_first": {
-                      "type": "string",
-                      "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
-                      "example": "Miriam"
-                    },
-                    "name_middle": {
-                      "type": "string",
-                      "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
-                      "example": "Louise"
-                    },
-                    "name_last": {
-                      "type": "string",
-                      "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
-                      "example": "Trevino"
-                    },
-                    "name_suffix": {
-                      "type": "string",
-                      "description": "Suffix to the customer's name",
-                      "example": "Jr"
-                    },
-                    "phone_number": {
-                      "type": "string",
-                      "description": "Customer's phone number in E.164 format",
-                      "example": "+14105556789"
-                    },
-                    "address_line_one": {
-                      "type": "string",
-                      "description": "Address line one.",
-                      "example": "12 Strawberry Road"
-                    },
-                    "address_line_two": {
-                      "type": "string",
-                      "description": "Address line two.",
-                      "example": "Suite 101"
-                    },
-                    "address_city": {
-                      "type": "string",
-                      "description": "Address city.",
-                      "example": "Atlanta"
-                    },
-                    "address_state": {
-                      "type": "string",
-                      "description": "Address state.",
-                      "example": "GA"
-                    },
-                    "address_zip": {
-                      "type": "string",
-                      "description": "Five digit zipcode or nine digit 'ZIP+4'",
-                      "example": "99999-1000"
-                    },
-                    "ssn": {
-                      "type": "string",
-                      "description": "Social security number of the customer",
-                      "example": "888-88-8888"
-                    },
-                    "email": {
-                      "type": "string",
-                      "format": "email",
-                      "description": "The email address of this Customer",
-                      "example": "marissa@protonmail.com"
-                    },
-                    "date_of_birth": {
-                      "type": "string",
-                      "format": "date",
-                      "description": "Customer's date of birth in ISO 8601 format",
-                      "example": "1985-06-20"
-                    },
-                    "business_details": {
+                    {
                       "type": "object",
                       "properties": {
-                        "business_legal_name": {
-                          "type": "string",
-                          "description": "The legal name of the Business",
-                          "example": "Umbrella Corporation"
-                        },
-                        "doing_business_as": {
-                          "type": "string",
-                          "description": "The DBA name of the Business",
-                          "example": "Umbrella"
-                        },
-                        "business_ein": {
-                          "type": "string",
-                          "description": "EIN of the business",
-                          "example": "888-88-8888"
+                        "card_details": {
+                          "type": "array",
+                          "nullable": true,
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "description": "The type of card being returned",
+                                "enum": [
+                                  "UNLOCKED"
+                                ],
+                                "example": "UNLOCKED"
+                              },
+                              "state": {
+                                "type": "string",
+                                "description": "The current state of the card",
+                                "enum": [
+                                  "OPEN",
+                                  "PAUSED",
+                                  "CLOSED"
+                                ],
+                                "example": "OPEN"
+                              },
+                              "token": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "Unique token for the card",
+                                "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                              },
+                              "last_four": {
+                                "type": "string",
+                                "description": "Last four digits of the card",
+                                "example": "0690"
+                              }
+                            }
+                          }
                         }
                       }
                     }
-                  }
+                  ]
                 }
               }
             }
@@ -17039,109 +17183,157 @@
                       "maxItems": 1000,
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
-                        "type": "object",
-                        "required": [
-                          "customer_id"
-                        ],
-                        "properties": {
-                          "customer_id": {
-                            "type": "string",
-                            "description": "A Canopy-generated ID for the customer.",
-                            "example": "31mNprzLd2bKl6koVna68ARM"
+                        "allOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "customer_id"
+                            ],
+                            "properties": {
+                              "customer_id": {
+                                "type": "string",
+                                "description": "A Canopy-generated ID for the customer.",
+                                "example": "31mNprzLd2bKl6koVna68ARM"
+                              },
+                              "name_prefix": {
+                                "type": "string",
+                                "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Dr."
+                              },
+                              "name_first": {
+                                "type": "string",
+                                "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Miriam"
+                              },
+                              "name_middle": {
+                                "type": "string",
+                                "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Louise"
+                              },
+                              "name_last": {
+                                "type": "string",
+                                "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Trevino"
+                              },
+                              "name_suffix": {
+                                "type": "string",
+                                "description": "Suffix to the customer's name",
+                                "example": "Jr"
+                              },
+                              "phone_number": {
+                                "type": "string",
+                                "description": "Customer's phone number in E.164 format",
+                                "example": "+14105556789"
+                              },
+                              "address_line_one": {
+                                "type": "string",
+                                "description": "Address line one.",
+                                "example": "12 Strawberry Road"
+                              },
+                              "address_line_two": {
+                                "type": "string",
+                                "description": "Address line two.",
+                                "example": "Suite 101"
+                              },
+                              "address_city": {
+                                "type": "string",
+                                "description": "Address city.",
+                                "example": "Atlanta"
+                              },
+                              "address_state": {
+                                "type": "string",
+                                "description": "Address state.",
+                                "example": "GA"
+                              },
+                              "address_zip": {
+                                "type": "string",
+                                "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                                "example": "99999-1000"
+                              },
+                              "ssn": {
+                                "type": "string",
+                                "description": "Social security number of the customer",
+                                "example": "888-88-8888"
+                              },
+                              "email": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "The email address of this Customer",
+                                "example": "marissa@protonmail.com"
+                              },
+                              "date_of_birth": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "Customer's date of birth in ISO 8601 format",
+                                "example": "1985-06-20"
+                              },
+                              "business_details": {
+                                "type": "object",
+                                "properties": {
+                                  "business_legal_name": {
+                                    "type": "string",
+                                    "description": "The legal name of the Business",
+                                    "example": "Umbrella Corporation"
+                                  },
+                                  "doing_business_as": {
+                                    "type": "string",
+                                    "description": "The DBA name of the Business",
+                                    "example": "Umbrella"
+                                  },
+                                  "business_ein": {
+                                    "type": "string",
+                                    "description": "EIN of the business",
+                                    "example": "888-88-8888"
+                                  }
+                                }
+                              }
+                            }
                           },
-                          "name_prefix": {
-                            "type": "string",
-                            "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Dr."
-                          },
-                          "name_first": {
-                            "type": "string",
-                            "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Miriam"
-                          },
-                          "name_middle": {
-                            "type": "string",
-                            "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Louise"
-                          },
-                          "name_last": {
-                            "type": "string",
-                            "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Trevino"
-                          },
-                          "name_suffix": {
-                            "type": "string",
-                            "description": "Suffix to the customer's name",
-                            "example": "Jr"
-                          },
-                          "phone_number": {
-                            "type": "string",
-                            "description": "Customer's phone number in E.164 format",
-                            "example": "+14105556789"
-                          },
-                          "address_line_one": {
-                            "type": "string",
-                            "description": "Address line one.",
-                            "example": "12 Strawberry Road"
-                          },
-                          "address_line_two": {
-                            "type": "string",
-                            "description": "Address line two.",
-                            "example": "Suite 101"
-                          },
-                          "address_city": {
-                            "type": "string",
-                            "description": "Address city.",
-                            "example": "Atlanta"
-                          },
-                          "address_state": {
-                            "type": "string",
-                            "description": "Address state.",
-                            "example": "GA"
-                          },
-                          "address_zip": {
-                            "type": "string",
-                            "description": "Five digit zipcode or nine digit 'ZIP+4'",
-                            "example": "99999-1000"
-                          },
-                          "ssn": {
-                            "type": "string",
-                            "description": "Social security number of the customer",
-                            "example": "888-88-8888"
-                          },
-                          "email": {
-                            "type": "string",
-                            "format": "email",
-                            "description": "The email address of this Customer",
-                            "example": "marissa@protonmail.com"
-                          },
-                          "date_of_birth": {
-                            "type": "string",
-                            "format": "date",
-                            "description": "Customer's date of birth in ISO 8601 format",
-                            "example": "1985-06-20"
-                          },
-                          "business_details": {
+                          {
                             "type": "object",
                             "properties": {
-                              "business_legal_name": {
-                                "type": "string",
-                                "description": "The legal name of the Business",
-                                "example": "Umbrella Corporation"
-                              },
-                              "doing_business_as": {
-                                "type": "string",
-                                "description": "The DBA name of the Business",
-                                "example": "Umbrella"
-                              },
-                              "business_ein": {
-                                "type": "string",
-                                "description": "EIN of the business",
-                                "example": "888-88-8888"
+                              "card_details": {
+                                "type": "array",
+                                "nullable": true,
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true,
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "description": "The type of card being returned",
+                                      "enum": [
+                                        "UNLOCKED"
+                                      ],
+                                      "example": "UNLOCKED"
+                                    },
+                                    "state": {
+                                      "type": "string",
+                                      "description": "The current state of the card",
+                                      "enum": [
+                                        "OPEN",
+                                        "PAUSED",
+                                        "CLOSED"
+                                      ],
+                                      "example": "OPEN"
+                                    },
+                                    "token": {
+                                      "type": "string",
+                                      "format": "uuid",
+                                      "description": "Unique token for the card",
+                                      "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                    },
+                                    "last_four": {
+                                      "type": "string",
+                                      "description": "Last four digits of the card",
+                                      "example": "0690"
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
-                        }
+                        ]
                       }
                     }
                   }
@@ -18812,109 +19004,157 @@
                       "maxItems": 1000,
                       "description": "An array of customers who have been assigned to the account",
                       "items": {
-                        "type": "object",
-                        "required": [
-                          "customer_id"
-                        ],
-                        "properties": {
-                          "customer_id": {
-                            "type": "string",
-                            "description": "A Canopy-generated ID for the customer.",
-                            "example": "31mNprzLd2bKl6koVna68ARM"
+                        "allOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "customer_id"
+                            ],
+                            "properties": {
+                              "customer_id": {
+                                "type": "string",
+                                "description": "A Canopy-generated ID for the customer.",
+                                "example": "31mNprzLd2bKl6koVna68ARM"
+                              },
+                              "name_prefix": {
+                                "type": "string",
+                                "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Dr."
+                              },
+                              "name_first": {
+                                "type": "string",
+                                "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Miriam"
+                              },
+                              "name_middle": {
+                                "type": "string",
+                                "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Louise"
+                              },
+                              "name_last": {
+                                "type": "string",
+                                "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
+                                "example": "Trevino"
+                              },
+                              "name_suffix": {
+                                "type": "string",
+                                "description": "Suffix to the customer's name",
+                                "example": "Jr"
+                              },
+                              "phone_number": {
+                                "type": "string",
+                                "description": "Customer's phone number in E.164 format",
+                                "example": "+14105556789"
+                              },
+                              "address_line_one": {
+                                "type": "string",
+                                "description": "Address line one.",
+                                "example": "12 Strawberry Road"
+                              },
+                              "address_line_two": {
+                                "type": "string",
+                                "description": "Address line two.",
+                                "example": "Suite 101"
+                              },
+                              "address_city": {
+                                "type": "string",
+                                "description": "Address city.",
+                                "example": "Atlanta"
+                              },
+                              "address_state": {
+                                "type": "string",
+                                "description": "Address state.",
+                                "example": "GA"
+                              },
+                              "address_zip": {
+                                "type": "string",
+                                "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                                "example": "99999-1000"
+                              },
+                              "ssn": {
+                                "type": "string",
+                                "description": "Social security number of the customer",
+                                "example": "888-88-8888"
+                              },
+                              "email": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "The email address of this Customer",
+                                "example": "marissa@protonmail.com"
+                              },
+                              "date_of_birth": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "Customer's date of birth in ISO 8601 format",
+                                "example": "1985-06-20"
+                              },
+                              "business_details": {
+                                "type": "object",
+                                "properties": {
+                                  "business_legal_name": {
+                                    "type": "string",
+                                    "description": "The legal name of the Business",
+                                    "example": "Umbrella Corporation"
+                                  },
+                                  "doing_business_as": {
+                                    "type": "string",
+                                    "description": "The DBA name of the Business",
+                                    "example": "Umbrella"
+                                  },
+                                  "business_ein": {
+                                    "type": "string",
+                                    "description": "EIN of the business",
+                                    "example": "888-88-8888"
+                                  }
+                                }
+                              }
+                            }
                           },
-                          "name_prefix": {
-                            "type": "string",
-                            "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Dr."
-                          },
-                          "name_first": {
-                            "type": "string",
-                            "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Miriam"
-                          },
-                          "name_middle": {
-                            "type": "string",
-                            "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Louise"
-                          },
-                          "name_last": {
-                            "type": "string",
-                            "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
-                            "example": "Trevino"
-                          },
-                          "name_suffix": {
-                            "type": "string",
-                            "description": "Suffix to the customer's name",
-                            "example": "Jr"
-                          },
-                          "phone_number": {
-                            "type": "string",
-                            "description": "Customer's phone number in E.164 format",
-                            "example": "+14105556789"
-                          },
-                          "address_line_one": {
-                            "type": "string",
-                            "description": "Address line one.",
-                            "example": "12 Strawberry Road"
-                          },
-                          "address_line_two": {
-                            "type": "string",
-                            "description": "Address line two.",
-                            "example": "Suite 101"
-                          },
-                          "address_city": {
-                            "type": "string",
-                            "description": "Address city.",
-                            "example": "Atlanta"
-                          },
-                          "address_state": {
-                            "type": "string",
-                            "description": "Address state.",
-                            "example": "GA"
-                          },
-                          "address_zip": {
-                            "type": "string",
-                            "description": "Five digit zipcode or nine digit 'ZIP+4'",
-                            "example": "99999-1000"
-                          },
-                          "ssn": {
-                            "type": "string",
-                            "description": "Social security number of the customer",
-                            "example": "888-88-8888"
-                          },
-                          "email": {
-                            "type": "string",
-                            "format": "email",
-                            "description": "The email address of this Customer",
-                            "example": "marissa@protonmail.com"
-                          },
-                          "date_of_birth": {
-                            "type": "string",
-                            "format": "date",
-                            "description": "Customer's date of birth in ISO 8601 format",
-                            "example": "1985-06-20"
-                          },
-                          "business_details": {
+                          {
                             "type": "object",
                             "properties": {
-                              "business_legal_name": {
-                                "type": "string",
-                                "description": "The legal name of the Business",
-                                "example": "Umbrella Corporation"
-                              },
-                              "doing_business_as": {
-                                "type": "string",
-                                "description": "The DBA name of the Business",
-                                "example": "Umbrella"
-                              },
-                              "business_ein": {
-                                "type": "string",
-                                "description": "EIN of the business",
-                                "example": "888-88-8888"
+                              "card_details": {
+                                "type": "array",
+                                "nullable": true,
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true,
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "description": "The type of card being returned",
+                                      "enum": [
+                                        "UNLOCKED"
+                                      ],
+                                      "example": "UNLOCKED"
+                                    },
+                                    "state": {
+                                      "type": "string",
+                                      "description": "The current state of the card",
+                                      "enum": [
+                                        "OPEN",
+                                        "PAUSED",
+                                        "CLOSED"
+                                      ],
+                                      "example": "OPEN"
+                                    },
+                                    "token": {
+                                      "type": "string",
+                                      "format": "uuid",
+                                      "description": "Unique token for the card",
+                                      "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                    },
+                                    "last_four": {
+                                      "type": "string",
+                                      "description": "Last four digits of the card",
+                                      "example": "0690"
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
-                        }
+                        ]
                       }
                     }
                   }

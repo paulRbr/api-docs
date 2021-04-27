@@ -11,7 +11,19 @@
           "maxItems": 1000,
           "description": "An array of customers who have been assigned to the account",
           "items": {
-            "$ref": "./Customer.json"
+            "allOf": [
+              {
+                "$ref": "./Customer.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "card_details": {
+                    "$ref": "./CustomerCards.json"
+                  }
+                }
+              }
+            ]
           }
         }
       }
