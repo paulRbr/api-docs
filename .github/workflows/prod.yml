@@ -1,9 +1,9 @@
-name: Deploy documentation to internal docs hub
+name: Deploy production docs
 
 on:
   push:
     branches:
-      - master
+      - production
 
 jobs:
   deploy:
@@ -26,9 +26,9 @@ jobs:
       - name: Bundle and validate OpenAPI spec
         run: yarn build
 
-      - name: Deploy to internal documentation
+      - name: Deploy to docs.canopyservicing.com
         uses: bump-sh/github-action@0.2
         with:
-          doc: ${{ secrets.BUMP_DOC_ID_INTERNAL }}
-          token: ${{ secrets.BUMP_TOKEN_INTERNAL }}
+          doc: ${{ secrets.BUMP_DOC_ID_LIVE }}
+          token: ${{ secrets.BUMP_TOKEN_LIVE }}
           file: dist/consolidated.json

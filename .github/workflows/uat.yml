@@ -1,9 +1,9 @@
-name: Deploy documentation to live docs site
+name: Deploy uat docs
 
 on:
   push:
     branches:
-      - production
+      - uat
 
 jobs:
   deploy:
@@ -26,9 +26,9 @@ jobs:
       - name: Bundle and validate OpenAPI spec
         run: yarn build
 
-      - name: Deploy to docs.canopyservicing.com
+      - name: Deploy uat docs
         uses: bump-sh/github-action@0.2
         with:
-          doc: ${{ secrets.BUMP_DOC_ID_LIVE }}
-          token: ${{ secrets.BUMP_TOKEN_LIVE }}
+          doc: ${{ secrets.BUMP_DOC_ID_UAT }}
+          token: ${{ secrets.BUMP_TOKEN_UAT }}
           file: dist/consolidated.json
