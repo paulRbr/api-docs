@@ -83,7 +83,8 @@
         "description": {
           "type": "string",
           "description": "A description of this particular line item if any. More common for adjustments.",
-          "example": "Refund for invalid purchase"
+          "example": "Refund for invalid purchase",
+          "nullable": true
         }
       }
     },
@@ -143,6 +144,7 @@
     "merchant_data": {
       "type": "object",
       "description": "Merchant information if applicable.",
+      "nullable": true,
       "properties": {
         "name": {
           "type": "string"
@@ -160,6 +162,7 @@
     },
     "issuer_processor_metadata": {
       "type": "object",
+      "nullable": true,
       "properties": {
         "privacy": {
           "type": "object",
@@ -174,6 +177,7 @@
     },
     "external_fields": {
       "type": "array",
+      "nullable": true,
       "maxItems": 1000,
       "description": "An array of static references to fields in a third party system.",
       "items": {

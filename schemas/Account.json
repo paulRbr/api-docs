@@ -259,6 +259,7 @@
     },
     "associated_entities": {
       "type": "object",
+      "nullable": true,
       "properties": {
         "merchant_name": {
           "type": "string",
