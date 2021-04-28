@@ -1,4 +1,5 @@
 export interface Product {
+    admin?: Admin;
     /**
      * The `Date-Time` that this product was created on the server.
      */
@@ -29,6 +30,13 @@ export interface Product {
      * If applicable, a promotional configuration for the product.
      */
     promotional_policies: PromotionalPolicies;
+}
+
+export interface Admin {
+    /**
+     * If migration mode is on, Canopy will stop auto-generating statements for this account.
+     */
+    migration_mode?: boolean;
 }
 
 export interface PostPromotionalPolicies {

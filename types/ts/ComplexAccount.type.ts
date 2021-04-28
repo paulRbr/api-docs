@@ -306,7 +306,8 @@ export interface Customer {
     /**
      * Social security number of the customer
      */
-    ssn?: string;
+    ssn?:          string;
+    card_details?: CardDetail[];
 }
 
 export interface BusinessDetails {
@@ -322,6 +323,41 @@ export interface BusinessDetails {
      * The DBA name of the Business
      */
     doing_business_as?: string;
+}
+
+export interface CardDetail {
+    /**
+     * Last four digits of the card
+     */
+    last_four?: string;
+    /**
+     * The current state of the card
+     */
+    state?: State;
+    /**
+     * Unique token for the card
+     */
+    token?: string;
+    /**
+     * The type of card being returned
+     */
+    type?: Type;
+}
+
+/**
+ * The current state of the card
+ */
+export enum State {
+    Closed = "CLOSED",
+    Open = "OPEN",
+    Paused = "PAUSED",
+}
+
+/**
+ * The type of card being returned
+ */
+export enum Type {
+    Unlocked = "UNLOCKED",
 }
 
 export interface CycleType {

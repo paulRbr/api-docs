@@ -1,0 +1,10 @@
+{
+  "description": "Successfully created a new card for the customer.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/CustomerCards.json"
+      }
+    }
+  }
+}

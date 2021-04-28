@@ -9,6 +9,7 @@
     },
     "statements_list": {
       "type": "array",
+      "nullable": true,
       "maxItems": 1000,
       "description": "An array of statements included in the billing cycle.",
       "items": {
@@ -41,12 +42,12 @@
           "billing_cycle_start_date": {
             "type": "string",
             "format": "date-time",
-            "description": "The inclusive starting `Date-Time` that defines which transations are part of this statement."
+            "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement."
           },
           "billing_cycle_end_date": {
             "type": "string",
             "format": "date-time",
-            "description": "The inclusive ending `Date-Time` that defines which transations are part of this statement."
+            "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement."
           }
         }
       }

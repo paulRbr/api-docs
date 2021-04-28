@@ -1,0 +1,33 @@
+{
+  "type": "array",
+  "nullable": true,
+  "items": {
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "The type of card being returned",
+        "enum": ["UNLOCKED"],
+        "example": "UNLOCKED"
+      },
+      "state": {
+        "type": "string",
+        "description": "The current state of the card",
+        "enum": ["OPEN", "PAUSED", "CLOSED"],
+        "example": "OPEN"
+      },
+      "token": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Unique token for the card",
+        "example": "adccd28d-532e-480b-a063-a46a77a15570"
+      },
+      "last_four": {
+        "type": "string",
+        "description": "Last four digits of the card",
+        "example": "0690"
+      }
+    }
+  }
+}

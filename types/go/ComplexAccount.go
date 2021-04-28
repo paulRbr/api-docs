@@ -101,12 +101,20 @@ type Customer struct {
 	NameSuffix      *string          `json:"name_suffix,omitempty"`     // Suffix to the customer's name
 	PhoneNumber     *string          `json:"phone_number,omitempty"`    // Customer's phone number in E.164 format
 	Ssn             *string          `json:"ssn,omitempty"`             // Social security number of the customer
+	CardDetails     []CardDetail     `json:"card_details,omitempty"`    
 }
 
 type BusinessDetails struct {
 	BusinessEin       *string `json:"business_ein,omitempty"`       // EIN of the business
 	BusinessLegalName *string `json:"business_legal_name,omitempty"`// The legal name of the Business
 	DoingBusinessAs   *string `json:"doing_business_as,omitempty"`  // The DBA name of the Business
+}
+
+type CardDetail struct {
+	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card
+	State    *State  `json:"state,omitempty"`    // The current state of the card
+	Token    *string `json:"token,omitempty"`    // Unique token for the card
+	Type     *Type   `json:"type,omitempty"`     // The type of card being returned
 }
 
 type CycleType struct {
@@ -158,6 +166,20 @@ const (
 	Installment ProductType = "INSTALLMENT"
 	MixedRateInstallment ProductType = "MIXED_RATE_INSTALLMENT"
 	Revolving ProductType = "REVOLVING"
+)
+
+// The current state of the card
+type State string
+const (
+	Closed State = "CLOSED"
+	Open State = "OPEN"
+	Paused State = "PAUSED"
+)
+
+// The type of card being returned
+type Type string
+const (
+	Unlocked Type = "UNLOCKED"
 )
 
 // Indicates the active payment processor whose configuration will be used for payments made

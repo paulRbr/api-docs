@@ -4,6 +4,7 @@
   "properties": {
     "results": {
       "type": "array",
+      "nullable": true,
       "description": "An array of information for all line items within the requested range.",
       "maxItems": 1000,
       "items": {

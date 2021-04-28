@@ -1,0 +1,18 @@
+{
+  "description": "Update admin panel for a product.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "migration_mode": {
+            "type": "boolean",
+            "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+            "example": true,
+            "default": false
+          }
+        }
+      }
+    }
+  }
+}

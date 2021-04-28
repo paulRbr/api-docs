@@ -107,10 +107,12 @@
     "reference_id": {
       "type": "string",
       "description": "User ID in your system to associate with the payment for the account defined in Canopy.",
-      "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a"
+      "example": "e39c6b0d-5793-49c5-bee7-a2dbf8808f3a",
+      "nullable": true
     },
     "external_ids": {
       "type": "array",
+      "nullable": true,
       "maxItems": 1000,
       "description": "An array of static references to ID fields in a third party system.",
       "items": {

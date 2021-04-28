@@ -26,13 +26,15 @@
         "type": "string",
         "format": "date-time",
         "description": "The date-time the am cycle ends.",
-        "example": "2018-07-20T09:10:14+00:00"
+        "example": "2018-07-20T09:10:14+00:00",
+        "nullable": true
       },
       "min_pay_due_at": {
         "type": "string",
         "format": "date-time",
         "description": "The date the minimum payment for the am schedule is due.",
-        "example": "2018-07-20T09:10:14+00:00"
+        "example": "2018-07-20T09:10:14+00:00",
+        "nullable": true
       },
       "am_min_pay_cents": {
         "type": "number",

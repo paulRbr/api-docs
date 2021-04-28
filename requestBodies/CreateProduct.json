@@ -167,7 +167,7 @@
                 "type": "integer",
                 "description": "Default duration for any amortization period during post-promotion",
                 "example": 48,
-                "default": 1
+                "default": 0
               },
               "post_promo_am_len_range_inclusive_lower": {
                 "type": "integer",
@@ -205,6 +205,17 @@
                 "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
                 "example": 5,
                 "default": 0
+              }
+            }
+          },
+          "admin": {
+            "type": "object",
+            "properties": {
+              "migration_mode": {
+                "type": "boolean",
+                "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                "example": true,
+                "default": false
               }
             }
           }
