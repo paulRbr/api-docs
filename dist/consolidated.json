@@ -2572,6 +2572,22 @@
                                       }
                                     }
                                   },
+                                  "issuer_processor_details": {
+                                    "type": "object",
+                                    "properties": {
+                                      "privacy": {
+                                        "type": "object",
+                                        "properties": {
+                                          "account_token": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                            "example": "349e2031-20de-40c6-87a3-214895077522"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
                                   "cycle_type": {
                                     "type": "object",
                                     "properties": {
@@ -3767,6 +3783,22 @@
                             }
                           }
                         },
+                        "issuer_processor_details": {
+                          "type": "object",
+                          "properties": {
+                            "privacy": {
+                              "type": "object",
+                              "properties": {
+                                "account_token": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                  "example": "349e2031-20de-40c6-87a3-214895077522"
+                                }
+                              }
+                            }
+                          }
+                        },
                         "cycle_type": {
                           "type": "object",
                           "properties": {
@@ -4006,6 +4038,7 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
+                                      "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                       "additionalProperties": true,
                                       "properties": {
                                         "type": {
@@ -4029,7 +4062,7 @@
                                         "token": {
                                           "type": "string",
                                           "format": "uuid",
-                                          "description": "Unique token for the card",
+                                          "description": "Unique external identifier for the card",
                                           "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                         },
                                         "last_four": {
@@ -4480,6 +4513,22 @@
                             }
                           }
                         },
+                        "issuer_processor_details": {
+                          "type": "object",
+                          "properties": {
+                            "privacy": {
+                              "type": "object",
+                              "properties": {
+                                "account_token": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                  "example": "349e2031-20de-40c6-87a3-214895077522"
+                                }
+                              }
+                            }
+                          }
+                        },
                         "cycle_type": {
                           "type": "object",
                           "properties": {
@@ -4719,6 +4768,7 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
+                                      "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                       "additionalProperties": true,
                                       "properties": {
                                         "type": {
@@ -4742,7 +4792,7 @@
                                         "token": {
                                           "type": "string",
                                           "format": "uuid",
-                                          "description": "Unique token for the card",
+                                          "description": "Unique external identifier for the card",
                                           "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                         },
                                         "last_four": {
@@ -5307,7 +5357,7 @@
                               }
                             }
                           },
-                          "issuer_processor_metadata": {
+                          "issuer_processor_details": {
                             "type": "object",
                             "nullable": true,
                             "properties": {
@@ -5316,7 +5366,23 @@
                                 "properties": {
                                   "last_four": {
                                     "type": "integer",
-                                    "description": "Last four digits of the card against which the spend was made."
+                                    "nullable": true,
+                                    "description": "Last four digits of the card against which the spend was made.",
+                                    "example": 3324
+                                  },
+                                  "transaction_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the transaction.",
+                                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                  },
+                                  "card_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the card related to this line item.",
+                                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                   }
                                 }
                               }
@@ -5644,7 +5710,7 @@
                               }
                             }
                           },
-                          "issuer_processor_metadata": {
+                          "issuer_processor_details": {
                             "type": "object",
                             "nullable": true,
                             "properties": {
@@ -5653,7 +5719,23 @@
                                 "properties": {
                                   "last_four": {
                                     "type": "integer",
-                                    "description": "Last four digits of the card against which the spend was made."
+                                    "nullable": true,
+                                    "description": "Last four digits of the card against which the spend was made.",
+                                    "example": 3324
+                                  },
+                                  "transaction_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the transaction.",
+                                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                  },
+                                  "card_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the card related to this line item.",
+                                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                   }
                                 }
                               }
@@ -7243,7 +7325,7 @@
                               }
                             }
                           },
-                          "issuer_processor_metadata": {
+                          "issuer_processor_details": {
                             "type": "object",
                             "nullable": true,
                             "properties": {
@@ -7252,7 +7334,23 @@
                                 "properties": {
                                   "last_four": {
                                     "type": "integer",
-                                    "description": "Last four digits of the card against which the spend was made."
+                                    "nullable": true,
+                                    "description": "Last four digits of the card against which the spend was made.",
+                                    "example": 3324
+                                  },
+                                  "transaction_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the transaction.",
+                                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                  },
+                                  "card_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the card related to this line item.",
+                                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                   }
                                 }
                               }
@@ -7349,6 +7447,7 @@
                   "nullable": true,
                   "items": {
                     "type": "object",
+                    "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                     "additionalProperties": true,
                     "properties": {
                       "type": {
@@ -7372,7 +7471,7 @@
                       "token": {
                         "type": "string",
                         "format": "uuid",
-                        "description": "Unique token for the card",
+                        "description": "Unique external identifier for the card",
                         "example": "adccd28d-532e-480b-a063-a46a77a15570"
                       },
                       "last_four": {
@@ -8192,7 +8291,7 @@
                                     }
                                   }
                                 },
-                                "issuer_processor_metadata": {
+                                "issuer_processor_details": {
                                   "type": "object",
                                   "nullable": true,
                                   "properties": {
@@ -8201,7 +8300,23 @@
                                       "properties": {
                                         "last_four": {
                                           "type": "integer",
-                                          "description": "Last four digits of the card against which the spend was made."
+                                          "nullable": true,
+                                          "description": "Last four digits of the card against which the spend was made.",
+                                          "example": 3324
+                                        },
+                                        "transaction_token": {
+                                          "type": "string",
+                                          "nullable": true,
+                                          "format": "uuid",
+                                          "description": "The external unique identifier of the transaction.",
+                                          "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                        },
+                                        "card_token": {
+                                          "type": "string",
+                                          "nullable": true,
+                                          "format": "uuid",
+                                          "description": "The external unique identifier of the card related to this line item.",
+                                          "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                         }
                                       }
                                     }
@@ -8849,6 +8964,22 @@
               }
             }
           },
+          "issuer_processor_details": {
+            "type": "object",
+            "properties": {
+              "privacy": {
+                "type": "object",
+                "properties": {
+                  "account_token": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The external unique identifier of the Privacy account against which charges are made.",
+                    "example": "349e2031-20de-40c6-87a3-214895077522"
+                  }
+                }
+              }
+            }
+          },
           "cycle_type": {
             "type": "object",
             "properties": {
@@ -9474,7 +9605,7 @@
                     }
                   }
                 },
-                "issuer_processor_metadata": {
+                "issuer_processor_details": {
                   "type": "object",
                   "nullable": true,
                   "properties": {
@@ -9483,7 +9614,23 @@
                       "properties": {
                         "last_four": {
                           "type": "integer",
-                          "description": "Last four digits of the card against which the spend was made."
+                          "nullable": true,
+                          "description": "Last four digits of the card against which the spend was made.",
+                          "example": 3324
+                        },
+                        "transaction_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the transaction.",
+                          "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                        },
+                        "card_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the card related to this line item.",
+                          "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                         }
                       }
                     }
@@ -10064,6 +10211,22 @@
                   }
                 }
               },
+              "issuer_processor_details": {
+                "type": "object",
+                "properties": {
+                  "privacy": {
+                    "type": "object",
+                    "properties": {
+                      "account_token": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The external unique identifier of the Privacy account against which charges are made.",
+                        "example": "349e2031-20de-40c6-87a3-214895077522"
+                      }
+                    }
+                  }
+                }
+              },
               "cycle_type": {
                 "type": "object",
                 "properties": {
@@ -10303,6 +10466,7 @@
                           "nullable": true,
                           "items": {
                             "type": "object",
+                            "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                             "additionalProperties": true,
                             "properties": {
                               "type": {
@@ -10326,7 +10490,7 @@
                               "token": {
                                 "type": "string",
                                 "format": "uuid",
-                                "description": "Unique token for the card",
+                                "description": "Unique external identifier for the card",
                                 "example": "adccd28d-532e-480b-a063-a46a77a15570"
                               },
                               "last_four": {
@@ -10942,6 +11106,22 @@
                               "type": "boolean",
                               "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
                               "example": true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "issuer_processor_details": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "account_token": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "example": "349e2031-20de-40c6-87a3-214895077522"
                             }
                           }
                         }
@@ -11606,6 +11786,22 @@
                             "type": "boolean",
                             "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
                             "example": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "issuer_processor_details": {
+                    "type": "object",
+                    "properties": {
+                      "privacy": {
+                        "type": "object",
+                        "properties": {
+                          "account_token": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "The external unique identifier of the Privacy account against which charges are made.",
+                            "example": "349e2031-20de-40c6-87a3-214895077522"
                           }
                         }
                       }
@@ -12547,7 +12743,7 @@
               }
             }
           },
-          "issuer_processor_metadata": {
+          "issuer_processor_details": {
             "type": "object",
             "nullable": true,
             "properties": {
@@ -12556,7 +12752,23 @@
                 "properties": {
                   "last_four": {
                     "type": "integer",
-                    "description": "Last four digits of the card against which the spend was made."
+                    "nullable": true,
+                    "description": "Last four digits of the card against which the spend was made.",
+                    "example": 3324
+                  },
+                  "transaction_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "uuid",
+                    "description": "The external unique identifier of the transaction.",
+                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                  },
+                  "card_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "uuid",
+                    "description": "The external unique identifier of the card related to this line item.",
+                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                   }
                 }
               }
@@ -16060,6 +16272,22 @@
                                   }
                                 }
                               },
+                              "issuer_processor_details": {
+                                "type": "object",
+                                "properties": {
+                                  "privacy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "account_token": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                        "example": "349e2031-20de-40c6-87a3-214895077522"
+                                      }
+                                    }
+                                  }
+                                }
+                              },
                               "cycle_type": {
                                 "type": "object",
                                 "properties": {
@@ -17054,6 +17282,22 @@
                         }
                       }
                     },
+                    "issuer_processor_details": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "account_token": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "example": "349e2031-20de-40c6-87a3-214895077522"
+                            }
+                          }
+                        }
+                      }
+                    },
                     "cycle_type": {
                       "type": "object",
                       "properties": {
@@ -17293,6 +17537,7 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
+                                  "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                   "additionalProperties": true,
                                   "properties": {
                                     "type": {
@@ -17316,7 +17561,7 @@
                                     "token": {
                                       "type": "string",
                                       "format": "uuid",
-                                      "description": "Unique token for the card",
+                                      "description": "Unique external identifier for the card",
                                       "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                     },
                                     "last_four": {
@@ -17731,6 +17976,22 @@
                                 "type": "boolean",
                                 "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
                                 "example": true
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "issuer_processor_details": {
+                        "type": "object",
+                        "properties": {
+                          "privacy": {
+                            "type": "object",
+                            "properties": {
+                              "account_token": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                "example": "349e2031-20de-40c6-87a3-214895077522"
                               }
                             }
                           }
@@ -18875,6 +19136,22 @@
                         }
                       }
                     },
+                    "issuer_processor_details": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "account_token": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "example": "349e2031-20de-40c6-87a3-214895077522"
+                            }
+                          }
+                        }
+                      }
+                    },
                     "cycle_type": {
                       "type": "object",
                       "properties": {
@@ -19114,6 +19391,7 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
+                                  "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                   "additionalProperties": true,
                                   "properties": {
                                     "type": {
@@ -19137,7 +19415,7 @@
                                     "token": {
                                       "type": "string",
                                       "format": "uuid",
-                                      "description": "Unique token for the card",
+                                      "description": "Unique external identifier for the card",
                                       "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                     },
                                     "last_four": {
@@ -19676,7 +19954,7 @@
                           }
                         }
                       },
-                      "issuer_processor_metadata": {
+                      "issuer_processor_details": {
                         "type": "object",
                         "nullable": true,
                         "properties": {
@@ -19685,7 +19963,23 @@
                             "properties": {
                               "last_four": {
                                 "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                                "nullable": true,
+                                "description": "Last four digits of the card against which the spend was made.",
+                                "example": 3324
+                              },
+                              "transaction_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the transaction.",
+                                "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                              },
+                              "card_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the card related to this line item.",
+                                "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                               }
                             }
                           }
@@ -19945,7 +20239,7 @@
                     }
                   }
                 },
-                "issuer_processor_metadata": {
+                "issuer_processor_details": {
                   "type": "object",
                   "nullable": true,
                   "properties": {
@@ -19954,7 +20248,23 @@
                       "properties": {
                         "last_four": {
                           "type": "integer",
-                          "description": "Last four digits of the card against which the spend was made."
+                          "nullable": true,
+                          "description": "Last four digits of the card against which the spend was made.",
+                          "example": 3324
+                        },
+                        "transaction_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the transaction.",
+                          "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                        },
+                        "card_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the card related to this line item.",
+                          "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                         }
                       }
                     }
@@ -20169,7 +20479,7 @@
                           }
                         }
                       },
-                      "issuer_processor_metadata": {
+                      "issuer_processor_details": {
                         "type": "object",
                         "nullable": true,
                         "properties": {
@@ -20178,7 +20488,23 @@
                             "properties": {
                               "last_four": {
                                 "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                                "nullable": true,
+                                "description": "Last four digits of the card against which the spend was made.",
+                                "example": 3324
+                              },
+                              "transaction_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the transaction.",
+                                "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                              },
+                              "card_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the card related to this line item.",
+                                "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                               }
                             }
                           }
@@ -20417,7 +20743,7 @@
                           }
                         }
                       },
-                      "issuer_processor_metadata": {
+                      "issuer_processor_details": {
                         "type": "object",
                         "nullable": true,
                         "properties": {
@@ -20426,7 +20752,23 @@
                             "properties": {
                               "last_four": {
                                 "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                                "nullable": true,
+                                "description": "Last four digits of the card against which the spend was made.",
+                                "example": 3324
+                              },
+                              "transaction_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the transaction.",
+                                "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                              },
+                              "card_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the card related to this line item.",
+                                "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                               }
                             }
                           }
@@ -20849,6 +21191,7 @@
               "nullable": true,
               "items": {
                 "type": "object",
+                "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                 "additionalProperties": true,
                 "properties": {
                   "type": {
@@ -20872,7 +21215,7 @@
                   "token": {
                     "type": "string",
                     "format": "uuid",
-                    "description": "Unique token for the card",
+                    "description": "Unique external identifier for the card",
                     "example": "adccd28d-532e-480b-a063-a46a77a15570"
                   },
                   "last_four": {

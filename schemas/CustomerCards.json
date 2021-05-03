@@ -3,6 +3,7 @@
   "nullable": true,
   "items": {
     "type": "object",
+    "description": "Privacy card data. Field names match the ones in Privacy's card schema",
     "additionalProperties": true,
     "properties": {
       "type": {
@@ -20,7 +21,7 @@
       "token": {
         "type": "string",
         "format": "uuid",
-        "description": "Unique token for the card",
+        "description": "Unique external identifier for the card",
         "example": "adccd28d-532e-480b-a063-a46a77a15570"
       },
       "last_four": {

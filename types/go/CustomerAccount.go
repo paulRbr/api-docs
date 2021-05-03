@@ -31,6 +31,7 @@ type Account struct {
 	CycleType                        *CycleType                        `json:"cycle_type,omitempty"`                          
 	EffectiveAt                      *string                           `json:"effective_at,omitempty"`                        // The `Date-Time` that this account became/becomes active.
 	ExternalFields                   []ExternalField                   `json:"external_fields,omitempty"`                     // An Array of External Fields. These should be used to connect accounts created in Canopy; to Users in your system and any connected external systems.
+	IssuerProcessorDetails           *IssuerProcessorDetails           `json:"issuer_processor_details,omitempty"`            
 	MinPayDueCents                   *MinPayDueCents                   `json:"min_pay_due_cents,omitempty"`                   
 	PaymentProcessorConfig           *PaymentProcessorConfig           `json:"payment_processor_config,omitempty"`            
 	Summary                          *Summary                          `json:"summary,omitempty"`                             
@@ -115,6 +116,14 @@ type ExternalField struct {
 	Value *string `json:"value,omitempty"`// value: i.e. External Account ID
 }
 
+type IssuerProcessorDetails struct {
+	Privacy *IssuerProcessorDetailsPrivacy `json:"privacy,omitempty"`
+}
+
+type IssuerProcessorDetailsPrivacy struct {
+	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Privacy account against which charges are made.
+}
+
 type MinPayDueCents struct {
 	MinPayDueAt          *string `json:"min_pay_due_at,omitempty"`// The `Date-Time` the payment for this billing cycle is due.
 	StatementMinPayCents int64   `json:"statement_min_pay_cents"` // Total amount due for the billing cycle, summing cycle principal, interest, deferred; interest, and fees outstanding.
@@ -154,10 +163,10 @@ type BusinessDetails struct {
 }
 
 type CustomerAccountIssuerProcessorConfig struct {
-	Privacy *Privacy `json:"privacy,omitempty"`
+	Privacy *CustomerAccountIssuerProcessorConfigPrivacy `json:"privacy,omitempty"`
 }
 
-type Privacy struct {
+type CustomerAccountIssuerProcessorConfigPrivacy struct {
 	PrivacyCard *PrivacyCard `json:"privacy_card,omitempty"`
 }
 
