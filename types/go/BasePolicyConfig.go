@@ -17,7 +17,15 @@ type BillingCyclePolicies struct {
 
 // The set of policies governing fees for the product.
 type FeePolicies struct {
-	LateFeeGrace *string `json:"late_fee_grace,omitempty"`// Defaults to 0 days. The amount of time after a payment is late after which you would like; for a late fee to be incurred.
+	DefaultSurchargeFeeStructure []DefaultSurchargeFeeStructure `json:"default_surcharge_fee_structure,omitempty"`// The transaction volume structure that dictates a transaction fee.
+	LateFeeGrace                 *string                        `json:"late_fee_grace,omitempty"`                 // Defaults to 0 days. The amount of time after a payment is late after which you would like; for a late fee to be incurred.
+	SurchargeFeeInterval         *SurchargeFeeInterval          `json:"surcharge_fee_interval,omitempty"`         // The interval at which a surcharge fee is assessed.
+}
+
+type DefaultSurchargeFeeStructure struct {
+	PercentSurcharge             float64 `json:"percent_surcharge"`                      // Indicates the surcharge fee as a percent of total transaction volume that will be applied; to the account if the total transaction volume during the surcharge interval falls within; the provided start and end range.
+	SurchargeEndExclusiveCents   *int64  `json:"surcharge_end_exclusive_cents,omitempty"`// Indicates the ending transaction volume at which this fee will apply. If not provided,; the surcharge will apply to any transaction volume above the defined start.
+	SurchargeStartInclusiveCents int64   `json:"surcharge_start_inclusive_cents"`        // Indicates the starting transaction volume at which this fee will apply.
 }
 
 // The Interest Policy Object
@@ -30,3 +38,10 @@ type PaymentDuePolicies struct {
 	ChargeOffOnNConsecutiveLateFees  *int64 `json:"charge_off_on_n_consecutive_late_fees,omitempty"`// After this number of consecutive late events, the account status shifts to `suspended`; with a status subtype of `charged_off`
 	DelinquentOnNConsecutiveLateFees *int64 `json:"delinquent_on_n_consecutive_late_fees,omitempty"`// After this number of consecutive late events, the account status shifts to `suspended`; with a status subtype of `delinquent`
 }
+
+// The interval at which a surcharge fee is assessed.
+type SurchargeFeeInterval string
+const (
+	Monthly SurchargeFeeInterval = "MONTHLY"
+	None SurchargeFeeInterval = "NONE"
+)
