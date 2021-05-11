@@ -184,7 +184,7 @@ export interface FeePolicies {
     /**
      * The interval at which a surcharge fee is assessed.
      */
-    surcharge_fee_interval?: SurchargeFeeInterval;
+    surcharge_fee_interval?: string;
 }
 
 export interface DefaultSurchargeFeeStructure {
@@ -203,14 +203,6 @@ export interface DefaultSurchargeFeeStructure {
      * Indicates the starting transaction volume at which this fee will apply.
      */
     surcharge_start_inclusive_cents: number;
-}
-
-/**
- * The interval at which a surcharge fee is assessed.
- */
-export enum SurchargeFeeInterval {
-    Monthly = "MONTHLY",
-    None = "NONE",
 }
 
 /**

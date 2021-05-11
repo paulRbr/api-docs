@@ -52,7 +52,7 @@ type DefaultAttributes struct {
 type FeePolicies struct {
 	DefaultSurchargeFeeStructure []DefaultSurchargeFeeStructure `json:"default_surcharge_fee_structure,omitempty"`// The transaction volume structure that dictates a transaction fee.
 	LateFeeGrace                 *string                        `json:"late_fee_grace,omitempty"`                 // Defaults to 0 days. The amount of time after a payment is late after which you would like; for a late fee to be incurred.
-	SurchargeFeeInterval         *SurchargeFeeInterval          `json:"surcharge_fee_interval,omitempty"`         // The interval at which a surcharge fee is assessed.
+	SurchargeFeeInterval         *string                        `json:"surcharge_fee_interval,omitempty"`         // The interval at which a surcharge fee is assessed.
 }
 
 type DefaultSurchargeFeeStructure struct {
@@ -114,16 +114,9 @@ type PromotionalPolicies struct {
 type PromoMinPayType string
 const (
 	Am PromoMinPayType = "AM"
+	None PromoMinPayType = "NONE"
 	PercentInterest PromoMinPayType = "PERCENT_INTEREST"
 	PercentPrincipal PromoMinPayType = "PERCENT_PRINCIPAL"
-	PromoMinPayTypeNONE PromoMinPayType = "NONE"
-)
-
-// The interval at which a surcharge fee is assessed.
-type SurchargeFeeInterval string
-const (
-	Monthly SurchargeFeeInterval = "MONTHLY"
-	SurchargeFeeIntervalNONE SurchargeFeeInterval = "NONE"
 )
 
 // The Type of Product

@@ -9,10 +9,9 @@
     },
     "surcharge_fee_interval": {
       "type": "string",
-      "enum": ["NONE", "MONTHLY"],
+      "nullable": true,
       "description": "The interval at which a surcharge fee is assessed.",
-      "example": "MONTHLY",
-      "default": []
+      "example": "1 month"
     },
     "default_surcharge_fee_structure": {
       "type": "array",
