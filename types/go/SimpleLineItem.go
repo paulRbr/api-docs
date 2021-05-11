@@ -25,9 +25,10 @@ type Privacy struct {
 }
 
 type LineItemOverview struct {
-	Description    *string        `json:"description,omitempty"`// A description of this particular line item if any. More common for adjustments.
-	LineItemStatus LineItemStatus `json:"line_item_status"`     // the corresponding Status for a line item
-	LineItemType   LineItemType   `json:"line_item_type"`       // The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
+	Description    *string        `json:"description,omitempty"`     // A description of this particular line item if any. More common for adjustments.
+	LineItemStatus LineItemStatus `json:"line_item_status"`          // the corresponding Status for a line item
+	LineItemType   LineItemType   `json:"line_item_type"`            // The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
+	LinkedLineItem *string        `json:"linked_line_item,omitempty"`// Line item ID of the linked line item -- example: the original payment that was reversed; in a payment reversal.
 }
 
 type LineItemSummary struct {

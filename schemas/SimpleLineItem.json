@@ -5,7 +5,7 @@
     "account_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the account.",
-      "example": "31mNprzLd2bKl6koVna68ARM"
+      "example": "11bNprzLd2bKl6koVna68ARM"
     },
     "line_item_id": {
       "type": "string",
@@ -84,6 +84,11 @@
           "description": "A description of this particular line item if any. More common for adjustments.",
           "example": "Refund for invalid purchase",
           "nullable": true
+        },
+        "linked_line_item": {
+          "type": "string",
+          "description": "Line item ID of the linked line item -- example: the original payment that was reversed in a payment reversal.",
+          "example": "31mNprzLd2bKl6koVna68ARM"
         }
       }
     },
