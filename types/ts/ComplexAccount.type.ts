@@ -24,6 +24,7 @@ export interface ComplexAccount {
      * to Users in your system and any connected external systems.
      */
     external_fields?:          ExternalField[];
+    issuer_processor_details?: IssuerProcessorDetails;
     min_pay_due_cents?:        MinPayDueCents;
     payment_processor_config?: PaymentProcessorConfig;
     summary?:                  Summary;
@@ -325,6 +326,9 @@ export interface BusinessDetails {
     doing_business_as?: string;
 }
 
+/**
+ * Privacy card data. Field names match the ones in Privacy's card schema
+ */
 export interface CardDetail {
     /**
      * Last four digits of the card
@@ -335,7 +339,7 @@ export interface CardDetail {
      */
     state?: State;
     /**
-     * Unique token for the card
+     * Unique external identifier for the card
      */
     token?: string;
     /**
@@ -376,6 +380,17 @@ export interface ExternalField {
      * value: i.e. External Account ID
      */
     value?: string;
+}
+
+export interface IssuerProcessorDetails {
+    privacy?: Privacy;
+}
+
+export interface Privacy {
+    /**
+     * The external unique identifier of the Privacy account against which charges are made.
+     */
+    account_token?: string;
 }
 
 export interface MinPayDueCents {

@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "required": ["results"],
+  "additionalProperties": true,
   "properties": {
     "results": {
       "type": "array",

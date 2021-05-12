@@ -103,6 +103,7 @@ export interface Account {
      * to Users in your system and any connected external systems.
      */
     external_fields?:          ExternalField[];
+    issuer_processor_details?: IssuerProcessorDetails;
     min_pay_due_cents?:        MinPayDueCents;
     payment_processor_config?: PaymentProcessorConfig;
     summary?:                  Summary;
@@ -334,6 +335,17 @@ export interface ExternalField {
     value?: string;
 }
 
+export interface IssuerProcessorDetails {
+    privacy?: IssuerProcessorDetailsPrivacy;
+}
+
+export interface IssuerProcessorDetailsPrivacy {
+    /**
+     * The external unique identifier of the Privacy account against which charges are made.
+     */
+    account_token?: string;
+}
+
 export interface MinPayDueCents {
     /**
      * The `Date-Time` the payment for this billing cycle is due.
@@ -459,10 +471,10 @@ export interface BusinessDetails {
 }
 
 export interface CustomerAccountIssuerProcessorConfig {
-    privacy?: Privacy;
+    privacy?: CustomerAccountIssuerProcessorConfigPrivacy;
 }
 
-export interface Privacy {
+export interface CustomerAccountIssuerProcessorConfigPrivacy {
     privacy_card?: PrivacyCard;
 }
 
