@@ -16,6 +16,7 @@
     "default_surcharge_fee_structure": {
       "type": "array",
       "description": "The transaction volume structure that dictates a transaction fee.",
+      "nullable": true,
       "items": {
         "type": "object",
         "required": ["surcharge_start_inclusive_cents", "percent_surcharge"],

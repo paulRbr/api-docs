@@ -861,6 +861,7 @@
                           "default_surcharge_fee_structure": {
                             "type": "array",
                             "description": "The transaction volume structure that dictates a transaction fee.",
+                            "nullable": true,
                             "items": {
                               "type": "object",
                               "required": [
@@ -1241,6 +1242,7 @@
                             "default_surcharge_fee_structure": {
                               "type": "array",
                               "description": "The transaction volume structure that dictates a transaction fee.",
+                              "nullable": true,
                               "items": {
                                 "type": "object",
                                 "required": [
@@ -1721,6 +1723,7 @@
                                   "default_surcharge_fee_structure": {
                                     "type": "array",
                                     "description": "The transaction volume structure that dictates a transaction fee.",
+                                    "nullable": true,
                                     "items": {
                                       "type": "object",
                                       "required": [
@@ -8620,6 +8623,75 @@
           }
         }
       }
+    },
+    "/organization/issuer_processors": {
+      "put": {
+        "tags": [
+          "integrations"
+        ],
+        "summary": "Configure issuer processor information for your organization",
+        "description": "",
+        "operationId": "configureIssuerProcessors",
+        "requestBody": {
+          "description": "Set your issuer processor configurations for your organization.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "privacy_config": {
+                    "type": "object",
+                    "properties": {
+                      "api_key": {
+                        "type": "string",
+                        "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Issuer processor configuration for your organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "privacy_config": {
+                      "type": "object",
+                      "properties": {
+                        "api_key": {
+                          "type": "string",
+                          "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -12247,6 +12319,7 @@
                   "default_surcharge_fee_structure": {
                     "type": "array",
                     "description": "The transaction volume structure that dictates a transaction fee.",
+                    "nullable": true,
                     "items": {
                       "type": "object",
                       "required": [
@@ -12587,6 +12660,7 @@
               "default_surcharge_fee_structure": {
                 "type": "array",
                 "description": "The transaction volume structure that dictates a transaction fee.",
+                "nullable": true,
                 "items": {
                   "type": "object",
                   "required": [
@@ -13152,6 +13226,20 @@
             }
           }
         }
+      },
+      "OrgIssuerProcessorConfig": {
+        "type": "object",
+        "properties": {
+          "privacy_config": {
+            "type": "object",
+            "properties": {
+              "api_key": {
+                "type": "string",
+                "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+              }
+            }
+          }
+        }
       }
     },
     "requestBodies": {
@@ -13376,6 +13464,7 @@
                         "default_surcharge_fee_structure": {
                           "type": "array",
                           "description": "The transaction volume structure that dictates a transaction fee.",
+                          "nullable": true,
                           "items": {
                             "type": "object",
                             "required": [
@@ -14444,6 +14533,27 @@
           }
         }
       },
+      "ConfigureIssuerProcessors": {
+        "description": "Set your issuer processor configurations for your organization.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "privacy_config": {
+                  "type": "object",
+                  "properties": {
+                    "api_key": {
+                      "type": "string",
+                      "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "EditLineItem": {
         "description": "Edit a specific line item.",
         "content": {
@@ -14957,6 +15067,7 @@
                         "default_surcharge_fee_structure": {
                           "type": "array",
                           "description": "The transaction volume structure that dictates a transaction fee.",
+                          "nullable": true,
                           "items": {
                             "type": "object",
                             "required": [
@@ -15356,6 +15467,7 @@
                         "default_surcharge_fee_structure": {
                           "type": "array",
                           "description": "The transaction volume structure that dictates a transaction fee.",
+                          "nullable": true,
                           "items": {
                             "type": "object",
                             "required": [
@@ -15766,6 +15878,7 @@
                               "default_surcharge_fee_structure": {
                                 "type": "array",
                                 "description": "The transaction volume structure that dictates a transaction fee.",
+                                "nullable": true,
                                 "items": {
                                   "type": "object",
                                   "required": [
@@ -21250,6 +21363,27 @@
                     "merchant_id": {
                       "type": "string",
                       "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ConfigureIssuerProcessors": {
+        "description": "Issuer processor configuration for your organization",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "privacy_config": {
+                  "type": "object",
+                  "properties": {
+                    "api_key": {
+                      "type": "string",
+                      "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
                     }
                   }
                 }
