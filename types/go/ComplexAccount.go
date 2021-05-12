@@ -8,6 +8,7 @@ type ComplexAccount struct {
 	CycleType                        *CycleType                        `json:"cycle_type,omitempty"`                          
 	EffectiveAt                      *string                           `json:"effective_at,omitempty"`                        // The `Date-Time` that this account became/becomes active.
 	ExternalFields                   []ExternalField                   `json:"external_fields,omitempty"`                     // An Array of External Fields. These should be used to connect accounts created in Canopy; to Users in your system and any connected external systems.
+	IssuerProcessorDetails           *IssuerProcessorDetails           `json:"issuer_processor_details,omitempty"`            
 	MinPayDueCents                   *MinPayDueCents                   `json:"min_pay_due_cents,omitempty"`                   
 	PaymentProcessorConfig           *PaymentProcessorConfig           `json:"payment_processor_config,omitempty"`            
 	Summary                          *Summary                          `json:"summary,omitempty"`                             
@@ -110,10 +111,11 @@ type BusinessDetails struct {
 	DoingBusinessAs   *string `json:"doing_business_as,omitempty"`  // The DBA name of the Business
 }
 
+// Privacy card data. Field names match the ones in Privacy's card schema
 type CardDetail struct {
 	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card
 	State    *State  `json:"state,omitempty"`    // The current state of the card
-	Token    *string `json:"token,omitempty"`    // Unique token for the card
+	Token    *string `json:"token,omitempty"`    // Unique external identifier for the card
 	Type     *Type   `json:"type,omitempty"`     // The type of card being returned
 }
 
@@ -124,6 +126,14 @@ type CycleType struct {
 type ExternalField struct {
 	Key   *string `json:"key,omitempty"`  // key: i.e. Name of the External Party
 	Value *string `json:"value,omitempty"`// value: i.e. External Account ID
+}
+
+type IssuerProcessorDetails struct {
+	Privacy *Privacy `json:"privacy,omitempty"`
+}
+
+type Privacy struct {
+	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Privacy account against which charges are made.
 }
 
 type MinPayDueCents struct {

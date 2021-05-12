@@ -1,14 +1,14 @@
 type LineItem struct {
-	AccountID               string                   `json:"account_id"`                         // The account associated with the line item
-	CreatedAt               *string                  `json:"created_at,omitempty"`               // The `Date-Time` which the line item was created.
-	EffectiveAt             *string                  `json:"effective_at,omitempty"`             // The `Date-Time` that this line item became/becomes active
-	ExternalFields          []ExternalField          `json:"external_fields,omitempty"`          // An array of static references to fields in a third party system.
-	IssuerProcessorMetadata *IssuerProcessorMetadata `json:"issuer_processor_metadata,omitempty"`
-	LineItemID              string                   `json:"line_item_id"`                       // The ID associated with the line item
-	LineItemOverview        *LineItemOverview        `json:"line_item_overview,omitempty"`       
-	LineItemSummary         *LineItemSummary         `json:"line_item_summary,omitempty"`        
-	MerchantData            *MerchantData            `json:"merchant_data,omitempty"`            // Merchant information if applicable.
-	ProductID               int64                    `json:"product_id"`                         // the Product ID of the account
+	AccountID              string                  `json:"account_id"`                        // The account associated with the line item
+	CreatedAt              *string                 `json:"created_at,omitempty"`              // The `Date-Time` which the line item was created.
+	EffectiveAt            *string                 `json:"effective_at,omitempty"`            // The `Date-Time` that this line item became/becomes active
+	ExternalFields         []ExternalField         `json:"external_fields,omitempty"`         // An array of static references to fields in a third party system.
+	IssuerProcessorDetails *IssuerProcessorDetails `json:"issuer_processor_details,omitempty"`
+	LineItemID             string                  `json:"line_item_id"`                      // The ID associated with the line item
+	LineItemOverview       *LineItemOverview       `json:"line_item_overview,omitempty"`      
+	LineItemSummary        *LineItemSummary        `json:"line_item_summary,omitempty"`       
+	MerchantData           *MerchantData           `json:"merchant_data,omitempty"`           // Merchant information if applicable.
+	ProductID              int64                   `json:"product_id"`                        // the Product ID of the account
 }
 
 type ExternalField struct {
@@ -16,12 +16,14 @@ type ExternalField struct {
 	Value *string `json:"value,omitempty"`// Value - i.e. External Account ID
 }
 
-type IssuerProcessorMetadata struct {
+type IssuerProcessorDetails struct {
 	Privacy *Privacy `json:"privacy,omitempty"`
 }
 
 type Privacy struct {
-	LastFour *int64 `json:"last_four,omitempty"`// Last four digits of the card against which the spend was made.
+	CardToken        *string `json:"card_token,omitempty"`       // The external unique identifier of the card related to this line item.
+	LastFour         *int64  `json:"last_four,omitempty"`        // Last four digits of the card against which the spend was made.
+	TransactionToken *string `json:"transaction_token,omitempty"`// The external unique identifier of the transaction.
 }
 
 type LineItemOverview struct {

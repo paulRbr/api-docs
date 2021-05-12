@@ -851,6 +851,41 @@
                             "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                             "example": "5 days",
                             "default": "0 days"
+                          },
+                          "surcharge_fee_interval": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The interval at which a surcharge fee is assessed.",
+                            "example": "1 month"
+                          },
+                          "default_surcharge_fee_structure": {
+                            "type": "array",
+                            "description": "The transaction volume structure that dictates a transaction fee.",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "surcharge_start_inclusive_cents",
+                                "percent_surcharge"
+                              ],
+                              "properties": {
+                                "surcharge_start_inclusive_cents": {
+                                  "type": "integer",
+                                  "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                  "example": 0
+                                },
+                                "surcharge_end_exclusive_cents": {
+                                  "type": "integer",
+                                  "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                  "example": 0,
+                                  "default": 100000000000000000000
+                                },
+                                "percent_surcharge": {
+                                  "type": "number",
+                                  "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                  "example": 0
+                                }
+                              }
+                            }
                           }
                         },
                         "description": "The set of policies governing fees for the product. "
@@ -1196,6 +1231,41 @@
                               "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                               "example": "5 days",
                               "default": "0 days"
+                            },
+                            "surcharge_fee_interval": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "The interval at which a surcharge fee is assessed.",
+                              "example": "1 month"
+                            },
+                            "default_surcharge_fee_structure": {
+                              "type": "array",
+                              "description": "The transaction volume structure that dictates a transaction fee.",
+                              "items": {
+                                "type": "object",
+                                "required": [
+                                  "surcharge_start_inclusive_cents",
+                                  "percent_surcharge"
+                                ],
+                                "properties": {
+                                  "surcharge_start_inclusive_cents": {
+                                    "type": "integer",
+                                    "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                    "example": 0
+                                  },
+                                  "surcharge_end_exclusive_cents": {
+                                    "type": "integer",
+                                    "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                    "example": 0,
+                                    "default": 100000000000000000000
+                                  },
+                                  "percent_surcharge": {
+                                    "type": "number",
+                                    "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                    "example": 0
+                                  }
+                                }
+                              }
                             }
                           },
                           "description": "The set of policies governing fees for the product. "
@@ -1641,6 +1711,41 @@
                                     "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                                     "example": "5 days",
                                     "default": "0 days"
+                                  },
+                                  "surcharge_fee_interval": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "description": "The interval at which a surcharge fee is assessed.",
+                                    "example": "1 month"
+                                  },
+                                  "default_surcharge_fee_structure": {
+                                    "type": "array",
+                                    "description": "The transaction volume structure that dictates a transaction fee.",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "surcharge_start_inclusive_cents",
+                                        "percent_surcharge"
+                                      ],
+                                      "properties": {
+                                        "surcharge_start_inclusive_cents": {
+                                          "type": "integer",
+                                          "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                          "example": 0
+                                        },
+                                        "surcharge_end_exclusive_cents": {
+                                          "type": "integer",
+                                          "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                          "example": 0,
+                                          "default": 100000000000000000000
+                                        },
+                                        "percent_surcharge": {
+                                          "type": "number",
+                                          "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                          "example": 0
+                                        }
+                                      }
+                                    }
                                   }
                                 },
                                 "description": "The set of policies governing fees for the product. "
@@ -2572,6 +2677,22 @@
                                       }
                                     }
                                   },
+                                  "issuer_processor_details": {
+                                    "type": "object",
+                                    "properties": {
+                                      "privacy": {
+                                        "type": "object",
+                                        "properties": {
+                                          "account_token": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                            "example": "349e2031-20de-40c6-87a3-214895077522"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
                                   "cycle_type": {
                                     "type": "object",
                                     "properties": {
@@ -3226,13 +3347,11 @@
                           "late_fee_cents": {
                             "type": "integer",
                             "description": "The fee charged for late payments on the account.",
-                            "default": 0,
                             "example": 2900
                           },
                           "payment_reversal_fee_cents": {
                             "type": "integer",
                             "description": "The fee charged for payment reversals on the account.",
-                            "default": 0,
                             "example": 2900
                           },
                           "origination_fee_cents": {
@@ -3769,6 +3888,22 @@
                             }
                           }
                         },
+                        "issuer_processor_details": {
+                          "type": "object",
+                          "properties": {
+                            "privacy": {
+                              "type": "object",
+                              "properties": {
+                                "account_token": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                  "example": "349e2031-20de-40c6-87a3-214895077522"
+                                }
+                              }
+                            }
+                          }
+                        },
                         "cycle_type": {
                           "type": "object",
                           "properties": {
@@ -4008,6 +4143,7 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
+                                      "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                       "additionalProperties": true,
                                       "properties": {
                                         "type": {
@@ -4031,7 +4167,7 @@
                                         "token": {
                                           "type": "string",
                                           "format": "uuid",
-                                          "description": "Unique token for the card",
+                                          "description": "Unique external identifier for the card",
                                           "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                         },
                                         "last_four": {
@@ -4482,6 +4618,22 @@
                             }
                           }
                         },
+                        "issuer_processor_details": {
+                          "type": "object",
+                          "properties": {
+                            "privacy": {
+                              "type": "object",
+                              "properties": {
+                                "account_token": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                  "example": "349e2031-20de-40c6-87a3-214895077522"
+                                }
+                              }
+                            }
+                          }
+                        },
                         "cycle_type": {
                           "type": "object",
                           "properties": {
@@ -4721,6 +4873,7 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
+                                      "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                       "additionalProperties": true,
                                       "properties": {
                                         "type": {
@@ -4744,7 +4897,7 @@
                                         "token": {
                                           "type": "string",
                                           "format": "uuid",
-                                          "description": "Unique token for the card",
+                                          "description": "Unique external identifier for the card",
                                           "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                         },
                                         "last_four": {
@@ -5307,7 +5460,7 @@
                               }
                             }
                           },
-                          "issuer_processor_metadata": {
+                          "issuer_processor_details": {
                             "type": "object",
                             "nullable": true,
                             "properties": {
@@ -5316,7 +5469,23 @@
                                 "properties": {
                                   "last_four": {
                                     "type": "integer",
-                                    "description": "Last four digits of the card against which the spend was made."
+                                    "nullable": true,
+                                    "description": "Last four digits of the card against which the spend was made.",
+                                    "example": 3324
+                                  },
+                                  "transaction_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the transaction.",
+                                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                  },
+                                  "card_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the card related to this line item.",
+                                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                   }
                                 }
                               }
@@ -5642,7 +5811,7 @@
                               }
                             }
                           },
-                          "issuer_processor_metadata": {
+                          "issuer_processor_details": {
                             "type": "object",
                             "nullable": true,
                             "properties": {
@@ -5651,7 +5820,23 @@
                                 "properties": {
                                   "last_four": {
                                     "type": "integer",
-                                    "description": "Last four digits of the card against which the spend was made."
+                                    "nullable": true,
+                                    "description": "Last four digits of the card against which the spend was made.",
+                                    "example": 3324
+                                  },
+                                  "transaction_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the transaction.",
+                                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                  },
+                                  "card_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the card related to this line item.",
+                                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                   }
                                 }
                               }
@@ -7241,7 +7426,7 @@
                               }
                             }
                           },
-                          "issuer_processor_metadata": {
+                          "issuer_processor_details": {
                             "type": "object",
                             "nullable": true,
                             "properties": {
@@ -7250,7 +7435,23 @@
                                 "properties": {
                                   "last_four": {
                                     "type": "integer",
-                                    "description": "Last four digits of the card against which the spend was made."
+                                    "nullable": true,
+                                    "description": "Last four digits of the card against which the spend was made.",
+                                    "example": 3324
+                                  },
+                                  "transaction_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the transaction.",
+                                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                  },
+                                  "card_token": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "format": "uuid",
+                                    "description": "The external unique identifier of the card related to this line item.",
+                                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                   }
                                 }
                               }
@@ -7347,6 +7548,7 @@
                   "nullable": true,
                   "items": {
                     "type": "object",
+                    "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                     "additionalProperties": true,
                     "properties": {
                       "type": {
@@ -7370,7 +7572,7 @@
                       "token": {
                         "type": "string",
                         "format": "uuid",
-                        "description": "Unique token for the card",
+                        "description": "Unique external identifier for the card",
                         "example": "adccd28d-532e-480b-a063-a46a77a15570"
                       },
                       "last_four": {
@@ -8190,7 +8392,7 @@
                                     }
                                   }
                                 },
-                                "issuer_processor_metadata": {
+                                "issuer_processor_details": {
                                   "type": "object",
                                   "nullable": true,
                                   "properties": {
@@ -8199,7 +8401,23 @@
                                       "properties": {
                                         "last_four": {
                                           "type": "integer",
-                                          "description": "Last four digits of the card against which the spend was made."
+                                          "nullable": true,
+                                          "description": "Last four digits of the card against which the spend was made.",
+                                          "example": 3324
+                                        },
+                                        "transaction_token": {
+                                          "type": "string",
+                                          "nullable": true,
+                                          "format": "uuid",
+                                          "description": "The external unique identifier of the transaction.",
+                                          "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                                        },
+                                        "card_token": {
+                                          "type": "string",
+                                          "nullable": true,
+                                          "format": "uuid",
+                                          "description": "The external unique identifier of the card related to this line item.",
+                                          "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                                         }
                                       }
                                     }
@@ -8847,6 +9065,22 @@
               }
             }
           },
+          "issuer_processor_details": {
+            "type": "object",
+            "properties": {
+              "privacy": {
+                "type": "object",
+                "properties": {
+                  "account_token": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The external unique identifier of the Privacy account against which charges are made.",
+                    "example": "349e2031-20de-40c6-87a3-214895077522"
+                  }
+                }
+              }
+            }
+          },
           "cycle_type": {
             "type": "object",
             "properties": {
@@ -9472,7 +9706,7 @@
                     }
                   }
                 },
-                "issuer_processor_metadata": {
+                "issuer_processor_details": {
                   "type": "object",
                   "nullable": true,
                   "properties": {
@@ -9481,7 +9715,23 @@
                       "properties": {
                         "last_four": {
                           "type": "integer",
-                          "description": "Last four digits of the card against which the spend was made."
+                          "nullable": true,
+                          "description": "Last four digits of the card against which the spend was made.",
+                          "example": 3324
+                        },
+                        "transaction_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the transaction.",
+                          "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                        },
+                        "card_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the card related to this line item.",
+                          "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                         }
                       }
                     }
@@ -10062,6 +10312,22 @@
                   }
                 }
               },
+              "issuer_processor_details": {
+                "type": "object",
+                "properties": {
+                  "privacy": {
+                    "type": "object",
+                    "properties": {
+                      "account_token": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The external unique identifier of the Privacy account against which charges are made.",
+                        "example": "349e2031-20de-40c6-87a3-214895077522"
+                      }
+                    }
+                  }
+                }
+              },
               "cycle_type": {
                 "type": "object",
                 "properties": {
@@ -10301,6 +10567,7 @@
                           "nullable": true,
                           "items": {
                             "type": "object",
+                            "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                             "additionalProperties": true,
                             "properties": {
                               "type": {
@@ -10324,7 +10591,7 @@
                               "token": {
                                 "type": "string",
                                 "format": "uuid",
-                                "description": "Unique token for the card",
+                                "description": "Unique external identifier for the card",
                                 "example": "adccd28d-532e-480b-a063-a46a77a15570"
                               },
                               "last_four": {
@@ -10940,6 +11207,22 @@
                               "type": "boolean",
                               "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
                               "example": true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "issuer_processor_details": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "account_token": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "example": "349e2031-20de-40c6-87a3-214895077522"
                             }
                           }
                         }
@@ -11609,6 +11892,22 @@
                       }
                     }
                   },
+                  "issuer_processor_details": {
+                    "type": "object",
+                    "properties": {
+                      "privacy": {
+                        "type": "object",
+                        "properties": {
+                          "account_token": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "The external unique identifier of the Privacy account against which charges are made.",
+                            "example": "349e2031-20de-40c6-87a3-214895077522"
+                          }
+                        }
+                      }
+                    }
+                  },
                   "cycle_type": {
                     "type": "object",
                     "properties": {
@@ -11934,6 +12233,41 @@
                     "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                     "example": "5 days",
                     "default": "0 days"
+                  },
+                  "surcharge_fee_interval": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The interval at which a surcharge fee is assessed.",
+                    "example": "1 month"
+                  },
+                  "default_surcharge_fee_structure": {
+                    "type": "array",
+                    "description": "The transaction volume structure that dictates a transaction fee.",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "surcharge_start_inclusive_cents",
+                        "percent_surcharge"
+                      ],
+                      "properties": {
+                        "surcharge_start_inclusive_cents": {
+                          "type": "integer",
+                          "description": "Indicates the starting transaction volume at which this fee will apply.",
+                          "example": 0
+                        },
+                        "surcharge_end_exclusive_cents": {
+                          "type": "integer",
+                          "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                          "example": 0,
+                          "default": 100000000000000000000
+                        },
+                        "percent_surcharge": {
+                          "type": "number",
+                          "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                          "example": 0
+                        }
+                      }
+                    }
                   }
                 },
                 "description": "The set of policies governing fees for the product. "
@@ -12239,6 +12573,41 @@
                 "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                 "example": "5 days",
                 "default": "0 days"
+              },
+              "surcharge_fee_interval": {
+                "type": "string",
+                "nullable": true,
+                "description": "The interval at which a surcharge fee is assessed.",
+                "example": "1 month"
+              },
+              "default_surcharge_fee_structure": {
+                "type": "array",
+                "description": "The transaction volume structure that dictates a transaction fee.",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "surcharge_start_inclusive_cents",
+                    "percent_surcharge"
+                  ],
+                  "properties": {
+                    "surcharge_start_inclusive_cents": {
+                      "type": "integer",
+                      "description": "Indicates the starting transaction volume at which this fee will apply.",
+                      "example": 0
+                    },
+                    "surcharge_end_exclusive_cents": {
+                      "type": "integer",
+                      "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                      "example": 0,
+                      "default": 100000000000000000000
+                    },
+                    "percent_surcharge": {
+                      "type": "number",
+                      "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                      "example": 0
+                    }
+                  }
+                }
               }
             },
             "description": "The set of policies governing fees for the product. "
@@ -12545,7 +12914,7 @@
               }
             }
           },
-          "issuer_processor_metadata": {
+          "issuer_processor_details": {
             "type": "object",
             "nullable": true,
             "properties": {
@@ -12554,7 +12923,23 @@
                 "properties": {
                   "last_four": {
                     "type": "integer",
-                    "description": "Last four digits of the card against which the spend was made."
+                    "nullable": true,
+                    "description": "Last four digits of the card against which the spend was made.",
+                    "example": 3324
+                  },
+                  "transaction_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "uuid",
+                    "description": "The external unique identifier of the transaction.",
+                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                  },
+                  "card_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "uuid",
+                    "description": "The external unique identifier of the card related to this line item.",
+                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                   }
                 }
               }
@@ -12977,6 +13362,41 @@
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
+                        },
+                        "surcharge_fee_interval": {
+                          "type": "string",
+                          "nullable": true,
+                          "description": "The interval at which a surcharge fee is assessed.",
+                          "example": "1 month"
+                        },
+                        "default_surcharge_fee_structure": {
+                          "type": "array",
+                          "description": "The transaction volume structure that dictates a transaction fee.",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "surcharge_start_inclusive_cents",
+                              "percent_surcharge"
+                            ],
+                            "properties": {
+                              "surcharge_start_inclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                "example": 0
+                              },
+                              "surcharge_end_exclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                "example": 0,
+                                "default": 100000000000000000000
+                              },
+                              "percent_surcharge": {
+                                "type": "number",
+                                "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                "example": 0
+                              }
+                            }
+                          }
                         }
                       },
                       "description": "The set of policies governing fees for the product. "
@@ -13643,13 +14063,11 @@
                         "late_fee_cents": {
                           "type": "integer",
                           "description": "The fee charged for late payments on the account.",
-                          "default": 0,
                           "example": 2900
                         },
                         "payment_reversal_fee_cents": {
                           "type": "integer",
                           "description": "The fee charged for payment reversals on the account.",
-                          "default": 0,
                           "example": 2900
                         },
                         "origination_fee_cents": {
@@ -14525,6 +14943,41 @@
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
+                        },
+                        "surcharge_fee_interval": {
+                          "type": "string",
+                          "nullable": true,
+                          "description": "The interval at which a surcharge fee is assessed.",
+                          "example": "1 month"
+                        },
+                        "default_surcharge_fee_structure": {
+                          "type": "array",
+                          "description": "The transaction volume structure that dictates a transaction fee.",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "surcharge_start_inclusive_cents",
+                              "percent_surcharge"
+                            ],
+                            "properties": {
+                              "surcharge_start_inclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                "example": 0
+                              },
+                              "surcharge_end_exclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                "example": 0,
+                                "default": 100000000000000000000
+                              },
+                              "percent_surcharge": {
+                                "type": "number",
+                                "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                "example": 0
+                              }
+                            }
+                          }
                         }
                       },
                       "description": "The set of policies governing fees for the product. "
@@ -14889,6 +15342,41 @@
                           "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                           "example": "5 days",
                           "default": "0 days"
+                        },
+                        "surcharge_fee_interval": {
+                          "type": "string",
+                          "nullable": true,
+                          "description": "The interval at which a surcharge fee is assessed.",
+                          "example": "1 month"
+                        },
+                        "default_surcharge_fee_structure": {
+                          "type": "array",
+                          "description": "The transaction volume structure that dictates a transaction fee.",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "surcharge_start_inclusive_cents",
+                              "percent_surcharge"
+                            ],
+                            "properties": {
+                              "surcharge_start_inclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                "example": 0
+                              },
+                              "surcharge_end_exclusive_cents": {
+                                "type": "integer",
+                                "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                "example": 0,
+                                "default": 100000000000000000000
+                              },
+                              "percent_surcharge": {
+                                "type": "number",
+                                "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                "example": 0
+                              }
+                            }
+                          }
                         }
                       },
                       "description": "The set of policies governing fees for the product. "
@@ -15264,6 +15752,41 @@
                                 "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
                                 "example": "5 days",
                                 "default": "0 days"
+                              },
+                              "surcharge_fee_interval": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "The interval at which a surcharge fee is assessed.",
+                                "example": "1 month"
+                              },
+                              "default_surcharge_fee_structure": {
+                                "type": "array",
+                                "description": "The transaction volume structure that dictates a transaction fee.",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "surcharge_start_inclusive_cents",
+                                    "percent_surcharge"
+                                  ],
+                                  "properties": {
+                                    "surcharge_start_inclusive_cents": {
+                                      "type": "integer",
+                                      "description": "Indicates the starting transaction volume at which this fee will apply.",
+                                      "example": 0
+                                    },
+                                    "surcharge_end_exclusive_cents": {
+                                      "type": "integer",
+                                      "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                                      "example": 0,
+                                      "default": 100000000000000000000
+                                    },
+                                    "percent_surcharge": {
+                                      "type": "number",
+                                      "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                                      "example": 0
+                                    }
+                                  }
+                                }
                               }
                             },
                             "description": "The set of policies governing fees for the product. "
@@ -16055,6 +16578,22 @@
                                         "type": "boolean",
                                         "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
                                         "example": true
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "issuer_processor_details": {
+                                "type": "object",
+                                "properties": {
+                                  "privacy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "account_token": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                        "example": "349e2031-20de-40c6-87a3-214895077522"
                                       }
                                     }
                                   }
@@ -17054,6 +17593,22 @@
                         }
                       }
                     },
+                    "issuer_processor_details": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "account_token": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "example": "349e2031-20de-40c6-87a3-214895077522"
+                            }
+                          }
+                        }
+                      }
+                    },
                     "cycle_type": {
                       "type": "object",
                       "properties": {
@@ -17293,6 +17848,7 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
+                                  "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                   "additionalProperties": true,
                                   "properties": {
                                     "type": {
@@ -17316,7 +17872,7 @@
                                     "token": {
                                       "type": "string",
                                       "format": "uuid",
-                                      "description": "Unique token for the card",
+                                      "description": "Unique external identifier for the card",
                                       "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                     },
                                     "last_four": {
@@ -17731,6 +18287,22 @@
                                 "type": "boolean",
                                 "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
                                 "example": true
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "issuer_processor_details": {
+                        "type": "object",
+                        "properties": {
+                          "privacy": {
+                            "type": "object",
+                            "properties": {
+                              "account_token": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                "example": "349e2031-20de-40c6-87a3-214895077522"
                               }
                             }
                           }
@@ -18875,6 +19447,22 @@
                         }
                       }
                     },
+                    "issuer_processor_details": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "account_token": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "example": "349e2031-20de-40c6-87a3-214895077522"
+                            }
+                          }
+                        }
+                      }
+                    },
                     "cycle_type": {
                       "type": "object",
                       "properties": {
@@ -19114,6 +19702,7 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
+                                  "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                                   "additionalProperties": true,
                                   "properties": {
                                     "type": {
@@ -19137,7 +19726,7 @@
                                     "token": {
                                       "type": "string",
                                       "format": "uuid",
-                                      "description": "Unique token for the card",
+                                      "description": "Unique external identifier for the card",
                                       "example": "adccd28d-532e-480b-a063-a46a77a15570"
                                     },
                                     "last_four": {
@@ -19676,7 +20265,7 @@
                           }
                         }
                       },
-                      "issuer_processor_metadata": {
+                      "issuer_processor_details": {
                         "type": "object",
                         "nullable": true,
                         "properties": {
@@ -19685,7 +20274,23 @@
                             "properties": {
                               "last_four": {
                                 "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                                "nullable": true,
+                                "description": "Last four digits of the card against which the spend was made.",
+                                "example": 3324
+                              },
+                              "transaction_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the transaction.",
+                                "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                              },
+                              "card_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the card related to this line item.",
+                                "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                               }
                             }
                           }
@@ -19945,7 +20550,7 @@
                     }
                   }
                 },
-                "issuer_processor_metadata": {
+                "issuer_processor_details": {
                   "type": "object",
                   "nullable": true,
                   "properties": {
@@ -19954,7 +20559,23 @@
                       "properties": {
                         "last_four": {
                           "type": "integer",
-                          "description": "Last four digits of the card against which the spend was made."
+                          "nullable": true,
+                          "description": "Last four digits of the card against which the spend was made.",
+                          "example": 3324
+                        },
+                        "transaction_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the transaction.",
+                          "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                        },
+                        "card_token": {
+                          "type": "string",
+                          "nullable": true,
+                          "format": "uuid",
+                          "description": "The external unique identifier of the card related to this line item.",
+                          "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                         }
                       }
                     }
@@ -20167,7 +20788,7 @@
                           }
                         }
                       },
-                      "issuer_processor_metadata": {
+                      "issuer_processor_details": {
                         "type": "object",
                         "nullable": true,
                         "properties": {
@@ -20176,7 +20797,23 @@
                             "properties": {
                               "last_four": {
                                 "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                                "nullable": true,
+                                "description": "Last four digits of the card against which the spend was made.",
+                                "example": 3324
+                              },
+                              "transaction_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the transaction.",
+                                "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                              },
+                              "card_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the card related to this line item.",
+                                "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                               }
                             }
                           }
@@ -20413,7 +21050,7 @@
                           }
                         }
                       },
-                      "issuer_processor_metadata": {
+                      "issuer_processor_details": {
                         "type": "object",
                         "nullable": true,
                         "properties": {
@@ -20422,7 +21059,23 @@
                             "properties": {
                               "last_four": {
                                 "type": "integer",
-                                "description": "Last four digits of the card against which the spend was made."
+                                "nullable": true,
+                                "description": "Last four digits of the card against which the spend was made.",
+                                "example": 3324
+                              },
+                              "transaction_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the transaction.",
+                                "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                              },
+                              "card_token": {
+                                "type": "string",
+                                "nullable": true,
+                                "format": "uuid",
+                                "description": "The external unique identifier of the card related to this line item.",
+                                "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
                               }
                             }
                           }
@@ -20845,6 +21498,7 @@
               "nullable": true,
               "items": {
                 "type": "object",
+                "description": "Privacy card data. Field names match the ones in Privacy's card schema",
                 "additionalProperties": true,
                 "properties": {
                   "type": {
@@ -20868,7 +21522,7 @@
                   "token": {
                     "type": "string",
                     "format": "uuid",
-                    "description": "Unique token for the card",
+                    "description": "Unique external identifier for the card",
                     "example": "adccd28d-532e-480b-a063-a46a77a15570"
                   },
                   "last_four": {

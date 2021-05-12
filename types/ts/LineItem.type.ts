@@ -14,8 +14,8 @@ export interface LineItem {
     /**
      * An array of static references to fields in a third party system.
      */
-    external_fields?:           ExternalField[];
-    issuer_processor_metadata?: IssuerProcessorMetadata;
+    external_fields?:          ExternalField[];
+    issuer_processor_details?: IssuerProcessorDetails;
     /**
      * The ID associated with the line item
      */
@@ -43,15 +43,23 @@ export interface ExternalField {
     value?: string;
 }
 
-export interface IssuerProcessorMetadata {
+export interface IssuerProcessorDetails {
     privacy?: Privacy;
 }
 
 export interface Privacy {
     /**
+     * The external unique identifier of the card related to this line item.
+     */
+    card_token?: string;
+    /**
      * Last four digits of the card against which the spend was made.
      */
     last_four?: number;
+    /**
+     * The external unique identifier of the transaction.
+     */
+    transaction_token?: string;
 }
 
 export interface LineItemOverview {
