@@ -84,6 +84,7 @@ const (
 	MonthFee LineItemType = "MONTH_FEE"
 	OrigFee LineItemType = "ORIG_FEE"
 	Payment LineItemType = "PAYMENT"
+	PaymentReversal LineItemType = "PAYMENT_REVERSAL"
 	PaymentSplit LineItemType = "PAYMENT_SPLIT"
 	ProductInterest LineItemType = "PRODUCT_INTEREST"
 	PromoEnd LineItemType = "PROMO_END"
