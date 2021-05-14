@@ -1017,7 +1017,7 @@
         },
         "responses": {
           "200": {
-            "description": "Payment reversal successful."
+            "description": "Payment reversal successfully applied."
           },
           "default": {
             "description": "Unexpected Error."
@@ -1654,9 +1654,6 @@
       },
       "CreatePayment": {
         "$ref": "./responses/CreatePayment.json"
-      },
-      "CreatePaymentReversal": {
-        "$ref": "./responses/CreatePaymentReversal.json"
       },
       "Account": {
         "$ref": "./responses/Account.json"

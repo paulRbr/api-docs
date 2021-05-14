@@ -75,11 +75,6 @@ export interface LineItemOverview {
      * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
      */
     line_item_type: LineItemType;
-    /**
-     * Line item ID of the linked line item -- example: the original payment that was reversed
-     * in a payment reversal.
-     */
-    linked_line_item?: string;
 }
 
 /**
