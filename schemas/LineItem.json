@@ -76,7 +76,8 @@
             "MONTH_FEE",
             "YEAR_FEE",
             "ORIG_FEE",
-            "FEE_SURCHARGE"
+            "FEE_SURCHARGE",
+            "PAYMENT_REVERSAL"
           ],
           "example": "CHARGE"
         },

@@ -2117,6 +2117,18 @@
               "type": "string",
               "example": "31mNprzLd2bKl6koVna68ARM"
             }
+          },
+          {
+            "name": "search_parameters",
+            "in": "query",
+            "description": "Currently, this API only supports searching by `name_first` or `name_last`. Based on the input search parameter, the top responses from our API search, up to or less than the provided `limit` will be returned.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Alexander Supertramp"
+            }
           }
         ],
         "responses": {
@@ -5381,7 +5393,8 @@
                                   "MONTH_FEE",
                                   "YEAR_FEE",
                                   "ORIG_FEE",
-                                  "FEE_SURCHARGE"
+                                  "FEE_SURCHARGE",
+                                  "PAYMENT_REVERSAL"
                                 ],
                                 "example": "CHARGE"
                               },
@@ -5734,7 +5747,8 @@
                                   "MONTH_FEE",
                                   "YEAR_FEE",
                                   "ORIG_FEE",
-                                  "FEE_SURCHARGE"
+                                  "FEE_SURCHARGE",
+                                  "PAYMENT_REVERSAL"
                                 ],
                                 "example": "CHARGE"
                               },
@@ -6046,7 +6060,8 @@
                             "MONTH_FEE",
                             "YEAR_FEE",
                             "ORIG_FEE",
-                            "FEE_SURCHARGE"
+                            "FEE_SURCHARGE",
+                            "PAYMENT_REVERSAL"
                           ],
                           "example": "CHARGE"
                         },
@@ -6365,7 +6380,8 @@
                             "MONTH_FEE",
                             "YEAR_FEE",
                             "ORIG_FEE",
-                            "FEE_SURCHARGE"
+                            "FEE_SURCHARGE",
+                            "PAYMENT_REVERSAL"
                           ],
                           "example": "CHARGE"
                         },
@@ -6630,7 +6646,8 @@
                             "MONTH_FEE",
                             "YEAR_FEE",
                             "ORIG_FEE",
-                            "FEE_SURCHARGE"
+                            "FEE_SURCHARGE",
+                            "PAYMENT_REVERSAL"
                           ],
                           "example": "CHARGE"
                         },
@@ -7349,7 +7366,8 @@
                                   "MONTH_FEE",
                                   "YEAR_FEE",
                                   "ORIG_FEE",
-                                  "FEE_SURCHARGE"
+                                  "FEE_SURCHARGE",
+                                  "PAYMENT_REVERSAL"
                                 ],
                                 "example": "CHARGE"
                               },
@@ -8315,7 +8333,8 @@
                                         "MONTH_FEE",
                                         "YEAR_FEE",
                                         "ORIG_FEE",
-                                        "FEE_SURCHARGE"
+                                        "FEE_SURCHARGE",
+                                        "PAYMENT_REVERSAL"
                                       ],
                                       "example": "CHARGE"
                                     },
@@ -9698,7 +9717,8 @@
                         "MONTH_FEE",
                         "YEAR_FEE",
                         "ORIG_FEE",
-                        "FEE_SURCHARGE"
+                        "FEE_SURCHARGE",
+                        "PAYMENT_REVERSAL"
                       ],
                       "example": "CHARGE"
                     },
@@ -12908,7 +12928,8 @@
                   "MONTH_FEE",
                   "YEAR_FEE",
                   "ORIG_FEE",
-                  "FEE_SURCHARGE"
+                  "FEE_SURCHARGE",
+                  "PAYMENT_REVERSAL"
                 ],
                 "example": "CHARGE"
               },
@@ -13132,7 +13153,8 @@
                   "MONTH_FEE",
                   "YEAR_FEE",
                   "ORIG_FEE",
-                  "FEE_SURCHARGE"
+                  "FEE_SURCHARGE",
+                  "PAYMENT_REVERSAL"
                 ],
                 "example": "CHARGE"
               },
@@ -18919,7 +18941,8 @@
                         "MONTH_FEE",
                         "YEAR_FEE",
                         "ORIG_FEE",
-                        "FEE_SURCHARGE"
+                        "FEE_SURCHARGE",
+                        "PAYMENT_REVERSAL"
                       ],
                       "example": "CHARGE"
                     },
@@ -19093,7 +19116,8 @@
                         "MONTH_FEE",
                         "YEAR_FEE",
                         "ORIG_FEE",
-                        "FEE_SURCHARGE"
+                        "FEE_SURCHARGE",
+                        "PAYMENT_REVERSAL"
                       ],
                       "example": "CHARGE"
                     },
@@ -20298,7 +20322,8 @@
                               "MONTH_FEE",
                               "YEAR_FEE",
                               "ORIG_FEE",
-                              "FEE_SURCHARGE"
+                              "FEE_SURCHARGE",
+                              "PAYMENT_REVERSAL"
                             ],
                             "example": "CHARGE"
                           },
@@ -20583,7 +20608,8 @@
                         "MONTH_FEE",
                         "YEAR_FEE",
                         "ORIG_FEE",
-                        "FEE_SURCHARGE"
+                        "FEE_SURCHARGE",
+                        "PAYMENT_REVERSAL"
                       ],
                       "example": "CHARGE"
                     },
@@ -20823,7 +20849,8 @@
                               "MONTH_FEE",
                               "YEAR_FEE",
                               "ORIG_FEE",
-                              "FEE_SURCHARGE"
+                              "FEE_SURCHARGE",
+                              "PAYMENT_REVERSAL"
                             ],
                             "example": "CHARGE"
                           },
@@ -21087,7 +21114,8 @@
                               "MONTH_FEE",
                               "YEAR_FEE",
                               "ORIG_FEE",
-                              "FEE_SURCHARGE"
+                              "FEE_SURCHARGE",
+                              "PAYMENT_REVERSAL"
                             ],
                             "example": "CHARGE"
                           },
@@ -21529,7 +21557,8 @@
                         "MONTH_FEE",
                         "YEAR_FEE",
                         "ORIG_FEE",
-                        "FEE_SURCHARGE"
+                        "FEE_SURCHARGE",
+                        "PAYMENT_REVERSAL"
                       ],
                       "example": "CHARGE"
                     },
