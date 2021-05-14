@@ -306,6 +306,7 @@ export enum LineItemType {
     MonthFee = "MONTH_FEE",
     OrigFee = "ORIG_FEE",
     Payment = "PAYMENT",
+    PaymentReversal = "PAYMENT_REVERSAL",
     PaymentSplit = "PAYMENT_SPLIT",
     ProductInterest = "PRODUCT_INTEREST",
     PromoEnd = "PROMO_END",
