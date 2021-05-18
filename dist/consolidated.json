@@ -4951,6 +4951,92 @@
             "description": "Unexpected Error."
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Soft-delete a Specific Account",
+        "description": "",
+        "operationId": "softDeleteAccount",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account soft-deleted."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "404": {
+            "description": "Account not found"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/evict": {
+      "delete": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Hard-delete a Specific Account",
+        "description": "",
+        "operationId": "hardDeleteAccount",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account hard-deleted."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "404": {
+            "description": "Account not found"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
       }
     },
     "/accounts/{account_id}/notes": {
