@@ -992,6 +992,63 @@
         }
       }
     },
+    "/accounts/{account_id}/line_items/payment_reversals/{line_item_id}": {
+      "post": {
+        "tags": ["line_items"],
+        "summary": "Reverses a payment for an account",
+        "description": "",
+        "operationId": "createAccountPayment",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "line_item_id",
+            "in": "path",
+            "description": "Line Item ID of the original payment to be reversed",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreatePaymentReversal"
+        },
+        "responses": {
+          "200": {
+            "description": "Payment reversal successfully applied."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/statements/list": {
       "get": {
         "tags": ["statements"],
@@ -1566,6 +1623,9 @@
       },
       "CreatePayment": {
         "$ref": "./requestBodies/CreatePayment.json"
+      },
+      "CreatePaymentReversal": {
+        "$ref": "./requestBodies/CreatePaymentReversal.json"
       },
       "ConfigurePaymentProcessors": {
         "$ref": "./requestBodies/ConfigurePaymentProcessors.json"

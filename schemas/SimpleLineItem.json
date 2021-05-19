@@ -5,7 +5,7 @@
     "account_id": {
       "type": "string",
       "description": "A Canopy-generated ID for the account.",
-      "example": "31mNprzLd2bKl6koVna68ARM"
+      "example": "11bNprzLd2bKl6koVna68ARM"
     },
     "line_item_id": {
       "type": "string",
