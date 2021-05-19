@@ -983,7 +983,7 @@
     "/accounts/{account_id}/line_items/payment_reversals/{line_item_id}": {
       "post": {
         "tags": ["line_items"],
-        "summary": "Create a payment for a specific account",
+        "summary": "Reverses a payment for an account",
         "description": "",
         "operationId": "createAccountPayment",
         "parameters": [
