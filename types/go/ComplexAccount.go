@@ -114,6 +114,7 @@ type BusinessDetails struct {
 // Privacy card data. Field names match the ones in Privacy's card schema
 type CardDetail struct {
 	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card
+	Memo     *string `json:"memo,omitempty"`     // Friendly name to identify the card
 	State    *State  `json:"state,omitempty"`    // The current state of the card
 	Token    *string `json:"token,omitempty"`    // Unique external identifier for the card
 	Type     *Type   `json:"type,omitempty"`     // The type of card being returned

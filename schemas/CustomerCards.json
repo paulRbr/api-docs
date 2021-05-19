@@ -28,6 +28,11 @@
         "type": "string",
         "description": "Last four digits of the card",
         "example": "0690"
+      },
+      "memo": {
+        "type": "string",
+        "description": "Friendly name to identify the card",
+        "example": "Conference Event Card"
       }
     }
   }

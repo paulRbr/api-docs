@@ -335,6 +335,10 @@ export interface CardDetail {
      */
     last_four?: string;
     /**
+     * Friendly name to identify the card
+     */
+    memo?: string;
+    /**
      * The current state of the card
      */
     state?: State;

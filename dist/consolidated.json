@@ -4189,6 +4189,11 @@
                                           "type": "string",
                                           "description": "Last four digits of the card",
                                           "example": "0690"
+                                        },
+                                        "memo": {
+                                          "type": "string",
+                                          "description": "Friendly name to identify the card",
+                                          "example": "Conference Event Card"
                                         }
                                       }
                                     }
@@ -4919,6 +4924,11 @@
                                           "type": "string",
                                           "description": "Last four digits of the card",
                                           "example": "0690"
+                                        },
+                                        "memo": {
+                                          "type": "string",
+                                          "description": "Friendly name to identify the card",
+                                          "example": "Conference Event Card"
                                         }
                                       }
                                     }
@@ -7627,7 +7637,7 @@
       }
     },
     "/accounts/{account_id}/customers/{customer_id}/cards": {
-      "put": {
+      "post": {
         "tags": [
           "customers"
         ],
@@ -7701,6 +7711,11 @@
                         "type": "string",
                         "description": "Last four digits of the card",
                         "example": "0690"
+                      },
+                      "memo": {
+                        "type": "string",
+                        "description": "Friendly name to identify the card",
+                        "example": "Conference Event Card"
                       }
                     }
                   }
@@ -10791,6 +10806,11 @@
                                 "type": "string",
                                 "description": "Last four digits of the card",
                                 "example": "0690"
+                              },
+                              "memo": {
+                                "type": "string",
+                                "description": "Friendly name to identify the card",
+                                "example": "Conference Event Card"
                               }
                             }
                           }
@@ -18156,6 +18176,11 @@
                                       "type": "string",
                                       "description": "Last four digits of the card",
                                       "example": "0690"
+                                    },
+                                    "memo": {
+                                      "type": "string",
+                                      "description": "Friendly name to identify the card",
+                                      "example": "Conference Event Card"
                                     }
                                   }
                                 }
@@ -20012,6 +20037,11 @@
                                       "type": "string",
                                       "description": "Last four digits of the card",
                                       "example": "0690"
+                                    },
+                                    "memo": {
+                                      "type": "string",
+                                      "description": "Friendly name to identify the card",
+                                      "example": "Conference Event Card"
                                     }
                                   }
                                 }
@@ -21838,6 +21868,11 @@
                     "type": "string",
                     "description": "Last four digits of the card",
                     "example": "0690"
+                  },
+                  "memo": {
+                    "type": "string",
+                    "description": "Friendly name to identify the card",
+                    "example": "Conference Event Card"
                   }
                 }
               }

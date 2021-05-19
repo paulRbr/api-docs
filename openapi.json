@@ -1181,7 +1181,7 @@
       }
     },
     "/accounts/{account_id}/customers/{customer_id}/cards": {
-      "put": {
+      "post": {
         "tags": ["customers"],
         "summary": "Create a new card for an existing customer on an account",
         "description": "",
