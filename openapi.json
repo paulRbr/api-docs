@@ -620,6 +620,42 @@
         }
       }
     },
+    "/accounts/{account_id}/payment_processor_config": {
+      "put": {
+        "security": [
+          {
+            "oAuth2": []
+          }
+        ],
+        "tags": ["account"],
+        "summary": "Edit the payment processor config for an existing account",
+        "description": "Toggle autopay or change the payment processor / bank information for a given account.",
+        "operationId": "editAccountPaymentProcessorConfig",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/EditAccountPaymentProcessorConfig"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EditAccountPaymentProcessorConfig"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/notes": {
       "post": {
         "tags": ["notes"],
@@ -1615,6 +1651,9 @@
       "CreateAccount": {
         "$ref": "./requestBodies/CreateAccount.json"
       },
+      "EditAccountPaymentProcessorConfig": {
+        "$ref": "./requestBodies/EditAccountPaymentProcessorConfig.json"
+      },
       "CreateCustomerAccountCard": {
         "$ref": "./requestBodies/CreateCustomerAccountCard.json"
       },
@@ -1691,6 +1730,9 @@
       },
       "CreateAccount": {
         "$ref": "./responses/CreateAccount.json"
+      },
+      "EditAccountPaymentProcessorConfig": {
+        "$ref": "./responses/EditAccountPaymentProcessorConfig.json"
       },
       "Accounts": {
         "$ref": "./responses/Accounts.json"

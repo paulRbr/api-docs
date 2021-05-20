@@ -4977,6 +4977,161 @@
         }
       }
     },
+    "/accounts/{account_id}/payment_processor_config": {
+      "put": {
+        "security": [
+          {
+            "oAuth2": []
+          }
+        ],
+        "tags": [
+          "account"
+        ],
+        "summary": "Edit the payment processor config for an existing account",
+        "description": "Toggle autopay or change the payment processor / bank information for a given account.",
+        "operationId": "editAccountPaymentProcessorConfig",
+        "requestBody": {
+          "description": "Edit Payment Procesor Config",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "payment_processor_name": {
+                    "type": "string",
+                    "enum": [
+                      "NONE",
+                      "REPAY"
+                    ],
+                    "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                    "example": "REPAY",
+                    "default": "NONE"
+                  },
+                  "autopay_enabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                    "example": true,
+                    "default": false
+                  },
+                  "repay_config": {
+                    "type": "object",
+                    "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
+                    "required": [
+                      "repay_payment_method",
+                      "repay_check_type",
+                      "repay_account_type",
+                      "repay_transit_number",
+                      "repay_account_number",
+                      "repay_name_on_check"
+                    ],
+                    "properties": {
+                      "repay_payment_method": {
+                        "type": "string",
+                        "enum": [
+                          "ACH"
+                        ],
+                        "description": "The payment method to use for this account"
+                      },
+                      "repay_check_type": {
+                        "type": "string",
+                        "enum": [
+                          "PERSONAL",
+                          "BUSINESS"
+                        ],
+                        "description": "Type of checking account: Personal or Business.",
+                        "example": "PERSONAL"
+                      },
+                      "repay_account_type": {
+                        "type": "string",
+                        "enum": [
+                          "SAVINGS",
+                          "CHECKING"
+                        ],
+                        "description": "Type of account: Savings or Checking.",
+                        "example": "CHECKING"
+                      },
+                      "repay_transit_number": {
+                        "type": "integer",
+                        "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+                        "example": 999999992
+                      },
+                      "repay_account_number": {
+                        "type": "integer",
+                        "description": "Account number is an eight to ten digit number that identifies a specific account.",
+                        "example": 987654321
+                      },
+                      "repay_name_on_check": {
+                        "type": "string",
+                        "description": "Account holder's name as it appears on the account.",
+                        "example": "Lucille Bluth"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Payment Processor Configuration Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment_processor_name": {
+                      "type": "string",
+                      "enum": [
+                        "NONE",
+                        "REPAY"
+                      ],
+                      "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                      "example": "REPAY",
+                      "default": "NONE"
+                    },
+                    "autopay_enabled": {
+                      "type": "boolean",
+                      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                      "example": true,
+                      "default": false
+                    },
+                    "repay_config": {
+                      "type": "object",
+                      "required": [
+                        "valid_config"
+                      ],
+                      "properties": {
+                        "valid_config": {
+                          "type": "boolean",
+                          "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/notes": {
       "post": {
         "tags": [
@@ -14517,43 +14672,116 @@
           }
         }
       },
-      "CreateCustomerAccountCard": {
-        "description": "Create a card directly with the configured issuer processor for a customer on an account",
+      "EditAccountPaymentProcessorConfig": {
+        "description": "Edit Payment Procesor Config",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "privacy": {
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY"
+                  ],
+                  "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "autopay_enabled": {
+                  "type": "boolean",
+                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                  "example": true,
+                  "default": false
+                },
+                "repay_config": {
                   "type": "object",
+                  "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
+                  "required": [
+                    "repay_payment_method",
+                    "repay_check_type",
+                    "repay_account_type",
+                    "repay_transit_number",
+                    "repay_account_number",
+                    "repay_name_on_check"
+                  ],
                   "properties": {
-                    "memo": {
-                      "type": "string",
-                      "description": "Friendly name to identify the card",
-                      "example": "Primary College Card"
-                    },
-                    "type": {
+                    "repay_payment_method": {
                       "type": "string",
                       "enum": [
-                        "SINGLE_USE",
-                        "MERCHANT_LOCKED",
-                        "UNLOCKED"
+                        "ACH"
                       ],
-                      "description": "The type of card created by privacy.com",
-                      "example": "MERCHANT_LOCKED"
+                      "description": "The payment method to use for this account"
                     },
-                    "state": {
+                    "repay_check_type": {
                       "type": "string",
                       "enum": [
-                        "OPEN",
-                        "PAUSED"
+                        "PERSONAL",
+                        "BUSINESS"
                       ],
-                      "description": "The state of the new card",
-                      "example": "OPEN"
+                      "description": "Type of checking account: Personal or Business.",
+                      "example": "PERSONAL"
+                    },
+                    "repay_account_type": {
+                      "type": "string",
+                      "enum": [
+                        "SAVINGS",
+                        "CHECKING"
+                      ],
+                      "description": "Type of account: Savings or Checking.",
+                      "example": "CHECKING"
+                    },
+                    "repay_transit_number": {
+                      "type": "integer",
+                      "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+                      "example": 999999992
+                    },
+                    "repay_account_number": {
+                      "type": "integer",
+                      "description": "Account number is an eight to ten digit number that identifies a specific account.",
+                      "example": 987654321
+                    },
+                    "repay_name_on_check": {
+                      "type": "string",
+                      "description": "Account holder's name as it appears on the account.",
+                      "example": "Lucille Bluth"
                     }
                   }
                 }
               }
+            }
+          }
+        }
+      },
+      "CreateCustomerAccountCard": {
+        "description": "Create a card directly with the configured issuer processor for a customer on an account",
+        "privacy": {
+          "type": "object",
+          "properties": {
+            "memo": {
+              "type": "string",
+              "description": "Friendly name to identify the card",
+              "example": "Primary College Card"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SINGLE_USE",
+                "MERCHANT_LOCKED",
+                "UNLOCKED"
+              ],
+              "description": "The type of card created by privacy.com",
+              "example": "MERCHANT_LOCKED"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "OPEN",
+                "PAUSED"
+              ],
+              "description": "The state of the new card",
+              "example": "OPEN"
             }
           }
         }
@@ -18310,6 +18538,47 @@
                   }
                 }
               ]
+            }
+          }
+        }
+      },
+      "EditAccountPaymentProcessorConfig": {
+        "description": "Payment Processor Configuration Updated",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY"
+                  ],
+                  "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "autopay_enabled": {
+                  "type": "boolean",
+                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                  "example": true,
+                  "default": false
+                },
+                "repay_config": {
+                  "type": "object",
+                  "required": [
+                    "valid_config"
+                  ],
+                  "properties": {
+                    "valid_config": {
+                      "type": "boolean",
+                      "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                      "example": true
+                    }
+                  }
+                }
+              }
             }
           }
         }
