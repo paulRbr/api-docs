@@ -111,8 +111,12 @@ type BusinessDetails struct {
 	DoingBusinessAs   *string `json:"doing_business_as,omitempty"`  // The DBA name of the Business
 }
 
-// Privacy card data. Field names match the ones in Privacy's card schema
+// Card data. Field names match the ones in Privacy's card schema
 type CardDetail struct {
+	Privacy *CardDetailPrivacy `json:"privacy,omitempty"`
+}
+
+type CardDetailPrivacy struct {
 	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card
 	Memo     *string `json:"memo,omitempty"`     // Friendly name to identify the card
 	State    *State  `json:"state,omitempty"`    // The current state of the card
@@ -130,10 +134,10 @@ type ExternalField struct {
 }
 
 type IssuerProcessorDetails struct {
-	Privacy *Privacy `json:"privacy,omitempty"`
+	Privacy *IssuerProcessorDetailsPrivacy `json:"privacy,omitempty"`
 }
 
-type Privacy struct {
+type IssuerProcessorDetailsPrivacy struct {
 	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Privacy account against which charges are made.
 }
 
@@ -190,6 +194,8 @@ const (
 // The type of card being returned
 type Type string
 const (
+	MerchantLocked Type = "MERCHANT_LOCKED"
+	SingleUse Type = "SINGLE_USE"
 	Unlocked Type = "UNLOCKED"
 )
 

@@ -1,0 +1,10 @@
+{
+  "description": "Create a card directly with the configured issuer processor for a customer on an account",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/InputCustomerAccountCard.json"
+      }
+    }
+  }
+}

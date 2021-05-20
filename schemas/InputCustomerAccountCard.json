@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "privacy": {
+      "type": "object",
+      "properties": {
+        "memo": {
+          "type": "string",
+          "description": "Friendly name to identify the card",
+          "example": "Primary College Card"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["SINGLE_USE", "MERCHANT_LOCKED", "UNLOCKED"],
+          "description": "The type of card created by privacy.com",
+          "example": "MERCHANT_LOCKED"
+        },
+        "state": {
+          "type": "string",
+          "enum": ["OPEN", "PAUSED"],
+          "description": "The state of the new card",
+          "example": "OPEN"
+        }
+      }
+    }
+  }
+}

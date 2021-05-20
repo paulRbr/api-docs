@@ -327,9 +327,13 @@ export interface BusinessDetails {
 }
 
 /**
- * Privacy card data. Field names match the ones in Privacy's card schema
+ * Card data. Field names match the ones in Privacy's card schema
  */
 export interface CardDetail {
+    privacy?: CardDetailPrivacy;
+}
+
+export interface CardDetailPrivacy {
     /**
      * Last four digits of the card
      */
@@ -365,6 +369,8 @@ export enum State {
  * The type of card being returned
  */
 export enum Type {
+    MerchantLocked = "MERCHANT_LOCKED",
+    SingleUse = "SINGLE_USE",
     Unlocked = "UNLOCKED",
 }
 
@@ -387,10 +393,10 @@ export interface ExternalField {
 }
 
 export interface IssuerProcessorDetails {
-    privacy?: Privacy;
+    privacy?: IssuerProcessorDetailsPrivacy;
 }
 
-export interface Privacy {
+export interface IssuerProcessorDetailsPrivacy {
     /**
      * The external unique identifier of the Privacy account against which charges are made.
      */

@@ -4158,42 +4158,49 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
-                                      "description": "Privacy card data. Field names match the ones in Privacy's card schema",
+                                      "description": "Card data. Field names match the ones in Privacy's card schema",
                                       "additionalProperties": true,
                                       "properties": {
-                                        "type": {
-                                          "type": "string",
-                                          "description": "The type of card being returned",
-                                          "enum": [
-                                            "UNLOCKED"
-                                          ],
-                                          "example": "UNLOCKED"
-                                        },
-                                        "state": {
-                                          "type": "string",
-                                          "description": "The current state of the card",
-                                          "enum": [
-                                            "OPEN",
-                                            "PAUSED",
-                                            "CLOSED"
-                                          ],
-                                          "example": "OPEN"
-                                        },
-                                        "token": {
-                                          "type": "string",
-                                          "format": "uuid",
-                                          "description": "Unique external identifier for the card",
-                                          "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                                        },
-                                        "last_four": {
-                                          "type": "string",
-                                          "description": "Last four digits of the card",
-                                          "example": "0690"
-                                        },
-                                        "memo": {
-                                          "type": "string",
-                                          "description": "Friendly name to identify the card",
-                                          "example": "Conference Event Card"
+                                        "privacy": {
+                                          "type": "object",
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of card being returned",
+                                              "enum": [
+                                                "UNLOCKED",
+                                                "MERCHANT_LOCKED",
+                                                "SINGLE_USE"
+                                              ],
+                                              "example": "UNLOCKED"
+                                            },
+                                            "state": {
+                                              "type": "string",
+                                              "description": "The current state of the card",
+                                              "enum": [
+                                                "OPEN",
+                                                "PAUSED",
+                                                "CLOSED"
+                                              ],
+                                              "example": "OPEN"
+                                            },
+                                            "token": {
+                                              "type": "string",
+                                              "format": "uuid",
+                                              "description": "Unique external identifier for the card",
+                                              "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                            },
+                                            "last_four": {
+                                              "type": "string",
+                                              "description": "Last four digits of the card",
+                                              "example": "0690"
+                                            },
+                                            "memo": {
+                                              "type": "string",
+                                              "description": "Friendly name to identify the card",
+                                              "example": "Conference Event Card"
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -4893,42 +4900,49 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
-                                      "description": "Privacy card data. Field names match the ones in Privacy's card schema",
+                                      "description": "Card data. Field names match the ones in Privacy's card schema",
                                       "additionalProperties": true,
                                       "properties": {
-                                        "type": {
-                                          "type": "string",
-                                          "description": "The type of card being returned",
-                                          "enum": [
-                                            "UNLOCKED"
-                                          ],
-                                          "example": "UNLOCKED"
-                                        },
-                                        "state": {
-                                          "type": "string",
-                                          "description": "The current state of the card",
-                                          "enum": [
-                                            "OPEN",
-                                            "PAUSED",
-                                            "CLOSED"
-                                          ],
-                                          "example": "OPEN"
-                                        },
-                                        "token": {
-                                          "type": "string",
-                                          "format": "uuid",
-                                          "description": "Unique external identifier for the card",
-                                          "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                                        },
-                                        "last_four": {
-                                          "type": "string",
-                                          "description": "Last four digits of the card",
-                                          "example": "0690"
-                                        },
-                                        "memo": {
-                                          "type": "string",
-                                          "description": "Friendly name to identify the card",
-                                          "example": "Conference Event Card"
+                                        "privacy": {
+                                          "type": "object",
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of card being returned",
+                                              "enum": [
+                                                "UNLOCKED",
+                                                "MERCHANT_LOCKED",
+                                                "SINGLE_USE"
+                                              ],
+                                              "example": "UNLOCKED"
+                                            },
+                                            "state": {
+                                              "type": "string",
+                                              "description": "The current state of the card",
+                                              "enum": [
+                                                "OPEN",
+                                                "PAUSED",
+                                                "CLOSED"
+                                              ],
+                                              "example": "OPEN"
+                                            },
+                                            "token": {
+                                              "type": "string",
+                                              "format": "uuid",
+                                              "description": "Unique external identifier for the card",
+                                              "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                            },
+                                            "last_four": {
+                                              "type": "string",
+                                              "description": "Last four digits of the card",
+                                              "example": "0690"
+                                            },
+                                            "memo": {
+                                              "type": "string",
+                                              "description": "Friendly name to identify the card",
+                                              "example": "Conference Event Card"
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -7670,6 +7684,47 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "Create a card directly with the configured issuer processor for a customer on an account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "privacy": {
+                    "type": "object",
+                    "properties": {
+                      "memo": {
+                        "type": "string",
+                        "description": "Friendly name to identify the card",
+                        "example": "Primary College Card"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "SINGLE_USE",
+                          "MERCHANT_LOCKED",
+                          "UNLOCKED"
+                        ],
+                        "description": "The type of card created by privacy.com",
+                        "example": "MERCHANT_LOCKED"
+                      },
+                      "state": {
+                        "type": "string",
+                        "enum": [
+                          "OPEN",
+                          "PAUSED"
+                        ],
+                        "description": "The state of the new card",
+                        "example": "OPEN"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successfully created a new card for the customer.",
@@ -7680,42 +7735,49 @@
                   "nullable": true,
                   "items": {
                     "type": "object",
-                    "description": "Privacy card data. Field names match the ones in Privacy's card schema",
+                    "description": "Card data. Field names match the ones in Privacy's card schema",
                     "additionalProperties": true,
                     "properties": {
-                      "type": {
-                        "type": "string",
-                        "description": "The type of card being returned",
-                        "enum": [
-                          "UNLOCKED"
-                        ],
-                        "example": "UNLOCKED"
-                      },
-                      "state": {
-                        "type": "string",
-                        "description": "The current state of the card",
-                        "enum": [
-                          "OPEN",
-                          "PAUSED",
-                          "CLOSED"
-                        ],
-                        "example": "OPEN"
-                      },
-                      "token": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "Unique external identifier for the card",
-                        "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                      },
-                      "last_four": {
-                        "type": "string",
-                        "description": "Last four digits of the card",
-                        "example": "0690"
-                      },
-                      "memo": {
-                        "type": "string",
-                        "description": "Friendly name to identify the card",
-                        "example": "Conference Event Card"
+                      "privacy": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "The type of card being returned",
+                            "enum": [
+                              "UNLOCKED",
+                              "MERCHANT_LOCKED",
+                              "SINGLE_USE"
+                            ],
+                            "example": "UNLOCKED"
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "The current state of the card",
+                            "enum": [
+                              "OPEN",
+                              "PAUSED",
+                              "CLOSED"
+                            ],
+                            "example": "OPEN"
+                          },
+                          "token": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Unique external identifier for the card",
+                            "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                          },
+                          "last_four": {
+                            "type": "string",
+                            "description": "Last four digits of the card",
+                            "example": "0690"
+                          },
+                          "memo": {
+                            "type": "string",
+                            "description": "Friendly name to identify the card",
+                            "example": "Conference Event Card"
+                          }
+                        }
                       }
                     }
                   }
@@ -10775,42 +10837,49 @@
                           "nullable": true,
                           "items": {
                             "type": "object",
-                            "description": "Privacy card data. Field names match the ones in Privacy's card schema",
+                            "description": "Card data. Field names match the ones in Privacy's card schema",
                             "additionalProperties": true,
                             "properties": {
-                              "type": {
-                                "type": "string",
-                                "description": "The type of card being returned",
-                                "enum": [
-                                  "UNLOCKED"
-                                ],
-                                "example": "UNLOCKED"
-                              },
-                              "state": {
-                                "type": "string",
-                                "description": "The current state of the card",
-                                "enum": [
-                                  "OPEN",
-                                  "PAUSED",
-                                  "CLOSED"
-                                ],
-                                "example": "OPEN"
-                              },
-                              "token": {
-                                "type": "string",
-                                "format": "uuid",
-                                "description": "Unique external identifier for the card",
-                                "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                              },
-                              "last_four": {
-                                "type": "string",
-                                "description": "Last four digits of the card",
-                                "example": "0690"
-                              },
-                              "memo": {
-                                "type": "string",
-                                "description": "Friendly name to identify the card",
-                                "example": "Conference Event Card"
+                              "privacy": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "description": "The type of card being returned",
+                                    "enum": [
+                                      "UNLOCKED",
+                                      "MERCHANT_LOCKED",
+                                      "SINGLE_USE"
+                                    ],
+                                    "example": "UNLOCKED"
+                                  },
+                                  "state": {
+                                    "type": "string",
+                                    "description": "The current state of the card",
+                                    "enum": [
+                                      "OPEN",
+                                      "PAUSED",
+                                      "CLOSED"
+                                    ],
+                                    "example": "OPEN"
+                                  },
+                                  "token": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "description": "Unique external identifier for the card",
+                                    "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                  },
+                                  "last_four": {
+                                    "type": "string",
+                                    "description": "Last four digits of the card",
+                                    "example": "0690"
+                                  },
+                                  "memo": {
+                                    "type": "string",
+                                    "description": "Friendly name to identify the card",
+                                    "example": "Conference Event Card"
+                                  }
+                                }
                               }
                             }
                           }
@@ -14444,6 +14513,47 @@
                   }
                 }
               ]
+            }
+          }
+        }
+      },
+      "CreateCustomerAccountCard": {
+        "description": "Create a card directly with the configured issuer processor for a customer on an account",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "privacy": {
+                  "type": "object",
+                  "properties": {
+                    "memo": {
+                      "type": "string",
+                      "description": "Friendly name to identify the card",
+                      "example": "Primary College Card"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "SINGLE_USE",
+                        "MERCHANT_LOCKED",
+                        "UNLOCKED"
+                      ],
+                      "description": "The type of card created by privacy.com",
+                      "example": "MERCHANT_LOCKED"
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "PAUSED"
+                      ],
+                      "description": "The state of the new card",
+                      "example": "OPEN"
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -18145,42 +18255,49 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
-                                  "description": "Privacy card data. Field names match the ones in Privacy's card schema",
+                                  "description": "Card data. Field names match the ones in Privacy's card schema",
                                   "additionalProperties": true,
                                   "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "description": "The type of card being returned",
-                                      "enum": [
-                                        "UNLOCKED"
-                                      ],
-                                      "example": "UNLOCKED"
-                                    },
-                                    "state": {
-                                      "type": "string",
-                                      "description": "The current state of the card",
-                                      "enum": [
-                                        "OPEN",
-                                        "PAUSED",
-                                        "CLOSED"
-                                      ],
-                                      "example": "OPEN"
-                                    },
-                                    "token": {
-                                      "type": "string",
-                                      "format": "uuid",
-                                      "description": "Unique external identifier for the card",
-                                      "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                                    },
-                                    "last_four": {
-                                      "type": "string",
-                                      "description": "Last four digits of the card",
-                                      "example": "0690"
-                                    },
-                                    "memo": {
-                                      "type": "string",
-                                      "description": "Friendly name to identify the card",
-                                      "example": "Conference Event Card"
+                                    "privacy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "description": "The type of card being returned",
+                                          "enum": [
+                                            "UNLOCKED",
+                                            "MERCHANT_LOCKED",
+                                            "SINGLE_USE"
+                                          ],
+                                          "example": "UNLOCKED"
+                                        },
+                                        "state": {
+                                          "type": "string",
+                                          "description": "The current state of the card",
+                                          "enum": [
+                                            "OPEN",
+                                            "PAUSED",
+                                            "CLOSED"
+                                          ],
+                                          "example": "OPEN"
+                                        },
+                                        "token": {
+                                          "type": "string",
+                                          "format": "uuid",
+                                          "description": "Unique external identifier for the card",
+                                          "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                        },
+                                        "last_four": {
+                                          "type": "string",
+                                          "description": "Last four digits of the card",
+                                          "example": "0690"
+                                        },
+                                        "memo": {
+                                          "type": "string",
+                                          "description": "Friendly name to identify the card",
+                                          "example": "Conference Event Card"
+                                        }
+                                      }
                                     }
                                   }
                                 }
@@ -20006,42 +20123,49 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
-                                  "description": "Privacy card data. Field names match the ones in Privacy's card schema",
+                                  "description": "Card data. Field names match the ones in Privacy's card schema",
                                   "additionalProperties": true,
                                   "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "description": "The type of card being returned",
-                                      "enum": [
-                                        "UNLOCKED"
-                                      ],
-                                      "example": "UNLOCKED"
-                                    },
-                                    "state": {
-                                      "type": "string",
-                                      "description": "The current state of the card",
-                                      "enum": [
-                                        "OPEN",
-                                        "PAUSED",
-                                        "CLOSED"
-                                      ],
-                                      "example": "OPEN"
-                                    },
-                                    "token": {
-                                      "type": "string",
-                                      "format": "uuid",
-                                      "description": "Unique external identifier for the card",
-                                      "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                                    },
-                                    "last_four": {
-                                      "type": "string",
-                                      "description": "Last four digits of the card",
-                                      "example": "0690"
-                                    },
-                                    "memo": {
-                                      "type": "string",
-                                      "description": "Friendly name to identify the card",
-                                      "example": "Conference Event Card"
+                                    "privacy": {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "description": "The type of card being returned",
+                                          "enum": [
+                                            "UNLOCKED",
+                                            "MERCHANT_LOCKED",
+                                            "SINGLE_USE"
+                                          ],
+                                          "example": "UNLOCKED"
+                                        },
+                                        "state": {
+                                          "type": "string",
+                                          "description": "The current state of the card",
+                                          "enum": [
+                                            "OPEN",
+                                            "PAUSED",
+                                            "CLOSED"
+                                          ],
+                                          "example": "OPEN"
+                                        },
+                                        "token": {
+                                          "type": "string",
+                                          "format": "uuid",
+                                          "description": "Unique external identifier for the card",
+                                          "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                                        },
+                                        "last_four": {
+                                          "type": "string",
+                                          "description": "Last four digits of the card",
+                                          "example": "0690"
+                                        },
+                                        "memo": {
+                                          "type": "string",
+                                          "description": "Friendly name to identify the card",
+                                          "example": "Conference Event Card"
+                                        }
+                                      }
                                     }
                                   }
                                 }
@@ -21837,42 +21961,49 @@
               "nullable": true,
               "items": {
                 "type": "object",
-                "description": "Privacy card data. Field names match the ones in Privacy's card schema",
+                "description": "Card data. Field names match the ones in Privacy's card schema",
                 "additionalProperties": true,
                 "properties": {
-                  "type": {
-                    "type": "string",
-                    "description": "The type of card being returned",
-                    "enum": [
-                      "UNLOCKED"
-                    ],
-                    "example": "UNLOCKED"
-                  },
-                  "state": {
-                    "type": "string",
-                    "description": "The current state of the card",
-                    "enum": [
-                      "OPEN",
-                      "PAUSED",
-                      "CLOSED"
-                    ],
-                    "example": "OPEN"
-                  },
-                  "token": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Unique external identifier for the card",
-                    "example": "adccd28d-532e-480b-a063-a46a77a15570"
-                  },
-                  "last_four": {
-                    "type": "string",
-                    "description": "Last four digits of the card",
-                    "example": "0690"
-                  },
-                  "memo": {
-                    "type": "string",
-                    "description": "Friendly name to identify the card",
-                    "example": "Conference Event Card"
+                  "privacy": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "The type of card being returned",
+                        "enum": [
+                          "UNLOCKED",
+                          "MERCHANT_LOCKED",
+                          "SINGLE_USE"
+                        ],
+                        "example": "UNLOCKED"
+                      },
+                      "state": {
+                        "type": "string",
+                        "description": "The current state of the card",
+                        "enum": [
+                          "OPEN",
+                          "PAUSED",
+                          "CLOSED"
+                        ],
+                        "example": "OPEN"
+                      },
+                      "token": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique external identifier for the card",
+                        "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                      },
+                      "last_four": {
+                        "type": "string",
+                        "description": "Last four digits of the card",
+                        "example": "0690"
+                      },
+                      "memo": {
+                        "type": "string",
+                        "description": "Friendly name to identify the card",
+                        "example": "Conference Event Card"
+                      }
+                    }
                   }
                 }
               }

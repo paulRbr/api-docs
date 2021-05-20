@@ -1212,6 +1212,9 @@
             }
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateCustomerAccountCard"
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/CustomerAccountCard"
@@ -1611,6 +1614,9 @@
       },
       "CreateAccount": {
         "$ref": "./requestBodies/CreateAccount.json"
+      },
+      "CreateCustomerAccountCard": {
+        "$ref": "./requestBodies/CreateCustomerAccountCard.json"
       },
       "CreateNote": {
         "$ref": "./requestBodies/CreateNote.json"
