@@ -264,56 +264,11 @@ export interface LineItemOverview {
     /**
      * the corresponding Status for a line item
      */
-    line_item_status?: LineItemStatus;
+    line_item_status?: string;
     /**
      * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
      */
-    line_item_type: LineItemType;
-}
-
-/**
- * the corresponding Status for a line item
- */
-export enum LineItemStatus {
-    Authorized = "AUTHORIZED",
-    Declined = "DECLINED",
-    Invalid = "INVALID",
-    Offset = "OFFSET",
-    Pending = "PENDING",
-    Posted = "POSTED",
-    Reversed = "REVERSED",
-    Rolled = "ROLLED",
-    SplitInvalid = "SPLIT_INVALID",
-    SplitValid = "SPLIT_VALID",
-    Valid = "VALID",
-    Void = "VOID",
-}
-
-/**
- * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
- */
-export enum LineItemType {
-    Charge = "CHARGE",
-    CreditOffset = "CREDIT_OFFSET",
-    DebitOffset = "DEBIT_OFFSET",
-    DeferredInterest = "DEFERRED_INTEREST",
-    Fee = "FEE",
-    FeeSurcharge = "FEE_SURCHARGE",
-    Interest = "INTEREST",
-    LateFee = "LATE_FEE",
-    Loan = "LOAN",
-    MinDue = "MIN_DUE",
-    MonthFee = "MONTH_FEE",
-    OrigFee = "ORIG_FEE",
-    Payment = "PAYMENT",
-    PaymentReversal = "PAYMENT_REVERSAL",
-    PaymentSplit = "PAYMENT_SPLIT",
-    ProductInterest = "PRODUCT_INTEREST",
-    PromoEnd = "PROMO_END",
-    PurchaseWindowEnd = "PURCHASE_WINDOW_END",
-    ReturnCheckFee = "RETURN_CHECK_FEE",
-    Statement = "STATEMENT",
-    YearFee = "YEAR_FEE",
+    line_item_type: string;
 }
 
 export interface LineItemSummary {
@@ -332,28 +287,28 @@ export interface LineItemSummary {
      * The current balance of the line item, which accounts for interest accrued per the
      * `product's` interest policy and the `account's` interest rate attribute.
      */
-    balance_cents: number;
+    balance_cents?: number;
     /**
-     * he current deferred interest balance of the line item.
+     * The current deferred interest balance of the line item.
      */
-    deferred_interest_balance_cents: number;
+    deferred_interest_balance_cents?: number;
     /**
      * The current interest balance of the line item.
      */
-    interest_balance_cents: number;
+    interest_balance_cents?: number;
     /**
      * The originating amount of money (in cents) relating to this line item.
      */
-    original_amount_cents: number;
+    original_amount_cents?: number;
     /**
      * The principal balance of the line item.
      */
-    principal_cents: number;
+    principal_cents?: number;
     /**
      * The sum (in cents) of all payments towards interest charges, if any, applied to this line
      * item to date
      */
-    total_interest_paid_to_date_cents: number;
+    total_interest_paid_to_date_cents?: number;
 }
 
 /**

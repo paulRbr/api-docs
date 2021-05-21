@@ -36,49 +36,12 @@
         "line_item_status": {
           "type": "string",
           "description": "the corresponding Status for a line item",
-          "enum": [
-            "ROLLED",
-            "VALID",
-            "INVALID",
-            "OFFSET",
-            "SPLIT_VALID",
-            "SPLIT_INVALID",
-            "PENDING",
-            "REVERSED",
-            "AUTHORIZED",
-            "DECLINED",
-            "VOID",
-            "POSTED"
-          ],
           "example": "VALID",
           "default": "VALID"
         },
         "line_item_type": {
           "type": "string",
           "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-          "enum": [
-            "LOAN",
-            "CHARGE",
-            "DEBIT_OFFSET",
-            "INTEREST",
-            "DEFERRED_INTEREST",
-            "PAYMENT",
-            "CREDIT_OFFSET",
-            "STATEMENT",
-            "MIN_DUE",
-            "FEE",
-            "PRODUCT_INTEREST",
-            "PAYMENT_SPLIT",
-            "LATE_FEE",
-            "RETURN_CHECK_FEE",
-            "PROMO_END",
-            "PURCHASE_WINDOW_END",
-            "MONTH_FEE",
-            "YEAR_FEE",
-            "ORIG_FEE",
-            "FEE_SURCHARGE",
-            "PAYMENT_REVERSAL"
-          ],
           "example": "CHARGE"
         },
         "description": {
@@ -91,14 +54,6 @@
     },
     "line_item_summary": {
       "type": "object",
-      "required": [
-        "original_amount_cents",
-        "balance_cents",
-        "principal_cents",
-        "interest_balance_cents",
-        "deferred_interest_balance_cents",
-        "total_interest_paid_to_date_cents"
-      ],
       "properties": {
         "original_amount_cents": {
           "type": "integer",
@@ -127,7 +82,7 @@
         },
         "deferred_interest_balance_cents": {
           "type": "integer",
-          "description": "he current deferred interest balance of the line item.",
+          "description": "The current deferred interest balance of the line item.",
           "example": 200
         },
         "am_deferred_interest_balance_cents": {

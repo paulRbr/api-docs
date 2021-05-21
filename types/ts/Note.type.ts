@@ -6,7 +6,7 @@ export interface Note {
     /**
      * The API User who authored the note
      */
-    author: Author;
+    author?: Author;
     /**
      * The date and time the note was created.
      */
@@ -14,7 +14,7 @@ export interface Note {
     /**
      * The contents of the note.
      */
-    message: string;
+    message?: string;
     /**
      * A Canopy-generated ID for the note.
      */

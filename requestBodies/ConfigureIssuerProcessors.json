@@ -3,18 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "type": "object",
-        "properties": {
-          "privacy_config": {
-            "type": "object",
-            "properties": {
-              "api_key": {
-                "type": "string",
-                "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
-              }
-            }
-          }
-        }
+        "$ref": "./../schemas/ConfigureIssuerProcessorsInput.json"
       }
     }
   }

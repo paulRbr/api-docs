@@ -45,13 +45,6 @@
         "product_type": {
           "type": "string",
           "description": "The Type of Product",
-          "enum": [
-            "REVOLVING",
-            "INSTALLMENT",
-            "MIXED_RATE_INSTALLMENT",
-            "DEFERRED_INSTALLMENT",
-            "FIXED_RATE_INSTALLMENT"
-          ],
           "example": "REVOLVING"
         },
         "product_short_description": {

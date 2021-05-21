@@ -29,6 +29,48 @@
           "example": "https://mycallbackurlhandler.com/canopy"
         }
       }
+    },
+    "config": {
+      "description": "Configurations for API integrations within your organization.",
+      "type": "object",
+      "properties": {
+        "issuer_processor": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "PRIVACY",
+              "description": "The active issuer-processor for your organization."
+            },
+            "valid_api_key": {
+              "type": "boolean",
+              "example": true,
+              "description": "Indicates whether there is a valid API key configured for your issuer-processor."
+            }
+          }
+        },
+        "payment_processor": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The active payment processor for your organization.",
+              "example": "REPAY"
+            },
+            "repay_config": {
+              "description": "Indicates the details for Repay configuration, if available, for your organization.",
+              "type": "object",
+              "properties": {
+                "valid_merchant_id": {
+                  "type": "boolean",
+                  "example": true,
+                  "description": "Indicates whether a valid merchant ID has been configured for your organization. The merchant ID itself is hidden from our response."
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

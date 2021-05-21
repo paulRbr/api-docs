@@ -115,14 +115,14 @@
                 "properties": {
                   "role": {
                     "type": "number",
-                    "description": "A role to be made accessible for the user. [Contact our team](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
+                    "description": "Assign a role to users to dictate permissions and API access level . [Contact our team](mailto:devs@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
                     "example": 3,
                     "default": 1
                   },
                   "email": {
                     "type": "string",
                     "format": "email",
-                    "description": "The email address of this API User",
+                    "description": "The email address of this API User.",
                     "example": "marissa@globex.com"
                   }
                 }
@@ -298,12 +298,12 @@
                   "email": {
                     "type": "string",
                     "format": "email",
-                    "description": "The email address of the API User logging in.",
+                    "description": "The API user's email address.",
                     "example": "marissa@globex.com"
                   },
                   "password": {
                     "type": "string",
-                    "description": "The password of the user logging in.",
+                    "description": "The API user's password.",
                     "example": "secretPassword123!"
                   }
                 }
@@ -795,6 +795,7 @@
                       "product_type": {
                         "type": "string",
                         "description": "The Type of Product",
+                        "default": "REVOLVING",
                         "enum": [
                           "REVOLVING",
                           "INSTALLMENT",
@@ -1056,9 +1057,7 @@
                       "post_promo_min_pay_type": {
                         "type": "string",
                         "enum": [
-                          "AM",
-                          "PERCENT_INTEREST",
-                          "PERCENT_PRINCIPAL"
+                          "AM"
                         ],
                         "description": "Current due calculation method for the post-promotional period.",
                         "example": "AM",
@@ -1156,13 +1155,6 @@
                         "product_type": {
                           "type": "string",
                           "description": "The Type of Product",
-                          "enum": [
-                            "REVOLVING",
-                            "INSTALLMENT",
-                            "MIXED_RATE_INSTALLMENT",
-                            "DEFERRED_INSTALLMENT",
-                            "FIXED_RATE_INSTALLMENT"
-                          ],
                           "example": "REVOLVING"
                         },
                         "product_short_description": {
@@ -1637,13 +1629,6 @@
                               "product_type": {
                                 "type": "string",
                                 "description": "The Type of Product",
-                                "enum": [
-                                  "REVOLVING",
-                                  "INSTALLMENT",
-                                  "MIXED_RATE_INSTALLMENT",
-                                  "DEFERRED_INSTALLMENT",
-                                  "FIXED_RATE_INSTALLMENT"
-                                ],
                                 "example": "REVOLVING"
                               },
                               "product_short_description": {
@@ -2025,7 +2010,7 @@
                 "properties": {
                   "migration_mode": {
                     "type": "boolean",
-                    "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                    "description": "If migration mode is on, Canopy will not autogenerate statements for this account.",
                     "example": true,
                     "default": false
                   }
@@ -2259,10 +2244,6 @@
                               "customer_account_role": {
                                 "type": "string",
                                 "description": "The role of the customer for the account.",
-                                "enum": [
-                                  "PRIMARY",
-                                  "SECONDARY"
-                                ],
                                 "example": "PRIMARY",
                                 "default": "PRIMARY"
                               },
@@ -2411,13 +2392,6 @@
                                           "product_type": {
                                             "type": "string",
                                             "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                                            "enum": [
-                                              "REVOLVING",
-                                              "INSTALLMENT",
-                                              "MIXED_RATE_INSTALLMENT",
-                                              "DEFERRED_INSTALLMENT",
-                                              "FIXED_RATE_INSTALLMENT"
-                                            ],
                                             "example": "REVOLVING"
                                           }
                                         }
@@ -2673,7 +2647,7 @@
                                       },
                                       "autopay_enabled": {
                                         "type": "boolean",
-                                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                                         "example": true,
                                         "default": false
                                       },
@@ -2905,74 +2879,74 @@
                 "properties": {
                   "name_prefix": {
                     "type": "string",
-                    "description": "Prefix to the customer's name",
+                    "description": "Prefix to the customer's name.",
                     "example": "Dr."
                   },
                   "name_first": {
                     "type": "string",
-                    "description": "Customer's first name",
+                    "description": "Customer's first name.",
                     "example": "Miriam"
                   },
                   "name_middle": {
                     "type": "string",
-                    "description": "Customer's middle name",
+                    "description": "Customer's middle name.",
                     "example": "Louise"
                   },
                   "name_last": {
                     "type": "string",
-                    "description": "Customer's last name",
+                    "description": "Customer's last name.",
                     "example": "Trevino"
                   },
                   "name_suffix": {
                     "type": "string",
-                    "description": "Suffix to the customer's name",
+                    "description": "Suffix to the customer's name.",
                     "example": "Jr"
                   },
                   "phone_number": {
                     "type": "string",
-                    "description": "Customer's phone number in E.164 format",
+                    "description": "Customer's phone number in E.164 format.",
                     "example": "+14105556789"
                   },
                   "address_line_one": {
                     "type": "string",
-                    "description": "Address line one",
+                    "description": "Address line one.",
                     "example": "12 Strawberry Road"
                   },
                   "address_line_two": {
                     "type": "string",
-                    "description": "Address line two",
+                    "description": "Address line two.",
                     "example": "Suite 101"
                   },
                   "address_city": {
                     "type": "string",
-                    "description": "Address city",
+                    "description": "Address city.",
                     "example": "Atlanta"
                   },
                   "address_state": {
                     "type": "string",
-                    "description": "Address state",
+                    "description": "Address state.",
                     "example": "GA"
                   },
                   "address_zip": {
                     "type": "string",
-                    "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                    "description": "Five digit zipcode or nine digit 'ZIP+4'.",
                     "example": "99999-1000"
                   },
                   "ssn": {
                     "type": "string",
-                    "description": "Social security number of the customer",
-                    "example": "888-88-8888"
+                    "description": "Social security number of the customer.",
+                    "example": "888888888"
                   },
                   "email": {
                     "type": "string",
                     "format": "email",
-                    "description": "The email address of the Customer",
+                    "description": "The Customer's email address.",
                     "example": "marissa@protonmail.com"
                   },
                   "date_of_birth": {
                     "type": "string",
                     "format": "date",
-                    "description": "Customer's date of birth in ISO 8601 format",
+                    "description": "Customer's date of birth in ISO 8601 format.",
                     "example": "1985-06-20"
                   },
                   "business_details": {
@@ -2985,17 +2959,17 @@
                     "properties": {
                       "business_legal_name": {
                         "type": "string",
-                        "description": "The legal name of the Business",
+                        "description": "The legal name of the Business.",
                         "example": "Umbrella Corporation"
                       },
                       "doing_business_as": {
                         "type": "string",
-                        "description": "The DBA name of the Business",
+                        "description": "The DBA name of the Business.",
                         "example": "Umbrella"
                       },
                       "business_ein": {
                         "type": "string",
-                        "description": "EIN of the business",
+                        "description": "EIN of the business.",
                         "example": "888-88-8888"
                       }
                     }
@@ -3004,7 +2978,7 @@
                     "type": "array",
                     "nullable": true,
                     "maxItems": 10,
-                    "description": "An array of existing accounts to which this Customer should be assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
+                    "description": "An array of existing accounts to which this Customer should be assigned. If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
                     "items": {
                       "type": "object",
                       "properties": {
@@ -3017,9 +2991,10 @@
                           "type": "string",
                           "enum": [
                             "PRIMARY",
-                            "SECONDARY"
+                            "SECONDARY",
+                            "CARDHOLDER"
                           ],
-                          "description": "The role of the customer for the account",
+                          "description": "The role of the customer for the account.",
                           "example": "PRIMARY",
                           "default": "PRIMARY"
                         },
@@ -3036,7 +3011,7 @@
                               "properties": {
                                 "memo": {
                                   "type": "string",
-                                  "description": "Friendly name to identify the card",
+                                  "description": "Friendly name to identify the card.",
                                   "example": "Primary College Card"
                                 },
                                 "type": {
@@ -3046,7 +3021,7 @@
                                     "MERCHANT_LOCKED",
                                     "UNLOCKED"
                                   ],
-                                  "description": "The type of card created by privacy.com",
+                                  "description": "The type of card created by privacy.com.",
                                   "example": "MERCHANT_LOCKED"
                                 },
                                 "state": {
@@ -3055,7 +3030,7 @@
                                     "OPEN",
                                     "PAUSED"
                                   ],
-                                  "description": "The state of the new card",
+                                  "description": "The state of the new card.",
                                   "example": "OPEN"
                                 }
                               }
@@ -3231,19 +3206,19 @@
                       },
                       "product_id": {
                         "type": "string",
-                        "description": "This is generated by Canopy. A unique ID for the account.",
+                        "description": "A unique product ID generated by Canopy.",
                         "example": "31mNprzLd2bKl6koVna68ARM"
                       },
                       "external_product_id": {
                         "type": "string",
-                        "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either this, or the Canopy product ID must be passed at the time of account creation.",
+                        "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
                         "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                       },
                       "external_fields": {
                         "type": "array",
                         "nullable": true,
                         "maxItems": 10,
-                        "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
+                        "description": "External fields can be used to relate accounts created in Canopy to entities in your or any external system.",
                         "items": {
                           "type": "object",
                           "properties": {
@@ -3269,19 +3244,19 @@
                               "NONE",
                               "REPAY"
                             ],
-                            "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                            "description": "Indicates the active payment processor used for payments made by the account. If `NONE`, Canopy will not trigger payments to any payment processor when they occur.",
                             "example": "REPAY",
                             "default": "NONE"
                           },
                           "autopay_enabled": {
                             "type": "boolean",
-                            "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                            "description": "Indicates whether autopay is enabled for this account. Autopay is triggered one day prior to due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for the account regardless of this field.",
                             "example": true,
                             "default": false
                           },
                           "repay_config": {
                             "type": "object",
-                            "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
+                            "description": "All sensitive bank information will be replaced with a secure token when performing transactions.",
                             "required": [
                               "repay_payment_method",
                               "repay_check_type",
@@ -3296,7 +3271,7 @@
                                 "enum": [
                                   "ACH"
                                 ],
-                                "description": "The payment method to use for this account"
+                                "description": "The payment method used by the account"
                               },
                               "repay_check_type": {
                                 "type": "string",
@@ -3351,12 +3326,12 @@
                         "properties": {
                           "credit_limit_cents": {
                             "type": "integer",
-                            "description": "Total Amount (in cents) that this account can borrow.",
+                            "description": "Total amount (in cents) that this account can borrow.",
                             "example": 400000
                           },
                           "max_approved_credit_limit_cents": {
                             "type": "integer",
-                            "description": "Total Amount (in cents) that this account can borrow.",
+                            "description": "Total amount (in cents) that this account can borrow.",
                             "example": 400000
                           },
                           "late_fee_cents": {
@@ -3400,7 +3375,7 @@
                         "properties": {
                           "promo_impl_interest_rate_percent": {
                             "type": "number",
-                            "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+                            "description": "The percentage interest applied to the account during the promotional period (e.g. 6.2)",
                             "example": 6.2
                           }
                         }
@@ -3410,7 +3385,7 @@
                         "properties": {
                           "post_promo_impl_interest_rate_percent": {
                             "type": "number",
-                            "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+                            "description": "The percentage interest applied to the account during the post-promotional period (e.g. 6.2)",
                             "example": 6.2
                           },
                           "post_promo_len": {
@@ -3453,7 +3428,7 @@
                           "properties": {
                             "customer_id": {
                               "type": "string",
-                              "description": "This is generated by Canopy. A unique ID for the account.",
+                              "description": "A unique account ID generated by Canopy.",
                               "example": "31mNprzLd2bKl6koVna68ARM",
                               "minLength": 10
                             },
@@ -3622,13 +3597,6 @@
                                 "product_type": {
                                   "type": "string",
                                   "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                                  "enum": [
-                                    "REVOLVING",
-                                    "INSTALLMENT",
-                                    "MIXED_RATE_INSTALLMENT",
-                                    "DEFERRED_INSTALLMENT",
-                                    "FIXED_RATE_INSTALLMENT"
-                                  ],
                                   "example": "REVOLVING"
                                 }
                               }
@@ -3884,7 +3852,7 @@
                             },
                             "autopay_enabled": {
                               "type": "boolean",
-                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                               "example": true,
                               "default": false
                             },
@@ -4364,13 +4332,6 @@
                                 "product_type": {
                                   "type": "string",
                                   "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                                  "enum": [
-                                    "REVOLVING",
-                                    "INSTALLMENT",
-                                    "MIXED_RATE_INSTALLMENT",
-                                    "DEFERRED_INSTALLMENT",
-                                    "FIXED_RATE_INSTALLMENT"
-                                  ],
                                   "example": "REVOLVING"
                                 }
                               }
@@ -4626,7 +4587,7 @@
                             },
                             "autopay_enabled": {
                               "type": "boolean",
-                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                               "example": true,
                               "default": false
                             },
@@ -4991,7 +4952,7 @@
         "description": "Toggle autopay or change the payment processor / bank information for a given account.",
         "operationId": "editAccountPaymentProcessorConfig",
         "requestBody": {
-          "description": "Edit Payment Procesor Config",
+          "description": "Edit Payment Processor Config",
           "content": {
             "application/json": {
               "schema": {
@@ -5092,7 +5053,7 @@
                     },
                     "autopay_enabled": {
                       "type": "boolean",
-                      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                       "example": true,
                       "default": false
                     },
@@ -5184,8 +5145,6 @@
                   "required": [
                     "note_id",
                     "account_id",
-                    "author",
-                    "message",
                     "created_date"
                   ],
                   "properties": {
@@ -5316,8 +5275,6 @@
                     "required": [
                       "note_id",
                       "account_id",
-                      "author",
-                      "message",
                       "created_date"
                     ],
                     "properties": {
@@ -5532,49 +5489,12 @@
                               "line_item_status": {
                                 "type": "string",
                                 "description": "the corresponding Status for a line item",
-                                "enum": [
-                                  "ROLLED",
-                                  "VALID",
-                                  "INVALID",
-                                  "OFFSET",
-                                  "SPLIT_VALID",
-                                  "SPLIT_INVALID",
-                                  "PENDING",
-                                  "REVERSED",
-                                  "AUTHORIZED",
-                                  "DECLINED",
-                                  "VOID",
-                                  "POSTED"
-                                ],
                                 "example": "VALID",
                                 "default": "VALID"
                               },
                               "line_item_type": {
                                 "type": "string",
                                 "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                                "enum": [
-                                  "LOAN",
-                                  "CHARGE",
-                                  "DEBIT_OFFSET",
-                                  "INTEREST",
-                                  "DEFERRED_INTEREST",
-                                  "PAYMENT",
-                                  "CREDIT_OFFSET",
-                                  "STATEMENT",
-                                  "MIN_DUE",
-                                  "FEE",
-                                  "PRODUCT_INTEREST",
-                                  "PAYMENT_SPLIT",
-                                  "LATE_FEE",
-                                  "RETURN_CHECK_FEE",
-                                  "PROMO_END",
-                                  "PURCHASE_WINDOW_END",
-                                  "MONTH_FEE",
-                                  "YEAR_FEE",
-                                  "ORIG_FEE",
-                                  "FEE_SURCHARGE",
-                                  "PAYMENT_REVERSAL"
-                                ],
                                 "example": "CHARGE"
                               },
                               "description": {
@@ -5587,14 +5507,6 @@
                           },
                           "line_item_summary": {
                             "type": "object",
-                            "required": [
-                              "original_amount_cents",
-                              "balance_cents",
-                              "principal_cents",
-                              "interest_balance_cents",
-                              "deferred_interest_balance_cents",
-                              "total_interest_paid_to_date_cents"
-                            ],
                             "properties": {
                               "original_amount_cents": {
                                 "type": "integer",
@@ -5623,7 +5535,7 @@
                               },
                               "deferred_interest_balance_cents": {
                                 "type": "integer",
-                                "description": "he current deferred interest balance of the line item.",
+                                "description": "The current deferred interest balance of the line item.",
                                 "example": 200
                               },
                               "am_deferred_interest_balance_cents": {
@@ -5886,49 +5798,12 @@
                               "line_item_status": {
                                 "type": "string",
                                 "description": "the corresponding Status for a line item",
-                                "enum": [
-                                  "ROLLED",
-                                  "VALID",
-                                  "INVALID",
-                                  "OFFSET",
-                                  "SPLIT_VALID",
-                                  "SPLIT_INVALID",
-                                  "PENDING",
-                                  "REVERSED",
-                                  "AUTHORIZED",
-                                  "DECLINED",
-                                  "VOID",
-                                  "POSTED"
-                                ],
                                 "example": "VALID",
                                 "default": "VALID"
                               },
                               "line_item_type": {
                                 "type": "string",
                                 "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                                "enum": [
-                                  "LOAN",
-                                  "CHARGE",
-                                  "DEBIT_OFFSET",
-                                  "INTEREST",
-                                  "DEFERRED_INTEREST",
-                                  "PAYMENT",
-                                  "CREDIT_OFFSET",
-                                  "STATEMENT",
-                                  "MIN_DUE",
-                                  "FEE",
-                                  "PRODUCT_INTEREST",
-                                  "PAYMENT_SPLIT",
-                                  "LATE_FEE",
-                                  "RETURN_CHECK_FEE",
-                                  "PROMO_END",
-                                  "PURCHASE_WINDOW_END",
-                                  "MONTH_FEE",
-                                  "YEAR_FEE",
-                                  "ORIG_FEE",
-                                  "FEE_SURCHARGE",
-                                  "PAYMENT_REVERSAL"
-                                ],
                                 "example": "CHARGE"
                               },
                               "description": {
@@ -5941,14 +5816,6 @@
                           },
                           "line_item_summary": {
                             "type": "object",
-                            "required": [
-                              "original_amount_cents",
-                              "balance_cents",
-                              "principal_cents",
-                              "interest_balance_cents",
-                              "deferred_interest_balance_cents",
-                              "total_interest_paid_to_date_cents"
-                            ],
                             "properties": {
                               "original_amount_cents": {
                                 "type": "integer",
@@ -5977,7 +5844,7 @@
                               },
                               "deferred_interest_balance_cents": {
                                 "type": "integer",
-                                "description": "he current deferred interest balance of the line item.",
+                                "description": "The current deferred interest balance of the line item.",
                                 "example": 200
                               },
                               "am_deferred_interest_balance_cents": {
@@ -6127,14 +5994,10 @@
                     "type": "string",
                     "description": "The new status which you would like to set for the line item",
                     "enum": [
-                      "ROLLED",
                       "VALID",
                       "INVALID",
                       "OFFSET",
-                      "SPLIT_VALID",
-                      "SPLIT_INVALID",
                       "PENDING",
-                      "REVERSED",
                       "AUTHORIZED",
                       "DECLINED",
                       "VOID",
@@ -6379,16 +6242,12 @@
                 "properties": {
                   "line_item_status": {
                     "type": "string",
-                    "description": "the corresponding Status for a line item",
+                    "description": "The status of a line item.",
                     "enum": [
-                      "ROLLED",
                       "VALID",
                       "INVALID",
                       "OFFSET",
-                      "SPLIT_VALID",
-                      "SPLIT_INVALID",
                       "PENDING",
-                      "REVERSED",
                       "AUTHORIZED",
                       "DECLINED",
                       "VOID",
@@ -6399,13 +6258,13 @@
                   },
                   "original_amount_cents": {
                     "type": "integer",
-                    "description": "The Integer Amount of the Charge in Cents",
+                    "description": "The amount charged (in cents).",
                     "example": 200,
                     "default": 0
                   },
                   "effective_at": {
                     "type": "string",
-                    "description": "The `Date-Time` that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
+                    "description": "The `Date-Time` that the charge is made applicable to the account. Although a charge may be made today, it can be set effective 10 days prior.",
                     "format": "date-time",
                     "example": "2020-07-20T09:11:28+00:00"
                   },
@@ -6446,7 +6305,7 @@
                     "type": "array",
                     "maxItems": 10,
                     "nullable": true,
-                    "description": "An array of static references to fields in a third party system.",
+                    "description": "External fields can be used to associate this record to entities in external systems.",
                     "items": {
                       "type": "object",
                       "properties": {
@@ -6698,13 +6557,13 @@
                 "properties": {
                   "original_amount_cents": {
                     "type": "integer",
-                    "description": "The Integer Amount of the Payment in Cents",
+                    "description": "The payment amount in cents.",
                     "example": 200,
                     "default": 0
                   },
                   "effective_at": {
                     "type": "string",
-                    "description": "The `Date-Time` that the payment should be recorded to the account. Although the payment is being added to Canopy today, it can actually be effective as of 10 days ago.",
+                    "description": "The `Date-Time` that the payment is applicable to the account. Although the payment is created in Canopy today, it can actually be effective 10 days prior.",
                     "format": "date-time",
                     "example": "2020-07-20T09:11:28+00:00"
                   },
@@ -6712,7 +6571,7 @@
                     "type": "array",
                     "nullable": true,
                     "maxItems": 10,
-                    "description": "An array of static references to fields in a third party system.",
+                    "description": "External fields can be used to relate payments created in Canopy to entities in your or any external system.",
                     "items": {
                       "type": "object",
                       "properties": {
@@ -7602,49 +7461,12 @@
                               "line_item_status": {
                                 "type": "string",
                                 "description": "the corresponding Status for a line item",
-                                "enum": [
-                                  "ROLLED",
-                                  "VALID",
-                                  "INVALID",
-                                  "OFFSET",
-                                  "SPLIT_VALID",
-                                  "SPLIT_INVALID",
-                                  "PENDING",
-                                  "REVERSED",
-                                  "AUTHORIZED",
-                                  "DECLINED",
-                                  "VOID",
-                                  "POSTED"
-                                ],
                                 "example": "VALID",
                                 "default": "VALID"
                               },
                               "line_item_type": {
                                 "type": "string",
                                 "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                                "enum": [
-                                  "LOAN",
-                                  "CHARGE",
-                                  "DEBIT_OFFSET",
-                                  "INTEREST",
-                                  "DEFERRED_INTEREST",
-                                  "PAYMENT",
-                                  "CREDIT_OFFSET",
-                                  "STATEMENT",
-                                  "MIN_DUE",
-                                  "FEE",
-                                  "PRODUCT_INTEREST",
-                                  "PAYMENT_SPLIT",
-                                  "LATE_FEE",
-                                  "RETURN_CHECK_FEE",
-                                  "PROMO_END",
-                                  "PURCHASE_WINDOW_END",
-                                  "MONTH_FEE",
-                                  "YEAR_FEE",
-                                  "ORIG_FEE",
-                                  "FEE_SURCHARGE",
-                                  "PAYMENT_REVERSAL"
-                                ],
                                 "example": "CHARGE"
                               },
                               "description": {
@@ -7657,14 +7479,6 @@
                           },
                           "line_item_summary": {
                             "type": "object",
-                            "required": [
-                              "original_amount_cents",
-                              "balance_cents",
-                              "principal_cents",
-                              "interest_balance_cents",
-                              "deferred_interest_balance_cents",
-                              "total_interest_paid_to_date_cents"
-                            ],
                             "properties": {
                               "original_amount_cents": {
                                 "type": "integer",
@@ -7693,7 +7507,7 @@
                               },
                               "deferred_interest_balance_cents": {
                                 "type": "integer",
-                                "description": "he current deferred interest balance of the line item.",
+                                "description": "The current deferred interest balance of the line item.",
                                 "example": 200
                               },
                               "am_deferred_interest_balance_cents": {
@@ -8172,6 +7986,48 @@
                           "example": "https://mycallbackurlhandler.com/canopy"
                         }
                       }
+                    },
+                    "config": {
+                      "description": "Configurations for API integrations within your organization.",
+                      "type": "object",
+                      "properties": {
+                        "issuer_processor": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "PRIVACY",
+                              "description": "The active issuer-processor for your organization."
+                            },
+                            "valid_api_key": {
+                              "type": "boolean",
+                              "example": true,
+                              "description": "Indicates whether there is a valid API key configured for your issuer-processor."
+                            }
+                          }
+                        },
+                        "payment_processor": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "The active payment processor for your organization.",
+                              "example": "REPAY"
+                            },
+                            "repay_config": {
+                              "description": "Indicates the details for Repay configuration, if available, for your organization.",
+                              "type": "object",
+                              "properties": {
+                                "valid_merchant_id": {
+                                  "type": "boolean",
+                                  "example": true,
+                                  "description": "Indicates whether a valid merchant ID has been configured for your organization. The merchant ID itself is hidden from our response."
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -8622,49 +8478,12 @@
                                     "line_item_status": {
                                       "type": "string",
                                       "description": "the corresponding Status for a line item",
-                                      "enum": [
-                                        "ROLLED",
-                                        "VALID",
-                                        "INVALID",
-                                        "OFFSET",
-                                        "SPLIT_VALID",
-                                        "SPLIT_INVALID",
-                                        "PENDING",
-                                        "REVERSED",
-                                        "AUTHORIZED",
-                                        "DECLINED",
-                                        "VOID",
-                                        "POSTED"
-                                      ],
                                       "example": "VALID",
                                       "default": "VALID"
                                     },
                                     "line_item_type": {
                                       "type": "string",
                                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                                      "enum": [
-                                        "LOAN",
-                                        "CHARGE",
-                                        "DEBIT_OFFSET",
-                                        "INTEREST",
-                                        "DEFERRED_INTEREST",
-                                        "PAYMENT",
-                                        "CREDIT_OFFSET",
-                                        "STATEMENT",
-                                        "MIN_DUE",
-                                        "FEE",
-                                        "PRODUCT_INTEREST",
-                                        "PAYMENT_SPLIT",
-                                        "LATE_FEE",
-                                        "RETURN_CHECK_FEE",
-                                        "PROMO_END",
-                                        "PURCHASE_WINDOW_END",
-                                        "MONTH_FEE",
-                                        "YEAR_FEE",
-                                        "ORIG_FEE",
-                                        "FEE_SURCHARGE",
-                                        "PAYMENT_REVERSAL"
-                                      ],
                                       "example": "CHARGE"
                                     },
                                     "description": {
@@ -8677,14 +8496,6 @@
                                 },
                                 "line_item_summary": {
                                   "type": "object",
-                                  "required": [
-                                    "original_amount_cents",
-                                    "balance_cents",
-                                    "principal_cents",
-                                    "interest_balance_cents",
-                                    "deferred_interest_balance_cents",
-                                    "total_interest_paid_to_date_cents"
-                                  ],
                                   "properties": {
                                     "original_amount_cents": {
                                       "type": "integer",
@@ -8713,7 +8524,7 @@
                                     },
                                     "deferred_interest_balance_cents": {
                                       "type": "integer",
-                                      "description": "he current deferred interest balance of the line item.",
+                                      "description": "The current deferred interest balance of the line item.",
                                       "example": 200
                                     },
                                     "am_deferred_interest_balance_cents": {
@@ -8923,6 +8734,7 @@
                     "properties": {
                       "merchant_id": {
                         "type": "string",
+                        "example": "987654321",
                         "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
                       }
                     }
@@ -8945,6 +8757,7 @@
                       "properties": {
                         "merchant_id": {
                           "type": "string",
+                          "example": "987654321",
                           "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
                         }
                       }
@@ -8992,6 +8805,7 @@
                     "properties": {
                       "api_key": {
                         "type": "string",
+                        "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
                         "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
                       }
                     }
@@ -9014,6 +8828,7 @@
                       "properties": {
                         "api_key": {
                           "type": "string",
+                          "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
                           "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
                         }
                       }
@@ -9060,54 +8875,6 @@
       }
     },
     "schemas": {
-      "ApiUser": {
-        "type": "object",
-        "required": [
-          "api_user_id",
-          "organization_name",
-          "email",
-          "role"
-        ],
-        "properties": {
-          "api_user_id": {
-            "type": "string",
-            "description": "The unique ID in Canopy for this API user",
-            "example": "dc3d83c5-b31e-48eb-80e7-38f12ac1a6e5"
-          },
-          "organization_name": {
-            "type": "string",
-            "description": "The organization to which the API user belongs.",
-            "example": "Lever Card 3000"
-          },
-          "name_first": {
-            "type": "string",
-            "description": "The first name of the API user.",
-            "example": "Analise"
-          },
-          "name_last": {
-            "type": "string",
-            "description": "The last name of the API user.",
-            "example": "Goldberg"
-          },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "description": "The email address of this API User",
-            "example": "marissa@globex.com"
-          },
-          "phone": {
-            "type": "string",
-            "description": "Phone number of the API user",
-            "example": "1-123-456-7890",
-            "nullable": true
-          },
-          "role": {
-            "type": "integer",
-            "description": "The role of this user in the API",
-            "example": 1
-          }
-        }
-      },
       "Account": {
         "type": "object",
         "required": [
@@ -9208,13 +8975,6 @@
                   "product_type": {
                     "type": "string",
                     "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                    "enum": [
-                      "REVOLVING",
-                      "INSTALLMENT",
-                      "MIXED_RATE_INSTALLMENT",
-                      "DEFERRED_INSTALLMENT",
-                      "FIXED_RATE_INSTALLMENT"
-                    ],
                     "example": "REVOLVING"
                   }
                 }
@@ -9470,7 +9230,7 @@
               },
               "autopay_enabled": {
                 "type": "boolean",
-                "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                 "example": true,
                 "default": false
               },
@@ -10006,49 +9766,12 @@
                     "line_item_status": {
                       "type": "string",
                       "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "ROLLED",
-                        "VALID",
-                        "INVALID",
-                        "OFFSET",
-                        "SPLIT_VALID",
-                        "SPLIT_INVALID",
-                        "PENDING",
-                        "REVERSED",
-                        "AUTHORIZED",
-                        "DECLINED",
-                        "VOID",
-                        "POSTED"
-                      ],
                       "example": "VALID",
                       "default": "VALID"
                     },
                     "line_item_type": {
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "LOAN",
-                        "CHARGE",
-                        "DEBIT_OFFSET",
-                        "INTEREST",
-                        "DEFERRED_INTEREST",
-                        "PAYMENT",
-                        "CREDIT_OFFSET",
-                        "STATEMENT",
-                        "MIN_DUE",
-                        "FEE",
-                        "PRODUCT_INTEREST",
-                        "PAYMENT_SPLIT",
-                        "LATE_FEE",
-                        "RETURN_CHECK_FEE",
-                        "PROMO_END",
-                        "PURCHASE_WINDOW_END",
-                        "MONTH_FEE",
-                        "YEAR_FEE",
-                        "ORIG_FEE",
-                        "FEE_SURCHARGE",
-                        "PAYMENT_REVERSAL"
-                      ],
                       "example": "CHARGE"
                     },
                     "description": {
@@ -10061,14 +9784,6 @@
                 },
                 "line_item_summary": {
                   "type": "object",
-                  "required": [
-                    "original_amount_cents",
-                    "balance_cents",
-                    "principal_cents",
-                    "interest_balance_cents",
-                    "deferred_interest_balance_cents",
-                    "total_interest_paid_to_date_cents"
-                  ],
                   "properties": {
                     "original_amount_cents": {
                       "type": "integer",
@@ -10097,7 +9812,7 @@
                     },
                     "deferred_interest_balance_cents": {
                       "type": "integer",
-                      "description": "he current deferred interest balance of the line item.",
+                      "description": "The current deferred interest balance of the line item.",
                       "example": 200
                     },
                     "am_deferred_interest_balance_cents": {
@@ -10259,6 +9974,54 @@
                 "example": 400000
               }
             }
+          }
+        }
+      },
+      "ApiUser": {
+        "type": "object",
+        "required": [
+          "api_user_id",
+          "organization_name",
+          "email",
+          "role"
+        ],
+        "properties": {
+          "api_user_id": {
+            "type": "string",
+            "description": "The unique ID in Canopy for this API user",
+            "example": "dc3d83c5-b31e-48eb-80e7-38f12ac1a6e5"
+          },
+          "organization_name": {
+            "type": "string",
+            "description": "The organization to which the API user belongs.",
+            "example": "Lever Card 3000"
+          },
+          "name_first": {
+            "type": "string",
+            "description": "The first name of the API user.",
+            "example": "Analise"
+          },
+          "name_last": {
+            "type": "string",
+            "description": "The last name of the API user.",
+            "example": "Goldberg"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of this API User",
+            "example": "marissa@globex.com"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number of the API user",
+            "example": "1-123-456-7890",
+            "nullable": true
+          },
+          "role": {
+            "type": "integer",
+            "description": "The role of this user in the API",
+            "example": 1
           }
         }
       },
@@ -10456,13 +10219,6 @@
                       "product_type": {
                         "type": "string",
                         "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                        "enum": [
-                          "REVOLVING",
-                          "INSTALLMENT",
-                          "MIXED_RATE_INSTALLMENT",
-                          "DEFERRED_INSTALLMENT",
-                          "FIXED_RATE_INSTALLMENT"
-                        ],
                         "example": "REVOLVING"
                       }
                     }
@@ -10718,7 +10474,7 @@
                   },
                   "autopay_enabled": {
                     "type": "boolean",
-                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                     "example": true,
                     "default": false
                   },
@@ -11048,111 +10804,6 @@
           }
         ]
       },
-      "Customer": {
-        "type": "object",
-        "required": [
-          "customer_id"
-        ],
-        "properties": {
-          "customer_id": {
-            "type": "string",
-            "description": "A Canopy-generated ID for the customer.",
-            "example": "31mNprzLd2bKl6koVna68ARM"
-          },
-          "name_prefix": {
-            "type": "string",
-            "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
-            "example": "Dr."
-          },
-          "name_first": {
-            "type": "string",
-            "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
-            "example": "Miriam"
-          },
-          "name_middle": {
-            "type": "string",
-            "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
-            "example": "Louise"
-          },
-          "name_last": {
-            "type": "string",
-            "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
-            "example": "Trevino"
-          },
-          "name_suffix": {
-            "type": "string",
-            "description": "Suffix to the customer's name",
-            "example": "Jr"
-          },
-          "phone_number": {
-            "type": "string",
-            "description": "Customer's phone number in E.164 format",
-            "example": "+14105556789"
-          },
-          "address_line_one": {
-            "type": "string",
-            "description": "Address line one.",
-            "example": "12 Strawberry Road"
-          },
-          "address_line_two": {
-            "type": "string",
-            "description": "Address line two.",
-            "example": "Suite 101"
-          },
-          "address_city": {
-            "type": "string",
-            "description": "Address city.",
-            "example": "Atlanta"
-          },
-          "address_state": {
-            "type": "string",
-            "description": "Address state.",
-            "example": "GA"
-          },
-          "address_zip": {
-            "type": "string",
-            "description": "Five digit zipcode or nine digit 'ZIP+4'",
-            "example": "99999-1000"
-          },
-          "ssn": {
-            "type": "string",
-            "description": "Social security number of the customer",
-            "example": "888-88-8888"
-          },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "description": "The email address of this Customer",
-            "example": "marissa@protonmail.com"
-          },
-          "date_of_birth": {
-            "type": "string",
-            "format": "date",
-            "description": "Customer's date of birth in ISO 8601 format",
-            "example": "1985-06-20"
-          },
-          "business_details": {
-            "type": "object",
-            "properties": {
-              "business_legal_name": {
-                "type": "string",
-                "description": "The legal name of the Business",
-                "example": "Umbrella Corporation"
-              },
-              "doing_business_as": {
-                "type": "string",
-                "description": "The DBA name of the Business",
-                "example": "Umbrella"
-              },
-              "business_ein": {
-                "type": "string",
-                "description": "EIN of the business",
-                "example": "888-88-8888"
-              }
-            }
-          }
-        }
-      },
       "ComplexCustomer": {
         "allOf": [
           {
@@ -11368,13 +11019,6 @@
                             "product_type": {
                               "type": "string",
                               "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                              "enum": [
-                                "REVOLVING",
-                                "INSTALLMENT",
-                                "MIXED_RATE_INSTALLMENT",
-                                "DEFERRED_INSTALLMENT",
-                                "FIXED_RATE_INSTALLMENT"
-                              ],
                               "example": "REVOLVING"
                             }
                           }
@@ -11630,7 +11274,7 @@
                         },
                         "autopay_enabled": {
                           "type": "boolean",
-                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                           "example": true,
                           "default": false
                         },
@@ -11783,6 +11427,817 @@
           }
         ]
       },
+      "ConfigureIssuerProcessorsInput": {
+        "type": "object",
+        "properties": {
+          "privacy_config": {
+            "type": "object",
+            "properties": {
+              "api_key": {
+                "type": "string",
+                "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
+                "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+              }
+            }
+          }
+        }
+      },
+      "ConfigurePaymentProcessorsInput": {
+        "type": "object",
+        "properties": {
+          "repay_config": {
+            "type": "object",
+            "properties": {
+              "merchant_id": {
+                "type": "string",
+                "example": "987654321",
+                "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
+              }
+            }
+          }
+        }
+      },
+      "CreateAccountInput": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "effective_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The `Date-Time` as of which this account is effective on the server.",
+                "example": "2016-11-27T13:19:56+00:00"
+              },
+              "product_id": {
+                "type": "string",
+                "description": "A unique product ID generated by Canopy.",
+                "example": "31mNprzLd2bKl6koVna68ARM"
+              },
+              "external_product_id": {
+                "type": "string",
+                "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
+                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+              },
+              "external_fields": {
+                "type": "array",
+                "nullable": true,
+                "maxItems": 10,
+                "description": "External fields can be used to relate accounts created in Canopy to entities in your or any external system.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "description": "key: i.e. Name of the External Party",
+                      "example": "Umbrella Corporation"
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "value: i.e. External Account ID",
+                      "example": "22445702-a389-431f-927d-07b8d0750787"
+                    }
+                  }
+                }
+              },
+              "payment_processor_config": {
+                "type": "object",
+                "properties": {
+                  "payment_processor_name": {
+                    "type": "string",
+                    "enum": [
+                      "NONE",
+                      "REPAY"
+                    ],
+                    "description": "Indicates the active payment processor used for payments made by the account. If `NONE`, Canopy will not trigger payments to any payment processor when they occur.",
+                    "example": "REPAY",
+                    "default": "NONE"
+                  },
+                  "autopay_enabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether autopay is enabled for this account. Autopay is triggered one day prior to due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for the account regardless of this field.",
+                    "example": true,
+                    "default": false
+                  },
+                  "repay_config": {
+                    "type": "object",
+                    "description": "All sensitive bank information will be replaced with a secure token when performing transactions.",
+                    "required": [
+                      "repay_payment_method",
+                      "repay_check_type",
+                      "repay_account_type",
+                      "repay_transit_number",
+                      "repay_account_number",
+                      "repay_name_on_check"
+                    ],
+                    "properties": {
+                      "repay_payment_method": {
+                        "type": "string",
+                        "enum": [
+                          "ACH"
+                        ],
+                        "description": "The payment method used by the account"
+                      },
+                      "repay_check_type": {
+                        "type": "string",
+                        "enum": [
+                          "PERSONAL",
+                          "BUSINESS"
+                        ],
+                        "description": "Type of checking account: Personal or Business.",
+                        "example": "PERSONAL"
+                      },
+                      "repay_account_type": {
+                        "type": "string",
+                        "enum": [
+                          "SAVINGS",
+                          "CHECKING"
+                        ],
+                        "description": "Type of account: Savings or Checking.",
+                        "example": "CHECKING"
+                      },
+                      "repay_transit_number": {
+                        "type": "integer",
+                        "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+                        "example": 999999992
+                      },
+                      "repay_account_number": {
+                        "type": "integer",
+                        "description": "Account number is an eight to ten digit number that identifies a specific account.",
+                        "example": 987654321
+                      },
+                      "repay_name_on_check": {
+                        "type": "string",
+                        "description": "Account holder's name as it appears on the account.",
+                        "example": "Lucille Bluth"
+                      }
+                    }
+                  }
+                }
+              },
+              "cycle_type": {
+                "type": "object",
+                "properties": {
+                  "first_cycle_interval": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Interval for a first cycle for this account.",
+                    "example": "11 days"
+                  }
+                }
+              },
+              "summary": {
+                "type": "object",
+                "properties": {
+                  "credit_limit_cents": {
+                    "type": "integer",
+                    "description": "Total amount (in cents) that this account can borrow.",
+                    "example": 400000
+                  },
+                  "max_approved_credit_limit_cents": {
+                    "type": "integer",
+                    "description": "Total amount (in cents) that this account can borrow.",
+                    "example": 400000
+                  },
+                  "late_fee_cents": {
+                    "type": "integer",
+                    "description": "The fee charged for late payments on the account.",
+                    "example": 2900
+                  },
+                  "payment_reversal_fee_cents": {
+                    "type": "integer",
+                    "description": "The fee charged for payment reversals on the account.",
+                    "example": 2900
+                  },
+                  "origination_fee_cents": {
+                    "type": "integer",
+                    "description": "The fee charged at the time of account origination",
+                    "default": 0,
+                    "example": 2000
+                  },
+                  "annual_fee_cents": {
+                    "type": "integer",
+                    "description": "An annual fee to be charged yearly from the date of account creation. It will reflect on the subsequent statement once incurred.",
+                    "default": 0,
+                    "example": 1000
+                  },
+                  "monthly_fee_cents": {
+                    "type": "integer",
+                    "description": "A monthly fee to be charged monthly from the date of account creation. It will reflect on the subsequent statement once incurred.",
+                    "default": 0,
+                    "example": 500
+                  },
+                  "initial_principal_cents": {
+                    "type": "integer",
+                    "description": "The initial principal balance (in cents) for the account.",
+                    "example": 400000,
+                    "nullable": true
+                  }
+                }
+              },
+              "promo_overview": {
+                "type": "object",
+                "properties": {
+                  "promo_impl_interest_rate_percent": {
+                    "type": "number",
+                    "description": "The percentage interest applied to the account during the promotional period (e.g. 6.2)",
+                    "example": 6.2
+                  }
+                }
+              },
+              "post_promo_overview": {
+                "type": "object",
+                "properties": {
+                  "post_promo_impl_interest_rate_percent": {
+                    "type": "number",
+                    "description": "The percentage interest applied to the account during the post-promotional period (e.g. 6.2)",
+                    "example": 6.2
+                  },
+                  "post_promo_len": {
+                    "type": "integer",
+                    "description": "If applicable, post-promotional amortization length in cycles.",
+                    "example": 48
+                  }
+                }
+              },
+              "associated_entities": {
+                "type": "object",
+                "properties": {
+                  "merchant_name": {
+                    "type": "string",
+                    "description": "A merchant name associated with the account",
+                    "example": "Acme Corporation"
+                  },
+                  "lender_name": {
+                    "type": "string",
+                    "description": "A lender name associated with the account",
+                    "example": "Globex Lending Corp"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "assign_customers": {
+                "type": "array",
+                "maxItems": 10,
+                "nullable": true,
+                "description": "Array of existing customer IDs to be added to the account. At least one existing *OR* one new customer must be included in account creation.",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "customer_id"
+                  ],
+                  "properties": {
+                    "customer_id": {
+                      "type": "string",
+                      "description": "A unique account ID generated by Canopy.",
+                      "example": "31mNprzLd2bKl6koVna68ARM",
+                      "minLength": 10
+                    },
+                    "customer_account_role": {
+                      "type": "string",
+                      "enum": [
+                        "PRIMARY",
+                        "SECONDARY"
+                      ],
+                      "description": "The role of the customer for the account.",
+                      "example": "SECONDARY"
+                    },
+                    "customer_account_external_id": {
+                      "type": "string",
+                      "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
+                      "example": "4465220133024156"
+                    },
+                    "customer_account_issuer_processor_config": {
+                      "type": "object",
+                      "properties": {
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "memo": {
+                              "type": "string",
+                              "description": "Friendly name to identify the card",
+                              "example": "Primary College Card"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "SINGLE_USE",
+                                "MERCHANT_LOCKED",
+                                "UNLOCKED"
+                              ],
+                              "description": "The type of card created by privacy.com",
+                              "example": "MERCHANT_LOCKED"
+                            },
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "OPEN",
+                                "PAUSED"
+                              ],
+                              "description": "The state of the new card",
+                              "example": "OPEN"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CreateAPIUserInput": {
+        "type": "object",
+        "required": [
+          "email",
+          "role"
+        ],
+        "properties": {
+          "role": {
+            "type": "number",
+            "description": "Assign a role to users to dictate permissions and API access level . [Contact our team](mailto:devs@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
+            "example": 3,
+            "default": 1
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of this API User.",
+            "example": "marissa@globex.com"
+          }
+        }
+      },
+      "CreateChargeInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "original_amount_cents",
+          "merchant_data"
+        ],
+        "properties": {
+          "line_item_status": {
+            "type": "string",
+            "description": "The status of a line item.",
+            "enum": [
+              "VALID",
+              "INVALID",
+              "OFFSET",
+              "PENDING",
+              "AUTHORIZED",
+              "DECLINED",
+              "VOID",
+              "POSTED"
+            ],
+            "example": "VALID",
+            "default": "VALID"
+          },
+          "original_amount_cents": {
+            "type": "integer",
+            "description": "The amount charged (in cents).",
+            "example": 200,
+            "default": 0
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that the charge is made applicable to the account. Although a charge may be made today, it can be set effective 10 days prior.",
+            "format": "date-time",
+            "example": "2020-07-20T09:11:28+00:00"
+          },
+          "merchant_data": {
+            "type": "object",
+            "nullable": true,
+            "description": "",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "mcc_code": {
+                "type": "number"
+              },
+              "phone_number": {
+                "type": "string"
+              }
+            }
+          },
+          "issuer_processor_metadata": {
+            "type": "object",
+            "properties": {
+              "privacy": {
+                "type": "object",
+                "properties": {
+                  "last_four": {
+                    "type": "integer",
+                    "description": "Last four digits of the card against which the spend was made."
+                  }
+                }
+              }
+            }
+          },
+          "external_fields": {
+            "type": "array",
+            "maxItems": 10,
+            "nullable": true,
+            "description": "External fields can be used to associate this record to entities in external systems.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "description": "Key - i.e. Name of the External Party",
+                  "example": "Globex Card Processing Account ID"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value - i.e. External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateCustomerAccountCardInput": {
+        "type": "object",
+        "properties": {
+          "privacy": {
+            "type": "object",
+            "properties": {
+              "memo": {
+                "type": "string",
+                "description": "Friendly name to identify the card",
+                "example": "Primary College Card"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "SINGLE_USE",
+                  "MERCHANT_LOCKED",
+                  "UNLOCKED"
+                ],
+                "description": "The type of card created by privacy.com",
+                "example": "MERCHANT_LOCKED"
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "OPEN",
+                  "PAUSED"
+                ],
+                "description": "The state of the new card",
+                "example": "OPEN"
+              }
+            }
+          }
+        }
+      },
+      "CreateCustomerInput": {
+        "type": "object",
+        "required": [
+          "name_first",
+          "name_last",
+          "phone_number",
+          "address_line_one",
+          "address_city",
+          "address_state",
+          "address_zip",
+          "ssn",
+          "email",
+          "date_of_birth"
+        ],
+        "properties": {
+          "name_prefix": {
+            "type": "string",
+            "description": "Prefix to the customer's name.",
+            "example": "Dr."
+          },
+          "name_first": {
+            "type": "string",
+            "description": "Customer's first name.",
+            "example": "Miriam"
+          },
+          "name_middle": {
+            "type": "string",
+            "description": "Customer's middle name.",
+            "example": "Louise"
+          },
+          "name_last": {
+            "type": "string",
+            "description": "Customer's last name.",
+            "example": "Trevino"
+          },
+          "name_suffix": {
+            "type": "string",
+            "description": "Suffix to the customer's name.",
+            "example": "Jr"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Customer's phone number in E.164 format.",
+            "example": "+14105556789"
+          },
+          "address_line_one": {
+            "type": "string",
+            "description": "Address line one.",
+            "example": "12 Strawberry Road"
+          },
+          "address_line_two": {
+            "type": "string",
+            "description": "Address line two.",
+            "example": "Suite 101"
+          },
+          "address_city": {
+            "type": "string",
+            "description": "Address city.",
+            "example": "Atlanta"
+          },
+          "address_state": {
+            "type": "string",
+            "description": "Address state.",
+            "example": "GA"
+          },
+          "address_zip": {
+            "type": "string",
+            "description": "Five digit zipcode or nine digit 'ZIP+4'.",
+            "example": "99999-1000"
+          },
+          "ssn": {
+            "type": "string",
+            "description": "Social security number of the customer.",
+            "example": "888888888"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The Customer's email address.",
+            "example": "marissa@protonmail.com"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date",
+            "description": "Customer's date of birth in ISO 8601 format.",
+            "example": "1985-06-20"
+          },
+          "business_details": {
+            "type": "object",
+            "required": [
+              "business_legal_name",
+              "doing_business_as",
+              "business_ein"
+            ],
+            "properties": {
+              "business_legal_name": {
+                "type": "string",
+                "description": "The legal name of the Business.",
+                "example": "Umbrella Corporation"
+              },
+              "doing_business_as": {
+                "type": "string",
+                "description": "The DBA name of the Business.",
+                "example": "Umbrella"
+              },
+              "business_ein": {
+                "type": "string",
+                "description": "EIN of the business.",
+                "example": "888-88-8888"
+              }
+            }
+          },
+          "assign_to_accounts": {
+            "type": "array",
+            "nullable": true,
+            "maxItems": 10,
+            "description": "An array of existing accounts to which this Customer should be assigned. If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "account_id": {
+                  "type": "string",
+                  "description": "This is generated by Canopy. A unique ID for the account.",
+                  "example": "31mNprzLd2bKl6koVna68ARM"
+                },
+                "customer_account_role": {
+                  "type": "string",
+                  "enum": [
+                    "PRIMARY",
+                    "SECONDARY",
+                    "CARDHOLDER"
+                  ],
+                  "description": "The role of the customer for the account.",
+                  "example": "PRIMARY",
+                  "default": "PRIMARY"
+                },
+                "customer_account_external_id": {
+                  "type": "string",
+                  "description": "A unique number for the customer on the account. For instance, a credit card number. If none is provided, a Canopy-generated ID can be used.",
+                  "example": "4465220133024156"
+                },
+                "customer_account_issuer_processor_config": {
+                  "type": "object",
+                  "properties": {
+                    "privacy": {
+                      "type": "object",
+                      "properties": {
+                        "memo": {
+                          "type": "string",
+                          "description": "Friendly name to identify the card.",
+                          "example": "Primary College Card"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "SINGLE_USE",
+                            "MERCHANT_LOCKED",
+                            "UNLOCKED"
+                          ],
+                          "description": "The type of card created by privacy.com.",
+                          "example": "MERCHANT_LOCKED"
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "OPEN",
+                            "PAUSED"
+                          ],
+                          "description": "The state of the new card.",
+                          "example": "OPEN"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateNoteInput": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The contents of the note.",
+            "example": "Attempted to call back customer, but no response."
+          }
+        }
+      },
+      "CreatePaymentInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "original_amount_cents"
+        ],
+        "properties": {
+          "original_amount_cents": {
+            "type": "integer",
+            "description": "The payment amount in cents.",
+            "example": 200,
+            "default": 0
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that the payment is applicable to the account. Although the payment is created in Canopy today, it can actually be effective 10 days prior.",
+            "format": "date-time",
+            "example": "2020-07-20T09:11:28+00:00"
+          },
+          "external_fields": {
+            "type": "array",
+            "nullable": true,
+            "maxItems": 10,
+            "description": "External fields can be used to relate payments created in Canopy to entities in your or any external system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "description": "Key - i.e. Name of the External Party",
+                  "example": "Globex Card Processing Account ID"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value - i.e. External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Customer": {
+        "type": "object",
+        "required": [
+          "customer_id"
+        ],
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "A Canopy-generated ID for the customer.",
+            "example": "31mNprzLd2bKl6koVna68ARM"
+          },
+          "name_prefix": {
+            "type": "string",
+            "description": "Prefix to the customer's name. Primary account holder or controlling officer name for Business customers.",
+            "example": "Dr."
+          },
+          "name_first": {
+            "type": "string",
+            "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
+            "example": "Miriam"
+          },
+          "name_middle": {
+            "type": "string",
+            "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
+            "example": "Louise"
+          },
+          "name_last": {
+            "type": "string",
+            "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
+            "example": "Trevino"
+          },
+          "name_suffix": {
+            "type": "string",
+            "description": "Suffix to the customer's name",
+            "example": "Jr"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Customer's phone number in E.164 format",
+            "example": "+14105556789"
+          },
+          "address_line_one": {
+            "type": "string",
+            "description": "Address line one.",
+            "example": "12 Strawberry Road"
+          },
+          "address_line_two": {
+            "type": "string",
+            "description": "Address line two.",
+            "example": "Suite 101"
+          },
+          "address_city": {
+            "type": "string",
+            "description": "Address city.",
+            "example": "Atlanta"
+          },
+          "address_state": {
+            "type": "string",
+            "description": "Address state.",
+            "example": "GA"
+          },
+          "address_zip": {
+            "type": "string",
+            "description": "Five digit zipcode or nine digit 'ZIP+4'",
+            "example": "99999-1000"
+          },
+          "ssn": {
+            "type": "string",
+            "description": "Social security number of the customer",
+            "example": "888-88-8888"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of this Customer",
+            "example": "marissa@protonmail.com"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date",
+            "description": "Customer's date of birth in ISO 8601 format",
+            "example": "1985-06-20"
+          },
+          "business_details": {
+            "type": "object",
+            "properties": {
+              "business_legal_name": {
+                "type": "string",
+                "description": "The legal name of the Business",
+                "example": "Umbrella Corporation"
+              },
+              "doing_business_as": {
+                "type": "string",
+                "description": "The DBA name of the Business",
+                "example": "Umbrella"
+              },
+              "business_ein": {
+                "type": "string",
+                "description": "EIN of the business",
+                "example": "888-88-8888"
+              }
+            }
+          }
+        }
+      },
       "CustomerAccount": {
         "allOf": [
           {
@@ -11896,10 +12351,6 @@
               "customer_account_role": {
                 "type": "string",
                 "description": "The role of the customer for the account.",
-                "enum": [
-                  "PRIMARY",
-                  "SECONDARY"
-                ],
                 "example": "PRIMARY",
                 "default": "PRIMARY"
               },
@@ -12048,13 +12499,6 @@
                           "product_type": {
                             "type": "string",
                             "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                            "enum": [
-                              "REVOLVING",
-                              "INSTALLMENT",
-                              "MIXED_RATE_INSTALLMENT",
-                              "DEFERRED_INSTALLMENT",
-                              "FIXED_RATE_INSTALLMENT"
-                            ],
                             "example": "REVOLVING"
                           }
                         }
@@ -12310,7 +12754,7 @@
                       },
                       "autopay_enabled": {
                         "type": "boolean",
-                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                         "example": true,
                         "default": false
                       },
@@ -12462,13 +12906,324 @@
           }
         ]
       },
+      "CustomerCards": {
+        "type": "array",
+        "nullable": true,
+        "items": {
+          "type": "object",
+          "description": "Card data. Field names match the ones in Privacy's card schema",
+          "additionalProperties": true,
+          "properties": {
+            "privacy": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "The type of card being returned",
+                  "enum": [
+                    "UNLOCKED",
+                    "MERCHANT_LOCKED",
+                    "SINGLE_USE"
+                  ],
+                  "example": "UNLOCKED"
+                },
+                "state": {
+                  "type": "string",
+                  "description": "The current state of the card",
+                  "enum": [
+                    "OPEN",
+                    "PAUSED",
+                    "CLOSED"
+                  ],
+                  "example": "OPEN"
+                },
+                "token": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "Unique external identifier for the card",
+                  "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                },
+                "last_four": {
+                  "type": "string",
+                  "description": "Last four digits of the card",
+                  "example": "0690"
+                },
+                "memo": {
+                  "type": "string",
+                  "description": "Friendly name to identify the card",
+                  "example": "Conference Event Card"
+                }
+              }
+            }
+          }
+        }
+      },
+      "EditLineItemInput": {
+        "type": "object",
+        "properties": {
+          "line_item_status": {
+            "type": "string",
+            "description": "The new status which you would like to set for the line item",
+            "enum": [
+              "VALID",
+              "INVALID",
+              "OFFSET",
+              "PENDING",
+              "AUTHORIZED",
+              "DECLINED",
+              "VOID",
+              "POSTED"
+            ],
+            "example": "VALID",
+            "default": "VALID"
+          }
+        }
+      },
+      "InterestPolicy": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "method",
+          "day_calc_type",
+          "interest_calc_time"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "compound"
+            ],
+            "example": "compound"
+          },
+          "method": {
+            "type": "string",
+            "description": "The actual base formula used to calculate and assign interest.",
+            "enum": [
+              "average daily balance"
+            ],
+            "example": "average daily balance"
+          },
+          "day_calc_type": {
+            "type": "string",
+            "description": "Affects the base calculation by determining how many days there are in a given year.",
+            "enum": [
+              "365"
+            ],
+            "example": "365"
+          },
+          "interest_calc_time": {
+            "type": "string",
+            "description": "Interest for this policy is calculated at this time every X interval.",
+            "format": "time",
+            "example": "11:21:04-08:00"
+          }
+        },
+        "description": "The Interest Policy Object"
+      },
+      "LineItem": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "line_item_id",
+          "product_id"
+        ],
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "The account associated with the line item",
+            "example": 4
+          },
+          "line_item_id": {
+            "type": "string",
+            "description": "The ID associated with the line item",
+            "example": 2
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that this line item became/becomes active",
+            "format": "date-time",
+            "example": "2018-07-20T09:12:30+00:00"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The `Date-Time` which the line item was created.",
+            "format": "date-time",
+            "example": "2018-06-20T09:12:30+00:00"
+          },
+          "product_id": {
+            "type": "integer",
+            "description": "the Product ID of the account",
+            "example": 1
+          },
+          "line_item_overview": {
+            "type": "object",
+            "required": [
+              "line_item_type"
+            ],
+            "properties": {
+              "line_item_status": {
+                "type": "string",
+                "description": "the corresponding Status for a line item",
+                "example": "VALID",
+                "default": "VALID"
+              },
+              "line_item_type": {
+                "type": "string",
+                "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
+                "example": "CHARGE"
+              },
+              "description": {
+                "type": "string",
+                "description": "A description of this particular line item if any. More common for adjustments.",
+                "example": "Refund for invalid purchase",
+                "nullable": true
+              }
+            }
+          },
+          "line_item_summary": {
+            "type": "object",
+            "properties": {
+              "original_amount_cents": {
+                "type": "integer",
+                "description": "The originating amount of money (in cents) relating to this line item.",
+                "example": 2484
+              },
+              "balance_cents": {
+                "type": "integer",
+                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
+                "example": 3600
+              },
+              "principal_cents": {
+                "type": "integer",
+                "description": "The principal balance of the line item.",
+                "example": 2400
+              },
+              "interest_balance_cents": {
+                "type": "integer",
+                "description": "The current interest balance of the line item.",
+                "example": 1100
+              },
+              "am_interest_balance_cents": {
+                "type": "integer",
+                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                "example": 0
+              },
+              "deferred_interest_balance_cents": {
+                "type": "integer",
+                "description": "The current deferred interest balance of the line item.",
+                "example": 200
+              },
+              "am_deferred_interest_balance_cents": {
+                "type": "integer",
+                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
+                "example": 0
+              },
+              "total_interest_paid_to_date_cents": {
+                "type": "integer",
+                "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
+                "example": -16
+              }
+            }
+          },
+          "merchant_data": {
+            "type": "object",
+            "description": "Merchant information if applicable.",
+            "nullable": true,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "mcc_code": {
+                "type": "number"
+              },
+              "phone_number": {
+                "type": "string"
+              }
+            }
+          },
+          "issuer_processor_details": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "privacy": {
+                "type": "object",
+                "properties": {
+                  "last_four": {
+                    "type": "integer",
+                    "nullable": true,
+                    "description": "Last four digits of the card against which the spend was made.",
+                    "example": 3324
+                  },
+                  "transaction_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "uuid",
+                    "description": "The external unique identifier of the transaction.",
+                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
+                  },
+                  "card_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "uuid",
+                    "description": "The external unique identifier of the card related to this line item.",
+                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
+                  }
+                }
+              }
+            }
+          },
+          "external_fields": {
+            "type": "array",
+            "nullable": true,
+            "maxItems": 1000,
+            "description": "An array of static references to fields in a third party system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "description": "Key - i.e. Name of the External Party",
+                  "example": "Globex Card Processing Account ID"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value - i.e. External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        }
+      },
+      "LoginAPIUserInput": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The API user's email address.",
+            "example": "marissa@globex.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "The API user's password.",
+            "example": "secretPassword123!"
+          }
+        }
+      },
       "Note": {
         "type": "object",
         "required": [
           "note_id",
           "account_id",
-          "author",
-          "message",
           "created_date"
         ],
         "properties": {
@@ -12543,6 +13298,139 @@
           }
         }
       },
+      "Organization": {
+        "required": [
+          "organization_id",
+          "created_at",
+          "organization_overview"
+        ],
+        "type": "object",
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "description": "The Canopy-generated ID for the product.",
+            "example": "31mNprzLd2bKl6koVna68ARM"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The `Date-Time` that this product was created on the server.",
+            "format": "date-time",
+            "example": "2019-03-20T09:12:28+00:00"
+          },
+          "organization_overview": {
+            "type": "object",
+            "description": "A series of static fields about the product.",
+            "required": [
+              "organization_name"
+            ],
+            "properties": {
+              "organization_name": {
+                "type": "string",
+                "description": "Name of Organization, i.e. LeverCard 3000.",
+                "example": "LeverCard 3000"
+              },
+              "webhook_url": {
+                "type": "string",
+                "description": "A URL to which events pertaining to your organization get posted",
+                "example": "https://mycallbackurlhandler.com/canopy"
+              }
+            }
+          },
+          "config": {
+            "description": "Configurations for API integrations within your organization.",
+            "type": "object",
+            "properties": {
+              "issuer_processor": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "PRIVACY",
+                    "description": "The active issuer-processor for your organization."
+                  },
+                  "valid_api_key": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Indicates whether there is a valid API key configured for your issuer-processor."
+                  }
+                }
+              },
+              "payment_processor": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The active payment processor for your organization.",
+                    "example": "REPAY"
+                  },
+                  "repay_config": {
+                    "description": "Indicates the details for Repay configuration, if available, for your organization.",
+                    "type": "object",
+                    "properties": {
+                      "valid_merchant_id": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "Indicates whether a valid merchant ID has been configured for your organization. The merchant ID itself is hidden from our response."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OrgIssuerProcessorConfig": {
+        "type": "object",
+        "properties": {
+          "privacy_config": {
+            "type": "object",
+            "properties": {
+              "api_key": {
+                "type": "string",
+                "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
+                "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+              }
+            }
+          }
+        }
+      },
+      "OrgPaymentProcessorConfig": {
+        "type": "object",
+        "properties": {
+          "repay_config": {
+            "type": "object",
+            "properties": {
+              "merchant_id": {
+                "type": "string",
+                "example": "987654321",
+                "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
+              }
+            }
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "description": "Pagination Information.",
+        "properties": {
+          "starting_after": {
+            "type": "string",
+            "description": "Use this to drive your next request if you want the next page of results",
+            "example": "31mNprzLd2bKl6koVna68ARM"
+          },
+          "ending_before": {
+            "type": "string",
+            "description": "Use this to drive your next request if you want the previous page of results",
+            "example": "31mNprzLd2bKl6koVna68ARM"
+          },
+          "has_more": {
+            "type": "boolean",
+            "description": "Indicates whether there are additional values beyond the ending index of the paginated results.",
+            "example": false
+          }
+        }
+      },
       "Product": {
         "required": [
           "product_id",
@@ -12594,13 +13482,6 @@
               "product_type": {
                 "type": "string",
                 "description": "The Type of Product",
-                "enum": [
-                  "REVOLVING",
-                  "INSTALLMENT",
-                  "MIXED_RATE_INSTALLMENT",
-                  "DEFERRED_INSTALLMENT",
-                  "FIXED_RATE_INSTALLMENT"
-                ],
                 "example": "REVOLVING"
               },
               "product_short_description": {
@@ -12955,460 +13836,50 @@
           }
         }
       },
-      "ProductAccounts": {
+      "RegisterAPIUserInput": {
         "type": "object",
-        "description": "",
         "required": [
-          "current_accounts"
+          "email_confirm",
+          "new_password",
+          "name_first",
+          "name_last",
+          "phone",
+          "token"
         ],
         "properties": {
-          "current_accounts": {
-            "type": "array",
-            "nullable": true,
-            "maxItems": 1000,
-            "description": "Array of Accounts that are currently using this Product",
-            "items": {
-              "type": "integer",
-              "description": "Account ID",
-              "example": 1
-            }
+          "email_confirm": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of the user being updated.",
+            "example": "harriet@acmecorporation.com"
+          },
+          "new_password": {
+            "type": "string",
+            "description": "The new password of the API user.",
+            "example": "newSecretPassword123!"
+          },
+          "name_first": {
+            "type": "string",
+            "description": "The first name of the API user.",
+            "example": "Karl"
+          },
+          "name_last": {
+            "type": "string",
+            "description": "The last name of the API user.",
+            "example": "Martins"
+          },
+          "phone": {
+            "type": "string",
+            "description": "The phone number to add to the API User's information.",
+            "example": "1-222-222-2222"
+          },
+          "token": {
+            "type": "string",
+            "description": "A unique token included in Canopy's register user email."
           }
         }
       },
-      "BasePolicyConfig": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "payment_due_policies",
-          "fee_policies",
-          "billing_cycle_policies",
-          "interest_policies"
-        ],
-        "properties": {
-          "payment_due_policies": {
-            "type": "object",
-            "properties": {
-              "delinquent_on_n_consecutive_late_fees": {
-                "type": "integer",
-                "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
-                "example": 2,
-                "default": 1
-              },
-              "charge_off_on_n_consecutive_late_fees": {
-                "type": "integer",
-                "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
-                "example": 5,
-                "default": 2
-              }
-            },
-            "description": "The set of policies governing payment due information for the product."
-          },
-          "fee_policies": {
-            "type": "object",
-            "properties": {
-              "late_fee_grace": {
-                "type": "string",
-                "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
-                "example": "5 days",
-                "default": "0 days"
-              },
-              "surcharge_fee_interval": {
-                "type": "string",
-                "nullable": true,
-                "description": "The interval at which a surcharge fee is assessed.",
-                "example": "1 month"
-              },
-              "default_surcharge_fee_structure": {
-                "type": "array",
-                "description": "The transaction volume structure that dictates a transaction fee.",
-                "nullable": true,
-                "items": {
-                  "type": "object",
-                  "required": [
-                    "surcharge_start_inclusive_cents",
-                    "percent_surcharge"
-                  ],
-                  "properties": {
-                    "surcharge_start_inclusive_cents": {
-                      "type": "integer",
-                      "description": "Indicates the starting transaction volume at which this fee will apply.",
-                      "example": 0
-                    },
-                    "surcharge_end_exclusive_cents": {
-                      "type": "integer",
-                      "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
-                      "example": 0,
-                      "default": 100000000000000000000
-                    },
-                    "percent_surcharge": {
-                      "type": "number",
-                      "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
-                      "example": 0
-                    }
-                  }
-                }
-              }
-            },
-            "description": "The set of policies governing fees for the product. "
-          },
-          "billing_cycle_policies": {
-            "type": "object",
-            "required": [
-              "cycle_interval"
-            ],
-            "properties": {
-              "cycle_interval": {
-                "type": "string",
-                "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-                "example": "1 month"
-              },
-              "cycle_due_interval": {
-                "type": "string",
-                "description": "Defaults to 0 days. The amount of time before statement cut that the payment should be due for the billing cycle. If positive, it will count days from the start of the cycle. Note, this field has a signage convention: if negative, it will count days back from the end of the cycle. IE '25 days' indicates that payments are due 25 days after the statement is cut. `-5` days indicates that payments will be due five days prior to the cut of the *next* cycle. Cannot exceed the duration of the billing cycle.",
-                "example": "-5 days",
-                "default": "0 days"
-              },
-              "first_cycle_interval": {
-                "type": "string",
-                "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
-                "example": "25 days",
-                "default": "0 days"
-              },
-              "close_of_business_time": {
-                "type": "string",
-                "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
-                "format": "time",
-                "example": "17:00:00-05:00",
-                "default": "23:59:59-05:00"
-              },
-              "product_time_zone": {
-                "type": "string",
-                "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
-                "example": "America/Chicago",
-                "default": "America/New_York"
-              }
-            },
-            "description": "The set of policies governing the billing cycle for the product. "
-          },
-          "interest_policies": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "interest_calc_time": {
-                "type": "string",
-                "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
-                "format": "time",
-                "example": "11:21:04-08:00",
-                "default": "01:00:00-05:00"
-              }
-            },
-            "description": "The Interest Policy Object"
-          }
-        },
-        "description": "A base group of policies that define a Product"
-      },
-      "BasePolicyConfigMinPay": {
-        "type": "object",
-        "required": [
-          "percentage"
-        ],
-        "properties": {
-          "percentage": {
-            "type": "number",
-            "description": "The percentage of total balance calculated for min pay. (i.e. 20 means 20%)",
-            "example": 20
-          }
-        },
-        "description": "The configured minimum payment required for a given pay period."
-      },
-      "BasePolicyConfigBillingCycle": {
-        "type": "object",
-        "required": [
-          "period",
-          "billing_due_date_interval"
-        ],
-        "properties": {
-          "period": {
-            "type": "string",
-            "description": "The length of the billing cycle, after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
-            "example": "1 month",
-            "default": "1 month"
-          },
-          "billing_due_date_interval": {
-            "type": "string",
-            "description": "The amount of time you would like between the statement cut and the billing due date. IE '25 days'.  Cannot exceed the start of the next billing cycle and generally needs to be at least 21 days.",
-            "example": "25 days",
-            "default": "1 month"
-          }
-        },
-        "description": "The Billing Cycle Object"
-      },
-      "InterestPolicy": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "type",
-          "method",
-          "day_calc_type",
-          "interest_calc_time"
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "compound"
-            ],
-            "example": "compound"
-          },
-          "method": {
-            "type": "string",
-            "description": "The actual base formula used to calculate and assign interest.",
-            "enum": [
-              "average daily balance"
-            ],
-            "example": "average daily balance"
-          },
-          "day_calc_type": {
-            "type": "string",
-            "description": "Affects the base calculation by determining how many days there are in a given year.",
-            "enum": [
-              "365"
-            ],
-            "example": "365"
-          },
-          "interest_calc_time": {
-            "type": "string",
-            "description": "Interest for this policy is calculated at this time every X interval.",
-            "format": "time",
-            "example": "11:21:04-08:00"
-          }
-        },
-        "description": "The Interest Policy Object"
-      },
-      "LineItem": {
-        "type": "object",
-        "required": [
-          "account_id",
-          "line_item_id",
-          "product_id"
-        ],
-        "properties": {
-          "account_id": {
-            "type": "string",
-            "description": "The account associated with the line item",
-            "example": 4
-          },
-          "line_item_id": {
-            "type": "string",
-            "description": "The ID associated with the line item",
-            "example": 2
-          },
-          "effective_at": {
-            "type": "string",
-            "description": "The `Date-Time` that this line item became/becomes active",
-            "format": "date-time",
-            "example": "2018-07-20T09:12:30+00:00"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The `Date-Time` which the line item was created.",
-            "format": "date-time",
-            "example": "2018-06-20T09:12:30+00:00"
-          },
-          "product_id": {
-            "type": "integer",
-            "description": "the Product ID of the account",
-            "example": 1
-          },
-          "line_item_overview": {
-            "type": "object",
-            "required": [
-              "line_item_type"
-            ],
-            "properties": {
-              "line_item_status": {
-                "type": "string",
-                "description": "the corresponding Status for a line item",
-                "enum": [
-                  "ROLLED",
-                  "VALID",
-                  "INVALID",
-                  "OFFSET",
-                  "SPLIT_VALID",
-                  "SPLIT_INVALID",
-                  "PENDING",
-                  "REVERSED",
-                  "AUTHORIZED",
-                  "DECLINED",
-                  "VOID",
-                  "POSTED"
-                ],
-                "example": "VALID",
-                "default": "VALID"
-              },
-              "line_item_type": {
-                "type": "string",
-                "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                "enum": [
-                  "LOAN",
-                  "CHARGE",
-                  "DEBIT_OFFSET",
-                  "INTEREST",
-                  "DEFERRED_INTEREST",
-                  "PAYMENT",
-                  "CREDIT_OFFSET",
-                  "STATEMENT",
-                  "MIN_DUE",
-                  "FEE",
-                  "PRODUCT_INTEREST",
-                  "PAYMENT_SPLIT",
-                  "LATE_FEE",
-                  "RETURN_CHECK_FEE",
-                  "PROMO_END",
-                  "PURCHASE_WINDOW_END",
-                  "MONTH_FEE",
-                  "YEAR_FEE",
-                  "ORIG_FEE",
-                  "FEE_SURCHARGE",
-                  "PAYMENT_REVERSAL"
-                ],
-                "example": "CHARGE"
-              },
-              "description": {
-                "type": "string",
-                "description": "A description of this particular line item if any. More common for adjustments.",
-                "example": "Refund for invalid purchase",
-                "nullable": true
-              }
-            }
-          },
-          "line_item_summary": {
-            "type": "object",
-            "required": [
-              "original_amount_cents",
-              "balance_cents",
-              "principal_cents",
-              "interest_balance_cents",
-              "deferred_interest_balance_cents",
-              "total_interest_paid_to_date_cents"
-            ],
-            "properties": {
-              "original_amount_cents": {
-                "type": "integer",
-                "description": "The originating amount of money (in cents) relating to this line item.",
-                "example": 2484
-              },
-              "balance_cents": {
-                "type": "integer",
-                "description": "The current balance of the line item, which accounts for interest accrued per the `product's` interest policy and the `account's` interest rate attribute.",
-                "example": 3600
-              },
-              "principal_cents": {
-                "type": "integer",
-                "description": "The principal balance of the line item.",
-                "example": 2400
-              },
-              "interest_balance_cents": {
-                "type": "integer",
-                "description": "The current interest balance of the line item.",
-                "example": 1100
-              },
-              "am_interest_balance_cents": {
-                "type": "integer",
-                "description": "The current AM interest balance of the line item. Canopy tracks interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                "example": 0
-              },
-              "deferred_interest_balance_cents": {
-                "type": "integer",
-                "description": "he current deferred interest balance of the line item.",
-                "example": 200
-              },
-              "am_deferred_interest_balance_cents": {
-                "type": "integer",
-                "description": "The current AM deferred interest balance of the line item. Canopy tracks deferred interest during an amortization period separately from deferred interest accrued during a revolving period.",
-                "example": 0
-              },
-              "total_interest_paid_to_date_cents": {
-                "type": "integer",
-                "description": "The sum (in cents) of all payments towards interest charges, if any, applied to this line item to date",
-                "example": -16
-              }
-            }
-          },
-          "merchant_data": {
-            "type": "object",
-            "description": "Merchant information if applicable.",
-            "nullable": true,
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              },
-              "mcc_code": {
-                "type": "number"
-              },
-              "phone_number": {
-                "type": "string"
-              }
-            }
-          },
-          "issuer_processor_details": {
-            "type": "object",
-            "nullable": true,
-            "properties": {
-              "privacy": {
-                "type": "object",
-                "properties": {
-                  "last_four": {
-                    "type": "integer",
-                    "nullable": true,
-                    "description": "Last four digits of the card against which the spend was made.",
-                    "example": 3324
-                  },
-                  "transaction_token": {
-                    "type": "string",
-                    "nullable": true,
-                    "format": "uuid",
-                    "description": "The external unique identifier of the transaction.",
-                    "example": "33xd08bc-d100-488y-bb93-f8a1f081ff0e"
-                  },
-                  "card_token": {
-                    "type": "string",
-                    "nullable": true,
-                    "format": "uuid",
-                    "description": "The external unique identifier of the card related to this line item.",
-                    "example": "c6cd08bc-c524-48f5-b64d-f79ec0810df4"
-                  }
-                }
-              }
-            }
-          },
-          "external_fields": {
-            "type": "array",
-            "nullable": true,
-            "maxItems": 1000,
-            "description": "An array of static references to fields in a third party system.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string",
-                  "description": "Key - i.e. Name of the External Party",
-                  "example": "Globex Card Processing Account ID"
-                },
-                "value": {
-                  "type": "string",
-                  "description": "Value - i.e. External Account ID",
-                  "example": "22445702-a389-431f-927d-07b8d0750787"
-                }
-              }
-            }
-          }
-        }
-      },
-      "SimpleLineItem": {
+      "ResponseLineItem": {
         "type": "object",
         "required": [
           "account_id",
@@ -13576,31 +14047,108 @@
           }
         }
       },
-      "OrgPaymentProcessorConfig": {
+      "StatementsList": {
         "type": "object",
+        "description": "Statements for the account.",
         "properties": {
-          "repay_config": {
-            "type": "object",
-            "properties": {
-              "merchant_id": {
-                "type": "string",
-                "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
+          "account_id": {
+            "type": "string",
+            "description": "The Canopy-generated ID for the account",
+            "example": "31mNprzLd2bKl6koVna68ARM"
+          },
+          "statements_list": {
+            "type": "array",
+            "nullable": true,
+            "maxItems": 1000,
+            "description": "An array of statements included in the billing cycle.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "statement_id": {
+                  "type": "string",
+                  "description": "A Canopy-generated ID for the statement",
+                  "example": "31mNprzLd2bKl6koVna68ARM"
+                },
+                "available_credit_balance": {
+                  "type": "number",
+                  "description": "The total available credit balance (in cents) for the account.",
+                  "example": "600000"
+                },
+                "total_balance": {
+                  "type": "number",
+                  "description": "The total balance (in cents) associated with the account.",
+                  "example": "400000"
+                },
+                "min_pay_due_date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The `Date-Time` at which the minimum payment is due."
+                },
+                "min_pay_amount_cents": {
+                  "type": "number",
+                  "description": "The minimum amount (in cents) due for this statement."
+                },
+                "billing_cycle_start_date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The inclusive starting `Date-Time` that defines which transactions are part of this statement."
+                },
+                "billing_cycle_end_date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "The inclusive ending `Date-Time` that defines which transactions are part of this statement."
+                }
               }
             }
           }
         }
       },
-      "OrgIssuerProcessorConfig": {
+      "SubscribeToEventsInput": {
+        "type": "object",
+        "required": [
+          "webhook_url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "webhook_url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://myserver.com/send/webhook/canopy"
+          }
+        }
+      },
+      "UpdateAPIUserPassword": {
+        "type": "object",
+        "required": [
+          "current_password",
+          "new_password",
+          "token"
+        ],
+        "properties": {
+          "current_password": {
+            "type": "string",
+            "description": "The password of the user changing their password.",
+            "example": "currentSecretPassword123!"
+          },
+          "new_password": {
+            "type": "string",
+            "description": "The new password of the user changing their password.",
+            "example": "newSecretPassword123!"
+          },
+          "token": {
+            "type": "string",
+            "description": "A unique token included in Canopy's reset password email."
+          }
+        }
+      },
+      "UpdateProductMigrationModeInput": {
         "type": "object",
         "properties": {
-          "privacy_config": {
-            "type": "object",
-            "properties": {
-              "api_key": {
-                "type": "string",
-                "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
-              }
-            }
+          "migration_mode": {
+            "type": "boolean",
+            "description": "If migration mode is on, Canopy will not autogenerate statements for this account.",
+            "example": true,
+            "default": false
           }
         }
       }
@@ -13621,12 +14169,12 @@
                 "email": {
                   "type": "string",
                   "format": "email",
-                  "description": "The email address of the API User logging in.",
+                  "description": "The API user's email address.",
                   "example": "marissa@globex.com"
                 },
                 "password": {
                   "type": "string",
-                  "description": "The password of the user logging in.",
+                  "description": "The API user's password.",
                   "example": "secretPassword123!"
                 }
               }
@@ -13761,6 +14309,7 @@
                     "product_type": {
                       "type": "string",
                       "description": "The Type of Product",
+                      "default": "REVOLVING",
                       "enum": [
                         "REVOLVING",
                         "INSTALLMENT",
@@ -14022,9 +14571,7 @@
                     "post_promo_min_pay_type": {
                       "type": "string",
                       "enum": [
-                        "AM",
-                        "PERCENT_INTEREST",
-                        "PERCENT_PRINCIPAL"
+                        "AM"
                       ],
                       "description": "Current due calculation method for the post-promotional period.",
                       "example": "AM",
@@ -14088,74 +14635,74 @@
               "properties": {
                 "name_prefix": {
                   "type": "string",
-                  "description": "Prefix to the customer's name",
+                  "description": "Prefix to the customer's name.",
                   "example": "Dr."
                 },
                 "name_first": {
                   "type": "string",
-                  "description": "Customer's first name",
+                  "description": "Customer's first name.",
                   "example": "Miriam"
                 },
                 "name_middle": {
                   "type": "string",
-                  "description": "Customer's middle name",
+                  "description": "Customer's middle name.",
                   "example": "Louise"
                 },
                 "name_last": {
                   "type": "string",
-                  "description": "Customer's last name",
+                  "description": "Customer's last name.",
                   "example": "Trevino"
                 },
                 "name_suffix": {
                   "type": "string",
-                  "description": "Suffix to the customer's name",
+                  "description": "Suffix to the customer's name.",
                   "example": "Jr"
                 },
                 "phone_number": {
                   "type": "string",
-                  "description": "Customer's phone number in E.164 format",
+                  "description": "Customer's phone number in E.164 format.",
                   "example": "+14105556789"
                 },
                 "address_line_one": {
                   "type": "string",
-                  "description": "Address line one",
+                  "description": "Address line one.",
                   "example": "12 Strawberry Road"
                 },
                 "address_line_two": {
                   "type": "string",
-                  "description": "Address line two",
+                  "description": "Address line two.",
                   "example": "Suite 101"
                 },
                 "address_city": {
                   "type": "string",
-                  "description": "Address city",
+                  "description": "Address city.",
                   "example": "Atlanta"
                 },
                 "address_state": {
                   "type": "string",
-                  "description": "Address state",
+                  "description": "Address state.",
                   "example": "GA"
                 },
                 "address_zip": {
                   "type": "string",
-                  "description": "Five digit zipcode or nine digit 'ZIP+4'",
+                  "description": "Five digit zipcode or nine digit 'ZIP+4'.",
                   "example": "99999-1000"
                 },
                 "ssn": {
                   "type": "string",
-                  "description": "Social security number of the customer",
-                  "example": "888-88-8888"
+                  "description": "Social security number of the customer.",
+                  "example": "888888888"
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
-                  "description": "The email address of the Customer",
+                  "description": "The Customer's email address.",
                   "example": "marissa@protonmail.com"
                 },
                 "date_of_birth": {
                   "type": "string",
                   "format": "date",
-                  "description": "Customer's date of birth in ISO 8601 format",
+                  "description": "Customer's date of birth in ISO 8601 format.",
                   "example": "1985-06-20"
                 },
                 "business_details": {
@@ -14168,17 +14715,17 @@
                   "properties": {
                     "business_legal_name": {
                       "type": "string",
-                      "description": "The legal name of the Business",
+                      "description": "The legal name of the Business.",
                       "example": "Umbrella Corporation"
                     },
                     "doing_business_as": {
                       "type": "string",
-                      "description": "The DBA name of the Business",
+                      "description": "The DBA name of the Business.",
                       "example": "Umbrella"
                     },
                     "business_ein": {
                       "type": "string",
-                      "description": "EIN of the business",
+                      "description": "EIN of the business.",
                       "example": "888-88-8888"
                     }
                   }
@@ -14187,7 +14734,7 @@
                   "type": "array",
                   "nullable": true,
                   "maxItems": 10,
-                  "description": "An array of existing accounts to which this Customer should be assigned. \n \n If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. \n \n Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
+                  "description": "An array of existing accounts to which this Customer should be assigned. If left empty, the customer will not be assigned to any accounts, and can be later assigned to an account via the [Update an existing customer](https://docs.canopyservicing.com/#operation-put-accounts-parameter) route. Customers only become meaningful agents in Canopy's servicing system once they are assigned to accounts.",
                   "items": {
                     "type": "object",
                     "properties": {
@@ -14200,9 +14747,10 @@
                         "type": "string",
                         "enum": [
                           "PRIMARY",
-                          "SECONDARY"
+                          "SECONDARY",
+                          "CARDHOLDER"
                         ],
-                        "description": "The role of the customer for the account",
+                        "description": "The role of the customer for the account.",
                         "example": "PRIMARY",
                         "default": "PRIMARY"
                       },
@@ -14219,7 +14767,7 @@
                             "properties": {
                               "memo": {
                                 "type": "string",
-                                "description": "Friendly name to identify the card",
+                                "description": "Friendly name to identify the card.",
                                 "example": "Primary College Card"
                               },
                               "type": {
@@ -14229,7 +14777,7 @@
                                   "MERCHANT_LOCKED",
                                   "UNLOCKED"
                                 ],
-                                "description": "The type of card created by privacy.com",
+                                "description": "The type of card created by privacy.com.",
                                 "example": "MERCHANT_LOCKED"
                               },
                               "state": {
@@ -14238,7 +14786,7 @@
                                   "OPEN",
                                   "PAUSED"
                                 ],
-                                "description": "The state of the new card",
+                                "description": "The state of the new card.",
                                 "example": "OPEN"
                               }
                             }
@@ -14388,19 +14936,19 @@
                     },
                     "product_id": {
                       "type": "string",
-                      "description": "This is generated by Canopy. A unique ID for the account.",
+                      "description": "A unique product ID generated by Canopy.",
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
                     "external_product_id": {
                       "type": "string",
-                      "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either this, or the Canopy product ID must be passed at the time of account creation.",
+                      "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
                       "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                     },
                     "external_fields": {
                       "type": "array",
                       "nullable": true,
                       "maxItems": 10,
-                      "description": "An Array of External Fields. These should be used to connect accounts created in Canopy to Users in your system and any connected external systems.",
+                      "description": "External fields can be used to relate accounts created in Canopy to entities in your or any external system.",
                       "items": {
                         "type": "object",
                         "properties": {
@@ -14426,19 +14974,19 @@
                             "NONE",
                             "REPAY"
                           ],
-                          "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                          "description": "Indicates the active payment processor used for payments made by the account. If `NONE`, Canopy will not trigger payments to any payment processor when they occur.",
                           "example": "REPAY",
                           "default": "NONE"
                         },
                         "autopay_enabled": {
                           "type": "boolean",
-                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                          "description": "Indicates whether autopay is enabled for this account. Autopay is triggered one day prior to due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for the account regardless of this field.",
                           "example": true,
                           "default": false
                         },
                         "repay_config": {
                           "type": "object",
-                          "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
+                          "description": "All sensitive bank information will be replaced with a secure token when performing transactions.",
                           "required": [
                             "repay_payment_method",
                             "repay_check_type",
@@ -14453,7 +15001,7 @@
                               "enum": [
                                 "ACH"
                               ],
-                              "description": "The payment method to use for this account"
+                              "description": "The payment method used by the account"
                             },
                             "repay_check_type": {
                               "type": "string",
@@ -14508,12 +15056,12 @@
                       "properties": {
                         "credit_limit_cents": {
                           "type": "integer",
-                          "description": "Total Amount (in cents) that this account can borrow.",
+                          "description": "Total amount (in cents) that this account can borrow.",
                           "example": 400000
                         },
                         "max_approved_credit_limit_cents": {
                           "type": "integer",
-                          "description": "Total Amount (in cents) that this account can borrow.",
+                          "description": "Total amount (in cents) that this account can borrow.",
                           "example": 400000
                         },
                         "late_fee_cents": {
@@ -14557,7 +15105,7 @@
                       "properties": {
                         "promo_impl_interest_rate_percent": {
                           "type": "number",
-                          "description": "The percentage interest applied to the account during the promotional period (i.e. 6.2%)",
+                          "description": "The percentage interest applied to the account during the promotional period (e.g. 6.2)",
                           "example": 6.2
                         }
                       }
@@ -14567,7 +15115,7 @@
                       "properties": {
                         "post_promo_impl_interest_rate_percent": {
                           "type": "number",
-                          "description": "The percentage interest applied to the account during the post-promotional period (i.e. 6.2%)",
+                          "description": "The percentage interest applied to the account during the post-promotional period (e.g. 6.2)",
                           "example": 6.2
                         },
                         "post_promo_len": {
@@ -14610,7 +15158,7 @@
                         "properties": {
                           "customer_id": {
                             "type": "string",
-                            "description": "This is generated by Canopy. A unique ID for the account.",
+                            "description": "A unique account ID generated by Canopy.",
                             "example": "31mNprzLd2bKl6koVna68ARM",
                             "minLength": 10
                           },
@@ -14673,7 +15221,7 @@
         }
       },
       "EditAccountPaymentProcessorConfig": {
-        "description": "Edit Payment Procesor Config",
+        "description": "Edit Payment Processor Config",
         "content": {
           "application/json": {
             "schema": {
@@ -14756,32 +15304,41 @@
       },
       "CreateCustomerAccountCard": {
         "description": "Create a card directly with the configured issuer processor for a customer on an account",
-        "privacy": {
-          "type": "object",
-          "properties": {
-            "memo": {
-              "type": "string",
-              "description": "Friendly name to identify the card",
-              "example": "Primary College Card"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "SINGLE_USE",
-                "MERCHANT_LOCKED",
-                "UNLOCKED"
-              ],
-              "description": "The type of card created by privacy.com",
-              "example": "MERCHANT_LOCKED"
-            },
-            "state": {
-              "type": "string",
-              "enum": [
-                "OPEN",
-                "PAUSED"
-              ],
-              "description": "The state of the new card",
-              "example": "OPEN"
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "privacy": {
+                  "type": "object",
+                  "properties": {
+                    "memo": {
+                      "type": "string",
+                      "description": "Friendly name to identify the card",
+                      "example": "Primary College Card"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "SINGLE_USE",
+                        "MERCHANT_LOCKED",
+                        "UNLOCKED"
+                      ],
+                      "description": "The type of card created by privacy.com",
+                      "example": "MERCHANT_LOCKED"
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "PAUSED"
+                      ],
+                      "description": "The state of the new card",
+                      "example": "OPEN"
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -14820,14 +15377,14 @@
               "properties": {
                 "role": {
                   "type": "number",
-                  "description": "A role to be made accessible for the user. [Contact our team](mailto:anurag@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
+                  "description": "Assign a role to users to dictate permissions and API access level . [Contact our team](mailto:devs@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
                   "example": 3,
                   "default": 1
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
-                  "description": "The email address of this API User",
+                  "description": "The email address of this API User.",
                   "example": "marissa@globex.com"
                 }
               }
@@ -14850,16 +15407,12 @@
               "properties": {
                 "line_item_status": {
                   "type": "string",
-                  "description": "the corresponding Status for a line item",
+                  "description": "The status of a line item.",
                   "enum": [
-                    "ROLLED",
                     "VALID",
                     "INVALID",
                     "OFFSET",
-                    "SPLIT_VALID",
-                    "SPLIT_INVALID",
                     "PENDING",
-                    "REVERSED",
                     "AUTHORIZED",
                     "DECLINED",
                     "VOID",
@@ -14870,13 +15423,13 @@
                 },
                 "original_amount_cents": {
                   "type": "integer",
-                  "description": "The Integer Amount of the Charge in Cents",
+                  "description": "The amount charged (in cents).",
                   "example": 200,
                   "default": 0
                 },
                 "effective_at": {
                   "type": "string",
-                  "description": "The `Date-Time` that the charge should be recorded to the account. Although the charge is being added to Canopy today, it can actually be effective as of 10 days ago.",
+                  "description": "The `Date-Time` that the charge is made applicable to the account. Although a charge may be made today, it can be set effective 10 days prior.",
                   "format": "date-time",
                   "example": "2020-07-20T09:11:28+00:00"
                 },
@@ -14917,7 +15470,7 @@
                   "type": "array",
                   "maxItems": 10,
                   "nullable": true,
-                  "description": "An array of static references to fields in a third party system.",
+                  "description": "External fields can be used to associate this record to entities in external systems.",
                   "items": {
                     "type": "object",
                     "properties": {
@@ -14953,13 +15506,13 @@
               "properties": {
                 "original_amount_cents": {
                   "type": "integer",
-                  "description": "The Integer Amount of the Payment in Cents",
+                  "description": "The payment amount in cents.",
                   "example": 200,
                   "default": 0
                 },
                 "effective_at": {
                   "type": "string",
-                  "description": "The `Date-Time` that the payment should be recorded to the account. Although the payment is being added to Canopy today, it can actually be effective as of 10 days ago.",
+                  "description": "The `Date-Time` that the payment is applicable to the account. Although the payment is created in Canopy today, it can actually be effective 10 days prior.",
                   "format": "date-time",
                   "example": "2020-07-20T09:11:28+00:00"
                 },
@@ -14967,7 +15520,7 @@
                   "type": "array",
                   "nullable": true,
                   "maxItems": 10,
-                  "description": "An array of static references to fields in a third party system.",
+                  "description": "External fields can be used to relate payments created in Canopy to entities in your or any external system.",
                   "items": {
                     "type": "object",
                     "properties": {
@@ -15042,6 +15595,7 @@
                   "properties": {
                     "merchant_id": {
                       "type": "string",
+                      "example": "987654321",
                       "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
                     }
                   }
@@ -15063,6 +15617,7 @@
                   "properties": {
                     "api_key": {
                       "type": "string",
+                      "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
                       "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
                     }
                   }
@@ -15083,14 +15638,10 @@
                   "type": "string",
                   "description": "The new status which you would like to set for the line item",
                   "enum": [
-                    "ROLLED",
                     "VALID",
                     "INVALID",
                     "OFFSET",
-                    "SPLIT_VALID",
-                    "SPLIT_INVALID",
                     "PENDING",
-                    "REVERSED",
                     "AUTHORIZED",
                     "DECLINED",
                     "VOID",
@@ -15113,7 +15664,7 @@
               "properties": {
                 "migration_mode": {
                   "type": "boolean",
-                  "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                  "description": "If migration mode is on, Canopy will not autogenerate statements for this account.",
                   "example": true,
                   "default": false
                 }
@@ -15499,13 +16050,6 @@
                     "product_type": {
                       "type": "string",
                       "description": "The Type of Product",
-                      "enum": [
-                        "REVOLVING",
-                        "INSTALLMENT",
-                        "MIXED_RATE_INSTALLMENT",
-                        "DEFERRED_INSTALLMENT",
-                        "FIXED_RATE_INSTALLMENT"
-                      ],
                       "example": "REVOLVING"
                     },
                     "product_short_description": {
@@ -15899,13 +16443,6 @@
                     "product_type": {
                       "type": "string",
                       "description": "The Type of Product",
-                      "enum": [
-                        "REVOLVING",
-                        "INSTALLMENT",
-                        "MIXED_RATE_INSTALLMENT",
-                        "DEFERRED_INSTALLMENT",
-                        "FIXED_RATE_INSTALLMENT"
-                      ],
                       "example": "REVOLVING"
                     },
                     "product_short_description": {
@@ -16310,13 +16847,6 @@
                           "product_type": {
                             "type": "string",
                             "description": "The Type of Product",
-                            "enum": [
-                              "REVOLVING",
-                              "INSTALLMENT",
-                              "MIXED_RATE_INSTALLMENT",
-                              "DEFERRED_INSTALLMENT",
-                              "FIXED_RATE_INSTALLMENT"
-                            ],
                             "example": "REVOLVING"
                           },
                           "product_short_description": {
@@ -16785,10 +17315,6 @@
                           "customer_account_role": {
                             "type": "string",
                             "description": "The role of the customer for the account.",
-                            "enum": [
-                              "PRIMARY",
-                              "SECONDARY"
-                            ],
                             "example": "PRIMARY",
                             "default": "PRIMARY"
                           },
@@ -16937,13 +17463,6 @@
                                       "product_type": {
                                         "type": "string",
                                         "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                                        "enum": [
-                                          "REVOLVING",
-                                          "INSTALLMENT",
-                                          "MIXED_RATE_INSTALLMENT",
-                                          "DEFERRED_INSTALLMENT",
-                                          "FIXED_RATE_INSTALLMENT"
-                                        ],
                                         "example": "REVOLVING"
                                       }
                                     }
@@ -17199,7 +17718,7 @@
                                   },
                                   "autopay_enabled": {
                                     "type": "boolean",
-                                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                                     "example": true,
                                     "default": false
                                   },
@@ -17947,13 +18466,6 @@
                             "product_type": {
                               "type": "string",
                               "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                              "enum": [
-                                "REVOLVING",
-                                "INSTALLMENT",
-                                "MIXED_RATE_INSTALLMENT",
-                                "DEFERRED_INSTALLMENT",
-                                "FIXED_RATE_INSTALLMENT"
-                              ],
                               "example": "REVOLVING"
                             }
                           }
@@ -18209,7 +18721,7 @@
                         },
                         "autopay_enabled": {
                           "type": "boolean",
-                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                           "example": true,
                           "default": false
                         },
@@ -18561,7 +19073,7 @@
                 },
                 "autopay_enabled": {
                   "type": "boolean",
-                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                   "example": true,
                   "default": false
                 },
@@ -18699,13 +19211,6 @@
                               "product_type": {
                                 "type": "string",
                                 "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                                "enum": [
-                                  "REVOLVING",
-                                  "INSTALLMENT",
-                                  "MIXED_RATE_INSTALLMENT",
-                                  "DEFERRED_INSTALLMENT",
-                                  "FIXED_RATE_INSTALLMENT"
-                                ],
                                 "example": "REVOLVING"
                               }
                             }
@@ -18961,7 +19466,7 @@
                           },
                           "autopay_enabled": {
                             "type": "boolean",
-                            "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                            "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                             "example": true,
                             "default": false
                           },
@@ -19227,8 +19732,6 @@
               "required": [
                 "note_id",
                 "account_id",
-                "author",
-                "message",
                 "created_date"
               ],
               "properties": {
@@ -19320,8 +19823,6 @@
                 "required": [
                   "note_id",
                   "account_id",
-                  "author",
-                  "message",
                   "created_date"
                 ],
                 "properties": {
@@ -19856,13 +20357,6 @@
                             "product_type": {
                               "type": "string",
                               "description": "The Type of Product. If not included, defaults to `REVOLVING`",
-                              "enum": [
-                                "REVOLVING",
-                                "INSTALLMENT",
-                                "MIXED_RATE_INSTALLMENT",
-                                "DEFERRED_INSTALLMENT",
-                                "FIXED_RATE_INSTALLMENT"
-                              ],
                               "example": "REVOLVING"
                             }
                           }
@@ -20118,7 +20612,7 @@
                         },
                         "autopay_enabled": {
                           "type": "boolean",
-                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date.",
+                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
                           "example": true,
                           "default": false
                         },
@@ -20843,49 +21337,12 @@
                           "line_item_status": {
                             "type": "string",
                             "description": "the corresponding Status for a line item",
-                            "enum": [
-                              "ROLLED",
-                              "VALID",
-                              "INVALID",
-                              "OFFSET",
-                              "SPLIT_VALID",
-                              "SPLIT_INVALID",
-                              "PENDING",
-                              "REVERSED",
-                              "AUTHORIZED",
-                              "DECLINED",
-                              "VOID",
-                              "POSTED"
-                            ],
                             "example": "VALID",
                             "default": "VALID"
                           },
                           "line_item_type": {
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": [
-                              "LOAN",
-                              "CHARGE",
-                              "DEBIT_OFFSET",
-                              "INTEREST",
-                              "DEFERRED_INTEREST",
-                              "PAYMENT",
-                              "CREDIT_OFFSET",
-                              "STATEMENT",
-                              "MIN_DUE",
-                              "FEE",
-                              "PRODUCT_INTEREST",
-                              "PAYMENT_SPLIT",
-                              "LATE_FEE",
-                              "RETURN_CHECK_FEE",
-                              "PROMO_END",
-                              "PURCHASE_WINDOW_END",
-                              "MONTH_FEE",
-                              "YEAR_FEE",
-                              "ORIG_FEE",
-                              "FEE_SURCHARGE",
-                              "PAYMENT_REVERSAL"
-                            ],
                             "example": "CHARGE"
                           },
                           "description": {
@@ -20898,14 +21355,6 @@
                       },
                       "line_item_summary": {
                         "type": "object",
-                        "required": [
-                          "original_amount_cents",
-                          "balance_cents",
-                          "principal_cents",
-                          "interest_balance_cents",
-                          "deferred_interest_balance_cents",
-                          "total_interest_paid_to_date_cents"
-                        ],
                         "properties": {
                           "original_amount_cents": {
                             "type": "integer",
@@ -20934,7 +21383,7 @@
                           },
                           "deferred_interest_balance_cents": {
                             "type": "integer",
-                            "description": "he current deferred interest balance of the line item.",
+                            "description": "The current deferred interest balance of the line item.",
                             "example": 200
                           },
                           "am_deferred_interest_balance_cents": {
@@ -21028,33 +21477,6 @@
           }
         }
       },
-      "ProductAccounts": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "description": "",
-              "required": [
-                "current_accounts"
-              ],
-              "properties": {
-                "current_accounts": {
-                  "type": "array",
-                  "nullable": true,
-                  "maxItems": 1000,
-                  "description": "Array of Accounts that are currently using this Product",
-                  "items": {
-                    "type": "integer",
-                    "description": "Account ID",
-                    "example": 1
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
       "ProductSummary": {
         "description": "Response for a request for summary data for a specific product.",
         "content": {
@@ -21129,49 +21551,12 @@
                     "line_item_status": {
                       "type": "string",
                       "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "ROLLED",
-                        "VALID",
-                        "INVALID",
-                        "OFFSET",
-                        "SPLIT_VALID",
-                        "SPLIT_INVALID",
-                        "PENDING",
-                        "REVERSED",
-                        "AUTHORIZED",
-                        "DECLINED",
-                        "VOID",
-                        "POSTED"
-                      ],
                       "example": "VALID",
                       "default": "VALID"
                     },
                     "line_item_type": {
                       "type": "string",
                       "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "LOAN",
-                        "CHARGE",
-                        "DEBIT_OFFSET",
-                        "INTEREST",
-                        "DEFERRED_INTEREST",
-                        "PAYMENT",
-                        "CREDIT_OFFSET",
-                        "STATEMENT",
-                        "MIN_DUE",
-                        "FEE",
-                        "PRODUCT_INTEREST",
-                        "PAYMENT_SPLIT",
-                        "LATE_FEE",
-                        "RETURN_CHECK_FEE",
-                        "PROMO_END",
-                        "PURCHASE_WINDOW_END",
-                        "MONTH_FEE",
-                        "YEAR_FEE",
-                        "ORIG_FEE",
-                        "FEE_SURCHARGE",
-                        "PAYMENT_REVERSAL"
-                      ],
                       "example": "CHARGE"
                     },
                     "description": {
@@ -21184,14 +21569,6 @@
                 },
                 "line_item_summary": {
                   "type": "object",
-                  "required": [
-                    "original_amount_cents",
-                    "balance_cents",
-                    "principal_cents",
-                    "interest_balance_cents",
-                    "deferred_interest_balance_cents",
-                    "total_interest_paid_to_date_cents"
-                  ],
                   "properties": {
                     "original_amount_cents": {
                       "type": "integer",
@@ -21220,7 +21597,7 @@
                     },
                     "deferred_interest_balance_cents": {
                       "type": "integer",
-                      "description": "he current deferred interest balance of the line item.",
+                      "description": "The current deferred interest balance of the line item.",
                       "example": 200
                     },
                     "am_deferred_interest_balance_cents": {
@@ -21370,49 +21747,12 @@
                           "line_item_status": {
                             "type": "string",
                             "description": "the corresponding Status for a line item",
-                            "enum": [
-                              "ROLLED",
-                              "VALID",
-                              "INVALID",
-                              "OFFSET",
-                              "SPLIT_VALID",
-                              "SPLIT_INVALID",
-                              "PENDING",
-                              "REVERSED",
-                              "AUTHORIZED",
-                              "DECLINED",
-                              "VOID",
-                              "POSTED"
-                            ],
                             "example": "VALID",
                             "default": "VALID"
                           },
                           "line_item_type": {
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": [
-                              "LOAN",
-                              "CHARGE",
-                              "DEBIT_OFFSET",
-                              "INTEREST",
-                              "DEFERRED_INTEREST",
-                              "PAYMENT",
-                              "CREDIT_OFFSET",
-                              "STATEMENT",
-                              "MIN_DUE",
-                              "FEE",
-                              "PRODUCT_INTEREST",
-                              "PAYMENT_SPLIT",
-                              "LATE_FEE",
-                              "RETURN_CHECK_FEE",
-                              "PROMO_END",
-                              "PURCHASE_WINDOW_END",
-                              "MONTH_FEE",
-                              "YEAR_FEE",
-                              "ORIG_FEE",
-                              "FEE_SURCHARGE",
-                              "PAYMENT_REVERSAL"
-                            ],
                             "example": "CHARGE"
                           },
                           "description": {
@@ -21425,14 +21765,6 @@
                       },
                       "line_item_summary": {
                         "type": "object",
-                        "required": [
-                          "original_amount_cents",
-                          "balance_cents",
-                          "principal_cents",
-                          "interest_balance_cents",
-                          "deferred_interest_balance_cents",
-                          "total_interest_paid_to_date_cents"
-                        ],
                         "properties": {
                           "original_amount_cents": {
                             "type": "integer",
@@ -21461,7 +21793,7 @@
                           },
                           "deferred_interest_balance_cents": {
                             "type": "integer",
-                            "description": "he current deferred interest balance of the line item.",
+                            "description": "The current deferred interest balance of the line item.",
                             "example": 200
                           },
                           "am_deferred_interest_balance_cents": {
@@ -21635,49 +21967,12 @@
                           "line_item_status": {
                             "type": "string",
                             "description": "the corresponding Status for a line item",
-                            "enum": [
-                              "ROLLED",
-                              "VALID",
-                              "INVALID",
-                              "OFFSET",
-                              "SPLIT_VALID",
-                              "SPLIT_INVALID",
-                              "PENDING",
-                              "REVERSED",
-                              "AUTHORIZED",
-                              "DECLINED",
-                              "VOID",
-                              "POSTED"
-                            ],
                             "example": "VALID",
                             "default": "VALID"
                           },
                           "line_item_type": {
                             "type": "string",
                             "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                            "enum": [
-                              "LOAN",
-                              "CHARGE",
-                              "DEBIT_OFFSET",
-                              "INTEREST",
-                              "DEFERRED_INTEREST",
-                              "PAYMENT",
-                              "CREDIT_OFFSET",
-                              "STATEMENT",
-                              "MIN_DUE",
-                              "FEE",
-                              "PRODUCT_INTEREST",
-                              "PAYMENT_SPLIT",
-                              "LATE_FEE",
-                              "RETURN_CHECK_FEE",
-                              "PROMO_END",
-                              "PURCHASE_WINDOW_END",
-                              "MONTH_FEE",
-                              "YEAR_FEE",
-                              "ORIG_FEE",
-                              "FEE_SURCHARGE",
-                              "PAYMENT_REVERSAL"
-                            ],
                             "example": "CHARGE"
                           },
                           "description": {
@@ -21690,14 +21985,6 @@
                       },
                       "line_item_summary": {
                         "type": "object",
-                        "required": [
-                          "original_amount_cents",
-                          "balance_cents",
-                          "principal_cents",
-                          "interest_balance_cents",
-                          "deferred_interest_balance_cents",
-                          "total_interest_paid_to_date_cents"
-                        ],
                         "properties": {
                           "original_amount_cents": {
                             "type": "integer",
@@ -21726,7 +22013,7 @@
                           },
                           "deferred_interest_balance_cents": {
                             "type": "integer",
-                            "description": "he current deferred interest balance of the line item.",
+                            "description": "The current deferred interest balance of the line item.",
                             "example": 200
                           },
                           "am_deferred_interest_balance_cents": {
@@ -21951,6 +22238,7 @@
                   "properties": {
                     "merchant_id": {
                       "type": "string",
+                      "example": "987654321",
                       "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
                     }
                   }
@@ -21972,6 +22260,7 @@
                   "properties": {
                     "api_key": {
                       "type": "string",
+                      "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
                       "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
                     }
                   }
@@ -22020,6 +22309,48 @@
                       "type": "string",
                       "description": "A URL to which events pertaining to your organization get posted",
                       "example": "https://mycallbackurlhandler.com/canopy"
+                    }
+                  }
+                },
+                "config": {
+                  "description": "Configurations for API integrations within your organization.",
+                  "type": "object",
+                  "properties": {
+                    "issuer_processor": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "PRIVACY",
+                          "description": "The active issuer-processor for your organization."
+                        },
+                        "valid_api_key": {
+                          "type": "boolean",
+                          "example": true,
+                          "description": "Indicates whether there is a valid API key configured for your issuer-processor."
+                        }
+                      }
+                    },
+                    "payment_processor": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "The active payment processor for your organization.",
+                          "example": "REPAY"
+                        },
+                        "repay_config": {
+                          "description": "Indicates the details for Repay configuration, if available, for your organization.",
+                          "type": "object",
+                          "properties": {
+                            "valid_merchant_id": {
+                              "type": "boolean",
+                              "example": true,
+                              "description": "Indicates whether a valid merchant ID has been configured for your organization. The merchant ID itself is hidden from our response."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }

@@ -255,23 +255,12 @@ export interface ProductOverview {
     /**
      * The Type of Product
      */
-    product_type: ProductType;
+    product_type: string;
 }
 
 export interface ExternalField {
     key?:   string;
     value?: string;
-}
-
-/**
- * The Type of Product
- */
-export enum ProductType {
-    DeferredInstallment = "DEFERRED_INSTALLMENT",
-    FixedRateInstallment = "FIXED_RATE_INSTALLMENT",
-    Installment = "INSTALLMENT",
-    MixedRateInstallment = "MIXED_RATE_INSTALLMENT",
-    Revolving = "REVOLVING",
 }
 
 /**

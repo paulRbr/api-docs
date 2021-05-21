@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "required": ["email_confirm", "new_password", "name_first", "name_last", "phone", "token"],
+  "properties": {
+    "email_confirm": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the user being updated.",
+      "example": "harriet@acmecorporation.com"
+    },
+    "new_password": {
+      "type": "string",
+      "description": "The new password of the API user.",
+      "example": "newSecretPassword123!"
+    },
+    "name_first": {
+      "type": "string",
+      "description": "The first name of the API user.",
+      "example": "Karl"
+    },
+    "name_last": {
+      "type": "string",
+      "description": "The last name of the API user.",
+      "example": "Martins"
+    },
+    "phone": {
+      "type": "string",
+      "description": "The phone number to add to the API User's information.",
+      "example": "1-222-222-2222"
+    },
+    "token": {
+      "type": "string",
+      "description": "A unique token included in Canopy's register user email."
+    }
+  }
+}

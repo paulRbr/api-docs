@@ -79,7 +79,7 @@ type ProductOverview struct {
 	ProductLongDescription  string          `json:"product_long_description"`           // Description of the Product ranging from 0 - 1000.
 	ProductName             string          `json:"product_name"`                       // Name of Product, i.e. Express Card.
 	ProductShortDescription *string         `json:"product_short_description,omitempty"`// A short description of the product ranging from 0 - 60 characters.
-	ProductType             ProductType     `json:"product_type"`                       // The Type of Product
+	ProductType             string          `json:"product_type"`                       // The Type of Product
 }
 
 type ExternalField struct {
@@ -117,14 +117,4 @@ const (
 	None PromoMinPayType = "NONE"
 	PercentInterest PromoMinPayType = "PERCENT_INTEREST"
 	PercentPrincipal PromoMinPayType = "PERCENT_PRINCIPAL"
-)
-
-// The Type of Product
-type ProductType string
-const (
-	DeferredInstallment ProductType = "DEFERRED_INSTALLMENT"
-	FixedRateInstallment ProductType = "FIXED_RATE_INSTALLMENT"
-	Installment ProductType = "INSTALLMENT"
-	MixedRateInstallment ProductType = "MIXED_RATE_INSTALLMENT"
-	Revolving ProductType = "REVOLVING"
 )

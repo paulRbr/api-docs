@@ -4,21 +4,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "type": "object",
-        "required": ["email", "password"],
-        "properties": {
-          "email": {
-            "type": "string",
-            "format": "email",
-            "description": "The email address of the API User logging in.",
-            "example": "marissa@globex.com"
-          },
-          "password": {
-            "type": "string",
-            "description": "The password of the user logging in.",
-            "example": "secretPassword123!"
-          }
-        }
+        "$ref": "./../schemas/LoginApiUserInput.json"
       }
     }
   }

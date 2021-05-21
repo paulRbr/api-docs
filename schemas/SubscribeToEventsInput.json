@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": ["webhook_url"],
+  "additionalProperties": false,
+  "properties": {
+    "webhook_url": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://myserver.com/send/webhook/canopy"
+    }
+  }
+}

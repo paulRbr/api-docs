@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["original_amount_cents"],
+  "properties": {
+    "original_amount_cents": {
+      "type": "integer",
+      "description": "The payment amount in cents.",
+      "example": 200,
+      "default": 0
+    },
+    "effective_at": {
+      "type": "string",
+      "description": "The `Date-Time` that the payment is applicable to the account. Although the payment is created in Canopy today, it can actually be effective 10 days prior.",
+      "format": "date-time",
+      "example": "2020-07-20T09:11:28+00:00"
+    },
+    "external_fields": {
+      "type": "array",
+      "nullable": true,
+      "maxItems": 10,
+      "description": "External fields can be used to relate payments created in Canopy to entities in your or any external system.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Key - i.e. Name of the External Party",
+            "example": "Globex Card Processing Account ID"
+          },
+          "value": {
+            "type": "string",
+            "description": "Value - i.e. External Account ID",
+            "example": "22445702-a389-431f-927d-07b8d0750787"
+          }
+        }
+      }
+    }
+  }
+}

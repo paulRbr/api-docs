@@ -27,20 +27,20 @@ type Privacy struct {
 }
 
 type LineItemOverview struct {
-	Description    *string         `json:"description,omitempty"`     // A description of this particular line item if any. More common for adjustments.
-	LineItemStatus *LineItemStatus `json:"line_item_status,omitempty"`// the corresponding Status for a line item
-	LineItemType   LineItemType    `json:"line_item_type"`            // The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
+	Description    *string `json:"description,omitempty"`     // A description of this particular line item if any. More common for adjustments.
+	LineItemStatus *string `json:"line_item_status,omitempty"`// the corresponding Status for a line item
+	LineItemType   string  `json:"line_item_type"`            // The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
 }
 
 type LineItemSummary struct {
 	AmDeferredInterestBalanceCents *int64 `json:"am_deferred_interest_balance_cents,omitempty"`// The current AM deferred interest balance of the line item. Canopy tracks deferred; interest during an amortization period separately from deferred interest accrued during a; revolving period.
 	AmInterestBalanceCents         *int64 `json:"am_interest_balance_cents,omitempty"`         // The current AM interest balance of the line item. Canopy tracks interest during an; amortization period separately from deferred interest accrued during a revolving period.
-	BalanceCents                   int64  `json:"balance_cents"`                               // The current balance of the line item, which accounts for interest accrued per the; `product's` interest policy and the `account's` interest rate attribute.
-	DeferredInterestBalanceCents   int64  `json:"deferred_interest_balance_cents"`             // he current deferred interest balance of the line item.
-	InterestBalanceCents           int64  `json:"interest_balance_cents"`                      // The current interest balance of the line item.
-	OriginalAmountCents            int64  `json:"original_amount_cents"`                       // The originating amount of money (in cents) relating to this line item.
-	PrincipalCents                 int64  `json:"principal_cents"`                             // The principal balance of the line item.
-	TotalInterestPaidToDateCents   int64  `json:"total_interest_paid_to_date_cents"`           // The sum (in cents) of all payments towards interest charges, if any, applied to this line; item to date
+	BalanceCents                   *int64 `json:"balance_cents,omitempty"`                     // The current balance of the line item, which accounts for interest accrued per the; `product's` interest policy and the `account's` interest rate attribute.
+	DeferredInterestBalanceCents   *int64 `json:"deferred_interest_balance_cents,omitempty"`   // The current deferred interest balance of the line item.
+	InterestBalanceCents           *int64 `json:"interest_balance_cents,omitempty"`            // The current interest balance of the line item.
+	OriginalAmountCents            *int64 `json:"original_amount_cents,omitempty"`             // The originating amount of money (in cents) relating to this line item.
+	PrincipalCents                 *int64 `json:"principal_cents,omitempty"`                   // The principal balance of the line item.
+	TotalInterestPaidToDateCents   *int64 `json:"total_interest_paid_to_date_cents,omitempty"` // The sum (in cents) of all payments towards interest charges, if any, applied to this line; item to date
 }
 
 // Merchant information if applicable.
@@ -50,46 +50,3 @@ type MerchantData struct {
 	Name        *string  `json:"name,omitempty"`        
 	PhoneNumber *string  `json:"phone_number,omitempty"`
 }
-
-// the corresponding Status for a line item
-type LineItemStatus string
-const (
-	Authorized LineItemStatus = "AUTHORIZED"
-	Declined LineItemStatus = "DECLINED"
-	Invalid LineItemStatus = "INVALID"
-	Offset LineItemStatus = "OFFSET"
-	Pending LineItemStatus = "PENDING"
-	Posted LineItemStatus = "POSTED"
-	Reversed LineItemStatus = "REVERSED"
-	Rolled LineItemStatus = "ROLLED"
-	SplitInvalid LineItemStatus = "SPLIT_INVALID"
-	SplitValid LineItemStatus = "SPLIT_VALID"
-	Valid LineItemStatus = "VALID"
-	Void LineItemStatus = "VOID"
-)
-
-// The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
-type LineItemType string
-const (
-	Charge LineItemType = "CHARGE"
-	CreditOffset LineItemType = "CREDIT_OFFSET"
-	DebitOffset LineItemType = "DEBIT_OFFSET"
-	DeferredInterest LineItemType = "DEFERRED_INTEREST"
-	Fee LineItemType = "FEE"
-	FeeSurcharge LineItemType = "FEE_SURCHARGE"
-	Interest LineItemType = "INTEREST"
-	LateFee LineItemType = "LATE_FEE"
-	Loan LineItemType = "LOAN"
-	MinDue LineItemType = "MIN_DUE"
-	MonthFee LineItemType = "MONTH_FEE"
-	OrigFee LineItemType = "ORIG_FEE"
-	Payment LineItemType = "PAYMENT"
-	PaymentReversal LineItemType = "PAYMENT_REVERSAL"
-	PaymentSplit LineItemType = "PAYMENT_SPLIT"
-	ProductInterest LineItemType = "PRODUCT_INTEREST"
-	PromoEnd LineItemType = "PROMO_END"
-	PurchaseWindowEnd LineItemType = "PURCHASE_WINDOW_END"
-	ReturnCheckFee LineItemType = "RETURN_CHECK_FEE"
-	Statement LineItemType = "STATEMENT"
-	YearFee LineItemType = "YEAR_FEE"
-)

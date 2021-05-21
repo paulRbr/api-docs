@@ -1,9 +1,9 @@
 type Note struct {
-	AccountID   string `json:"account_id"`  // A Canopy-generated ID for the account.
-	Author      Author `json:"author"`      // The API User who authored the note
-	CreatedDate string `json:"created_date"`// The date and time the note was created.
-	Message     string `json:"message"`     // The contents of the note.
-	NoteID      string `json:"note_id"`     // A Canopy-generated ID for the note.
+	AccountID   string  `json:"account_id"`       // A Canopy-generated ID for the account.
+	Author      *Author `json:"author,omitempty"` // The API User who authored the note
+	CreatedDate string  `json:"created_date"`     // The date and time the note was created.
+	Message     *string `json:"message,omitempty"`// The contents of the note.
+	NoteID      string  `json:"note_id"`          // A Canopy-generated ID for the note.
 }
 
 // The API User who authored the note

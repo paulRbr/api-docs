@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "required": ["message"],
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "The contents of the note.",
+      "example": "Attempted to call back customer, but no response."
+    }
+  }
+}

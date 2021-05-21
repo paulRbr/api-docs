@@ -4,37 +4,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "effective_at": {
-            "type": "string",
-            "description": "The `Date-Time` that the payment reversal should be recorded to the account. Although the payment reversal is being added to Canopy today, it can actually be effective as of 10 days ago. Must be after the original payment being reversed.",
-            "format": "date-time",
-            "example": "2020-07-20T09:11:28+00:00"
-          },
-          "external_fields": {
-            "type": "array",
-            "nullable": true,
-            "maxItems": 10,
-            "description": "An array of static references to fields in a third party system.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string",
-                  "description": "Key - i.e. Name of the External Party",
-                  "example": "Globex Card Processing Account ID"
-                },
-                "value": {
-                  "type": "string",
-                  "description": "Value - i.e. External Account ID",
-                  "example": "22445702-a389-431f-927d-07b8d0750787"
-                }
-              }
-            }
-          }
-        }
+        "$ref": "./../schemas/CreatePaymentReversalInput.json"
       }
     }
   }

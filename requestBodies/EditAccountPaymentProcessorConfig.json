@@ -1,11 +1,10 @@
 {
-    "description": "Edit Payment Processor Config",
-    "content": {
-      "application/json": {
-        "schema": {
-          "$ref": "./../schemas/PaymentProcessorConfigInput.json"
-        }
+  "description": "Edit Payment Processor Config",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/PaymentProcessorConfigInput.json"
       }
     }
   }
-  
+}

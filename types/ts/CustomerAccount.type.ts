@@ -73,7 +73,7 @@ export interface CustomerAccount {
     /**
      * The role of the customer for the account.
      */
-    customer_account_role?: CustomerAccountRole;
+    customer_account_role?: string;
     account?:               Account;
 }
 
@@ -230,18 +230,7 @@ export interface ProductOverview {
     /**
      * The Type of Product. If not included, defaults to `REVOLVING`
      */
-    product_type: ProductType;
-}
-
-/**
- * The Type of Product. If not included, defaults to `REVOLVING`
- */
-export enum ProductType {
-    DeferredInstallment = "DEFERRED_INSTALLMENT",
-    FixedRateInstallment = "FIXED_RATE_INSTALLMENT",
-    Installment = "INSTALLMENT",
-    MixedRateInstallment = "MIXED_RATE_INSTALLMENT",
-    Revolving = "REVOLVING",
+    product_type: string;
 }
 
 export interface PromoOverview {
@@ -360,8 +349,8 @@ export interface MinPayDueCents {
 
 export interface PaymentProcessorConfig {
     /**
-     * Indicates whether autopay is enabled for this account. Currently, autopay is triggered
-     * two days prior to a payment due date.
+     * Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1
+     * day prior to a payment due date.
      */
     autopay_enabled?: boolean;
     /**
@@ -500,12 +489,4 @@ export enum Type {
     MerchantLocked = "MERCHANT_LOCKED",
     SingleUse = "SINGLE_USE",
     Unlocked = "UNLOCKED",
-}
-
-/**
- * The role of the customer for the account.
- */
-export enum CustomerAccountRole {
-    Primary = "PRIMARY",
-    Secondary = "SECONDARY",
 }

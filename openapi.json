@@ -1565,9 +1565,6 @@
       }
     },
     "schemas": {
-      "ApiUser": {
-        "$ref": "./schemas/ApiUser.json"
-      },
       "Account": {
         "$ref": "./schemas/Account.json"
       },
@@ -1577,41 +1574,56 @@
       "AccountStatementSummary": {
         "$ref": "./schemas/AccountStatementSummary.json"
       },
+      "ApiUser": {
+        "$ref": "./schemas/ApiUser.json"
+      },
       "AmortizationSchedule": {
         "$ref": "./schemas/AmortizationSchedule.json"
       },
       "ComplexAccount": {
         "$ref": "./schemas/ComplexAccount.json"
       },
-      "Customer": {
-        "$ref": "./schemas/Customer.json"
-      },
       "ComplexCustomer": {
         "$ref": "./schemas/ComplexCustomer.json"
+      },
+      "ConfigureIssuerProcessorsInput": {
+        "$ref": "./schemas/ConfigureIssuerProcessorsInput.json"
+      },
+      "ConfigurePaymentProcessorsInput": {
+        "$ref": "./schemas/ConfigurePaymentProcessorsInput.json"
+      },
+      "CreateAccountInput": {
+        "$ref": "./schemas/CreateAccountInput.json"
+      },
+      "CreateAPIUserInput": {
+        "$ref": "./schemas/CreateAPIUserInput.json"
+      },
+      "CreateChargeInput": {
+        "$ref": "./schemas/CreateChargeInput.json"
+      },
+      "CreateCustomerAccountCardInput": {
+        "$ref": "./schemas/CreateCustomerAccountCardInput.json"
+      },
+      "CreateCustomerInput": {
+        "$ref": "./schemas/CreateCustomerInput.json"
+      },
+      "CreateNoteInput": {
+        "$ref": "./schemas/CreateNoteInput.json"
+      },
+      "CreatePaymentInput": {
+        "$ref": "./schemas/CreatePaymentInput.json"
+      },
+      "Customer": {
+        "$ref": "./schemas/Customer.json"
       },
       "CustomerAccount": {
         "$ref": "./schemas/CustomerAccount.json"
       },
-      "Note": {
-        "$ref": "./schemas/Note.json"
+      "CustomerCards": {
+        "$ref": "./schemas/CustomerCards.json"
       },
-      "Product": {
-        "$ref": "./schemas/Product.json"
-      },
-      "ProductSummary": {
-        "$ref": "./schemas/ProductSummary.json"
-      },
-      "ProductAccounts": {
-        "$ref": "./schemas/ProductAccounts.json"
-      },
-      "BasePolicyConfig": {
-        "$ref": "./schemas/BasePolicyConfig.json"
-      },
-      "BasePolicyConfigMinPay": {
-        "$ref": "./schemas/BasePolicyConfigMinPay.json"
-      },
-      "BasePolicyConfigBillingCycle": {
-        "$ref": "./schemas/BasePolicyConfigBillingCycle.json"
+      "EditLineItemInput": {
+        "$ref": "./schemas/EditLineItemInput.json"
       },
       "InterestPolicy": {
         "$ref": "./schemas/InterestPolicy.json"
@@ -1619,14 +1631,47 @@
       "LineItem": {
         "$ref": "./schemas/LineItem.json"
       },
-      "SimpleLineItem": {
-        "$ref": "./schemas/SimpleLineItem.json"
+      "LoginAPIUserInput": {
+        "$ref": "./schemas/LoginAPIUserInput.json"
+      },
+      "Note": {
+        "$ref": "./schemas/Note.json"
+      },
+      "Organization": {
+        "$ref": "./schemas/Organization.json"
+      },
+      "OrgIssuerProcessorConfig": {
+        "$ref": "./schemas/OrgIssuerProcessorConfig.json"
       },
       "OrgPaymentProcessorConfig": {
         "$ref": "./schemas/OrgPaymentProcessorConfig.json"
       },
-      "OrgIssuerProcessorConfig": {
-        "$ref": "./schemas/OrgIssuerProcessorConfig.json"
+      "Pagination": {
+        "$ref": "./schemas/Pagination.json"
+      },
+      "Product": {
+        "$ref": "./schemas/Product.json"
+      },
+      "ProductSummary": {
+        "$ref": "./schemas/ProductSummary.json"
+      },
+      "RegisterAPIUserInput": {
+        "$ref": "./schemas/RegisterAPIUserInput.json"
+      },
+      "ResponseLineItem": {
+        "$ref": "./schemas/ResponseLineItem.json"
+      },
+      "StatementsList": {
+        "$ref": "./schemas/StatementsList.json"
+      },
+      "SubscribeToEventsInput": {
+        "$ref": "./schemas/SubscribeToEventsInput.json"
+      },
+      "UpdateAPIUserPassword": {
+        "$ref": "./schemas/UpdateAPIUserPassword.json"
+      },
+      "UpdateProductMigrationModeInput": {
+        "$ref": "./schemas/UpdateProductMigrationModeInput.json"
       }
     },
     "requestBodies": {
@@ -1757,9 +1802,6 @@
       },
       "AccountStatement": {
         "$ref": "./responses/AccountStatement.json"
-      },
-      "ProductAccounts": {
-        "$ref": "./responses/ProductAccounts.json"
       },
       "ProductSummary": {
         "$ref": "./responses/ProductSummary.json"

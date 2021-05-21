@@ -72,12 +72,12 @@ type ProductLifecycle struct {
 }
 
 type ProductOverview struct {
-	ProductColor            *string     `json:"product_color,omitempty"`            // A color to be associated with the product for UI purposes.
-	ProductLongDescription  string      `json:"product_long_description"`           // Description of the Product.
-	ProductName             string      `json:"product_name"`                       // Name of Product, i.e. Express Card.
-	ProductShortDescription *string     `json:"product_short_description,omitempty"`// Short description of the Product - max of 30 characters.
-	ProductTimeZone         *string     `json:"product_time_zone,omitempty"`        // Timezone denoted as an [Olson-style; timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the; timezone for the product. All times in any response data for accounts using this product; will be denominated in this timezone. Shifts due to daylight savings will be accounted; for where relevant, and all output timestamps will be denoted as UTC offsets normalized; based on this value.
-	ProductType             ProductType `json:"product_type"`                       // The Type of Product. If not included, defaults to `REVOLVING`
+	ProductColor            *string `json:"product_color,omitempty"`            // A color to be associated with the product for UI purposes.
+	ProductLongDescription  string  `json:"product_long_description"`           // Description of the Product.
+	ProductName             string  `json:"product_name"`                       // Name of Product, i.e. Express Card.
+	ProductShortDescription *string `json:"product_short_description,omitempty"`// Short description of the Product - max of 30 characters.
+	ProductTimeZone         *string `json:"product_time_zone,omitempty"`        // Timezone denoted as an [Olson-style; timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) defining the; timezone for the product. All times in any response data for accounts using this product; will be denominated in this timezone. Shifts due to daylight savings will be accounted; for where relevant, and all output timestamps will be denoted as UTC offsets normalized; based on this value.
+	ProductType             string  `json:"product_type"`                       // The Type of Product. If not included, defaults to `REVOLVING`
 }
 
 type PromoOverview struct {
@@ -127,7 +127,7 @@ type MinPayDueCents struct {
 }
 
 type PaymentProcessorConfig struct {
-	AutopayEnabled       *bool                 `json:"autopay_enabled,omitempty"`       // Indicates whether autopay is enabled for this account. Currently, autopay is triggered; two days prior to a payment due date.
+	AutopayEnabled       *bool                 `json:"autopay_enabled,omitempty"`       // Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1; day prior to a payment due date.
 	PaymentProcessorName *PaymentProcessorName `json:"payment_processor_name,omitempty"`// Indicates the active payment processor whose configuration will be used for payments made; from the account. If `NONE`, Canopy will not trigger payments to an external payment; processor when they occur.
 	RepayConfig          *RepayConfig          `json:"repay_config,omitempty"`          
 }
@@ -158,16 +158,6 @@ type BusinessDetails struct {
 	BusinessLegalName *string `json:"business_legal_name,omitempty"`// The legal name of the Business
 	DoingBusinessAs   *string `json:"doing_business_as,omitempty"`  // The DBA name of the Business
 }
-
-// The Type of Product. If not included, defaults to `REVOLVING`
-type ProductType string
-const (
-	DeferredInstallment ProductType = "DEFERRED_INSTALLMENT"
-	FixedRateInstallment ProductType = "FIXED_RATE_INSTALLMENT"
-	Installment ProductType = "INSTALLMENT"
-	MixedRateInstallment ProductType = "MIXED_RATE_INSTALLMENT"
-	Revolving ProductType = "REVOLVING"
-)
 
 // Indicates the active payment processor whose configuration will be used for payments made
 // from the account. If `NONE`, Canopy will not trigger payments to an external payment
