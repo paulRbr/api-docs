@@ -1,13 +1,13 @@
 {
   "type": "object",
   "properties": {
-    "privacy_config": {
+    "lithic_config": {
       "type": "object",
       "properties": {
         "api_key": {
           "type": "string",
           "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
-          "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+          "description": "API key for your organization in Lithic. You can generate this in your Lithic dashboard as a self-service option."
         }
       }
     }

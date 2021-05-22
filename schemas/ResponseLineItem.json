@@ -121,7 +121,7 @@
     "issuer_processor_metadata": {
       "type": "object",
       "properties": {
-        "privacy": {
+        "lithic": {
           "type": "object",
           "properties": {
             "last_four": {

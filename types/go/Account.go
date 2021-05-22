@@ -94,11 +94,11 @@ type ExternalField struct {
 }
 
 type IssuerProcessorDetails struct {
-	Privacy *Privacy `json:"privacy,omitempty"`
+	Lithic *Lithic `json:"lithic,omitempty"`
 }
 
-type Privacy struct {
-	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Privacy account against which charges are made.
+type Lithic struct {
+	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Lithic account against which charges are made.
 }
 
 type MinPayDueCents struct {

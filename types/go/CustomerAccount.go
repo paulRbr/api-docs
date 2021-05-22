@@ -117,11 +117,11 @@ type ExternalField struct {
 }
 
 type IssuerProcessorDetails struct {
-	Privacy *IssuerProcessorDetailsPrivacy `json:"privacy,omitempty"`
+	Lithic *IssuerProcessorDetailsLithic `json:"lithic,omitempty"`
 }
 
-type IssuerProcessorDetailsPrivacy struct {
-	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Privacy account against which charges are made.
+type IssuerProcessorDetailsLithic struct {
+	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Lithic account against which charges are made.
 }
 
 type MinPayDueCents struct {
@@ -163,17 +163,17 @@ type BusinessDetails struct {
 }
 
 type CustomerAccountIssuerProcessorConfig struct {
-	Privacy *CustomerAccountIssuerProcessorConfigPrivacy `json:"privacy,omitempty"`
+	Lithic *CustomerAccountIssuerProcessorConfigLithic `json:"lithic,omitempty"`
 }
 
-type CustomerAccountIssuerProcessorConfigPrivacy struct {
-	PrivacyCard *PrivacyCard `json:"privacy_card,omitempty"`
+type CustomerAccountIssuerProcessorConfigLithic struct {
+	LithicCard *LithicCard `json:"lithic_card,omitempty"`
 }
 
-type PrivacyCard struct {
+type LithicCard struct {
 	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card number
 	Memo     *string `json:"memo,omitempty"`     // Friendly name to identify the card
-	Type     *Type   `json:"type,omitempty"`     // The type of card created by privacy.com
+	Type     *Type   `json:"type,omitempty"`     // The type of card created by Lithic
 }
 
 // Indicates the active payment processor whose configuration will be used for payments made
@@ -185,7 +185,7 @@ const (
 	Repay PaymentProcessorName = "REPAY"
 )
 
-// The type of card created by privacy.com
+// The type of card created by Lithic
 type Type string
 const (
 	MerchantLocked Type = "MERCHANT_LOCKED"

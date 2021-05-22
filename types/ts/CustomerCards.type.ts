@@ -1,11 +1,11 @@
 /**
- * Card data. Field names match the ones in Privacy's card schema
+ * Card data. Field names match the ones in Lithic's card schema
  */
 export interface CustomerCards {
-    privacy?: Privacy;
+    lithic?: Lithic;
 }
 
-export interface Privacy {
+export interface Lithic {
     /**
      * Last four digits of the card
      */

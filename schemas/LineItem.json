@@ -120,7 +120,7 @@
       "type": "object",
       "nullable": true,
       "properties": {
-        "privacy": {
+        "lithic": {
           "type": "object",
           "properties": {
             "last_four": {

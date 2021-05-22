@@ -316,13 +316,13 @@ export interface BusinessDetails {
 }
 
 /**
- * Card data. Field names match the ones in Privacy's card schema
+ * Card data. Field names match the ones in Lithic's card schema
  */
 export interface CardDetail {
-    privacy?: CardDetailPrivacy;
+    lithic?: CardDetailLithic;
 }
 
-export interface CardDetailPrivacy {
+export interface CardDetailLithic {
     /**
      * Last four digits of the card
      */
@@ -382,12 +382,12 @@ export interface ExternalField {
 }
 
 export interface IssuerProcessorDetails {
-    privacy?: IssuerProcessorDetailsPrivacy;
+    lithic?: IssuerProcessorDetailsLithic;
 }
 
-export interface IssuerProcessorDetailsPrivacy {
+export interface IssuerProcessorDetailsLithic {
     /**
-     * The external unique identifier of the Privacy account against which charges are made.
+     * The external unique identifier of the Lithic account against which charges are made.
      */
     account_token?: string;
 }

@@ -111,12 +111,12 @@ type BusinessDetails struct {
 	DoingBusinessAs   *string `json:"doing_business_as,omitempty"`  // The DBA name of the Business
 }
 
-// Card data. Field names match the ones in Privacy's card schema
+// Card data. Field names match the ones in Lithic's card schema
 type CardDetail struct {
-	Privacy *CardDetailPrivacy `json:"privacy,omitempty"`
+	Lithic *CardDetailLithic `json:"lithic,omitempty"`
 }
 
-type CardDetailPrivacy struct {
+type CardDetailLithic struct {
 	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card
 	Memo     *string `json:"memo,omitempty"`     // Friendly name to identify the card
 	State    *State  `json:"state,omitempty"`    // The current state of the card
@@ -134,11 +134,11 @@ type ExternalField struct {
 }
 
 type IssuerProcessorDetails struct {
-	Privacy *IssuerProcessorDetailsPrivacy `json:"privacy,omitempty"`
+	Lithic *IssuerProcessorDetailsLithic `json:"lithic,omitempty"`
 }
 
-type IssuerProcessorDetailsPrivacy struct {
-	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Privacy account against which charges are made.
+type IssuerProcessorDetailsLithic struct {
+	AccountToken *string `json:"account_token,omitempty"`// The external unique identifier of the Lithic account against which charges are made.
 }
 
 type MinPayDueCents struct {

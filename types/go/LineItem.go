@@ -17,10 +17,10 @@ type ExternalField struct {
 }
 
 type IssuerProcessorDetails struct {
-	Privacy *Privacy `json:"privacy,omitempty"`
+	Lithic *Lithic `json:"lithic,omitempty"`
 }
 
-type Privacy struct {
+type Lithic struct {
 	CardToken        *string `json:"card_token,omitempty"`       // The external unique identifier of the card related to this line item.
 	LastFour         *int64  `json:"last_four,omitempty"`        // Last four digits of the card against which the spend was made.
 	TransactionToken *string `json:"transaction_token,omitempty"`// The external unique identifier of the transaction.

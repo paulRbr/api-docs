@@ -18,10 +18,10 @@
         "customer_account_issuer_processor_config": {
           "type": "object",
           "properties": {
-            "privacy": {
+            "lithic": {
               "type": "object",
               "properties": {
-                "privacy_card": {
+                "lithic_card": {
                   "type": "object",
                   "properties": {
                     "last_four": {
@@ -37,7 +37,7 @@
                     "type": {
                       "type": "string",
                       "enum": ["SINGLE_USE", "MERCHANT_LOCKED", "UNLOCKED"],
-                      "description": "The type of card created by privacy.com",
+                      "description": "The type of card created by Lithic",
                       "example": "MERCHANT_LOCKED"
                     }
                   }

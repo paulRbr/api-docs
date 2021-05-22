@@ -49,10 +49,10 @@ export interface AssignCustomer {
 }
 
 export interface CustomerAccountIssuerProcessorConfig {
-    privacy?: Privacy;
+    lithic?: Lithic;
 }
 
-export interface Privacy {
+export interface Lithic {
     /**
      * Friendly name to identify the card
      */
@@ -62,7 +62,7 @@ export interface Privacy {
      */
     state?: State;
     /**
-     * The type of card created by privacy.com
+     * The type of card created by Lithic
      */
     type?: Type;
 }
@@ -76,7 +76,7 @@ export enum State {
 }
 
 /**
- * The type of card created by privacy.com
+ * The type of card created by Lithic
  */
 export enum Type {
     MerchantLocked = "MERCHANT_LOCKED",

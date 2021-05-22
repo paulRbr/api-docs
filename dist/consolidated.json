@@ -2255,10 +2255,10 @@
                               "customer_account_issuer_processor_config": {
                                 "type": "object",
                                 "properties": {
-                                  "privacy": {
+                                  "lithic": {
                                     "type": "object",
                                     "properties": {
-                                      "privacy_card": {
+                                      "lithic_card": {
                                         "type": "object",
                                         "properties": {
                                           "last_four": {
@@ -2278,7 +2278,7 @@
                                               "MERCHANT_LOCKED",
                                               "UNLOCKED"
                                             ],
-                                            "description": "The type of card created by privacy.com",
+                                            "description": "The type of card created by Lithic",
                                             "example": "MERCHANT_LOCKED"
                                           }
                                         }
@@ -2669,13 +2669,13 @@
                                   "issuer_processor_details": {
                                     "type": "object",
                                     "properties": {
-                                      "privacy": {
+                                      "lithic": {
                                         "type": "object",
                                         "properties": {
                                           "account_token": {
                                             "type": "string",
                                             "format": "uuid",
-                                            "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                            "description": "The external unique identifier of the Lithic account against which charges are made.",
                                             "example": "349e2031-20de-40c6-87a3-214895077522"
                                           }
                                         }
@@ -3006,7 +3006,7 @@
                         "customer_account_issuer_processor_config": {
                           "type": "object",
                           "properties": {
-                            "privacy": {
+                            "lithic": {
                               "type": "object",
                               "properties": {
                                 "memo": {
@@ -3021,7 +3021,7 @@
                                     "MERCHANT_LOCKED",
                                     "UNLOCKED"
                                   ],
-                                  "description": "The type of card created by privacy.com.",
+                                  "description": "The type of card created by Lithic.",
                                   "example": "MERCHANT_LOCKED"
                                 },
                                 "state": {
@@ -3449,7 +3449,7 @@
                             "customer_account_issuer_processor_config": {
                               "type": "object",
                               "properties": {
-                                "privacy": {
+                                "lithic": {
                                   "type": "object",
                                   "properties": {
                                     "memo": {
@@ -3464,7 +3464,7 @@
                                         "MERCHANT_LOCKED",
                                         "UNLOCKED"
                                       ],
-                                      "description": "The type of card created by privacy.com",
+                                      "description": "The type of card created by Lithic",
                                       "example": "MERCHANT_LOCKED"
                                     },
                                     "state": {
@@ -3874,13 +3874,13 @@
                         "issuer_processor_details": {
                           "type": "object",
                           "properties": {
-                            "privacy": {
+                            "lithic": {
                               "type": "object",
                               "properties": {
                                 "account_token": {
                                   "type": "string",
                                   "format": "uuid",
-                                  "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                  "description": "The external unique identifier of the Lithic account against which charges are made.",
                                   "example": "349e2031-20de-40c6-87a3-214895077522"
                                 }
                               }
@@ -4126,10 +4126,10 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
-                                      "description": "Card data. Field names match the ones in Privacy's card schema",
+                                      "description": "Card data. Field names match the ones in Lithic's card schema",
                                       "additionalProperties": true,
                                       "properties": {
-                                        "privacy": {
+                                        "lithic": {
                                           "type": "object",
                                           "properties": {
                                             "type": {
@@ -4609,13 +4609,13 @@
                         "issuer_processor_details": {
                           "type": "object",
                           "properties": {
-                            "privacy": {
+                            "lithic": {
                               "type": "object",
                               "properties": {
                                 "account_token": {
                                   "type": "string",
                                   "format": "uuid",
-                                  "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                  "description": "The external unique identifier of the Lithic account against which charges are made.",
                                   "example": "349e2031-20de-40c6-87a3-214895077522"
                                 }
                               }
@@ -4861,10 +4861,10 @@
                                     "nullable": true,
                                     "items": {
                                       "type": "object",
-                                      "description": "Card data. Field names match the ones in Privacy's card schema",
+                                      "description": "Card data. Field names match the ones in Lithic's card schema",
                                       "additionalProperties": true,
                                       "properties": {
-                                        "privacy": {
+                                        "lithic": {
                                           "type": "object",
                                           "properties": {
                                             "type": {
@@ -5573,7 +5573,7 @@
                             "type": "object",
                             "nullable": true,
                             "properties": {
-                              "privacy": {
+                              "lithic": {
                                 "type": "object",
                                 "properties": {
                                   "last_four": {
@@ -5882,7 +5882,7 @@
                             "type": "object",
                             "nullable": true,
                             "properties": {
-                              "privacy": {
+                              "lithic": {
                                 "type": "object",
                                 "properties": {
                                   "last_four": {
@@ -6150,7 +6150,7 @@
                     "issuer_processor_metadata": {
                       "type": "object",
                       "properties": {
-                        "privacy": {
+                        "lithic": {
                           "type": "object",
                           "properties": {
                             "last_four": {
@@ -6290,7 +6290,7 @@
                   "issuer_processor_metadata": {
                     "type": "object",
                     "properties": {
-                      "privacy": {
+                      "lithic": {
                         "type": "object",
                         "properties": {
                           "last_four": {
@@ -6466,7 +6466,7 @@
                     "issuer_processor_metadata": {
                       "type": "object",
                       "properties": {
-                        "privacy": {
+                        "lithic": {
                           "type": "object",
                           "properties": {
                             "last_four": {
@@ -6732,7 +6732,7 @@
                     "issuer_processor_metadata": {
                       "type": "object",
                       "properties": {
-                        "privacy": {
+                        "lithic": {
                           "type": "object",
                           "properties": {
                             "last_four": {
@@ -7545,7 +7545,7 @@
                             "type": "object",
                             "nullable": true,
                             "properties": {
-                              "privacy": {
+                              "lithic": {
                                 "type": "object",
                                 "properties": {
                                   "last_four": {
@@ -7660,7 +7660,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "privacy": {
+                  "lithic": {
                     "type": "object",
                     "properties": {
                       "memo": {
@@ -7675,7 +7675,7 @@
                           "MERCHANT_LOCKED",
                           "UNLOCKED"
                         ],
-                        "description": "The type of card created by privacy.com",
+                        "description": "The type of card created by Lithic",
                         "example": "MERCHANT_LOCKED"
                       },
                       "state": {
@@ -7704,10 +7704,10 @@
                   "nullable": true,
                   "items": {
                     "type": "object",
-                    "description": "Card data. Field names match the ones in Privacy's card schema",
+                    "description": "Card data. Field names match the ones in Lithic's card schema",
                     "additionalProperties": true,
                     "properties": {
-                      "privacy": {
+                      "lithic": {
                         "type": "object",
                         "properties": {
                           "type": {
@@ -7996,7 +7996,7 @@
                           "properties": {
                             "name": {
                               "type": "string",
-                              "example": "PRIVACY",
+                              "example": "LITHIC",
                               "description": "The active issuer-processor for your organization."
                             },
                             "valid_api_key": {
@@ -8562,7 +8562,7 @@
                                   "type": "object",
                                   "nullable": true,
                                   "properties": {
-                                    "privacy": {
+                                    "lithic": {
                                       "type": "object",
                                       "properties": {
                                         "last_four": {
@@ -8800,13 +8800,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "privacy_config": {
+                  "lithic_config": {
                     "type": "object",
                     "properties": {
                       "api_key": {
                         "type": "string",
                         "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
-                        "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                        "description": "API key for your organization in Lithic. You can generate this in your Lithic dashboard as a self-service option."
                       }
                     }
                   }
@@ -8823,13 +8823,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "privacy_config": {
+                    "lithic_config": {
                       "type": "object",
                       "properties": {
                         "api_key": {
                           "type": "string",
                           "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
-                          "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                          "description": "API key for your organization in Lithic. You can generate this in your Lithic dashboard as a self-service option."
                         }
                       }
                     }
@@ -9252,13 +9252,13 @@
           "issuer_processor_details": {
             "type": "object",
             "properties": {
-              "privacy": {
+              "lithic": {
                 "type": "object",
                 "properties": {
                   "account_token": {
                     "type": "string",
                     "format": "uuid",
-                    "description": "The external unique identifier of the Privacy account against which charges are made.",
+                    "description": "The external unique identifier of the Lithic account against which charges are made.",
                     "example": "349e2031-20de-40c6-87a3-214895077522"
                   }
                 }
@@ -9850,7 +9850,7 @@
                   "type": "object",
                   "nullable": true,
                   "properties": {
-                    "privacy": {
+                    "lithic": {
                       "type": "object",
                       "properties": {
                         "last_four": {
@@ -10496,13 +10496,13 @@
               "issuer_processor_details": {
                 "type": "object",
                 "properties": {
-                  "privacy": {
+                  "lithic": {
                     "type": "object",
                     "properties": {
                       "account_token": {
                         "type": "string",
                         "format": "uuid",
-                        "description": "The external unique identifier of the Privacy account against which charges are made.",
+                        "description": "The external unique identifier of the Lithic account against which charges are made.",
                         "example": "349e2031-20de-40c6-87a3-214895077522"
                       }
                     }
@@ -10748,10 +10748,10 @@
                           "nullable": true,
                           "items": {
                             "type": "object",
-                            "description": "Card data. Field names match the ones in Privacy's card schema",
+                            "description": "Card data. Field names match the ones in Lithic's card schema",
                             "additionalProperties": true,
                             "properties": {
-                              "privacy": {
+                              "lithic": {
                                 "type": "object",
                                 "properties": {
                                   "type": {
@@ -11296,13 +11296,13 @@
                     "issuer_processor_details": {
                       "type": "object",
                       "properties": {
-                        "privacy": {
+                        "lithic": {
                           "type": "object",
                           "properties": {
                             "account_token": {
                               "type": "string",
                               "format": "uuid",
-                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "description": "The external unique identifier of the Lithic account against which charges are made.",
                               "example": "349e2031-20de-40c6-87a3-214895077522"
                             }
                           }
@@ -11430,13 +11430,13 @@
       "ConfigureIssuerProcessorsInput": {
         "type": "object",
         "properties": {
-          "privacy_config": {
+          "lithic_config": {
             "type": "object",
             "properties": {
               "api_key": {
                 "type": "string",
                 "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
-                "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                "description": "API key for your organization in Lithic. You can generate this in your Lithic dashboard as a self-service option."
               }
             }
           }
@@ -11713,7 +11713,7 @@
                     "customer_account_issuer_processor_config": {
                       "type": "object",
                       "properties": {
-                        "privacy": {
+                        "lithic": {
                           "type": "object",
                           "properties": {
                             "memo": {
@@ -11728,7 +11728,7 @@
                                 "MERCHANT_LOCKED",
                                 "UNLOCKED"
                               ],
-                              "description": "The type of card created by privacy.com",
+                              "description": "The type of card created by Lithic",
                               "example": "MERCHANT_LOCKED"
                             },
                             "state": {
@@ -11830,7 +11830,7 @@
           "issuer_processor_metadata": {
             "type": "object",
             "properties": {
-              "privacy": {
+              "lithic": {
                 "type": "object",
                 "properties": {
                   "last_four": {
@@ -11867,7 +11867,7 @@
       "CreateCustomerAccountCardInput": {
         "type": "object",
         "properties": {
-          "privacy": {
+          "lithic": {
             "type": "object",
             "properties": {
               "memo": {
@@ -11882,7 +11882,7 @@
                   "MERCHANT_LOCKED",
                   "UNLOCKED"
                 ],
-                "description": "The type of card created by privacy.com",
+                "description": "The type of card created by Lithic",
                 "example": "MERCHANT_LOCKED"
               },
               "state": {
@@ -12042,7 +12042,7 @@
                 "customer_account_issuer_processor_config": {
                   "type": "object",
                   "properties": {
-                    "privacy": {
+                    "lithic": {
                       "type": "object",
                       "properties": {
                         "memo": {
@@ -12057,7 +12057,7 @@
                             "MERCHANT_LOCKED",
                             "UNLOCKED"
                           ],
-                          "description": "The type of card created by privacy.com.",
+                          "description": "The type of card created by Lithic.",
                           "example": "MERCHANT_LOCKED"
                         },
                         "state": {
@@ -12362,10 +12362,10 @@
               "customer_account_issuer_processor_config": {
                 "type": "object",
                 "properties": {
-                  "privacy": {
+                  "lithic": {
                     "type": "object",
                     "properties": {
-                      "privacy_card": {
+                      "lithic_card": {
                         "type": "object",
                         "properties": {
                           "last_four": {
@@ -12385,7 +12385,7 @@
                               "MERCHANT_LOCKED",
                               "UNLOCKED"
                             ],
-                            "description": "The type of card created by privacy.com",
+                            "description": "The type of card created by Lithic",
                             "example": "MERCHANT_LOCKED"
                           }
                         }
@@ -12776,13 +12776,13 @@
                   "issuer_processor_details": {
                     "type": "object",
                     "properties": {
-                      "privacy": {
+                      "lithic": {
                         "type": "object",
                         "properties": {
                           "account_token": {
                             "type": "string",
                             "format": "uuid",
-                            "description": "The external unique identifier of the Privacy account against which charges are made.",
+                            "description": "The external unique identifier of the Lithic account against which charges are made.",
                             "example": "349e2031-20de-40c6-87a3-214895077522"
                           }
                         }
@@ -12911,10 +12911,10 @@
         "nullable": true,
         "items": {
           "type": "object",
-          "description": "Card data. Field names match the ones in Privacy's card schema",
+          "description": "Card data. Field names match the ones in Lithic's card schema",
           "additionalProperties": true,
           "properties": {
-            "privacy": {
+            "lithic": {
               "type": "object",
               "properties": {
                 "type": {
@@ -13149,7 +13149,7 @@
             "type": "object",
             "nullable": true,
             "properties": {
-              "privacy": {
+              "lithic": {
                 "type": "object",
                 "properties": {
                   "last_four": {
@@ -13345,7 +13345,7 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "PRIVACY",
+                    "example": "LITHIC",
                     "description": "The active issuer-processor for your organization."
                   },
                   "valid_api_key": {
@@ -13383,13 +13383,13 @@
       "OrgIssuerProcessorConfig": {
         "type": "object",
         "properties": {
-          "privacy_config": {
+          "lithic_config": {
             "type": "object",
             "properties": {
               "api_key": {
                 "type": "string",
                 "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
-                "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                "description": "API key for your organization in Lithic. You can generate this in your Lithic dashboard as a self-service option."
               }
             }
           }
@@ -14013,7 +14013,7 @@
           "issuer_processor_metadata": {
             "type": "object",
             "properties": {
-              "privacy": {
+              "lithic": {
                 "type": "object",
                 "properties": {
                   "last_four": {
@@ -14762,7 +14762,7 @@
                       "customer_account_issuer_processor_config": {
                         "type": "object",
                         "properties": {
-                          "privacy": {
+                          "lithic": {
                             "type": "object",
                             "properties": {
                               "memo": {
@@ -14777,7 +14777,7 @@
                                   "MERCHANT_LOCKED",
                                   "UNLOCKED"
                                 ],
-                                "description": "The type of card created by privacy.com.",
+                                "description": "The type of card created by Lithic.",
                                 "example": "MERCHANT_LOCKED"
                               },
                               "state": {
@@ -15179,7 +15179,7 @@
                           "customer_account_issuer_processor_config": {
                             "type": "object",
                             "properties": {
-                              "privacy": {
+                              "lithic": {
                                 "type": "object",
                                 "properties": {
                                   "memo": {
@@ -15194,7 +15194,7 @@
                                       "MERCHANT_LOCKED",
                                       "UNLOCKED"
                                     ],
-                                    "description": "The type of card created by privacy.com",
+                                    "description": "The type of card created by Lithic",
                                     "example": "MERCHANT_LOCKED"
                                   },
                                   "state": {
@@ -15309,7 +15309,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "privacy": {
+                "lithic": {
                   "type": "object",
                   "properties": {
                     "memo": {
@@ -15324,7 +15324,7 @@
                         "MERCHANT_LOCKED",
                         "UNLOCKED"
                       ],
-                      "description": "The type of card created by privacy.com",
+                      "description": "The type of card created by Lithic",
                       "example": "MERCHANT_LOCKED"
                     },
                     "state": {
@@ -15455,7 +15455,7 @@
                 "issuer_processor_metadata": {
                   "type": "object",
                   "properties": {
-                    "privacy": {
+                    "lithic": {
                       "type": "object",
                       "properties": {
                         "last_four": {
@@ -15612,13 +15612,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "privacy_config": {
+                "lithic_config": {
                   "type": "object",
                   "properties": {
                     "api_key": {
                       "type": "string",
                       "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
-                      "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                      "description": "API key for your organization in Lithic. You can generate this in your Lithic dashboard as a self-service option."
                     }
                   }
                 }
@@ -17326,10 +17326,10 @@
                           "customer_account_issuer_processor_config": {
                             "type": "object",
                             "properties": {
-                              "privacy": {
+                              "lithic": {
                                 "type": "object",
                                 "properties": {
-                                  "privacy_card": {
+                                  "lithic_card": {
                                     "type": "object",
                                     "properties": {
                                       "last_four": {
@@ -17349,7 +17349,7 @@
                                           "MERCHANT_LOCKED",
                                           "UNLOCKED"
                                         ],
-                                        "description": "The type of card created by privacy.com",
+                                        "description": "The type of card created by Lithic",
                                         "example": "MERCHANT_LOCKED"
                                       }
                                     }
@@ -17740,13 +17740,13 @@
                               "issuer_processor_details": {
                                 "type": "object",
                                 "properties": {
-                                  "privacy": {
+                                  "lithic": {
                                     "type": "object",
                                     "properties": {
                                       "account_token": {
                                         "type": "string",
                                         "format": "uuid",
-                                        "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                        "description": "The external unique identifier of the Lithic account against which charges are made.",
                                         "example": "349e2031-20de-40c6-87a3-214895077522"
                                       }
                                     }
@@ -18743,13 +18743,13 @@
                     "issuer_processor_details": {
                       "type": "object",
                       "properties": {
-                        "privacy": {
+                        "lithic": {
                           "type": "object",
                           "properties": {
                             "account_token": {
                               "type": "string",
                               "format": "uuid",
-                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "description": "The external unique identifier of the Lithic account against which charges are made.",
                               "example": "349e2031-20de-40c6-87a3-214895077522"
                             }
                           }
@@ -18995,10 +18995,10 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
-                                  "description": "Card data. Field names match the ones in Privacy's card schema",
+                                  "description": "Card data. Field names match the ones in Lithic's card schema",
                                   "additionalProperties": true,
                                   "properties": {
-                                    "privacy": {
+                                    "lithic": {
                                       "type": "object",
                                       "properties": {
                                         "type": {
@@ -19488,13 +19488,13 @@
                       "issuer_processor_details": {
                         "type": "object",
                         "properties": {
-                          "privacy": {
+                          "lithic": {
                             "type": "object",
                             "properties": {
                               "account_token": {
                                 "type": "string",
                                 "format": "uuid",
-                                "description": "The external unique identifier of the Privacy account against which charges are made.",
+                                "description": "The external unique identifier of the Lithic account against which charges are made.",
                                 "example": "349e2031-20de-40c6-87a3-214895077522"
                               }
                             }
@@ -20039,7 +20039,7 @@
                 "issuer_processor_metadata": {
                   "type": "object",
                   "properties": {
-                    "privacy": {
+                    "lithic": {
                       "type": "object",
                       "properties": {
                         "last_four": {
@@ -20214,7 +20214,7 @@
                 "issuer_processor_metadata": {
                   "type": "object",
                   "properties": {
-                    "privacy": {
+                    "lithic": {
                       "type": "object",
                       "properties": {
                         "last_four": {
@@ -20634,13 +20634,13 @@
                     "issuer_processor_details": {
                       "type": "object",
                       "properties": {
-                        "privacy": {
+                        "lithic": {
                           "type": "object",
                           "properties": {
                             "account_token": {
                               "type": "string",
                               "format": "uuid",
-                              "description": "The external unique identifier of the Privacy account against which charges are made.",
+                              "description": "The external unique identifier of the Lithic account against which charges are made.",
                               "example": "349e2031-20de-40c6-87a3-214895077522"
                             }
                           }
@@ -20886,10 +20886,10 @@
                                 "nullable": true,
                                 "items": {
                                   "type": "object",
-                                  "description": "Card data. Field names match the ones in Privacy's card schema",
+                                  "description": "Card data. Field names match the ones in Lithic's card schema",
                                   "additionalProperties": true,
                                   "properties": {
-                                    "privacy": {
+                                    "lithic": {
                                       "type": "object",
                                       "properties": {
                                         "type": {
@@ -21421,7 +21421,7 @@
                         "type": "object",
                         "nullable": true,
                         "properties": {
-                          "privacy": {
+                          "lithic": {
                             "type": "object",
                             "properties": {
                               "last_four": {
@@ -21635,7 +21635,7 @@
                   "type": "object",
                   "nullable": true,
                   "properties": {
-                    "privacy": {
+                    "lithic": {
                       "type": "object",
                       "properties": {
                         "last_four": {
@@ -21831,7 +21831,7 @@
                         "type": "object",
                         "nullable": true,
                         "properties": {
-                          "privacy": {
+                          "lithic": {
                             "type": "object",
                             "properties": {
                               "last_four": {
@@ -22051,7 +22051,7 @@
                         "type": "object",
                         "nullable": true,
                         "properties": {
-                          "privacy": {
+                          "lithic": {
                             "type": "object",
                             "properties": {
                               "last_four": {
@@ -22255,13 +22255,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "privacy_config": {
+                "lithic_config": {
                   "type": "object",
                   "properties": {
                     "api_key": {
                       "type": "string",
                       "example": "a328j23l-61n0-k123-44b4-jj11ooo3b0uu",
-                      "description": "API key for your organization in Privacy.com. You can generate this in your privacy.com dashboard as a self-service option."
+                      "description": "API key for your organization in Lithic. You can generate this in your Lithic dashboard as a self-service option."
                     }
                   }
                 }
@@ -22321,7 +22321,7 @@
                       "properties": {
                         "name": {
                           "type": "string",
-                          "example": "PRIVACY",
+                          "example": "LITHIC",
                           "description": "The active issuer-processor for your organization."
                         },
                         "valid_api_key": {
@@ -22497,7 +22497,7 @@
                 "issuer_processor_metadata": {
                   "type": "object",
                   "properties": {
-                    "privacy": {
+                    "lithic": {
                       "type": "object",
                       "properties": {
                         "last_four": {
@@ -22561,10 +22561,10 @@
               "nullable": true,
               "items": {
                 "type": "object",
-                "description": "Card data. Field names match the ones in Privacy's card schema",
+                "description": "Card data. Field names match the ones in Lithic's card schema",
                 "additionalProperties": true,
                 "properties": {
-                  "privacy": {
+                  "lithic": {
                     "type": "object",
                     "properties": {
                       "type": {

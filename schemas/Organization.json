@@ -39,7 +39,7 @@
           "properties": {
             "name": {
               "type": "string",
-              "example": "PRIVACY",
+              "example": "LITHIC",
               "description": "The active issuer-processor for your organization."
             },
             "valid_api_key": {

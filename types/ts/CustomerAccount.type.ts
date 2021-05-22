@@ -325,12 +325,12 @@ export interface ExternalField {
 }
 
 export interface IssuerProcessorDetails {
-    privacy?: IssuerProcessorDetailsPrivacy;
+    lithic?: IssuerProcessorDetailsLithic;
 }
 
-export interface IssuerProcessorDetailsPrivacy {
+export interface IssuerProcessorDetailsLithic {
     /**
-     * The external unique identifier of the Privacy account against which charges are made.
+     * The external unique identifier of the Lithic account against which charges are made.
      */
     account_token?: string;
 }
@@ -460,14 +460,14 @@ export interface BusinessDetails {
 }
 
 export interface CustomerAccountIssuerProcessorConfig {
-    privacy?: CustomerAccountIssuerProcessorConfigPrivacy;
+    lithic?: CustomerAccountIssuerProcessorConfigLithic;
 }
 
-export interface CustomerAccountIssuerProcessorConfigPrivacy {
-    privacy_card?: PrivacyCard;
+export interface CustomerAccountIssuerProcessorConfigLithic {
+    lithic_card?: LithicCard;
 }
 
-export interface PrivacyCard {
+export interface LithicCard {
     /**
      * Last four digits of the card number
      */
@@ -477,13 +477,13 @@ export interface PrivacyCard {
      */
     memo?: string;
     /**
-     * The type of card created by privacy.com
+     * The type of card created by Lithic
      */
     type?: Type;
 }
 
 /**
- * The type of card created by privacy.com
+ * The type of card created by Lithic
  */
 export enum Type {
     MerchantLocked = "MERCHANT_LOCKED",

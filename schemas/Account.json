@@ -141,13 +141,13 @@
     "issuer_processor_details": {
       "type": "object",
       "properties": {
-        "privacy": {
+        "lithic": {
           "type": "object",
           "properties": {
             "account_token": {
               "type": "string",
               "format": "uuid",
-              "description": "The external unique identifier of the Privacy account against which charges are made.",
+              "description": "The external unique identifier of the Lithic account against which charges are made.",
               "example": "349e2031-20de-40c6-87a3-214895077522"
             }
           }

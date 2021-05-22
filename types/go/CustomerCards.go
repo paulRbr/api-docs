@@ -1,11 +1,11 @@
 type CustomerCards []CustomerCard
 
-// Card data. Field names match the ones in Privacy's card schema
+// Card data. Field names match the ones in Lithic's card schema
 type CustomerCard struct {
-	Privacy *Privacy `json:"privacy,omitempty"`
+	Lithic *Lithic `json:"lithic,omitempty"`
 }
 
-type Privacy struct {
+type Lithic struct {
 	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card
 	Memo     *string `json:"memo,omitempty"`     // Friendly name to identify the card
 	State    *State  `json:"state,omitempty"`    // The current state of the card

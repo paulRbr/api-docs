@@ -44,10 +44,10 @@ export interface ExternalField {
 }
 
 export interface IssuerProcessorMetadata {
-    privacy?: Privacy;
+    lithic?: Lithic;
 }
 
-export interface Privacy {
+export interface Lithic {
     /**
      * Last four digits of the card against which the spend was made.
      */

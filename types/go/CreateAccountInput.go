@@ -20,13 +20,13 @@ type AssignCustomer struct {
 }
 
 type CustomerAccountIssuerProcessorConfig struct {
-	Privacy *Privacy `json:"privacy,omitempty"`
+	Lithic *Lithic `json:"lithic,omitempty"`
 }
 
-type Privacy struct {
+type Lithic struct {
 	Memo  *string `json:"memo,omitempty"` // Friendly name to identify the card
 	State *State  `json:"state,omitempty"`// The state of the new card
-	Type  *Type   `json:"type,omitempty"` // The type of card created by privacy.com
+	Type  *Type   `json:"type,omitempty"` // The type of card created by Lithic
 }
 
 type AssociatedEntities struct {
@@ -87,7 +87,7 @@ const (
 	Paused State = "PAUSED"
 )
 
-// The type of card created by privacy.com
+// The type of card created by Lithic
 type Type string
 const (
 	MerchantLocked Type = "MERCHANT_LOCKED"

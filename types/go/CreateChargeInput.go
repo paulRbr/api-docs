@@ -13,10 +13,10 @@ type ExternalField struct {
 }
 
 type IssuerProcessorMetadata struct {
-	Privacy *Privacy `json:"privacy,omitempty"`
+	Lithic *Lithic `json:"lithic,omitempty"`
 }
 
-type Privacy struct {
+type Lithic struct {
 	LastFour *int64 `json:"last_four,omitempty"`// Last four digits of the card against which the spend was made.
 }
 

@@ -318,12 +318,12 @@ export interface ExternalField {
 }
 
 export interface IssuerProcessorDetails {
-    privacy?: Privacy;
+    lithic?: Lithic;
 }
 
-export interface Privacy {
+export interface Lithic {
     /**
-     * The external unique identifier of the Privacy account against which charges are made.
+     * The external unique identifier of the Lithic account against which charges are made.
      */
     account_token?: string;
 }

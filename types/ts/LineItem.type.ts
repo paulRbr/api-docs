@@ -44,10 +44,10 @@ export interface ExternalField {
 }
 
 export interface IssuerProcessorDetails {
-    privacy?: Privacy;
+    lithic?: Lithic;
 }
 
-export interface Privacy {
+export interface Lithic {
     /**
      * The external unique identifier of the card related to this line item.
      */

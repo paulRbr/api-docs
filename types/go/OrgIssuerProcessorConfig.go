@@ -1,7 +1,7 @@
 type OrgIssuerProcessorConfig struct {
-	PrivacyConfig *PrivacyConfig `json:"privacy_config,omitempty"`
+	LithicConfig *LithicConfig `json:"lithic_config,omitempty"`
 }
 
-type PrivacyConfig struct {
-	APIKey *string `json:"api_key,omitempty"`// API key for your organization in Privacy.com. You can generate this in your privacy.com; dashboard as a self-service option.
+type LithicConfig struct {
+	APIKey *string `json:"api_key,omitempty"`// API key for your organization in Lithic. You can generate this in your Lithic dashboard; as a self-service option.
 }
