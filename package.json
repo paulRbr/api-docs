@@ -1,5 +1,5 @@
 {
-  "name": "canopy-docs",
+  "name": "api-docs",
   "version": "1.1.1",
   "description": "OpenAPI v3.0.3 Spec for CanopyAPI",
   "private": true,

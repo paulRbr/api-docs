@@ -15,7 +15,7 @@ We use the v3.0.3 version of the [OpenAPI spec](https://github.com/OAI/OpenAPI-S
    You can run either of those individually by referring to `scripts` in `package.json`.
 5. Optional: install [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode.
 
-## Structure of the live documentation
+## Live documentation structure
 
 The `openapi.json` file is the entrypoint to the modular spec that we use for development.
 
@@ -31,7 +31,7 @@ Changes made to the `master` branch are deployed via GitHub Actions to internal 
 When committing `master`, a pre-commit hook will build and validate the `dist/consolidated.json` file to ensure a valid API specification can be generated. In order for this commit to be successful, ensure that you are running Node 14 or later.
 ```
 
-Changes made to the `production` branch are deployed via GitHub Actions to the [live documentation site](https://docs.canopyservicing.com).
+Changes made to the `production` branch will be deployed via GitHub Actions to the [live documentation site](https://docs.canopyservicing.com).
 
 ## Validation
 
