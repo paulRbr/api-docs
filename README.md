@@ -42,6 +42,15 @@ The CI workflow validates the consolidated OpenAPI file before deploying it. Ple
 
    See [docs](https://github.com/42Crunch/vscode-openapi#use-the-extension-to-audit-the-security-of-your-api) for more info.
 
+## Publish
+
+1. To publish to NPM, bump package version accordingly with `npm version [patch|minor|major]`. [See NPM CLI docs](https://docs.npmjs.com/cli/v6/commands/npm-version).
+2. Run `npm publish` to publish your new version.
+
+- MAJOR version when you make incompatible API changes
+- MINOR version when you add functionality in a backwards compatible manner
+- PATCH version when you make backwards compatible bug fixes
+
 ## Type Generation
 
 1. To include a schema for type generation, include it as a part of `openapi.json["schemas"]`.
