@@ -5436,9 +5436,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "results"
-                  ],
+                  "additionalProperties": true,
                   "properties": {
                     "results": {
                       "type": "array",
@@ -5745,9 +5743,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "results"
-                  ],
+                  "additionalProperties": true,
                   "properties": {
                     "results": {
                       "type": "array",
@@ -21694,9 +21690,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "results"
-              ],
+              "additionalProperties": true,
               "properties": {
                 "results": {
                   "type": "array",
@@ -21914,9 +21908,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "results"
-              ],
+              "additionalProperties": true,
               "properties": {
                 "results": {
                   "type": "array",
