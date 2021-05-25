@@ -1,0 +1,11 @@
+{
+  "description": "Body of request to create fee waiver.",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/CreateFeeWaiverInput.json"
+      }
+    }
+  }
+}
