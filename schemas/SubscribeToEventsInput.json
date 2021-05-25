@@ -7,6 +7,62 @@
       "type": "string",
       "format": "uri",
       "example": "https://myserver.com/send/webhook/canopy"
+    },
+    "event_subscriptions": {
+      "type": "object",
+      "description": "These are the specific types of events to which your organization may subscribe. `Enabled` events will be sent to your callback URL following Canopy's standard event subscription payload. Some event subscriptions may have additional configurations around when they are triggered.",
+      "properties": {
+        "account_charge": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Receive a notification whenever a charge occurs for one of your accounts.",
+              "example": true
+            }
+          }
+        },
+        "account_payment": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Receive a notification whenever a payment occurs for one of your accounts.",
+              "example": true
+            }
+          }
+        },
+        "account_fee": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Receive a notification whenever a fee is incurred for one of your accounts.",
+              "example": true
+            }
+          }
+        },
+        "account_status_change": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Receive a notification whenever a status change occurs for one of your accounts.",
+              "example": true
+            }
+          }
+        },
+        "account_payment_due": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Receive a notification whenever a nonzero account `min_pay` is present for one of your accounts, at each of the provided `days_before_due`.",
+              "example": true
+            }
+          }
+        }
+      }
     }
   }
 }

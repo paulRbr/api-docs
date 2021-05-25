@@ -164,6 +164,25 @@
         }
       }
     },
+    "event_subscription_configurations": {
+      "type": "object",
+      "properties": {
+        "account_payment_due": {
+          "type": "object",
+          "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+          "properties": {
+            "days_before_due": {
+              "type": "array",
+              "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+              "items": {
+                "type": "integer",
+                "example": 3
+              }
+            }
+          }
+        }
+      }
+    },
     "summary": {
       "type": "object",
       "required": ["credit_limit_cents"],

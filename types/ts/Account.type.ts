@@ -18,7 +18,8 @@ export interface Account {
     /**
      * The `Date-Time` that this account became/becomes active.
      */
-    effective_at?: string;
+    effective_at?:                      string;
+    event_subscription_configurations?: EventSubscriptionConfigurations;
     /**
      * An Array of External Fields. These should be used to connect accounts created in Canopy
      * to Users in your system and any connected external systems.
@@ -232,6 +233,29 @@ export interface CycleType {
      * Interval for a first cycle for this account.
      */
     first_cycle_interval?: string;
+}
+
+export interface EventSubscriptionConfigurations {
+    /**
+     * If the organization is subscribed to `account_payment_due` notifications, this
+     * configuration determines how frequently these notifications will be triggered on behalf
+     * of the account.
+     */
+    account_payment_due?: AccountPaymentDue;
+}
+
+/**
+ * If the organization is subscribed to `account_payment_due` notifications, this
+ * configuration determines how frequently these notifications will be triggered on behalf
+ * of the account.
+ */
+export interface AccountPaymentDue {
+    /**
+     * Receive an `account_payment_due` notification on each of the provided days before the
+     * account's payment is due. For example, `[1, 3, 5]` would send notifications one day,
+     * three days, and five days before the payment is due.
+     */
+    days_before_due?: number[];
 }
 
 export interface ExternalField {

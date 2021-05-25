@@ -7,6 +7,7 @@ type Account struct {
 	CreatedAt                        *string                           `json:"created_at,omitempty"`                          // The `Date-Time` which the account was created in the API.
 	CycleType                        *CycleType                        `json:"cycle_type,omitempty"`                          
 	EffectiveAt                      *string                           `json:"effective_at,omitempty"`                        // The `Date-Time` that this account became/becomes active.
+	EventSubscriptionConfigurations  *EventSubscriptionConfigurations  `json:"event_subscription_configurations,omitempty"`   
 	ExternalFields                   []ExternalField                   `json:"external_fields,omitempty"`                     // An Array of External Fields. These should be used to connect accounts created in Canopy; to Users in your system and any connected external systems.
 	IssuerProcessorDetails           *IssuerProcessorDetails           `json:"issuer_processor_details,omitempty"`            
 	MinPayDueCents                   *MinPayDueCents                   `json:"min_pay_due_cents,omitempty"`                   
@@ -86,6 +87,17 @@ type AssociatedEntities struct {
 
 type CycleType struct {
 	FirstCycleInterval *string `json:"first_cycle_interval,omitempty"`// Interval for a first cycle for this account.
+}
+
+type EventSubscriptionConfigurations struct {
+	AccountPaymentDue *AccountPaymentDue `json:"account_payment_due,omitempty"`// If the organization is subscribed to `account_payment_due` notifications, this; configuration determines how frequently these notifications will be triggered on behalf; of the account.
+}
+
+// If the organization is subscribed to `account_payment_due` notifications, this
+// configuration determines how frequently these notifications will be triggered on behalf
+// of the account.
+type AccountPaymentDue struct {
+	DaysBeforeDue []int64 `json:"days_before_due,omitempty"`// Receive an `account_payment_due` notification on each of the provided days before the; account's payment is due. For example, `[1, 3, 5]` would send notifications one day,; three days, and five days before the payment is due.
 }
 
 type ExternalField struct {

@@ -2692,6 +2692,25 @@
                                       }
                                     }
                                   },
+                                  "event_subscription_configurations": {
+                                    "type": "object",
+                                    "properties": {
+                                      "account_payment_due": {
+                                        "type": "object",
+                                        "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                                        "properties": {
+                                          "days_before_due": {
+                                            "type": "array",
+                                            "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                                            "items": {
+                                              "type": "integer",
+                                              "example": 3
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
                                   "summary": {
                                     "type": "object",
                                     "required": [
@@ -3321,6 +3340,25 @@
                           }
                         }
                       },
+                      "event_subscription_configurations": {
+                        "type": "object",
+                        "properties": {
+                          "account_payment_due": {
+                            "type": "object",
+                            "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                            "properties": {
+                              "days_before_due": {
+                                "type": "array",
+                                "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                                "items": {
+                                  "type": "integer",
+                                  "example": 3
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
                       "summary": {
                         "type": "object",
                         "properties": {
@@ -3894,6 +3932,25 @@
                               "type": "string",
                               "description": "Interval for a first cycle for this account.",
                               "example": "11 days"
+                            }
+                          }
+                        },
+                        "event_subscription_configurations": {
+                          "type": "object",
+                          "properties": {
+                            "account_payment_due": {
+                              "type": "object",
+                              "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                              "properties": {
+                                "days_before_due": {
+                                  "type": "array",
+                                  "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                                  "items": {
+                                    "type": "integer",
+                                    "example": 3
+                                  }
+                                }
+                              }
                             }
                           }
                         },
@@ -4629,6 +4686,25 @@
                               "type": "string",
                               "description": "Interval for a first cycle for this account.",
                               "example": "11 days"
+                            }
+                          }
+                        },
+                        "event_subscription_configurations": {
+                          "type": "object",
+                          "properties": {
+                            "account_payment_due": {
+                              "type": "object",
+                              "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                              "properties": {
+                                "days_before_due": {
+                                  "type": "array",
+                                  "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                                  "items": {
+                                    "type": "integer",
+                                    "example": 3
+                                  }
+                                }
+                              }
                             }
                           }
                         },
@@ -8072,6 +8148,62 @@
                     "type": "string",
                     "format": "uri",
                     "example": "https://myserver.com/send/webhook/canopy"
+                  },
+                  "event_subscriptions": {
+                    "type": "object",
+                    "description": "These are the specific types of events to which your organization may subscribe. `Enabled` events will be sent to your callback URL following Canopy's standard event subscription payload. Some event subscriptions may have additional configurations around when they are triggered.",
+                    "properties": {
+                      "account_charge": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Receive a notification whenever a charge occurs for one of your accounts.",
+                            "example": true
+                          }
+                        }
+                      },
+                      "account_payment": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Receive a notification whenever a payment occurs for one of your accounts.",
+                            "example": true
+                          }
+                        }
+                      },
+                      "account_fee": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Receive a notification whenever a fee is incurred for one of your accounts.",
+                            "example": true
+                          }
+                        }
+                      },
+                      "account_status_change": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Receive a notification whenever a status change occurs for one of your accounts.",
+                            "example": true
+                          }
+                        }
+                      },
+                      "account_payment_due": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Receive a notification whenever a nonzero account `min_pay` is present for one of your accounts, at each of the provided `days_before_due`.",
+                            "example": true
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -9268,6 +9400,25 @@
                 "type": "string",
                 "description": "Interval for a first cycle for this account.",
                 "example": "11 days"
+              }
+            }
+          },
+          "event_subscription_configurations": {
+            "type": "object",
+            "properties": {
+              "account_payment_due": {
+                "type": "object",
+                "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                "properties": {
+                  "days_before_due": {
+                    "type": "array",
+                    "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                    "items": {
+                      "type": "integer",
+                      "example": 3
+                    }
+                  }
+                }
               }
             }
           },
@@ -10515,6 +10666,25 @@
                   }
                 }
               },
+              "event_subscription_configurations": {
+                "type": "object",
+                "properties": {
+                  "account_payment_due": {
+                    "type": "object",
+                    "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                    "properties": {
+                      "days_before_due": {
+                        "type": "array",
+                        "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                        "items": {
+                          "type": "integer",
+                          "example": 3
+                        }
+                      }
+                    }
+                  }
+                }
+              },
               "summary": {
                 "type": "object",
                 "required": [
@@ -11315,6 +11485,25 @@
                         }
                       }
                     },
+                    "event_subscription_configurations": {
+                      "type": "object",
+                      "properties": {
+                        "account_payment_due": {
+                          "type": "object",
+                          "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                          "properties": {
+                            "days_before_due": {
+                              "type": "array",
+                              "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                              "items": {
+                                "type": "integer",
+                                "example": 3
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
                     "summary": {
                       "type": "object",
                       "required": [
@@ -11578,6 +11767,25 @@
                     "nullable": true,
                     "description": "Interval for a first cycle for this account.",
                     "example": "11 days"
+                  }
+                }
+              },
+              "event_subscription_configurations": {
+                "type": "object",
+                "properties": {
+                  "account_payment_due": {
+                    "type": "object",
+                    "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                    "properties": {
+                      "days_before_due": {
+                        "type": "array",
+                        "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                        "items": {
+                          "type": "integer",
+                          "example": 3
+                        }
+                      }
+                    }
                   }
                 }
               },
@@ -12792,6 +13000,25 @@
                         "type": "string",
                         "description": "Interval for a first cycle for this account.",
                         "example": "11 days"
+                      }
+                    }
+                  },
+                  "event_subscription_configurations": {
+                    "type": "object",
+                    "properties": {
+                      "account_payment_due": {
+                        "type": "object",
+                        "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                        "properties": {
+                          "days_before_due": {
+                            "type": "array",
+                            "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                            "items": {
+                              "type": "integer",
+                              "example": 3
+                            }
+                          }
+                        }
                       }
                     }
                   },
@@ -14110,6 +14337,62 @@
             "type": "string",
             "format": "uri",
             "example": "https://myserver.com/send/webhook/canopy"
+          },
+          "event_subscriptions": {
+            "type": "object",
+            "description": "These are the specific types of events to which your organization may subscribe. `Enabled` events will be sent to your callback URL following Canopy's standard event subscription payload. Some event subscriptions may have additional configurations around when they are triggered.",
+            "properties": {
+              "account_charge": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Receive a notification whenever a charge occurs for one of your accounts.",
+                    "example": true
+                  }
+                }
+              },
+              "account_payment": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Receive a notification whenever a payment occurs for one of your accounts.",
+                    "example": true
+                  }
+                }
+              },
+              "account_fee": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Receive a notification whenever a fee is incurred for one of your accounts.",
+                    "example": true
+                  }
+                }
+              },
+              "account_status_change": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Receive a notification whenever a status change occurs for one of your accounts.",
+                    "example": true
+                  }
+                }
+              },
+              "account_payment_due": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Receive a notification whenever a nonzero account `min_pay` is present for one of your accounts, at each of the provided `days_before_due`.",
+                    "example": true
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -15047,6 +15330,25 @@
                         }
                       }
                     },
+                    "event_subscription_configurations": {
+                      "type": "object",
+                      "properties": {
+                        "account_payment_due": {
+                          "type": "object",
+                          "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                          "properties": {
+                            "days_before_due": {
+                              "type": "array",
+                              "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                              "items": {
+                                "type": "integer",
+                                "example": 3
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
                     "summary": {
                       "type": "object",
                       "properties": {
@@ -15685,6 +15987,62 @@
                   "type": "string",
                   "format": "uri",
                   "example": "https://myserver.com/send/webhook/canopy"
+                },
+                "event_subscriptions": {
+                  "type": "object",
+                  "description": "These are the specific types of events to which your organization may subscribe. `Enabled` events will be sent to your callback URL following Canopy's standard event subscription payload. Some event subscriptions may have additional configurations around when they are triggered.",
+                  "properties": {
+                    "account_charge": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Receive a notification whenever a charge occurs for one of your accounts.",
+                          "example": true
+                        }
+                      }
+                    },
+                    "account_payment": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Receive a notification whenever a payment occurs for one of your accounts.",
+                          "example": true
+                        }
+                      }
+                    },
+                    "account_fee": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Receive a notification whenever a fee is incurred for one of your accounts.",
+                          "example": true
+                        }
+                      }
+                    },
+                    "account_status_change": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Receive a notification whenever a status change occurs for one of your accounts.",
+                          "example": true
+                        }
+                      }
+                    },
+                    "account_payment_due": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Receive a notification whenever a nonzero account `min_pay` is present for one of your accounts, at each of the provided `days_before_due`.",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -17759,6 +18117,25 @@
                                   }
                                 }
                               },
+                              "event_subscription_configurations": {
+                                "type": "object",
+                                "properties": {
+                                  "account_payment_due": {
+                                    "type": "object",
+                                    "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                                    "properties": {
+                                      "days_before_due": {
+                                        "type": "array",
+                                        "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                                        "items": {
+                                          "type": "integer",
+                                          "example": 3
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
                               "summary": {
                                 "type": "object",
                                 "required": [
@@ -18762,6 +19139,25 @@
                         }
                       }
                     },
+                    "event_subscription_configurations": {
+                      "type": "object",
+                      "properties": {
+                        "account_payment_due": {
+                          "type": "object",
+                          "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                          "properties": {
+                            "days_before_due": {
+                              "type": "array",
+                              "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                              "items": {
+                                "type": "integer",
+                                "example": 3
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
                     "summary": {
                       "type": "object",
                       "required": [
@@ -19504,6 +19900,25 @@
                             "type": "string",
                             "description": "Interval for a first cycle for this account.",
                             "example": "11 days"
+                          }
+                        }
+                      },
+                      "event_subscription_configurations": {
+                        "type": "object",
+                        "properties": {
+                          "account_payment_due": {
+                            "type": "object",
+                            "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                            "properties": {
+                              "days_before_due": {
+                                "type": "array",
+                                "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                                "items": {
+                                  "type": "integer",
+                                  "example": 3
+                                }
+                              }
+                            }
                           }
                         }
                       },
@@ -20650,6 +21065,25 @@
                           "type": "string",
                           "description": "Interval for a first cycle for this account.",
                           "example": "11 days"
+                        }
+                      }
+                    },
+                    "event_subscription_configurations": {
+                      "type": "object",
+                      "properties": {
+                        "account_payment_due": {
+                          "type": "object",
+                          "description": "If the organization is subscribed to `account_payment_due` notifications, this configuration determines how frequently these notifications will be triggered on behalf of the account.",
+                          "properties": {
+                            "days_before_due": {
+                              "type": "array",
+                              "description": "Receive an `account_payment_due` notification on each of the provided days before the account's payment is due. For example, `[1, 3, 5]` would send notifications one day, three days, and five days before the payment is due.",
+                              "items": {
+                                "type": "integer",
+                                "example": 3
+                              }
+                            }
+                          }
                         }
                       }
                     },
