@@ -72,47 +72,45 @@ export interface LineItemOverview {
 /**
  * the corresponding Status for a line item
  */
-export enum LineItemStatus {
-    Authorized = "AUTHORIZED",
-    Declined = "DECLINED",
-    Invalid = "INVALID",
-    Offset = "OFFSET",
-    Pending = "PENDING",
-    Posted = "POSTED",
-    Reversed = "REVERSED",
-    Rolled = "ROLLED",
-    SplitInvalid = "SPLIT_INVALID",
-    SplitValid = "SPLIT_VALID",
-    Valid = "VALID",
-    Void = "VOID",
-}
+export type LineItemStatus = 
+    "AUTHORIZED" | 
+    "DECLINED" | 
+    "INVALID" | 
+    "OFFSET" | 
+    "PENDING" | 
+    "POSTED" | 
+    "REVERSED" | 
+    "ROLLED" | 
+    "SPLIT_INVALID" | 
+    "SPLIT_VALID" | 
+    "VALID" | 
+    "VOID";
 
 /**
  * The Line Item Type. i.e. `CHARGE`, `PAYMENT`.
  */
-export enum LineItemType {
-    Charge = "CHARGE",
-    CreditOffset = "CREDIT_OFFSET",
-    DebitOffset = "DEBIT_OFFSET",
-    DeferredInterest = "DEFERRED_INTEREST",
-    Fee = "FEE",
-    FeeSurcharge = "FEE_SURCHARGE",
-    Interest = "INTEREST",
-    LateFee = "LATE_FEE",
-    Loan = "LOAN",
-    MinDue = "MIN_DUE",
-    MonthFee = "MONTH_FEE",
-    OrigFee = "ORIG_FEE",
-    Payment = "PAYMENT",
-    PaymentReversal = "PAYMENT_REVERSAL",
-    PaymentSplit = "PAYMENT_SPLIT",
-    ProductInterest = "PRODUCT_INTEREST",
-    PromoEnd = "PROMO_END",
-    PurchaseWindowEnd = "PURCHASE_WINDOW_END",
-    ReturnCheckFee = "RETURN_CHECK_FEE",
-    Statement = "STATEMENT",
-    YearFee = "YEAR_FEE",
-}
+export type LineItemType = 
+    "CHARGE" | 
+    "CREDIT_OFFSET" | 
+    "DEBIT_OFFSET" | 
+    "DEFERRED_INTEREST" | 
+    "FEE" | 
+    "FEE_SURCHARGE" | 
+    "INTEREST" | 
+    "LATE_FEE" | 
+    "LOAN" | 
+    "MIN_DUE" | 
+    "MONTH_FEE" | 
+    "ORIG_FEE" | 
+    "PAYMENT" | 
+    "PAYMENT_REVERSAL" | 
+    "PAYMENT_SPLIT" | 
+    "PRODUCT_INTEREST" | 
+    "PROMO_END" | 
+    "PURCHASE_WINDOW_END" | 
+    "RETURN_CHECK_FEE" | 
+    "STATEMENT" | 
+    "YEAR_FEE";
 
 export interface LineItemSummary {
     /**

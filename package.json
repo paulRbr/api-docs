@@ -15,7 +15,7 @@
     "bundle": "swagger-cli bundle -r -o dist/consolidated.json openapi.json",
     "validate": "swagger-cli validate dist/consolidated.json",
     "postman": "openapi2postmanv2 -s dist/consolidated.json -o Canopy_v21.03.json -p -O folderStrategy=Tags includeAuthInfoInExample=false requestParametersResolution=Example",
-    "typegen": "node scripts/generate_types.js"
+    "typegen": "ts-node scripts/generate_types.ts"
   },
   "husky": {
     "hooks": {
@@ -34,10 +34,12 @@
     "swagger-cli": "4.0.4"
   },
   "devDependencies": {
+    "@types/node": "^15.6.1",
     "husky": "4.3.5",
     "lint-staged": "10.5.3",
     "openapi-to-postmanv2": "2.4.0",
     "prettier": "2.2.1",
-    "pretty-quick": "3.1.0"
+    "pretty-quick": "3.1.0",
+    "ts-node": "^10.0.0"
   }
 }

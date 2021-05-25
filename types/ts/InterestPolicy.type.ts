@@ -20,17 +20,14 @@ export interface InterestPolicy {
 /**
  * Affects the base calculation by determining how many days there are in a given year.
  */
-export enum DayCalcType {
-    The365 = "365",
-}
+export type DayCalcType = 
+    "365";
 
 /**
  * The actual base formula used to calculate and assign interest.
  */
-export enum Method {
-    AverageDailyBalance = "average daily balance",
-}
+export type Method = 
+    "average daily balance";
 
-export enum Type {
-    Compound = "compound",
-}
+export type Type = 
+    "compound";

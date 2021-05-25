@@ -76,12 +76,11 @@ export interface PostPromotionalPolicies {
  *
  * Current due calculation method for the promotional period.
  */
-export enum PromoMinPayType {
-    Am = "AM",
-    None = "NONE",
-    PercentInterest = "PERCENT_INTEREST",
-    PercentPrincipal = "PERCENT_PRINCIPAL",
-}
+export type PromoMinPayType = 
+    "AM" | 
+    "NONE" | 
+    "PERCENT_INTEREST" | 
+    "PERCENT_PRINCIPAL";
 
 export interface ProductLifecyclePolicies {
     /**
