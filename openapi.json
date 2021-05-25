@@ -1060,6 +1060,9 @@
             }
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreatePaymentReversal"
+        },
         "responses": {
           "200": {
             "description": "Payment reversal successfully applied."
@@ -1104,7 +1107,7 @@
           {
             "name": "line_item_id",
             "in": "path",
-            "description": "Line Item ID of the original fee to be reversed",
+            "description": "Line Item ID of the original fee to be waived",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -1114,6 +1117,9 @@
             }
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateFeeWaiver"
+        },
         "responses": {
           "200": {
             "description": "Fee waiver successfully applied."
@@ -1764,6 +1770,12 @@
       },
       "CreatePayment": {
         "$ref": "./requestBodies/CreatePayment.json"
+      },
+      "CreatePaymentReversal": {
+        "$ref": "./requestBodies/CreatePaymentReversal.json"
+      },
+      "CreateFeeWaiver": {
+        "$ref": "./requestBodies/CreateFeeWaiver.json"
       },
       "ConfigurePaymentProcessors": {
         "$ref": "./requestBodies/ConfigurePaymentProcessors.json"

@@ -1,0 +1,11 @@
+{
+  "description": "Body of request to create payment reversal.",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "./../schemas/CreatePaymentReversalInput.json"
+      }
+    }
+  }
+}
