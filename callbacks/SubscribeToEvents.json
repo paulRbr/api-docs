@@ -40,5 +40,131 @@
         }
       }
     }
+  },
+  "account_charge": {
+    "{$request.body#/webhook_url}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./../schemas/CreateChargeInput.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Your server returns this code if it accepts the webhook."
+          }
+        }
+      }
+    }
+  },
+  "account_payment": {
+    "{$request.body#/webhook_url}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./../schemas/CreatePaymentInput.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Your server returns this code if it accepts the webhook."
+          }
+        }
+      }
+    }
+  },
+  "account_status_change": {
+    "{$request.body#/webhook_url}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./../schemas/Account.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Your server returns this code if it accepts the webhook."
+          }
+        }
+      }
+    }
+  },
+  "account_payment_due": {
+    "{$request.body#/webhook_url}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./../schemas/Account.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Your server returns this code if it accepts the webhook."
+          }
+        }
+      }
+    }
+  },
+  "account_fee": {
+    "{$request.body#/webhook_url}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./../schemas/LineItem.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Your server returns this code if it accepts the webhook."
+          }
+        }
+      }
+    }
+  },
+  "account_total_balance_change": {
+    "{$request.body#/webhook_url}": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./../schemas/Account.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Your server returns this code if it accepts the webhook."
+          }
+        }
+      }
+    }
   }
 }
