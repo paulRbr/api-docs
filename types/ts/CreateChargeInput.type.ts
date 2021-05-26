@@ -45,16 +45,15 @@ export interface Lithic {
 /**
  * The status of a line item.
  */
-export enum LineItemStatus {
-    Authorized = "AUTHORIZED",
-    Declined = "DECLINED",
-    Invalid = "INVALID",
-    Offset = "OFFSET",
-    Pending = "PENDING",
-    Posted = "POSTED",
-    Valid = "VALID",
-    Void = "VOID",
-}
+export type LineItemStatus = 
+    "AUTHORIZED" | 
+    "DECLINED" | 
+    "INVALID" | 
+    "OFFSET" | 
+    "PENDING" | 
+    "POSTED" | 
+    "VALID" | 
+    "VOID";
 
 export interface MerchantData {
     id?:           string;

@@ -1,6 +1,7 @@
 // Generate the type definitions of our internal models from Canopy component schemas.
 // We select the component schemas from the dereferenced API spec, and generate TS and Go types.
 
+import { MyTypeScriptTargetLanguage } from "./typescript_extension";
 const fs = require("fs/promises");
 const path = require("path");
 const { components } = require("../dist/consolidated.json");
@@ -10,11 +11,14 @@ async function main() {
   const supportedTypes = [
     {
       // Types for the frontend and api layer
-      lang: "ts",
+      //   lang: "ts",
+      directory: "ts",
+      lang: new MyTypeScriptTargetLanguage(),
       extension: "type.ts",
     },
     {
       // Types for the Go SDK
+      directory: "go",
       lang: "go",
       extension: "go",
     },
@@ -30,7 +34,7 @@ async function main() {
       try {
         // We write the types to their own language specific directory.
         await fs.writeFile(
-          path.resolve(__dirname, "..", "types", type.lang, `${modelName}.${type.extension}`),
+          path.resolve(__dirname, "..", "types", type.directory, `${modelName}.${type.extension}`),
           output.lines.join("\n")
         );
       } catch (err) {
@@ -42,7 +46,11 @@ async function main() {
 
 main();
 
-async function quicktypeJSONSchema(targetLanguage, typeName, jsonSchemaString) {
+async function quicktypeJSONSchema(
+  targetLanguage: string | MyTypeScriptTargetLanguage,
+  typeName: string,
+  jsonSchemaString: string
+) {
   const schemaInput = new JSONSchemaInput(new JSONSchemaStore());
 
   // We could add multiple schemas for multiple types,

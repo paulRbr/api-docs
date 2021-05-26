@@ -288,10 +288,9 @@ export interface PaymentProcessorConfig {
  * from the account. If `NONE`, Canopy will not trigger payments to an external payment
  * processor when they occur.
  */
-export enum PaymentProcessorName {
-    None = "NONE",
-    Repay = "REPAY",
-}
+export type PaymentProcessorName = 
+    "NONE" | 
+    "REPAY";
 
 export interface RepayConfig {
     /**

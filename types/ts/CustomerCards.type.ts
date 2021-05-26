@@ -31,17 +31,15 @@ export interface Lithic {
 /**
  * The current state of the card
  */
-export enum State {
-    Closed = "CLOSED",
-    Open = "OPEN",
-    Paused = "PAUSED",
-}
+export type State = 
+    "CLOSED" | 
+    "OPEN" | 
+    "PAUSED";
 
 /**
  * The type of card being returned
  */
-export enum Type {
-    MerchantLocked = "MERCHANT_LOCKED",
-    SingleUse = "SINGLE_USE",
-    Unlocked = "UNLOCKED",
-}
+export type Type = 
+    "MERCHANT_LOCKED" | 
+    "SINGLE_USE" | 
+    "UNLOCKED";

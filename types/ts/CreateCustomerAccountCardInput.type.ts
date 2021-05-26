@@ -20,16 +20,14 @@ export interface Lithic {
 /**
  * The state of the new card
  */
-export enum State {
-    Open = "OPEN",
-    Paused = "PAUSED",
-}
+export type State = 
+    "OPEN" | 
+    "PAUSED";
 
 /**
  * The type of card created by Lithic
  */
-export enum Type {
-    MerchantLocked = "MERCHANT_LOCKED",
-    SingleUse = "SINGLE_USE",
-    Unlocked = "UNLOCKED",
-}
+export type Type = 
+    "MERCHANT_LOCKED" | 
+    "SINGLE_USE" | 
+    "UNLOCKED";

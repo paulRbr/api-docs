@@ -367,10 +367,9 @@ export interface PaymentProcessorConfig {
  * from the account. If `NONE`, Canopy will not trigger payments to an external payment
  * processor when they occur.
  */
-export enum PaymentProcessorName {
-    None = "NONE",
-    Repay = "REPAY",
-}
+export type PaymentProcessorName = 
+    "NONE" | 
+    "REPAY";
 
 export interface RepayConfig {
     /**
@@ -485,8 +484,7 @@ export interface LithicCard {
 /**
  * The type of card created by Lithic
  */
-export enum Type {
-    MerchantLocked = "MERCHANT_LOCKED",
-    SingleUse = "SINGLE_USE",
-    Unlocked = "UNLOCKED",
-}
+export type Type = 
+    "MERCHANT_LOCKED" | 
+    "SINGLE_USE" | 
+    "UNLOCKED";

@@ -70,27 +70,24 @@ export interface Lithic {
 /**
  * The state of the new card
  */
-export enum State {
-    Open = "OPEN",
-    Paused = "PAUSED",
-}
+export type State = 
+    "OPEN" | 
+    "PAUSED";
 
 /**
  * The type of card created by Lithic
  */
-export enum Type {
-    MerchantLocked = "MERCHANT_LOCKED",
-    SingleUse = "SINGLE_USE",
-    Unlocked = "UNLOCKED",
-}
+export type Type = 
+    "MERCHANT_LOCKED" | 
+    "SINGLE_USE" | 
+    "UNLOCKED";
 
 /**
  * The role of the customer for the account.
  */
-export enum CustomerAccountRole {
-    Primary = "PRIMARY",
-    Secondary = "SECONDARY",
-}
+export type CustomerAccountRole = 
+    "PRIMARY" | 
+    "SECONDARY";
 
 export interface AssociatedEntities {
     /**
@@ -144,10 +141,9 @@ export interface PaymentProcessorConfig {
  * Indicates the active payment processor used for payments made by the account. If `NONE`,
  * Canopy will not trigger payments to any payment processor when they occur.
  */
-export enum PaymentProcessorName {
-    None = "NONE",
-    Repay = "REPAY",
-}
+export type PaymentProcessorName = 
+    "NONE" | 
+    "REPAY";
 
 /**
  * All sensitive bank information will be replaced with a secure token when performing
@@ -184,25 +180,22 @@ export interface RepayConfig {
 /**
  * Type of account: Savings or Checking.
  */
-export enum RepayAccountType {
-    Checking = "CHECKING",
-    Savings = "SAVINGS",
-}
+export type RepayAccountType = 
+    "CHECKING" | 
+    "SAVINGS";
 
 /**
  * Type of checking account: Personal or Business.
  */
-export enum RepayCheckType {
-    Business = "BUSINESS",
-    Personal = "PERSONAL",
-}
+export type RepayCheckType = 
+    "BUSINESS" | 
+    "PERSONAL";
 
 /**
  * The payment method used by the account
  */
-export enum RepayPaymentMethod {
-    Ach = "ACH",
-}
+export type RepayPaymentMethod = 
+    "ACH";
 
 export interface PostPromoOverview {
     /**
