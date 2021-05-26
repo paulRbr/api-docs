@@ -21,7 +21,7 @@ type IssuerProcessorMetadata struct {
 }
 
 type Lithic struct {
-	LastFour *int64 `json:"last_four,omitempty"`// Last four digits of the card against which the spend was made.
+	LastFour *string `json:"last_four,omitempty"`// Last four digits of the card against which the spend was made.
 }
 
 type LineItemOverview struct {

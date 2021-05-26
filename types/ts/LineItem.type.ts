@@ -55,7 +55,7 @@ export interface Lithic {
     /**
      * Last four digits of the card against which the spend was made.
      */
-    last_four?: number;
+    last_four?: string;
     /**
      * The external unique identifier of the transaction.
      */

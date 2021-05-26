@@ -124,7 +124,7 @@
           "type": "object",
           "properties": {
             "last_four": {
-              "type": "integer",
+              "type": "string",
               "nullable": true,
               "description": "Last four digits of the card against which the spend was made.",
               "example": 3324
