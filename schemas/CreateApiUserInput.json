@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": ["email", "role"],
+  "properties": {
+    "role": {
+      "type": "number",
+      "description": "Assign a role to users to dictate permissions and API access level . [Contact our team](mailto:devs@canopyservicing.com?subject=API%20Access%20Request) for a full list of options.",
+      "example": 3,
+      "default": 1
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of this API User.",
+      "example": "marissa@globex.com"
+    }
+  }
+}
