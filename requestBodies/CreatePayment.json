@@ -4,7 +4,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/CreatePaymentInput.json"
+        "$ref": "../schemas/CreatePaymentInput.json"
       }
     }
   }

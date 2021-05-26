@@ -1595,8 +1595,8 @@
       "CreateAccountInput": {
         "$ref": "./schemas/CreateAccountInput.json"
       },
-      "CreateAPIUserInput": {
-        "$ref": "./schemas/CreateAPIUserInput.json"
+      "CreateApiUserInput": {
+        "$ref": "./schemas/CreateApiUserInput.json"
       },
       "CreateChargeInput": {
         "$ref": "./schemas/CreateChargeInput.json"
@@ -1631,8 +1631,8 @@
       "LineItem": {
         "$ref": "./schemas/LineItem.json"
       },
-      "LoginAPIUserInput": {
-        "$ref": "./schemas/LoginAPIUserInput.json"
+      "LoginApiUserInput": {
+        "$ref": "./schemas/LoginApiUserInput.json"
       },
       "Note": {
         "$ref": "./schemas/Note.json"
@@ -1655,8 +1655,8 @@
       "ProductSummary": {
         "$ref": "./schemas/ProductSummary.json"
       },
-      "RegisterAPIUserInput": {
-        "$ref": "./schemas/RegisterAPIUserInput.json"
+      "RegisterApiUserInput": {
+        "$ref": "./schemas/RegisterApiUserInput.json"
       },
       "ResponseLineItem": {
         "$ref": "./schemas/ResponseLineItem.json"
@@ -1667,8 +1667,8 @@
       "SubscribeToEventsInput": {
         "$ref": "./schemas/SubscribeToEventsInput.json"
       },
-      "UpdateAPIUserPassword": {
-        "$ref": "./schemas/UpdateAPIUserPassword.json"
+      "UpdateApiUserPassword": {
+        "$ref": "./schemas/UpdateApiUserPassword.json"
       },
       "UpdateProductMigrationModeInput": {
         "$ref": "./schemas/UpdateProductMigrationModeInput.json"

@@ -3,7 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/CreateAccountInput.json"
+        "$ref": "../schemas/CreateAccountInput.json"
       }
     }
   }

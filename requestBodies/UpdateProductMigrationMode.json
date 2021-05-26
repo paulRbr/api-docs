@@ -3,7 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/UpdateProductMigrationModeInput.json"
+        "$ref": "../schemas/UpdateProductMigrationModeInput.json"
       }
     }
   }

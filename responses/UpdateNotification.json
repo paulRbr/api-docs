@@ -3,7 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/Notification.json"
+        "$ref": "../schemas/Notification.json"
       }
     }
   }

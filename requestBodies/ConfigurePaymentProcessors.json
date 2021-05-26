@@ -3,7 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/ConfigurePaymentProcessorsInput.json"
+        "$ref": "../schemas/ConfigurePaymentProcessorsInput.json"
       }
     }
   }

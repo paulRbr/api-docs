@@ -4,7 +4,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/CreateChargeInput.json"
+        "$ref": "../schemas/CreateChargeInput.json"
       }
     }
   }

@@ -4,7 +4,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/RegisterApiUserInput.json"
+        "$ref": "../schemas/RegisterApiUserInput.json"
       }
     }
   }

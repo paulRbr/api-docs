@@ -11,7 +11,7 @@
             "maxItems": 1000,
             "description": "An array of notifications within the requested range.",
             "items": {
-              "$ref": "./../schemas/Notification.json"
+              "$ref": "../schemas/Notification.json"
             }
           },
           "total_customer_count": {

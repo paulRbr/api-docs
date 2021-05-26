@@ -7,7 +7,7 @@
         "nullable": true,
         "maxItems": 10,
         "items": {
-          "$ref": "./../schemas/ApiUser.json"
+          "$ref": "../schemas/ApiUser.json"
         }
       }
     }

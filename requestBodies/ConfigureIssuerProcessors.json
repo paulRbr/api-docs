@@ -3,7 +3,7 @@
   "content": {
     "application/json": {
       "schema": {
-        "$ref": "./../schemas/ConfigureIssuerProcessorsInput.json"
+        "$ref": "../schemas/ConfigureIssuerProcessorsInput.json"
       }
     }
   }

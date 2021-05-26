@@ -11747,7 +11747,7 @@
           }
         ]
       },
-      "CreateAPIUserInput": {
+      "CreateApiUserInput": {
         "type": "object",
         "required": [
           "email",
@@ -13195,7 +13195,7 @@
           }
         }
       },
-      "LoginAPIUserInput": {
+      "LoginApiUserInput": {
         "type": "object",
         "required": [
           "email",
@@ -13832,7 +13832,7 @@
           }
         }
       },
-      "RegisterAPIUserInput": {
+      "RegisterApiUserInput": {
         "type": "object",
         "required": [
           "email_confirm",
@@ -14113,7 +14113,7 @@
           }
         }
       },
-      "UpdateAPIUserPassword": {
+      "UpdateApiUserPassword": {
         "type": "object",
         "required": [
           "current_password",
