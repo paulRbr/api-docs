@@ -10,7 +10,7 @@
   "author": "CanopyServicing",
   "license": "ISC",
   "scripts": {
-    "preview": "bundle exec bump preview dist/consolidated.json",
+    "preview": "bump preview openapi.json",
     "build": "yarn bundle && yarn validate && yarn typegen",
     "bundle": "swagger-cli bundle -r -o dist/consolidated.json openapi.json",
     "validate": "swagger-cli validate dist/consolidated.json",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^15.6.1",
+    "bump-cli": "^2.0.1",
     "husky": "4.3.5",
     "lint-staged": "10.5.3",
     "openapi-to-postmanv2": "2.7.0",
