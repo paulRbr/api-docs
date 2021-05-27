@@ -20,6 +20,12 @@ export interface ComplexAccount {
      */
     effective_at?: string;
     /**
+     * Note: The value passed here *must* be unique. This ties to a reference of your account in
+     * an external system. For example, you may have a ten digit loan number you use to
+     * reference the account.
+     */
+    external_account_id?: string;
+    /**
      * An Array of External Fields. These should be used to connect accounts created in Canopy
      * to Users in your system and any connected external systems.
      */
