@@ -6,14 +6,20 @@ export interface CreateAccountInput {
      */
     effective_at?: string;
     /**
+     * Note: The value passed here *must* be unique. This ties to a reference of your account in
+     * an external system. For example, you may have a ten digit loan number you use to
+     * reference the account.
+     */
+    external_account_id?: string;
+    /**
      * External fields can be used to relate accounts created in Canopy to entities in your or
      * any external system.
      */
     external_fields?: ExternalField[];
     /**
-     * A unique external ID that may be used interchangeably with the Canopy-generated product
-     * ID. Either external ID or Canopy product ID must be passed at the time of account
-     * creation.
+     * Note: The value passed here *must* be unique. A unique external ID that may be used
+     * interchangeably with the Canopy-generated product ID. Either external ID or Canopy
+     * product ID must be passed at the time of account creation.
      */
     external_product_id?:      string;
     payment_processor_config?: PaymentProcessorConfig;

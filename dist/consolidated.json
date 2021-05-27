@@ -2315,6 +2315,11 @@
                                     "format": "date-time",
                                     "example": "2018-03-20T09:12:28+00:00"
                                   },
+                                  "external_account_id": {
+                                    "type": "string",
+                                    "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                                    "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                                  },
                                   "account_overview": {
                                     "type": "object",
                                     "required": [
@@ -3211,7 +3216,12 @@
                       },
                       "external_product_id": {
                         "type": "string",
-                        "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
+                        "description": "Note: The value passed here *must* be unique. A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
+                        "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                      },
+                      "external_account_id": {
+                        "type": "string",
+                        "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
                         "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                       },
                       "external_fields": {
@@ -3519,6 +3529,11 @@
                           "description": "The `Date-Time` that this account became/becomes active.",
                           "format": "date-time",
                           "example": "2018-03-20T09:12:28+00:00"
+                        },
+                        "external_account_id": {
+                          "type": "string",
+                          "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                          "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                         },
                         "account_overview": {
                           "type": "object",
@@ -4254,6 +4269,11 @@
                           "description": "The `Date-Time` that this account became/becomes active.",
                           "format": "date-time",
                           "example": "2018-03-20T09:12:28+00:00"
+                        },
+                        "external_account_id": {
+                          "type": "string",
+                          "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                          "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                         },
                         "account_overview": {
                           "type": "object",
@@ -8894,6 +8914,11 @@
             "format": "date-time",
             "example": "2018-03-20T09:12:28+00:00"
           },
+          "external_account_id": {
+            "type": "string",
+            "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+            "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+          },
           "account_overview": {
             "type": "object",
             "required": [
@@ -10138,6 +10163,11 @@
                 "format": "date-time",
                 "example": "2018-03-20T09:12:28+00:00"
               },
+              "external_account_id": {
+                "type": "string",
+                "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+              },
               "account_overview": {
                 "type": "object",
                 "required": [
@@ -10938,6 +10968,11 @@
                       "format": "date-time",
                       "example": "2018-03-20T09:12:28+00:00"
                     },
+                    "external_account_id": {
+                      "type": "string",
+                      "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                    },
                     "account_overview": {
                       "type": "object",
                       "required": [
@@ -11471,7 +11506,12 @@
               },
               "external_product_id": {
                 "type": "string",
-                "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
+                "description": "Note: The value passed here *must* be unique. A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
+                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+              },
+              "external_account_id": {
+                "type": "string",
+                "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
                 "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
               },
               "external_fields": {
@@ -12417,6 +12457,11 @@
                     "description": "The `Date-Time` that this account became/becomes active.",
                     "format": "date-time",
                     "example": "2018-03-20T09:12:28+00:00"
+                  },
+                  "external_account_id": {
+                    "type": "string",
+                    "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                    "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                   },
                   "account_overview": {
                     "type": "object",
@@ -14937,7 +14982,12 @@
                     },
                     "external_product_id": {
                       "type": "string",
-                      "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
+                      "description": "Note: The value passed here *must* be unique. A unique external ID that may be used interchangeably with the Canopy-generated product ID. Either external ID or Canopy product ID must be passed at the time of account creation.",
+                      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                    },
+                    "external_account_id": {
+                      "type": "string",
+                      "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
                       "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                     },
                     "external_fields": {
@@ -17382,6 +17432,11 @@
                                 "format": "date-time",
                                 "example": "2018-03-20T09:12:28+00:00"
                               },
+                              "external_account_id": {
+                                "type": "string",
+                                "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                                "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                              },
                               "account_overview": {
                                 "type": "object",
                                 "required": [
@@ -18385,6 +18440,11 @@
                       "format": "date-time",
                       "example": "2018-03-20T09:12:28+00:00"
                     },
+                    "external_account_id": {
+                      "type": "string",
+                      "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+                    },
                     "account_overview": {
                       "type": "object",
                       "required": [
@@ -19129,6 +19189,11 @@
                         "description": "The `Date-Time` that this account became/becomes active.",
                         "format": "date-time",
                         "example": "2018-03-20T09:12:28+00:00"
+                      },
+                      "external_account_id": {
+                        "type": "string",
+                        "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                        "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                       },
                       "account_overview": {
                         "type": "object",
@@ -20275,6 +20340,11 @@
                       "description": "The `Date-Time` that this account became/becomes active.",
                       "format": "date-time",
                       "example": "2018-03-20T09:12:28+00:00"
+                    },
+                    "external_account_id": {
+                      "type": "string",
+                      "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+                      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
                     },
                     "account_overview": {
                       "type": "object",

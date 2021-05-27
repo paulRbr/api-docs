@@ -27,6 +27,7 @@ type Account struct {
 	CreatedAt                        *string                           `json:"created_at,omitempty"`                          // The `Date-Time` which the account was created in the API.
 	CycleType                        *CycleType                        `json:"cycle_type,omitempty"`                          
 	EffectiveAt                      *string                           `json:"effective_at,omitempty"`                        // The `Date-Time` that this account became/becomes active.
+	ExternalAccountID                *string                           `json:"external_account_id,omitempty"`                 // Note: The value passed here *must* be unique. This ties to a reference of your account in; an external system. For example, you may have a ten digit loan number you use to; reference the account.
 	ExternalFields                   []ExternalField                   `json:"external_fields,omitempty"`                     // An Array of External Fields. These should be used to connect accounts created in Canopy; to Users in your system and any connected external systems.
 	IssuerProcessorDetails           *IssuerProcessorDetails           `json:"issuer_processor_details,omitempty"`            
 	MinPayDueCents                   *MinPayDueCents                   `json:"min_pay_due_cents,omitempty"`                   
