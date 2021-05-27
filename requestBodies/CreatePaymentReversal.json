@@ -4,11 +4,7 @@
   "content": {
     "application/json": {
       "schema": {
-<<<<<<< HEAD
         "$ref": "../schemas/CreatePaymentReversalInput.json"
-=======
-        "$ref": "./../schemas/CreatePaymentReversalInput.json"
->>>>>>> 4a0aae4... added Input JSON for Fee Waiver
       }
     }
   }
