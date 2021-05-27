@@ -19,6 +19,11 @@
       "format": "date-time",
       "example": "2018-03-20T09:12:28+00:00"
     },
+    "external_account_id": {
+      "type": "string",
+      "description": "Note: The value passed here *must* be unique. This ties to a reference of your account in an external system. For example, you may have a ten digit loan number you use to reference the account.",
+      "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+    },
     "account_overview": {
       "type": "object",
       "required": ["account_status"],
