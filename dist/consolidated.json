@@ -7750,7 +7750,7 @@
             "explode": false,
             "schema": {
               "type": "string",
-              "example": "31mNprzLd2bKl6koVna68ARM"
+              "example": "jNxDp2ybR5M72LaBA83e06md"
             }
           }
         ],
@@ -7786,6 +7786,156 @@
                           "PAUSED"
                         ],
                         "description": "The state of the new card",
+                        "example": "OPEN"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new card for the customer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "nullable": true,
+                  "items": {
+                    "type": "object",
+                    "description": "Card data. Field names match the ones in Lithic's card schema",
+                    "additionalProperties": true,
+                    "properties": {
+                      "lithic": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "The type of card being returned",
+                            "enum": [
+                              "UNLOCKED",
+                              "MERCHANT_LOCKED",
+                              "SINGLE_USE"
+                            ],
+                            "example": "UNLOCKED"
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "The current state of the card",
+                            "enum": [
+                              "OPEN",
+                              "PAUSED",
+                              "CLOSED"
+                            ],
+                            "example": "OPEN"
+                          },
+                          "token": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Unique external identifier for the card",
+                            "example": "adccd28d-532e-480b-a063-a46a77a15570"
+                          },
+                          "last_four": {
+                            "type": "string",
+                            "description": "Last four digits of the card",
+                            "example": "0690"
+                          },
+                          "memo": {
+                            "type": "string",
+                            "description": "Friendly name to identify the card",
+                            "example": "Conference Event Card"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "customers"
+        ],
+        "summary": "Update a card for an existing customer on an account",
+        "description": "",
+        "operationId": "updateCustomerAccountCard",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Customer ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "jNxDp2ybR5M72LaBA83e06md"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update a card for an existing customer on an account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "lithic": {
+                    "type": "object",
+                    "required": [
+                      "token"
+                    ],
+                    "properties": {
+                      "token": {
+                        "type": "string",
+                        "description": "External identifier for card in Lithic.",
+                        "example": "5c7678a6-db0e-4c24-9ad4-73eb0f719724"
+                      },
+                      "memo": {
+                        "type": "string",
+                        "description": "Friendly name to identify the card",
+                        "example": "Primary Business Card"
+                      },
+                      "state": {
+                        "type": "string",
+                        "enum": [
+                          "OPEN",
+                          "PAUSED",
+                          "CLOSED"
+                        ],
+                        "description": "The state of the new card. **Note: \"CLOSED\" cannot be undone.**",
                         "example": "OPEN"
                       }
                     }
@@ -14267,6 +14417,39 @@
           }
         }
       },
+      "UpdateCustomerAccountCardInput": {
+        "type": "object",
+        "properties": {
+          "lithic": {
+            "type": "object",
+            "required": [
+              "token"
+            ],
+            "properties": {
+              "token": {
+                "type": "string",
+                "description": "External identifier for card in Lithic.",
+                "example": "5c7678a6-db0e-4c24-9ad4-73eb0f719724"
+              },
+              "memo": {
+                "type": "string",
+                "description": "Friendly name to identify the card",
+                "example": "Primary Business Card"
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "OPEN",
+                  "PAUSED",
+                  "CLOSED"
+                ],
+                "description": "The state of the new card. **Note: \"CLOSED\" cannot be undone.**",
+                "example": "OPEN"
+              }
+            }
+          }
+        }
+      },
       "UpdateProductMigrationModeInput": {
         "type": "object",
         "properties": {
@@ -15827,6 +16010,46 @@
                   "description": "If migration mode is on, Canopy will not autogenerate statements for this account.",
                   "example": true,
                   "default": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateCustomerAccountCard": {
+        "description": "Update a card for an existing customer on an account",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "lithic": {
+                  "type": "object",
+                  "required": [
+                    "token"
+                  ],
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "External identifier for card in Lithic.",
+                      "example": "5c7678a6-db0e-4c24-9ad4-73eb0f719724"
+                    },
+                    "memo": {
+                      "type": "string",
+                      "description": "Friendly name to identify the card",
+                      "example": "Primary Business Card"
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "PAUSED",
+                        "CLOSED"
+                      ],
+                      "description": "The state of the new card. **Note: \"CLOSED\" cannot be undone.**",
+                      "example": "OPEN"
+                    }
+                  }
                 }
               }
             }

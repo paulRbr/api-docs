@@ -1301,12 +1301,67 @@
             "explode": false,
             "schema": {
               "type": "string",
-              "example": "31mNprzLd2bKl6koVna68ARM"
+              "example": "jNxDp2ybR5M72LaBA83e06md"
             }
           }
         ],
         "requestBody": {
           "$ref": "#/components/requestBodies/CreateCustomerAccountCard"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CustomerAccountCard"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      },
+      "put": {
+        "tags": ["customers"],
+        "summary": "Update a card for an existing customer on an account",
+        "description": "",
+        "operationId": "updateCustomerAccountCard",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "customer_id",
+            "in": "path",
+            "description": "Customer ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "jNxDp2ybR5M72LaBA83e06md"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UpdateCustomerAccountCard"
         },
         "responses": {
           "200": {
@@ -1727,6 +1782,9 @@
       "UpdateApiUserPassword": {
         "$ref": "./schemas/UpdateApiUserPassword.json"
       },
+      "UpdateCustomerAccountCardInput": {
+        "$ref": "./schemas/UpdateCustomerAccountCardInput.json"
+      },
       "UpdateProductMigrationModeInput": {
         "$ref": "./schemas/UpdateProductMigrationModeInput.json"
       }
@@ -1788,6 +1846,9 @@
       },
       "UpdateProductMigrationMode": {
         "$ref": "./requestBodies/UpdateProductMigrationMode.json"
+      },
+      "UpdateCustomerAccountCard": {
+        "$ref": "./requestBodies/UpdateCustomerAccountCard.json"
       },
       "SubscribeToEvents": {
         "$ref": "./requestBodies/SubscribeToEvents.json"

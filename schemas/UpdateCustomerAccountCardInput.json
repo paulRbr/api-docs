@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "lithic": {
+      "type": "object",
+      "required": ["token"],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "External identifier for card in Lithic.",
+          "example": "5c7678a6-db0e-4c24-9ad4-73eb0f719724"
+        },
+        "memo": {
+          "type": "string",
+          "description": "Friendly name to identify the card",
+          "example": "Primary Business Card"
+        },
+        "state": {
+          "type": "string",
+          "enum": ["OPEN", "PAUSED", "CLOSED"],
+          "description": "The state of the new card. **Note: \"CLOSED\" cannot be undone.**",
+          "example": "OPEN"
+        }
+      }
+    }
+  }
+}

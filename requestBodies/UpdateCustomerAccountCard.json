@@ -1,0 +1,10 @@
+{
+  "description": "Update a card for an existing customer on an account",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/UpdateCustomerAccountCardInput.json"
+      }
+    }
+  }
+}
