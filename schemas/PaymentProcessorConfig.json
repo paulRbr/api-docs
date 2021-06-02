@@ -5,8 +5,7 @@
       "type": "object",
       "description": "ACH processing configuration.",
       "required": [
-        "payment_processor_name",
-        "repay_config"
+        "payment_processor_name"
       ],
       "properties": {
         "payment_processor_name": {
@@ -33,8 +32,7 @@
       "type": "object",
       "description": "Debit processing configuration.",
       "required": [
-        "payment_processor_name",
-        "repay_config"
+        "payment_processor_name"
       ],
       "properties": {
         "payment_processor_name": {
@@ -66,7 +64,7 @@
           "example": true,
           "default": false
         },
-        "default_payment_processor": {
+        "default_payment_processor_method": {
           "type": "string",
           "enum": ["ACH", "DEBIT_CARD", "NONE"],
           "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
