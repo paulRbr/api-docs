@@ -1476,7 +1476,7 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-openapi-to-postmanv2@^2.7.0:
+openapi-to-postmanv2@2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/openapi-to-postmanv2/-/openapi-to-postmanv2-2.7.0.tgz#94078157e0fc21700874bec35217873630f6ea0d"
   integrity sha512-s3c3CBD2QHvZX/IVh/ebJgpm2iYm8mcMywyBXdFJ3apyxrC8rmG4i0Fgjs8Kc1GihKVPzx5DTof9z4JOT5cu6Q==
