@@ -276,95 +276,37 @@ export interface MinPayDueCents {
 
 export interface PaymentProcessorConfig {
     /**
-     * ACH processing configuration.
+     * Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1
+     * day prior to a payment due date.
      */
-    ach?: Ach;
+    autopay_enabled?: boolean;
     /**
-     * Debit processing configuration.
+     * Indicates the active payment processor whose configuration will be used for payments made
+     * from the account. If `NONE`, Canopy will not trigger payments to an external payment
+     * processor when they occur.
      */
-    debit_card?:      DebitCard;
-    general_configs?: GeneralConfigs;
+    payment_processor_name?: PaymentProcessorName;
+    repay_config?:           RepayConfig;
 }
 
 /**
- * ACH processing configuration.
- */
-export interface Ach {
-    /**
-     * Indicates the active payment processor whose configuration will be used for ACH payments
-     * made from the account.
-     */
-    payment_processor_name: PaymentProcessorName;
-    repay_config?:          AchRepayConfig;
-}
-
-/**
- * Indicates the active payment processor whose configuration will be used for ACH payments
- * made from the account.
- *
- * Indicates the active payment processor whose configuration will be used for Debit card
- * payments made from the account.
+ * Indicates the active payment processor whose configuration will be used for payments made
+ * from the account. If `NONE`, Canopy will not trigger payments to an external payment
+ * processor when they occur.
  */
 export type PaymentProcessorName = 
     "NONE" | 
     "REPAY";
 
-export interface AchRepayConfig {
+export interface RepayConfig {
     /**
-     * Indicates whether Canopy has a valid configuration stored for this ACH payment processor
-     * for this account. For example, if Canopy needs an ACH token on behalf of the account to
-     * call the processor, this field will indicate that Canopy has successfully stored the
-     * necessary token.
+     * Indicates whether Canopy has a valid configuration stored for this payment processor for
+     * this account. For example, if Canopy needs an ACH token on behalf of the account to call
+     * the processor, this field will indicate that Canopy has successfully stored the necessary
+     * token.
      */
     valid_config: boolean;
 }
-
-/**
- * Debit processing configuration.
- */
-export interface DebitCard {
-    /**
-     * Indicates the active payment processor whose configuration will be used for Debit card
-     * payments made from the account.
-     */
-    payment_processor_name: PaymentProcessorName;
-    repay_config?:          DebitCardRepayConfig;
-}
-
-export interface DebitCardRepayConfig {
-    /**
-     * Indicates whether Canopy has a valid configuration stored for this Debit card payment
-     * processor for this account. For example, if Canopy needs a Debit card token on behalf of
-     * the account to call the processor, this field will indicate that Canopy has successfully
-     * stored the necessary token.
-     */
-    valid_config: boolean;
-}
-
-export interface GeneralConfigs {
-    /**
-     * Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1
-     * day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay
-     * will not be triggered for account regardless of this field's value.
-     */
-    autopay_enabled?: boolean;
-    /**
-     * Configures the payment processor to be used for manual or autopay payments. This cannot
-     * be set to a value different from `NONE` if no valid ACH or Debit Card configs are
-     * provided.
-     */
-    default_payment_processor_method?: DefaultPaymentProcessorMethod;
-}
-
-/**
- * Configures the payment processor to be used for manual or autopay payments. This cannot
- * be set to a value different from `NONE` if no valid ACH or Debit Card configs are
- * provided.
- */
-export type DefaultPaymentProcessorMethod = 
-    "ACH" | 
-    "DEBIT_CARD" | 
-    "NONE";
 
 export interface Summary {
     /**

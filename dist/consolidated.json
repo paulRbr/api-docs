@@ -2640,89 +2640,32 @@
                                   "payment_processor_config": {
                                     "type": "object",
                                     "properties": {
-                                      "ach": {
+                                      "payment_processor_name": {
+                                        "type": "string",
+                                        "enum": [
+                                          "NONE",
+                                          "REPAY"
+                                        ],
+                                        "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                                        "example": "REPAY",
+                                        "default": "NONE"
+                                      },
+                                      "autopay_enabled": {
+                                        "type": "boolean",
+                                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                                        "example": true,
+                                        "default": false
+                                      },
+                                      "repay_config": {
                                         "type": "object",
-                                        "description": "ACH processing configuration.",
                                         "required": [
-                                          "payment_processor_name"
+                                          "valid_config"
                                         ],
                                         "properties": {
-                                          "payment_processor_name": {
-                                            "type": "string",
-                                            "enum": [
-                                              "NONE",
-                                              "REPAY"
-                                            ],
-                                            "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                                            "example": "REPAY",
-                                            "default": "NONE"
-                                          },
-                                          "repay_config": {
-                                            "type": "object",
-                                            "required": [
-                                              "valid_config"
-                                            ],
-                                            "properties": {
-                                              "valid_config": {
-                                                "type": "boolean",
-                                                "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                                "example": true
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      "debit_card": {
-                                        "type": "object",
-                                        "description": "Debit processing configuration.",
-                                        "required": [
-                                          "payment_processor_name"
-                                        ],
-                                        "properties": {
-                                          "payment_processor_name": {
-                                            "type": "string",
-                                            "enum": [
-                                              "NONE",
-                                              "REPAY"
-                                            ],
-                                            "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                                            "example": "REPAY",
-                                            "default": "NONE"
-                                          },
-                                          "repay_config": {
-                                            "type": "object",
-                                            "required": [
-                                              "valid_config"
-                                            ],
-                                            "properties": {
-                                              "valid_config": {
-                                                "type": "boolean",
-                                                "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                                "example": true
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      "general_configs": {
-                                        "type": "object",
-                                        "properties": {
-                                          "autopay_enabled": {
+                                          "valid_config": {
                                             "type": "boolean",
-                                            "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                                            "example": true,
-                                            "default": false
-                                          },
-                                          "default_payment_processor_method": {
-                                            "type": "string",
-                                            "enum": [
-                                              "ACH",
-                                              "DEBIT_CARD",
-                                              "NONE"
-                                            ],
-                                            "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                                            "example": "ACH",
-                                            "default": "NONE"
+                                            "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                                            "example": true
                                           }
                                         }
                                       }
@@ -3912,89 +3855,32 @@
                         "payment_processor_config": {
                           "type": "object",
                           "properties": {
-                            "ach": {
+                            "payment_processor_name": {
+                              "type": "string",
+                              "enum": [
+                                "NONE",
+                                "REPAY"
+                              ],
+                              "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                              "example": "REPAY",
+                              "default": "NONE"
+                            },
+                            "autopay_enabled": {
+                              "type": "boolean",
+                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                              "example": true,
+                              "default": false
+                            },
+                            "repay_config": {
                               "type": "object",
-                              "description": "ACH processing configuration.",
                               "required": [
-                                "payment_processor_name"
+                                "valid_config"
                               ],
                               "properties": {
-                                "payment_processor_name": {
-                                  "type": "string",
-                                  "enum": [
-                                    "NONE",
-                                    "REPAY"
-                                  ],
-                                  "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                                  "example": "REPAY",
-                                  "default": "NONE"
-                                },
-                                "repay_config": {
-                                  "type": "object",
-                                  "required": [
-                                    "valid_config"
-                                  ],
-                                  "properties": {
-                                    "valid_config": {
-                                      "type": "boolean",
-                                      "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                      "example": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "debit_card": {
-                              "type": "object",
-                              "description": "Debit processing configuration.",
-                              "required": [
-                                "payment_processor_name"
-                              ],
-                              "properties": {
-                                "payment_processor_name": {
-                                  "type": "string",
-                                  "enum": [
-                                    "NONE",
-                                    "REPAY"
-                                  ],
-                                  "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                                  "example": "REPAY",
-                                  "default": "NONE"
-                                },
-                                "repay_config": {
-                                  "type": "object",
-                                  "required": [
-                                    "valid_config"
-                                  ],
-                                  "properties": {
-                                    "valid_config": {
-                                      "type": "boolean",
-                                      "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                      "example": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "general_configs": {
-                              "type": "object",
-                              "properties": {
-                                "autopay_enabled": {
+                                "valid_config": {
                                   "type": "boolean",
-                                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                                  "example": true,
-                                  "default": false
-                                },
-                                "default_payment_processor_method": {
-                                  "type": "string",
-                                  "enum": [
-                                    "ACH",
-                                    "DEBIT_CARD",
-                                    "NONE"
-                                  ],
-                                  "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                                  "example": "ACH",
-                                  "default": "NONE"
+                                  "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                                  "example": true
                                 }
                               }
                             }
@@ -4709,89 +4595,32 @@
                         "payment_processor_config": {
                           "type": "object",
                           "properties": {
-                            "ach": {
+                            "payment_processor_name": {
+                              "type": "string",
+                              "enum": [
+                                "NONE",
+                                "REPAY"
+                              ],
+                              "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                              "example": "REPAY",
+                              "default": "NONE"
+                            },
+                            "autopay_enabled": {
+                              "type": "boolean",
+                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                              "example": true,
+                              "default": false
+                            },
+                            "repay_config": {
                               "type": "object",
-                              "description": "ACH processing configuration.",
                               "required": [
-                                "payment_processor_name"
+                                "valid_config"
                               ],
                               "properties": {
-                                "payment_processor_name": {
-                                  "type": "string",
-                                  "enum": [
-                                    "NONE",
-                                    "REPAY"
-                                  ],
-                                  "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                                  "example": "REPAY",
-                                  "default": "NONE"
-                                },
-                                "repay_config": {
-                                  "type": "object",
-                                  "required": [
-                                    "valid_config"
-                                  ],
-                                  "properties": {
-                                    "valid_config": {
-                                      "type": "boolean",
-                                      "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                      "example": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "debit_card": {
-                              "type": "object",
-                              "description": "Debit processing configuration.",
-                              "required": [
-                                "payment_processor_name"
-                              ],
-                              "properties": {
-                                "payment_processor_name": {
-                                  "type": "string",
-                                  "enum": [
-                                    "NONE",
-                                    "REPAY"
-                                  ],
-                                  "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                                  "example": "REPAY",
-                                  "default": "NONE"
-                                },
-                                "repay_config": {
-                                  "type": "object",
-                                  "required": [
-                                    "valid_config"
-                                  ],
-                                  "properties": {
-                                    "valid_config": {
-                                      "type": "boolean",
-                                      "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                      "example": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "general_configs": {
-                              "type": "object",
-                              "properties": {
-                                "autopay_enabled": {
+                                "valid_config": {
                                   "type": "boolean",
-                                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                                  "example": true,
-                                  "default": false
-                                },
-                                "default_payment_processor_method": {
-                                  "type": "string",
-                                  "enum": [
-                                    "ACH",
-                                    "DEBIT_CARD",
-                                    "NONE"
-                                  ],
-                                  "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                                  "example": "ACH",
-                                  "default": "NONE"
+                                  "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                                  "example": true
                                 }
                               }
                             }
@@ -5191,155 +5020,73 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "ach": {
+                  "payment_processor_name": {
+                    "type": "string",
+                    "enum": [
+                      "NONE",
+                      "REPAY"
+                    ],
+                    "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                    "example": "REPAY",
+                    "default": "NONE"
+                  },
+                  "autopay_enabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                    "example": true,
+                    "default": false
+                  },
+                  "repay_config": {
                     "type": "object",
-                    "description": "ACH processing configuration.",
+                    "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
                     "required": [
-                      "payment_processor_name"
+                      "repay_payment_method",
+                      "repay_check_type",
+                      "repay_account_type",
+                      "repay_transit_number",
+                      "repay_account_number",
+                      "repay_name_on_check"
                     ],
                     "properties": {
-                      "payment_processor_name": {
+                      "repay_payment_method": {
                         "type": "string",
                         "enum": [
-                          "NONE",
-                          "REPAY"
+                          "ACH"
                         ],
-                        "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                        "example": "REPAY",
-                        "default": "NONE"
+                        "description": "The payment method to use for this account"
                       },
-                      "repay_config": {
-                        "type": "object",
-                        "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
-                        "required": [
-                          "repay_payment_method",
-                          "repay_check_type",
-                          "repay_account_type",
-                          "repay_transit_number",
-                          "repay_account_number",
-                          "repay_name_on_check"
-                        ],
-                        "properties": {
-                          "repay_check_type": {
-                            "type": "string",
-                            "enum": [
-                              "PERSONAL",
-                              "BUSINESS"
-                            ],
-                            "description": "Type of checking account: Personal or Business.",
-                            "example": "PERSONAL"
-                          },
-                          "repay_account_type": {
-                            "type": "string",
-                            "enum": [
-                              "SAVINGS",
-                              "CHECKING"
-                            ],
-                            "description": "Type of account: Savings or Checking.",
-                            "example": "CHECKING"
-                          },
-                          "repay_transit_number": {
-                            "type": "integer",
-                            "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
-                            "example": 999999992
-                          },
-                          "repay_account_number": {
-                            "type": "integer",
-                            "description": "Account number is an eight to ten digit number that identifies a specific account.",
-                            "example": 987654321
-                          },
-                          "repay_name_on_check": {
-                            "type": "string",
-                            "description": "Account holder's name as it appears on the account.",
-                            "example": "Lucille Bluth"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "debit_card": {
-                    "type": "object",
-                    "description": "Debit processing configuration.",
-                    "required": [
-                      "payment_processor_name"
-                    ],
-                    "properties": {
-                      "payment_processor_name": {
+                      "repay_check_type": {
                         "type": "string",
                         "enum": [
-                          "NONE",
-                          "REPAY"
+                          "PERSONAL",
+                          "BUSINESS"
                         ],
-                        "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
-                        "example": "REPAY",
-                        "default": "NONE"
+                        "description": "Type of checking account: Personal or Business.",
+                        "example": "PERSONAL"
                       },
-                      "repay_config": {
-                        "type": "object",
-                        "description": "Sensitive debit card information will be stored as a secured token for payments in place of the raw account details.",
-                        "required": [
-                          "repay_card_number",
-                          "repay_exp_date",
-                          "repay_name_on_card",
-                          "repay_street",
-                          "repay_zip",
-                          "repay_bin"
-                        ],
-                        "properties": {
-                          "repay_card_number": {
-                            "type": "string",
-                            "minLength": 16,
-                            "maxLength": 16,
-                            "pattern": "^[0-9]{16}$",
-                            "description": "16 digit debit card number.",
-                            "example": "4622941000000005"
-                          },
-                          "repay_exp_date": {
-                            "type": "string",
-                            "minLength": 4,
-                            "maxLength": 4,
-                            "pattern": "^[0-9]{4}$",
-                            "description": "The card expiration date in the format MMYY.",
-                            "example": "0619"
-                          },
-                          "repay_name_on_card": {
-                            "type": "string",
-                            "description": "The card holder's name as it appears on the card.",
-                            "example": "John Doe"
-                          },
-                          "repay_street": {
-                            "type": "string",
-                            "description": "The card holder's billing street address.",
-                            "example": "1234 Main Street"
-                          },
-                          "repay_zip": {
-                            "type": "string",
-                            "description": "The card holder's billing zip code.",
-                            "example": "85281"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "general_configs": {
-                    "type": "object",
-                    "properties": {
-                      "autopay_enabled": {
-                        "type": "boolean",
-                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                        "example": true,
-                        "default": false
-                      },
-                      "default_payment_processor_method": {
+                      "repay_account_type": {
                         "type": "string",
                         "enum": [
-                          "ACH",
-                          "DEBIT_CARD",
-                          "NONE"
+                          "SAVINGS",
+                          "CHECKING"
                         ],
-                        "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                        "example": "ACH",
-                        "default": "NONE"
+                        "description": "Type of account: Savings or Checking.",
+                        "example": "CHECKING"
+                      },
+                      "repay_transit_number": {
+                        "type": "integer",
+                        "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+                        "example": 999999992
+                      },
+                      "repay_account_number": {
+                        "type": "integer",
+                        "description": "Account number is an eight to ten digit number that identifies a specific account.",
+                        "example": 987654321
+                      },
+                      "repay_name_on_check": {
+                        "type": "string",
+                        "description": "Account holder's name as it appears on the account.",
+                        "example": "Lucille Bluth"
                       }
                     }
                   }
@@ -5356,89 +5103,32 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "ach": {
+                    "payment_processor_name": {
+                      "type": "string",
+                      "enum": [
+                        "NONE",
+                        "REPAY"
+                      ],
+                      "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                      "example": "REPAY",
+                      "default": "NONE"
+                    },
+                    "autopay_enabled": {
+                      "type": "boolean",
+                      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                      "example": true,
+                      "default": false
+                    },
+                    "repay_config": {
                       "type": "object",
-                      "description": "ACH processing configuration.",
                       "required": [
-                        "payment_processor_name"
+                        "valid_config"
                       ],
                       "properties": {
-                        "payment_processor_name": {
-                          "type": "string",
-                          "enum": [
-                            "NONE",
-                            "REPAY"
-                          ],
-                          "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                          "example": "REPAY",
-                          "default": "NONE"
-                        },
-                        "repay_config": {
-                          "type": "object",
-                          "required": [
-                            "valid_config"
-                          ],
-                          "properties": {
-                            "valid_config": {
-                              "type": "boolean",
-                              "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                              "example": true
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "debit_card": {
-                      "type": "object",
-                      "description": "Debit processing configuration.",
-                      "required": [
-                        "payment_processor_name"
-                      ],
-                      "properties": {
-                        "payment_processor_name": {
-                          "type": "string",
-                          "enum": [
-                            "NONE",
-                            "REPAY"
-                          ],
-                          "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                          "example": "REPAY",
-                          "default": "NONE"
-                        },
-                        "repay_config": {
-                          "type": "object",
-                          "required": [
-                            "valid_config"
-                          ],
-                          "properties": {
-                            "valid_config": {
-                              "type": "boolean",
-                              "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                              "example": true
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "general_configs": {
-                      "type": "object",
-                      "properties": {
-                        "autopay_enabled": {
+                        "valid_config": {
                           "type": "boolean",
-                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                          "example": true,
-                          "default": false
-                        },
-                        "default_payment_processor_method": {
-                          "type": "string",
-                          "enum": [
-                            "ACH",
-                            "DEBIT_CARD",
-                            "NONE"
-                          ],
-                          "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                          "example": "ACH",
-                          "default": "NONE"
+                          "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                          "example": true
                         }
                       }
                     }
@@ -5531,7 +5221,6 @@
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
                     "author": {
-                      "description": "The API User who authored the note",
                       "type": "object",
                       "required": [
                         "api_user_id",
@@ -5577,7 +5266,8 @@
                           "description": "The role of this user in the API",
                           "example": 1
                         }
-                      }
+                      },
+                      "description": "The API User who authored the note"
                     },
                     "message": {
                       "type": "string",
@@ -5661,7 +5351,6 @@
                         "example": "31mNprzLd2bKl6koVna68ARM"
                       },
                       "author": {
-                        "description": "The API User who authored the note",
                         "type": "object",
                         "required": [
                           "api_user_id",
@@ -5707,7 +5396,8 @@
                             "description": "The role of this user in the API",
                             "example": 1
                           }
-                        }
+                        },
+                        "description": "The API User who authored the note"
                       },
                       "message": {
                         "type": "string",
@@ -9826,89 +9516,32 @@
           "payment_processor_config": {
             "type": "object",
             "properties": {
-              "ach": {
+              "payment_processor_name": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "REPAY"
+                ],
+                "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                "example": "REPAY",
+                "default": "NONE"
+              },
+              "autopay_enabled": {
+                "type": "boolean",
+                "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                "example": true,
+                "default": false
+              },
+              "repay_config": {
                 "type": "object",
-                "description": "ACH processing configuration.",
                 "required": [
-                  "payment_processor_name"
+                  "valid_config"
                 ],
                 "properties": {
-                  "payment_processor_name": {
-                    "type": "string",
-                    "enum": [
-                      "NONE",
-                      "REPAY"
-                    ],
-                    "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                    "example": "REPAY",
-                    "default": "NONE"
-                  },
-                  "repay_config": {
-                    "type": "object",
-                    "required": [
-                      "valid_config"
-                    ],
-                    "properties": {
-                      "valid_config": {
-                        "type": "boolean",
-                        "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                        "example": true
-                      }
-                    }
-                  }
-                }
-              },
-              "debit_card": {
-                "type": "object",
-                "description": "Debit processing configuration.",
-                "required": [
-                  "payment_processor_name"
-                ],
-                "properties": {
-                  "payment_processor_name": {
-                    "type": "string",
-                    "enum": [
-                      "NONE",
-                      "REPAY"
-                    ],
-                    "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                    "example": "REPAY",
-                    "default": "NONE"
-                  },
-                  "repay_config": {
-                    "type": "object",
-                    "required": [
-                      "valid_config"
-                    ],
-                    "properties": {
-                      "valid_config": {
-                        "type": "boolean",
-                        "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                        "example": true
-                      }
-                    }
-                  }
-                }
-              },
-              "general_configs": {
-                "type": "object",
-                "properties": {
-                  "autopay_enabled": {
+                  "valid_config": {
                     "type": "boolean",
-                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                    "example": true,
-                    "default": false
-                  },
-                  "default_payment_processor_method": {
-                    "type": "string",
-                    "enum": [
-                      "ACH",
-                      "DEBIT_CARD",
-                      "NONE"
-                    ],
-                    "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                    "example": "ACH",
-                    "default": "NONE"
+                    "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                    "example": true
                   }
                 }
               }
@@ -11132,89 +10765,32 @@
               "payment_processor_config": {
                 "type": "object",
                 "properties": {
-                  "ach": {
+                  "payment_processor_name": {
+                    "type": "string",
+                    "enum": [
+                      "NONE",
+                      "REPAY"
+                    ],
+                    "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                    "example": "REPAY",
+                    "default": "NONE"
+                  },
+                  "autopay_enabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                    "example": true,
+                    "default": false
+                  },
+                  "repay_config": {
                     "type": "object",
-                    "description": "ACH processing configuration.",
                     "required": [
-                      "payment_processor_name"
+                      "valid_config"
                     ],
                     "properties": {
-                      "payment_processor_name": {
-                        "type": "string",
-                        "enum": [
-                          "NONE",
-                          "REPAY"
-                        ],
-                        "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                        "example": "REPAY",
-                        "default": "NONE"
-                      },
-                      "repay_config": {
-                        "type": "object",
-                        "required": [
-                          "valid_config"
-                        ],
-                        "properties": {
-                          "valid_config": {
-                            "type": "boolean",
-                            "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                            "example": true
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "debit_card": {
-                    "type": "object",
-                    "description": "Debit processing configuration.",
-                    "required": [
-                      "payment_processor_name"
-                    ],
-                    "properties": {
-                      "payment_processor_name": {
-                        "type": "string",
-                        "enum": [
-                          "NONE",
-                          "REPAY"
-                        ],
-                        "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                        "example": "REPAY",
-                        "default": "NONE"
-                      },
-                      "repay_config": {
-                        "type": "object",
-                        "required": [
-                          "valid_config"
-                        ],
-                        "properties": {
-                          "valid_config": {
-                            "type": "boolean",
-                            "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                            "example": true
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "general_configs": {
-                    "type": "object",
-                    "properties": {
-                      "autopay_enabled": {
+                      "valid_config": {
                         "type": "boolean",
-                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                        "example": true,
-                        "default": false
-                      },
-                      "default_payment_processor_method": {
-                        "type": "string",
-                        "enum": [
-                          "ACH",
-                          "DEBIT_CARD",
-                          "NONE"
-                        ],
-                        "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                        "example": "ACH",
-                        "default": "NONE"
+                        "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                        "example": true
                       }
                     }
                   }
@@ -11994,89 +11570,32 @@
                     "payment_processor_config": {
                       "type": "object",
                       "properties": {
-                        "ach": {
+                        "payment_processor_name": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "REPAY"
+                          ],
+                          "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                          "example": "REPAY",
+                          "default": "NONE"
+                        },
+                        "autopay_enabled": {
+                          "type": "boolean",
+                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                          "example": true,
+                          "default": false
+                        },
+                        "repay_config": {
                           "type": "object",
-                          "description": "ACH processing configuration.",
                           "required": [
-                            "payment_processor_name"
+                            "valid_config"
                           ],
                           "properties": {
-                            "payment_processor_name": {
-                              "type": "string",
-                              "enum": [
-                                "NONE",
-                                "REPAY"
-                              ],
-                              "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                              "example": "REPAY",
-                              "default": "NONE"
-                            },
-                            "repay_config": {
-                              "type": "object",
-                              "required": [
-                                "valid_config"
-                              ],
-                              "properties": {
-                                "valid_config": {
-                                  "type": "boolean",
-                                  "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                  "example": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "debit_card": {
-                          "type": "object",
-                          "description": "Debit processing configuration.",
-                          "required": [
-                            "payment_processor_name"
-                          ],
-                          "properties": {
-                            "payment_processor_name": {
-                              "type": "string",
-                              "enum": [
-                                "NONE",
-                                "REPAY"
-                              ],
-                              "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                              "example": "REPAY",
-                              "default": "NONE"
-                            },
-                            "repay_config": {
-                              "type": "object",
-                              "required": [
-                                "valid_config"
-                              ],
-                              "properties": {
-                                "valid_config": {
-                                  "type": "boolean",
-                                  "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                  "example": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "general_configs": {
-                          "type": "object",
-                          "properties": {
-                            "autopay_enabled": {
+                            "valid_config": {
                               "type": "boolean",
-                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                              "example": true,
-                              "default": false
-                            },
-                            "default_payment_processor_method": {
-                              "type": "string",
-                              "enum": [
-                                "ACH",
-                                "DEBIT_CARD",
-                                "NONE"
-                              ],
-                              "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                              "example": "ACH",
-                              "default": "NONE"
+                              "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                              "example": true
                             }
                           }
                         }
@@ -13541,89 +13060,32 @@
                   "payment_processor_config": {
                     "type": "object",
                     "properties": {
-                      "ach": {
+                      "payment_processor_name": {
+                        "type": "string",
+                        "enum": [
+                          "NONE",
+                          "REPAY"
+                        ],
+                        "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                        "example": "REPAY",
+                        "default": "NONE"
+                      },
+                      "autopay_enabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                        "example": true,
+                        "default": false
+                      },
+                      "repay_config": {
                         "type": "object",
-                        "description": "ACH processing configuration.",
                         "required": [
-                          "payment_processor_name"
+                          "valid_config"
                         ],
                         "properties": {
-                          "payment_processor_name": {
-                            "type": "string",
-                            "enum": [
-                              "NONE",
-                              "REPAY"
-                            ],
-                            "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                            "example": "REPAY",
-                            "default": "NONE"
-                          },
-                          "repay_config": {
-                            "type": "object",
-                            "required": [
-                              "valid_config"
-                            ],
-                            "properties": {
-                              "valid_config": {
-                                "type": "boolean",
-                                "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                "example": true
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "debit_card": {
-                        "type": "object",
-                        "description": "Debit processing configuration.",
-                        "required": [
-                          "payment_processor_name"
-                        ],
-                        "properties": {
-                          "payment_processor_name": {
-                            "type": "string",
-                            "enum": [
-                              "NONE",
-                              "REPAY"
-                            ],
-                            "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                            "example": "REPAY",
-                            "default": "NONE"
-                          },
-                          "repay_config": {
-                            "type": "object",
-                            "required": [
-                              "valid_config"
-                            ],
-                            "properties": {
-                              "valid_config": {
-                                "type": "boolean",
-                                "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                "example": true
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "general_configs": {
-                        "type": "object",
-                        "properties": {
-                          "autopay_enabled": {
+                          "valid_config": {
                             "type": "boolean",
-                            "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                            "example": true,
-                            "default": false
-                          },
-                          "default_payment_processor_method": {
-                            "type": "string",
-                            "enum": [
-                              "ACH",
-                              "DEBIT_CARD",
-                              "NONE"
-                            ],
-                            "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                            "example": "ACH",
-                            "default": "NONE"
+                            "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                            "example": true
                           }
                         }
                       }
@@ -14094,7 +13556,6 @@
             "example": "31mNprzLd2bKl6koVna68ARM"
           },
           "author": {
-            "description": "The API User who authored the note",
             "type": "object",
             "required": [
               "api_user_id",
@@ -14140,7 +13601,8 @@
                 "description": "The role of this user in the API",
                 "example": 1
               }
-            }
+            },
+            "description": "The API User who authored the note"
           },
           "message": {
             "type": "string",
@@ -16121,155 +15583,73 @@
             "schema": {
               "type": "object",
               "properties": {
-                "ach": {
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY"
+                  ],
+                  "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "autopay_enabled": {
+                  "type": "boolean",
+                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered two days prior to a payment due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for account regardless of this field's value.",
+                  "example": true,
+                  "default": false
+                },
+                "repay_config": {
                   "type": "object",
-                  "description": "ACH processing configuration.",
+                  "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
                   "required": [
-                    "payment_processor_name"
+                    "repay_payment_method",
+                    "repay_check_type",
+                    "repay_account_type",
+                    "repay_transit_number",
+                    "repay_account_number",
+                    "repay_name_on_check"
                   ],
                   "properties": {
-                    "payment_processor_name": {
+                    "repay_payment_method": {
                       "type": "string",
                       "enum": [
-                        "NONE",
-                        "REPAY"
+                        "ACH"
                       ],
-                      "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                      "example": "REPAY",
-                      "default": "NONE"
+                      "description": "The payment method to use for this account"
                     },
-                    "repay_config": {
-                      "type": "object",
-                      "description": "Sensitive bank information will be stored as a secured token for payments in place of the raw account details.",
-                      "required": [
-                        "repay_payment_method",
-                        "repay_check_type",
-                        "repay_account_type",
-                        "repay_transit_number",
-                        "repay_account_number",
-                        "repay_name_on_check"
-                      ],
-                      "properties": {
-                        "repay_check_type": {
-                          "type": "string",
-                          "enum": [
-                            "PERSONAL",
-                            "BUSINESS"
-                          ],
-                          "description": "Type of checking account: Personal or Business.",
-                          "example": "PERSONAL"
-                        },
-                        "repay_account_type": {
-                          "type": "string",
-                          "enum": [
-                            "SAVINGS",
-                            "CHECKING"
-                          ],
-                          "description": "Type of account: Savings or Checking.",
-                          "example": "CHECKING"
-                        },
-                        "repay_transit_number": {
-                          "type": "integer",
-                          "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
-                          "example": 999999992
-                        },
-                        "repay_account_number": {
-                          "type": "integer",
-                          "description": "Account number is an eight to ten digit number that identifies a specific account.",
-                          "example": 987654321
-                        },
-                        "repay_name_on_check": {
-                          "type": "string",
-                          "description": "Account holder's name as it appears on the account.",
-                          "example": "Lucille Bluth"
-                        }
-                      }
-                    }
-                  }
-                },
-                "debit_card": {
-                  "type": "object",
-                  "description": "Debit processing configuration.",
-                  "required": [
-                    "payment_processor_name"
-                  ],
-                  "properties": {
-                    "payment_processor_name": {
+                    "repay_check_type": {
                       "type": "string",
                       "enum": [
-                        "NONE",
-                        "REPAY"
+                        "PERSONAL",
+                        "BUSINESS"
                       ],
-                      "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
-                      "example": "REPAY",
-                      "default": "NONE"
+                      "description": "Type of checking account: Personal or Business.",
+                      "example": "PERSONAL"
                     },
-                    "repay_config": {
-                      "type": "object",
-                      "description": "Sensitive debit card information will be stored as a secured token for payments in place of the raw account details.",
-                      "required": [
-                        "repay_card_number",
-                        "repay_exp_date",
-                        "repay_name_on_card",
-                        "repay_street",
-                        "repay_zip",
-                        "repay_bin"
-                      ],
-                      "properties": {
-                        "repay_card_number": {
-                          "type": "string",
-                          "minLength": 16,
-                          "maxLength": 16,
-                          "pattern": "^[0-9]{16}$",
-                          "description": "16 digit debit card number.",
-                          "example": "4622941000000005"
-                        },
-                        "repay_exp_date": {
-                          "type": "string",
-                          "minLength": 4,
-                          "maxLength": 4,
-                          "pattern": "^[0-9]{4}$",
-                          "description": "The card expiration date in the format MMYY.",
-                          "example": "0619"
-                        },
-                        "repay_name_on_card": {
-                          "type": "string",
-                          "description": "The card holder's name as it appears on the card.",
-                          "example": "John Doe"
-                        },
-                        "repay_street": {
-                          "type": "string",
-                          "description": "The card holder's billing street address.",
-                          "example": "1234 Main Street"
-                        },
-                        "repay_zip": {
-                          "type": "string",
-                          "description": "The card holder's billing zip code.",
-                          "example": "85281"
-                        }
-                      }
-                    }
-                  }
-                },
-                "general_configs": {
-                  "type": "object",
-                  "properties": {
-                    "autopay_enabled": {
-                      "type": "boolean",
-                      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                      "example": true,
-                      "default": false
-                    },
-                    "default_payment_processor_method": {
+                    "repay_account_type": {
                       "type": "string",
                       "enum": [
-                        "ACH",
-                        "DEBIT_CARD",
-                        "NONE"
+                        "SAVINGS",
+                        "CHECKING"
                       ],
-                      "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                      "example": "ACH",
-                      "default": "NONE"
+                      "description": "Type of account: Savings or Checking.",
+                      "example": "CHECKING"
+                    },
+                    "repay_transit_number": {
+                      "type": "integer",
+                      "description": "Transit number is a nine-digit code based on the U.S. Bank location where your account was opened.",
+                      "example": 999999992
+                    },
+                    "repay_account_number": {
+                      "type": "integer",
+                      "description": "Account number is an eight to ten digit number that identifies a specific account.",
+                      "example": 987654321
+                    },
+                    "repay_name_on_check": {
+                      "type": "string",
+                      "description": "Account holder's name as it appears on the account.",
+                      "example": "Lucille Bluth"
                     }
                   }
                 }
@@ -18756,89 +18136,32 @@
                               "payment_processor_config": {
                                 "type": "object",
                                 "properties": {
-                                  "ach": {
+                                  "payment_processor_name": {
+                                    "type": "string",
+                                    "enum": [
+                                      "NONE",
+                                      "REPAY"
+                                    ],
+                                    "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                                    "example": "REPAY",
+                                    "default": "NONE"
+                                  },
+                                  "autopay_enabled": {
+                                    "type": "boolean",
+                                    "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                                    "example": true,
+                                    "default": false
+                                  },
+                                  "repay_config": {
                                     "type": "object",
-                                    "description": "ACH processing configuration.",
                                     "required": [
-                                      "payment_processor_name"
+                                      "valid_config"
                                     ],
                                     "properties": {
-                                      "payment_processor_name": {
-                                        "type": "string",
-                                        "enum": [
-                                          "NONE",
-                                          "REPAY"
-                                        ],
-                                        "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                                        "example": "REPAY",
-                                        "default": "NONE"
-                                      },
-                                      "repay_config": {
-                                        "type": "object",
-                                        "required": [
-                                          "valid_config"
-                                        ],
-                                        "properties": {
-                                          "valid_config": {
-                                            "type": "boolean",
-                                            "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                            "example": true
-                                          }
-                                        }
-                                      }
-                                    }
-                                  },
-                                  "debit_card": {
-                                    "type": "object",
-                                    "description": "Debit processing configuration.",
-                                    "required": [
-                                      "payment_processor_name"
-                                    ],
-                                    "properties": {
-                                      "payment_processor_name": {
-                                        "type": "string",
-                                        "enum": [
-                                          "NONE",
-                                          "REPAY"
-                                        ],
-                                        "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                                        "example": "REPAY",
-                                        "default": "NONE"
-                                      },
-                                      "repay_config": {
-                                        "type": "object",
-                                        "required": [
-                                          "valid_config"
-                                        ],
-                                        "properties": {
-                                          "valid_config": {
-                                            "type": "boolean",
-                                            "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                            "example": true
-                                          }
-                                        }
-                                      }
-                                    }
-                                  },
-                                  "general_configs": {
-                                    "type": "object",
-                                    "properties": {
-                                      "autopay_enabled": {
+                                      "valid_config": {
                                         "type": "boolean",
-                                        "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                                        "example": true,
-                                        "default": false
-                                      },
-                                      "default_payment_processor_method": {
-                                        "type": "string",
-                                        "enum": [
-                                          "ACH",
-                                          "DEBIT_CARD",
-                                          "NONE"
-                                        ],
-                                        "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                                        "example": "ACH",
-                                        "default": "NONE"
+                                        "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                                        "example": true
                                       }
                                     }
                                   }
@@ -19821,89 +19144,32 @@
                     "payment_processor_config": {
                       "type": "object",
                       "properties": {
-                        "ach": {
+                        "payment_processor_name": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "REPAY"
+                          ],
+                          "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                          "example": "REPAY",
+                          "default": "NONE"
+                        },
+                        "autopay_enabled": {
+                          "type": "boolean",
+                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                          "example": true,
+                          "default": false
+                        },
+                        "repay_config": {
                           "type": "object",
-                          "description": "ACH processing configuration.",
                           "required": [
-                            "payment_processor_name"
+                            "valid_config"
                           ],
                           "properties": {
-                            "payment_processor_name": {
-                              "type": "string",
-                              "enum": [
-                                "NONE",
-                                "REPAY"
-                              ],
-                              "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                              "example": "REPAY",
-                              "default": "NONE"
-                            },
-                            "repay_config": {
-                              "type": "object",
-                              "required": [
-                                "valid_config"
-                              ],
-                              "properties": {
-                                "valid_config": {
-                                  "type": "boolean",
-                                  "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                  "example": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "debit_card": {
-                          "type": "object",
-                          "description": "Debit processing configuration.",
-                          "required": [
-                            "payment_processor_name"
-                          ],
-                          "properties": {
-                            "payment_processor_name": {
-                              "type": "string",
-                              "enum": [
-                                "NONE",
-                                "REPAY"
-                              ],
-                              "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                              "example": "REPAY",
-                              "default": "NONE"
-                            },
-                            "repay_config": {
-                              "type": "object",
-                              "required": [
-                                "valid_config"
-                              ],
-                              "properties": {
-                                "valid_config": {
-                                  "type": "boolean",
-                                  "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                  "example": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "general_configs": {
-                          "type": "object",
-                          "properties": {
-                            "autopay_enabled": {
+                            "valid_config": {
                               "type": "boolean",
-                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                              "example": true,
-                              "default": false
-                            },
-                            "default_payment_processor_method": {
-                              "type": "string",
-                              "enum": [
-                                "ACH",
-                                "DEBIT_CARD",
-                                "NONE"
-                              ],
-                              "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                              "example": "ACH",
-                              "default": "NONE"
+                              "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                              "example": true
                             }
                           }
                         }
@@ -20230,89 +19496,32 @@
             "schema": {
               "type": "object",
               "properties": {
-                "ach": {
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY"
+                  ],
+                  "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "autopay_enabled": {
+                  "type": "boolean",
+                  "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                  "example": true,
+                  "default": false
+                },
+                "repay_config": {
                   "type": "object",
-                  "description": "ACH processing configuration.",
                   "required": [
-                    "payment_processor_name"
+                    "valid_config"
                   ],
                   "properties": {
-                    "payment_processor_name": {
-                      "type": "string",
-                      "enum": [
-                        "NONE",
-                        "REPAY"
-                      ],
-                      "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                      "example": "REPAY",
-                      "default": "NONE"
-                    },
-                    "repay_config": {
-                      "type": "object",
-                      "required": [
-                        "valid_config"
-                      ],
-                      "properties": {
-                        "valid_config": {
-                          "type": "boolean",
-                          "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                          "example": true
-                        }
-                      }
-                    }
-                  }
-                },
-                "debit_card": {
-                  "type": "object",
-                  "description": "Debit processing configuration.",
-                  "required": [
-                    "payment_processor_name"
-                  ],
-                  "properties": {
-                    "payment_processor_name": {
-                      "type": "string",
-                      "enum": [
-                        "NONE",
-                        "REPAY"
-                      ],
-                      "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                      "example": "REPAY",
-                      "default": "NONE"
-                    },
-                    "repay_config": {
-                      "type": "object",
-                      "required": [
-                        "valid_config"
-                      ],
-                      "properties": {
-                        "valid_config": {
-                          "type": "boolean",
-                          "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                          "example": true
-                        }
-                      }
-                    }
-                  }
-                },
-                "general_configs": {
-                  "type": "object",
-                  "properties": {
-                    "autopay_enabled": {
+                    "valid_config": {
                       "type": "boolean",
-                      "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                      "example": true,
-                      "default": false
-                    },
-                    "default_payment_processor_method": {
-                      "type": "string",
-                      "enum": [
-                        "ACH",
-                        "DEBIT_CARD",
-                        "NONE"
-                      ],
-                      "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                      "example": "ACH",
-                      "default": "NONE"
+                      "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                      "example": true
                     }
                   }
                 }
@@ -20685,89 +19894,32 @@
                       "payment_processor_config": {
                         "type": "object",
                         "properties": {
-                          "ach": {
+                          "payment_processor_name": {
+                            "type": "string",
+                            "enum": [
+                              "NONE",
+                              "REPAY"
+                            ],
+                            "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                            "example": "REPAY",
+                            "default": "NONE"
+                          },
+                          "autopay_enabled": {
+                            "type": "boolean",
+                            "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                            "example": true,
+                            "default": false
+                          },
+                          "repay_config": {
                             "type": "object",
-                            "description": "ACH processing configuration.",
                             "required": [
-                              "payment_processor_name"
+                              "valid_config"
                             ],
                             "properties": {
-                              "payment_processor_name": {
-                                "type": "string",
-                                "enum": [
-                                  "NONE",
-                                  "REPAY"
-                                ],
-                                "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                                "example": "REPAY",
-                                "default": "NONE"
-                              },
-                              "repay_config": {
-                                "type": "object",
-                                "required": [
-                                  "valid_config"
-                                ],
-                                "properties": {
-                                  "valid_config": {
-                                    "type": "boolean",
-                                    "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                    "example": true
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "debit_card": {
-                            "type": "object",
-                            "description": "Debit processing configuration.",
-                            "required": [
-                              "payment_processor_name"
-                            ],
-                            "properties": {
-                              "payment_processor_name": {
-                                "type": "string",
-                                "enum": [
-                                  "NONE",
-                                  "REPAY"
-                                ],
-                                "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                                "example": "REPAY",
-                                "default": "NONE"
-                              },
-                              "repay_config": {
-                                "type": "object",
-                                "required": [
-                                  "valid_config"
-                                ],
-                                "properties": {
-                                  "valid_config": {
-                                    "type": "boolean",
-                                    "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                    "example": true
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "general_configs": {
-                            "type": "object",
-                            "properties": {
-                              "autopay_enabled": {
+                              "valid_config": {
                                 "type": "boolean",
-                                "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                                "example": true,
-                                "default": false
-                              },
-                              "default_payment_processor_method": {
-                                "type": "string",
-                                "enum": [
-                                  "ACH",
-                                  "DEBIT_CARD",
-                                  "NONE"
-                                ],
-                                "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                                "example": "ACH",
-                                "default": "NONE"
+                                "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                                "example": true
                               }
                             }
                           }
@@ -21034,7 +20186,6 @@
                   "example": "31mNprzLd2bKl6koVna68ARM"
                 },
                 "author": {
-                  "description": "The API User who authored the note",
                   "type": "object",
                   "required": [
                     "api_user_id",
@@ -21080,7 +20231,8 @@
                       "description": "The role of this user in the API",
                       "example": 1
                     }
-                  }
+                  },
+                  "description": "The API User who authored the note"
                 },
                 "message": {
                   "type": "string",
@@ -21125,7 +20277,6 @@
                     "example": "31mNprzLd2bKl6koVna68ARM"
                   },
                   "author": {
-                    "description": "The API User who authored the note",
                     "type": "object",
                     "required": [
                       "api_user_id",
@@ -21171,7 +20322,8 @@
                         "description": "The role of this user in the API",
                         "example": 1
                       }
-                    }
+                    },
+                    "description": "The API User who authored the note"
                   },
                   "message": {
                     "type": "string",
@@ -21893,89 +21045,32 @@
                     "payment_processor_config": {
                       "type": "object",
                       "properties": {
-                        "ach": {
+                        "payment_processor_name": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "REPAY"
+                          ],
+                          "description": "Indicates the active payment processor whose configuration will be used for payments made from the account. If `NONE`, Canopy will not trigger payments to an external payment processor when they occur.",
+                          "example": "REPAY",
+                          "default": "NONE"
+                        },
+                        "autopay_enabled": {
+                          "type": "boolean",
+                          "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date.",
+                          "example": true,
+                          "default": false
+                        },
+                        "repay_config": {
                           "type": "object",
-                          "description": "ACH processing configuration.",
                           "required": [
-                            "payment_processor_name"
+                            "valid_config"
                           ],
                           "properties": {
-                            "payment_processor_name": {
-                              "type": "string",
-                              "enum": [
-                                "NONE",
-                                "REPAY"
-                              ],
-                              "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
-                              "example": "REPAY",
-                              "default": "NONE"
-                            },
-                            "repay_config": {
-                              "type": "object",
-                              "required": [
-                                "valid_config"
-                              ],
-                              "properties": {
-                                "valid_config": {
-                                  "type": "boolean",
-                                  "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                  "example": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "debit_card": {
-                          "type": "object",
-                          "description": "Debit processing configuration.",
-                          "required": [
-                            "payment_processor_name"
-                          ],
-                          "properties": {
-                            "payment_processor_name": {
-                              "type": "string",
-                              "enum": [
-                                "NONE",
-                                "REPAY"
-                              ],
-                              "description": "Indicates the active payment processor whose configuration will be used for Debit card payments made from the account.",
-                              "example": "REPAY",
-                              "default": "NONE"
-                            },
-                            "repay_config": {
-                              "type": "object",
-                              "required": [
-                                "valid_config"
-                              ],
-                              "properties": {
-                                "valid_config": {
-                                  "type": "boolean",
-                                  "description": "Indicates whether Canopy has a valid configuration stored for this Debit card payment processor for this account. For example, if Canopy needs a Debit card token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
-                                  "example": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "general_configs": {
-                          "type": "object",
-                          "properties": {
-                            "autopay_enabled": {
+                            "valid_config": {
                               "type": "boolean",
-                              "description": "Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1 day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay will not be triggered for account regardless of this field's value.",
-                              "example": true,
-                              "default": false
-                            },
-                            "default_payment_processor_method": {
-                              "type": "string",
-                              "enum": [
-                                "ACH",
-                                "DEBIT_CARD",
-                                "NONE"
-                              ],
-                              "description": "Configures the payment processor to be used for manual or autopay payments. This cannot be set to a value different from `NONE` if no valid ACH or Debit Card configs are provided.",
-                              "example": "ACH",
-                              "default": "NONE"
+                              "description": "Indicates whether Canopy has a valid configuration stored for this payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+                              "example": true
                             }
                           }
                         }

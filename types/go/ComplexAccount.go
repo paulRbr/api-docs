@@ -148,34 +148,13 @@ type MinPayDueCents struct {
 }
 
 type PaymentProcessorConfig struct {
-	Ach            *AchClass       `json:"ach,omitempty"`            // ACH processing configuration.
-	DebitCard      *DebitCardClass `json:"debit_card,omitempty"`     // Debit processing configuration.
-	GeneralConfigs *GeneralConfigs `json:"general_configs,omitempty"`
+	AutopayEnabled       *bool                 `json:"autopay_enabled,omitempty"`       // Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1; day prior to a payment due date.
+	PaymentProcessorName *PaymentProcessorName `json:"payment_processor_name,omitempty"`// Indicates the active payment processor whose configuration will be used for payments made; from the account. If `NONE`, Canopy will not trigger payments to an external payment; processor when they occur.
+	RepayConfig          *RepayConfig          `json:"repay_config,omitempty"`          
 }
 
-// ACH processing configuration.
-type AchClass struct {
-	PaymentProcessorName PaymentProcessorName `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for ACH payments; made from the account.
-	RepayConfig          *AchRepayConfig      `json:"repay_config,omitempty"`
-}
-
-type AchRepayConfig struct {
-	ValidConfig bool `json:"valid_config"`// Indicates whether Canopy has a valid configuration stored for this ACH payment processor; for this account. For example, if Canopy needs an ACH token on behalf of the account to; call the processor, this field will indicate that Canopy has successfully stored the; necessary token.
-}
-
-// Debit processing configuration.
-type DebitCardClass struct {
-	PaymentProcessorName PaymentProcessorName  `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for Debit card; payments made from the account.
-	RepayConfig          *DebitCardRepayConfig `json:"repay_config,omitempty"`
-}
-
-type DebitCardRepayConfig struct {
-	ValidConfig bool `json:"valid_config"`// Indicates whether Canopy has a valid configuration stored for this Debit card payment; processor for this account. For example, if Canopy needs a Debit card token on behalf of; the account to call the processor, this field will indicate that Canopy has successfully; stored the necessary token.
-}
-
-type GeneralConfigs struct {
-	AutopayEnabled                *bool                          `json:"autopay_enabled,omitempty"`                 // Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1; day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay; will not be triggered for account regardless of this field's value.
-	DefaultPaymentProcessorMethod *DefaultPaymentProcessorMethod `json:"default_payment_processor_method,omitempty"`// Configures the payment processor to be used for manual or autopay payments. This cannot; be set to a value different from `NONE` if no valid ACH or Debit Card configs are; provided.
+type RepayConfig struct {
+	ValidConfig bool `json:"valid_config"`// Indicates whether Canopy has a valid configuration stored for this payment processor for; this account. For example, if Canopy needs an ACH token on behalf of the account to call; the processor, this field will indicate that Canopy has successfully stored the necessary; token.
 }
 
 type Summary struct {
@@ -211,23 +190,11 @@ const (
 	Unlocked Type = "UNLOCKED"
 )
 
-// Indicates the active payment processor whose configuration will be used for ACH payments
-// made from the account.
-//
-// Indicates the active payment processor whose configuration will be used for Debit card
-// payments made from the account.
+// Indicates the active payment processor whose configuration will be used for payments made
+// from the account. If `NONE`, Canopy will not trigger payments to an external payment
+// processor when they occur.
 type PaymentProcessorName string
 const (
-	PaymentProcessorNameNONE PaymentProcessorName = "NONE"
+	None PaymentProcessorName = "NONE"
 	Repay PaymentProcessorName = "REPAY"
-)
-
-// Configures the payment processor to be used for manual or autopay payments. This cannot
-// be set to a value different from `NONE` if no valid ACH or Debit Card configs are
-// provided.
-type DefaultPaymentProcessorMethod string
-const (
-	Ach DefaultPaymentProcessorMethod = "ACH"
-	DebitCard DefaultPaymentProcessorMethod = "DEBIT_CARD"
-	DefaultPaymentProcessorMethodNONE DefaultPaymentProcessorMethod = "NONE"
 )
