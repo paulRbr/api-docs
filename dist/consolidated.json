@@ -4144,6 +4144,13 @@
                                       "description": "Card data. Field names match the ones in Lithic's card schema",
                                       "additionalProperties": true,
                                       "properties": {
+                                        "spend_limit": {
+                                          "type": "integer",
+                                          "nullable": true,
+                                          "minimum": 1,
+                                          "description": "Spending limit of card (in cents).",
+                                          "example": 8000000
+                                        },
                                         "lithic": {
                                           "type": "object",
                                           "properties": {
@@ -4884,6 +4891,13 @@
                                       "description": "Card data. Field names match the ones in Lithic's card schema",
                                       "additionalProperties": true,
                                       "properties": {
+                                        "spend_limit": {
+                                          "type": "integer",
+                                          "nullable": true,
+                                          "minimum": 1,
+                                          "description": "Spending limit of card (in cents).",
+                                          "example": 8000000
+                                        },
                                         "lithic": {
                                           "type": "object",
                                           "properties": {
@@ -7803,6 +7817,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "spend_limit": {
+                    "type": "integer",
+                    "nullable": true,
+                    "minimum": 1,
+                    "description": "Spending limit of card (in cents).",
+                    "example": 8000000
+                  },
                   "lithic": {
                     "type": "object",
                     "properties": {
@@ -7850,6 +7871,13 @@
                     "description": "Card data. Field names match the ones in Lithic's card schema",
                     "additionalProperties": true,
                     "properties": {
+                      "spend_limit": {
+                        "type": "integer",
+                        "nullable": true,
+                        "minimum": 1,
+                        "description": "Spending limit of card (in cents).",
+                        "example": 8000000
+                      },
                       "lithic": {
                         "type": "object",
                         "properties": {
@@ -7954,6 +7982,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "spend_limit": {
+                    "type": "integer",
+                    "nullable": true,
+                    "minimum": 1,
+                    "description": "Spending limit of card (in cents).",
+                    "example": 8000000
+                  },
                   "lithic": {
                     "type": "object",
                     "required": [
@@ -8000,6 +8035,13 @@
                     "description": "Card data. Field names match the ones in Lithic's card schema",
                     "additionalProperties": true,
                     "properties": {
+                      "spend_limit": {
+                        "type": "integer",
+                        "nullable": true,
+                        "minimum": 1,
+                        "description": "Spending limit of card (in cents).",
+                        "example": 8000000
+                      },
                       "lithic": {
                         "type": "object",
                         "properties": {
@@ -11054,6 +11096,13 @@
                             "description": "Card data. Field names match the ones in Lithic's card schema",
                             "additionalProperties": true,
                             "properties": {
+                              "spend_limit": {
+                                "type": "integer",
+                                "nullable": true,
+                                "minimum": 1,
+                                "description": "Spending limit of card (in cents).",
+                                "example": 8000000
+                              },
                               "lithic": {
                                 "type": "object",
                                 "properties": {
@@ -12180,6 +12229,13 @@
       "CreateCustomerAccountCardInput": {
         "type": "object",
         "properties": {
+          "spend_limit": {
+            "type": "integer",
+            "nullable": true,
+            "minimum": 1,
+            "description": "Spending limit of card (in cents).",
+            "example": 8000000
+          },
           "lithic": {
             "type": "object",
             "properties": {
@@ -13232,6 +13288,13 @@
           "description": "Card data. Field names match the ones in Lithic's card schema",
           "additionalProperties": true,
           "properties": {
+            "spend_limit": {
+              "type": "integer",
+              "nullable": true,
+              "minimum": 1,
+              "description": "Spending limit of card (in cents).",
+              "example": 8000000
+            },
             "lithic": {
               "type": "object",
               "properties": {
@@ -14462,6 +14525,13 @@
       "UpdateCustomerAccountCardInput": {
         "type": "object",
         "properties": {
+          "spend_limit": {
+            "type": "integer",
+            "nullable": true,
+            "minimum": 1,
+            "description": "Spending limit of card (in cents).",
+            "example": 8000000
+          },
           "lithic": {
             "type": "object",
             "required": [
@@ -15665,6 +15735,13 @@
             "schema": {
               "type": "object",
               "properties": {
+                "spend_limit": {
+                  "type": "integer",
+                  "nullable": true,
+                  "minimum": 1,
+                  "description": "Spending limit of card (in cents).",
+                  "example": 8000000
+                },
                 "lithic": {
                   "type": "object",
                   "properties": {
@@ -16065,6 +16142,13 @@
             "schema": {
               "type": "object",
               "properties": {
+                "spend_limit": {
+                  "type": "integer",
+                  "nullable": true,
+                  "minimum": 1,
+                  "description": "Spending limit of card (in cents).",
+                  "example": 8000000
+                },
                 "lithic": {
                   "type": "object",
                   "required": [
@@ -19433,6 +19517,13 @@
                                   "description": "Card data. Field names match the ones in Lithic's card schema",
                                   "additionalProperties": true,
                                   "properties": {
+                                    "spend_limit": {
+                                      "type": "integer",
+                                      "nullable": true,
+                                      "minimum": 1,
+                                      "description": "Spending limit of card (in cents).",
+                                      "example": 8000000
+                                    },
                                     "lithic": {
                                       "type": "object",
                                       "properties": {
@@ -21334,6 +21425,13 @@
                                   "description": "Card data. Field names match the ones in Lithic's card schema",
                                   "additionalProperties": true,
                                   "properties": {
+                                    "spend_limit": {
+                                      "type": "integer",
+                                      "nullable": true,
+                                      "minimum": 1,
+                                      "description": "Spending limit of card (in cents).",
+                                      "example": 8000000
+                                    },
                                     "lithic": {
                                       "type": "object",
                                       "properties": {
@@ -23005,6 +23103,13 @@
                 "description": "Card data. Field names match the ones in Lithic's card schema",
                 "additionalProperties": true,
                 "properties": {
+                  "spend_limit": {
+                    "type": "integer",
+                    "nullable": true,
+                    "minimum": 1,
+                    "description": "Spending limit of card (in cents).",
+                    "example": 8000000
+                  },
                   "lithic": {
                     "type": "object",
                     "properties": {

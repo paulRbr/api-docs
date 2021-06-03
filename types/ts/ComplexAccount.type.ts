@@ -326,6 +326,10 @@ export interface BusinessDetails {
  */
 export interface CardDetail {
     lithic?: CardDetailLithic;
+    /**
+     * Spending limit of card (in cents).
+     */
+    spend_limit?: number;
 }
 
 export interface CardDetailLithic {

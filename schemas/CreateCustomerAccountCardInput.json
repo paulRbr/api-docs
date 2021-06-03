@@ -1,6 +1,13 @@
 {
   "type": "object",
   "properties": {
+    "spend_limit": {
+      "type": "integer",
+      "nullable": true,
+      "minimum": 1,
+      "description": "Spending limit of card (in cents).",
+      "example": 8000000
+    },
     "lithic": {
       "type": "object",
       "properties": {

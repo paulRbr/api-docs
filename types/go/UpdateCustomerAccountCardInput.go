@@ -1,5 +1,6 @@
 type UpdateCustomerAccountCardInput struct {
-	Lithic *Lithic `json:"lithic,omitempty"`
+	Lithic     *Lithic `json:"lithic,omitempty"`     
+	SpendLimit *int64  `json:"spend_limit,omitempty"`// Spending limit of card (in cents).
 }
 
 type Lithic struct {

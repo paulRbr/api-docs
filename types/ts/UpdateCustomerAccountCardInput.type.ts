@@ -1,5 +1,9 @@
 export interface UpdateCustomerAccountCardInput {
     lithic?: Lithic;
+    /**
+     * Spending limit of card (in cents).
+     */
+    spend_limit?: number;
 }
 
 export interface Lithic {
