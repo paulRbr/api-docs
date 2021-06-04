@@ -26,6 +26,7 @@ type Account struct {
 	AssociatedEntities               *AssociatedEntities               `json:"associated_entities,omitempty"`                 
 	CreatedAt                        *string                           `json:"created_at,omitempty"`                          // The `Date-Time` which the account was created in the API.
 	CycleType                        *CycleType                        `json:"cycle_type,omitempty"`                          
+	Discounts                        *Discounts                        `json:"discounts,omitempty"`                           
 	EffectiveAt                      *string                           `json:"effective_at,omitempty"`                        // The `Date-Time` that this account became/becomes active.
 	ExternalAccountID                *string                           `json:"external_account_id,omitempty"`                 // Note: The value passed here *must* be unique. This ties to a reference of your account in; an external system. For example, you may have a ten digit loan number you use to; reference the account.
 	ExternalFields                   []ExternalField                   `json:"external_fields,omitempty"`                     // An Array of External Fields. These should be used to connect accounts created in Canopy; to Users in your system and any connected external systems.
@@ -107,6 +108,15 @@ type AssociatedEntities struct {
 
 type CycleType struct {
 	FirstCycleInterval *string `json:"first_cycle_interval,omitempty"`// Interval for a first cycle for this account.
+}
+
+type Discounts struct {
+	PrepaymentDiscountConfig *PrepaymentDiscountConfig `json:"prepayment_discount_config,omitempty"`
+}
+
+type PrepaymentDiscountConfig struct {
+	LoanDiscountAmount *string `json:"loan_discount_amount,omitempty"`// Interval for a first cycle for this account.
+	LoanDiscountAt     *string `json:"loan_discount_at,omitempty"`    // Interval for a first cycle for this account.
 }
 
 type ExternalField struct {

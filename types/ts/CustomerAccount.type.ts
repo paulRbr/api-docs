@@ -94,6 +94,7 @@ export interface Account {
      */
     created_at?: string;
     cycle_type?: CycleType;
+    discounts?:  Discounts;
     /**
      * The `Date-Time` that this account became/becomes active.
      */
@@ -317,6 +318,21 @@ export interface CycleType {
      * Interval for a first cycle for this account.
      */
     first_cycle_interval?: string;
+}
+
+export interface Discounts {
+    prepayment_discount_config?: PrepaymentDiscountConfig;
+}
+
+export interface PrepaymentDiscountConfig {
+    /**
+     * Interval for a first cycle for this account.
+     */
+    loan_discount_amount?: string;
+    /**
+     * Interval for a first cycle for this account.
+     */
+    loan_discount_at?: string;
 }
 
 export interface ExternalField {

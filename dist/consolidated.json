@@ -2697,6 +2697,28 @@
                                       }
                                     }
                                   },
+                                  "discounts": {
+                                    "type": "object",
+                                    "properties": {
+                                      "prepayment_discount_config": {
+                                        "type": "object",
+                                        "properties": {
+                                          "loan_discount_amount": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Interval for a first cycle for this account.",
+                                            "example": "11 days"
+                                          },
+                                          "loan_discount_at": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Interval for a first cycle for this account.",
+                                            "example": "11 days"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
                                   "summary": {
                                     "type": "object",
                                     "required": [
@@ -3331,6 +3353,28 @@
                           }
                         }
                       },
+                      "discounts": {
+                        "type": "object",
+                        "properties": {
+                          "prepayment_discount_config": {
+                            "type": "object",
+                            "properties": {
+                              "loan_discount_amount": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "Interval for a first cycle for this account.",
+                                "example": "11 days"
+                              },
+                              "loan_discount_at": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "Interval for a first cycle for this account.",
+                                "example": "11 days"
+                              }
+                            }
+                          }
+                        }
+                      },
                       "summary": {
                         "type": "object",
                         "properties": {
@@ -3909,6 +3953,28 @@
                               "type": "string",
                               "description": "Interval for a first cycle for this account.",
                               "example": "11 days"
+                            }
+                          }
+                        },
+                        "discounts": {
+                          "type": "object",
+                          "properties": {
+                            "prepayment_discount_config": {
+                              "type": "object",
+                              "properties": {
+                                "loan_discount_amount": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "Interval for a first cycle for this account.",
+                                  "example": "11 days"
+                                },
+                                "loan_discount_at": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "Interval for a first cycle for this account.",
+                                  "example": "11 days"
+                                }
+                              }
                             }
                           }
                         },
@@ -4659,6 +4725,28 @@
                             }
                           }
                         },
+                        "discounts": {
+                          "type": "object",
+                          "properties": {
+                            "prepayment_discount_config": {
+                              "type": "object",
+                              "properties": {
+                                "loan_discount_amount": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "Interval for a first cycle for this account.",
+                                  "example": "11 days"
+                                },
+                                "loan_discount_at": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "Interval for a first cycle for this account.",
+                                  "example": "11 days"
+                                }
+                              }
+                            }
+                          }
+                        },
                         "summary": {
                           "type": "object",
                           "required": [
@@ -5235,6 +5323,7 @@
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
                     "author": {
+                      "description": "The API User who authored the note",
                       "type": "object",
                       "required": [
                         "api_user_id",
@@ -5280,8 +5369,7 @@
                           "description": "The role of this user in the API",
                           "example": 1
                         }
-                      },
-                      "description": "The API User who authored the note"
+                      }
                     },
                     "message": {
                       "type": "string",
@@ -5365,6 +5453,7 @@
                         "example": "31mNprzLd2bKl6koVna68ARM"
                       },
                       "author": {
+                        "description": "The API User who authored the note",
                         "type": "object",
                         "required": [
                           "api_user_id",
@@ -5410,8 +5499,7 @@
                             "description": "The role of this user in the API",
                             "example": 1
                           }
-                        },
-                        "description": "The API User who authored the note"
+                        }
                       },
                       "message": {
                         "type": "string",
@@ -9615,6 +9703,28 @@
               }
             }
           },
+          "discounts": {
+            "type": "object",
+            "properties": {
+              "prepayment_discount_config": {
+                "type": "object",
+                "properties": {
+                  "loan_discount_amount": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Interval for a first cycle for this account.",
+                    "example": "11 days"
+                  },
+                  "loan_discount_at": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Interval for a first cycle for this account.",
+                    "example": "11 days"
+                  }
+                }
+              }
+            }
+          },
           "summary": {
             "type": "object",
             "required": [
@@ -10864,6 +10974,28 @@
                   }
                 }
               },
+              "discounts": {
+                "type": "object",
+                "properties": {
+                  "prepayment_discount_config": {
+                    "type": "object",
+                    "properties": {
+                      "loan_discount_amount": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Interval for a first cycle for this account.",
+                        "example": "11 days"
+                      },
+                      "loan_discount_at": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Interval for a first cycle for this account.",
+                        "example": "11 days"
+                      }
+                    }
+                  }
+                }
+              },
               "summary": {
                 "type": "object",
                 "required": [
@@ -11676,6 +11808,28 @@
                         }
                       }
                     },
+                    "discounts": {
+                      "type": "object",
+                      "properties": {
+                        "prepayment_discount_config": {
+                          "type": "object",
+                          "properties": {
+                            "loan_discount_amount": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            },
+                            "loan_discount_at": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            }
+                          }
+                        }
+                      }
+                    },
                     "summary": {
                       "type": "object",
                       "required": [
@@ -11944,6 +12098,28 @@
                     "nullable": true,
                     "description": "Interval for a first cycle for this account.",
                     "example": "11 days"
+                  }
+                }
+              },
+              "discounts": {
+                "type": "object",
+                "properties": {
+                  "prepayment_discount_config": {
+                    "type": "object",
+                    "properties": {
+                      "loan_discount_amount": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Interval for a first cycle for this account.",
+                        "example": "11 days"
+                      },
+                      "loan_discount_at": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Interval for a first cycle for this account.",
+                        "example": "11 days"
+                      }
+                    }
                   }
                 }
               },
@@ -13173,6 +13349,28 @@
                       }
                     }
                   },
+                  "discounts": {
+                    "type": "object",
+                    "properties": {
+                      "prepayment_discount_config": {
+                        "type": "object",
+                        "properties": {
+                          "loan_discount_amount": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "Interval for a first cycle for this account.",
+                            "example": "11 days"
+                          },
+                          "loan_discount_at": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "Interval for a first cycle for this account.",
+                            "example": "11 days"
+                          }
+                        }
+                      }
+                    }
+                  },
                   "summary": {
                     "type": "object",
                     "required": [
@@ -13619,6 +13817,7 @@
             "example": "31mNprzLd2bKl6koVna68ARM"
           },
           "author": {
+            "description": "The API User who authored the note",
             "type": "object",
             "required": [
               "api_user_id",
@@ -13664,8 +13863,7 @@
                 "description": "The role of this user in the API",
                 "example": 1
               }
-            },
-            "description": "The API User who authored the note"
+            }
           },
           "message": {
             "type": "string",
@@ -15474,6 +15672,28 @@
                           "nullable": true,
                           "description": "Interval for a first cycle for this account.",
                           "example": "11 days"
+                        }
+                      }
+                    },
+                    "discounts": {
+                      "type": "object",
+                      "properties": {
+                        "prepayment_discount_config": {
+                          "type": "object",
+                          "properties": {
+                            "loan_discount_amount": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            },
+                            "loan_discount_at": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            }
+                          }
                         }
                       }
                     },
@@ -18277,6 +18497,28 @@
                                   }
                                 }
                               },
+                              "discounts": {
+                                "type": "object",
+                                "properties": {
+                                  "prepayment_discount_config": {
+                                    "type": "object",
+                                    "properties": {
+                                      "loan_discount_amount": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "description": "Interval for a first cycle for this account.",
+                                        "example": "11 days"
+                                      },
+                                      "loan_discount_at": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "description": "Interval for a first cycle for this account.",
+                                        "example": "11 days"
+                                      }
+                                    }
+                                  }
+                                }
+                              },
                               "summary": {
                                 "type": "object",
                                 "required": [
@@ -19285,6 +19527,28 @@
                         }
                       }
                     },
+                    "discounts": {
+                      "type": "object",
+                      "properties": {
+                        "prepayment_discount_config": {
+                          "type": "object",
+                          "properties": {
+                            "loan_discount_amount": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            },
+                            "loan_discount_at": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            }
+                          }
+                        }
+                      }
+                    },
                     "summary": {
                       "type": "object",
                       "required": [
@@ -20042,6 +20306,28 @@
                           }
                         }
                       },
+                      "discounts": {
+                        "type": "object",
+                        "properties": {
+                          "prepayment_discount_config": {
+                            "type": "object",
+                            "properties": {
+                              "loan_discount_amount": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "Interval for a first cycle for this account.",
+                                "example": "11 days"
+                              },
+                              "loan_discount_at": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "Interval for a first cycle for this account.",
+                                "example": "11 days"
+                              }
+                            }
+                          }
+                        }
+                      },
                       "summary": {
                         "type": "object",
                         "required": [
@@ -20277,6 +20563,7 @@
                   "example": "31mNprzLd2bKl6koVna68ARM"
                 },
                 "author": {
+                  "description": "The API User who authored the note",
                   "type": "object",
                   "required": [
                     "api_user_id",
@@ -20322,8 +20609,7 @@
                       "description": "The role of this user in the API",
                       "example": 1
                     }
-                  },
-                  "description": "The API User who authored the note"
+                  }
                 },
                 "message": {
                   "type": "string",
@@ -20368,6 +20654,7 @@
                     "example": "31mNprzLd2bKl6koVna68ARM"
                   },
                   "author": {
+                    "description": "The API User who authored the note",
                     "type": "object",
                     "required": [
                       "api_user_id",
@@ -20413,8 +20700,7 @@
                         "description": "The role of this user in the API",
                         "example": 1
                       }
-                    },
-                    "description": "The API User who authored the note"
+                    }
                   },
                   "message": {
                     "type": "string",
@@ -21190,6 +21476,28 @@
                           "type": "string",
                           "description": "Interval for a first cycle for this account.",
                           "example": "11 days"
+                        }
+                      }
+                    },
+                    "discounts": {
+                      "type": "object",
+                      "properties": {
+                        "prepayment_discount_config": {
+                          "type": "object",
+                          "properties": {
+                            "loan_discount_amount": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            },
+                            "loan_discount_at": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Interval for a first cycle for this account.",
+                              "example": "11 days"
+                            }
+                          }
                         }
                       }
                     },
