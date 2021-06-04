@@ -1765,6 +1765,9 @@
       "CreatePaymentInput": {
         "$ref": "./schemas/CreatePaymentInput.json"
       },
+      "CreateProductInput": {
+        "$ref": "./schemas/CreateProductInput.json"
+      },
       "Customer": {
         "$ref": "./schemas/Customer.json"
       },

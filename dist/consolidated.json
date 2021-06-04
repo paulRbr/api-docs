@@ -13118,6 +13118,346 @@
           }
         }
       },
+      "CreateProductInput": {
+        "type": "object",
+        "required": [
+          "product_overview",
+          "product_lifecycle_policies",
+          "promotional_policies",
+          "post_promotional_policies"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "effective_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The `Date-Time` as of which this product is effective on the server.",
+            "example": "2016-11-27T13:19:56+00:00"
+          },
+          "external_product_id": {
+            "type": "string",
+            "description": "A unique external ID that may be used interchangeably with the Canopy-generated product ID",
+            "example": "95fea111-d121-40f8-9e8e-a6c335e48a45"
+          },
+          "product_overview": {
+            "type": "object",
+            "required": [
+              "product_name",
+              "product_type",
+              "product_short_description",
+              "product_long_description"
+            ],
+            "description": "A series of static fields about the product.",
+            "properties": {
+              "product_name": {
+                "type": "string",
+                "description": "Name of Product, i.e. BNPL 24 Month Standard.",
+                "example": "BNPL 24 Month Standard"
+              },
+              "product_type": {
+                "type": "string",
+                "description": "The Type of Product",
+                "default": "REVOLVING",
+                "enum": [
+                  "REVOLVING",
+                  "INSTALLMENT",
+                  "MIXED_RATE_INSTALLMENT",
+                  "DEFERRED_INSTALLMENT",
+                  "FIXED_RATE_INSTALLMENT"
+                ],
+                "example": "REVOLVING"
+              },
+              "product_short_description": {
+                "type": "string",
+                "description": "A short description of the product ranging from 0 - 60 characters.",
+                "example": "12mm3apr."
+              },
+              "product_long_description": {
+                "type": "string",
+                "description": "Description of the Product ranging from 0 - 1000.",
+                "example": "Student credit card."
+              },
+              "product_color": {
+                "type": "string",
+                "description": "A color to be associated with the product for UI purposes.",
+                "example": "#0000FF",
+                "default": "#4867FF"
+              }
+            }
+          },
+          "product_lifecycle_policies": {
+            "type": "object",
+            "properties": {
+              "payment_due_policies": {
+                "type": "object",
+                "properties": {
+                  "delinquent_on_n_consecutive_late_fees": {
+                    "type": "integer",
+                    "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `delinquent`",
+                    "example": 2,
+                    "default": 1
+                  },
+                  "charge_off_on_n_consecutive_late_fees": {
+                    "type": "integer",
+                    "description": "After this number of consecutive late events, the account status shifts to `suspended` with a status subtype of `charged_off`",
+                    "example": 5,
+                    "default": 2
+                  }
+                },
+                "description": "The set of policies governing payment due information for the product."
+              },
+              "fee_policies": {
+                "type": "object",
+                "properties": {
+                  "late_fee_grace": {
+                    "type": "string",
+                    "description": "Defaults to 0 days. The amount of time after a payment is late after which you would like for a late fee to be incurred.",
+                    "example": "5 days",
+                    "default": "0 days"
+                  },
+                  "surcharge_fee_interval": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The interval at which a surcharge fee is assessed.",
+                    "example": "1 month"
+                  },
+                  "default_surcharge_fee_structure": {
+                    "type": "array",
+                    "description": "The transaction volume structure that dictates a transaction fee.",
+                    "nullable": true,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "surcharge_start_inclusive_cents",
+                        "percent_surcharge"
+                      ],
+                      "properties": {
+                        "surcharge_start_inclusive_cents": {
+                          "type": "integer",
+                          "description": "Indicates the starting transaction volume at which this fee will apply.",
+                          "example": 0
+                        },
+                        "surcharge_end_exclusive_cents": {
+                          "type": "integer",
+                          "description": "Indicates the ending transaction volume at which this fee will apply. If not provided, the surcharge will apply to any transaction volume above the defined start.",
+                          "example": 0,
+                          "default": 100000000000000000000
+                        },
+                        "percent_surcharge": {
+                          "type": "number",
+                          "description": "Indicates the surcharge fee as a percent of total transaction volume that will be applied to the account if the total transaction volume during the surcharge interval falls within the provided start and end range.",
+                          "example": 0
+                        }
+                      }
+                    }
+                  }
+                },
+                "description": "The set of policies governing fees for the product. "
+              },
+              "billing_cycle_policies": {
+                "type": "object",
+                "required": [
+                  "cycle_interval"
+                ],
+                "properties": {
+                  "cycle_interval": {
+                    "type": "string",
+                    "description": "The length of the billing cycle. after which a statement is generated, and a due date assigned. IE '1 month' '3 months' or '7 days' (most common is monthly)",
+                    "example": "1 month"
+                  },
+                  "cycle_due_interval": {
+                    "type": "string",
+                    "description": "Defaults to 0 days. The amount of time before statement cut that the payment should be due for the billing cycle. If positive, it will count days from the start of the cycle. Note, this field has a signage convention: if negative, it will count days back from the end of the cycle. IE '25 days' indicates that payments are due 25 days after the statement is cut. `-5` days indicates that payments will be due five days prior to the cut of the *next* cycle. Cannot exceed the duration of the billing cycle.",
+                    "example": "-5 days",
+                    "default": "0 days"
+                  },
+                  "first_cycle_interval": {
+                    "type": "string",
+                    "description": "Defaults to 0 days. If applicable, the amount of time you would like between origination and the first statement cut. IE '10 days'. If you would like the first billing cycle to be the same length as all other billing cycles, either do not include this field in the request, or set its value to the same as `billing_cycle_period`",
+                    "example": "25 days",
+                    "default": "0 days"
+                  },
+                  "close_of_business_time": {
+                    "type": "string",
+                    "description": "Defaults to EST Midnight. Time of the close of business. Note* this value will be converted into the `product_time_zone` This is used for statement cuts and partner-level and issuing bank-level reconciliation",
+                    "format": "time",
+                    "example": "17:00:00-05:00",
+                    "default": "23:59:59-05:00"
+                  },
+                  "product_time_zone": {
+                    "type": "string",
+                    "description": "Timezone denoted as an Olson-style timezone defining the timezone for the product. All times in any response data for accounts using this product will be denominated in this timezone. Shifts due to daylight savings will be accounted for where relevant, and all output timestamps will be denoted as UTC offsets normalized based on this value. Defaults to America/New_York if not provided.",
+                    "example": "America/Chicago",
+                    "default": "America/New_York"
+                  }
+                },
+                "description": "The set of policies governing the billing cycle for the product. "
+              },
+              "interest_policies": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "interest_calc_time": {
+                    "type": "string",
+                    "description": "Defaults to EST 1AM. Interest for this policy is calculated at this time every X interval.",
+                    "format": "time",
+                    "example": "11:21:04-08:00",
+                    "default": "01:00:00-05:00"
+                  }
+                },
+                "description": "The Interest Policy Object"
+              },
+              "default_attributes": {
+                "required": [
+                  "default_credit_limit_cents"
+                ],
+                "type": "object",
+                "properties": {
+                  "default_credit_limit_cents": {
+                    "type": "integer",
+                    "description": "The default maximum principal credit (in cents) available for a customer account. For risk-based-pricing, this default limit can be overridden on a per-account basis if a `credit_limit` is selected at the time of assigning an account to a product in the `Create Account` call. Credit limits for an account can also be updated post-account creation.",
+                    "example": 600000,
+                    "default": 0
+                  },
+                  "default_late_fee_cents": {
+                    "type": "integer",
+                    "description": "The default late fee for accounts enrolled in this product. This will be used if no late fee is provided at account creation.",
+                    "example": 3000,
+                    "default": 0
+                  },
+                  "default_payment_reversal_fee_cents": {
+                    "type": "integer",
+                    "description": "The default payment reversa fee for accounts enrolled in this product. This will be used if no late fee is provided at account creation.",
+                    "example": 3000,
+                    "default": 0
+                  }
+                }
+              }
+            }
+          },
+          "promotional_policies": {
+            "type": "object",
+            "description": "If applicable, a promotional configuration for the product.",
+            "properties": {
+              "promo_len": {
+                "type": "integer",
+                "description": "Defaults to 0. The number of billing cycles from account origination during which accounts on this product are on a promotional period.",
+                "example": 6,
+                "default": 0
+              },
+              "promo_min_pay_type": {
+                "type": "string",
+                "enum": [
+                  "AM",
+                  "PERCENT_INTEREST",
+                  "PERCENT_PRINCIPAL",
+                  "NONE"
+                ],
+                "description": "Current due calculation method for the promotional period.",
+                "example": "PERCENT_PRINCIPAL",
+                "default": "NONE"
+              },
+              "promo_purchase_window_len": {
+                "type": "integer",
+                "description": "If applicable, the number of billing cycles from account origination under which this product falls under a purchas window period.",
+                "example": 5,
+                "default": 0
+              },
+              "promo_interest_deferred": {
+                "type": "boolean",
+                "description": "Indicates whether interest accrued during the promotional period is deferred interest.",
+                "example": true,
+                "default": false
+              },
+              "promo_default_interest_rate_percent": {
+                "type": "number",
+                "description": "The rate that serves as the active interest rate for accounts during the promotional period.",
+                "example": 3,
+                "default": 0
+              },
+              "promo_min_pay_percent": {
+                "type": "number",
+                "description": "Defaults to 100. The percent of new interest in the cycle used to determine the minimum payment.",
+                "example": 100,
+                "default": 100
+              },
+              "promo_apr_range_inclusive_lower": {
+                "type": "number",
+                "description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
+                "example": 2,
+                "default": 0
+              },
+              "promo_apr_range_inclusive_upper": {
+                "type": "number",
+                "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
+                "example": 5,
+                "default": 0
+              }
+            }
+          },
+          "post_promotional_policies": {
+            "type": "object",
+            "properties": {
+              "post_promo_len": {
+                "type": "integer",
+                "description": "Default duration for any amortization period during post-promotion",
+                "example": 48,
+                "default": 0
+              },
+              "post_promo_am_len_range_inclusive_lower": {
+                "type": "integer",
+                "description": "Optional lower bound for amortization length in billing cycles for the product.",
+                "example": 2,
+                "default": 0
+              },
+              "post_promo_am_len_range_inclusive_upper": {
+                "type": "integer",
+                "description": "Optional upper bound for amortization length in billing cycles for the product.",
+                "example": 5,
+                "default": 100
+              },
+              "post_promo_min_pay_type": {
+                "type": "string",
+                "enum": [
+                  "AM"
+                ],
+                "description": "Current due calculation method for the post-promotional period.",
+                "example": "AM",
+                "default": "AM"
+              },
+              "post_promo_default_interest_rate_percent": {
+                "type": "number",
+                "description": "The rate that serves as the active interest rate for accounts during the post-promotional period.",
+                "example": 3,
+                "default": 0
+              },
+              "post_promo_apr_range_inclusive_lower": {
+                "type": "number",
+                "description": "Optional lower bound for APR Range for the product (i.e. 2 = 2%).",
+                "example": 2,
+                "default": 0
+              },
+              "post_promo_apr_range_inclusive_upper": {
+                "type": "number",
+                "description": "Optional upper bound for APR Range for the product (i.e. 5 = 5%).",
+                "example": 5,
+                "default": 0
+              }
+            }
+          },
+          "admin": {
+            "type": "object",
+            "properties": {
+              "migration_mode": {
+                "type": "boolean",
+                "description": "If migration mode is on, Canopy will stop auto-generating statements for this account.",
+                "example": true,
+                "default": false
+              }
+            }
+          }
+        }
+      },
       "Customer": {
         "type": "object",
         "required": [
