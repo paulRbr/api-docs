@@ -1,0 +1,19 @@
+{
+  "description": "",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "./../schemas/AccountCreditReportsList.json"
+            }
+          }
+        }
+      }
+    }
+  }
+}

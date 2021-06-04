@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "description": "Metro 2 credit report overview ",
+  "required": ["account_id", "credit_report_id"],
+  "properties": {
+    "account_id": {
+      "type": "string",
+      "description": "The Canopy-generated ID for the account",
+      "example": "31mNprzLd2bKl6koVna68ARM"
+    },
+    "credit_report_id": {
+      "type": "string",
+      "description": "The Canopy-generated ID for the statement",
+      "example": "31mNprzLd2bKl6koVna68ARM"
+    },
+    "cycle_summary": {
+      "type": "object",
+      "required": ["cycle_inclusive_start", "cycle_exclusive_end"],
+      "properties": {
+        "cycle_inclusive_start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The inclusive starting `Date-Time` that defines the cycle for which the report was generated.",
+          "nullable": true
+        },
+        "cycle_exclusive_end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The exclusive ending `Date-Time` that defines the cycle for which the report was generated.",
+          "nullable": true
+        }
+      }
+    },
+    "bureau_reports_included": {
+      "type": "object",
+      "properties": {
+        "equifax": {
+          "type": "boolean",
+          "description": "Indicates whether a Metro2 file to send to Equifax was generated as part of this report. This is expected to be `true` if you have configured an Equifax Program Identifier for your organization as of the time the report was generated.",
+          "example": true
+        },
+        "experian": {
+          "type": "boolean",
+          "description": "Indicates whether a Metro2 file to send to Experian was generated as part of this report. This is expected to be `true` if you have configured an Experian Program Identifier for your organization as of the time the report was generated.",
+          "example": true
+        },
+        "transunion": {
+          "type": "boolean",
+          "description": "Indicates whether a Metro2 file to send to TransUnion was generated as part of this report. This is expected to be `true` if you have configured an TransUnion Program Identifier for your organization as of the time the report was generated.",
+          "example": true
+        }
+      }
+    }
+  }
+}

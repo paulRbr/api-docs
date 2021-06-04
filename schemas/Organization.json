@@ -69,6 +69,67 @@
               }
             }
           }
+        },
+        "credit_reporting": {
+          "type": "object",
+          "properties": {
+            "transunion_program_identifier": {
+              "type": "integer",
+              "example": "5555555555",
+              "description": "If included, a metro2 report will be generated for your organization which uses this code to report to TransUnion."
+            },
+            "experian_program_identifier": {
+              "type": "integer",
+              "example": "5555555555",
+              "description": "If included, a metro2 report will be generated for your organization which uses this code to report to Experian."
+            },
+            "equifax_program_identifier": {
+              "type": "integer",
+              "example": "5555555555",
+              "description": "If included, a metro2 report will be generated for your organization which uses this code to report to Experian."
+            },
+            "program_date": {
+              "type": "string",
+              "format": "date",
+              "description": "The date your program started reporting credit to the bureaus.",
+              "example": "1985-06-20"
+            },
+            "reporter_name": {
+              "type": "string",
+              "description": "Your organization's name, as reporting to the credit bureaus.",
+              "example": "Acme Corporation"
+            },
+            "reporter_address_line_one": {
+              "type": "string",
+              "description": "Reporter address line one.",
+              "example": "12 Strawberry Road"
+            },
+            "reporter_address_line_two": {
+              "type": "string",
+              "description": "Reporter address line two.",
+              "example": "Suite 101"
+            },
+            "reporter_address_city": {
+              "type": "string",
+              "description": "Reporter address city.",
+              "example": "Atlanta"
+            },
+            "reporter_address_state": {
+              "type": "string",
+              "description": "Reporter address state.",
+              "example": "GA"
+            },
+            "reporter_address_zip": {
+              "type": "string",
+              "description": "Reporter address, five digit zipcode or nine digit 'ZIP+4'.",
+              "example": "99999-1000"
+            },
+            "reporter_phone_number": {
+              "type": "string",
+              "description": "Reporter's phone number in E.164 format.",
+              "example": "+14105556789"
+            }
+          }
         }
       }
     }

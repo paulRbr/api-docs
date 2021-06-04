@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "description": "Metro2 Credit Report for an account for a given billing cycle",
+  "required": ["account_id", "credit_report_id"],
+  "properties": {
+    "account_id": {
+      "type": "string",
+      "description": "The Canopy-generated ID for the account",
+      "example": "31mNprzLd2bKl6koVna68ARM"
+    },
+    "credit_report_id": {
+      "type": "string",
+      "description": "The Canopy-generated ID for the statement",
+      "example": "31mNprzLd2bKl6koVna68ARM"
+    },
+    "report_transunion": {
+      "type": "string",
+      "description": "Transunion Metro2 credit report",
+      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat"
+    },
+    "report_equifax": {
+      "type": "string",
+      "description": "Equifax Metro2 credit report",
+      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat"
+    },
+    "report_experian": {
+      "type": "string",
+      "description": "Experian Metro2 credit report",
+      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat"
+    }
+  }
+}

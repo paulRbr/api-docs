@@ -1313,6 +1313,114 @@
         }
       }
     },
+    "/accounts/{account_id}/credit_reports/list": {
+      "get": {
+        "tags": ["credit_reporting"],
+        "summary": "Get a list of all current and Metro2 credit reports for a specific account",
+        "description": "List of Metro2 credit reports for the account. To view line items for a specific credit report, use the `/accounts/{account_id}/credit_reports/{credit_report_id}` route",
+        "operationId": "getAccountCreditReportsList",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of accounts to be returned. Defaults to 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AccountCreditReportsList"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "404": {
+            "description": "Statements not found"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/credit_reports/{credit_report_id}": {
+      "get": {
+        "tags": ["credit_reporting"],
+        "summary": "Get a specific Metro2 credit report for a specific account.",
+        "description": "This will return a Metro2 credit report that corresponds with the passed Credit Report ID. Relevant IDs for an account's historical Metro2 credit reports can be obtained from the `accounts/{account_id}/credit_reports/list` route.",
+        "operationId": "getAccountCreditReport",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          },
+          {
+            "name": "credit_report_id",
+            "in": "path",
+            "description": "The ID of a specific Metro2 credit report you would like returned.",
+            "required": true,
+            "style": "simple",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AccountCreditReport"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "404": {
+            "description": "Statement not found"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/customers/{customer_id}/cards": {
       "post": {
         "tags": ["customers"],
@@ -1697,6 +1805,37 @@
           }
         }
       }
+    },
+    "/organization/credit_reporting": {
+      "put": {
+        "tags": ["credit_reporting"],
+        "summary": "Configure credit reporting details for your organization",
+        "description": "",
+        "operationId": "configureCreditReporting",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ConfigureCreditReporting"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ConfigureCreditReporting"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1725,6 +1864,9 @@
       },
       "AccountStatementSummary": {
         "$ref": "./schemas/AccountStatementSummary.json"
+      },
+      "AccountCreditReportsList": {
+        "$ref": "./schemas/AccountCreditReportsList.json"
       },
       "ApiUser": {
         "$ref": "./schemas/ApiUser.json"
@@ -1884,6 +2026,9 @@
       "ConfigureIssuerProcessors": {
         "$ref": "./requestBodies/ConfigureIssuerProcessors.json"
       },
+      "ConfigureCreditReporting": {
+        "$ref": "./requestBodies/ConfigureCreditReporting.json"
+      },
       "EditLineItem": {
         "$ref": "./requestBodies/EditLineItem.json"
       },
@@ -1967,6 +2112,9 @@
       "AccountStatement": {
         "$ref": "./responses/AccountStatement.json"
       },
+      "AccountCreditReport": {
+        "$ref": "./responses/AccountCreditReport.json"
+      },
       "ProductSummary": {
         "$ref": "./responses/ProductSummary.json"
       },
@@ -1982,6 +2130,9 @@
       "StatementsList": {
         "$ref": "./responses/StatementsList.json"
       },
+      "AccountCreditReportsList": {
+        "$ref": "./responses/AccountCreditReportsList.json"
+      },
       "CreateApiUser": {
         "$ref": "./responses/CreateApiUser.json"
       },
@@ -1990,6 +2141,9 @@
       },
       "ConfigureIssuerProcessors": {
         "$ref": "./responses/ConfigureIssuerProcessors.json"
+      },
+      "ConfigureCreditReporting": {
+        "$ref": "./responses/ConfigureCreditReporting.json"
       },
       "Organization": {
         "$ref": "./responses/Organization.json"
