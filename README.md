@@ -9,11 +9,10 @@ We use the v3.0.3 version of the [OpenAPI spec](https://github.com/OAI/OpenAPI-S
 ## Initial setup
 
 1. Ensure you're on Node 14 or later: `nvm install lts`
-2. `yarn`
-3. `gem install bump-cli --version "~> 0.7"`
-4. The pre-commit hook will bundle, validate, generate TS and Go types, and format the code before pushing.
+1. `yarn`
+1. The pre-commit hook will bundle, validate, generate TS and Go types, and format the code before pushing.
    You can run either of those individually by referring to `scripts` in `package.json`.
-5. Optional: install [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode.
+1. Optional: install [Crunch42](https://github.com/42Crunch/vscode-openapi) extension for VSCode.
 
 ## Live documentation structure
 
