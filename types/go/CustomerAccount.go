@@ -118,8 +118,8 @@ type Discounts struct {
 }
 
 type PrepaymentDiscountConfig struct {
-	LoanDiscountAmount *string `json:"loan_discount_amount,omitempty"`// Interval for a first cycle for this account.
-	LoanDiscountAt     *string `json:"loan_discount_at,omitempty"`    // Interval for a first cycle for this account.
+	LoanDiscountAt    *string `json:"loan_discount_at,omitempty"`   // The `Date-Time` that this discount is valid.
+	LoanDiscountCents *int64  `json:"loan_discount_cents,omitempty"`// Loan discount amount in cents.
 }
 
 type ExternalField struct {

@@ -120,13 +120,13 @@ export interface Discounts {
 
 export interface PrepaymentDiscountConfig {
     /**
-     * Interval for a first cycle for this account.
-     */
-    loan_discount_amount?: string;
-    /**
-     * Interval for a first cycle for this account.
+     * The `Date-Time` that this discount is valid.
      */
     loan_discount_at?: string;
+    /**
+     * Loan discount amount in cents.
+     */
+    loan_discount_cents?: number;
 }
 
 export interface ExternalField {
