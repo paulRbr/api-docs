@@ -2758,13 +2758,15 @@
                                           "loan_discount_cents": {
                                             "type": "integer",
                                             "description": "Loan discount amount in cents.",
-                                            "example": 800000
+                                            "example": 800000,
+                                            "nullable": true
                                           },
                                           "loan_discount_at": {
                                             "type": "string",
                                             "description": "The `Date-Time` that this discount is valid.",
                                             "format": "date-time",
-                                            "example": "2018-03-20T09:12:28+00:00"
+                                            "example": "2018-03-20T09:12:28+00:00",
+                                            "nullable": true
                                           }
                                         }
                                       }
@@ -4080,13 +4082,15 @@
                                 "loan_discount_cents": {
                                   "type": "integer",
                                   "description": "Loan discount amount in cents.",
-                                  "example": 800000
+                                  "example": 800000,
+                                  "nullable": true
                                 },
                                 "loan_discount_at": {
                                   "type": "string",
                                   "description": "The `Date-Time` that this discount is valid.",
                                   "format": "date-time",
-                                  "example": "2018-03-20T09:12:28+00:00"
+                                  "example": "2018-03-20T09:12:28+00:00",
+                                  "nullable": true
                                 }
                               }
                             }
@@ -4900,13 +4904,15 @@
                                 "loan_discount_cents": {
                                   "type": "integer",
                                   "description": "Loan discount amount in cents.",
-                                  "example": 800000
+                                  "example": 800000,
+                                  "nullable": true
                                 },
                                 "loan_discount_at": {
                                   "type": "string",
                                   "description": "The `Date-Time` that this discount is valid.",
                                   "format": "date-time",
-                                  "example": "2018-03-20T09:12:28+00:00"
+                                  "example": "2018-03-20T09:12:28+00:00",
+                                  "nullable": true
                                 }
                               }
                             }
@@ -10512,13 +10518,15 @@
                   "loan_discount_cents": {
                     "type": "integer",
                     "description": "Loan discount amount in cents.",
-                    "example": 800000
+                    "example": 800000,
+                    "nullable": true
                   },
                   "loan_discount_at": {
                     "type": "string",
                     "description": "The `Date-Time` that this discount is valid.",
                     "format": "date-time",
-                    "example": "2018-03-20T09:12:28+00:00"
+                    "example": "2018-03-20T09:12:28+00:00",
+                    "nullable": true
                   }
                 }
               }
@@ -11895,13 +11903,15 @@
                       "loan_discount_cents": {
                         "type": "integer",
                         "description": "Loan discount amount in cents.",
-                        "example": 800000
+                        "example": 800000,
+                        "nullable": true
                       },
                       "loan_discount_at": {
                         "type": "string",
                         "description": "The `Date-Time` that this discount is valid.",
                         "format": "date-time",
-                        "example": "2018-03-20T09:12:28+00:00"
+                        "example": "2018-03-20T09:12:28+00:00",
+                        "nullable": true
                       }
                     }
                   }
@@ -12780,13 +12790,15 @@
                             "loan_discount_cents": {
                               "type": "integer",
                               "description": "Loan discount amount in cents.",
-                              "example": 800000
+                              "example": 800000,
+                              "nullable": true
                             },
                             "loan_discount_at": {
                               "type": "string",
                               "description": "The `Date-Time` that this discount is valid.",
                               "format": "date-time",
-                              "example": "2018-03-20T09:12:28+00:00"
+                              "example": "2018-03-20T09:12:28+00:00",
+                              "nullable": true
                             }
                           }
                         }
@@ -14730,13 +14742,15 @@
                           "loan_discount_cents": {
                             "type": "integer",
                             "description": "Loan discount amount in cents.",
-                            "example": 800000
+                            "example": 800000,
+                            "nullable": true
                           },
                           "loan_discount_at": {
                             "type": "string",
                             "description": "The `Date-Time` that this discount is valid.",
                             "format": "date-time",
-                            "example": "2018-03-20T09:12:28+00:00"
+                            "example": "2018-03-20T09:12:28+00:00",
+                            "nullable": true
                           }
                         }
                       }
@@ -20152,13 +20166,15 @@
                                       "loan_discount_cents": {
                                         "type": "integer",
                                         "description": "Loan discount amount in cents.",
-                                        "example": 800000
+                                        "example": 800000,
+                                        "nullable": true
                                       },
                                       "loan_discount_at": {
                                         "type": "string",
                                         "description": "The `Date-Time` that this discount is valid.",
                                         "format": "date-time",
-                                        "example": "2018-03-20T09:12:28+00:00"
+                                        "example": "2018-03-20T09:12:28+00:00",
+                                        "nullable": true
                                       }
                                     }
                                   }
@@ -21233,13 +21249,15 @@
                             "loan_discount_cents": {
                               "type": "integer",
                               "description": "Loan discount amount in cents.",
-                              "example": 800000
+                              "example": 800000,
+                              "nullable": true
                             },
                             "loan_discount_at": {
                               "type": "string",
                               "description": "The `Date-Time` that this discount is valid.",
                               "format": "date-time",
-                              "example": "2018-03-20T09:12:28+00:00"
+                              "example": "2018-03-20T09:12:28+00:00",
+                              "nullable": true
                             }
                           }
                         }
@@ -22115,13 +22133,15 @@
                               "loan_discount_cents": {
                                 "type": "integer",
                                 "description": "Loan discount amount in cents.",
-                                "example": 800000
+                                "example": 800000,
+                                "nullable": true
                               },
                               "loan_discount_at": {
                                 "type": "string",
                                 "description": "The `Date-Time` that this discount is valid.",
                                 "format": "date-time",
-                                "example": "2018-03-20T09:12:28+00:00"
+                                "example": "2018-03-20T09:12:28+00:00",
+                                "nullable": true
                               }
                             }
                           }
@@ -23339,13 +23359,15 @@
                             "loan_discount_cents": {
                               "type": "integer",
                               "description": "Loan discount amount in cents.",
-                              "example": 800000
+                              "example": 800000,
+                              "nullable": true
                             },
                             "loan_discount_at": {
                               "type": "string",
                               "description": "The `Date-Time` that this discount is valid.",
                               "format": "date-time",
-                              "example": "2018-03-20T09:12:28+00:00"
+                              "example": "2018-03-20T09:12:28+00:00",
+                              "nullable": true
                             }
                           }
                         }
