@@ -10,7 +10,7 @@
         "type": "integer",
         "nullable": true,
         "minimum": 1,
-        "description": "Spending limit of card (in cents).",
+        "description": "Spending limit of card (in cents). If not provided, spending is still subject to the spend limit set at the issuer processor account (if any).",
         "example": 8000000
       },
       "lithic": {

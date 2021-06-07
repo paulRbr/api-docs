@@ -116,7 +116,7 @@ type BusinessDetails struct {
 // Card data. Field names match the ones in Lithic's card schema
 type CardDetail struct {
 	Lithic     *CardDetailLithic `json:"lithic,omitempty"`     
-	SpendLimit *int64            `json:"spend_limit,omitempty"`// Spending limit of card (in cents).
+	SpendLimit *int64            `json:"spend_limit,omitempty"`// Spending limit of card (in cents). If not provided, spending is still subject to the; spend limit set at the issuer processor account (if any).
 }
 
 type CardDetailLithic struct {

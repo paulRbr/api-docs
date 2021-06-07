@@ -328,7 +328,8 @@ export interface BusinessDetails {
 export interface CardDetail {
     lithic?: CardDetailLithic;
     /**
-     * Spending limit of card (in cents).
+     * Spending limit of card (in cents). If not provided, spending is still subject to the
+     * spend limit set at the issuer processor account (if any).
      */
     spend_limit?: number;
 }

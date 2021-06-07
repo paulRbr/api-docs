@@ -1,7 +1,8 @@
 export interface UpdateCustomerAccountCardInput {
     lithic?: Lithic;
     /**
-     * Spending limit of card (in cents).
+     * Spending limit of card (in cents). If not provided, spending is still subject to the
+     * spend limit set at the issuer processor account (if any).
      */
     spend_limit?: number;
 }
@@ -12,7 +13,7 @@ export interface Lithic {
      */
     memo?: string;
     /**
-     * The state of the new card. **Note: "CLOSED" cannot be undone.**
+     * The new state of the card. **Note: "CLOSED" cannot be undone.**
      */
     state?: State;
     /**
@@ -22,7 +23,7 @@ export interface Lithic {
 }
 
 /**
- * The state of the new card. **Note: "CLOSED" cannot be undone.**
+ * The new state of the card. **Note: "CLOSED" cannot be undone.**
  */
 export type State = 
     "CLOSED" | 

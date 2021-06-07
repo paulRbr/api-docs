@@ -26,9 +26,10 @@ type CustomerAccountIssuerProcessorConfig struct {
 }
 
 type Lithic struct {
-	Memo  *string `json:"memo,omitempty"` // Friendly name to identify the card
-	State *State  `json:"state,omitempty"`// The state of the new card
-	Type  *Type   `json:"type,omitempty"` // The type of card created by Lithic
+	CardProgramToken *string `json:"card_program_token,omitempty"`// Token belonging to the card program under which to create the card.
+	Memo             *string `json:"memo,omitempty"`              // Friendly name to identify the card
+	State            *State  `json:"state,omitempty"`             // The state of the new card
+	Type             *Type   `json:"type,omitempty"`              // The type of card created by Lithic
 }
 
 type AssociatedEntities struct {

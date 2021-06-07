@@ -90,6 +90,10 @@ export interface CustomerAccountIssuerProcessorConfig {
 
 export interface Lithic {
     /**
+     * Token belonging to the card program under which to create the card.
+     */
+    card_program_token?: string;
+    /**
      * Friendly name to identify the card.
      */
     memo?: string;

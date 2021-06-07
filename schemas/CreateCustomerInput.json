@@ -153,6 +153,12 @@
                     "enum": ["OPEN", "PAUSED"],
                     "description": "The state of the new card.",
                     "example": "OPEN"
+                  },
+                  "card_program_token": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Token belonging to the card program under which to create the card.",
+                    "example": "a5e38341-cc95-4a9b-a21c-751aeca67e9c"
                   }
                 }
               }
