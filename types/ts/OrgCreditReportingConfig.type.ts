@@ -1,4 +1,4 @@
-export interface ConfigureCreditReportingInput {
+export interface OrgCreditReportingConfig {
     /**
      * If included, a metro2 report will be generated for your organization which uses this code
      * to report to Experian.

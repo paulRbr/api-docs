@@ -1,4 +1,4 @@
-type ConfigureCreditReportingInput struct {
+type OrgCreditReportingConfig struct {
 	EquifaxProgramIdentifier    *string `json:"equifax_program_identifier,omitempty"`   // If included, a metro2 report will be generated for your organization which uses this code; to report to Experian.
 	ExperianProgramIdentifier   *string `json:"experian_program_identifier,omitempty"`  // If included, a metro2 report will be generated for your organization which uses this code; to report to Experian.
 	ProgramDate                 *string `json:"program_date,omitempty"`                 // The date your program started reporting credit to the bureaus.

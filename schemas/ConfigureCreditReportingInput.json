@@ -2,17 +2,17 @@
   "type": "object",
   "properties": {
     "transunion_program_identifier": {
-      "type": "integer",
+      "type": "string",
       "example": "5555555555",
       "description": "If included, a metro2 report will be generated for your organization which uses this code to report to TransUnion."
     },
     "experian_program_identifier": {
-      "type": "integer",
+      "type": "string",
       "example": "5555555555",
       "description": "If included, a metro2 report will be generated for your organization which uses this code to report to Experian."
     },
     "equifax_program_identifier": {
-      "type": "integer",
+      "type": "string",
       "example": "5555555555",
       "description": "If included, a metro2 report will be generated for your organization which uses this code to report to Experian."
     },

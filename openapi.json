@@ -1946,6 +1946,9 @@
       "OrgPaymentProcessorConfig": {
         "$ref": "./schemas/OrgPaymentProcessorConfig.json"
       },
+      "OrgCreditReportingConfig": {
+        "$ref": "./schemas/OrgCreditReportingConfig.json"
+      },
       "Pagination": {
         "$ref": "./schemas/Pagination.json"
       },
