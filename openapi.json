@@ -1886,6 +1886,9 @@
       "ConfigurePaymentProcessorsInput": {
         "$ref": "./schemas/ConfigurePaymentProcessorsInput.json"
       },
+      "ConfigureCreditReportingInput": {
+        "$ref": "./schemas/ConfigureCreditReportingInput.json"
+      },
       "CreateAccountInput": {
         "$ref": "./schemas/CreateAccountInput.json"
       },
