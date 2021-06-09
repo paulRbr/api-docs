@@ -4429,6 +4429,18 @@
               "type": "string",
               "example": "31mNprzLd2bKl6koVna68ARM"
             }
+          },
+          {
+            "name": "external",
+            "in": "query",
+            "description": "The external account ID.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
           }
         ],
         "responses": {
@@ -5622,6 +5634,7 @@
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
                     "author": {
+                      "description": "The API User who authored the note",
                       "type": "object",
                       "required": [
                         "api_user_id",
@@ -5667,8 +5680,7 @@
                           "description": "The role of this user in the API",
                           "example": 1
                         }
-                      },
-                      "description": "The API User who authored the note"
+                      }
                     },
                     "message": {
                       "type": "string",
@@ -5752,6 +5764,7 @@
                         "example": "31mNprzLd2bKl6koVna68ARM"
                       },
                       "author": {
+                        "description": "The API User who authored the note",
                         "type": "object",
                         "required": [
                           "api_user_id",
@@ -5797,8 +5810,7 @@
                             "description": "The role of this user in the API",
                             "example": 1
                           }
-                        },
-                        "description": "The API User who authored the note"
+                        }
                       },
                       "message": {
                         "type": "string",
@@ -15263,6 +15275,7 @@
             "example": "31mNprzLd2bKl6koVna68ARM"
           },
           "author": {
+            "description": "The API User who authored the note",
             "type": "object",
             "required": [
               "api_user_id",
@@ -15308,8 +15321,7 @@
                 "description": "The role of this user in the API",
                 "example": 1
               }
-            },
-            "description": "The API User who authored the note"
+            }
           },
           "message": {
             "type": "string",
@@ -22504,6 +22516,7 @@
                   "example": "31mNprzLd2bKl6koVna68ARM"
                 },
                 "author": {
+                  "description": "The API User who authored the note",
                   "type": "object",
                   "required": [
                     "api_user_id",
@@ -22549,8 +22562,7 @@
                       "description": "The role of this user in the API",
                       "example": 1
                     }
-                  },
-                  "description": "The API User who authored the note"
+                  }
                 },
                 "message": {
                   "type": "string",
@@ -22595,6 +22607,7 @@
                     "example": "31mNprzLd2bKl6koVna68ARM"
                   },
                   "author": {
+                    "description": "The API User who authored the note",
                     "type": "object",
                     "required": [
                       "api_user_id",
@@ -22640,8 +22653,7 @@
                         "description": "The role of this user in the API",
                         "example": 1
                       }
-                    },
-                    "description": "The API User who authored the note"
+                    }
                   },
                   "message": {
                     "type": "string",
