@@ -1,7 +1,7 @@
 export interface CreateAccountInput {
     associated_entities?: AssociatedEntities;
     cycle_type?:          CycleType;
-    discounts?:           Discounts;
+    discounts?:           { [key: string]: any };
     /**
      * The `Date-Time` as of which this account is effective on the server.
      */
@@ -116,21 +116,6 @@ export interface CycleType {
      * Interval for a first cycle for this account.
      */
     first_cycle_interval?: string;
-}
-
-export interface Discounts {
-    prepayment_discount_config?: PrepaymentDiscountConfig;
-}
-
-export interface PrepaymentDiscountConfig {
-    /**
-     * The `Date-Time` that this discount is valid.
-     */
-    loan_discount_at?: string;
-    /**
-     * Loan discount amount in cents.
-     */
-    loan_discount_cents?: number;
 }
 
 export interface ExternalField {

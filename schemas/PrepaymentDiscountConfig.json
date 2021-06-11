@@ -5,8 +5,7 @@
     "loan_discount_cents": {
       "type": "integer",
       "description": "Loan discount amount in cents.",
-      "example": 800000,
-      "minimum": 1
+      "example": 800000
     },
     "loan_discount_at": {
       "type": "string",
