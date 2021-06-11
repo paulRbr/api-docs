@@ -1,6 +1,6 @@
 {
   "name": "@canopyinc/api-docs",
-  "version": "1.2.6-pp_config_update_fix",
+  "version": "1.2.6-pp-config-update-fix",
   "description": "OpenAPI v3.0.3 Spec for CanopyAPI",
   "private": false,
   "repository": {
