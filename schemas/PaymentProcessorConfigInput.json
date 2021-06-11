@@ -70,14 +70,7 @@
         "repay_config": {
           "type": "object",
           "description": "Sensitive debit card information will be stored as a secured token for payments in place of the raw account details.",
-          "required": [
-            "repay_card_number",
-            "repay_exp_date",
-            "repay_name_on_card",
-            "repay_street",
-            "repay_zip",
-            "repay_bin"
-          ],
+          "required": ["repay_card_number", "repay_exp_date", "repay_name_on_card", "repay_street", "repay_zip"],
           "properties": {
             "repay_card_number": {
               "type": "string",

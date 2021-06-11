@@ -5397,8 +5397,7 @@
                           "repay_exp_date",
                           "repay_name_on_card",
                           "repay_street",
-                          "repay_zip",
-                          "repay_bin"
+                          "repay_zip"
                         ],
                         "properties": {
                           "repay_card_number": {
@@ -17561,8 +17560,7 @@
                         "repay_exp_date",
                         "repay_name_on_card",
                         "repay_street",
-                        "repay_zip",
-                        "repay_bin"
+                        "repay_zip"
                       ],
                       "properties": {
                         "repay_card_number": {
