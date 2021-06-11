@@ -1,7 +1,8 @@
 export interface CreateProductInput {
     admin?: Admin;
     /**
-     * The `Date-Time` as of which this product is effective on the server.
+     * The `Date-Time` as of which this product is effective on the server. Your product should
+     * be older than all accounts enrolled in it.
      */
     effective_at?: string;
     /**

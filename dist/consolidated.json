@@ -769,8 +769,9 @@
                   "effective_at": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "The `Date-Time` as of which this product is effective on the server.",
-                    "example": "2016-11-27T13:19:56+00:00"
+                    "description": "The `Date-Time` as of which this product is effective on the server. Your product should be older than all accounts enrolled in it.",
+                    "example": "2016-11-27T13:19:56+00:00",
+                    "default": "1900-01-01T12:00:00+00:00"
                   },
                   "external_product_id": {
                     "type": "string",
@@ -13758,8 +13759,9 @@
           "effective_at": {
             "type": "string",
             "format": "date-time",
-            "description": "The `Date-Time` as of which this product is effective on the server.",
-            "example": "2016-11-27T13:19:56+00:00"
+            "description": "The `Date-Time` as of which this product is effective on the server. Your product should be older than all accounts enrolled in it.",
+            "example": "2016-11-27T13:19:56+00:00",
+            "default": "1900-01-01T12:00:00+00:00"
           },
           "external_product_id": {
             "type": "string",
@@ -16484,8 +16486,9 @@
                 "effective_at": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The `Date-Time` as of which this product is effective on the server.",
-                  "example": "2016-11-27T13:19:56+00:00"
+                  "description": "The `Date-Time` as of which this product is effective on the server. Your product should be older than all accounts enrolled in it.",
+                  "example": "2016-11-27T13:19:56+00:00",
+                  "default": "1900-01-01T12:00:00+00:00"
                 },
                 "external_product_id": {
                   "type": "string",
