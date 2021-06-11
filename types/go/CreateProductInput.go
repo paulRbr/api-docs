@@ -1,6 +1,6 @@
 type CreateProductInput struct {
 	Admin                    *Admin                   `json:"admin,omitempty"`              
-	EffectiveAt              *string                  `json:"effective_at,omitempty"`       // The `Date-Time` as of which this product is effective on the server.
+	EffectiveAt              *string                  `json:"effective_at,omitempty"`       // The `Date-Time` as of which this product is effective on the server. Your product should; be older than all accounts enrolled in it.
 	ExternalProductID        *string                  `json:"external_product_id,omitempty"`// A unique external ID that may be used interchangeably with the Canopy-generated product ID
 	PostPromotionalPolicies  PostPromotionalPolicies  `json:"post_promotional_policies"`    
 	ProductLifecyclePolicies ProductLifecyclePolicies `json:"product_lifecycle_policies"`   
