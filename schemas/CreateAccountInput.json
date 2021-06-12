@@ -124,7 +124,7 @@
           "type": "object",
           "properties": {
             "prepayment_discount_config": {
-              "$ref": "./PrepaymentDiscountConfig.json"
+              "$ref": "./PrepaymentDiscountConfigInput.json"
             }
           }
         },

@@ -2760,8 +2760,7 @@
                                           "loan_discount_cents": {
                                             "type": "integer",
                                             "description": "Loan discount amount in cents.",
-                                            "example": 800000,
-                                            "minimum": 1
+                                            "example": 800000
                                           },
                                           "loan_discount_at": {
                                             "type": "string",
@@ -4085,8 +4084,7 @@
                                 "loan_discount_cents": {
                                   "type": "integer",
                                   "description": "Loan discount amount in cents.",
-                                  "example": 800000,
-                                  "minimum": 1
+                                  "example": 800000
                                 },
                                 "loan_discount_at": {
                                   "type": "string",
@@ -4919,8 +4917,7 @@
                                 "loan_discount_cents": {
                                   "type": "integer",
                                   "description": "Loan discount amount in cents.",
-                                  "example": 800000,
-                                  "minimum": 1
+                                  "example": 800000
                                 },
                                 "loan_discount_at": {
                                   "type": "string",
@@ -5635,6 +5632,7 @@
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
                     "author": {
+                      "description": "The API User who authored the note",
                       "type": "object",
                       "required": [
                         "api_user_id",
@@ -5680,8 +5678,7 @@
                           "description": "The role of this user in the API",
                           "example": 1
                         }
-                      },
-                      "description": "The API User who authored the note"
+                      }
                     },
                     "message": {
                       "type": "string",
@@ -5765,6 +5762,7 @@
                         "example": "31mNprzLd2bKl6koVna68ARM"
                       },
                       "author": {
+                        "description": "The API User who authored the note",
                         "type": "object",
                         "required": [
                           "api_user_id",
@@ -5810,8 +5808,7 @@
                             "description": "The role of this user in the API",
                             "example": 1
                           }
-                        },
-                        "description": "The API User who authored the note"
+                        }
                       },
                       "message": {
                         "type": "string",
@@ -10532,8 +10529,7 @@
                   "loan_discount_cents": {
                     "type": "integer",
                     "description": "Loan discount amount in cents.",
-                    "example": 800000,
-                    "minimum": 1
+                    "example": 800000
                   },
                   "loan_discount_at": {
                     "type": "string",
@@ -11917,8 +11913,7 @@
                       "loan_discount_cents": {
                         "type": "integer",
                         "description": "Loan discount amount in cents.",
-                        "example": 800000,
-                        "minimum": 1
+                        "example": 800000
                       },
                       "loan_discount_at": {
                         "type": "string",
@@ -12804,8 +12799,7 @@
                             "loan_discount_cents": {
                               "type": "integer",
                               "description": "Loan discount amount in cents.",
-                              "example": 800000,
-                              "minimum": 1
+                              "example": 800000
                             },
                             "loan_discount_at": {
                               "type": "string",
@@ -14819,8 +14813,7 @@
                           "loan_discount_cents": {
                             "type": "integer",
                             "description": "Loan discount amount in cents.",
-                            "example": 800000,
-                            "minimum": 1
+                            "example": 800000
                           },
                           "loan_discount_at": {
                             "type": "string",
@@ -15278,6 +15271,7 @@
             "example": "31mNprzLd2bKl6koVna68ARM"
           },
           "author": {
+            "description": "The API User who authored the note",
             "type": "object",
             "required": [
               "api_user_id",
@@ -15323,8 +15317,7 @@
                 "description": "The role of this user in the API",
                 "example": 1
               }
-            },
-            "description": "The API User who authored the note"
+            }
           },
           "message": {
             "type": "string",
@@ -20305,8 +20298,7 @@
                                       "loan_discount_cents": {
                                         "type": "integer",
                                         "description": "Loan discount amount in cents.",
-                                        "example": 800000,
-                                        "minimum": 1
+                                        "example": 800000
                                       },
                                       "loan_discount_at": {
                                         "type": "string",
@@ -21388,8 +21380,7 @@
                             "loan_discount_cents": {
                               "type": "integer",
                               "description": "Loan discount amount in cents.",
-                              "example": 800000,
-                              "minimum": 1
+                              "example": 800000
                             },
                             "loan_discount_at": {
                               "type": "string",
@@ -22272,8 +22263,7 @@
                               "loan_discount_cents": {
                                 "type": "integer",
                                 "description": "Loan discount amount in cents.",
-                                "example": 800000,
-                                "minimum": 1
+                                "example": 800000
                               },
                               "loan_discount_at": {
                                 "type": "string",
@@ -22520,6 +22510,7 @@
                   "example": "31mNprzLd2bKl6koVna68ARM"
                 },
                 "author": {
+                  "description": "The API User who authored the note",
                   "type": "object",
                   "required": [
                     "api_user_id",
@@ -22565,8 +22556,7 @@
                       "description": "The role of this user in the API",
                       "example": 1
                     }
-                  },
-                  "description": "The API User who authored the note"
+                  }
                 },
                 "message": {
                   "type": "string",
@@ -22611,6 +22601,7 @@
                     "example": "31mNprzLd2bKl6koVna68ARM"
                   },
                   "author": {
+                    "description": "The API User who authored the note",
                     "type": "object",
                     "required": [
                       "api_user_id",
@@ -22656,8 +22647,7 @@
                         "description": "The role of this user in the API",
                         "example": 1
                       }
-                    },
-                    "description": "The API User who authored the note"
+                    }
                   },
                   "message": {
                     "type": "string",
@@ -23498,8 +23488,7 @@
                             "loan_discount_cents": {
                               "type": "integer",
                               "description": "Loan discount amount in cents.",
-                              "example": 800000,
-                              "minimum": 1
+                              "example": 800000
                             },
                             "loan_discount_at": {
                               "type": "string",
