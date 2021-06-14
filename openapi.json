@@ -679,7 +679,7 @@
             "oAuth2": []
           }
         ],
-        "tags": ["account"],
+        "tags": ["accounts"],
         "summary": "Edit the payment processor config for an existing account",
         "description": "Toggle autopay or change the payment processor / bank information for a given account.",
         "operationId": "editAccountPaymentProcessorConfig",
