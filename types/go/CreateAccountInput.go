@@ -56,20 +56,42 @@ type ExternalField struct {
 }
 
 type PaymentProcessorConfig struct {
-	AutopayEnabled       *bool                 `json:"autopay_enabled,omitempty"`       // Indicates whether autopay is enabled for this account. Autopay is triggered one day prior; to due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for the; account regardless of this field.
-	PaymentProcessorName *PaymentProcessorName `json:"payment_processor_name,omitempty"`// Indicates the active payment processor used for payments made by the account. If `NONE`,; Canopy will not trigger payments to any payment processor when they occur.
-	RepayConfig          *RepayConfig          `json:"repay_config,omitempty"`          // All sensitive bank information will be replaced with a secure token when performing; transactions.
+	Ach                           *AchClass                      `json:"ach,omitempty"`                             // ACH processing configuration.
+	AutopayEnabled                *bool                          `json:"autopay_enabled,omitempty"`                 // Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1; day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay; will not be triggered for account regardless of this field's value.
+	DebitCard                     *DebitCardClass                `json:"debit_card,omitempty"`                      // Debit processing configuration.
+	DefaultPaymentProcessorMethod *DefaultPaymentProcessorMethod `json:"default_payment_processor_method,omitempty"`// Configures the payment processor to be used for manual or autopay payments. This cannot; be set to a value different from `NONE` if no valid ACH or Debit Card configs are; provided.
 }
 
-// All sensitive bank information will be replaced with a secure token when performing
-// transactions.
-type RepayConfig struct {
-	RepayAccountNumber int64              `json:"repay_account_number"`// Account number is an eight to ten digit number that identifies a specific account.
-	RepayAccountType   RepayAccountType   `json:"repay_account_type"`  // Type of account: Savings or Checking.
-	RepayCheckType     RepayCheckType     `json:"repay_check_type"`    // Type of checking account: Personal or Business.
-	RepayNameOnCheck   string             `json:"repay_name_on_check"` // Account holder's name as it appears on the account.
-	RepayPaymentMethod RepayPaymentMethod `json:"repay_payment_method"`// The payment method used by the account
-	RepayTransitNumber int64              `json:"repay_transit_number"`// Transit number is a nine-digit code based on the U.S. Bank location where your account; was opened.
+// ACH processing configuration.
+type AchClass struct {
+	PaymentProcessorName PaymentProcessorName `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for ACH payments; made from the account.
+	RepayConfig          *AchRepayConfig      `json:"repay_config,omitempty"`// Sensitive bank information will be stored as a secured token for payments in place of the; raw account details.
+}
+
+// Sensitive bank information will be stored as a secured token for payments in place of the
+// raw account details.
+type AchRepayConfig struct {
+	RepayAccountNumber int64            `json:"repay_account_number"`// Account number is an eight to ten digit number that identifies a specific account.
+	RepayAccountType   RepayAccountType `json:"repay_account_type"`  // Type of account: Savings or Checking.
+	RepayCheckType     RepayCheckType   `json:"repay_check_type"`    // Type of checking account: Personal or Business.
+	RepayNameOnCheck   string           `json:"repay_name_on_check"` // Account holder's name as it appears on the account.
+	RepayTransitNumber int64            `json:"repay_transit_number"`// Transit number is a nine-digit code based on the U.S. Bank location where your account; was opened.
+}
+
+// Debit processing configuration.
+type DebitCardClass struct {
+	PaymentProcessorName PaymentProcessorName  `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for payments made; from the account. If `NONE`, Canopy will not trigger payments to an external payment; processor when they occur.
+	RepayConfig          *DebitCardRepayConfig `json:"repay_config,omitempty"`// Sensitive debit card information will be stored as a secured token for payments in place; of the raw account details.
+}
+
+// Sensitive debit card information will be stored as a secured token for payments in place
+// of the raw account details.
+type DebitCardRepayConfig struct {
+	RepayCardNumber string `json:"repay_card_number"` // 16 digit debit card number.
+	RepayExpDate    string `json:"repay_exp_date"`    // The card expiration date in the format MMYY.
+	RepayNameOnCard string `json:"repay_name_on_card"`// The card holder's name as it appears on the card.
+	RepayStreet     string `json:"repay_street"`      // The card holder's billing street address.
+	RepayZip        string `json:"repay_zip"`         // The card holder's billing zip code.
 }
 
 type PostPromoOverview struct {
@@ -114,11 +136,15 @@ const (
 	Secondary CustomerAccountRole = "SECONDARY"
 )
 
-// Indicates the active payment processor used for payments made by the account. If `NONE`,
-// Canopy will not trigger payments to any payment processor when they occur.
+// Indicates the active payment processor whose configuration will be used for ACH payments
+// made from the account.
+//
+// Indicates the active payment processor whose configuration will be used for payments made
+// from the account. If `NONE`, Canopy will not trigger payments to an external payment
+// processor when they occur.
 type PaymentProcessorName string
 const (
-	None PaymentProcessorName = "NONE"
+	PaymentProcessorNameNONE PaymentProcessorName = "NONE"
 	Repay PaymentProcessorName = "REPAY"
 )
 
@@ -136,8 +162,12 @@ const (
 	Personal RepayCheckType = "PERSONAL"
 )
 
-// The payment method used by the account
-type RepayPaymentMethod string
+// Configures the payment processor to be used for manual or autopay payments. This cannot
+// be set to a value different from `NONE` if no valid ACH or Debit Card configs are
+// provided.
+type DefaultPaymentProcessorMethod string
 const (
-	Ach RepayPaymentMethod = "ACH"
+	Ach DefaultPaymentProcessorMethod = "ACH"
+	DebitCard DefaultPaymentProcessorMethod = "DEBIT_CARD"
+	DefaultPaymentProcessorMethodNONE DefaultPaymentProcessorMethod = "NONE"
 )
