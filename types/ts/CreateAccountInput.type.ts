@@ -146,36 +146,60 @@ export interface ExternalField {
 
 export interface PaymentProcessorConfig {
     /**
-     * Indicates whether autopay is enabled for this account. Autopay is triggered one day prior
-     * to due date. If `payment_processor_name` is `NONE`, autopay will not be triggered for the
-     * account regardless of this field.
+     * ACH processing configuration.
+     */
+    ach?: Ach;
+    /**
+     * Indicates whether autopay is enabled for this account. Currently, autopay is triggered 1
+     * day prior to a payment due date. If `default_payment_processor` is set to `NONE`, autopay
+     * will not be triggered for account regardless of this field's value.
      */
     autopay_enabled?: boolean;
     /**
-     * Indicates the active payment processor used for payments made by the account. If `NONE`,
-     * Canopy will not trigger payments to any payment processor when they occur.
+     * Debit processing configuration.
      */
-    payment_processor_name?: PaymentProcessorName;
+    debit_card?: DebitCard;
     /**
-     * All sensitive bank information will be replaced with a secure token when performing
-     * transactions.
+     * Configures the payment processor to be used for manual or autopay payments. This cannot
+     * be set to a value different from `NONE` if no valid ACH or Debit Card configs are
+     * provided.
      */
-    repay_config?: RepayConfig;
+    default_payment_processor_method?: DefaultPaymentProcessorMethod;
 }
 
 /**
- * Indicates the active payment processor used for payments made by the account. If `NONE`,
- * Canopy will not trigger payments to any payment processor when they occur.
+ * ACH processing configuration.
+ */
+export interface Ach {
+    /**
+     * Indicates the active payment processor whose configuration will be used for ACH payments
+     * made from the account.
+     */
+    payment_processor_name: PaymentProcessorName;
+    /**
+     * Sensitive bank information will be stored as a secured token for payments in place of the
+     * raw account details.
+     */
+    repay_config?: AchRepayConfig;
+}
+
+/**
+ * Indicates the active payment processor whose configuration will be used for ACH payments
+ * made from the account.
+ *
+ * Indicates the active payment processor whose configuration will be used for payments made
+ * from the account. If `NONE`, Canopy will not trigger payments to an external payment
+ * processor when they occur.
  */
 export type PaymentProcessorName = 
     "NONE" | 
     "REPAY";
 
 /**
- * All sensitive bank information will be replaced with a secure token when performing
- * transactions.
+ * Sensitive bank information will be stored as a secured token for payments in place of the
+ * raw account details.
  */
-export interface RepayConfig {
+export interface AchRepayConfig {
     /**
      * Account number is an eight to ten digit number that identifies a specific account.
      */
@@ -192,10 +216,6 @@ export interface RepayConfig {
      * Account holder's name as it appears on the account.
      */
     repay_name_on_check: string;
-    /**
-     * The payment method used by the account
-     */
-    repay_payment_method: RepayPaymentMethod;
     /**
      * Transit number is a nine-digit code based on the U.S. Bank location where your account
      * was opened.
@@ -218,10 +238,58 @@ export type RepayCheckType =
     "PERSONAL";
 
 /**
- * The payment method used by the account
+ * Debit processing configuration.
  */
-export type RepayPaymentMethod = 
-    "ACH";
+export interface DebitCard {
+    /**
+     * Indicates the active payment processor whose configuration will be used for payments made
+     * from the account. If `NONE`, Canopy will not trigger payments to an external payment
+     * processor when they occur.
+     */
+    payment_processor_name: PaymentProcessorName;
+    /**
+     * Sensitive debit card information will be stored as a secured token for payments in place
+     * of the raw account details.
+     */
+    repay_config?: DebitCardRepayConfig;
+}
+
+/**
+ * Sensitive debit card information will be stored as a secured token for payments in place
+ * of the raw account details.
+ */
+export interface DebitCardRepayConfig {
+    /**
+     * 16 digit debit card number.
+     */
+    repay_card_number: string;
+    /**
+     * The card expiration date in the format MMYY.
+     */
+    repay_exp_date: string;
+    /**
+     * The card holder's name as it appears on the card.
+     */
+    repay_name_on_card: string;
+    /**
+     * The card holder's billing street address.
+     */
+    repay_street: string;
+    /**
+     * The card holder's billing zip code.
+     */
+    repay_zip: string;
+}
+
+/**
+ * Configures the payment processor to be used for manual or autopay payments. This cannot
+ * be set to a value different from `NONE` if no valid ACH or Debit Card configs are
+ * provided.
+ */
+export type DefaultPaymentProcessorMethod = 
+    "ACH" | 
+    "DEBIT_CARD" | 
+    "NONE";
 
 export interface PostPromoOverview {
     /**
