@@ -1999,9 +1999,9 @@
         "tags": [
           "data_migrations"
         ],
-        "summary": "Create a new product",
-        "operationId": "createProduct",
-        "description": "At its core, Canopy allows you to create credit products that meet the specific needs of your users. We offer robust options to configure these products within our system. \n \n For most use cases, we recommend configuring products by sending an excel file detailing your preferred configurations to the [Canopy team](mailto:support@canopyservicing.com?subject=API%20Access%20Request); however, you can also configure and manage products programmatically using this API documentation. \n \n Request body for creating a new product.",
+        "summary": "Toggle Migration Mode for a product",
+        "operationId": "toggleMigrationMode",
+        "description": "Safely migrate accounts and line items from another system into Canopy for accounts enrolled in this product while Migration Mode is on.",
         "requestBody": {
           "description": "Update admin panel for a product.",
           "content": {
