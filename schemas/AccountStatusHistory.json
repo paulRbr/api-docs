@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "results": {
+      "type": "array",
+      "nullable": true,
+      "description": "An array of information for all account status changes within the requested range.",
+      "maxItems": 1000,
+      "items": {
+        "$ref": "./AccountStatusHistoryItem.json"
+      }
+    }
+  }
+}

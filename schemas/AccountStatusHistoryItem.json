@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "changed_at": {
+      "type": "string",
+      "description": "The `Date-Time` which the account status was changed.",
+      "format": "date-time",
+      "example": "2018-06-20T09:12:30+00:00"
+    },
+    "account_overview": {
+      "type": "object",
+      "required": ["account_status"],
+      "properties": {
+        "account_status": {
+          "type": "string",
+          "description": "The Status of the Account.",
+          "example": "suspended",
+          "default": "active"
+        },
+        "account_substatus": {
+          "type": "string",
+          "description": "The subtype of the Status of the Account.",
+          "example": "suspended-bankruptcy",
+          "default": ""
+        }
+      }
+    }
+  }
+}

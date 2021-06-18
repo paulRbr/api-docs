@@ -1,0 +1,10 @@
+{
+  "description": "Array of historical Account Status and Account Status Subtypes, and when they occurred.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/AccountStatusHistory.json"
+      }
+    }
+  }
+}
