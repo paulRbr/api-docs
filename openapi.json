@@ -1080,6 +1080,51 @@
         }
       }
     },
+    "/accounts/{account_id}/line_items/debit_offsets": {
+      "post": {
+        "tags": ["line_items"],
+        "summary": "Create a debit offset for a specific account",
+        "description": "",
+        "operationId": "createAccountDebitOffset",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateDebitOffset"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreateDebitOffset"
+          },
+          "default": {
+            "description": "Unexpected Error."
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/line_items/payment_reversals/{line_item_id}": {
       "post": {
         "tags": ["line_items"],
@@ -1967,6 +2012,9 @@
       "CreateNoteInput": {
         "$ref": "./schemas/CreateNoteInput.json"
       },
+      "CreateDebitOffsetInput": {
+        "$ref": "./schemas/CreateDebitOffsetInput.json"
+      },
       "CreatePaymentInput": {
         "$ref": "./schemas/CreatePaymentInput.json"
       },
@@ -2083,6 +2131,9 @@
       "CreatePaymentReversal": {
         "$ref": "./requestBodies/CreatePaymentReversal.json"
       },
+      "CreateDebitOffset": {
+        "$ref": "./requestBodies/CreateDebitOffset.json"
+      },
       "CreateFeeWaiver": {
         "$ref": "./requestBodies/CreateFeeWaiver.json"
       },
@@ -2171,6 +2222,9 @@
       },
       "CreatePayment": {
         "$ref": "./responses/CreatePayment.json"
+      },
+      "CreateDebitOffset": {
+        "$ref": "./responses/CreateDebitOffset.json"
       },
       "Account": {
         "$ref": "./responses/Account.json"

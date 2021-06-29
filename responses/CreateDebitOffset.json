@@ -1,0 +1,10 @@
+{
+  "description": "Payment Created",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/ResponseLineItem.json"
+      }
+    }
+  }
+}

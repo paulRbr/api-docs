@@ -6787,10 +6787,9 @@
                   "required": [
                     "account_id",
                     "line_item_id",
-                    "effective_at",
-                    "created_at",
                     "product_id"
                   ],
+                  "additionalProperties": true,
                   "properties": {
                     "account_id": {
                       "type": "string",
@@ -6802,151 +6801,10 @@
                       "description": "A Canopy-generated ID for the line item.",
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
-                    "effective_at": {
-                      "type": "string",
-                      "description": "The `Date-Time` that this line item became/becomes active",
-                      "format": "date-time",
-                      "example": "2018-07-20T09:12:30+00:00"
-                    },
-                    "created_at": {
-                      "type": "string",
-                      "description": "The `Date-Time` which the line item was created.",
-                      "format": "date-time",
-                      "example": "2018-06-20T09:12:30+00:00"
-                    },
                     "product_id": {
                       "type": "string",
                       "description": "A Canopy-generated ID for the product.",
                       "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "line_item_overview": {
-                      "type": "object",
-                      "required": [
-                        "line_item_status",
-                        "line_item_type"
-                      ],
-                      "properties": {
-                        "line_item_status": {
-                          "type": "string",
-                          "description": "the corresponding Status for a line item",
-                          "enum": [
-                            "ROLLED",
-                            "VALID",
-                            "INVALID",
-                            "OFFSET",
-                            "SPLIT_VALID",
-                            "SPLIT_INVALID",
-                            "PENDING",
-                            "REVERSED",
-                            "AUTHORIZED",
-                            "DECLINED",
-                            "VOID",
-                            "POSTED"
-                          ],
-                          "example": "VALID"
-                        },
-                        "line_item_type": {
-                          "type": "string",
-                          "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                          "enum": [
-                            "LOAN",
-                            "CHARGE",
-                            "DEBIT_OFFSET",
-                            "INTEREST",
-                            "DEFERRED_INTEREST",
-                            "PAYMENT",
-                            "CREDIT_OFFSET",
-                            "STATEMENT",
-                            "MIN_DUE",
-                            "FEE",
-                            "PRODUCT_INTEREST",
-                            "PAYMENT_SPLIT",
-                            "LATE_FEE",
-                            "RETURN_CHECK_FEE",
-                            "PROMO_END",
-                            "PURCHASE_WINDOW_END",
-                            "MONTH_FEE",
-                            "YEAR_FEE",
-                            "ORIG_FEE",
-                            "FEE_SURCHARGE",
-                            "PAYMENT_REVERSAL"
-                          ],
-                          "example": "CHARGE"
-                        },
-                        "description": {
-                          "type": "string",
-                          "description": "A description of this particular line item if any. More common for adjustments.",
-                          "example": "Refund for invalid purchase",
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "line_item_summary": {
-                      "type": "object",
-                      "required": [
-                        "original_amount_cents"
-                      ],
-                      "properties": {
-                        "original_amount_cents": {
-                          "type": "integer",
-                          "description": "The originating amount of money (in cents) relating to this line item.",
-                          "example": 2484
-                        }
-                      }
-                    },
-                    "merchant_data": {
-                      "type": "object",
-                      "nullable": true,
-                      "description": "Merchant information if applicable.",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "mcc_code": {
-                          "type": "number"
-                        },
-                        "phone_number": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "issuer_processor_metadata": {
-                      "type": "object",
-                      "properties": {
-                        "lithic": {
-                          "type": "object",
-                          "properties": {
-                            "last_four": {
-                              "type": "string",
-                              "description": "Last four digits of the card against which the spend was made."
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "external_fields": {
-                      "type": "array",
-                      "nullable": true,
-                      "maxItems": 1000,
-                      "description": "An array of static references to fields in a third party system.",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "key": {
-                            "type": "string",
-                            "description": "Key - i.e. Name of the External Party",
-                            "example": "Globex Card Processing Account ID"
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "Value - i.e. External Account ID",
-                            "example": "22445702-a389-431f-927d-07b8d0750787"
-                          }
-                        }
-                      }
                     }
                   }
                 }
@@ -7103,10 +6961,9 @@
                   "required": [
                     "account_id",
                     "line_item_id",
-                    "effective_at",
-                    "created_at",
                     "product_id"
                   ],
+                  "additionalProperties": true,
                   "properties": {
                     "account_id": {
                       "type": "string",
@@ -7118,151 +6975,10 @@
                       "description": "A Canopy-generated ID for the line item.",
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
-                    "effective_at": {
-                      "type": "string",
-                      "description": "The `Date-Time` that this line item became/becomes active",
-                      "format": "date-time",
-                      "example": "2018-07-20T09:12:30+00:00"
-                    },
-                    "created_at": {
-                      "type": "string",
-                      "description": "The `Date-Time` which the line item was created.",
-                      "format": "date-time",
-                      "example": "2018-06-20T09:12:30+00:00"
-                    },
                     "product_id": {
                       "type": "string",
                       "description": "A Canopy-generated ID for the product.",
                       "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "line_item_overview": {
-                      "type": "object",
-                      "required": [
-                        "line_item_status",
-                        "line_item_type"
-                      ],
-                      "properties": {
-                        "line_item_status": {
-                          "type": "string",
-                          "description": "the corresponding Status for a line item",
-                          "enum": [
-                            "ROLLED",
-                            "VALID",
-                            "INVALID",
-                            "OFFSET",
-                            "SPLIT_VALID",
-                            "SPLIT_INVALID",
-                            "PENDING",
-                            "REVERSED",
-                            "AUTHORIZED",
-                            "DECLINED",
-                            "VOID",
-                            "POSTED"
-                          ],
-                          "example": "VALID"
-                        },
-                        "line_item_type": {
-                          "type": "string",
-                          "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                          "enum": [
-                            "LOAN",
-                            "CHARGE",
-                            "DEBIT_OFFSET",
-                            "INTEREST",
-                            "DEFERRED_INTEREST",
-                            "PAYMENT",
-                            "CREDIT_OFFSET",
-                            "STATEMENT",
-                            "MIN_DUE",
-                            "FEE",
-                            "PRODUCT_INTEREST",
-                            "PAYMENT_SPLIT",
-                            "LATE_FEE",
-                            "RETURN_CHECK_FEE",
-                            "PROMO_END",
-                            "PURCHASE_WINDOW_END",
-                            "MONTH_FEE",
-                            "YEAR_FEE",
-                            "ORIG_FEE",
-                            "FEE_SURCHARGE",
-                            "PAYMENT_REVERSAL"
-                          ],
-                          "example": "CHARGE"
-                        },
-                        "description": {
-                          "type": "string",
-                          "description": "A description of this particular line item if any. More common for adjustments.",
-                          "example": "Refund for invalid purchase",
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "line_item_summary": {
-                      "type": "object",
-                      "required": [
-                        "original_amount_cents"
-                      ],
-                      "properties": {
-                        "original_amount_cents": {
-                          "type": "integer",
-                          "description": "The originating amount of money (in cents) relating to this line item.",
-                          "example": 2484
-                        }
-                      }
-                    },
-                    "merchant_data": {
-                      "type": "object",
-                      "nullable": true,
-                      "description": "Merchant information if applicable.",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "mcc_code": {
-                          "type": "number"
-                        },
-                        "phone_number": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "issuer_processor_metadata": {
-                      "type": "object",
-                      "properties": {
-                        "lithic": {
-                          "type": "object",
-                          "properties": {
-                            "last_four": {
-                              "type": "string",
-                              "description": "Last four digits of the card against which the spend was made."
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "external_fields": {
-                      "type": "array",
-                      "nullable": true,
-                      "maxItems": 1000,
-                      "description": "An array of static references to fields in a third party system.",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "key": {
-                            "type": "string",
-                            "description": "Key - i.e. Name of the External Party",
-                            "example": "Globex Card Processing Account ID"
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "Value - i.e. External Account ID",
-                            "example": "22445702-a389-431f-927d-07b8d0750787"
-                          }
-                        }
-                      }
                     }
                   }
                 }
@@ -7369,10 +7085,9 @@
                   "required": [
                     "account_id",
                     "line_item_id",
-                    "effective_at",
-                    "created_at",
                     "product_id"
                   ],
+                  "additionalProperties": true,
                   "properties": {
                     "account_id": {
                       "type": "string",
@@ -7384,151 +7099,134 @@
                       "description": "A Canopy-generated ID for the line item.",
                       "example": "31mNprzLd2bKl6koVna68ARM"
                     },
-                    "effective_at": {
+                    "product_id": {
                       "type": "string",
-                      "description": "The `Date-Time` that this line item became/becomes active",
-                      "format": "date-time",
-                      "example": "2018-07-20T09:12:30+00:00"
+                      "description": "A Canopy-generated ID for the product.",
+                      "example": "31mNprzLd2bKl6koVna68ARM"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          },
+          "403": {
+            "description": "Forbidden."
+          },
+          "422": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Too many requests."
+          },
+          "default": {
+            "description": "Unexpected Error."
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/line_items/debit_offsets": {
+      "post": {
+        "tags": [
+          "line_items"
+        ],
+        "summary": "Create a debit offset for a specific account",
+        "description": "",
+        "operationId": "createAccountDebitOffset",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "Account ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "31mNprzLd2bKl6koVna68ARM"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Body of request to create debit offset.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "original_amount_cents"
+                ],
+                "properties": {
+                  "original_amount_cents": {
+                    "type": "integer",
+                    "description": "The payment amount in cents.",
+                    "example": 200,
+                    "default": 0
+                  },
+                  "effective_at": {
+                    "type": "string",
+                    "description": "The `Date-Time` that the debit offset is applicable to the account. Although the debit offset is created in Canopy today, it can actually be effective as of a date in the past. This should only be used for data migrations.",
+                    "format": "date-time",
+                    "example": "2020-07-20T09:11:28+00:00"
+                  },
+                  "external_fields": {
+                    "type": "array",
+                    "nullable": true,
+                    "maxItems": 10,
+                    "description": "External fields can be used to relate debit offsets created in Canopy to entities in your or any external system.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "description": "Key - i.e. Name of the External Party",
+                          "example": "Globex Card Processing Account ID"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "Value - i.e. External Account ID",
+                          "example": "22445702-a389-431f-927d-07b8d0750787"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Payment Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "account_id",
+                    "line_item_id",
+                    "product_id"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "account_id": {
+                      "type": "string",
+                      "description": "A Canopy-generated ID for the account.",
+                      "example": "11bNprzLd2bKl6koVna68ARM"
                     },
-                    "created_at": {
+                    "line_item_id": {
                       "type": "string",
-                      "description": "The `Date-Time` which the line item was created.",
-                      "format": "date-time",
-                      "example": "2018-06-20T09:12:30+00:00"
+                      "description": "A Canopy-generated ID for the line item.",
+                      "example": "31mNprzLd2bKl6koVna68ARM"
                     },
                     "product_id": {
                       "type": "string",
                       "description": "A Canopy-generated ID for the product.",
                       "example": "31mNprzLd2bKl6koVna68ARM"
-                    },
-                    "line_item_overview": {
-                      "type": "object",
-                      "required": [
-                        "line_item_status",
-                        "line_item_type"
-                      ],
-                      "properties": {
-                        "line_item_status": {
-                          "type": "string",
-                          "description": "the corresponding Status for a line item",
-                          "enum": [
-                            "ROLLED",
-                            "VALID",
-                            "INVALID",
-                            "OFFSET",
-                            "SPLIT_VALID",
-                            "SPLIT_INVALID",
-                            "PENDING",
-                            "REVERSED",
-                            "AUTHORIZED",
-                            "DECLINED",
-                            "VOID",
-                            "POSTED"
-                          ],
-                          "example": "VALID"
-                        },
-                        "line_item_type": {
-                          "type": "string",
-                          "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                          "enum": [
-                            "LOAN",
-                            "CHARGE",
-                            "DEBIT_OFFSET",
-                            "INTEREST",
-                            "DEFERRED_INTEREST",
-                            "PAYMENT",
-                            "CREDIT_OFFSET",
-                            "STATEMENT",
-                            "MIN_DUE",
-                            "FEE",
-                            "PRODUCT_INTEREST",
-                            "PAYMENT_SPLIT",
-                            "LATE_FEE",
-                            "RETURN_CHECK_FEE",
-                            "PROMO_END",
-                            "PURCHASE_WINDOW_END",
-                            "MONTH_FEE",
-                            "YEAR_FEE",
-                            "ORIG_FEE",
-                            "FEE_SURCHARGE",
-                            "PAYMENT_REVERSAL"
-                          ],
-                          "example": "CHARGE"
-                        },
-                        "description": {
-                          "type": "string",
-                          "description": "A description of this particular line item if any. More common for adjustments.",
-                          "example": "Refund for invalid purchase",
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "line_item_summary": {
-                      "type": "object",
-                      "required": [
-                        "original_amount_cents"
-                      ],
-                      "properties": {
-                        "original_amount_cents": {
-                          "type": "integer",
-                          "description": "The originating amount of money (in cents) relating to this line item.",
-                          "example": 2484
-                        }
-                      }
-                    },
-                    "merchant_data": {
-                      "type": "object",
-                      "nullable": true,
-                      "description": "Merchant information if applicable.",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "mcc_code": {
-                          "type": "number"
-                        },
-                        "phone_number": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "issuer_processor_metadata": {
-                      "type": "object",
-                      "properties": {
-                        "lithic": {
-                          "type": "object",
-                          "properties": {
-                            "last_four": {
-                              "type": "string",
-                              "description": "Last four digits of the card against which the spend was made."
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "external_fields": {
-                      "type": "array",
-                      "nullable": true,
-                      "maxItems": 1000,
-                      "description": "An array of static references to fields in a third party system.",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "key": {
-                            "type": "string",
-                            "description": "Key - i.e. Name of the External Party",
-                            "example": "Globex Card Processing Account ID"
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "Value - i.e. External Account ID",
-                            "example": "22445702-a389-431f-927d-07b8d0750787"
-                          }
-                        }
-                      }
                     }
                   }
                 }
@@ -14376,6 +14074,48 @@
           }
         }
       },
+      "CreateDebitOffsetInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "original_amount_cents"
+        ],
+        "properties": {
+          "original_amount_cents": {
+            "type": "integer",
+            "description": "The payment amount in cents.",
+            "example": 200,
+            "default": 0
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "The `Date-Time` that the debit offset is applicable to the account. Although the debit offset is created in Canopy today, it can actually be effective as of a date in the past. This should only be used for data migrations.",
+            "format": "date-time",
+            "example": "2020-07-20T09:11:28+00:00"
+          },
+          "external_fields": {
+            "type": "array",
+            "nullable": true,
+            "maxItems": 10,
+            "description": "External fields can be used to relate debit offsets created in Canopy to entities in your or any external system.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "description": "Key - i.e. Name of the External Party",
+                  "example": "Globex Card Processing Account ID"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value - i.e. External Account ID",
+                  "example": "22445702-a389-431f-927d-07b8d0750787"
+                }
+              }
+            }
+          }
+        }
+      },
       "CreatePaymentInput": {
         "type": "object",
         "additionalProperties": false,
@@ -16748,10 +16488,9 @@
         "required": [
           "account_id",
           "line_item_id",
-          "effective_at",
-          "created_at",
           "product_id"
         ],
+        "additionalProperties": true,
         "properties": {
           "account_id": {
             "type": "string",
@@ -16763,151 +16502,10 @@
             "description": "A Canopy-generated ID for the line item.",
             "example": "31mNprzLd2bKl6koVna68ARM"
           },
-          "effective_at": {
-            "type": "string",
-            "description": "The `Date-Time` that this line item became/becomes active",
-            "format": "date-time",
-            "example": "2018-07-20T09:12:30+00:00"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The `Date-Time` which the line item was created.",
-            "format": "date-time",
-            "example": "2018-06-20T09:12:30+00:00"
-          },
           "product_id": {
             "type": "string",
             "description": "A Canopy-generated ID for the product.",
             "example": "31mNprzLd2bKl6koVna68ARM"
-          },
-          "line_item_overview": {
-            "type": "object",
-            "required": [
-              "line_item_status",
-              "line_item_type"
-            ],
-            "properties": {
-              "line_item_status": {
-                "type": "string",
-                "description": "the corresponding Status for a line item",
-                "enum": [
-                  "ROLLED",
-                  "VALID",
-                  "INVALID",
-                  "OFFSET",
-                  "SPLIT_VALID",
-                  "SPLIT_INVALID",
-                  "PENDING",
-                  "REVERSED",
-                  "AUTHORIZED",
-                  "DECLINED",
-                  "VOID",
-                  "POSTED"
-                ],
-                "example": "VALID"
-              },
-              "line_item_type": {
-                "type": "string",
-                "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                "enum": [
-                  "LOAN",
-                  "CHARGE",
-                  "DEBIT_OFFSET",
-                  "INTEREST",
-                  "DEFERRED_INTEREST",
-                  "PAYMENT",
-                  "CREDIT_OFFSET",
-                  "STATEMENT",
-                  "MIN_DUE",
-                  "FEE",
-                  "PRODUCT_INTEREST",
-                  "PAYMENT_SPLIT",
-                  "LATE_FEE",
-                  "RETURN_CHECK_FEE",
-                  "PROMO_END",
-                  "PURCHASE_WINDOW_END",
-                  "MONTH_FEE",
-                  "YEAR_FEE",
-                  "ORIG_FEE",
-                  "FEE_SURCHARGE",
-                  "PAYMENT_REVERSAL"
-                ],
-                "example": "CHARGE"
-              },
-              "description": {
-                "type": "string",
-                "description": "A description of this particular line item if any. More common for adjustments.",
-                "example": "Refund for invalid purchase",
-                "nullable": true
-              }
-            }
-          },
-          "line_item_summary": {
-            "type": "object",
-            "required": [
-              "original_amount_cents"
-            ],
-            "properties": {
-              "original_amount_cents": {
-                "type": "integer",
-                "description": "The originating amount of money (in cents) relating to this line item.",
-                "example": 2484
-              }
-            }
-          },
-          "merchant_data": {
-            "type": "object",
-            "nullable": true,
-            "description": "Merchant information if applicable.",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              },
-              "mcc_code": {
-                "type": "number"
-              },
-              "phone_number": {
-                "type": "string"
-              }
-            }
-          },
-          "issuer_processor_metadata": {
-            "type": "object",
-            "properties": {
-              "lithic": {
-                "type": "object",
-                "properties": {
-                  "last_four": {
-                    "type": "string",
-                    "description": "Last four digits of the card against which the spend was made."
-                  }
-                }
-              }
-            }
-          },
-          "external_fields": {
-            "type": "array",
-            "nullable": true,
-            "maxItems": 1000,
-            "description": "An array of static references to fields in a third party system.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string",
-                  "description": "Key - i.e. Name of the External Party",
-                  "example": "Globex Card Processing Account ID"
-                },
-                "value": {
-                  "type": "string",
-                  "description": "Value - i.e. External Account ID",
-                  "example": "22445702-a389-431f-927d-07b8d0750787"
-                }
-              }
-            }
           }
         }
       },
@@ -18768,6 +18366,56 @@
                   "nullable": true,
                   "maxItems": 10,
                   "description": "An array of static references to fields in a third party system.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "description": "Key - i.e. Name of the External Party",
+                        "example": "Globex Card Processing Account ID"
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "Value - i.e. External Account ID",
+                        "example": "22445702-a389-431f-927d-07b8d0750787"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateDebitOffset": {
+        "description": "Body of request to create debit offset.",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "original_amount_cents"
+              ],
+              "properties": {
+                "original_amount_cents": {
+                  "type": "integer",
+                  "description": "The payment amount in cents.",
+                  "example": 200,
+                  "default": 0
+                },
+                "effective_at": {
+                  "type": "string",
+                  "description": "The `Date-Time` that the debit offset is applicable to the account. Although the debit offset is created in Canopy today, it can actually be effective as of a date in the past. This should only be used for data migrations.",
+                  "format": "date-time",
+                  "example": "2020-07-20T09:11:28+00:00"
+                },
+                "external_fields": {
+                  "type": "array",
+                  "nullable": true,
+                  "maxItems": 10,
+                  "description": "External fields can be used to relate debit offsets created in Canopy to entities in your or any external system.",
                   "items": {
                     "type": "object",
                     "properties": {
@@ -23680,10 +23328,9 @@
               "required": [
                 "account_id",
                 "line_item_id",
-                "effective_at",
-                "created_at",
                 "product_id"
               ],
+              "additionalProperties": true,
               "properties": {
                 "account_id": {
                   "type": "string",
@@ -23695,151 +23342,10 @@
                   "description": "A Canopy-generated ID for the line item.",
                   "example": "31mNprzLd2bKl6koVna68ARM"
                 },
-                "effective_at": {
-                  "type": "string",
-                  "description": "The `Date-Time` that this line item became/becomes active",
-                  "format": "date-time",
-                  "example": "2018-07-20T09:12:30+00:00"
-                },
-                "created_at": {
-                  "type": "string",
-                  "description": "The `Date-Time` which the line item was created.",
-                  "format": "date-time",
-                  "example": "2018-06-20T09:12:30+00:00"
-                },
                 "product_id": {
                   "type": "string",
                   "description": "A Canopy-generated ID for the product.",
                   "example": "31mNprzLd2bKl6koVna68ARM"
-                },
-                "line_item_overview": {
-                  "type": "object",
-                  "required": [
-                    "line_item_status",
-                    "line_item_type"
-                  ],
-                  "properties": {
-                    "line_item_status": {
-                      "type": "string",
-                      "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "ROLLED",
-                        "VALID",
-                        "INVALID",
-                        "OFFSET",
-                        "SPLIT_VALID",
-                        "SPLIT_INVALID",
-                        "PENDING",
-                        "REVERSED",
-                        "AUTHORIZED",
-                        "DECLINED",
-                        "VOID",
-                        "POSTED"
-                      ],
-                      "example": "VALID"
-                    },
-                    "line_item_type": {
-                      "type": "string",
-                      "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "LOAN",
-                        "CHARGE",
-                        "DEBIT_OFFSET",
-                        "INTEREST",
-                        "DEFERRED_INTEREST",
-                        "PAYMENT",
-                        "CREDIT_OFFSET",
-                        "STATEMENT",
-                        "MIN_DUE",
-                        "FEE",
-                        "PRODUCT_INTEREST",
-                        "PAYMENT_SPLIT",
-                        "LATE_FEE",
-                        "RETURN_CHECK_FEE",
-                        "PROMO_END",
-                        "PURCHASE_WINDOW_END",
-                        "MONTH_FEE",
-                        "YEAR_FEE",
-                        "ORIG_FEE",
-                        "FEE_SURCHARGE",
-                        "PAYMENT_REVERSAL"
-                      ],
-                      "example": "CHARGE"
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase",
-                      "nullable": true
-                    }
-                  }
-                },
-                "line_item_summary": {
-                  "type": "object",
-                  "required": [
-                    "original_amount_cents"
-                  ],
-                  "properties": {
-                    "original_amount_cents": {
-                      "type": "integer",
-                      "description": "The originating amount of money (in cents) relating to this line item.",
-                      "example": 2484
-                    }
-                  }
-                },
-                "merchant_data": {
-                  "type": "object",
-                  "nullable": true,
-                  "description": "Merchant information if applicable.",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "mcc_code": {
-                      "type": "number"
-                    },
-                    "phone_number": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "issuer_processor_metadata": {
-                  "type": "object",
-                  "properties": {
-                    "lithic": {
-                      "type": "object",
-                      "properties": {
-                        "last_four": {
-                          "type": "string",
-                          "description": "Last four digits of the card against which the spend was made."
-                        }
-                      }
-                    }
-                  }
-                },
-                "external_fields": {
-                  "type": "array",
-                  "nullable": true,
-                  "maxItems": 1000,
-                  "description": "An array of static references to fields in a third party system.",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "key": {
-                        "type": "string",
-                        "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID"
-                      },
-                      "value": {
-                        "type": "string",
-                        "description": "Value - i.e. External Account ID",
-                        "example": "22445702-a389-431f-927d-07b8d0750787"
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -23855,10 +23361,9 @@
               "required": [
                 "account_id",
                 "line_item_id",
-                "effective_at",
-                "created_at",
                 "product_id"
               ],
+              "additionalProperties": true,
               "properties": {
                 "account_id": {
                   "type": "string",
@@ -23870,151 +23375,43 @@
                   "description": "A Canopy-generated ID for the line item.",
                   "example": "31mNprzLd2bKl6koVna68ARM"
                 },
-                "effective_at": {
+                "product_id": {
                   "type": "string",
-                  "description": "The `Date-Time` that this line item became/becomes active",
-                  "format": "date-time",
-                  "example": "2018-07-20T09:12:30+00:00"
+                  "description": "A Canopy-generated ID for the product.",
+                  "example": "31mNprzLd2bKl6koVna68ARM"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateDebitOffset": {
+        "description": "Payment Created",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "account_id",
+                "line_item_id",
+                "product_id"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "account_id": {
+                  "type": "string",
+                  "description": "A Canopy-generated ID for the account.",
+                  "example": "11bNprzLd2bKl6koVna68ARM"
                 },
-                "created_at": {
+                "line_item_id": {
                   "type": "string",
-                  "description": "The `Date-Time` which the line item was created.",
-                  "format": "date-time",
-                  "example": "2018-06-20T09:12:30+00:00"
+                  "description": "A Canopy-generated ID for the line item.",
+                  "example": "31mNprzLd2bKl6koVna68ARM"
                 },
                 "product_id": {
                   "type": "string",
                   "description": "A Canopy-generated ID for the product.",
                   "example": "31mNprzLd2bKl6koVna68ARM"
-                },
-                "line_item_overview": {
-                  "type": "object",
-                  "required": [
-                    "line_item_status",
-                    "line_item_type"
-                  ],
-                  "properties": {
-                    "line_item_status": {
-                      "type": "string",
-                      "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "ROLLED",
-                        "VALID",
-                        "INVALID",
-                        "OFFSET",
-                        "SPLIT_VALID",
-                        "SPLIT_INVALID",
-                        "PENDING",
-                        "REVERSED",
-                        "AUTHORIZED",
-                        "DECLINED",
-                        "VOID",
-                        "POSTED"
-                      ],
-                      "example": "VALID"
-                    },
-                    "line_item_type": {
-                      "type": "string",
-                      "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "LOAN",
-                        "CHARGE",
-                        "DEBIT_OFFSET",
-                        "INTEREST",
-                        "DEFERRED_INTEREST",
-                        "PAYMENT",
-                        "CREDIT_OFFSET",
-                        "STATEMENT",
-                        "MIN_DUE",
-                        "FEE",
-                        "PRODUCT_INTEREST",
-                        "PAYMENT_SPLIT",
-                        "LATE_FEE",
-                        "RETURN_CHECK_FEE",
-                        "PROMO_END",
-                        "PURCHASE_WINDOW_END",
-                        "MONTH_FEE",
-                        "YEAR_FEE",
-                        "ORIG_FEE",
-                        "FEE_SURCHARGE",
-                        "PAYMENT_REVERSAL"
-                      ],
-                      "example": "CHARGE"
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase",
-                      "nullable": true
-                    }
-                  }
-                },
-                "line_item_summary": {
-                  "type": "object",
-                  "required": [
-                    "original_amount_cents"
-                  ],
-                  "properties": {
-                    "original_amount_cents": {
-                      "type": "integer",
-                      "description": "The originating amount of money (in cents) relating to this line item.",
-                      "example": 2484
-                    }
-                  }
-                },
-                "merchant_data": {
-                  "type": "object",
-                  "nullable": true,
-                  "description": "Merchant information if applicable.",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "mcc_code": {
-                      "type": "number"
-                    },
-                    "phone_number": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "issuer_processor_metadata": {
-                  "type": "object",
-                  "properties": {
-                    "lithic": {
-                      "type": "object",
-                      "properties": {
-                        "last_four": {
-                          "type": "string",
-                          "description": "Last four digits of the card against which the spend was made."
-                        }
-                      }
-                    }
-                  }
-                },
-                "external_fields": {
-                  "type": "array",
-                  "nullable": true,
-                  "maxItems": 1000,
-                  "description": "An array of static references to fields in a third party system.",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "key": {
-                        "type": "string",
-                        "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID"
-                      },
-                      "value": {
-                        "type": "string",
-                        "description": "Value - i.e. External Account ID",
-                        "example": "22445702-a389-431f-927d-07b8d0750787"
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -26548,10 +25945,9 @@
               "required": [
                 "account_id",
                 "line_item_id",
-                "effective_at",
-                "created_at",
                 "product_id"
               ],
+              "additionalProperties": true,
               "properties": {
                 "account_id": {
                   "type": "string",
@@ -26563,151 +25959,10 @@
                   "description": "A Canopy-generated ID for the line item.",
                   "example": "31mNprzLd2bKl6koVna68ARM"
                 },
-                "effective_at": {
-                  "type": "string",
-                  "description": "The `Date-Time` that this line item became/becomes active",
-                  "format": "date-time",
-                  "example": "2018-07-20T09:12:30+00:00"
-                },
-                "created_at": {
-                  "type": "string",
-                  "description": "The `Date-Time` which the line item was created.",
-                  "format": "date-time",
-                  "example": "2018-06-20T09:12:30+00:00"
-                },
                 "product_id": {
                   "type": "string",
                   "description": "A Canopy-generated ID for the product.",
                   "example": "31mNprzLd2bKl6koVna68ARM"
-                },
-                "line_item_overview": {
-                  "type": "object",
-                  "required": [
-                    "line_item_status",
-                    "line_item_type"
-                  ],
-                  "properties": {
-                    "line_item_status": {
-                      "type": "string",
-                      "description": "the corresponding Status for a line item",
-                      "enum": [
-                        "ROLLED",
-                        "VALID",
-                        "INVALID",
-                        "OFFSET",
-                        "SPLIT_VALID",
-                        "SPLIT_INVALID",
-                        "PENDING",
-                        "REVERSED",
-                        "AUTHORIZED",
-                        "DECLINED",
-                        "VOID",
-                        "POSTED"
-                      ],
-                      "example": "VALID"
-                    },
-                    "line_item_type": {
-                      "type": "string",
-                      "description": "The Line Item Type. i.e. `CHARGE`, `PAYMENT`.",
-                      "enum": [
-                        "LOAN",
-                        "CHARGE",
-                        "DEBIT_OFFSET",
-                        "INTEREST",
-                        "DEFERRED_INTEREST",
-                        "PAYMENT",
-                        "CREDIT_OFFSET",
-                        "STATEMENT",
-                        "MIN_DUE",
-                        "FEE",
-                        "PRODUCT_INTEREST",
-                        "PAYMENT_SPLIT",
-                        "LATE_FEE",
-                        "RETURN_CHECK_FEE",
-                        "PROMO_END",
-                        "PURCHASE_WINDOW_END",
-                        "MONTH_FEE",
-                        "YEAR_FEE",
-                        "ORIG_FEE",
-                        "FEE_SURCHARGE",
-                        "PAYMENT_REVERSAL"
-                      ],
-                      "example": "CHARGE"
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "A description of this particular line item if any. More common for adjustments.",
-                      "example": "Refund for invalid purchase",
-                      "nullable": true
-                    }
-                  }
-                },
-                "line_item_summary": {
-                  "type": "object",
-                  "required": [
-                    "original_amount_cents"
-                  ],
-                  "properties": {
-                    "original_amount_cents": {
-                      "type": "integer",
-                      "description": "The originating amount of money (in cents) relating to this line item.",
-                      "example": 2484
-                    }
-                  }
-                },
-                "merchant_data": {
-                  "type": "object",
-                  "nullable": true,
-                  "description": "Merchant information if applicable.",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "mcc_code": {
-                      "type": "number"
-                    },
-                    "phone_number": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "issuer_processor_metadata": {
-                  "type": "object",
-                  "properties": {
-                    "lithic": {
-                      "type": "object",
-                      "properties": {
-                        "last_four": {
-                          "type": "string",
-                          "description": "Last four digits of the card against which the spend was made."
-                        }
-                      }
-                    }
-                  }
-                },
-                "external_fields": {
-                  "type": "array",
-                  "nullable": true,
-                  "maxItems": 1000,
-                  "description": "An array of static references to fields in a third party system.",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "key": {
-                        "type": "string",
-                        "description": "Key - i.e. Name of the External Party",
-                        "example": "Globex Card Processing Account ID"
-                      },
-                      "value": {
-                        "type": "string",
-                        "description": "Value - i.e. External Account ID",
-                        "example": "22445702-a389-431f-927d-07b8d0750787"
-                      }
-                    }
-                  }
                 }
               }
             }

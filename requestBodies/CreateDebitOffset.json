@@ -1,0 +1,11 @@
+{
+  "description": "Body of request to create debit offset.",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/CreateDebitOffsetInput.json"
+      }
+    }
+  }
+}
