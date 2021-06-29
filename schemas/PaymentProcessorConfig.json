@@ -8,12 +8,34 @@
       "properties": {
         "payment_processor_name": {
           "type": "string",
-          "enum": ["NONE", "REPAY"],
-          "description": "Indicates the active payment processor whose configuration will be used for ACH payments made from the account.",
+          "enum": ["NONE", "REPAY", "DWOLLA", "MODERN_TREASURY"],
+          "description": "Indicates the active payment processor whose configuration will be used for ACH/Debit card payments made from the account.",
           "example": "REPAY",
           "default": "NONE"
         },
         "repay_config": {
+          "type": "object",
+          "required": ["valid_config"],
+          "properties": {
+            "valid_config": {
+              "type": "boolean",
+              "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+              "example": true
+            }
+          }
+        },
+        "dwolla_config": {
+          "type": "object",
+          "required": ["valid_config"],
+          "properties": {
+            "valid_config": {
+              "type": "boolean",
+              "description": "Indicates whether Canopy has a valid configuration stored for this ACH payment processor for this account. For example, if Canopy needs an ACH token on behalf of the account to call the processor, this field will indicate that Canopy has successfully stored the necessary token.",
+              "example": true
+            }
+          }
+        },
+        "modern_treasury_config": {
           "type": "object",
           "required": ["valid_config"],
           "properties": {

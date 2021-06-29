@@ -172,10 +172,19 @@ export interface PaymentProcessorConfig {
  */
 export interface Ach {
     /**
-     * Indicates the active payment processor whose configuration will be used for ACH payments
-     * made from the account.
+     * Dwolla account verified and tokenized using Plaid.
      */
-    payment_processor_name: PaymentProcessorName;
+    dwolla_config?: DwollaConfig;
+    /**
+     * Sensitive bank information will be stored as a secured token for payments in place of the
+     * raw account details.
+     */
+    modern_treasury_config?: ModernTreasuryConfig;
+    /**
+     * Indicates the active payment processor whose configuration will be used for ACH/Debit
+     * card payments made from the account.
+     */
+    payment_processor_name: AchPaymentProcessorName;
     /**
      * Sensitive bank information will be stored as a secured token for payments in place of the
      * raw account details.
@@ -184,14 +193,53 @@ export interface Ach {
 }
 
 /**
- * Indicates the active payment processor whose configuration will be used for ACH payments
- * made from the account.
- *
- * Indicates the active payment processor whose configuration will be used for payments made
- * from the account. If `NONE`, Canopy will not trigger payments to an external payment
- * processor when they occur.
+ * Dwolla account verified and tokenized using Plaid.
  */
-export type PaymentProcessorName = 
+export interface DwollaConfig {
+    /**
+     * Plaid token generated for processing by Dwolla.
+     */
+    dwolla_plaid_token: string;
+}
+
+/**
+ * Sensitive bank information will be stored as a secured token for payments in place of the
+ * raw account details.
+ */
+export interface ModernTreasuryConfig {
+    /**
+     * Account number is an eight to ten digit number that identifies a specific account.
+     */
+    account_number: string;
+    /**
+     * Type of account: Savings or Checking.
+     */
+    account_type: AccountType;
+    /**
+     * Account holder's name as it appears on the account.
+     */
+    name_on_check: string;
+    /**
+     * Routing number is a nine-digit code based on the U.S. Bank location where your account
+     * was opened.
+     */
+    routing_number: string;
+}
+
+/**
+ * Type of account: Savings or Checking.
+ */
+export type AccountType = 
+    "CHECKING" | 
+    "SAVINGS";
+
+/**
+ * Indicates the active payment processor whose configuration will be used for ACH/Debit
+ * card payments made from the account.
+ */
+export type AchPaymentProcessorName = 
+    "DWOLLA" | 
+    "MODERN_TREASURY" | 
     "NONE" | 
     "REPAY";
 
@@ -203,11 +251,11 @@ export interface AchRepayConfig {
     /**
      * Account number is an eight to ten digit number that identifies a specific account.
      */
-    repay_account_number: number;
+    repay_account_number: string;
     /**
      * Type of account: Savings or Checking.
      */
-    repay_account_type: RepayAccountType;
+    repay_account_type: AccountType;
     /**
      * Type of checking account: Personal or Business.
      */
@@ -220,15 +268,8 @@ export interface AchRepayConfig {
      * Transit number is a nine-digit code based on the U.S. Bank location where your account
      * was opened.
      */
-    repay_transit_number: number;
+    repay_transit_number: string;
 }
-
-/**
- * Type of account: Savings or Checking.
- */
-export type RepayAccountType = 
-    "CHECKING" | 
-    "SAVINGS";
 
 /**
  * Type of checking account: Personal or Business.
@@ -246,13 +287,22 @@ export interface DebitCard {
      * from the account. If `NONE`, Canopy will not trigger payments to an external payment
      * processor when they occur.
      */
-    payment_processor_name: PaymentProcessorName;
+    payment_processor_name: DebitCardPaymentProcessorName;
     /**
      * Sensitive debit card information will be stored as a secured token for payments in place
      * of the raw account details.
      */
     repay_config?: DebitCardRepayConfig;
 }
+
+/**
+ * Indicates the active payment processor whose configuration will be used for payments made
+ * from the account. If `NONE`, Canopy will not trigger payments to an external payment
+ * processor when they occur.
+ */
+export type DebitCardPaymentProcessorName = 
+    "NONE" | 
+    "REPAY";
 
 /**
  * Sensitive debit card information will be stored as a secured token for payments in place

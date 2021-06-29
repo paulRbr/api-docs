@@ -64,24 +64,40 @@ type PaymentProcessorConfig struct {
 
 // ACH processing configuration.
 type AchClass struct {
-	PaymentProcessorName PaymentProcessorName `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for ACH payments; made from the account.
-	RepayConfig          *AchRepayConfig      `json:"repay_config,omitempty"`// Sensitive bank information will be stored as a secured token for payments in place of the; raw account details.
+	DwollaConfig         *DwollaConfig           `json:"dwolla_config,omitempty"`         // Dwolla account verified and tokenized using Plaid.
+	ModernTreasuryConfig *ModernTreasuryConfig   `json:"modern_treasury_config,omitempty"`// Sensitive bank information will be stored as a secured token for payments in place of the; raw account details.
+	PaymentProcessorName AchPaymentProcessorName `json:"payment_processor_name"`          // Indicates the active payment processor whose configuration will be used for ACH/Debit; card payments made from the account.
+	RepayConfig          *AchRepayConfig         `json:"repay_config,omitempty"`          // Sensitive bank information will be stored as a secured token for payments in place of the; raw account details.
+}
+
+// Dwolla account verified and tokenized using Plaid.
+type DwollaConfig struct {
+	DwollaPlaidToken string `json:"dwolla_plaid_token"`// Plaid token generated for processing by Dwolla.
+}
+
+// Sensitive bank information will be stored as a secured token for payments in place of the
+// raw account details.
+type ModernTreasuryConfig struct {
+	AccountNumber string      `json:"account_number"`// Account number is an eight to ten digit number that identifies a specific account.
+	AccountType   AccountType `json:"account_type"`  // Type of account: Savings or Checking.
+	NameOnCheck   string      `json:"name_on_check"` // Account holder's name as it appears on the account.
+	RoutingNumber string      `json:"routing_number"`// Routing number is a nine-digit code based on the U.S. Bank location where your account; was opened.
 }
 
 // Sensitive bank information will be stored as a secured token for payments in place of the
 // raw account details.
 type AchRepayConfig struct {
-	RepayAccountNumber int64            `json:"repay_account_number"`// Account number is an eight to ten digit number that identifies a specific account.
-	RepayAccountType   RepayAccountType `json:"repay_account_type"`  // Type of account: Savings or Checking.
-	RepayCheckType     RepayCheckType   `json:"repay_check_type"`    // Type of checking account: Personal or Business.
-	RepayNameOnCheck   string           `json:"repay_name_on_check"` // Account holder's name as it appears on the account.
-	RepayTransitNumber int64            `json:"repay_transit_number"`// Transit number is a nine-digit code based on the U.S. Bank location where your account; was opened.
+	RepayAccountNumber string         `json:"repay_account_number"`// Account number is an eight to ten digit number that identifies a specific account.
+	RepayAccountType   AccountType    `json:"repay_account_type"`  // Type of account: Savings or Checking.
+	RepayCheckType     RepayCheckType `json:"repay_check_type"`    // Type of checking account: Personal or Business.
+	RepayNameOnCheck   string         `json:"repay_name_on_check"` // Account holder's name as it appears on the account.
+	RepayTransitNumber string         `json:"repay_transit_number"`// Transit number is a nine-digit code based on the U.S. Bank location where your account; was opened.
 }
 
 // Debit processing configuration.
 type DebitCardClass struct {
-	PaymentProcessorName PaymentProcessorName  `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for payments made; from the account. If `NONE`, Canopy will not trigger payments to an external payment; processor when they occur.
-	RepayConfig          *DebitCardRepayConfig `json:"repay_config,omitempty"`// Sensitive debit card information will be stored as a secured token for payments in place; of the raw account details.
+	PaymentProcessorName DebitCardPaymentProcessorName `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for payments made; from the account. If `NONE`, Canopy will not trigger payments to an external payment; processor when they occur.
+	RepayConfig          *DebitCardRepayConfig         `json:"repay_config,omitempty"`// Sensitive debit card information will be stored as a secured token for payments in place; of the raw account details.
 }
 
 // Sensitive debit card information will be stored as a secured token for payments in place
@@ -136,23 +152,21 @@ const (
 	Secondary CustomerAccountRole = "SECONDARY"
 )
 
-// Indicates the active payment processor whose configuration will be used for ACH payments
-// made from the account.
-//
-// Indicates the active payment processor whose configuration will be used for payments made
-// from the account. If `NONE`, Canopy will not trigger payments to an external payment
-// processor when they occur.
-type PaymentProcessorName string
+// Type of account: Savings or Checking.
+type AccountType string
 const (
-	PaymentProcessorNameNONE PaymentProcessorName = "NONE"
-	Repay PaymentProcessorName = "REPAY"
+	Checking AccountType = "CHECKING"
+	Savings AccountType = "SAVINGS"
 )
 
-// Type of account: Savings or Checking.
-type RepayAccountType string
+// Indicates the active payment processor whose configuration will be used for ACH/Debit
+// card payments made from the account.
+type AchPaymentProcessorName string
 const (
-	Checking RepayAccountType = "CHECKING"
-	Savings RepayAccountType = "SAVINGS"
+	Dwolla AchPaymentProcessorName = "DWOLLA"
+	ModernTreasury AchPaymentProcessorName = "MODERN_TREASURY"
+	PurpleNONE AchPaymentProcessorName = "NONE"
+	PurpleREPAY AchPaymentProcessorName = "REPAY"
 )
 
 // Type of checking account: Personal or Business.
@@ -160,6 +174,15 @@ type RepayCheckType string
 const (
 	Business RepayCheckType = "BUSINESS"
 	Personal RepayCheckType = "PERSONAL"
+)
+
+// Indicates the active payment processor whose configuration will be used for payments made
+// from the account. If `NONE`, Canopy will not trigger payments to an external payment
+// processor when they occur.
+type DebitCardPaymentProcessorName string
+const (
+	FluffyNONE DebitCardPaymentProcessorName = "NONE"
+	FluffyREPAY DebitCardPaymentProcessorName = "REPAY"
 )
 
 // Configures the payment processor to be used for manual or autopay payments. This cannot

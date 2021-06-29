@@ -456,22 +456,43 @@ export interface PaymentProcessorConfig {
  * ACH processing configuration.
  */
 export interface Ach {
+    dwolla_config?:          DwollaConfig;
+    modern_treasury_config?: ModernTreasuryConfig;
     /**
-     * Indicates the active payment processor whose configuration will be used for ACH payments
-     * made from the account.
+     * Indicates the active payment processor whose configuration will be used for ACH/Debit
+     * card payments made from the account.
      */
-    payment_processor_name: PaymentProcessorName;
+    payment_processor_name: AchPaymentProcessorName;
     repay_config?:          AchRepayConfig;
 }
 
+export interface DwollaConfig {
+    /**
+     * Indicates whether Canopy has a valid configuration stored for this ACH payment processor
+     * for this account. For example, if Canopy needs an ACH token on behalf of the account to
+     * call the processor, this field will indicate that Canopy has successfully stored the
+     * necessary token.
+     */
+    valid_config: boolean;
+}
+
+export interface ModernTreasuryConfig {
+    /**
+     * Indicates whether Canopy has a valid configuration stored for this ACH payment processor
+     * for this account. For example, if Canopy needs an ACH token on behalf of the account to
+     * call the processor, this field will indicate that Canopy has successfully stored the
+     * necessary token.
+     */
+    valid_config: boolean;
+}
+
 /**
- * Indicates the active payment processor whose configuration will be used for ACH payments
- * made from the account.
- *
- * Indicates the active payment processor whose configuration will be used for Debit card
- * payments made from the account.
+ * Indicates the active payment processor whose configuration will be used for ACH/Debit
+ * card payments made from the account.
  */
-export type PaymentProcessorName = 
+export type AchPaymentProcessorName = 
+    "DWOLLA" | 
+    "MODERN_TREASURY" | 
     "NONE" | 
     "REPAY";
 
@@ -493,9 +514,17 @@ export interface DebitCard {
      * Indicates the active payment processor whose configuration will be used for Debit card
      * payments made from the account.
      */
-    payment_processor_name: PaymentProcessorName;
+    payment_processor_name: DebitCardPaymentProcessorName;
     repay_config?:          DebitCardRepayConfig;
 }
+
+/**
+ * Indicates the active payment processor whose configuration will be used for Debit card
+ * payments made from the account.
+ */
+export type DebitCardPaymentProcessorName = 
+    "NONE" | 
+    "REPAY";
 
 export interface DebitCardRepayConfig {
     /**

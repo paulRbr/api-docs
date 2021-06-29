@@ -146,8 +146,18 @@ type PaymentProcessorConfig struct {
 
 // ACH processing configuration.
 type AchClass struct {
-	PaymentProcessorName PaymentProcessorName `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for ACH payments; made from the account.
-	RepayConfig          *AchRepayConfig      `json:"repay_config,omitempty"`
+	DwollaConfig         *DwollaConfig           `json:"dwolla_config,omitempty"`         
+	ModernTreasuryConfig *ModernTreasuryConfig   `json:"modern_treasury_config,omitempty"`
+	PaymentProcessorName AchPaymentProcessorName `json:"payment_processor_name"`          // Indicates the active payment processor whose configuration will be used for ACH/Debit; card payments made from the account.
+	RepayConfig          *AchRepayConfig         `json:"repay_config,omitempty"`          
+}
+
+type DwollaConfig struct {
+	ValidConfig bool `json:"valid_config"`// Indicates whether Canopy has a valid configuration stored for this ACH payment processor; for this account. For example, if Canopy needs an ACH token on behalf of the account to; call the processor, this field will indicate that Canopy has successfully stored the; necessary token.
+}
+
+type ModernTreasuryConfig struct {
+	ValidConfig bool `json:"valid_config"`// Indicates whether Canopy has a valid configuration stored for this ACH payment processor; for this account. For example, if Canopy needs an ACH token on behalf of the account to; call the processor, this field will indicate that Canopy has successfully stored the; necessary token.
 }
 
 type AchRepayConfig struct {
@@ -156,8 +166,8 @@ type AchRepayConfig struct {
 
 // Debit processing configuration.
 type DebitCardClass struct {
-	PaymentProcessorName PaymentProcessorName  `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for Debit card; payments made from the account.
-	RepayConfig          *DebitCardRepayConfig `json:"repay_config,omitempty"`
+	PaymentProcessorName DebitCardPaymentProcessorName `json:"payment_processor_name"`// Indicates the active payment processor whose configuration will be used for Debit card; payments made from the account.
+	RepayConfig          *DebitCardRepayConfig         `json:"repay_config,omitempty"`
 }
 
 type DebitCardRepayConfig struct {
@@ -187,15 +197,22 @@ type BusinessDetails struct {
 	DoingBusinessAs   *string `json:"doing_business_as,omitempty"`  // The DBA name of the Business
 }
 
-// Indicates the active payment processor whose configuration will be used for ACH payments
-// made from the account.
-//
+// Indicates the active payment processor whose configuration will be used for ACH/Debit
+// card payments made from the account.
+type AchPaymentProcessorName string
+const (
+	Dwolla AchPaymentProcessorName = "DWOLLA"
+	ModernTreasury AchPaymentProcessorName = "MODERN_TREASURY"
+	PurpleNONE AchPaymentProcessorName = "NONE"
+	PurpleREPAY AchPaymentProcessorName = "REPAY"
+)
+
 // Indicates the active payment processor whose configuration will be used for Debit card
 // payments made from the account.
-type PaymentProcessorName string
+type DebitCardPaymentProcessorName string
 const (
-	PaymentProcessorNameNONE PaymentProcessorName = "NONE"
-	Repay PaymentProcessorName = "REPAY"
+	FluffyNONE DebitCardPaymentProcessorName = "NONE"
+	FluffyREPAY DebitCardPaymentProcessorName = "REPAY"
 )
 
 // Configures the payment processor to be used for manual or autopay payments. This cannot
