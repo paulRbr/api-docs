@@ -1,7 +1,27 @@
 {
   "type": "object",
   "description": "Metro2 Credit Report for an account for a given billing cycle",
-  "required": ["account_id", "credit_report_id"],
+  "required": [
+    "account_id",
+    "credit_report_id",
+    "date_created",
+    "consumer_account_number",
+    "portfolio_type",
+    "account_type",
+    "date_opened",
+    "credit_limit",
+    "highest_credit",
+    "terms_duration",
+    "terms_frequency",
+    "scheduled_monthly_payment_amount",
+    "actual_payment_amount",
+    "account_status",
+    "current_balance",
+    "amount_past_due",
+    "original_charge_off_amount",
+    "date_of_account_info",
+    "consumer_primary"
+  ],
   "properties": {
     "account_id": {
       "type": "string",
@@ -16,17 +36,279 @@
     "report_transunion": {
       "type": "string",
       "description": "Transunion Metro2 credit report",
-      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat"
+      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat",
+      "nullable": true
     },
     "report_equifax": {
       "type": "string",
       "description": "Equifax Metro2 credit report",
-      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat"
+      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat",
+      "nullable": true
     },
     "report_experian": {
       "type": "string",
       "description": "Experian Metro2 credit report",
-      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat"
+      "example": "see here for example: https://github.com/moov-io/metro2/blob/master/test/testdata/unpacked_fixed_file.dat",
+      "nullable": true
+    },
+    "activity_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Signifies date of most recent update to accounts. If accounts are updated on different dates, use most recent. A future date should not be reported.",
+      "example": "2013-01-13",
+      "nullable": true
+    },
+    "date_created": {
+      "type": "string",
+      "format": "date",
+      "description": "Contains the date the media was generated. A future date should not be reported.",
+      "example": "2013-01-13"
+    },
+    "program_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Contains the date your reporting format was developed.",
+      "example": "2013-01-13",
+      "nullable": true
+    },
+    "program_revision_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Contains the last date your reporting format was revised.",
+      "example": "2013-01-13",
+      "nullable": true
+    },
+    "reporter_name": {
+      "type": "string",
+      "description": "Contains the name of the processing company sending the data; i.e., data furnisher or processor.",
+      "example": "Canopy Servicing",
+      "nullable": true
+    },
+    "reporter_address": {
+      "type": "string",
+      "description": "Contains the complete mailing address of the processing company; i.e., street address, city, state and zip code.",
+      "example": "350 5th Ave, New York, NY 10118, United States",
+      "nullable": true
+    },
+    "reporter_telephone_number": {
+      "type": "string",
+      "description": "Contains the telephone number (Area Code + number) of the company sending the data; i.e., data furnisher or processor.",
+      "example": "5104120012",
+      "nullable": true
+    },
+    "consumer_account_number": {
+      "type": "string",
+      "description": "The account_id for the individual reported. This is the canonical Canopy account id.",
+      "example": "31mNprzLd2bKl6koVna68ARM",
+      "nullable": true
+    },
+    "portfolio_type": {
+      "type": "string",
+      "description": "Contains the one-character abbreviation for type of portfolio",
+      "example": "C",
+      "enum": ["C", "I", "M", "O", "R"]
+    },
+    "account_type": {
+      "type": "string",
+      "description": "Report the specific code that identifies the account classification.",
+      "example": "18",
+      "enum": ["01", "15", "18"]
+    },
+    "date_opened": {
+      "type": "string",
+      "format": "date",
+      "description": "Report the date the account was originally opened. Retain the original Date Opened regardless of future activity, such as transfer, refinance, lost or stolen card, etc.",
+      "example": "2013-01-13"
+    },
+    "credit_limit": {
+      "type": "integer",
+      "description": "Total amount (in truncated dollars) that the account can borrow.",
+      "example": 500
+    },
+    "highest_credit": {
+      "type": "integer",
+      "description": "If a revolving account, highest credit is the peak balance within the statement cycle. If an installment account, it is the original loan amount.",
+      "example": 500
+    },
+    "terms_duration": {
+      "type": "string",
+      "description": "Contains the duration of credit extended, or LOC if revolving account",
+      "example": 24
+    },
+    "terms_frequency": {
+      "type": "string",
+      "description": "Report the frequency for payments due.",
+      "example": "M",
+      "enum": ["P", "W", "B", "E", "M", "L", "Q", "T", "S", "Y"]
+    },
+    "scheduled_monthly_payment_amount": {
+      "type": "integer",
+      "description": "Report the dollar amount of the scheduled monthly payment due for this reporting period, whether principal, interest only or a combination of the two.",
+      "example": 37
+    },
+    "actual_payment_amount": {
+      "type": "integer",
+      "description": "Report the dollar amount of the monthly payment actually received for this reporting period in whole dollars only.",
+      "example": 50
+    },
+    "account_status": {
+      "type": "string",
+      "description": "Contains the status code that properly identifies the current condition of the account as of the Date of Account Information.",
+      "example": "11",
+      "enum": ["11", "13", "71", "78", "80", "82", "83", "84", "64", "97", "DF"]
+    },
+    "payment_rating": {
+      "type": "string",
+      "description": "The Payment Rating contains a code that properly identifies whether the account was current, past due, in collections or charged off prior to the status and within the current month’s reporting period.",
+      "enum": [null, "0", "1", "2", "3", "4", "5", "6", "G", "L"],
+      "example": "0",
+      "nullable": true
+    },
+    "payment_history_profile": {
+      "type": "string",
+      "description": "Contains up to 24 months of consecutive payment activity for the previous 24 reporting periods prior to the Date of Account Information being reported.",
+      "example": "BBBBBBBBBBBBBBBBBBBBBBB0",
+      "nullable": true
+    },
+    "special_comment_code": {
+      "type": "string",
+      "description": "Used in conjunction with Account Status and Payment Rating to further define the account (e.g., closed accounts or adjustments pending).",
+      "enum": [null, "AP", "M", "AU"],
+      "nullable": true
+    },
+    "compliance_condition_code": {
+      "type": "string",
+      "description": "Allows the reporting of a condition that is required for legal compliance.",
+      "enum": [null, "XA"],
+      "nullable": true
+    },
+    "current_balance": {
+      "type": "integer",
+      "description": "Report the outstanding current dollar balance on the account as of the Date of Account Information.",
+      "example": 1000
+    },
+    "amount_past_due": {
+      "type": "integer",
+      "description": "Report the total amount of payments that are 30 days or more past due in whole dollars only.",
+      "example": 37
+    },
+    "original_charge_off_amount": {
+      "type": "integer",
+      "description": "For Status Codes 64 and 97 (all portfolio types), report the original amount charged to loss, regardless of the declining balance. Whole dollars",
+      "example": 37
+    },
+    "date_of_account_info": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of reporting.",
+      "example": "2013-01-30"
+    },
+    "first_delinquency_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Indicates the first date of delinquency in a given cycle.",
+      "example": "2013-01-30",
+      "nullable": true
+    },
+    "date_closed": {
+      "type": "string",
+      "format": "date",
+      "description": "For all portfolio types, contains the date the account was closed to further purchases, paid in full, transferred or sold.",
+      "example": "2013-01-30",
+      "nullable": true
+    },
+    "last_payment_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Report the date the most recent payment was received, whether full or partial payment is made.",
+      "example": "2013-01-30",
+      "nullable": true
+    },
+    "consumer_primary": {
+      "type": "object",
+      "required": [
+        "name_first",
+        "name_last",
+        "date_of_birth",
+        "ecoa_code",
+        "address_line_one",
+        "address_city",
+        "address_state",
+        "address_zip"
+      ],
+      "properties": {
+        "name_first": {
+          "type": "string",
+          "description": "Customer's first name. Primary account holder or controlling officer name for Business customers.",
+          "example": "Miriam"
+        },
+        "name_middle": {
+          "type": "string",
+          "description": "Customer's middle name. Primary account holder or controlling officer name for Business customers.",
+          "example": "Louise"
+        },
+        "name_last": {
+          "type": "string",
+          "description": "Customer's last name. Primary account holder or controlling officer name for Business customers.",
+          "example": "Trevino"
+        },
+        "name_suffix": {
+          "type": "string",
+          "description": "Suffix to the customer's name",
+          "example": "Jr"
+        },
+        "ssn": {
+          "type": "string",
+          "description": "Social security number of the customer",
+          "example": "888-88-8888"
+        },
+        "date_of_birth": {
+          "type": "string",
+          "format": "date",
+          "description": "Customer's date of birth in ISO 8601 format",
+          "example": "1985-06-20"
+        },
+        "ecoa_code": {
+          "type": "string",
+          "description": "Defines the relationship of the primary consumer to the account and designates the account as joint, individual, etc., in compliance with the Equal Credit Opportunity Act.",
+          "enum": ["1", "2", "3", "5", "7", "T", "X", "W", "Z"]
+        },
+        "consumer_indicator_code": {
+          "type": "string",
+          "description": "Contains a value that indicates a special condition of the account that applies to the associated consumer.",
+          "nullable": true
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "Customer's phone number in E.164 format",
+          "example": "+14105556789"
+        },
+        "address_line_one": {
+          "type": "string",
+          "description": "Address line one.",
+          "example": "12 Strawberry Road"
+        },
+        "address_line_two": {
+          "type": "string",
+          "description": "Address line two.",
+          "example": "Suite 101"
+        },
+        "address_city": {
+          "type": "string",
+          "description": "Address city.",
+          "example": "Atlanta"
+        },
+        "address_state": {
+          "type": "string",
+          "description": "Address state.",
+          "example": "GA"
+        },
+        "address_zip": {
+          "type": "string",
+          "description": "Five digit zipcode or nine digit 'ZIP+4'",
+          "example": "99999-1000"
+        }
+      }
     }
   }
 }

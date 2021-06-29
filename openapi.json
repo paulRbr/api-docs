@@ -1970,6 +1970,9 @@
       "AccountStatementSummary": {
         "$ref": "./schemas/AccountStatementSummary.json"
       },
+      "AccountCreditReport": {
+        "$ref": "./schemas/AccountCreditReport.json"
+      },
       "AccountCreditReportsList": {
         "$ref": "./schemas/AccountCreditReportsList.json"
       },
