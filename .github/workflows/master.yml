@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   deploy:
-    name: deploy
+    if: ${{ github.event_name == 'push' }}
+    name: deploy documentation on push to master
     runs-on: ubuntu-latest
     steps:
       - name: Check out latest code
@@ -27,8 +31,39 @@ jobs:
         run: yarn build
 
       - name: Deploy to internal documentation
-        uses: bump-sh/github-action@0.2
+        uses: bump-sh/github-action@v1
         with:
           doc: ${{ secrets.BUMP_DOC_ID_INTERNAL }}
           token: ${{ secrets.BUMP_TOKEN_INTERNAL }}
           file: dist/consolidated.json
+
+  api-diff:
+    if: ${{ github.event_name == 'pull_request' && !github.event.pull_request.head.repo.fork }}
+    name: Check API diff on pull requests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out latest code
+        uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install node_modules
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn
+
+      - name: Bundle and validate OpenAPI spec
+        run: yarn build
+
+      - name: Check API diff with internal documentation
+        uses: bump-sh/github-action@v1
+        with:
+          doc: ${{ secrets.BUMP_DOC_ID_INTERNAL }}
+          token: ${{ secrets.BUMP_TOKEN_INTERNAL }}
+          file: dist/consolidated.json
+          command: diff
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

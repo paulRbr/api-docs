@@ -27,7 +27,7 @@ jobs:
         run: yarn build
 
       - name: Deploy uat docs
-        uses: bump-sh/github-action@0.2
+        uses: bump-sh/github-action@v1
         with:
           doc: ${{ secrets.BUMP_DOC_ID_UAT }}
           token: ${{ secrets.BUMP_TOKEN_UAT }}

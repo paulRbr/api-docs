@@ -27,7 +27,7 @@ jobs:
         run: yarn build
 
       - name: Deploy to docs.canopyservicing.com
-        uses: bump-sh/github-action@0.2
+        uses: bump-sh/github-action@v1
         with:
           doc: ${{ secrets.BUMP_DOC_ID_LIVE }}
           token: ${{ secrets.BUMP_TOKEN_LIVE }}
