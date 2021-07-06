@@ -1,12 +1,19 @@
 export interface ConfigurePaymentProcessorsInput {
-    repay_config?: RepayConfig;
+    /**
+     * The merchant config value obtained from the corresponding payment processor.
+     */
+    merchant_config: string;
+    /**
+     * Indicates the payment processor for which the merchant config is being set.
+     */
+    payment_processor_name: PaymentProcessorName;
 }
 
-export interface RepayConfig {
-    /**
-     * Merchant ID for your organization in Repay. You will need to go through an approval
-     * process with Repay to get approved as a Merchant under Canopy prior to making this API
-     * request.
-     */
-    merchant_id?: string;
-}
+/**
+ * Indicates the payment processor for which the merchant config is being set.
+ */
+export type PaymentProcessorName = 
+    "DWOLLA" | 
+    "MODERN_TREASURY" | 
+    "NONE" | 
+    "REPAY";

@@ -10179,16 +10179,27 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "payment_processor_name",
+                  "merchant_config"
+                ],
                 "properties": {
-                  "repay_config": {
-                    "type": "object",
-                    "properties": {
-                      "merchant_id": {
-                        "type": "string",
-                        "example": "987654321",
-                        "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
-                      }
-                    }
+                  "payment_processor_name": {
+                    "type": "string",
+                    "enum": [
+                      "NONE",
+                      "REPAY",
+                      "DWOLLA",
+                      "MODERN_TREASURY"
+                    ],
+                    "description": "Indicates the payment processor for which the merchant config is being set.",
+                    "example": "REPAY",
+                    "default": "NONE"
+                  },
+                  "merchant_config": {
+                    "type": "string",
+                    "description": "The merchant config value obtained from the corresponding payment processor.",
+                    "example": "87397472"
                   }
                 }
               }
@@ -10202,16 +10213,27 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "payment_processor_name",
+                    "merchant_config"
+                  ],
                   "properties": {
-                    "repay_config": {
-                      "type": "object",
-                      "properties": {
-                        "merchant_id": {
-                          "type": "string",
-                          "example": "987654321",
-                          "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
-                        }
-                      }
+                    "payment_processor_name": {
+                      "type": "string",
+                      "enum": [
+                        "NONE",
+                        "REPAY",
+                        "DWOLLA",
+                        "MODERN_TREASURY"
+                      ],
+                      "description": "Indicates the payment processor for which the merchant config is being set.",
+                      "example": "REPAY",
+                      "default": "NONE"
+                    },
+                    "merchant_config": {
+                      "type": "string",
+                      "description": "The merchant config value obtained from the corresponding payment processor.",
+                      "example": "87397472"
                     }
                   }
                 }
@@ -13903,16 +13925,27 @@
       },
       "ConfigurePaymentProcessorsInput": {
         "type": "object",
+        "required": [
+          "payment_processor_name",
+          "merchant_config"
+        ],
         "properties": {
-          "repay_config": {
-            "type": "object",
-            "properties": {
-              "merchant_id": {
-                "type": "string",
-                "example": "987654321",
-                "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
-              }
-            }
+          "payment_processor_name": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "REPAY",
+              "DWOLLA",
+              "MODERN_TREASURY"
+            ],
+            "description": "Indicates the payment processor for which the merchant config is being set.",
+            "example": "REPAY",
+            "default": "NONE"
+          },
+          "merchant_config": {
+            "type": "string",
+            "description": "The merchant config value obtained from the corresponding payment processor.",
+            "example": "87397472"
           }
         }
       },
@@ -16657,16 +16690,27 @@
       },
       "OrgPaymentProcessorConfig": {
         "type": "object",
+        "required": [
+          "payment_processor_name",
+          "merchant_config"
+        ],
         "properties": {
-          "repay_config": {
-            "type": "object",
-            "properties": {
-              "merchant_id": {
-                "type": "string",
-                "example": "987654321",
-                "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
-              }
-            }
+          "payment_processor_name": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "REPAY",
+              "DWOLLA",
+              "MODERN_TREASURY"
+            ],
+            "description": "Indicates the payment processor for which the merchant config is being set.",
+            "example": "REPAY",
+            "default": "NONE"
+          },
+          "merchant_config": {
+            "type": "string",
+            "description": "The merchant config value obtained from the corresponding payment processor.",
+            "example": "87397472"
           }
         }
       },
@@ -19195,16 +19239,27 @@
           "application/json": {
             "schema": {
               "type": "object",
+              "required": [
+                "payment_processor_name",
+                "merchant_config"
+              ],
               "properties": {
-                "repay_config": {
-                  "type": "object",
-                  "properties": {
-                    "merchant_id": {
-                      "type": "string",
-                      "example": "987654321",
-                      "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
-                    }
-                  }
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY",
+                    "DWOLLA",
+                    "MODERN_TREASURY"
+                  ],
+                  "description": "Indicates the payment processor for which the merchant config is being set.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "merchant_config": {
+                  "type": "string",
+                  "description": "The merchant config value obtained from the corresponding payment processor.",
+                  "example": "87397472"
                 }
               }
             }
@@ -26738,16 +26793,27 @@
           "application/json": {
             "schema": {
               "type": "object",
+              "required": [
+                "payment_processor_name",
+                "merchant_config"
+              ],
               "properties": {
-                "repay_config": {
-                  "type": "object",
-                  "properties": {
-                    "merchant_id": {
-                      "type": "string",
-                      "example": "987654321",
-                      "description": "Merchant ID for your organization in Repay. You will need to go through an approval process with Repay to get approved as a Merchant under Canopy prior to making this API request."
-                    }
-                  }
+                "payment_processor_name": {
+                  "type": "string",
+                  "enum": [
+                    "NONE",
+                    "REPAY",
+                    "DWOLLA",
+                    "MODERN_TREASURY"
+                  ],
+                  "description": "Indicates the payment processor for which the merchant config is being set.",
+                  "example": "REPAY",
+                  "default": "NONE"
+                },
+                "merchant_config": {
+                  "type": "string",
+                  "description": "The merchant config value obtained from the corresponding payment processor.",
+                  "example": "87397472"
                 }
               }
             }

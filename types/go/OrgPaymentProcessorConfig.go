@@ -1,7 +1,13 @@
 type OrgPaymentProcessorConfig struct {
-	RepayConfig *RepayConfig `json:"repay_config,omitempty"`
+	MerchantConfig       string               `json:"merchant_config"`       // The merchant config value obtained from the corresponding payment processor.
+	PaymentProcessorName PaymentProcessorName `json:"payment_processor_name"`// Indicates the payment processor for which the merchant config is being set.
 }
 
-type RepayConfig struct {
-	MerchantID *string `json:"merchant_id,omitempty"`// Merchant ID for your organization in Repay. You will need to go through an approval; process with Repay to get approved as a Merchant under Canopy prior to making this API; request.
-}
+// Indicates the payment processor for which the merchant config is being set.
+type PaymentProcessorName string
+const (
+	Dwolla PaymentProcessorName = "DWOLLA"
+	ModernTreasury PaymentProcessorName = "MODERN_TREASURY"
+	None PaymentProcessorName = "NONE"
+	Repay PaymentProcessorName = "REPAY"
+)
